@@ -1455,7 +1455,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bf8536aa0cbf8364b9433a285149071b, type: 2}
+  - {fileID: 2100000, guid: 03f8a80aaa7b8c047b1ac4e64e6edc5a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6524,11 +6524,15 @@ MonoBehaviour:
   dialogueMoveSpeed: 900
   princeTargetPos: {x: -120, y: -278}
   bubbleTargetPos: {x: 445, y: -315}
-  nextSceneName: 
+  signupSceneName: SignUp
+  loginSceneName: Login
   loadSceneDelay: 1.2
   musicSource: {fileID: 852359481}
   sfxSource: {fileID: 1646545438}
   startSFX: {fileID: 8300000, guid: e0e8a0690df80ac439e27263914e9067, type: 3}
+  yesSFX: {fileID: 0}
+  noSFX: {fileID: 0}
+  loginSFX: {fileID: 0}
   typewriterDialogue: {fileID: 978875413}
 --- !u!1 &1340785956
 GameObject:
@@ -6589,7 +6593,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: db2cc8e680b2778448ef230812a15ec5, type: 2}
+  - {fileID: 2100000, guid: 50bf87d72867df249a2cd8d329c57cc2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
