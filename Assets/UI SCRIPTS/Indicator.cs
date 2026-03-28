@@ -3,10 +3,13 @@ using UnityEngine;
 public class Indicator : MonoBehaviour
 {
     public RectTransform indicator;
-    public float padding = 20f; // space between button and arrow
+    public float padding = 20f;
 
     public void MoveTo(RectTransform target)
     {
+        if (indicator == null || target == null)
+            return;
+
         float x = target.anchoredPosition.x + (target.rect.width / 2f) + (indicator.rect.width / 2f) + padding;
         float y = target.anchoredPosition.y;
 
