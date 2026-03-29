@@ -1,74 +1,84 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class UIHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISelectHandler, IDeselectHandler
+public class UIHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public float scaleMultiplier = 1.1f;
-    public float speed = 10f;
-    public Indicator indicatorManager;
+    [Header("Hover")]
+    [SerializeField] private float scaleMultiplier = 1.1f;
+    [SerializeField] private float speed = 10f;
 
     private Vector3 originalScale;
-    private Vector3 targetScale;
-    private RectTransform rt;
-    private bool isSelected = false;
-    private bool isPointerOver = false;
+    private bool isPointerOver;
+    private bool initialized;
 
-    void Start()
+    private Button button;
+    private GameMenuController menuController;
+
+    private void Awake()
     {
-        originalScale = transform.localScale;
-        targetScale = originalScale;
-        rt = GetComponent<RectTransform>();
+        Initialize();
     }
 
-    void Update()
+    private void Start()
     {
-        transform.localScale = Vector3.Lerp(transform.localScale, targetScale, Time.deltaTime * speed);
+        if (!initialized)
+            Initialize();
+    }
+
+    private void Initialize()
+    {
+        button = GetComponent<Button>();
+        menuController = FindFirstObjectByType<GameMenuController>();
+
+        if (transform.localScale == Vector3.zero)
+            transform.localScale = Vector3.one;
+
+        originalScale = transform.localScale;
+        initialized = true;
+    }
+
+    private void Update()
+    {
+        if (!initialized)
+            return;
+
+        bool canHover = menuController != null && menuController.HasStartedBrowsing();
+        bool isCurrent = canHover && menuController.IsCurrentButton(button);
+        bool shouldHover = canHover && (isPointerOver || isCurrent);
+
+        Vector3 targetScale = shouldHover
+            ? originalScale * scaleMultiplier
+            : originalScale;
+
+        transform.localScale = Vector3.Lerp(
+            transform.localScale,
+            targetScale,
+            Time.deltaTime * speed
+        );
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         isPointerOver = true;
-        ApplyHover();
+
+        if (menuController != null && menuController.HasStartedBrowsing())
+        {
+            menuController.SyncFromHoveredButton(button);
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         isPointerOver = false;
-
-        if (!isSelected)
-        {
-            RemoveHover();
-        }
     }
 
-    public void OnSelect(BaseEventData eventData)
+    public void ResetVisual()
     {
-        isSelected = true;
-        ApplyHover();
-    }
+        if (!initialized)
+            Initialize();
 
-    public void OnDeselect(BaseEventData eventData)
-    {
-        isSelected = false;
-
-        if (!isPointerOver)
-        {
-            RemoveHover();
-        }
-    }
-
-    private void ApplyHover()
-    {
-        targetScale = originalScale * scaleMultiplier;
-
-        if (indicatorManager != null)
-        {
-            indicatorManager.MoveTo(rt);
-        }
-    }
-
-    private void RemoveHover()
-    {
-        targetScale = originalScale;
+        isPointerOver = false;
+        transform.localScale = originalScale;
     }
 }
