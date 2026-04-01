@@ -1,6 +1,13 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Networking; 
+using System.Collections;
+
+
+
+
+
 
 public class BrailleSignupController : MonoBehaviour
 {
@@ -25,6 +32,28 @@ public class BrailleSignupController : MonoBehaviour
 
     // Prevent control keys from also being treated like braille text
     private bool controlKeyPressedThisFrame = false;
+    private IEnumerator RegisterToDatabase(string first_name, string last_name, string username, string password)
+{
+    WWWForm form = new WWWForm();
+    form.AddField("first_name", first_name);
+    form.AddField("last_name", last_name);
+    form.AddField("username", username);
+    form.AddField("password", password);
+
+    using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/brailleplay/register.php", form))
+    {
+        yield return www.SendWebRequest();
+
+        if (www.result != UnityWebRequest.Result.Success)
+        {
+            Debug.Log("Error: " + www.error);
+        }
+        else
+        {
+            Debug.Log("Server Response: " + www.downloadHandler.text);
+        }
+    }
+}
 
     // Dot mapping:
     // 1 = F
@@ -203,36 +232,63 @@ public class BrailleSignupController : MonoBehaviour
     }
 
     void SubmitForm()
+{
+    ClearWarnings();
+
+    bool valid = true;
+    int firstInvalidIndex = -1;
+
+    // Validate all fields
+    for (int i = 0; i < fields.Length; i++)
     {
-        ClearWarnings();
-
-        bool valid = true;
-        int firstInvalidIndex = -1;
-
-        for (int i = 0; i < fields.Length; i++)
+        if (!ValidateField(i))
         {
-            if (!ValidateField(i))
-            {
-                valid = false;
+            valid = false;
 
-                if (firstInvalidIndex == -1)
-                    firstInvalidIndex = i;
-            }
+            if (firstInvalidIndex == -1)
+                firstInvalidIndex = i;
         }
-
-        if (!valid)
-        {
-            FocusField(firstInvalidIndex);
-            return;
-        }
-
-        Debug.Log("Signup submitted");
-        Debug.Log("Name: " + nameField.text);
-        Debug.Log("Username: " + usernameField.text);
-        Debug.Log("Password: " + passwordField.text);
-
-        // Put your signup / save / scene change logic here
     }
+
+    // If invalid, focus first error
+    if (!valid)
+    {
+        FocusField(firstInvalidIndex);
+        return;
+    }
+
+    // Clean inputs
+    string fullName = nameField.text.Trim();
+    string username = usernameField.text.Trim();
+    string password = passwordField.text.Trim();
+
+    // 🔥 Split name safely
+    string[] nameParts = fullName.Split(' ');
+
+    string firstName = "";
+    string lastName = "";
+
+    if (nameParts.Length == 1)
+    {
+        firstName = nameParts[0];
+        lastName = ""; // optional
+    }
+    else if (nameParts.Length >= 2)
+    {
+        firstName = nameParts[0];
+        lastName = nameParts[nameParts.Length - 1]; // last word as last name
+    }
+
+    // Debug logs
+    Debug.Log("Signup submitted");
+    Debug.Log("First Name: " + firstName);
+    Debug.Log("Last Name: " + lastName);
+    Debug.Log("Username: " + username);
+    Debug.Log("Password: " + password);
+
+    // Send to database
+    StartCoroutine(RegisterToDatabase(firstName, lastName, username, password));
+}
 
     bool ValidateField(int index)
     {
@@ -373,6 +429,7 @@ public class BrailleSignupController : MonoBehaviour
         brailleMap.Add(Dots(1, 3, 4, 6), "x");
         brailleMap.Add(Dots(1, 3, 4, 5, 6), "y");
         brailleMap.Add(Dots(1, 3, 5, 6), "z");
+        brailleMap.Add(Dots(6), " "); 
     }
 
     int Dots(params int[] dots)
