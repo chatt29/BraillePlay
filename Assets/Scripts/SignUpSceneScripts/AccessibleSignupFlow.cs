@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class AccessibleLoginFlow : MonoBehaviour
+public class AccessibleSignupFlow : MonoBehaviour
 {
     [System.Serializable]
     public class MessageEntry
@@ -16,24 +16,30 @@ public class AccessibleLoginFlow : MonoBehaviour
         public AudioClip audioClip;
     }
 
-    private enum LoginStage
+    private enum SignupStage
     {
         Intro,
+        FirstName,
+        LastName,
         Username,
         Password,
-        LoginButton
+        SubmitButton
     }
 
     [Header("UI References")]
     [SerializeField] private TMP_Text messageText;
+    [SerializeField] private TMP_InputField firstNameInput;
+    [SerializeField] private TMP_InputField lastNameInput;
     [SerializeField] private TMP_InputField usernameInput;
     [SerializeField] private TMP_InputField passwordInput;
-    [SerializeField] private Button loginButton;
+    [SerializeField] private Button submitButton;
 
     [Header("Optional Highlight Targets")]
+    [SerializeField] private RectTransform firstNameHighlightTarget;
+    [SerializeField] private RectTransform lastNameHighlightTarget;
     [SerializeField] private RectTransform usernameHighlightTarget;
     [SerializeField] private RectTransform passwordHighlightTarget;
-    [SerializeField] private RectTransform loginHighlightTarget;
+    [SerializeField] private RectTransform submitHighlightTarget;
 
     [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
@@ -48,6 +54,8 @@ public class AccessibleLoginFlow : MonoBehaviour
     [SerializeField] private bool requireNextButtonForIntroAdvance = true;
 
     [Header("Validation Settings")]
+    [SerializeField] private int minFirstNameLength = 2;
+    [SerializeField] private int minLastNameLength = 2;
     [SerializeField] private int minUsernameLength = 4;
     [SerializeField] private int minPasswordLength = 6;
     [SerializeField] private bool usernameAllowLetters = true;
@@ -61,43 +69,64 @@ public class AccessibleLoginFlow : MonoBehaviour
     [SerializeField] private float pulseScaleAmount = 0.04f;
 
     [Header("Messages")]
-    [SerializeField] private MessageEntry readyForUsernameMessage;
+    [SerializeField] private MessageEntry readyForFirstNameMessage;
+    [SerializeField] private MessageEntry firstNameFocusMessage;
+    [SerializeField] private MessageEntry firstNameEmptyMessage;
+    [SerializeField] private MessageEntry firstNameTooShortMessage;
+
+    [SerializeField] private MessageEntry lastNameFocusMessage;
+    [SerializeField] private MessageEntry lastNameEmptyMessage;
+    [SerializeField] private MessageEntry lastNameTooShortMessage;
+
     [SerializeField] private MessageEntry usernameFocusMessage;
     [SerializeField] private MessageEntry usernameEmptyMessage;
     [SerializeField] private MessageEntry usernameTooShortMessage;
     [SerializeField] private MessageEntry usernameInvalidCharactersMessage;
+
     [SerializeField] private MessageEntry passwordFocusMessage;
     [SerializeField] private MessageEntry passwordEmptyMessage;
     [SerializeField] private MessageEntry passwordTooShortMessage;
-    [SerializeField] private MessageEntry loginFocusMessage;
 
-    private LoginStage currentStage = LoginStage.Intro;
+    [SerializeField] private MessageEntry submitFocusMessage;
+
+    private SignupStage currentStage = SignupStage.Intro;
     private Coroutine typingRoutine;
     private int currentIntroIndex = 0;
     private bool isTyping;
 
     private RectTransform currentPulseTarget;
+
+    private Vector3 firstNameBaseScale;
+    private Vector3 lastNameBaseScale;
     private Vector3 usernameBaseScale;
     private Vector3 passwordBaseScale;
-    private Vector3 loginBaseScale;
+    private Vector3 submitBaseScale;
 
     private string lastAnnouncedMessage = "";
     private AudioClip lastAnnouncedClip = null;
 
     private void Awake()
     {
+        if (firstNameHighlightTarget == null && firstNameInput != null)
+            firstNameHighlightTarget = firstNameInput.GetComponent<RectTransform>();
+
+        if (lastNameHighlightTarget == null && lastNameInput != null)
+            lastNameHighlightTarget = lastNameInput.GetComponent<RectTransform>();
+
         if (usernameHighlightTarget == null && usernameInput != null)
             usernameHighlightTarget = usernameInput.GetComponent<RectTransform>();
 
         if (passwordHighlightTarget == null && passwordInput != null)
             passwordHighlightTarget = passwordInput.GetComponent<RectTransform>();
 
-        if (loginHighlightTarget == null && loginButton != null)
-            loginHighlightTarget = loginButton.GetComponent<RectTransform>();
+        if (submitHighlightTarget == null && submitButton != null)
+            submitHighlightTarget = submitButton.GetComponent<RectTransform>();
 
+        if (firstNameHighlightTarget != null) firstNameBaseScale = firstNameHighlightTarget.localScale;
+        if (lastNameHighlightTarget != null) lastNameBaseScale = lastNameHighlightTarget.localScale;
         if (usernameHighlightTarget != null) usernameBaseScale = usernameHighlightTarget.localScale;
         if (passwordHighlightTarget != null) passwordBaseScale = passwordHighlightTarget.localScale;
-        if (loginHighlightTarget != null) loginBaseScale = loginHighlightTarget.localScale;
+        if (submitHighlightTarget != null) submitBaseScale = submitHighlightTarget.localScale;
     }
 
     private void OnEnable()
@@ -105,7 +134,6 @@ public class AccessibleLoginFlow : MonoBehaviour
         BrailleMapping.OnSubmit += HandleSubmit;
         BrailleMapping.OnYesOrNext += HandleNext;
         BrailleMapping.OnRepeat += HandleRepeat;
-        BrailleMapping.OnLogin += HandleLoginAction;
     }
 
     private void OnDisable()
@@ -113,20 +141,11 @@ public class AccessibleLoginFlow : MonoBehaviour
         BrailleMapping.OnSubmit -= HandleSubmit;
         BrailleMapping.OnYesOrNext -= HandleNext;
         BrailleMapping.OnRepeat -= HandleRepeat;
-        BrailleMapping.OnLogin -= HandleLoginAction;
     }
 
     private void Start()
     {
-        if (usernameInput != null)
-            usernameInput.inputType = TMP_InputField.InputType.Standard;
-
-        if (passwordInput != null)
-        {
-            passwordInput.contentType = TMP_InputField.ContentType.Password;
-            passwordInput.ForceLabelUpdate();
-        }
-
+        ConfigureInputFields();
         ResetHighlights();
         StartIntroSequence();
     }
@@ -136,14 +155,32 @@ public class AccessibleLoginFlow : MonoBehaviour
         UpdatePulse();
     }
 
+    private void ConfigureInputFields()
+    {
+        if (firstNameInput != null)
+            firstNameInput.inputType = TMP_InputField.InputType.Standard;
+
+        if (lastNameInput != null)
+            lastNameInput.inputType = TMP_InputField.InputType.Standard;
+
+        if (usernameInput != null)
+            usernameInput.inputType = TMP_InputField.InputType.Standard;
+
+        if (passwordInput != null)
+        {
+            passwordInput.contentType = TMP_InputField.ContentType.Password;
+            passwordInput.ForceLabelUpdate();
+        }
+    }
+
     private void StartIntroSequence()
     {
-        currentStage = LoginStage.Intro;
+        currentStage = SignupStage.Intro;
         currentIntroIndex = 0;
 
         if (introMessages == null || introMessages.Count == 0)
         {
-            FinishIntroAndFocusUsername();
+            FinishIntroAndFocusFirstName();
             return;
         }
 
@@ -154,7 +191,7 @@ public class AccessibleLoginFlow : MonoBehaviour
     {
         if (index < 0 || index >= introMessages.Count)
         {
-            FinishIntroAndFocusUsername();
+            FinishIntroAndFocusFirstName();
             return;
         }
 
@@ -175,50 +212,21 @@ public class AccessibleLoginFlow : MonoBehaviour
         currentIntroIndex++;
 
         if (currentIntroIndex >= introMessages.Count)
-            FinishIntroAndFocusUsername();
+            FinishIntroAndFocusFirstName();
         else
             ShowIntroMessage(currentIntroIndex);
     }
 
-    private void FinishIntroAndFocusUsername()
+    private void FinishIntroAndFocusFirstName()
     {
-        currentStage = LoginStage.Username;
-        FocusUsernameFieldSilently();
-        Announce(readyForUsernameMessage, false);
-    }
-
-    private void FocusUsernameField()
-    {
-        currentStage = LoginStage.Username;
-        SetSelected(usernameInput);
-        SetPulseTarget(usernameHighlightTarget);
-
-        if (!string.IsNullOrWhiteSpace(usernameFocusMessage.message) || usernameFocusMessage.audioClip != null)
-            Announce(usernameFocusMessage, false);
-    }
-
-    private void FocusPasswordField()
-    {
-        currentStage = LoginStage.Password;
-        SetSelected(passwordInput);
-        SetPulseTarget(passwordHighlightTarget);
-        Announce(passwordFocusMessage, false);
-    }
-
-    private void FocusLoginButton()
-    {
-        currentStage = LoginStage.LoginButton;
-
-        if (loginButton != null && EventSystem.current != null)
-            EventSystem.current.SetSelectedGameObject(loginButton.gameObject);
-
-        SetPulseTarget(loginHighlightTarget);
-        Announce(loginFocusMessage, false);
+        currentStage = SignupStage.FirstName;
+        FocusFirstNameFieldSilently();
+        Announce(readyForFirstNameMessage, false);
     }
 
     private void HandleNext()
     {
-        if (currentStage != LoginStage.Intro)
+        if (currentStage != SignupStage.Intro)
             return;
 
         if (isTyping)
@@ -230,14 +238,14 @@ public class AccessibleLoginFlow : MonoBehaviour
         currentIntroIndex++;
 
         if (currentIntroIndex >= introMessages.Count)
-            FinishIntroAndFocusUsername();
+            FinishIntroAndFocusFirstName();
         else
             ShowIntroMessage(currentIntroIndex);
     }
 
     private void HandleSubmit()
     {
-        if (currentStage == LoginStage.Intro)
+        if (currentStage == SignupStage.Intro)
         {
             if (isTyping)
                 SkipTyping();
@@ -249,24 +257,26 @@ public class AccessibleLoginFlow : MonoBehaviour
 
         switch (currentStage)
         {
-            case LoginStage.Username:
+            case SignupStage.FirstName:
+                ValidateFirstNameAndContinue();
+                break;
+
+            case SignupStage.LastName:
+                ValidateLastNameAndContinue();
+                break;
+
+            case SignupStage.Username:
                 ValidateUsernameAndContinue();
                 break;
 
-            case LoginStage.Password:
+            case SignupStage.Password:
                 ValidatePasswordAndContinue();
                 break;
 
-            case LoginStage.LoginButton:
-                TriggerLogin();
+            case SignupStage.SubmitButton:
+                TriggerSubmit();
                 break;
         }
-    }
-
-    private void HandleLoginAction()
-    {
-        if (currentStage == LoginStage.LoginButton)
-            TriggerLogin();
     }
 
     private void HandleRepeat()
@@ -294,6 +304,48 @@ public class AccessibleLoginFlow : MonoBehaviour
             audioSource.Stop();
 
         PlayClip(lastAnnouncedClip);
+    }
+
+    private void ValidateFirstNameAndContinue()
+    {
+        string value = firstNameInput != null ? firstNameInput.text.Trim() : "";
+
+        if (string.IsNullOrEmpty(value))
+        {
+            Announce(firstNameEmptyMessage, true);
+            FocusFirstNameFieldSilently();
+            return;
+        }
+
+        if (value.Length < minFirstNameLength)
+        {
+            Announce(firstNameTooShortMessage, true);
+            FocusFirstNameFieldSilently();
+            return;
+        }
+
+        FocusLastNameField();
+    }
+
+    private void ValidateLastNameAndContinue()
+    {
+        string value = lastNameInput != null ? lastNameInput.text.Trim() : "";
+
+        if (string.IsNullOrEmpty(value))
+        {
+            Announce(lastNameEmptyMessage, true);
+            FocusLastNameFieldSilently();
+            return;
+        }
+
+        if (value.Length < minLastNameLength)
+        {
+            Announce(lastNameTooShortMessage, true);
+            FocusLastNameFieldSilently();
+            return;
+        }
+
+        FocusUsernameField();
     }
 
     private void ValidateUsernameAndContinue()
@@ -342,22 +394,30 @@ public class AccessibleLoginFlow : MonoBehaviour
             return;
         }
 
-        FocusLoginButton();
+        FocusSubmitButton();
     }
 
     public void GoToPreviousField()
     {
         switch (currentStage)
         {
-            case LoginStage.Username:
+            case SignupStage.FirstName:
+                FocusFirstNameField();
+                break;
+
+            case SignupStage.LastName:
+                FocusFirstNameField();
+                break;
+
+            case SignupStage.Username:
+                FocusLastNameField();
+                break;
+
+            case SignupStage.Password:
                 FocusUsernameField();
                 break;
 
-            case LoginStage.Password:
-                FocusUsernameField();
-                break;
-
-            case LoginStage.LoginButton:
+            case SignupStage.SubmitButton:
                 FocusPasswordField();
                 break;
         }
@@ -367,62 +427,99 @@ public class AccessibleLoginFlow : MonoBehaviour
     {
         switch (currentStage)
         {
-            case LoginStage.Username:
+            case SignupStage.FirstName:
+                FocusLastNameField();
+                break;
+
+            case SignupStage.LastName:
+                FocusUsernameField();
+                break;
+
+            case SignupStage.Username:
                 FocusPasswordField();
                 break;
 
-            case LoginStage.Password:
-                FocusLoginButton();
+            case SignupStage.Password:
+                FocusSubmitButton();
                 break;
         }
     }
 
+    private void FocusFirstNameField()
+    {
+        currentStage = SignupStage.FirstName;
+        SetSelected(firstNameInput);
+        SetPulseTarget(firstNameHighlightTarget);
+        Announce(firstNameFocusMessage, false);
+    }
+
+    private void FocusLastNameField()
+    {
+        currentStage = SignupStage.LastName;
+        SetSelected(lastNameInput);
+        SetPulseTarget(lastNameHighlightTarget);
+        Announce(lastNameFocusMessage, false);
+    }
+
+    private void FocusUsernameField()
+    {
+        currentStage = SignupStage.Username;
+        SetSelected(usernameInput);
+        SetPulseTarget(usernameHighlightTarget);
+        Announce(usernameFocusMessage, false);
+    }
+
+    private void FocusPasswordField()
+    {
+        currentStage = SignupStage.Password;
+        SetSelected(passwordInput);
+        SetPulseTarget(passwordHighlightTarget);
+        Announce(passwordFocusMessage, false);
+    }
+
+    private void FocusSubmitButton()
+    {
+        currentStage = SignupStage.SubmitButton;
+
+        if (submitButton != null && EventSystem.current != null)
+            EventSystem.current.SetSelectedGameObject(submitButton.gameObject);
+
+        SetPulseTarget(submitHighlightTarget);
+        Announce(submitFocusMessage, false);
+    }
+
+    private void FocusFirstNameFieldSilently()
+    {
+        currentStage = SignupStage.FirstName;
+        SetSelected(firstNameInput);
+        SetPulseTarget(firstNameHighlightTarget);
+    }
+
+    private void FocusLastNameFieldSilently()
+    {
+        currentStage = SignupStage.LastName;
+        SetSelected(lastNameInput);
+        SetPulseTarget(lastNameHighlightTarget);
+    }
+
     private void FocusUsernameFieldSilently()
     {
-        currentStage = LoginStage.Username;
+        currentStage = SignupStage.Username;
         SetSelected(usernameInput);
         SetPulseTarget(usernameHighlightTarget);
     }
 
     private void FocusPasswordFieldSilently()
     {
-        currentStage = LoginStage.Password;
+        currentStage = SignupStage.Password;
         SetSelected(passwordInput);
         SetPulseTarget(passwordHighlightTarget);
     }
 
-    private bool IsUsernameValid(string username)
+    private void TriggerSubmit()
     {
-        string pattern = BuildUsernameRegexPattern();
-        return Regex.IsMatch(username, pattern);
-    }
-
-    private string BuildUsernameRegexPattern()
-    {
-        string allowed = "";
-
-        if (usernameAllowLetters)
-            allowed += "A-Za-z";
-
-        if (usernameAllowNumbers)
-            allowed += "0-9";
-
-        if (usernameAllowUnderscore)
-            allowed += "_";
-
-        if (usernameAllowSpaces)
-            allowed += " ";
-
-        if (string.IsNullOrEmpty(allowed))
-            allowed = "A-Za-z0-9_";
-
-        return "^[" + allowed + "]+$";
-    }
-
-    private void TriggerLogin()
-    {
-        if (loginButton != null)
-            loginButton.onClick.Invoke();
+        if (submitButton != null)
+            submitButton.onClick.Invoke();
     }
 
     private void SetSelected(TMP_InputField field)
@@ -446,6 +543,26 @@ public class AccessibleLoginFlow : MonoBehaviour
         field.stringPosition = length;
         field.selectionAnchorPosition = length;
         field.selectionFocusPosition = length;
+    }
+
+    private bool IsUsernameValid(string username)
+    {
+        return Regex.IsMatch(username, BuildUsernameRegexPattern());
+    }
+
+    private string BuildUsernameRegexPattern()
+    {
+        string allowed = "";
+
+        if (usernameAllowLetters) allowed += "A-Za-z";
+        if (usernameAllowNumbers) allowed += "0-9";
+        if (usernameAllowUnderscore) allowed += "_";
+        if (usernameAllowSpaces) allowed += " ";
+
+        if (string.IsNullOrEmpty(allowed))
+            allowed = "A-Za-z0-9_";
+
+        return "^[" + allowed + "]+$";
     }
 
     private void Announce(MessageEntry entry, bool overwriteImmediately)
@@ -542,9 +659,11 @@ public class AccessibleLoginFlow : MonoBehaviour
     {
         currentPulseTarget = null;
 
+        if (firstNameHighlightTarget != null) firstNameHighlightTarget.localScale = firstNameBaseScale;
+        if (lastNameHighlightTarget != null) lastNameHighlightTarget.localScale = lastNameBaseScale;
         if (usernameHighlightTarget != null) usernameHighlightTarget.localScale = usernameBaseScale;
         if (passwordHighlightTarget != null) passwordHighlightTarget.localScale = passwordBaseScale;
-        if (loginHighlightTarget != null) loginHighlightTarget.localScale = loginBaseScale;
+        if (submitHighlightTarget != null) submitHighlightTarget.localScale = submitBaseScale;
     }
 
     private void UpdatePulse()
@@ -554,12 +673,11 @@ public class AccessibleLoginFlow : MonoBehaviour
 
         Vector3 baseScale = Vector3.one;
 
-        if (currentPulseTarget == usernameHighlightTarget)
-            baseScale = usernameBaseScale;
-        else if (currentPulseTarget == passwordHighlightTarget)
-            baseScale = passwordBaseScale;
-        else if (currentPulseTarget == loginHighlightTarget)
-            baseScale = loginBaseScale;
+        if (currentPulseTarget == firstNameHighlightTarget) baseScale = firstNameBaseScale;
+        else if (currentPulseTarget == lastNameHighlightTarget) baseScale = lastNameBaseScale;
+        else if (currentPulseTarget == usernameHighlightTarget) baseScale = usernameBaseScale;
+        else if (currentPulseTarget == passwordHighlightTarget) baseScale = passwordBaseScale;
+        else if (currentPulseTarget == submitHighlightTarget) baseScale = submitBaseScale;
 
         float pulse = 1f + Mathf.Sin(Time.unscaledTime * pulseSpeed) * pulseScaleAmount;
         currentPulseTarget.localScale = baseScale * pulse;

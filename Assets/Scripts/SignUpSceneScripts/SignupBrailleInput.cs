@@ -2,18 +2,21 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class LoginSceneBrailleInput : MonoBehaviour
+public class SignupBrailleInput : MonoBehaviour
 {
-    [Header("Scene Only References")]
+    [Header("Scene Input References")]
+    [SerializeField] private TMP_InputField firstNameInput;
+    [SerializeField] private TMP_InputField lastNameInput;
     [SerializeField] private TMP_InputField usernameInput;
     [SerializeField] private TMP_InputField passwordInput;
 
     [Header("Flow Reference")]
-    [SerializeField] private AccessibleLoginFlow loginFlow;
+    [SerializeField] private AccessibleSignupFlow signupFlow;
 
     [Header("Options")]
     [SerializeField] private bool blockPhysicalKeyboardTyping = true;
     [SerializeField] private bool logBrailleLetters = false;
+    [SerializeField] private bool allowSpaceCharacter = false;
 
     private TMP_InputField activeField;
 
@@ -47,9 +50,17 @@ public class LoginSceneBrailleInput : MonoBehaviour
 
         if (blockPhysicalKeyboardTyping)
         {
-            if (usernameInput != null) usernameInput.readOnly = true;
-            if (passwordInput != null) passwordInput.readOnly = true;
+            SetReadOnly(firstNameInput, true);
+            SetReadOnly(lastNameInput, true);
+            SetReadOnly(usernameInput, true);
+            SetReadOnly(passwordInput, true);
         }
+    }
+
+    private void SetReadOnly(TMP_InputField field, bool value)
+    {
+        if (field != null)
+            field.readOnly = value;
     }
 
     private void UpdateActiveField()
@@ -61,6 +72,7 @@ public class LoginSceneBrailleInput : MonoBehaviour
         }
 
         GameObject selected = EventSystem.current.currentSelectedGameObject;
+
         if (selected == null)
         {
             activeField = null;
@@ -84,18 +96,48 @@ public class LoginSceneBrailleInput : MonoBehaviour
         if (string.IsNullOrEmpty(letter))
             return;
 
+        if (!CanInsertIntoActiveField(letter))
+            return;
+
         if (logBrailleLetters)
             Debug.Log("Braille Pattern: " + pattern + " -> " + letter);
 
         InsertText(letter);
     }
 
+    private bool CanInsertIntoActiveField(string value)
+    {
+        if (activeField == null)
+            return false;
+
+        if (activeField == passwordInput)
+            return true;
+
+        if (activeField == usernameInput)
+        {
+            if (value == " ")
+                return false;
+
+            return true;
+        }
+
+        if (activeField == firstNameInput || activeField == lastNameInput)
+        {
+            if (value == " ")
+                return allowSpaceCharacter;
+
+            return true;
+        }
+
+        return true;
+    }
+
     private void HandleDelete()
     {
         if (activeField == null)
         {
-            if (loginFlow != null)
-                loginFlow.GoToPreviousField();
+            if (signupFlow != null)
+                signupFlow.GoToPreviousField();
 
             return;
         }
@@ -104,8 +146,8 @@ public class LoginSceneBrailleInput : MonoBehaviour
 
         if (string.IsNullOrEmpty(text))
         {
-            if (loginFlow != null)
-                loginFlow.GoToPreviousField();
+            if (signupFlow != null)
+                signupFlow.GoToPreviousField();
 
             return;
         }
@@ -149,7 +191,6 @@ public class LoginSceneBrailleInput : MonoBehaviour
 
     private string TranslateBraille(string pattern)
     {
-        // pattern order: 123456 = F D S J K L
         switch (pattern)
         {
             case "100000": return "a";

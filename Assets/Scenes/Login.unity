@@ -1502,6 +1502,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LoginSceneBrailleInput
   usernameInput: {fileID: 2113562707}
   passwordInput: {fileID: 1574297439}
+  loginFlow: {fileID: 989585280}
   blockPhysicalKeyboardTyping: 1
   logBrailleLetters: 1
 --- !u!1 &1039156183
