@@ -12,6 +12,8 @@ public class BrailleMapping : MonoBehaviour
     public static event Action OnDot5;
     public static event Action OnDot6;
 
+    public static event Action<string> OnBrailleChordSubmitted;
+
     public static event Action OnRepeat;
     public static event Action OnSubmit;
     public static event Action OnDeleteOrNo;
@@ -52,6 +54,14 @@ public class BrailleMapping : MonoBehaviour
     [Header("Options")]
     public bool logInputs = false;
 
+    private bool chordStarted;
+    private bool chordDot1;
+    private bool chordDot2;
+    private bool chordDot3;
+    private bool chordDot4;
+    private bool chordDot5;
+    private bool chordDot6;
+
     private void Awake()
     {
         Instance = this;
@@ -59,61 +69,117 @@ public class BrailleMapping : MonoBehaviour
 
     private void Update()
     {
-        CheckDotInputs();
+        CheckDotChordInputs();
         CheckActionInputs();
     }
 
     private void PlaySfx(AudioClip clip)
     {
         if (audioSource != null && clip != null)
-        {
             audioSource.PlayOneShot(clip);
-        }
     }
 
-    private void CheckDotInputs()
+    private void CheckDotChordInputs()
     {
         if (Input.GetKeyDown(dot1Key))
         {
-            if (logInputs) Debug.Log("Braille Dot 1");
-            PlaySfx(dot1Sfx);
-            OnDot1?.Invoke();
+            chordStarted = true;
+            chordDot1 = true;
+            if (logInputs) Debug.Log("Braille Dot 1 pressed");
         }
 
         if (Input.GetKeyDown(dot2Key))
         {
-            if (logInputs) Debug.Log("Braille Dot 2");
-            PlaySfx(dot2Sfx);
-            OnDot2?.Invoke();
+            chordStarted = true;
+            chordDot2 = true;
+            if (logInputs) Debug.Log("Braille Dot 2 pressed");
         }
 
         if (Input.GetKeyDown(dot3Key))
         {
-            if (logInputs) Debug.Log("Braille Dot 3");
-            PlaySfx(dot3Sfx);
-            OnDot3?.Invoke();
+            chordStarted = true;
+            chordDot3 = true;
+            if (logInputs) Debug.Log("Braille Dot 3 pressed");
         }
 
         if (Input.GetKeyDown(dot4Key))
         {
-            if (logInputs) Debug.Log("Braille Dot 4");
-            PlaySfx(dot4Sfx);
-            OnDot4?.Invoke();
+            chordStarted = true;
+            chordDot4 = true;
+            if (logInputs) Debug.Log("Braille Dot 4 pressed");
         }
 
         if (Input.GetKeyDown(dot5Key))
         {
-            if (logInputs) Debug.Log("Braille Dot 5");
-            PlaySfx(dot5Sfx);
-            OnDot5?.Invoke();
+            chordStarted = true;
+            chordDot5 = true;
+            if (logInputs) Debug.Log("Braille Dot 5 pressed");
         }
 
         if (Input.GetKeyDown(dot6Key))
         {
-            if (logInputs) Debug.Log("Braille Dot 6");
-            PlaySfx(dot6Sfx);
-            OnDot6?.Invoke();
+            chordStarted = true;
+            chordDot6 = true;
+            if (logInputs) Debug.Log("Braille Dot 6 pressed");
         }
+
+        bool anyDotReleased =
+            Input.GetKeyUp(dot1Key) ||
+            Input.GetKeyUp(dot2Key) ||
+            Input.GetKeyUp(dot3Key) ||
+            Input.GetKeyUp(dot4Key) ||
+            Input.GetKeyUp(dot5Key) ||
+            Input.GetKeyUp(dot6Key);
+
+        bool anyDotStillHeld =
+            Input.GetKey(dot1Key) ||
+            Input.GetKey(dot2Key) ||
+            Input.GetKey(dot3Key) ||
+            Input.GetKey(dot4Key) ||
+            Input.GetKey(dot5Key) ||
+            Input.GetKey(dot6Key);
+
+        if (chordStarted && anyDotReleased && !anyDotStillHeld)
+        {
+            SubmitChord();
+        }
+    }
+
+    private void SubmitChord()
+    {
+        if (chordDot1) OnDot1?.Invoke();
+        if (chordDot2) OnDot2?.Invoke();
+        if (chordDot3) OnDot3?.Invoke();
+        if (chordDot4) OnDot4?.Invoke();
+        if (chordDot5) OnDot5?.Invoke();
+        if (chordDot6) OnDot6?.Invoke();
+
+        if (chordDot1) PlaySfx(dot1Sfx);
+        if (chordDot2) PlaySfx(dot2Sfx);
+        if (chordDot3) PlaySfx(dot3Sfx);
+        if (chordDot4) PlaySfx(dot4Sfx);
+        if (chordDot5) PlaySfx(dot5Sfx);
+        if (chordDot6) PlaySfx(dot6Sfx);
+
+        string pattern =
+            (chordDot1 ? "1" : "0") +
+            (chordDot2 ? "1" : "0") +
+            (chordDot3 ? "1" : "0") +
+            (chordDot4 ? "1" : "0") +
+            (chordDot5 ? "1" : "0") +
+            (chordDot6 ? "1" : "0");
+
+        if (logInputs) Debug.Log("Braille chord submitted: " + pattern);
+
+        OnBrailleChordSubmitted?.Invoke(pattern);
+
+        chordStarted = false;
+        chordDot1 = false;
+        chordDot2 = false;
+        chordDot3 = false;
+        chordDot4 = false;
+        chordDot5 = false;
+        chordDot6 = false;
     }
 
     private void CheckActionInputs()

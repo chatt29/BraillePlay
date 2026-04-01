@@ -105,8 +105,14 @@ public class AccessibleMenuController : MonoBehaviour
             IntroMessageStep step = introMessages[i];
             if (step == null) continue;
 
+            // 👉 Delay ONLY before the first message
+            if (i == 0)
+                yield return new WaitForSeconds(1.2f); // adjust this value
+
             yield return ShowMessageAndPlayAudio(step.message, step.voiceClip, step.useTypewriter);
-            yield return new WaitForSeconds(pauseBetweenMessages);
+
+            if (i < introMessages.Count - 1 && pauseBetweenMessages > 0f)
+                yield return new WaitForSeconds(pauseBetweenMessages);
         }
 
         introPlaying = false;
@@ -123,16 +129,11 @@ public class AccessibleMenuController : MonoBehaviour
 
     private IEnumerator ShowMessageAndPlayAudio(string message, AudioClip clip, bool useTypewriter)
     {
-        // ⏱️ ADD THIS LINE
-        yield return new WaitForSeconds(2f);
-
-        // Start showing the message immediately
         if (selectionMessageCoroutine != null)
             StopCoroutine(selectionMessageCoroutine);
 
         selectionMessageCoroutine = StartCoroutine(DisplayMessage(message, useTypewriter));
 
-        // Start audio immediately
         float audioDuration = 0f;
         if (voiceAudioSource != null && clip != null)
         {
@@ -143,8 +144,8 @@ public class AccessibleMenuController : MonoBehaviour
         }
 
         float textDuration = useTypewriter ? GetEstimatedReadTime(message) : messageHoldTime;
+        float waitTime = Mathf.Max(textDuration, audioDuration, 0.1f);
 
-        float waitTime = Mathf.Max(minimumMessageTime, textDuration, audioDuration);
         yield return new WaitForSeconds(waitTime);
     }
     private IEnumerator DisplayMessage(string message, bool useTypewriter)

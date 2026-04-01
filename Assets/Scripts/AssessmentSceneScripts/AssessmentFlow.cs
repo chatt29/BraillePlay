@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AssessmentFlow : MonoBehaviour
 {
@@ -46,6 +47,15 @@ public class AssessmentFlow : MonoBehaviour
     public AudioClip beginnerAudio;
     public AudioClip intermediateAudio;
     public AudioClip advanceAudio;
+
+    [Header("Scene Names")]
+    public string beginnerSceneName = "BeginnerScene";
+    public string intermediateSceneName = "IntermediateScene";
+    public string advanceSceneName = "AdvanceScene";
+
+    [Header("Scene Loading")]
+    public bool loadSceneAfterResult = true;
+    public float sceneLoadDelay = 2f;
 
     [Header("Typewriter")]
     public float characterDelay = 0.03f;
@@ -243,7 +253,7 @@ public class AssessmentFlow : MonoBehaviour
                 break;
 
             case AssessmentNode.Q6_FinalPunctuationAndCapital:
-                EndAssessment(AssessmentLevel.Intermediate);
+                EndAssessment(AssessmentLevel.Advance);
                 break;
         }
     }
@@ -281,7 +291,7 @@ public class AssessmentFlow : MonoBehaviour
                 break;
 
             case AssessmentNode.Q6_FinalPunctuationAndCapital:
-                EndAssessment(AssessmentLevel.Advance);
+                EndAssessment(AssessmentLevel.Intermediate);
                 break;
         }
     }
@@ -328,6 +338,40 @@ public class AssessmentFlow : MonoBehaviour
 
         if (logFlow)
             Debug.Log("AssessmentFlow: Finished with result -> " + level);
+
+        if (loadSceneAfterResult)
+        {
+            StartCoroutine(LoadSceneAfterDelay(level));
+        }
+    }
+
+    private IEnumerator LoadSceneAfterDelay(AssessmentLevel level)
+    {
+        yield return new WaitForSeconds(sceneLoadDelay);
+
+        string sceneToLoad = "";
+
+        switch (level)
+        {
+            case AssessmentLevel.Beginner:
+                sceneToLoad = beginnerSceneName;
+                break;
+            case AssessmentLevel.Intermediate:
+                sceneToLoad = intermediateSceneName;
+                break;
+            case AssessmentLevel.Advance:
+                sceneToLoad = advanceSceneName;
+                break;
+        }
+
+        if (!string.IsNullOrEmpty(sceneToLoad))
+        {
+            SceneManager.LoadScene(sceneToLoad);
+        }
+        else
+        {
+            Debug.LogError("No scene assigned for assessment level: " + level);
+        }
     }
 
     public void PressYesFromUI()

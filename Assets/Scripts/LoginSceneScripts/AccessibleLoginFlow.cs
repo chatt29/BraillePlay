@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using TMPro;
@@ -40,6 +40,8 @@ public class AccessibleLoginFlow : MonoBehaviour
 
     [Header("Intro Messages")]
     [SerializeField] private List<MessageEntry> introMessages = new List<MessageEntry>();
+    [Header("Intro Timing")]
+    [SerializeField] private float firstIntroDelay = 1.5f;
 
     [Header("Typing Settings")]
     [SerializeField] private bool useTypewriter = true;
@@ -48,8 +50,6 @@ public class AccessibleLoginFlow : MonoBehaviour
     [SerializeField] private bool requireNextButtonForIntroAdvance = true;
 
     [Header("Validation Settings")]
-    [SerializeField] private int minUsernameLength = 4;
-    [SerializeField] private int minPasswordLength = 6;
     [SerializeField] private bool usernameAllowLetters = true;
     [SerializeField] private bool usernameAllowNumbers = true;
     [SerializeField] private bool usernameAllowUnderscore = true;
@@ -64,12 +64,11 @@ public class AccessibleLoginFlow : MonoBehaviour
     [SerializeField] private MessageEntry readyForUsernameMessage;
     [SerializeField] private MessageEntry usernameFocusMessage;
     [SerializeField] private MessageEntry usernameEmptyMessage;
-    [SerializeField] private MessageEntry usernameTooShortMessage;
-    [SerializeField] private MessageEntry usernameInvalidCharactersMessage;
     [SerializeField] private MessageEntry passwordFocusMessage;
     [SerializeField] private MessageEntry passwordEmptyMessage;
-    [SerializeField] private MessageEntry passwordTooShortMessage;
     [SerializeField] private MessageEntry loginFocusMessage;
+    [SerializeField] private MessageEntry loginFailedMessage;
+    [SerializeField] private MessageEntry loginSuccessMessage;
 
     private LoginStage currentStage = LoginStage.Intro;
     private Coroutine typingRoutine;
@@ -147,9 +146,15 @@ public class AccessibleLoginFlow : MonoBehaviour
             return;
         }
 
-        ShowIntroMessage(currentIntroIndex);
+        StartCoroutine(StartIntroWithDelay());
     }
 
+    private IEnumerator StartIntroWithDelay()
+    {
+        yield return new WaitForSeconds(firstIntroDelay);
+
+        ShowIntroMessage(currentIntroIndex);
+    }
     private void ShowIntroMessage(int index)
     {
         if (index < 0 || index >= introMessages.Count)
@@ -192,9 +197,7 @@ public class AccessibleLoginFlow : MonoBehaviour
         currentStage = LoginStage.Username;
         SetSelected(usernameInput);
         SetPulseTarget(usernameHighlightTarget);
-
-        if (!string.IsNullOrWhiteSpace(usernameFocusMessage.message) || usernameFocusMessage.audioClip != null)
-            Announce(usernameFocusMessage, false);
+        Announce(usernameFocusMessage, false);
     }
 
     private void FocusPasswordField()
@@ -307,23 +310,9 @@ public class AccessibleLoginFlow : MonoBehaviour
             return;
         }
 
-        if (username.Length < minUsernameLength)
-        {
-            Announce(usernameTooShortMessage, true);
-            FocusUsernameFieldSilently();
-            return;
-        }
-
-        if (!IsUsernameValid(username))
-        {
-            Announce(usernameInvalidCharactersMessage, true);
-            FocusUsernameFieldSilently();
-            return;
-        }
-
+        // No validation here anymore — go straight to password
         FocusPasswordField();
     }
-
     private void ValidatePasswordAndContinue()
     {
         string password = passwordInput != null ? passwordInput.text : "";
@@ -335,13 +324,7 @@ public class AccessibleLoginFlow : MonoBehaviour
             return;
         }
 
-        if (password.Length < minPasswordLength)
-        {
-            Announce(passwordTooShortMessage, true);
-            FocusPasswordFieldSilently();
-            return;
-        }
-
+        // Instead of length checks → go to login
         FocusLoginButton();
     }
 
@@ -423,6 +406,73 @@ public class AccessibleLoginFlow : MonoBehaviour
     {
         if (loginButton != null)
             loginButton.onClick.Invoke();
+
+        // TEMP: simulate login result
+        bool loginSuccess = CheckLoginCredentials();
+
+        if (loginSuccess)
+            StartCoroutine(HandleSuccessfulLoginFlow());
+        else
+            StartCoroutine(HandleFailedLoginFlow());
+    }
+    //Paki bago ito if may database na tayo ng accounts
+    private bool CheckLoginCredentials()
+    {
+        string username = usernameInput != null ? usernameInput.text.Trim() : "";
+        string password = passwordInput != null ? passwordInput.text : "";
+
+        // TEMP logic (replace later with real backend)
+        return username == "admin" && password == "1234";
+    }
+    private IEnumerator HandleFailedLoginFlow()
+    {
+        Announce(loginFailedMessage, false);
+
+        while (isTyping)
+            yield return null;
+
+        float audioWait = 0f;
+        if (loginFailedMessage != null && loginFailedMessage.audioClip != null)
+            audioWait = loginFailedMessage.audioClip.length;
+
+        if (audioWait > 0f)
+            yield return new WaitForSeconds(audioWait);
+
+        ClearLoginFields();
+        FocusUsernameField();
+    }
+
+    private IEnumerator HandleSuccessfulLoginFlow()
+    {
+        Announce(loginSuccessMessage, false);
+
+        while (isTyping)
+            yield return null;
+
+        float audioWait = 0f;
+        if (loginSuccessMessage != null && loginSuccessMessage.audioClip != null)
+            audioWait = loginSuccessMessage.audioClip.length;
+
+        if (audioWait > 0f)
+            yield return new WaitForSeconds(audioWait);
+
+        // 👉 NEXT STEP: load scene here
+        // SceneManager.LoadScene("MainMenu");
+    }
+
+    private void ClearLoginFields()
+    {
+        if (usernameInput != null)
+        {
+            usernameInput.text = "";
+            usernameInput.ForceLabelUpdate();
+        }
+
+        if (passwordInput != null)
+        {
+            passwordInput.text = "";
+            passwordInput.ForceLabelUpdate();
+        }
     }
 
     private void SetSelected(TMP_InputField field)

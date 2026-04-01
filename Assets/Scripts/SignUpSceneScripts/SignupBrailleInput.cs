@@ -19,28 +19,17 @@ public class SignupBrailleInput : MonoBehaviour
     [SerializeField] private bool allowSpaceCharacter = false;
 
     private TMP_InputField activeField;
+    private bool numberMode = false;
 
     private void OnEnable()
     {
-        BrailleMapping.OnDot1 += HandleBrailleInput;
-        BrailleMapping.OnDot2 += HandleBrailleInput;
-        BrailleMapping.OnDot3 += HandleBrailleInput;
-        BrailleMapping.OnDot4 += HandleBrailleInput;
-        BrailleMapping.OnDot5 += HandleBrailleInput;
-        BrailleMapping.OnDot6 += HandleBrailleInput;
-
+        BrailleMapping.OnBrailleChordSubmitted += HandleBrailleChord;
         BrailleMapping.OnDeleteOrNo += HandleDelete;
     }
 
     private void OnDisable()
     {
-        BrailleMapping.OnDot1 -= HandleBrailleInput;
-        BrailleMapping.OnDot2 -= HandleBrailleInput;
-        BrailleMapping.OnDot3 -= HandleBrailleInput;
-        BrailleMapping.OnDot4 -= HandleBrailleInput;
-        BrailleMapping.OnDot5 -= HandleBrailleInput;
-        BrailleMapping.OnDot6 -= HandleBrailleInput;
-
+        BrailleMapping.OnBrailleChordSubmitted -= HandleBrailleChord;
         BrailleMapping.OnDeleteOrNo -= HandleDelete;
     }
 
@@ -82,27 +71,43 @@ public class SignupBrailleInput : MonoBehaviour
         activeField = selected.GetComponent<TMP_InputField>();
     }
 
-    private void HandleBrailleInput()
+    private void HandleBrailleChord(string pattern)
     {
         if (activeField == null)
             return;
 
-        if (BrailleMapping.Instance == null)
-            return;
+        // Number sign: dots 3-4-5-6
+        if (pattern == "001111")
+        {
+            numberMode = true;
 
-        string pattern = BrailleMapping.Instance.GetCurrentBraillePattern();
-        string letter = TranslateBraille(pattern);
+            if (logBrailleLetters)
+                Debug.Log("Braille Pattern: " + pattern + " -> [NUMBER SIGN]");
 
-        if (string.IsNullOrEmpty(letter))
             return;
+        }
 
-        if (!CanInsertIntoActiveField(letter))
+        string value = numberMode ? TranslateBrailleNumber(pattern) : TranslateBraille(pattern);
+
+        if (string.IsNullOrEmpty(value))
+        {
+            numberMode = false;
             return;
+        }
+
+        if (!CanInsertIntoActiveField(value))
+        {
+            numberMode = false;
+            return;
+        }
 
         if (logBrailleLetters)
-            Debug.Log("Braille Pattern: " + pattern + " -> " + letter);
+            Debug.Log("Braille Pattern: " + pattern + " -> " + value);
 
-        InsertText(letter);
+        InsertText(value);
+
+        if (numberMode)
+            numberMode = false;
     }
 
     private bool CanInsertIntoActiveField(string value)
@@ -139,6 +144,7 @@ public class SignupBrailleInput : MonoBehaviour
             if (signupFlow != null)
                 signupFlow.GoToPreviousField();
 
+            numberMode = false;
             return;
         }
 
@@ -149,6 +155,7 @@ public class SignupBrailleInput : MonoBehaviour
             if (signupFlow != null)
                 signupFlow.GoToPreviousField();
 
+            numberMode = false;
             return;
         }
 
@@ -160,6 +167,7 @@ public class SignupBrailleInput : MonoBehaviour
         activeField.text = text;
 
         SetCaret(activeField, caret - 1);
+        numberMode = false;
     }
 
     private void InsertText(string value)
@@ -221,6 +229,24 @@ public class SignupBrailleInput : MonoBehaviour
             case "101011": return "z";
 
             case "000000": return "";
+            default: return "";
+        }
+    }
+
+    private string TranslateBrailleNumber(string pattern)
+    {
+        switch (pattern)
+        {
+            case "100000": return "1"; // a
+            case "110000": return "2"; // b
+            case "100100": return "3"; // c
+            case "100110": return "4"; // d
+            case "100010": return "5"; // e
+            case "110100": return "6"; // f
+            case "110110": return "7"; // g
+            case "110010": return "8"; // h
+            case "010100": return "9"; // i
+            case "010110": return "0"; // j
             default: return "";
         }
     }
