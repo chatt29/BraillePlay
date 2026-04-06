@@ -360,7 +360,7 @@ GameObject:
   - component: {fileID: 675078818}
   - component: {fileID: 675078817}
   m_Layer: 0
-  m_Name: Placeholder
+  m_Name: nameField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -537,6 +537,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2862987}
+  - {fileID: 943137390}
   m_Father: {fileID: 752777626}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -744,6 +745,7 @@ MonoBehaviour:
   nameWarning: {fileID: 644317990}
   usernameWarning: {fileID: 1512270887}
   passwordWarning: {fileID: 1466455897}
+  submitBtn: {fileID: 0}
 --- !u!1 &777252864
 GameObject:
   m_ObjectHideFlags: 0
@@ -983,8 +985,9 @@ GameObject:
   - component: {fileID: 943137390}
   - component: {fileID: 943137392}
   - component: {fileID: 943137391}
+  - component: {fileID: 943137393}
   m_Layer: 0
-  m_Name: Text
+  m_Name: usernameField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1002,12 +1005,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1966497774}
+  m_Father: {fileID: 750178147}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 51.999996}
+  m_SizeDelta: {x: -20, y: -13}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &943137391
 MonoBehaviour:
@@ -1109,6 +1112,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 943137389}
   m_CullTransparentMesh: 1
+--- !u!114 &943137393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943137389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a811cdc037f5a014e867faf55735f5df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BrailleSignupController
+  nameField: {fileID: 0}
+  usernameField: {fileID: 0}
+  passwordField: {fileID: 0}
+  nameWarning: {fileID: 0}
+  usernameWarning: {fileID: 0}
+  passwordWarning: {fileID: 0}
+  submitBtn: {fileID: 0}
 --- !u!1 &1047833919
 GameObject:
   m_ObjectHideFlags: 0
@@ -3020,7 +3042,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 675078816}
-  - {fileID: 943137390}
   m_Father: {fileID: 1868649463}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3054,7 +3075,7 @@ GameObject:
   - component: {fileID: 2053775466}
   - component: {fileID: 2053775465}
   m_Layer: 0
-  m_Name: Text
+  m_Name: passwordField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

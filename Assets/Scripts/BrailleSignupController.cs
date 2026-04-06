@@ -3,6 +3,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Networking; 
 using System.Collections;
+using UnityEngine.UI;
+
 
 
 
@@ -20,6 +22,8 @@ public class BrailleSignupController : MonoBehaviour
     public TMP_Text nameWarning;
     public TMP_Text usernameWarning;
     public TMP_Text passwordWarning;
+    
+    public Button submitBtn;
 
     private TMP_InputField[] fields;
     private TMP_Text[] warnings;
@@ -39,8 +43,9 @@ public class BrailleSignupController : MonoBehaviour
     form.AddField("last_name", last_name);
     form.AddField("username", username);
     form.AddField("password", password);
+    
 
-    using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/brailleplay/register.php", form))
+    using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/brailleplay/register.php", form))       
     {
         yield return www.SendWebRequest();
 
@@ -53,6 +58,7 @@ public class BrailleSignupController : MonoBehaviour
             Debug.Log("Server Response: " + www.downloadHandler.text);
         }
     }
+    
 }
 
     // Dot mapping:
@@ -120,16 +126,16 @@ public class BrailleSignupController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            controlKeyPressedThisFrame = true;
-            SubmitForm();
-            return;
+    controlKeyPressedThisFrame = true;
+    HandleNextOrSubmit();
+    return;
         }
 
         if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
         {
-            controlKeyPressedThisFrame = true;
-            SubmitForm();
-            return;
+    controlKeyPressedThisFrame = true;
+    HandleNextOrSubmit();
+    return;
         }
     }
 
@@ -186,6 +192,24 @@ public class BrailleSignupController : MonoBehaviour
             Debug.Log("Unknown braille chord: " + currentChordMask);
         }
     }
+    void HandleNextOrSubmit()
+{
+    // If current field is NOT valid → stay here
+    if (!ValidateField(currentFieldIndex))
+        return;
+
+    // If NOT last field → go next
+    if (currentFieldIndex < fields.Length - 1)
+    {
+        currentFieldIndex++;
+        FocusField(currentFieldIndex);
+    }
+    else
+    {
+        // Last field → check all then submit
+        SubmitForm();
+    }
+}
 
     void AppendCharacter(string character)
     {
@@ -288,6 +312,8 @@ public class BrailleSignupController : MonoBehaviour
 
     // Send to database
     StartCoroutine(RegisterToDatabase(firstName, lastName, username, password));
+
+
 }
 
     bool ValidateField(int index)
