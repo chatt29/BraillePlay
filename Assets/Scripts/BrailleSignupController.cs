@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Networking; 
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 
@@ -51,7 +52,8 @@ public class BrailleSignupController : MonoBehaviour
 
         if (www.result != UnityWebRequest.Result.Success)
         {
-            Debug.Log("Error: " + www.error);
+            Debug.Log("Registration Successful: " + www.downloadHandler.text);
+            SceneManager.LoadScene("Assessment");
         }
         else
         {
@@ -312,7 +314,7 @@ public class BrailleSignupController : MonoBehaviour
 
     // Send to database
     StartCoroutine(RegisterToDatabase(firstName, lastName, username, password));
-
+    
 
 }
 
