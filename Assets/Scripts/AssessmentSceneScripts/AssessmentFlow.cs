@@ -2,6 +2,8 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Networking; 
+using UnityEngine.UI;
 
 public class AssessmentFlow : MonoBehaviour
 {
@@ -23,6 +25,9 @@ public class AssessmentFlow : MonoBehaviour
         Finished
     }
 
+    [Header("Database")]
+    public string updateAssessmentURL = "http://localhost/brailleplay/update_assessment.php";
+    private string currentUsername => AccessibleLoginFlow.LoggedInUsername;
     [Header("UI")]
     public TMP_Text assessmentQuestionText;
     public TMP_Text resultText;
@@ -48,10 +53,6 @@ public class AssessmentFlow : MonoBehaviour
     public AudioClip intermediateAudio;
     public AudioClip advanceAudio;
 
-    [Header("Scene Names")]
-    public string beginnerSceneName = "BeginnerScene";
-    public string intermediateSceneName = "IntermediateScene";
-    public string advanceSceneName = "AdvanceScene";
 
     [Header("Scene Loading")]
     public bool loadSceneAfterResult = true;
@@ -295,6 +296,23 @@ public class AssessmentFlow : MonoBehaviour
                 break;
         }
     }
+  private IEnumerator UpdateAssessment(AssessmentLevel level)
+{
+    if (string.IsNullOrEmpty(currentUsername))
+    {
+        Debug.LogError("Username is NULL or EMPTY. Skipping DB update.");
+        yield break; // stop safely
+    }
+
+    WWWForm form = new WWWForm();
+    form.AddField("username", currentUsername);
+    form.AddField("assessment", level.ToString());
+
+    using (UnityWebRequest www = UnityWebRequest.Post(updateAssessmentURL, form))
+    {
+        yield return www.SendWebRequest();
+    }
+}
 
     private void EndAssessment(AssessmentLevel level)
     {
@@ -341,6 +359,7 @@ public class AssessmentFlow : MonoBehaviour
 
         if (loadSceneAfterResult)
         {
+            StartCoroutine(UpdateAssessment(level));
             StartCoroutine(LoadSceneAfterDelay(level));
         }
     }
@@ -354,23 +373,14 @@ public class AssessmentFlow : MonoBehaviour
         switch (level)
         {
             case AssessmentLevel.Beginner:
-                sceneToLoad = beginnerSceneName;
+                SceneManager.LoadScene("BeginnerScene");
                 break;
             case AssessmentLevel.Intermediate:
-                sceneToLoad = intermediateSceneName;
+                SceneManager.LoadScene("IntermediateScene");
                 break;
             case AssessmentLevel.Advance:
-                sceneToLoad = advanceSceneName;
+                SceneManager.LoadScene("AdvanceScene");
                 break;
-        }
-
-        if (!string.IsNullOrEmpty(sceneToLoad))
-        {
-            SceneManager.LoadScene(sceneToLoad);
-        }
-        else
-        {
-            Debug.LogError("No scene assigned for assessment level: " + level);
         }
     }
 

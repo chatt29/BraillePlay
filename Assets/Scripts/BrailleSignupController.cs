@@ -44,25 +44,29 @@ public class BrailleSignupController : MonoBehaviour
     form.AddField("last_name", last_name);
     form.AddField("username", username);
     form.AddField("password", password);
-    
 
     using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/brailleplay/register.php", form))       
     {
         yield return www.SendWebRequest();
 
-        if (www.result != UnityWebRequest.Result.Success)
+        if (www.result == UnityWebRequest.Result.Success)
         {
             Debug.Log("Registration Successful: " + www.downloadHandler.text);
+
+            // 🔥 AUTO LOGIN HERE
+            AccessibleLoginFlow.LoggedInUsername = username;
+
+            Debug.Log("Auto logged in as: " + AccessibleLoginFlow.LoggedInUsername);
+
+            // ✅ NOW go to assessment
             SceneManager.LoadScene("Assessment");
         }
         else
         {
-            Debug.Log("Server Response: " + www.downloadHandler.text);
+            Debug.LogError("Registration Failed: " + www.error);
         }
     }
-    
 }
-
     // Dot mapping:
     // 1 = F
     // 2 = D
@@ -314,7 +318,7 @@ public class BrailleSignupController : MonoBehaviour
 
     // Send to database
     StartCoroutine(RegisterToDatabase(firstName, lastName, username, password));
-    
+    SceneManager.LoadScene("Assessment");
 
 }
 
