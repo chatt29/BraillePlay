@@ -269,7 +269,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: PRESS
+  m_text: PRESS!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a66db046ab4320b408a76ab376bdacca, type: 2}
   m_sharedMaterial: {fileID: 6244326952053564057, guid: a66db046ab4320b408a76ab376bdacca, type: 2}
@@ -455,7 +455,6 @@ RectTransform:
   - {fileID: 1204025120}
   - {fileID: 1710783190}
   - {fileID: 176604273}
-  - {fileID: 2077778576}
   m_Father: {fileID: 1791188412}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -463,6 +462,81 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &286661652
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 286661653}
+  - component: {fileID: 286661655}
+  - component: {fileID: 286661654}
+  m_Layer: 5
+  m_Name: LessonImage.Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &286661653
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 286661652}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1791188412}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 536, y: -106.46}
+  m_SizeDelta: {x: 311.472, y: 366.298}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &286661654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 286661652}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -6454602059456158294, guid: 215d21380c4d7a64e8089b363db78684, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &286661655
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 286661652}
+  m_CullTransparentMesh: 1
 --- !u!1 &397166428
 GameObject:
   m_ObjectHideFlags: 0
@@ -497,7 +571,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 28, y: -91}
+  m_AnchoredPosition: {x: 0.000030518, y: -97}
   m_SizeDelta: {x: 318.3713, y: 332.3695}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &397166430
@@ -573,7 +647,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -684, y: -103}
+  m_AnchoredPosition: {x: -623.1297, y: -103}
   m_SizeDelta: {x: 547.084, y: 243.0669}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &500209221
@@ -969,7 +1043,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a66db046ab4320b408a76ab376bdacca, type: 2}
   m_sharedMaterial: {fileID: 6244326952053564057, guid: a66db046ab4320b408a76ab376bdacca, type: 2}
@@ -1065,7 +1139,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.48000002, y: 0.61522824}
   m_AnchorMax: {x: 0.48000002, y: 0.61522824}
-  m_AnchoredPosition: {x: 1.3829994, y: 0.85300064}
+  m_AnchoredPosition: {x: 10.942, y: -0.000017166138}
   m_SizeDelta: {x: 388.079, y: 120.53}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1321976831
@@ -1102,7 +1176,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -868, y: -342.1014}
+  m_AnchoredPosition: {x: -827, y: -336}
   m_SizeDelta: {x: 139.3434, y: 253.7973}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1321976833
@@ -1125,7 +1199,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7152930139536384079, guid: 04c9c3ea59965754597ba169507dbc64, type: 3}
+  m_Sprite: {fileID: 5724168595349758334, guid: 82288f265a6182a46a04be3eb74a9a33, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1274,18 +1348,38 @@ MonoBehaviour:
   pressText: {fileID: 176604274}
   alphabetsText: {fileID: 1204025121}
   characterBubbleImage: {fileID: 397166430}
+  lessonImage: {fileID: 286661654}
   voiceAudioSource: {fileID: 1586095478}
-  welcomeAudio: {fileID: 8300000, guid: 909d8710f4e50d24aaa8318caa5a263b, type: 3}
-  letsLearnAudio: {fileID: 8300000, guid: 605461222aa226c4ab52aff327c0612c, type: 3}
-  genericCorrectAudio: {fileID: 8300000, guid: 909d8710f4e50d24aaa8318caa5a263b, type: 3}
-  genericTryAgainAudio: {fileID: 8300000, guid: 605461222aa226c4ab52aff327c0612c, type: 3}
-  genericCompletedAudio: {fileID: 8300000, guid: 909d8710f4e50d24aaa8318caa5a263b, type: 3}
-  welcomeMessage: Welcome to Braille Play!
+  welcomeAudio: {fileID: 8300000, guid: 5cd3fed5db7177e4e830b5cbfa2d48ff, type: 3}
+  letsLearnAudio: {fileID: 8300000, guid: daad6e21a80991042847cbe857244fe2, type: 3}
+  genericCorrectAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
+  genericTryAgainAudio: {fileID: 8300000, guid: dd615f4eef83e3b49b22a11445f9b6d6, type: 3}
+  genericCompletedAudio: {fileID: 8300000, guid: d086ff315dbc0f24ba0f913e39826641, type: 3}
+  welcomeMessage: Welcome to Alphabets Translation!
   letsLearnMessage: Let's learn how to translate letters into Braille.
-  lessons: []
+  lessons:
+  - letter: A
+    dots: 01000000
+    lessonSprite: {fileID: -9140533122301678467, guid: 9cae83eb843b4f2419a2ea6cc8d53bb4, type: 3}
+    introAudio: {fileID: 8300000, guid: 42701a2ed6601e345945e43b1120e18e, type: 3}
+    instructionAudio: {fileID: 8300000, guid: a3a821dc474e32b43ac45dab4fa0b793, type: 3}
+    successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
+  - letter: B
+    dots: 0100000002000000
+    lessonSprite: {fileID: 589024244632633895, guid: 67d383ec4d0be2147a4b99910c4dd485, type: 3}
+    introAudio: {fileID: 8300000, guid: c8c1c489208b62d4a8fc76e6666cbd62, type: 3}
+    instructionAudio: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
+    successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
+  - letter: C
+    dots: 0100000004000000
+    lessonSprite: {fileID: 589024244632633895, guid: 67d383ec4d0be2147a4b99910c4dd485, type: 3}
+    introAudio: {fileID: 8300000, guid: 90c6142c3d1a7464ebe56f87204bea71, type: 3}
+    instructionAudio: {fileID: 8300000, guid: 2f1565027f9fe4b49b7d2571f250126e, type: 3}
+    successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
   autoBuildAlphabetLessons: 1
   playInstructionOnLetterStart: 1
   delayAfterVoice: 0.35
+  noAudioTextDelay: 2
   delayAfterCorrect: 0.75
   logDebug: 1
 --- !u!114 &1586095476
@@ -1610,8 +1704,10 @@ RectTransform:
   - {fileID: 653795465}
   - {fileID: 270223250}
   - {fileID: 397166429}
+  - {fileID: 2077778576}
   - {fileID: 1956869724}
   - {fileID: 1586095474}
+  - {fileID: 286661653}
   m_Father: {fileID: 83132950}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1716,7 +1812,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 31, y: -328}
+  m_AnchoredPosition: {x: 0.000043869, y: -328}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1956869725
@@ -1822,8 +1918,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 200
-  m_fontSizeBase: 200
+  m_fontSize: 300
+  m_fontSizeBase: 300
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1882,17 +1978,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2077778573}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 270223250}
+  m_Father: {fileID: 1791188412}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 33, y: -91.934}
-  m_SizeDelta: {x: 324.335, y: 283.867}
+  m_AnchoredPosition: {x: -0.0000076294, y: -106.46}
+  m_SizeDelta: {x: 404.264, y: 343.074}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
