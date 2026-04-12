@@ -28,6 +28,13 @@ public class BrailleMapping : MonoBehaviour
     public KeyCode dot5Key = KeyCode.K;
     public KeyCode dot6Key = KeyCode.L;
 
+    [Header("Extra Controls")]
+    public KeyCode pauseKey = KeyCode.P;
+    public KeyCode backKey = KeyCode.Escape;
+
+    public static event Action OnPause;
+    public static event Action OnBack;
+
     [Header("Actions")]
     public KeyCode repeatKey = KeyCode.R;
     public KeyCode submitKey = KeyCode.Space;
@@ -184,6 +191,18 @@ public class BrailleMapping : MonoBehaviour
 
     private void CheckActionInputs()
     {
+        if (Input.GetKeyDown(pauseKey))
+        {
+            if (logInputs) Debug.Log("Pause");
+            OnPause?.Invoke();
+        }
+
+        if (Input.GetKeyDown(backKey))
+        {
+            if (logInputs) Debug.Log("Back");
+            OnBack?.Invoke();
+        }
+
         if (Input.GetKeyDown(repeatKey))
         {
             if (logInputs) Debug.Log("Repeat");
