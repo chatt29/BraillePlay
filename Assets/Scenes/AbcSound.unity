@@ -1045,7 +1045,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 547, y: -304.02}
-  m_SizeDelta: {x: 443.0162, y: 69.8338}
+  m_SizeDelta: {x: 586.4366, y: 69.8338}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1395755967
 GameObject:
@@ -1231,6 +1231,121 @@ MonoBehaviour:
     objectName: Banana
     bubbleMessage: Letter B, /b/, Banana!
     image: {fileID: 7381965769198725172, guid: 566528be644846a4caa6232de26486ed, type: 3}
+    audioClip: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
+  - letter: C
+    objectName: Cat
+    bubbleMessage: Letter C, /k/, Cat
+    image: {fileID: -7232521027535748977, guid: 29b3260031c92b74e806173e9555a7cc, type: 3}
+    audioClip: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
+  - letter: D
+    objectName: Dog
+    bubbleMessage: Letter D, /d/, Dog
+    image: {fileID: -3994744024693093290, guid: 53c4d66a26b66224ab5a3e2c73ce69a7, type: 3}
+    audioClip: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
+  - letter: E
+    objectName: Egg
+    bubbleMessage: Letter E, /ee/, Egg
+    image: {fileID: 4646649027328027380, guid: 413603e5de57d40499b10e48fd0fe079, type: 3}
+    audioClip: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
+  - letter: F
+    objectName: Fish
+    bubbleMessage: Letter F, /ef/, Fish
+    image: {fileID: -1915776564401465818, guid: 1673a0458ede51741b66d6b83ebc46dc, type: 3}
+    audioClip: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
+  - letter: G
+    objectName: Goat
+    bubbleMessage: Letter G, /gh/, Goat
+    image: {fileID: -4802990570011083647, guid: 67d92934caad23e47a7fbd0c7f3a4b9c, type: 3}
+    audioClip: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
+  - letter: H
+    objectName: Horse
+    bubbleMessage: Letter H, /h/, Horse
+    image: {fileID: 7672759098259192623, guid: 87252858c9ce9bf4d9544d1ba71f1647, type: 3}
+    audioClip: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
+  - letter: J
+    objectName: Jam
+    bubbleMessage: Letter J, /j/, Jam
+    image: {fileID: 8203236160133378052, guid: 7fc5fa9eab2df1a4d953477f669f5be0, type: 3}
+    audioClip: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
+  - letter: K
+    objectName: Key
+    bubbleMessage: Letter K, /k/, Key
+    image: {fileID: 1694913177206695654, guid: e5880f3b892dc094683e810e893a9e9f, type: 3}
+    audioClip: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
+  - letter: L
+    objectName: Ladder
+    bubbleMessage: Letter L, /el/, Ladder
+    image: {fileID: 1833247098351559992, guid: 4e9862bfc496c5b4fb9a8ef2a6bc48ad, type: 3}
+    audioClip: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
+  - letter: M
+    objectName: Mango
+    bubbleMessage: Letter M, /em/, Mango
+    image: {fileID: -3968840770022985357, guid: 29f40797447de7b47880883b7a96f6bb, type: 3}
+    audioClip: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
+  - letter: N
+    objectName: Nut
+    bubbleMessage: Letter N, /en/, Nut
+    image: {fileID: 1257408510326503650, guid: 2ca5570c391c0f34a8411e8597c775fb, type: 3}
+    audioClip: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
+  - letter: O
+    objectName: Orange
+    bubbleMessage: Letter O, /o/, Orange
+    image: {fileID: 4121880872312635667, guid: 0eb582b559051db408bd718c62ebee67, type: 3}
+    audioClip: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
+  - letter: P
+    objectName: Pencil
+    bubbleMessage: Letter P, /p/, Pencil
+    image: {fileID: 5806247343882902020, guid: c74376586a1bf0147802497cbe60c074, type: 3}
+    audioClip: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
+  - letter: Q
+    objectName: Queen
+    bubbleMessage: Letter Q, /qu/, Queen
+    image: {fileID: 7519753400087680208, guid: dd3ef9698a155994bbe4b5898f071276, type: 3}
+    audioClip: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
+  - letter: R
+    objectName: Rabbit
+    bubbleMessage: Letter R, /r/, Rabbit
+    image: {fileID: 5110612511535974256, guid: e3e9f03eda47e3740a0348befdadd900, type: 3}
+    audioClip: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
+  - letter: S
+    objectName: Sun
+    bubbleMessage: Letter S, /s/, Sun
+    image: {fileID: 7434733632593688057, guid: 35d00cb8cbfdaa448ba002adddbf5d77, type: 3}
+    audioClip: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
+  - letter: T
+    objectName: Turtle
+    bubbleMessage: Letter T, /t/, Turtle
+    image: {fileID: -3745163931830953359, guid: ec02aae71e4ed0f4cb7b5afa0bb58bcf, type: 3}
+    audioClip: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
+  - letter: U
+    objectName: Umbrella
+    bubbleMessage: Letter U, /u/, Umbrella
+    image: {fileID: -4519137077466534252, guid: d849bb448cf15524991fed19de7e8b23, type: 3}
+    audioClip: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
+  - letter: V
+    objectName: Volcano
+    bubbleMessage: Letter V, /v/, Volcano
+    image: {fileID: -1309091486694266011, guid: d7c5d7912804a3444b920c37feef8779, type: 3}
+    audioClip: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
+  - letter: W
+    objectName: Watch
+    bubbleMessage: Letter W, /w/, Watch
+    image: {fileID: -6038342703473049663, guid: fe7cd0408d6363d4b83ed594a1196a56, type: 3}
+    audioClip: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
+  - letter: X
+    objectName: Xylophone
+    bubbleMessage: Letter X, /z/, Xylophone
+    image: {fileID: -5733753753676630708, guid: 17a748ab6269f784e8e7153dce30fb4e, type: 3}
+    audioClip: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
+  - letter: Y
+    objectName: Yarn
+    bubbleMessage: Letter Y, /y/, Yarn
+    image: {fileID: 2707044199824499068, guid: 5e1e00256ed28e44b8a53e749aa8a995, type: 3}
+    audioClip: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
+  - letter: Z
+    objectName: Zebra
+    bubbleMessage: Letter Z, /z/, Zebra
+    image: {fileID: 8845663894121712491, guid: 52006170b44bfc941b7304fec8ed84eb, type: 3}
     audioClip: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
   playOnStart: 1
   loopAroundLetters: 0
