@@ -318,7 +318,7 @@ public class BrailleSignupController : MonoBehaviour
 
     // Send to database
     StartCoroutine(RegisterToDatabase(firstName, lastName, username, password));
-    SceneManager.LoadScene("Assessment");
+    SceneManager.LoadScene("MainMenu");
 
 }
 

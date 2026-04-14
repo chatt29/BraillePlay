@@ -27,7 +27,7 @@ public class AssessmentFlow : MonoBehaviour
 
     [Header("Database")]
     public string updateAssessmentURL = "http://localhost/brailleplay/update_assessment.php";
-    private string currentUsername => AccessibleLoginFlow.LoggedInUsername;
+    private string currentUsername => PlayerPrefs.GetString("username", "").Trim();
     [Header("UI")]
     public TMP_Text assessmentQuestionText;
     public TMP_Text resultText;
@@ -94,12 +94,14 @@ public class AssessmentFlow : MonoBehaviour
     }
 
     private void Start()
+{
+    Debug.Log("AssessmentFlow username = " + currentUsername);
+
+    if (autoStartOnEnable)
     {
-        if (autoStartOnEnable)
-        {
-            StartAssessment();
-        }
+        StartAssessment();
     }
+}
 
     public void StartAssessment()
     {
@@ -298,22 +300,33 @@ public class AssessmentFlow : MonoBehaviour
     }
   private IEnumerator UpdateAssessment(AssessmentLevel level)
 {
-    if (string.IsNullOrEmpty(currentUsername))
+    string username = currentUsername;
+
+    if (string.IsNullOrEmpty(username))
     {
         Debug.LogError("Username is NULL or EMPTY. Skipping DB update.");
-        yield break; // stop safely
+        yield break;
     }
 
     WWWForm form = new WWWForm();
-    form.AddField("username", currentUsername);
+    form.AddField("username", username);
     form.AddField("assessment", level.ToString());
 
     using (UnityWebRequest www = UnityWebRequest.Post(updateAssessmentURL, form))
     {
         yield return www.SendWebRequest();
+
+        if (www.result == UnityWebRequest.Result.ConnectionError ||
+            www.result == UnityWebRequest.Result.ProtocolError)
+        {
+            Debug.LogError("UpdateAssessment error: " + www.error);
+        }
+        else
+        {
+            Debug.Log("UpdateAssessment response: " + www.downloadHandler.text);
+        }
     }
 }
-
     private void EndAssessment(AssessmentLevel level)
     {
         isFinished = true;

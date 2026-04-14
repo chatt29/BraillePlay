@@ -177,10 +177,17 @@ public class AccessibleLoginFlow : MonoBehaviour
             Debug.Log("Server Response: " + response);
 
             if (response == "SUCCESS")
-            {
-                LoggedInUsername = username; // ⭐ SAVE USER
+        {
+            LoggedInUsername = username;
 
-                StartCoroutine(HandleSuccessfulLoginFlow());
+             PlayerPrefs.SetString("username", username);
+            PlayerPrefs.SetInt("isLoggedIn", 1);
+            PlayerPrefs.Save();
+
+            Debug.Log("Login success. Saved username: " + username);
+
+            StartCoroutine(HandleSuccessfulLoginFlow());
+
             }
             else
             {
