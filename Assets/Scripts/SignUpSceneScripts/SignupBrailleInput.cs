@@ -196,6 +196,7 @@ public class SignupBrailleInput : MonoBehaviour
         field.selectionFocusPosition = position;
         field.ForceLabelUpdate();
     }
+    
 
     private string TranslateBraille(string pattern)
     {

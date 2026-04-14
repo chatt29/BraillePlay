@@ -15,6 +15,7 @@ public class AccessibleLoginFlow : MonoBehaviour
         public string message;
         public AudioClip audioClip;
     }
+    
 
     private enum LoginStage
     {
@@ -23,6 +24,10 @@ public class AccessibleLoginFlow : MonoBehaviour
         Password,
         LoginButton
     }
+
+    [Header("Database")]
+[SerializeField] private string loginURL = "http://localhost/brailleplay/login.php";
+
 
     [Header("UI References")]
     [SerializeField] private TMP_Text messageText;
@@ -82,6 +87,7 @@ public class AccessibleLoginFlow : MonoBehaviour
 
     private string lastAnnouncedMessage = "";
     private AudioClip lastAnnouncedClip = null;
+    public static string LoggedInUsername; // global access (important)
 
     private void Awake()
     {
@@ -148,6 +154,48 @@ public class AccessibleLoginFlow : MonoBehaviour
 
         StartCoroutine(StartIntroWithDelay());
     }
+    private IEnumerator LoginUser(string username, string password)
+{
+    WWWForm form = new WWWForm();
+    form.AddField("username", username);
+    form.AddField("password", password);
+
+    using (UnityEngine.Networking.UnityWebRequest www =
+        UnityEngine.Networking.UnityWebRequest.Post(loginURL, form))
+    {
+        yield return www.SendWebRequest();
+
+        if (www.result == UnityEngine.Networking.UnityWebRequest.Result.ConnectionError ||
+            www.result == UnityEngine.Networking.UnityWebRequest.Result.ProtocolError)
+        {
+            Debug.LogError("Login Error: " + www.error);
+            StartCoroutine(HandleFailedLoginFlow());
+        }
+        else
+        {
+            string response = www.downloadHandler.text.Trim();
+            Debug.Log("Server Response: " + response);
+
+            if (response == "SUCCESS")
+        {
+            LoggedInUsername = username;
+
+             PlayerPrefs.SetString("username", username);
+            PlayerPrefs.SetInt("isLoggedIn", 1);
+            PlayerPrefs.Save();
+
+            Debug.Log("Login success. Saved username: " + username);
+
+            StartCoroutine(HandleSuccessfulLoginFlow());
+
+            }
+            else
+            {
+                StartCoroutine(HandleFailedLoginFlow());
+            }
+        }
+    }
+}
 
     private IEnumerator StartIntroWithDelay()
     {
@@ -402,19 +450,13 @@ public class AccessibleLoginFlow : MonoBehaviour
         return "^[" + allowed + "]+$";
     }
 
-    private void TriggerLogin()
-    {
-        if (loginButton != null)
-            loginButton.onClick.Invoke();
+   private void TriggerLogin()
+{
+    string username = usernameInput != null ? usernameInput.text.Trim() : "";
+    string password = passwordInput != null ? passwordInput.text : "";
 
-        // TEMP: simulate login result
-        bool loginSuccess = CheckLoginCredentials();
-
-        if (loginSuccess)
-            StartCoroutine(HandleSuccessfulLoginFlow());
-        else
-            StartCoroutine(HandleFailedLoginFlow());
-    }
+    StartCoroutine(LoginUser(username, password));
+}
     //Paki bago ito if may database na tayo ng accounts
     private bool CheckLoginCredentials()
     {
@@ -422,7 +464,7 @@ public class AccessibleLoginFlow : MonoBehaviour
         string password = passwordInput != null ? passwordInput.text : "";
 
         // TEMP logic (replace later with real backend)
-        return username == "admin" && password == "1234";
+        return username == "aaaa" && password == "aaaa";
     }
     private IEnumerator HandleFailedLoginFlow()
     {

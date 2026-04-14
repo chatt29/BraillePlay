@@ -2,6 +2,8 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Networking; 
+using UnityEngine.UI;
 
 public class AssessmentFlow : MonoBehaviour
 {
@@ -23,6 +25,9 @@ public class AssessmentFlow : MonoBehaviour
         Finished
     }
 
+    [Header("Database")]
+    public string updateAssessmentURL = "http://localhost/brailleplay/update_assessment.php";
+    private string currentUsername => PlayerPrefs.GetString("username", "").Trim();
     [Header("UI")]
     public TMP_Text assessmentQuestionText;
     public TMP_Text resultText;
@@ -48,10 +53,6 @@ public class AssessmentFlow : MonoBehaviour
     public AudioClip intermediateAudio;
     public AudioClip advanceAudio;
 
-    [Header("Scene Names")]
-    public string beginnerSceneName = "BeginnerScene";
-    public string intermediateSceneName = "IntermediateScene";
-    public string advanceSceneName = "AdvanceScene";
 
     [Header("Scene Loading")]
     public bool loadSceneAfterResult = true;
@@ -93,12 +94,14 @@ public class AssessmentFlow : MonoBehaviour
     }
 
     private void Start()
+{
+    Debug.Log("AssessmentFlow username = " + currentUsername);
+
+    if (autoStartOnEnable)
     {
-        if (autoStartOnEnable)
-        {
-            StartAssessment();
-        }
+        StartAssessment();
     }
+}
 
     public void StartAssessment()
     {
@@ -295,7 +298,35 @@ public class AssessmentFlow : MonoBehaviour
                 break;
         }
     }
+  private IEnumerator UpdateAssessment(AssessmentLevel level)
+{
+    string username = currentUsername;
 
+    if (string.IsNullOrEmpty(username))
+    {
+        Debug.LogError("Username is NULL or EMPTY. Skipping DB update.");
+        yield break;
+    }
+
+    WWWForm form = new WWWForm();
+    form.AddField("username", username);
+    form.AddField("assessment", level.ToString());
+
+    using (UnityWebRequest www = UnityWebRequest.Post(updateAssessmentURL, form))
+    {
+        yield return www.SendWebRequest();
+
+        if (www.result == UnityWebRequest.Result.ConnectionError ||
+            www.result == UnityWebRequest.Result.ProtocolError)
+        {
+            Debug.LogError("UpdateAssessment error: " + www.error);
+        }
+        else
+        {
+            Debug.Log("UpdateAssessment response: " + www.downloadHandler.text);
+        }
+    }
+}
     private void EndAssessment(AssessmentLevel level)
     {
         isFinished = true;
@@ -341,6 +372,7 @@ public class AssessmentFlow : MonoBehaviour
 
         if (loadSceneAfterResult)
         {
+            StartCoroutine(UpdateAssessment(level));
             StartCoroutine(LoadSceneAfterDelay(level));
         }
     }
@@ -354,23 +386,14 @@ public class AssessmentFlow : MonoBehaviour
         switch (level)
         {
             case AssessmentLevel.Beginner:
-                sceneToLoad = beginnerSceneName;
+                SceneManager.LoadScene("BeginnerScene");
                 break;
             case AssessmentLevel.Intermediate:
-                sceneToLoad = intermediateSceneName;
+                SceneManager.LoadScene("IntermediateScene");
                 break;
             case AssessmentLevel.Advance:
-                sceneToLoad = advanceSceneName;
+                SceneManager.LoadScene("AdvanceScene");
                 break;
-        }
-
-        if (!string.IsNullOrEmpty(sceneToLoad))
-        {
-            SceneManager.LoadScene(sceneToLoad);
-        }
-        else
-        {
-            Debug.LogError("No scene assigned for assessment level: " + level);
         }
     }
 
