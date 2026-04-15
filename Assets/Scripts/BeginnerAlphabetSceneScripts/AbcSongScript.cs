@@ -59,7 +59,7 @@ public class AbcSongScript : MonoBehaviour
     {
         if (step == 3)
         {
-            bubbleText.text = "Let's sing the ABC song!";
+            bubbleText.text = "Let's sing!";
             StartCoroutine(PlaySong());
             return;
         }
