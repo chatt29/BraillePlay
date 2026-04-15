@@ -1210,148 +1210,143 @@ MonoBehaviour:
   objectImage: {fileID: 948534590}
   audioSource: {fileID: 1447395316}
   welcomeMessage: Welcome to Alphabet Sounds!
-  welcomeAudio: {fileID: 8300000, guid: eccc5b58fcd38d449a17129db9c0f0c4, type: 3}
+  welcomeAudio: {fileID: 8300000, guid: 5cd3fed5db7177e4e830b5cbfa2d48ff, type: 3}
   instructionMessage: Let's learn what are the individual sounds of each letter in
     the alphabet.
-  instructionAudio: {fileID: 8300000, guid: 25249326f49e4bb45964fc08391e46c7, type: 3}
+  instructionAudio: {fileID: 8300000, guid: daad6e21a80991042847cbe857244fe2, type: 3}
   completedMessage: Great job! You finished the alphabet sounds.
-  completedAudio: {fileID: 8300000, guid: 452b8a930791a154b84d467197de60ea, type: 3}
+  completedAudio: {fileID: 0}
   replayQuestionMessage: Do you want to repeat the alphabet sounds starting from
     A? Press Yes for repeat or No to end.
-  replayQuestionAudio: {fileID: 8300000, guid: c7c03392e568b3b47be79e3a821212f7, type: 3}
+  replayQuestionAudio: {fileID: 0}
   endMessage: Okay! Ending the alphabet sounds lesson. Great job!
-  endAudio: {fileID: 8300000, guid: bad335c0f68d03848ad8a713122e2315, type: 3}
+  endAudio: {fileID: 0}
   alphabetEntries:
   - letter: A
     objectName: Apple
-    bubbleMessage: "Letter A says /\xE6/. A is for Apple!"
+    bubbleMessage: "Letter A, /\xE6/, Apple!"
     image: {fileID: 8236864068033298739, guid: 2aef319f146bc0844a11760b06a8157b, type: 3}
-    audioClip: {fileID: 8300000, guid: 08df9a11ed63c5a43b6a7f3d5be0c85a, type: 3}
+    audioClip: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
   - letter: B
     objectName: Banana
-    bubbleMessage: Letter B says /b/. B is for Banana!
+    bubbleMessage: Letter B, /b/, Banana!
     image: {fileID: 7381965769198725172, guid: 566528be644846a4caa6232de26486ed, type: 3}
-    audioClip: {fileID: 8300000, guid: b60520293c26c5a40b75fa07fbe287b8, type: 3}
+    audioClip: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
   - letter: C
     objectName: Cat
-    bubbleMessage: Letter C says /k/. C is for Cat!
+    bubbleMessage: Letter C, /k/, Cat
     image: {fileID: -7232521027535748977, guid: 29b3260031c92b74e806173e9555a7cc, type: 3}
-    audioClip: {fileID: 8300000, guid: 7dd1f869226ab6f48909d0f385220e21, type: 3}
+    audioClip: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
   - letter: D
     objectName: Dog
-    bubbleMessage: Letter D says /d/. D is for Dog!
+    bubbleMessage: Letter D, /d/, Dog
     image: {fileID: -3994744024693093290, guid: 53c4d66a26b66224ab5a3e2c73ce69a7, type: 3}
-    audioClip: {fileID: 8300000, guid: 855f9911769792940b1f06d021825395, type: 3}
+    audioClip: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
   - letter: E
     objectName: Egg
-    bubbleMessage: "Letter E says /\u025B/. E is for Egg!"
+    bubbleMessage: Letter E, /ee/, Egg
     image: {fileID: 4646649027328027380, guid: 413603e5de57d40499b10e48fd0fe079, type: 3}
-    audioClip: {fileID: 8300000, guid: 54aa88d6986ee1743bc2b1579f69fbed, type: 3}
+    audioClip: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
   - letter: F
     objectName: Fish
-    bubbleMessage: Letter F says /f/. F is for Fish!
+    bubbleMessage: Letter F, /ef/, Fish
     image: {fileID: -1915776564401465818, guid: 1673a0458ede51741b66d6b83ebc46dc, type: 3}
-    audioClip: {fileID: 8300000, guid: 4dcd8e1fe9f0857459fbbdff20994fa0, type: 3}
+    audioClip: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
   - letter: G
     objectName: Goat
-    bubbleMessage: Letter G says /g/. G is for Goat!
+    bubbleMessage: Letter G, /gh/, Goat
     image: {fileID: -4802990570011083647, guid: 67d92934caad23e47a7fbd0c7f3a4b9c, type: 3}
-    audioClip: {fileID: 8300000, guid: cf59cc08f02a0e740b6d571b45ed4b0d, type: 3}
+    audioClip: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
   - letter: H
     objectName: Horse
-    bubbleMessage: Letter H says /h/. H is for Horse!
+    bubbleMessage: Letter H, /h/, Horse
     image: {fileID: 7672759098259192623, guid: 87252858c9ce9bf4d9544d1ba71f1647, type: 3}
-    audioClip: {fileID: 8300000, guid: b87a9e51be34b6448942679a789fbd19, type: 3}
-  - letter: I
-    objectName: Ink
-    bubbleMessage: "Letter I says /\u026A/. I is for Ink!"
-    image: {fileID: -2817813186423584760, guid: a3d11f5feae17784cb00fafda550a51c, type: 3}
     audioClip: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
   - letter: J
     objectName: Jam
-    bubbleMessage: Letter J says /j/. J is for Jam!
+    bubbleMessage: Letter J, /j/, Jam
     image: {fileID: 8203236160133378052, guid: 7fc5fa9eab2df1a4d953477f669f5be0, type: 3}
-    audioClip: {fileID: 8300000, guid: 16542728ecf91a14d831223bae4347c6, type: 3}
+    audioClip: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
   - letter: K
     objectName: Key
-    bubbleMessage: Letter K says /k/. K is for Key!
+    bubbleMessage: Letter K, /k/, Key
     image: {fileID: 1694913177206695654, guid: e5880f3b892dc094683e810e893a9e9f, type: 3}
-    audioClip: {fileID: 8300000, guid: 2abed3fee9817254c810cb4936b89f1b, type: 3}
+    audioClip: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
   - letter: L
     objectName: Ladder
-    bubbleMessage: Letter L says /l/. L is for Ladder!
+    bubbleMessage: Letter L, /el/, Ladder
     image: {fileID: 1833247098351559992, guid: 4e9862bfc496c5b4fb9a8ef2a6bc48ad, type: 3}
-    audioClip: {fileID: 8300000, guid: 94d3f573623eda344b4a7f5668e20fe8, type: 3}
+    audioClip: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
   - letter: M
     objectName: Mango
-    bubbleMessage: Letter M says /m/. M is for Mango!
+    bubbleMessage: Letter M, /em/, Mango
     image: {fileID: -3968840770022985357, guid: 29f40797447de7b47880883b7a96f6bb, type: 3}
-    audioClip: {fileID: 8300000, guid: af5c61597d582364696be5adf3b7531e, type: 3}
+    audioClip: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
   - letter: N
     objectName: Nut
-    bubbleMessage: Letter N says /n/. N is for Nut!
+    bubbleMessage: Letter N, /en/, Nut
     image: {fileID: 1257408510326503650, guid: 2ca5570c391c0f34a8411e8597c775fb, type: 3}
-    audioClip: {fileID: 8300000, guid: d8ddd42bc81899146a6752f77c4fa15d, type: 3}
+    audioClip: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
   - letter: O
     objectName: Orange
-    bubbleMessage: Letter O says /o/. O is for Orange!
+    bubbleMessage: Letter O, /o/, Orange
     image: {fileID: 4121880872312635667, guid: 0eb582b559051db408bd718c62ebee67, type: 3}
-    audioClip: {fileID: 8300000, guid: 82b168188c0ec6341893da3e7c373d85, type: 3}
+    audioClip: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
   - letter: P
     objectName: Pencil
-    bubbleMessage: Letter P says /p/. P is for Pencil!
+    bubbleMessage: Letter P, /p/, Pencil
     image: {fileID: 5806247343882902020, guid: c74376586a1bf0147802497cbe60c074, type: 3}
-    audioClip: {fileID: 8300000, guid: 43f8fca1193fa7f429a6f6d1818021d0, type: 3}
+    audioClip: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
   - letter: Q
     objectName: Queen
-    bubbleMessage: Letter Q says /q/. Q is for Queen!
+    bubbleMessage: Letter Q, /qu/, Queen
     image: {fileID: 7519753400087680208, guid: dd3ef9698a155994bbe4b5898f071276, type: 3}
-    audioClip: {fileID: 8300000, guid: 2859745c0db0aa545ad2f494412ffcc8, type: 3}
+    audioClip: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
   - letter: R
     objectName: Rabbit
-    bubbleMessage: Letter R says /r/. R is for Rabbit!
+    bubbleMessage: Letter R, /r/, Rabbit
     image: {fileID: 5110612511535974256, guid: e3e9f03eda47e3740a0348befdadd900, type: 3}
-    audioClip: {fileID: 8300000, guid: 227a07f064487814bb322f35078185cd, type: 3}
+    audioClip: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
   - letter: S
     objectName: Sun
-    bubbleMessage: Letter S says /s/. S is for Sun!
+    bubbleMessage: Letter S, /s/, Sun
     image: {fileID: 7434733632593688057, guid: 35d00cb8cbfdaa448ba002adddbf5d77, type: 3}
-    audioClip: {fileID: 8300000, guid: b349b3b921feac9459a2e1e9a83d4b0c, type: 3}
+    audioClip: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
   - letter: T
     objectName: Turtle
-    bubbleMessage: Letter T says /t/. T is for Turtle!
+    bubbleMessage: Letter T, /t/, Turtle
     image: {fileID: -3745163931830953359, guid: ec02aae71e4ed0f4cb7b5afa0bb58bcf, type: 3}
-    audioClip: {fileID: 8300000, guid: 5bd43ce30553bd947a31921dc5a9922a, type: 3}
+    audioClip: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
   - letter: U
     objectName: Umbrella
-    bubbleMessage: Letter U says /u/. U is for Umbrella!
+    bubbleMessage: Letter U, /u/, Umbrella
     image: {fileID: -4519137077466534252, guid: d849bb448cf15524991fed19de7e8b23, type: 3}
-    audioClip: {fileID: 8300000, guid: b28e1f5995b0b874b8e05235255dcad7, type: 3}
+    audioClip: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
   - letter: V
     objectName: Volcano
-    bubbleMessage: Letter V says /v/. V is for Volcano!
+    bubbleMessage: Letter V, /v/, Volcano
     image: {fileID: -1309091486694266011, guid: d7c5d7912804a3444b920c37feef8779, type: 3}
-    audioClip: {fileID: 8300000, guid: 0762031b4db00b647865f7017318c7a3, type: 3}
+    audioClip: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
   - letter: W
     objectName: Watch
-    bubbleMessage: Letter W says /w/. W is for Watch!
+    bubbleMessage: Letter W, /w/, Watch
     image: {fileID: -6038342703473049663, guid: fe7cd0408d6363d4b83ed594a1196a56, type: 3}
-    audioClip: {fileID: 8300000, guid: 4ff4aa1dbd9d34b4f8402999ddc0486c, type: 3}
+    audioClip: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
   - letter: X
     objectName: Xylophone
-    bubbleMessage: Letter X says /x/. X is for Xylophone!
+    bubbleMessage: Letter X, /z/, Xylophone
     image: {fileID: -5733753753676630708, guid: 17a748ab6269f784e8e7153dce30fb4e, type: 3}
-    audioClip: {fileID: 8300000, guid: 6c796cab48f76fb4992f69faedc0a5d3, type: 3}
+    audioClip: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
   - letter: Y
     objectName: Yarn
-    bubbleMessage: Letter Y says /y/. Y is for Yarn!
+    bubbleMessage: Letter Y, /y/, Yarn
     image: {fileID: 2707044199824499068, guid: 5e1e00256ed28e44b8a53e749aa8a995, type: 3}
-    audioClip: {fileID: 8300000, guid: ee2acf25902be0d4fb23ed7ce01db4c6, type: 3}
+    audioClip: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
   - letter: Z
     objectName: Zebra
-    bubbleMessage: Letter Z says /z/. Z is for Zebra!
+    bubbleMessage: Letter Z, /z/, Zebra
     image: {fileID: 8845663894121712491, guid: 52006170b44bfc941b7304fec8ed84eb, type: 3}
-    audioClip: {fileID: 8300000, guid: c0fcf0e178ebe584b8207085e11a27a8, type: 3}
+    audioClip: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
   playOnStart: 1
   loopAroundLetters: 0
   extraWaitAfterAudio: 0.15
