@@ -59,7 +59,7 @@ public class BrailleSignupController : MonoBehaviour
             Debug.Log("Auto logged in as: " + AccessibleLoginFlow.LoggedInUsername);
 
             // ✅ NOW go to assessment
-            SceneManager.LoadScene("Assessment");
+            SceneManager.LoadScene("MainMenu");
         }
         else
         {
