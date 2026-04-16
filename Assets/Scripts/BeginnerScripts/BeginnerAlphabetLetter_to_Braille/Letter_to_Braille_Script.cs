@@ -37,6 +37,7 @@ public class Letter_to_Braille_Script : MonoBehaviour
     public AudioClip genericCorrectAudio;
     public AudioClip genericTryAgainAudio;
     public AudioClip genericCompletedAudio;
+    public AudioClip repeatQuestionAudio;
 
     [Header("Intro Messages")]
     [TextArea(2, 5)]
@@ -52,6 +53,13 @@ public class Letter_to_Braille_Script : MonoBehaviour
     public float noAudioTextDelay = 2f;
     public float delayAfterCorrect = 0.75f;
 
+    [Header("Typewriter Sync")]
+    public bool useTypewriterEffect = true;
+    [Min(0.005f)] public float defaultTypewriterCharacterDelay = 0.03f;
+    [Min(0.001f)] public float minSyncedCharacterDelay = 0.01f;
+    [Min(0.001f)] public float maxSyncedCharacterDelay = 0.12f;
+    public bool waitForFullAudioBeforeContinuing = true;
+
     [Header("Debug")]
     public bool logDebug = true;
 
@@ -59,7 +67,9 @@ public class Letter_to_Braille_Script : MonoBehaviour
     private bool lessonActive;
     private bool waitingForNext;
     private bool sceneFinished;
+    private bool waitingForRepeatChoice;
     private Coroutine flowRoutine;
+    private Coroutine bubbleTypeRoutine;
 
     private readonly Dictionary<string, string> braillePatterns = new Dictionary<string, string>();
 
@@ -103,13 +113,12 @@ public class Letter_to_Braille_Script : MonoBehaviour
         lessonActive = false;
         waitingForNext = false;
         sceneFinished = false;
+        waitingForRepeatChoice = false;
 
-        SetBubbleMessage(welcomeMessage);
-        yield return PlayClipOrWait(welcomeAudio, noAudioTextDelay);
+        yield return ShowBubbleMessageSynced(welcomeMessage, welcomeAudio, noAudioTextDelay);
         yield return new WaitForSeconds(delayAfterVoice);
 
-        SetBubbleMessage(letsLearnMessage);
-        yield return PlayClipOrWait(letsLearnAudio, noAudioTextDelay);
+        yield return ShowBubbleMessageSynced(letsLearnMessage, letsLearnAudio, noAudioTextDelay);
         yield return new WaitForSeconds(delayAfterVoice);
 
         StartLesson(0);
@@ -119,13 +128,18 @@ public class Letter_to_Braille_Script : MonoBehaviour
     {
         if (index < 0 || index >= lessons.Count)
         {
-            CompleteScene();
+            if (flowRoutine != null)
+                StopCoroutine(flowRoutine);
+
+            flowRoutine = StartCoroutine(CompleteScene());
             return;
         }
 
         currentLessonIndex = index;
         lessonActive = true;
         waitingForNext = false;
+        waitingForRepeatChoice = false;
+        sceneFinished = false;
 
         LetterLesson lesson = lessons[currentLessonIndex];
 
@@ -144,33 +158,38 @@ public class Letter_to_Braille_Script : MonoBehaviour
             lessonImage.enabled = lesson.lessonSprite != null;
         }
 
+        if (flowRoutine != null)
+            StopCoroutine(flowRoutine);
+
+        flowRoutine = StartCoroutine(StartLessonSequence(lesson));
+    }
+
+    private IEnumerator StartLessonSequence(LetterLesson lesson)
+    {
         string dotLabel = GetDotsDisplay(lesson.dots);
-        SetBubbleMessage($"Letter {lesson.letter}. Press {dotLabel}.");
+        string message = $"Letter {lesson.letter}. Press {dotLabel}.";
 
         if (logDebug)
             Debug.Log($"Starting lesson for {lesson.letter} -> {PatternFromDots(lesson.dots)}");
 
         if (playInstructionOnLetterStart)
         {
-            if (flowRoutine != null)
-                StopCoroutine(flowRoutine);
-
-            flowRoutine = StartCoroutine(PlayLessonInstruction(lesson));
+            yield return ShowBubbleMessageWithAudioSequence(
+                message,
+                noAudioTextDelay,
+                lesson.introAudio,
+                lesson.instructionAudio
+            );
         }
-    }
-
-    private IEnumerator PlayLessonInstruction(LetterLesson lesson)
-    {
-        if (lesson.introAudio != null)
-            yield return PlayClipAndWait(lesson.introAudio);
-
-        if (lesson.instructionAudio != null)
-            yield return PlayClipAndWait(lesson.instructionAudio);
+        else
+        {
+            yield return ShowBubbleMessageSynced(message, null, noAudioTextDelay);
+        }
     }
 
     private void HandleBrailleChordSubmitted(string submittedPattern)
     {
-        if (!lessonActive || waitingForNext || sceneFinished)
+        if (!lessonActive || waitingForNext || sceneFinished || waitingForRepeatChoice)
             return;
 
         if (currentLessonIndex < 0 || currentLessonIndex >= lessons.Count)
@@ -203,26 +222,35 @@ public class Letter_to_Braille_Script : MonoBehaviour
 
     private IEnumerator HandleCorrectAnswer(LetterLesson lesson)
     {
-        SetBubbleMessage($"Correct! {lesson.letter} is {GetDotsDisplay(lesson.dots)}. Press Y for next.");
+        string message = $"Correct! {lesson.letter} is {GetDotsDisplay(lesson.dots)}. Press Y for next.";
+        AudioClip clipToUse = lesson.successAudio != null ? lesson.successAudio : genericCorrectAudio;
 
-        if (lesson.successAudio != null)
-            yield return PlayClipAndWait(lesson.successAudio);
-        else if (genericCorrectAudio != null)
-            yield return PlayClipAndWait(genericCorrectAudio);
-
+        yield return ShowBubbleMessageSynced(message, clipToUse, noAudioTextDelay);
         yield return new WaitForSeconds(delayAfterCorrect);
     }
 
     private IEnumerator HandleWrongAnswer(LetterLesson lesson)
     {
-        SetBubbleMessage($"Try again. Letter {lesson.letter} uses {GetDotsDisplay(lesson.dots)}.");
-
-        if (genericTryAgainAudio != null)
-            yield return PlayClipAndWait(genericTryAgainAudio);
+        string message = $"Try again. Letter {lesson.letter} uses {GetDotsDisplay(lesson.dots)}.";
+        yield return ShowBubbleMessageSynced(message, genericTryAgainAudio, noAudioTextDelay);
     }
 
     private void HandleRepeat()
     {
+        if (waitingForRepeatChoice)
+        {
+            if (logDebug)
+                Debug.Log("Repeat selected after lesson completion");
+
+            waitingForRepeatChoice = false;
+
+            if (flowRoutine != null)
+                StopCoroutine(flowRoutine);
+
+            StartLesson(0);
+            return;
+        }
+
         if (sceneFinished)
             return;
 
@@ -239,18 +267,25 @@ public class Letter_to_Braille_Script : MonoBehaviour
 
     private IEnumerator RepeatCurrentInstruction(LetterLesson lesson)
     {
-        SetBubbleMessage($"Repeat: Letter {lesson.letter}. Press {GetDotsDisplay(lesson.dots)}.");
-
-        if (lesson.instructionAudio != null)
-            yield return PlayClipAndWait(lesson.instructionAudio);
-        else
-            yield return new WaitForSeconds(noAudioTextDelay);
+        string message = $"Repeat: Letter {lesson.letter}. Press {GetDotsDisplay(lesson.dots)}.";
+        yield return ShowBubbleMessageSynced(message, lesson.instructionAudio, noAudioTextDelay);
     }
 
     private void HandleNext()
     {
         if (logDebug)
             Debug.Log("Y pressed / HandleNext called");
+
+        if (waitingForRepeatChoice)
+        {
+            waitingForRepeatChoice = false;
+
+            if (flowRoutine != null)
+                StopCoroutine(flowRoutine);
+
+            flowRoutine = StartCoroutine(FinalizeSceneCompletion());
+            return;
+        }
 
         if (sceneFinished)
             return;
@@ -265,11 +300,32 @@ public class Letter_to_Braille_Script : MonoBehaviour
         StartLesson(currentLessonIndex + 1);
     }
 
-    private void CompleteScene()
+    private IEnumerator CompleteScene()
+    {
+        lessonActive = false;
+        waitingForNext = false;
+        sceneFinished = false;
+        waitingForRepeatChoice = true;
+
+        if (translationLetterText != null)
+            translationLetterText.text = "-";
+
+        if (pressText != null)
+            pressText.text = "Press!";
+
+        if (lessonImage != null)
+            lessonImage.enabled = false;
+
+        string message = "You finished all letters. Do you want to repeat the lesson? Press R to repeat or next to finish.";
+        yield return ShowBubbleMessageSynced(message, repeatQuestionAudio, noAudioTextDelay);
+    }
+
+    private IEnumerator FinalizeSceneCompletion()
     {
         sceneFinished = true;
         lessonActive = false;
         waitingForNext = false;
+        waitingForRepeatChoice = false;
 
         if (translationLetterText != null)
             translationLetterText.text = "-";
@@ -277,51 +333,181 @@ public class Letter_to_Braille_Script : MonoBehaviour
         if (pressText != null)
             pressText.text = "DONE!";
 
-        SetBubbleMessage("Great job! You finished the Letter to Braille lesson.");
-
         if (lessonImage != null)
             lessonImage.enabled = false;
 
-        if (flowRoutine != null)
-            StopCoroutine(flowRoutine);
-
-        flowRoutine = StartCoroutine(PlayCompletionAudio());
+        string message = "Great job! You finished the Letter to Braille lesson.";
+        yield return ShowBubbleMessageSynced(message, genericCompletedAudio, noAudioTextDelay);
     }
 
-    private IEnumerator PlayCompletionAudio()
+    private IEnumerator ShowBubbleMessageSynced(string message, AudioClip clip, float fallbackWait)
     {
-        if (genericCompletedAudio != null)
-            yield return PlayClipAndWait(genericCompletedAudio);
-    }
+        if (bubbleMessageText == null)
+            yield break;
 
-    private void SetBubbleMessage(string message)
-    {
-        if (bubbleMessageText != null)
-            bubbleMessageText.text = message;
-    }
+        StopBubbleTyping();
 
-    private IEnumerator PlayClipOrWait(AudioClip clip, float fallbackWait)
-    {
-        if (voiceAudioSource != null && clip != null)
+        float audioDuration = GetClipDuration(clip);
+        float charDelay = GetCharacterDelayForMessage(message, audioDuration);
+
+        bool typingFinished = false;
+        bubbleTypeRoutine = StartCoroutine(TypeBubbleText(message, charDelay, () => typingFinished = true));
+
+        if (clip != null && voiceAudioSource != null)
         {
-            yield return PlayClipAndWait(clip);
+            voiceAudioSource.Stop();
+            voiceAudioSource.clip = clip;
+            voiceAudioSource.Play();
+        }
+
+        while (!typingFinished)
+            yield return null;
+
+        bubbleTypeRoutine = null;
+
+        if (clip != null && voiceAudioSource != null && waitForFullAudioBeforeContinuing)
+            yield return new WaitForSeconds(Mathf.Max(0f, clip.length - EstimatedTypingDuration(message, charDelay)));
+        else if (clip == null)
+            yield return new WaitForSeconds(fallbackWait);
+    }
+
+    private IEnumerator ShowBubbleMessageWithAudioSequence(string message, float fallbackWait, params AudioClip[] clips)
+    {
+        if (bubbleMessageText == null)
+            yield break;
+
+        StopBubbleTyping();
+
+        float totalDuration = GetTotalClipDuration(clips);
+        float charDelay = GetCharacterDelayForMessage(message, totalDuration);
+
+        bool typingFinished = false;
+        bubbleTypeRoutine = StartCoroutine(TypeBubbleText(message, charDelay, () => typingFinished = true));
+
+        if (voiceAudioSource != null)
+        {
+            for (int i = 0; i < clips.Length; i++)
+            {
+                AudioClip clip = clips[i];
+                if (clip == null)
+                    continue;
+
+                voiceAudioSource.Stop();
+                voiceAudioSource.clip = clip;
+                voiceAudioSource.Play();
+
+                yield return new WaitForSeconds(clip.length);
+            }
         }
         else
         {
+            while (!typingFinished)
+                yield return null;
+
             yield return new WaitForSeconds(fallbackWait);
+        }
+
+        while (!typingFinished)
+            yield return null;
+
+        bubbleTypeRoutine = null;
+    }
+
+    private IEnumerator TypeBubbleText(string message, float characterDelay, Action onComplete = null)
+    {
+        if (bubbleMessageText == null)
+            yield break;
+
+        if (!useTypewriterEffect)
+        {
+            bubbleMessageText.text = message;
+            onComplete?.Invoke();
+            yield break;
+        }
+
+        bubbleMessageText.text = string.Empty;
+
+        if (string.IsNullOrEmpty(message))
+        {
+            onComplete?.Invoke();
+            yield break;
+        }
+
+        for (int i = 0; i < message.Length; i++)
+        {
+            bubbleMessageText.text += message[i];
+            yield return new WaitForSeconds(characterDelay);
+        }
+
+        onComplete?.Invoke();
+    }
+
+    private void StopBubbleTyping()
+    {
+        if (bubbleTypeRoutine != null)
+        {
+            StopCoroutine(bubbleTypeRoutine);
+            bubbleTypeRoutine = null;
         }
     }
 
-    private IEnumerator PlayClipAndWait(AudioClip clip)
+    private float GetCharacterDelayForMessage(string message, float audioDuration)
     {
-        if (voiceAudioSource == null || clip == null)
-            yield break;
+        if (!useTypewriterEffect)
+            return 0f;
 
-        voiceAudioSource.Stop();
-        voiceAudioSource.clip = clip;
-        voiceAudioSource.Play();
+        int visibleLength = GetVisibleCharacterCount(message);
 
-        yield return new WaitForSeconds(clip.length);
+        if (visibleLength <= 0)
+            return defaultTypewriterCharacterDelay;
+
+        if (audioDuration <= 0f)
+            return defaultTypewriterCharacterDelay;
+
+        float syncedDelay = audioDuration / visibleLength;
+        return Mathf.Clamp(syncedDelay, minSyncedCharacterDelay, maxSyncedCharacterDelay);
+    }
+
+    private int GetVisibleCharacterCount(string message)
+    {
+        if (string.IsNullOrEmpty(message))
+            return 0;
+
+        int count = 0;
+
+        for (int i = 0; i < message.Length; i++)
+        {
+            if (!char.IsWhiteSpace(message[i]))
+                count++;
+        }
+
+        return Mathf.Max(1, count);
+    }
+
+    private float EstimatedTypingDuration(string message, float characterDelay)
+    {
+        return GetVisibleCharacterCount(message) * characterDelay;
+    }
+
+    private float GetClipDuration(AudioClip clip)
+    {
+        return clip != null ? clip.length : 0f;
+    }
+
+    private float GetTotalClipDuration(params AudioClip[] clips)
+    {
+        float total = 0f;
+
+        if (clips == null)
+            return total;
+
+        for (int i = 0; i < clips.Length; i++)
+        {
+            if (clips[i] != null)
+                total += clips[i].length;
+        }
+
+        return total;
     }
 
     private void BuildBraillePatternDictionary()

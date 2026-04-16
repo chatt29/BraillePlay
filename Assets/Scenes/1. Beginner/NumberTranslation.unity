@@ -881,7 +881,7 @@ GameObject:
   - component: {fileID: 1204025122}
   - component: {fileID: 1204025121}
   m_Layer: 5
-  m_Name: NUMBERS.TXT
+  m_Name: Contraction.TXT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -903,7 +903,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 194, y: 401}
+  m_AnchoredPosition: {x: 0, y: 419}
   m_SizeDelta: {x: 536.2007, y: 189.4903}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1204025121
@@ -926,7 +926,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: NUMBERS
+  m_text: ONE-CELL CONTRACTIONS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1a98abfae0e1fc34282e9b7fd0f3a427, type: 2}
   m_sharedMaterial: {fileID: -8189821304231711609, guid: 1a98abfae0e1fc34282e9b7fd0f3a427, type: 2}
@@ -953,8 +953,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 130
-  m_fontSizeBase: 130
+  m_fontSize: 90
+  m_fontSizeBase: 90
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -992,7 +992,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -159.27966, w: 0}
+  m_margin: {x: 0, y: 0, z: -572.43335, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1078,8 +1078,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_characterHorizontalScale: 1
@@ -1382,7 +1382,7 @@ GameObject:
   - component: {fileID: 1586095480}
   - component: {fileID: 1586095479}
   m_Layer: 5
-  m_Name: NumberTranslationManager
+  m_Name: CommonContractionManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1581,10 +1581,13 @@ MonoBehaviour:
   genericCorrectAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
   genericTryAgainAudio: {fileID: 8300000, guid: dd615f4eef83e3b49b22a11445f9b6d6, type: 3}
   genericCompletedAudio: {fileID: 8300000, guid: af652ce1713801846ba385167d93d7fe, type: 3}
+  repeatQuestionAudio: {fileID: 8300000, guid: d3c4c62eef62c8240933f28433974d87, type: 3}
   welcomeMessage: Welcome to Number Translation!
   letsLearnMessage: Let's learn how to translate numbers into braille.
   completedMessage: Great job! You finished learning how to translate numbers into
     Braille!
+  repeatQuestionMessage: You finished this braille lesson. Do you want to repeat
+    again? Press R to repeat or Y to finish.
   lessons:
   - displayLabel: 1
     categoryLabel: Number
@@ -2062,6 +2065,11 @@ MonoBehaviour:
   resetSequenceToStartOnWrongAnswer: 1
   mistakesBeforeSupport: 3
   resetMistakesAfterSupport: 1
+  useTypewriterEffect: 1
+  defaultTypewriterCharacterDelay: 0.03
+  minSyncedCharacterDelay: 0.01
+  maxSyncedCharacterDelay: 0.12
+  waitForFullAudioBeforeContinuing: 1
   logDebug: 1
 --- !u!1 &1697798611
 GameObject:
@@ -2197,7 +2205,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -629, y: 153}
+  m_AnchoredPosition: {x: -645, y: 139.33}
   m_SizeDelta: {x: 452.4714, y: 183.8403}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1710783189
@@ -2212,7 +2220,7 @@ GameObject:
   - component: {fileID: 1710783192}
   - component: {fileID: 1710783191}
   m_Layer: 5
-  m_Name: NumberTranslation.Txt
+  m_Name: Common.Txt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2257,7 +2265,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Number Translation
+  m_text: Common Contraction
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a66db046ab4320b408a76ab376bdacca, type: 2}
   m_sharedMaterial: {fileID: 6244326952053564057, guid: a66db046ab4320b408a76ab376bdacca, type: 2}

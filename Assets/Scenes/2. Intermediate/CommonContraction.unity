@@ -246,7 +246,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 540.45996, y: 181.50003}
+  m_AnchoredPosition: {x: 530, y: 268.75}
   m_SizeDelta: {x: 291.2548, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &176604274
@@ -454,6 +454,7 @@ RectTransform:
   m_Children:
   - {fileID: 1204025120}
   - {fileID: 1710783190}
+  - {fileID: 1697798614}
   - {fileID: 176604273}
   m_Father: {fileID: 1791188412}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -496,8 +497,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 568.18, y: -163.04999}
-  m_SizeDelta: {x: 422.9019, y: 450.52}
+  m_AnchoredPosition: {x: 552, y: -67}
+  m_SizeDelta: {x: 456.7608, y: 372.2609}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &286661654
 MonoBehaviour:
@@ -520,7 +521,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -571,7 +572,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.58009, y: -163.05}
+  m_AnchoredPosition: {x: -63, y: -163.05}
   m_SizeDelta: {x: 405.4244, y: 456.2524}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &397166430
@@ -880,7 +881,7 @@ GameObject:
   - component: {fileID: 1204025122}
   - component: {fileID: 1204025121}
   m_Layer: 5
-  m_Name: ALPHABETS.TXT
+  m_Name: NUMBERS.TXT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -902,7 +903,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 174, y: 394}
+  m_AnchoredPosition: {x: 194, y: 401}
   m_SizeDelta: {x: 536.2007, y: 189.4903}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1204025121
@@ -925,7 +926,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ALPHABETS
+  m_text: NUMBERS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1a98abfae0e1fc34282e9b7fd0f3a427, type: 2}
   m_sharedMaterial: {fileID: -8189821304231711609, guid: 1a98abfae0e1fc34282e9b7fd0f3a427, type: 2}
@@ -959,8 +960,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_characterHorizontalScale: 1
@@ -1077,8 +1078,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_characterHorizontalScale: 1
@@ -1217,7 +1218,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1321976831}
   m_CullTransparentMesh: 1
---- !u!1 &1408315746
+--- !u!1 &1381365064
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1225,9 +1226,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1408315747}
-  - component: {fileID: 1408315749}
-  - component: {fileID: 1408315748}
+  - component: {fileID: 1381365065}
+  - component: {fileID: 1381365067}
+  - component: {fileID: 1381365066}
   m_Layer: 5
   m_Name: SmallBox.Image (1)
   m_TagString: Untagged
@@ -1235,13 +1236,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &1408315747
+--- !u!224 &1381365065
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1408315746}
+  m_GameObject: {fileID: 1381365064}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -1251,16 +1252,16 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 559.44, y: -163.05}
-  m_SizeDelta: {x: 405.4244, y: 456.2524}
+  m_AnchoredPosition: {x: 551.99805, y: -69.86456}
+  m_SizeDelta: {x: 606.5795, y: 504.35}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1408315748
+--- !u!114 &1381365066
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1408315746}
+  m_GameObject: {fileID: 1381365064}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -1284,13 +1285,13 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!222 &1408315749
+--- !u!222 &1381365067
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1408315746}
+  m_GameObject: {fileID: 1381365064}
   m_CullTransparentMesh: 1
 --- !u!1 &1434168919
 GameObject:
@@ -1304,7 +1305,7 @@ GameObject:
   - component: {fileID: 1434168922}
   - component: {fileID: 1434168921}
   m_Layer: 5
-  m_Name: abcSound.Box
+  m_Name: NumberBox.Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1376,12 +1377,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1586095474}
-  - component: {fileID: 1586095475}
   - component: {fileID: 1586095476}
-  - component: {fileID: 1586095477}
   - component: {fileID: 1586095478}
+  - component: {fileID: 1586095480}
+  - component: {fileID: 1586095479}
   m_Layer: 5
-  m_Name: LetterToBrailleManager
+  m_Name: NumberTranslationManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1406,201 +1407,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1586095475
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1586095473}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e7d16af72548c742a1f41ebcce39ecf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Letter_to_Braille_Script
-  bubbleMessageText: {fileID: 1257937990}
-  translationLetterText: {fileID: 2077778574}
-  pressText: {fileID: 176604274}
-  alphabetsText: {fileID: 1204025121}
-  characterBubbleImage: {fileID: 397166430}
-  lessonImage: {fileID: 286661654}
-  voiceAudioSource: {fileID: 1586095478}
-  welcomeAudio: {fileID: 8300000, guid: 5cd3fed5db7177e4e830b5cbfa2d48ff, type: 3}
-  letsLearnAudio: {fileID: 8300000, guid: 472ed8be255c6bd4d8798be9008e09d1, type: 3}
-  genericCorrectAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
-  genericTryAgainAudio: {fileID: 8300000, guid: dd615f4eef83e3b49b22a11445f9b6d6, type: 3}
-  genericCompletedAudio: {fileID: 8300000, guid: d086ff315dbc0f24ba0f913e39826641, type: 3}
-  repeatQuestionAudio: {fileID: 8300000, guid: fe8e802ce4329bb4c8b424fe912614fd, type: 3}
-  welcomeMessage: Welcome to Alphabets Translation!
-  letsLearnMessage: Let's learn how to translate letters into Braille.
-  lessons:
-  - letter: A
-    dots: 01000000
-    lessonSprite: {fileID: 21300000, guid: b8df670c7e9957a45b35c5685879a322, type: 3}
-    introAudio: {fileID: 8300000, guid: 42701a2ed6601e345945e43b1120e18e, type: 3}
-    instructionAudio: {fileID: 8300000, guid: a3a821dc474e32b43ac45dab4fa0b793, type: 3}
-    successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
-  - letter: B
-    dots: 0100000002000000
-    lessonSprite: {fileID: 21300000, guid: cc6bae3515a12144da0cb8e13ecbcaad, type: 3}
-    introAudio: {fileID: 8300000, guid: c8c1c489208b62d4a8fc76e6666cbd62, type: 3}
-    instructionAudio: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
-    successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
-  - letter: C
-    dots: 0100000004000000
-    lessonSprite: {fileID: 21300000, guid: f1f1d850f3dbd5e4387cef24e691c6dc, type: 3}
-    introAudio: {fileID: 8300000, guid: 90c6142c3d1a7464ebe56f87204bea71, type: 3}
-    instructionAudio: {fileID: 8300000, guid: 2f1565027f9fe4b49b7d2571f250126e, type: 3}
-    successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
-  - letter: D
-    dots: 010000000400000005000000
-    lessonSprite: {fileID: 21300000, guid: 29d8da1320b989c47bd80f8c60959c07, type: 3}
-    introAudio: {fileID: 8300000, guid: 0601bf2b0db857c4eaffb6ba222204bd, type: 3}
-    instructionAudio: {fileID: 8300000, guid: 19cd2fcbcf0c84344bf129e4bb718e65, type: 3}
-    successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
-  - letter: E
-    dots: 0100000005000000
-    lessonSprite: {fileID: 21300000, guid: 5b4a69441bbaebb40964c9ca4d8df3f3, type: 3}
-    introAudio: {fileID: 8300000, guid: 707ccab107fb44046a819e4824579270, type: 3}
-    instructionAudio: {fileID: 8300000, guid: 289ed225566031f43936497de449e91f, type: 3}
-    successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
-  - letter: F
-    dots: 010000000200000004000000
-    lessonSprite: {fileID: 21300000, guid: 16eb9b6d350ca0c49a5de0e2ad74e2cd, type: 3}
-    introAudio: {fileID: 8300000, guid: 2edf166576d86a340b0b442b03457ea2, type: 3}
-    instructionAudio: {fileID: 8300000, guid: e7df56fc6bca53649a1c9e7ee28954ea, type: 3}
-    successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
-  - letter: G
-    dots: 01000000020000000400000005000000
-    lessonSprite: {fileID: 21300000, guid: 0f9e6be4fff70d14eb1277785886c3ed, type: 3}
-    introAudio: {fileID: 8300000, guid: d21c6d0632512224ea753b19452a0b68, type: 3}
-    instructionAudio: {fileID: 8300000, guid: 26adec60c2b7a5a4f9afcb534b5f1d17, type: 3}
-    successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
-  - letter: H
-    dots: 010000000200000005000000
-    lessonSprite: {fileID: 21300000, guid: fb4de746635d3504f9267576a921c678, type: 3}
-    introAudio: {fileID: 8300000, guid: 361a5119156095a49a65409f2c997d00, type: 3}
-    instructionAudio: {fileID: 8300000, guid: 0786219909687444ab5f03cf285614e6, type: 3}
-    successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
-  - letter: I
-    dots: 0200000004000000
-    lessonSprite: {fileID: 21300000, guid: 21e0753a5fadda94c899fb06ee93f6f9, type: 3}
-    introAudio: {fileID: 8300000, guid: 443317135d675eb41b96738d455c2d56, type: 3}
-    instructionAudio: {fileID: 8300000, guid: c9245a80df18e874ebccb0b598a21ea5, type: 3}
-    successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
-  - letter: J
-    dots: 020000000400000005000000
-    lessonSprite: {fileID: 21300000, guid: c4c666fbffcfe64428e48fe0addb7245, type: 3}
-    introAudio: {fileID: 8300000, guid: 71c615913ca1398498f4a6c52acf90f6, type: 3}
-    instructionAudio: {fileID: 8300000, guid: d250dea8334ef854b8ab00c5a980583f, type: 3}
-    successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
-  - letter: K
-    dots: 0100000003000000
-    lessonSprite: {fileID: 21300000, guid: 916ad18e87679fe43941bef9320ba836, type: 3}
-    introAudio: {fileID: 8300000, guid: fa4fece67e4badf4488b8303b03a60f9, type: 3}
-    instructionAudio: {fileID: 8300000, guid: 7fac0170c8a6702479367ffae1b2c88c, type: 3}
-    successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
-  - letter: L
-    dots: 010000000200000003000000
-    lessonSprite: {fileID: 21300000, guid: 4372d825dd8500e4f94669f265eb3f91, type: 3}
-    introAudio: {fileID: 8300000, guid: f34da036c91ea0140a3c9dcaff8472e6, type: 3}
-    instructionAudio: {fileID: 8300000, guid: 7f48dcf4229b41445a1c7993e9c7334e, type: 3}
-    successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
-  - letter: M
-    dots: 010000000300000004000000
-    lessonSprite: {fileID: 21300000, guid: a7ec38fd03d2e1e46b362270aa1f53a7, type: 3}
-    introAudio: {fileID: 8300000, guid: 8949e4c617afc5a4d838638e7dcd044d, type: 3}
-    instructionAudio: {fileID: 8300000, guid: 9e07367c923ef3641b7dad053ec62a7e, type: 3}
-    successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
-  - letter: N
-    dots: 01000000030000000400000005000000
-    lessonSprite: {fileID: 21300000, guid: f88d5dde49dcd7a438b3db767904d77d, type: 3}
-    introAudio: {fileID: 8300000, guid: c8dc7453d7369d6498cfeb78d9dea367, type: 3}
-    instructionAudio: {fileID: 8300000, guid: a111e42b5ff5bd643a0ac490c9c89d33, type: 3}
-    successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
-  - letter: O
-    dots: 010000000300000005000000
-    lessonSprite: {fileID: 21300000, guid: a6ebf48ba1113204686e1aaa721adcee, type: 3}
-    introAudio: {fileID: 8300000, guid: cd5b40ac7ce53d84d9ba3a0998c87d25, type: 3}
-    instructionAudio: {fileID: 8300000, guid: 532653797345a8f418d07365d1d8f3d2, type: 3}
-    successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
-  - letter: P
-    dots: 01000000020000000300000004000000
-    lessonSprite: {fileID: 21300000, guid: 148dd5fa508134440b3815acec151e81, type: 3}
-    introAudio: {fileID: 8300000, guid: a8c7c6cfc929a54419567568ba2d7b78, type: 3}
-    instructionAudio: {fileID: 8300000, guid: 610bf70710cd7ae4d81c3052367ada4f, type: 3}
-    successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
-  - letter: Q
-    dots: 0100000002000000030000000400000005000000
-    lessonSprite: {fileID: 21300000, guid: 6143e69fc7956f341a0b807f2a0765c2, type: 3}
-    introAudio: {fileID: 8300000, guid: 7064cc81db87d0c4aa9facffb3f17782, type: 3}
-    instructionAudio: {fileID: 8300000, guid: 2eeaba6ab3221824b84a1497b0413fb9, type: 3}
-    successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
-  - letter: R
-    dots: 01000000020000000300000005000000
-    lessonSprite: {fileID: 21300000, guid: f7691722ae1526243b5e835e1f1f7e85, type: 3}
-    introAudio: {fileID: 8300000, guid: fe8f79f5693b7204e92d3d6353d0a748, type: 3}
-    instructionAudio: {fileID: 8300000, guid: e6aaf93bef15ad14e995b6c098d533ad, type: 3}
-    successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
-  - letter: S
-    dots: 020000000300000004000000
-    lessonSprite: {fileID: 21300000, guid: 044df8a8cadddc347a4609cc32c4edb2, type: 3}
-    introAudio: {fileID: 8300000, guid: 62170f84e32f6c24fa9b670ce5e47ac8, type: 3}
-    instructionAudio: {fileID: 8300000, guid: 9207627036a9c6040a87f09fc8767528, type: 3}
-    successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
-  - letter: T
-    dots: 02000000030000000400000005000000
-    lessonSprite: {fileID: 21300000, guid: 688485fe27f99f74cb7c4ce07dd91b4d, type: 3}
-    introAudio: {fileID: 8300000, guid: 91a4f22e4d1e56341a91754b151a3966, type: 3}
-    instructionAudio: {fileID: 8300000, guid: ccb2ee6c1da027543acc111a8ad77a3a, type: 3}
-    successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
-  - letter: U
-    dots: 010000000300000006000000
-    lessonSprite: {fileID: 21300000, guid: b214eebfa429b61429a583d7ebd1e103, type: 3}
-    introAudio: {fileID: 8300000, guid: 222e70d6dd8e7234b9b09208a4abf2fe, type: 3}
-    instructionAudio: {fileID: 8300000, guid: c2df0bbeb8891014f95697ade4f7e9f1, type: 3}
-    successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
-  - letter: V
-    dots: 01000000020000000300000006000000
-    lessonSprite: {fileID: 21300000, guid: 09a03a229b7c32442828cd51d2b82062, type: 3}
-    introAudio: {fileID: 8300000, guid: 385b1719cb89d0742a696b8a8479a53c, type: 3}
-    instructionAudio: {fileID: 8300000, guid: 78c858e2e6fc5294fae4a9596f60feda, type: 3}
-    successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
-  - letter: W
-    dots: 02000000040000000500000006000000
-    lessonSprite: {fileID: 21300000, guid: 877585566e8a21e4bb0f13bb49266538, type: 3}
-    introAudio: {fileID: 8300000, guid: 58c4a899bb840ee4f98d66227c02654d, type: 3}
-    instructionAudio: {fileID: 8300000, guid: a885b81073ad42c44a8b50c072057e43, type: 3}
-    successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
-  - letter: X
-    dots: 01000000030000000400000006000000
-    lessonSprite: {fileID: 21300000, guid: 42ee98ec93c15cb41835b5f0af0d2ae8, type: 3}
-    introAudio: {fileID: 8300000, guid: 613b8e4abc60f9144b6e3d048389a9b1, type: 3}
-    instructionAudio: {fileID: 8300000, guid: 0289c15a6b1b3e949ae70c139cba27e9, type: 3}
-    successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
-  - letter: Y
-    dots: 0100000003000000040000000500000006000000
-    lessonSprite: {fileID: 21300000, guid: f092d4bafdc95d7478c57bc5be4d24ce, type: 3}
-    introAudio: {fileID: 8300000, guid: b5db0f9dea2bc204995aceda1e8ecf92, type: 3}
-    instructionAudio: {fileID: 8300000, guid: 590d91d9fdcbf424899c445dfa8667ec, type: 3}
-    successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
-  - letter: Z
-    dots: 01000000030000000500000006000000
-    lessonSprite: {fileID: 21300000, guid: d2c58bf2230751740bc32620f255b069, type: 3}
-    introAudio: {fileID: 8300000, guid: 1124d600ea418b440968c94f9e369c05, type: 3}
-    instructionAudio: {fileID: 8300000, guid: b5b0fc8fe813cba4e9bcbfc3436f802a, type: 3}
-    successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
-  autoBuildAlphabetLessons: 1
-  playInstructionOnLetterStart: 1
-  delayAfterVoice: 0.35
-  noAudioTextDelay: 2
-  delayAfterCorrect: 0.75
-  useTypewriterEffect: 1
-  defaultTypewriterCharacterDelay: 0.03
-  minSyncedCharacterDelay: 0.01
-  maxSyncedCharacterDelay: 0.12
-  waitForFullAudioBeforeContinuing: 1
-  logDebug: 1
 --- !u!114 &1586095476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1639,21 +1445,6 @@ MonoBehaviour:
   yesOrNextSfx: {fileID: 0}
   loginSfx: {fileID: 0}
   logInputs: 0
---- !u!114 &1586095477
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1586095473}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1739aefa2e937fa498c7272488aba663, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Letter_to_Braille_InputHandler
-  lessonScript: {fileID: 0}
-  livePatternText: {fileID: 0}
-  showHeldDotsPattern: 1
 --- !u!82 &1586095478
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1751,7 +1542,528 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1 &1710783189
+--- !u!114 &1586095479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586095473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0673b95465c5e046a8fb5098241f44b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BrailleLessonInputHandler
+  lessonScript: {fileID: 0}
+  livePatternText: {fileID: 0}
+  showHeldDotsPattern: 1
+--- !u!114 &1586095480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586095473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51725f3fe6e978b4a8031c0d3563413b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BrailleLessonSceneController
+  bubbleMessageText: {fileID: 1257937990}
+  translationText: {fileID: 2077778574}
+  pressText: {fileID: 176604274}
+  categoryText: {fileID: 1716768801}
+  livePatternText: {fileID: 1697798612}
+  lessonImage: {fileID: 286661654}
+  voiceAudioSource: {fileID: 1586095478}
+  welcomeAudio: {fileID: 8300000, guid: 99f810b3940cebd43ba543f6da78b021, type: 3}
+  letsLearnAudio: {fileID: 8300000, guid: a7fbd5f6913259a4ea600be62dba7267, type: 3}
+  genericCorrectAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
+  genericTryAgainAudio: {fileID: 8300000, guid: dd615f4eef83e3b49b22a11445f9b6d6, type: 3}
+  genericCompletedAudio: {fileID: 8300000, guid: af652ce1713801846ba385167d93d7fe, type: 3}
+  welcomeMessage: Welcome to Number Translation!
+  letsLearnMessage: Let's learn how to translate numbers into braille.
+  completedMessage: Great job! You finished learning how to translate numbers into
+    Braille!
+  lessons:
+  - displayLabel: 1
+    categoryLabel: Number
+    promptMessage: This is number 1. Press dot 1.
+    repeatMessage: Number 1. Press dot 1.
+    successMessage: Correct! That is number 1. Press Y for next.
+    wrongMessage: Try again. Number 1 uses dot 1.
+    lessonKind: 0
+    dots: 01000000
+    expectedSequencePatterns: []
+    expectedSequenceNames: []
+    lessonSprite: {fileID: 21300000, guid: 9268c89b41a702c40a4e883d30550dcc, type: 3}
+    introAudio: {fileID: 8300000, guid: beffe5d16ebbc1941a2def3be7ca3dc0, type: 3}
+    instructionAudio: {fileID: 8300000, guid: d6bffd3117000af44a23176ab530a097, type: 3}
+    successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
+    sequenceStepAudios: []
+    sequenceStepMessages: []
+    supportMessage: Remember, number 1 uses dot number 1.
+    supportAudio: {fileID: 8300000, guid: a322b0a940e749b46a749f0b1a9dcf4a, type: 3}
+  - displayLabel: 2
+    categoryLabel: Number
+    promptMessage: This is number 2. Press dots 1 & 2.
+    repeatMessage: Number 2. Press dots 1 & 2.
+    successMessage: Correct! That is number 2. Press next to continue.
+    wrongMessage: Try again. Number 2 uses dots 1 & 2.
+    lessonKind: 0
+    dots: 0100000002000000
+    expectedSequencePatterns: []
+    expectedSequenceNames: []
+    lessonSprite: {fileID: 21300000, guid: ced3af70cc3eca14bb60e0c1a7f4eb81, type: 3}
+    introAudio: {fileID: 0}
+    instructionAudio: {fileID: 8300000, guid: d88a2cf5cbc24854c91b04cf54505a58, type: 3}
+    successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
+    sequenceStepAudios: []
+    sequenceStepMessages: []
+    supportMessage: Remember, number 2 uses dots number 1&2.
+    supportAudio: {fileID: 8300000, guid: 429e908fdece8b34ebc34979dde0cf19, type: 3}
+  - displayLabel: 3
+    categoryLabel: Number
+    promptMessage: This is number 3. Press dots 1 & 4.
+    repeatMessage: Number 3. Press dots 1 & 4.
+    successMessage: Correct! That is number 3. Press next to continue.
+    wrongMessage: Try again. Number 3 uses dots 1 & 4.
+    lessonKind: 0
+    dots: 0100000004000000
+    expectedSequencePatterns: []
+    expectedSequenceNames: []
+    lessonSprite: {fileID: 21300000, guid: 63a2d10c538cc744fa3b3277a8d77de2, type: 3}
+    introAudio: {fileID: 0}
+    instructionAudio: {fileID: 8300000, guid: 5eda0aa895c371d4695051ee9f4c559f, type: 3}
+    successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
+    sequenceStepAudios: []
+    sequenceStepMessages: []
+    supportMessage: Remember, number 3 uses dots number 1&4.
+    supportAudio: {fileID: 8300000, guid: 9ab37e14d6349dc408b3ff922e0bd5bc, type: 3}
+  - displayLabel: 4
+    categoryLabel: Number
+    promptMessage: This is number 4. Press dots 1, 4 & 5.
+    repeatMessage: Number 4. Press dots 1, 4 & 5.
+    successMessage: Correct! That is number 4. Press next to continue.
+    wrongMessage: Try again. Number 4 uses dots 1, 4 & 5.
+    lessonKind: 0
+    dots: 010000000400000005000000
+    expectedSequencePatterns: []
+    expectedSequenceNames: []
+    lessonSprite: {fileID: 21300000, guid: 0277ae2cde1f51c419f9b397704a4cfd, type: 3}
+    introAudio: {fileID: 0}
+    instructionAudio: {fileID: 8300000, guid: ac8c595efefb65a46a1495b5f3de5ec1, type: 3}
+    successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
+    sequenceStepAudios: []
+    sequenceStepMessages: []
+    supportMessage: Remember, number 4 uses dots number 1, 4 & 5.
+    supportAudio: {fileID: 8300000, guid: dcea7b2fa1b094643adc1e6765bc861b, type: 3}
+  - displayLabel: 5
+    categoryLabel: Number
+    promptMessage: This is number 5. Press dots 1 & 5.
+    repeatMessage: Number 5. Press dots 1 & 5.
+    successMessage: Correct! That is number 5. Press next to continue.
+    wrongMessage: Try again. Number 5 uses dots 1 & 5.
+    lessonKind: 0
+    dots: 0100000005000000
+    expectedSequencePatterns: []
+    expectedSequenceNames: []
+    lessonSprite: {fileID: 21300000, guid: a45f6b511b9ff1646a8640738d85622e, type: 3}
+    introAudio: {fileID: 0}
+    instructionAudio: {fileID: 8300000, guid: 4d1de74e3e9961e48b376dbfb5783580, type: 3}
+    successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
+    sequenceStepAudios: []
+    sequenceStepMessages: []
+    supportMessage: Remember, number 5 uses dots number 1&5.
+    supportAudio: {fileID: 8300000, guid: 20633448bee365f468066b127672c3a4, type: 3}
+  - displayLabel: 6
+    categoryLabel: Number
+    promptMessage: This is number 6. Press dots 1, 2 & 4.
+    repeatMessage: Number 6. Press dots 1, 2 & 4.
+    successMessage: Correct! That is number 6. Press next to continue.
+    wrongMessage: Try again. Number 6 uses dots 1, 2 & 4.
+    lessonKind: 0
+    dots: 010000000200000004000000
+    expectedSequencePatterns: []
+    expectedSequenceNames: []
+    lessonSprite: {fileID: 21300000, guid: f82cea2587461bf4282a43f5769410d0, type: 3}
+    introAudio: {fileID: 0}
+    instructionAudio: {fileID: 8300000, guid: a617cfd6ef07f0546861c7a2a09a2d54, type: 3}
+    successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
+    sequenceStepAudios: []
+    sequenceStepMessages: []
+    supportMessage: Remember, number 6 uses dots number 1, 2&4.
+    supportAudio: {fileID: 8300000, guid: 3349375d717977447a16d6ad80c06da3, type: 3}
+  - displayLabel: 7
+    categoryLabel: Number
+    promptMessage: This is number 7. Press dots 1, 2, 4 & 5.
+    repeatMessage: Number 7. Press dots 1, 2, 4 & 5.
+    successMessage: Correct! That is number 7. Press next to continue.
+    wrongMessage: Try again. Number 7 uses dots 1, 2, 4 & 5.
+    lessonKind: 0
+    dots: 01000000020000000400000005000000
+    expectedSequencePatterns: []
+    expectedSequenceNames: []
+    lessonSprite: {fileID: 21300000, guid: dc22d5020a1cd2842aa671163a50c49d, type: 3}
+    introAudio: {fileID: 0}
+    instructionAudio: {fileID: 8300000, guid: 822ea0a9f4489694dbea1a7e85e837f4, type: 3}
+    successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
+    sequenceStepAudios: []
+    sequenceStepMessages: []
+    supportMessage: Remember, number 7 uses dots number 1, 2, 4&5.
+    supportAudio: {fileID: 8300000, guid: cd615c0890c5fc24a98b37c716c86181, type: 3}
+  - displayLabel: 8
+    categoryLabel: Number
+    promptMessage: This is number 8. Press dots 1, 2 & 5.
+    repeatMessage: Number 8. Press dots 1, 2 & 5.
+    successMessage: Correct! That is number 8. Press next to continue.
+    wrongMessage: Try again. Number 8 uses dots 1, 2 & 5.
+    lessonKind: 0
+    dots: 010000000200000005000000
+    expectedSequencePatterns: []
+    expectedSequenceNames: []
+    lessonSprite: {fileID: 21300000, guid: 26b1434cb7af98e44a34a241350015b4, type: 3}
+    introAudio: {fileID: 0}
+    instructionAudio: {fileID: 8300000, guid: 35a6eb505189d8e488df140a5104086c, type: 3}
+    successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
+    sequenceStepAudios: []
+    sequenceStepMessages: []
+    supportMessage: Remember, number 8 uses dots number 1, 2&5.
+    supportAudio: {fileID: 8300000, guid: a2f29c2e605d45d4bb7828bd4ef8494f, type: 3}
+  - displayLabel: 9
+    categoryLabel: Number
+    promptMessage: This is number 9. Press dots 2 & 4.
+    repeatMessage: Number 2. Press dots 2 & 4.
+    successMessage: Correct! That is number 9. Press next to continue.
+    wrongMessage: Try again. Number 9 uses dots 2 & 4.
+    lessonKind: 0
+    dots: 0200000004000000
+    expectedSequencePatterns: []
+    expectedSequenceNames: []
+    lessonSprite: {fileID: 21300000, guid: c6311e57aa02a2f4abd7219406cda76a, type: 3}
+    introAudio: {fileID: 0}
+    instructionAudio: {fileID: 8300000, guid: 173025cace273164c98320185aa99cde, type: 3}
+    successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
+    sequenceStepAudios: []
+    sequenceStepMessages: []
+    supportMessage: Remember, number 9 uses dots number 2&4.
+    supportAudio: {fileID: 8300000, guid: 91021259bd97aa540a041ec7e74c51bb, type: 3}
+  - displayLabel: 0
+    categoryLabel: Number
+    promptMessage: This is number 0. Press dots 2, 4 & 5.
+    repeatMessage: Number 0. Press dots 2, 4 & 5.
+    successMessage: Correct! That is number 0. Press next to continue.
+    wrongMessage: Try again. Number 0 uses dots 2, 4 & 5.
+    lessonKind: 0
+    dots: 020000000400000005000000
+    expectedSequencePatterns: []
+    expectedSequenceNames: []
+    lessonSprite: {fileID: 21300000, guid: f0b27abdf4ff1ca4790c53d621e148dc, type: 3}
+    introAudio: {fileID: 0}
+    instructionAudio: {fileID: 8300000, guid: 5551da29d4767c746b233cf5bb0d1eb1, type: 3}
+    successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
+    sequenceStepAudios: []
+    sequenceStepMessages: []
+    supportMessage: Remember, number 0 uses dots number 2, 4&5.
+    supportAudio: {fileID: 8300000, guid: ac0eaa89e7bb19d439e79f7e5c1b9687, type: 3}
+  - displayLabel: '#'
+    categoryLabel: Number Sign
+    promptMessage: This is number sign or hashtag. Press dots 3, 4, 5 & 6.
+    repeatMessage: Number sign or hashtag. Press dots 3, 4, 5 & 6.
+    successMessage: Correct! That is number sign or hashtag. Press next to continue.
+    wrongMessage: Try again. Number sign or hashtag uses dots 3, 4, 5 & 6.
+    lessonKind: 0
+    dots: 03000000040000000500000006000000
+    expectedSequencePatterns: []
+    expectedSequenceNames: []
+    lessonSprite: {fileID: 21300000, guid: 171dd3b3e05f21747a4d39f6492099a7, type: 3}
+    introAudio: {fileID: 0}
+    instructionAudio: {fileID: 8300000, guid: 7282d6b811df829449708f87635be9a3, type: 3}
+    successAudio: {fileID: 8300000, guid: 9de73416f6220ff4abd3bf40ceaa1ee7, type: 3}
+    sequenceStepAudios: []
+    sequenceStepMessages: []
+    supportMessage: Remember, Hashtag uses dots number 3, 4, 5&6.
+    supportAudio: {fileID: 8300000, guid: 73975ca93ac35a2488b67d381496e51e, type: 3}
+  - displayLabel: '#1'
+    categoryLabel: Number Practice
+    promptMessage: 
+    repeatMessage: 
+    successMessage: Correct! That is #1. Press next to continue.
+    wrongMessage: Try again. #1 uses dots 3, 4, 5 & 6 then dot 1.
+    lessonKind: 1
+    dots: 
+    expectedSequencePatterns:
+    - 001111
+    - 100000
+    expectedSequenceNames:
+    - '#'
+    - 1
+    lessonSprite: {fileID: 21300000, guid: 3a8c4f018d2c367498c6569fc46ebbac, type: 3}
+    introAudio: {fileID: 0}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 660e546f63e3ebd4d96609fdc84faa6a, type: 3}
+    sequenceStepAudios:
+    - {fileID: 8300000, guid: abd393c6f8cddf949b5eb99b796a94db, type: 3}
+    - {fileID: 8300000, guid: 02fcba06f6d7d414ca06c9cef3acd3cb, type: 3}
+    sequenceStepMessages:
+    - This is #1 the proper way of typing number 1. Press Dots 3, 4, 5 & 6 then dot
+      1.
+    - Now type number 1. Press dot 1.
+    supportMessage: 
+    supportAudio: {fileID: 0}
+  - displayLabel: '#2'
+    categoryLabel: Number Practice
+    promptMessage: 
+    repeatMessage: 
+    successMessage: Correct! That is #2. Press next to continue.
+    wrongMessage: Try again. #2 uses dots 3, 4, 5 & 6 then dots 1 & 2.
+    lessonKind: 1
+    dots: 
+    expectedSequencePatterns:
+    - 001111
+    - 110000
+    expectedSequenceNames:
+    - '#'
+    - 2
+    lessonSprite: {fileID: 21300000, guid: 78091e3973e09dd4b9c718b451ef5418, type: 3}
+    introAudio: {fileID: 0}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
+    sequenceStepAudios:
+    - {fileID: 8300000, guid: 97a34352dd1e53b4fa7cf9d87aa628fd, type: 3}
+    - {fileID: 8300000, guid: ed576abb2fcd1e044a9cafbdd8505f5f, type: 3}
+    sequenceStepMessages:
+    - This is #2 the proper way of typing number 2. Press Dots 3, 4, 5 & 6 then dots
+      1&2.
+    - Now type number 2. Press dots 1&2.
+    supportMessage: 
+    supportAudio: {fileID: 0}
+  - displayLabel: '#3'
+    categoryLabel: Number Practice
+    promptMessage: 
+    repeatMessage: 
+    successMessage: Correct! That is #3. Press next to continue.
+    wrongMessage: Try again. #3 uses dots 3, 4, 5 & 6 then dot 1&4.
+    lessonKind: 1
+    dots: 
+    expectedSequencePatterns:
+    - 001111
+    - 100100
+    expectedSequenceNames:
+    - '#'
+    - 3
+    lessonSprite: {fileID: 21300000, guid: 29c6dccd899d42148aa4efd82cff7a73, type: 3}
+    introAudio: {fileID: 0}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
+    sequenceStepAudios:
+    - {fileID: 8300000, guid: 9ade241a6410aa8468cc1bf641a6cdac, type: 3}
+    - {fileID: 8300000, guid: 5eedf622cc33cad448b8143da08ba1ed, type: 3}
+    sequenceStepMessages:
+    - This is #3 the proper way of typing number 3. Press Dots 3, 4, 5 & 6 then dot
+      1&4.
+    - Now type number 3. Press dot 1&4.
+    supportMessage: 
+    supportAudio: {fileID: 0}
+  - displayLabel: '#4'
+    categoryLabel: Number Practice
+    promptMessage: 
+    repeatMessage: 
+    successMessage: Correct! That is #4. Press next to continue.
+    wrongMessage: Try again. #4 uses dots 3, 4, 5 & 6 then dot 1, 4&5.
+    lessonKind: 1
+    dots: 
+    expectedSequencePatterns:
+    - 001111
+    - 100110
+    expectedSequenceNames:
+    - '#'
+    - 4
+    lessonSprite: {fileID: 21300000, guid: 5c501832f0950934dac78d12dfa0dc5d, type: 3}
+    introAudio: {fileID: 0}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
+    sequenceStepAudios:
+    - {fileID: 8300000, guid: 3bbad93cc1348fe4aa0c815ad1dbaf79, type: 3}
+    - {fileID: 8300000, guid: 88d4d31d59f985b49bc5005adf0add6a, type: 3}
+    sequenceStepMessages:
+    - This is #4 the proper way of typing number 4. Press Dots 3, 4, 5 & 6 then dot
+      1, 4&5.
+    - Now type number 4. Press dot 1, 4&5.
+    supportMessage: 
+    supportAudio: {fileID: 0}
+  - displayLabel: '#5'
+    categoryLabel: Number Practice
+    promptMessage: 
+    repeatMessage: 
+    successMessage: Correct! That is #5. Press next to continue.
+    wrongMessage: Try again. #5 uses dots 3, 4, 5 & 6 then dot 1&5.
+    lessonKind: 1
+    dots: 
+    expectedSequencePatterns:
+    - 001111
+    - 100010
+    expectedSequenceNames:
+    - '#'
+    - 5
+    lessonSprite: {fileID: 21300000, guid: 4a0e9b052e398bb46b1b3989e5ced1f5, type: 3}
+    introAudio: {fileID: 0}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
+    sequenceStepAudios:
+    - {fileID: 8300000, guid: 9acf51396cadbac42b447955a295caf2, type: 3}
+    - {fileID: 8300000, guid: e3736d9647461ef439af9b8b8f35b19b, type: 3}
+    sequenceStepMessages:
+    - This is #5 the proper way of typing number 5. Press Dots 3, 4, 5 & 6 then dot
+      1&5.
+    - Now type number 5. Press dot 1&5.
+    supportMessage: 
+    supportAudio: {fileID: 0}
+  - displayLabel: '#6'
+    categoryLabel: Number Practice
+    promptMessage: 
+    repeatMessage: 
+    successMessage: Correct! That is #6. Press next to continue.
+    wrongMessage: Try again. #1 uses dots 3, 4, 5 & 6 then dot 1, 2&4.
+    lessonKind: 1
+    dots: 
+    expectedSequencePatterns:
+    - 001111
+    - 110100
+    expectedSequenceNames:
+    - '#'
+    - 6
+    lessonSprite: {fileID: 21300000, guid: c8712ef6dace79f4ea80f51122e97cea, type: 3}
+    introAudio: {fileID: 0}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
+    sequenceStepAudios:
+    - {fileID: 8300000, guid: 9be71d08fbcda2d469996652d3fac495, type: 3}
+    - {fileID: 8300000, guid: 398188dbcac1b7849b87d04a2b41ee3b, type: 3}
+    sequenceStepMessages:
+    - This is #6 the proper way of typing number 6. Press Dots 3, 4, 5 & 6 then dot
+      1, 2&4.
+    - Now type number 6. Press dot 1, 2&4.
+    supportMessage: 
+    supportAudio: {fileID: 0}
+  - displayLabel: '#7'
+    categoryLabel: Number Practice
+    promptMessage: 
+    repeatMessage: 
+    successMessage: Correct! That is #7. Press next to continue.
+    wrongMessage: Try again. #7 uses dots 3, 4, 5 & 6 then dot 1, 2, 4&5.
+    lessonKind: 1
+    dots: 
+    expectedSequencePatterns:
+    - 001111
+    - 110110
+    expectedSequenceNames:
+    - '#'
+    - 7
+    lessonSprite: {fileID: 21300000, guid: ff38b062283a26f4da7ed346f9ccb152, type: 3}
+    introAudio: {fileID: 0}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
+    sequenceStepAudios:
+    - {fileID: 8300000, guid: 9d4da18aae31317458766cb99a7d8824, type: 3}
+    - {fileID: 8300000, guid: c965f5b4f534dfd408b0e698e056b55b, type: 3}
+    sequenceStepMessages:
+    - This is #7 the proper way of typing number 7. Press Dots 3, 4, 5 & 6 then dot
+      1, 2, 4&5.
+    - Now type number 1. Press dot 1.
+    supportMessage: 
+    supportAudio: {fileID: 0}
+  - displayLabel: '#8'
+    categoryLabel: Number Practice
+    promptMessage: 
+    repeatMessage: 
+    successMessage: Correct! That is #8. Press next to continue.
+    wrongMessage: Try again. #8 uses dots 3, 4, 5 & 6 then dot 1, 2&5.
+    lessonKind: 1
+    dots: 
+    expectedSequencePatterns:
+    - 001111
+    - 110010
+    expectedSequenceNames:
+    - '#'
+    - 8
+    lessonSprite: {fileID: 21300000, guid: 0123f8838b4d23349bece3d00cc061a9, type: 3}
+    introAudio: {fileID: 0}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
+    sequenceStepAudios:
+    - {fileID: 8300000, guid: fccdec1d89fc63744b43317a231e89a6, type: 3}
+    - {fileID: 8300000, guid: 8b3926be33dc3044481dca43643c0329, type: 3}
+    sequenceStepMessages:
+    - This is #8 the proper way of typing number 8. Press Dots 3, 4, 5 & 6 then dot
+      1, 2&5.
+    - Now type number 8. Press dot 1, 2&5.
+    supportMessage: 
+    supportAudio: {fileID: 0}
+  - displayLabel: '#9'
+    categoryLabel: Number Practice
+    promptMessage: 
+    repeatMessage: 
+    successMessage: Correct! That is #9. Press next to continue.
+    wrongMessage: Try again. #1 uses dots 3, 4, 5 & 6 then dot 2&4.
+    lessonKind: 1
+    dots: 
+    expectedSequencePatterns:
+    - 001111
+    - 010100
+    expectedSequenceNames:
+    - '#'
+    - 9
+    lessonSprite: {fileID: 21300000, guid: 0d4ab4d9dc8f9754487b692eeb4a6f96, type: 3}
+    introAudio: {fileID: 0}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
+    sequenceStepAudios:
+    - {fileID: 8300000, guid: 314776c7e4bc3b848bc4fde44afe580c, type: 3}
+    - {fileID: 8300000, guid: 314776c7e4bc3b848bc4fde44afe580c, type: 3}
+    sequenceStepMessages:
+    - This is #9 the proper way of typing number 9. Press Dots 3, 4, 5 & 6 then dot
+      2&4.
+    - Now type number 9. Press dot 2&4.
+    supportMessage: 
+    supportAudio: {fileID: 0}
+  - displayLabel: '#0'
+    categoryLabel: Number Practice
+    promptMessage: 
+    repeatMessage: 
+    successMessage: Correct! That is #0. Press next to continue.
+    wrongMessage: Try again. #1 uses dots 3, 4, 5 & 6 then dot 2, 4&5.
+    lessonKind: 1
+    dots: 
+    expectedSequencePatterns:
+    - 001111
+    - 010110
+    expectedSequenceNames:
+    - '#'
+    - 0
+    lessonSprite: {fileID: 21300000, guid: 0bc55ee76cecb464095755326d155dd3, type: 3}
+    introAudio: {fileID: 0}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
+    sequenceStepAudios:
+    - {fileID: 8300000, guid: ec40794df8bdf7140af335cf9415e6c3, type: 3}
+    - {fileID: 8300000, guid: 5e4b4ac4e1d53b545940a4c7965bc2a5, type: 3}
+    sequenceStepMessages:
+    - This is #0 the proper way of typing number 0. Press Dots 3, 4, 5 & 6 then dot
+      2, 4 &5.
+    - Now type number 0. Press dot 2, 4 &5.
+    supportMessage: 
+    supportAudio: {fileID: 0}
+  playInstructionOnLessonStart: 1
+  delayAfterVoice: 0.35
+  noAudioTextDelay: 2
+  delayAfterCorrect: 0.75
+  showHeldDotsPattern: 1
+  resetSequenceToStartOnWrongAnswer: 1
+  mistakesBeforeSupport: 3
+  resetMistakesAfterSupport: 1
+  logDebug: 1
+--- !u!1 &1697798611
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1759,42 +2071,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1710783190}
-  - component: {fileID: 1710783192}
-  - component: {fileID: 1710783191}
+  - component: {fileID: 1697798614}
+  - component: {fileID: 1697798613}
+  - component: {fileID: 1697798612}
   m_Layer: 5
-  m_Name: TranslationLetter.Txt
+  m_Name: Live
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &1710783190
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1710783189}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 270223250}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -56, y: 181.5}
-  m_SizeDelta: {x: 452.4714, y: 183.8403}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1710783191
+--- !u!114 &1697798612
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1710783189}
+  m_GameObject: {fileID: 1697798611}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
@@ -1808,7 +2101,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Letter Translation
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a66db046ab4320b408a76ab376bdacca, type: 2}
   m_sharedMaterial: {fileID: 6244326952053564057, guid: a66db046ab4320b408a76ab376bdacca, type: 2}
@@ -1841,9 +2134,283 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_characterHorizontalScale: 1
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 57.23529, z: 10.771362, w: -27.482924}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1697798613
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697798611}
+  m_CullTransparentMesh: 1
+--- !u!224 &1697798614
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697798611}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 270223250}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -629, y: 153}
+  m_SizeDelta: {x: 452.4714, y: 183.8403}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1710783189
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1710783190}
+  - component: {fileID: 1710783192}
+  - component: {fileID: 1710783191}
+  m_Layer: 5
+  m_Name: NumberTranslation.Txt
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1710783190
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1710783189}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 270223250}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -97, y: 181.5}
+  m_SizeDelta: {x: 452.4714, y: 183.8403}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1710783191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1710783189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Number Translation
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: a66db046ab4320b408a76ab376bdacca, type: 2}
+  m_sharedMaterial: {fileID: 6244326952053564057, guid: a66db046ab4320b408a76ab376bdacca, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 75
+  m_fontSizeBase: 75
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 1
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_characterHorizontalScale: 1
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: -0.000061035156, z: -125.14807, w: -27.482924}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1710783192
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1710783189}
+  m_CullTransparentMesh: 1
+--- !u!1 &1716768800
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1716768803}
+  - component: {fileID: 1716768802}
+  - component: {fileID: 1716768801}
+  m_Layer: 5
+  m_Name: Category
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1716768801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1716768800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: c4ae2105d0679bd45932ed513ad0b3bd, type: 2}
+  m_sharedMaterial: {fileID: -2866231447455670809, guid: c4ae2105d0679bd45932ed513ad0b3bd, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 50
+  m_fontSizeBase: 50
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_characterHorizontalScale: 1
@@ -1880,14 +2447,33 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &1710783192
+--- !u!222 &1716768802
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1710783189}
+  m_GameObject: {fileID: 1716768800}
   m_CullTransparentMesh: 1
+--- !u!224 &1716768803
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1716768800}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1791188412}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 497, y: -355}
+  m_SizeDelta: {x: 452.4714, y: 183.8403}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1791188411
 GameObject:
   m_ObjectHideFlags: 0
@@ -1925,8 +2511,9 @@ RectTransform:
   - {fileID: 653795465}
   - {fileID: 270223250}
   - {fileID: 397166429}
-  - {fileID: 1408315747}
+  - {fileID: 1381365065}
   - {fileID: 2077778576}
+  - {fileID: 1716768803}
   - {fileID: 1586095474}
   - {fileID: 286661653}
   m_Father: {fileID: 83132950}
@@ -2064,13 +2651,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 400
-  m_fontSizeBase: 400
+  m_fontSize: 250
+  m_fontSizeBase: 250
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -2133,7 +2720,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.1603, y: -171.54}
+  m_AnchoredPosition: {x: -62.42, y: -171.54}
   m_SizeDelta: {x: 404.264, y: 343.074}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1660057539 &9223372036854775807
