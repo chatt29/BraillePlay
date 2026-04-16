@@ -881,7 +881,7 @@ GameObject:
   - component: {fileID: 1204025122}
   - component: {fileID: 1204025121}
   m_Layer: 5
-  m_Name: NUMBERS.TXT
+  m_Name: Contraction.TXT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -903,7 +903,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 194, y: 401}
+  m_AnchoredPosition: {x: 0, y: 419}
   m_SizeDelta: {x: 536.2007, y: 189.4903}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1204025121
@@ -926,7 +926,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: NUMBERS
+  m_text: ONE-CELL CONTRACTIONS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1a98abfae0e1fc34282e9b7fd0f3a427, type: 2}
   m_sharedMaterial: {fileID: -8189821304231711609, guid: 1a98abfae0e1fc34282e9b7fd0f3a427, type: 2}
@@ -953,8 +953,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 130
-  m_fontSizeBase: 130
+  m_fontSize: 90
+  m_fontSizeBase: 90
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -992,7 +992,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -159.27966, w: 0}
+  m_margin: {x: 0, y: 0, z: -572.43335, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1078,8 +1078,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_characterHorizontalScale: 1
@@ -1382,7 +1382,7 @@ GameObject:
   - component: {fileID: 1586095480}
   - component: {fileID: 1586095479}
   m_Layer: 5
-  m_Name: NumberTranslationManager
+  m_Name: CommonContractionManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1581,10 +1581,13 @@ MonoBehaviour:
   genericCorrectAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
   genericTryAgainAudio: {fileID: 8300000, guid: dd615f4eef83e3b49b22a11445f9b6d6, type: 3}
   genericCompletedAudio: {fileID: 8300000, guid: af652ce1713801846ba385167d93d7fe, type: 3}
+  repeatQuestionAudio: {fileID: 8300000, guid: d3c4c62eef62c8240933f28433974d87, type: 3}
   welcomeMessage: Welcome to Number Translation!
   letsLearnMessage: Let's learn how to translate numbers into braille.
   completedMessage: Great job! You finished learning how to translate numbers into
     Braille!
+  repeatQuestionMessage: You finished this braille lesson. Do you want to repeat
+    again? Press R to repeat or Y to finish.
   lessons:
   - displayLabel: 1
     categoryLabel: Number
@@ -1602,6 +1605,8 @@ MonoBehaviour:
     successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
     sequenceStepAudios: []
     sequenceStepMessages: []
+    supportMessage: Remember, number 1 uses dot number 1.
+    supportAudio: {fileID: 8300000, guid: a322b0a940e749b46a749f0b1a9dcf4a, type: 3}
   - displayLabel: 2
     categoryLabel: Number
     promptMessage: This is number 2. Press dots 1 & 2.
@@ -1618,6 +1623,8 @@ MonoBehaviour:
     successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
     sequenceStepAudios: []
     sequenceStepMessages: []
+    supportMessage: Remember, number 2 uses dots number 1&2.
+    supportAudio: {fileID: 8300000, guid: 429e908fdece8b34ebc34979dde0cf19, type: 3}
   - displayLabel: 3
     categoryLabel: Number
     promptMessage: This is number 3. Press dots 1 & 4.
@@ -1634,6 +1641,8 @@ MonoBehaviour:
     successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
     sequenceStepAudios: []
     sequenceStepMessages: []
+    supportMessage: Remember, number 3 uses dots number 1&4.
+    supportAudio: {fileID: 8300000, guid: 9ab37e14d6349dc408b3ff922e0bd5bc, type: 3}
   - displayLabel: 4
     categoryLabel: Number
     promptMessage: This is number 4. Press dots 1, 4 & 5.
@@ -1650,6 +1659,8 @@ MonoBehaviour:
     successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
     sequenceStepAudios: []
     sequenceStepMessages: []
+    supportMessage: Remember, number 4 uses dots number 1, 4 & 5.
+    supportAudio: {fileID: 8300000, guid: dcea7b2fa1b094643adc1e6765bc861b, type: 3}
   - displayLabel: 5
     categoryLabel: Number
     promptMessage: This is number 5. Press dots 1 & 5.
@@ -1666,6 +1677,8 @@ MonoBehaviour:
     successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
     sequenceStepAudios: []
     sequenceStepMessages: []
+    supportMessage: Remember, number 5 uses dots number 1&5.
+    supportAudio: {fileID: 8300000, guid: 20633448bee365f468066b127672c3a4, type: 3}
   - displayLabel: 6
     categoryLabel: Number
     promptMessage: This is number 6. Press dots 1, 2 & 4.
@@ -1682,6 +1695,8 @@ MonoBehaviour:
     successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
     sequenceStepAudios: []
     sequenceStepMessages: []
+    supportMessage: Remember, number 6 uses dots number 1, 2&4.
+    supportAudio: {fileID: 8300000, guid: 3349375d717977447a16d6ad80c06da3, type: 3}
   - displayLabel: 7
     categoryLabel: Number
     promptMessage: This is number 7. Press dots 1, 2, 4 & 5.
@@ -1698,6 +1713,8 @@ MonoBehaviour:
     successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
     sequenceStepAudios: []
     sequenceStepMessages: []
+    supportMessage: Remember, number 7 uses dots number 1, 2, 4&5.
+    supportAudio: {fileID: 8300000, guid: cd615c0890c5fc24a98b37c716c86181, type: 3}
   - displayLabel: 8
     categoryLabel: Number
     promptMessage: This is number 8. Press dots 1, 2 & 5.
@@ -1714,6 +1731,8 @@ MonoBehaviour:
     successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
     sequenceStepAudios: []
     sequenceStepMessages: []
+    supportMessage: Remember, number 8 uses dots number 1, 2&5.
+    supportAudio: {fileID: 8300000, guid: a2f29c2e605d45d4bb7828bd4ef8494f, type: 3}
   - displayLabel: 9
     categoryLabel: Number
     promptMessage: This is number 9. Press dots 2 & 4.
@@ -1730,6 +1749,8 @@ MonoBehaviour:
     successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
     sequenceStepAudios: []
     sequenceStepMessages: []
+    supportMessage: Remember, number 9 uses dots number 2&4.
+    supportAudio: {fileID: 8300000, guid: 91021259bd97aa540a041ec7e74c51bb, type: 3}
   - displayLabel: 0
     categoryLabel: Number
     promptMessage: This is number 0. Press dots 2, 4 & 5.
@@ -1746,6 +1767,8 @@ MonoBehaviour:
     successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
     sequenceStepAudios: []
     sequenceStepMessages: []
+    supportMessage: Remember, number 0 uses dots number 2, 4&5.
+    supportAudio: {fileID: 8300000, guid: ac0eaa89e7bb19d439e79f7e5c1b9687, type: 3}
   - displayLabel: '#'
     categoryLabel: Number Sign
     promptMessage: This is number sign or hashtag. Press dots 3, 4, 5 & 6.
@@ -1762,6 +1785,8 @@ MonoBehaviour:
     successAudio: {fileID: 8300000, guid: 9de73416f6220ff4abd3bf40ceaa1ee7, type: 3}
     sequenceStepAudios: []
     sequenceStepMessages: []
+    supportMessage: Remember, Hashtag uses dots number 3, 4, 5&6.
+    supportAudio: {fileID: 8300000, guid: 73975ca93ac35a2488b67d381496e51e, type: 3}
   - displayLabel: '#1'
     categoryLabel: Number Practice
     promptMessage: 
@@ -1787,6 +1812,8 @@ MonoBehaviour:
     - This is #1 the proper way of typing number 1. Press Dots 3, 4, 5 & 6 then dot
       1.
     - Now type number 1. Press dot 1.
+    supportMessage: 
+    supportAudio: {fileID: 0}
   - displayLabel: '#2'
     categoryLabel: Number Practice
     promptMessage: 
@@ -1812,6 +1839,8 @@ MonoBehaviour:
     - This is #2 the proper way of typing number 2. Press Dots 3, 4, 5 & 6 then dots
       1&2.
     - Now type number 2. Press dots 1&2.
+    supportMessage: 
+    supportAudio: {fileID: 0}
   - displayLabel: '#3'
     categoryLabel: Number Practice
     promptMessage: 
@@ -1837,6 +1866,8 @@ MonoBehaviour:
     - This is #3 the proper way of typing number 3. Press Dots 3, 4, 5 & 6 then dot
       1&4.
     - Now type number 3. Press dot 1&4.
+    supportMessage: 
+    supportAudio: {fileID: 0}
   - displayLabel: '#4'
     categoryLabel: Number Practice
     promptMessage: 
@@ -1862,6 +1893,8 @@ MonoBehaviour:
     - This is #4 the proper way of typing number 4. Press Dots 3, 4, 5 & 6 then dot
       1, 4&5.
     - Now type number 4. Press dot 1, 4&5.
+    supportMessage: 
+    supportAudio: {fileID: 0}
   - displayLabel: '#5'
     categoryLabel: Number Practice
     promptMessage: 
@@ -1887,6 +1920,8 @@ MonoBehaviour:
     - This is #5 the proper way of typing number 5. Press Dots 3, 4, 5 & 6 then dot
       1&5.
     - Now type number 5. Press dot 1&5.
+    supportMessage: 
+    supportAudio: {fileID: 0}
   - displayLabel: '#6'
     categoryLabel: Number Practice
     promptMessage: 
@@ -1912,6 +1947,8 @@ MonoBehaviour:
     - This is #6 the proper way of typing number 6. Press Dots 3, 4, 5 & 6 then dot
       1, 2&4.
     - Now type number 6. Press dot 1, 2&4.
+    supportMessage: 
+    supportAudio: {fileID: 0}
   - displayLabel: '#7'
     categoryLabel: Number Practice
     promptMessage: 
@@ -1937,6 +1974,8 @@ MonoBehaviour:
     - This is #7 the proper way of typing number 7. Press Dots 3, 4, 5 & 6 then dot
       1, 2, 4&5.
     - Now type number 1. Press dot 1.
+    supportMessage: 
+    supportAudio: {fileID: 0}
   - displayLabel: '#8'
     categoryLabel: Number Practice
     promptMessage: 
@@ -1962,6 +2001,8 @@ MonoBehaviour:
     - This is #8 the proper way of typing number 8. Press Dots 3, 4, 5 & 6 then dot
       1, 2&5.
     - Now type number 8. Press dot 1, 2&5.
+    supportMessage: 
+    supportAudio: {fileID: 0}
   - displayLabel: '#9'
     categoryLabel: Number Practice
     promptMessage: 
@@ -1987,6 +2028,8 @@ MonoBehaviour:
     - This is #9 the proper way of typing number 9. Press Dots 3, 4, 5 & 6 then dot
       2&4.
     - Now type number 9. Press dot 2&4.
+    supportMessage: 
+    supportAudio: {fileID: 0}
   - displayLabel: '#0'
     categoryLabel: Number Practice
     promptMessage: 
@@ -2012,12 +2055,21 @@ MonoBehaviour:
     - This is #0 the proper way of typing number 0. Press Dots 3, 4, 5 & 6 then dot
       2, 4 &5.
     - Now type number 0. Press dot 2, 4 &5.
+    supportMessage: 
+    supportAudio: {fileID: 0}
   playInstructionOnLessonStart: 1
   delayAfterVoice: 0.35
   noAudioTextDelay: 2
   delayAfterCorrect: 0.75
   showHeldDotsPattern: 1
   resetSequenceToStartOnWrongAnswer: 1
+  mistakesBeforeSupport: 3
+  resetMistakesAfterSupport: 1
+  useTypewriterEffect: 1
+  defaultTypewriterCharacterDelay: 0.03
+  minSyncedCharacterDelay: 0.01
+  maxSyncedCharacterDelay: 0.12
+  waitForFullAudioBeforeContinuing: 1
   logDebug: 1
 --- !u!1 &1697798611
 GameObject:
@@ -2153,7 +2205,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -629, y: 153}
+  m_AnchoredPosition: {x: -645, y: 139.33}
   m_SizeDelta: {x: 452.4714, y: 183.8403}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1710783189
@@ -2168,7 +2220,7 @@ GameObject:
   - component: {fileID: 1710783192}
   - component: {fileID: 1710783191}
   m_Layer: 5
-  m_Name: NumberTranslation.Txt
+  m_Name: Common.Txt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2213,7 +2265,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Number Translation
+  m_text: Common Contraction
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a66db046ab4320b408a76ab376bdacca, type: 2}
   m_sharedMaterial: {fileID: 6244326952053564057, guid: a66db046ab4320b408a76ab376bdacca, type: 2}

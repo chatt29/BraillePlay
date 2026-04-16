@@ -496,8 +496,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 559.4374, y: -146.63815}
-  m_SizeDelta: {x: 358.3467, y: 446.6544}
+  m_AnchoredPosition: {x: 568.18, y: -163.04999}
+  m_SizeDelta: {x: 422.9019, y: 450.52}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &286661654
 MonoBehaviour:
@@ -519,7 +519,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -6454602059456158294, guid: 215d21380c4d7a64e8089b363db78684, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1217,6 +1217,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1321976831}
   m_CullTransparentMesh: 1
+--- !u!1 &1408315746
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1408315747}
+  - component: {fileID: 1408315749}
+  - component: {fileID: 1408315748}
+  m_Layer: 5
+  m_Name: SmallBox.Image (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1408315747
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1408315746}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1791188412}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 559.44, y: -163.05}
+  m_SizeDelta: {x: 405.4244, y: 456.2524}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1408315748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1408315746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -2090746625060802979, guid: 98913bed01e13994bb159d884ef43c2a, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1408315749
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1408315746}
+  m_CullTransparentMesh: 1
 --- !u!1 &1434168919
 GameObject:
   m_ObjectHideFlags: 0
@@ -1355,162 +1430,163 @@ MonoBehaviour:
   genericCorrectAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
   genericTryAgainAudio: {fileID: 8300000, guid: dd615f4eef83e3b49b22a11445f9b6d6, type: 3}
   genericCompletedAudio: {fileID: 8300000, guid: d086ff315dbc0f24ba0f913e39826641, type: 3}
+  repeatQuestionAudio: {fileID: 8300000, guid: fe8e802ce4329bb4c8b424fe912614fd, type: 3}
   welcomeMessage: Welcome to Alphabets Translation!
   letsLearnMessage: Let's learn how to translate letters into Braille.
   lessons:
   - letter: A
     dots: 01000000
-    lessonSprite: {fileID: -9140533122301678467, guid: 9cae83eb843b4f2419a2ea6cc8d53bb4, type: 3}
+    lessonSprite: {fileID: 21300000, guid: b8df670c7e9957a45b35c5685879a322, type: 3}
     introAudio: {fileID: 8300000, guid: 42701a2ed6601e345945e43b1120e18e, type: 3}
     instructionAudio: {fileID: 8300000, guid: a3a821dc474e32b43ac45dab4fa0b793, type: 3}
     successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
   - letter: B
     dots: 0100000002000000
-    lessonSprite: {fileID: 589024244632633895, guid: 67d383ec4d0be2147a4b99910c4dd485, type: 3}
+    lessonSprite: {fileID: 21300000, guid: cc6bae3515a12144da0cb8e13ecbcaad, type: 3}
     introAudio: {fileID: 8300000, guid: c8c1c489208b62d4a8fc76e6666cbd62, type: 3}
     instructionAudio: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
     successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
   - letter: C
     dots: 0100000004000000
-    lessonSprite: {fileID: -606033477821260893, guid: 940c2527e710bcf49bc24552cb65f821, type: 3}
+    lessonSprite: {fileID: 21300000, guid: f1f1d850f3dbd5e4387cef24e691c6dc, type: 3}
     introAudio: {fileID: 8300000, guid: 90c6142c3d1a7464ebe56f87204bea71, type: 3}
     instructionAudio: {fileID: 8300000, guid: 2f1565027f9fe4b49b7d2571f250126e, type: 3}
     successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
   - letter: D
     dots: 010000000400000005000000
-    lessonSprite: {fileID: -962488092458481032, guid: 9a92ae043e67c764c8fd68ab3ab75d79, type: 3}
+    lessonSprite: {fileID: 21300000, guid: 29d8da1320b989c47bd80f8c60959c07, type: 3}
     introAudio: {fileID: 8300000, guid: 0601bf2b0db857c4eaffb6ba222204bd, type: 3}
     instructionAudio: {fileID: 8300000, guid: 19cd2fcbcf0c84344bf129e4bb718e65, type: 3}
     successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
   - letter: E
     dots: 0100000005000000
-    lessonSprite: {fileID: -2224474878120320963, guid: dd34af56984b10c44bae0e1ab559ea6d, type: 3}
+    lessonSprite: {fileID: 21300000, guid: 5b4a69441bbaebb40964c9ca4d8df3f3, type: 3}
     introAudio: {fileID: 8300000, guid: 707ccab107fb44046a819e4824579270, type: 3}
     instructionAudio: {fileID: 8300000, guid: 289ed225566031f43936497de449e91f, type: 3}
     successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
   - letter: F
     dots: 010000000200000004000000
-    lessonSprite: {fileID: -3687348052613884379, guid: 121bcda866055b6428a90bcc056dfca9, type: 3}
+    lessonSprite: {fileID: 21300000, guid: 16eb9b6d350ca0c49a5de0e2ad74e2cd, type: 3}
     introAudio: {fileID: 8300000, guid: 2edf166576d86a340b0b442b03457ea2, type: 3}
     instructionAudio: {fileID: 8300000, guid: e7df56fc6bca53649a1c9e7ee28954ea, type: 3}
     successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
   - letter: G
     dots: 01000000020000000400000005000000
-    lessonSprite: {fileID: 9202060142997513903, guid: d63cfd2fbaa9f0346a5dfeca4f1e155d, type: 3}
+    lessonSprite: {fileID: 21300000, guid: 0f9e6be4fff70d14eb1277785886c3ed, type: 3}
     introAudio: {fileID: 8300000, guid: d21c6d0632512224ea753b19452a0b68, type: 3}
     instructionAudio: {fileID: 8300000, guid: 26adec60c2b7a5a4f9afcb534b5f1d17, type: 3}
     successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
   - letter: H
     dots: 010000000200000005000000
-    lessonSprite: {fileID: 2825150710382137115, guid: 4e3f4002450e3b64da6bbc50f703faac, type: 3}
+    lessonSprite: {fileID: 21300000, guid: fb4de746635d3504f9267576a921c678, type: 3}
     introAudio: {fileID: 8300000, guid: 361a5119156095a49a65409f2c997d00, type: 3}
     instructionAudio: {fileID: 8300000, guid: 0786219909687444ab5f03cf285614e6, type: 3}
     successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
   - letter: I
     dots: 0200000004000000
-    lessonSprite: {fileID: -5465646382484160345, guid: eee22cb70032408408e8944da75b0987, type: 3}
+    lessonSprite: {fileID: 21300000, guid: 21e0753a5fadda94c899fb06ee93f6f9, type: 3}
     introAudio: {fileID: 8300000, guid: 443317135d675eb41b96738d455c2d56, type: 3}
     instructionAudio: {fileID: 8300000, guid: c9245a80df18e874ebccb0b598a21ea5, type: 3}
     successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
   - letter: J
     dots: 020000000400000005000000
-    lessonSprite: {fileID: -581286770295223724, guid: 75e5b30e353424d4db2aee740b7783ed, type: 3}
+    lessonSprite: {fileID: 21300000, guid: c4c666fbffcfe64428e48fe0addb7245, type: 3}
     introAudio: {fileID: 8300000, guid: 71c615913ca1398498f4a6c52acf90f6, type: 3}
     instructionAudio: {fileID: 8300000, guid: d250dea8334ef854b8ab00c5a980583f, type: 3}
     successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
   - letter: K
     dots: 0100000003000000
-    lessonSprite: {fileID: 1646720447909147354, guid: 45caedbad4bab0549ac5475066db21e4, type: 3}
+    lessonSprite: {fileID: 21300000, guid: 916ad18e87679fe43941bef9320ba836, type: 3}
     introAudio: {fileID: 8300000, guid: fa4fece67e4badf4488b8303b03a60f9, type: 3}
     instructionAudio: {fileID: 8300000, guid: 7fac0170c8a6702479367ffae1b2c88c, type: 3}
     successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
   - letter: L
     dots: 010000000200000003000000
-    lessonSprite: {fileID: 3685002520340290964, guid: 9936df43c3ffa3144ba7a454fa206d81, type: 3}
+    lessonSprite: {fileID: 21300000, guid: 4372d825dd8500e4f94669f265eb3f91, type: 3}
     introAudio: {fileID: 8300000, guid: f34da036c91ea0140a3c9dcaff8472e6, type: 3}
     instructionAudio: {fileID: 8300000, guid: 7f48dcf4229b41445a1c7993e9c7334e, type: 3}
     successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
   - letter: M
     dots: 010000000300000004000000
-    lessonSprite: {fileID: 2811246782448359015, guid: 4dc0ea62d60a93f4b961ffd2eead6d36, type: 3}
+    lessonSprite: {fileID: 21300000, guid: a7ec38fd03d2e1e46b362270aa1f53a7, type: 3}
     introAudio: {fileID: 8300000, guid: 8949e4c617afc5a4d838638e7dcd044d, type: 3}
     instructionAudio: {fileID: 8300000, guid: 9e07367c923ef3641b7dad053ec62a7e, type: 3}
     successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
   - letter: N
     dots: 01000000030000000400000005000000
-    lessonSprite: {fileID: 6059799596907309901, guid: cf9e6ad419051994d801451a717ef559, type: 3}
+    lessonSprite: {fileID: 21300000, guid: f88d5dde49dcd7a438b3db767904d77d, type: 3}
     introAudio: {fileID: 8300000, guid: c8dc7453d7369d6498cfeb78d9dea367, type: 3}
     instructionAudio: {fileID: 8300000, guid: a111e42b5ff5bd643a0ac490c9c89d33, type: 3}
     successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
   - letter: O
     dots: 010000000300000005000000
-    lessonSprite: {fileID: -1937887712669590171, guid: 77bf44f3d32b8b547abb7656c4b1e2c1, type: 3}
+    lessonSprite: {fileID: 21300000, guid: a6ebf48ba1113204686e1aaa721adcee, type: 3}
     introAudio: {fileID: 8300000, guid: cd5b40ac7ce53d84d9ba3a0998c87d25, type: 3}
     instructionAudio: {fileID: 8300000, guid: 532653797345a8f418d07365d1d8f3d2, type: 3}
     successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
   - letter: P
     dots: 01000000020000000300000004000000
-    lessonSprite: {fileID: 450080780327903475, guid: 6d193c74fbb9b344eb44130dc1695663, type: 3}
+    lessonSprite: {fileID: 21300000, guid: 148dd5fa508134440b3815acec151e81, type: 3}
     introAudio: {fileID: 8300000, guid: a8c7c6cfc929a54419567568ba2d7b78, type: 3}
     instructionAudio: {fileID: 8300000, guid: 610bf70710cd7ae4d81c3052367ada4f, type: 3}
     successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
   - letter: Q
     dots: 0100000002000000030000000400000005000000
-    lessonSprite: {fileID: -3859272008004827343, guid: 690482d67cac90949a1661f52712a6ab, type: 3}
+    lessonSprite: {fileID: 21300000, guid: 6143e69fc7956f341a0b807f2a0765c2, type: 3}
     introAudio: {fileID: 8300000, guid: 7064cc81db87d0c4aa9facffb3f17782, type: 3}
     instructionAudio: {fileID: 8300000, guid: 2eeaba6ab3221824b84a1497b0413fb9, type: 3}
     successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
   - letter: R
     dots: 01000000020000000300000005000000
-    lessonSprite: {fileID: 5936356172364887011, guid: 5b33fc404f505874e95c625f238f03be, type: 3}
+    lessonSprite: {fileID: 21300000, guid: f7691722ae1526243b5e835e1f1f7e85, type: 3}
     introAudio: {fileID: 8300000, guid: fe8f79f5693b7204e92d3d6353d0a748, type: 3}
     instructionAudio: {fileID: 8300000, guid: e6aaf93bef15ad14e995b6c098d533ad, type: 3}
     successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
   - letter: S
     dots: 020000000300000004000000
-    lessonSprite: {fileID: -1182827721247122346, guid: 7dbdcd3cf2d10d24ea50d7a034c25777, type: 3}
+    lessonSprite: {fileID: 21300000, guid: 044df8a8cadddc347a4609cc32c4edb2, type: 3}
     introAudio: {fileID: 8300000, guid: 62170f84e32f6c24fa9b670ce5e47ac8, type: 3}
     instructionAudio: {fileID: 8300000, guid: 9207627036a9c6040a87f09fc8767528, type: 3}
     successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
   - letter: T
     dots: 02000000030000000400000005000000
-    lessonSprite: {fileID: -1785357414251982577, guid: ba597a47f3da40641a2de08c26e2752b, type: 3}
+    lessonSprite: {fileID: 21300000, guid: 688485fe27f99f74cb7c4ce07dd91b4d, type: 3}
     introAudio: {fileID: 8300000, guid: 91a4f22e4d1e56341a91754b151a3966, type: 3}
     instructionAudio: {fileID: 8300000, guid: ccb2ee6c1da027543acc111a8ad77a3a, type: 3}
     successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
   - letter: U
     dots: 010000000300000006000000
-    lessonSprite: {fileID: 128889091407729587, guid: d3b3654ec71af0f4a83e6c43909557bb, type: 3}
+    lessonSprite: {fileID: 21300000, guid: b214eebfa429b61429a583d7ebd1e103, type: 3}
     introAudio: {fileID: 8300000, guid: 222e70d6dd8e7234b9b09208a4abf2fe, type: 3}
     instructionAudio: {fileID: 8300000, guid: c2df0bbeb8891014f95697ade4f7e9f1, type: 3}
     successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
   - letter: V
     dots: 01000000020000000300000006000000
-    lessonSprite: {fileID: 5871036504220654801, guid: e470cc620e8564b4e885df91c24ff869, type: 3}
+    lessonSprite: {fileID: 21300000, guid: 09a03a229b7c32442828cd51d2b82062, type: 3}
     introAudio: {fileID: 8300000, guid: 385b1719cb89d0742a696b8a8479a53c, type: 3}
     instructionAudio: {fileID: 8300000, guid: 78c858e2e6fc5294fae4a9596f60feda, type: 3}
     successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
   - letter: W
     dots: 02000000040000000500000006000000
-    lessonSprite: {fileID: -243099114694839562, guid: c6e9b38550ceb634982600ac6de18090, type: 3}
+    lessonSprite: {fileID: 21300000, guid: 877585566e8a21e4bb0f13bb49266538, type: 3}
     introAudio: {fileID: 8300000, guid: 58c4a899bb840ee4f98d66227c02654d, type: 3}
     instructionAudio: {fileID: 8300000, guid: a885b81073ad42c44a8b50c072057e43, type: 3}
     successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
   - letter: X
     dots: 01000000030000000400000006000000
-    lessonSprite: {fileID: 3959922740387019359, guid: 72a1d39d90569524dae4add9f804fa2f, type: 3}
+    lessonSprite: {fileID: 21300000, guid: 42ee98ec93c15cb41835b5f0af0d2ae8, type: 3}
     introAudio: {fileID: 8300000, guid: 613b8e4abc60f9144b6e3d048389a9b1, type: 3}
     instructionAudio: {fileID: 8300000, guid: 0289c15a6b1b3e949ae70c139cba27e9, type: 3}
     successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
   - letter: Y
     dots: 0100000003000000040000000500000006000000
-    lessonSprite: {fileID: -7057060395142453220, guid: 20837a2f26183dc44830710c49ec1e4d, type: 3}
+    lessonSprite: {fileID: 21300000, guid: f092d4bafdc95d7478c57bc5be4d24ce, type: 3}
     introAudio: {fileID: 8300000, guid: b5db0f9dea2bc204995aceda1e8ecf92, type: 3}
     instructionAudio: {fileID: 8300000, guid: 590d91d9fdcbf424899c445dfa8667ec, type: 3}
     successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
   - letter: Z
     dots: 01000000030000000500000006000000
-    lessonSprite: {fileID: 4969131362173423726, guid: 9ea146392eef2654498acfdb131ce102, type: 3}
+    lessonSprite: {fileID: 21300000, guid: d2c58bf2230751740bc32620f255b069, type: 3}
     introAudio: {fileID: 8300000, guid: 1124d600ea418b440968c94f9e369c05, type: 3}
     instructionAudio: {fileID: 8300000, guid: b5b0fc8fe813cba4e9bcbfc3436f802a, type: 3}
     successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
@@ -1519,6 +1595,11 @@ MonoBehaviour:
   delayAfterVoice: 0.35
   noAudioTextDelay: 2
   delayAfterCorrect: 0.75
+  useTypewriterEffect: 1
+  defaultTypewriterCharacterDelay: 0.03
+  minSyncedCharacterDelay: 0.01
+  maxSyncedCharacterDelay: 0.12
+  waitForFullAudioBeforeContinuing: 1
   logDebug: 1
 --- !u!114 &1586095476
 MonoBehaviour:
@@ -1844,6 +1925,7 @@ RectTransform:
   - {fileID: 653795465}
   - {fileID: 270223250}
   - {fileID: 397166429}
+  - {fileID: 1408315747}
   - {fileID: 2077778576}
   - {fileID: 1586095474}
   - {fileID: 286661653}

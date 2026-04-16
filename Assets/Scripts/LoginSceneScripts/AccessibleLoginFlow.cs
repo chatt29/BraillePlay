@@ -1,10 +1,11 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class AccessibleLoginFlow : MonoBehaviour
 {
@@ -34,6 +35,10 @@ public class AccessibleLoginFlow : MonoBehaviour
     [SerializeField] private TMP_InputField usernameInput;
     [SerializeField] private TMP_InputField passwordInput;
     [SerializeField] private Button loginButton;
+    [SerializeField] private string beginnerScene = "BeginnerScene";
+[SerializeField] private string intermediateScene = "IntermediateScene";
+[SerializeField] private string advanceScene = "AdvanceScene";
+[SerializeField] private string assessmentScene = "Assessment";
 
     [Header("Optional Highlight Targets")]
     [SerializeField] private RectTransform usernameHighlightTarget;
@@ -79,7 +84,7 @@ public class AccessibleLoginFlow : MonoBehaviour
     private Coroutine typingRoutine;
     private int currentIntroIndex = 0;
     private bool isTyping;
-
+    
     private RectTransform currentPulseTarget;
     private Vector3 usernameBaseScale;
     private Vector3 passwordBaseScale;
@@ -174,23 +179,40 @@ public class AccessibleLoginFlow : MonoBehaviour
         else
         {
             string response = www.downloadHandler.text.Trim();
-            Debug.Log("Server Response: " + response);
+            Debug.Log("RAW SERVER RESPONSE: [" + response + "]");
 
-            if (response == "SUCCESS")
-        {
-            LoggedInUsername = username;
+            if (response.StartsWith("SUCCESS"))
+{
+    string assessment = "";
 
-             PlayerPrefs.SetString("username", username);
-            PlayerPrefs.SetInt("isLoggedIn", 1);
-            PlayerPrefs.Save();
+    string[] parts = response.Split('|');
+    if (parts.Length > 1)
+        assessment = parts[1].Trim();
 
-            Debug.Log("Login success. Saved username: " + username);
+    LoggedInUsername = username;
+    PlayerPrefs.SetString("username", username);
+    PlayerPrefs.SetString("assessment", assessment);
+    PlayerPrefs.SetInt("isLoggedIn", 1);
+    PlayerPrefs.Save();
 
-            StartCoroutine(HandleSuccessfulLoginFlow());
+    Debug.Log("Login success. Saved username: " + username);
+    Debug.Log("Assessment: " + assessment);
 
+    StartCoroutine(HandleSuccessfulLoginFlow(assessment));
+            }
+            else if (response == "WRONG_PASSWORD")
+            {
+                Debug.Log("PHP says wrong password");
+                StartCoroutine(HandleFailedLoginFlow());
+            }
+            else if (response == "NO_USER")
+            {
+                Debug.Log("PHP says no user");
+                StartCoroutine(HandleFailedLoginFlow());
             }
             else
             {
+                Debug.LogWarning("Unexpected PHP response: " + response);
                 StartCoroutine(HandleFailedLoginFlow());
             }
         }
@@ -484,23 +506,45 @@ public class AccessibleLoginFlow : MonoBehaviour
         FocusUsernameField();
     }
 
-    private IEnumerator HandleSuccessfulLoginFlow()
+    private IEnumerator HandleSuccessfulLoginFlow(string assessment)
+{
+    Announce(loginSuccessMessage, false);
+
+    while (isTyping)
+        yield return null;
+
+    float audioWait = 0f;
+    if (loginSuccessMessage != null && loginSuccessMessage.audioClip != null)
+        audioWait = loginSuccessMessage.audioClip.length;
+
+    if (audioWait > 0f)
+        yield return new WaitForSeconds(audioWait);
+
+    if (string.IsNullOrWhiteSpace(assessment) || assessment.ToLower() == "null")
     {
-        Announce(loginSuccessMessage, false);
-
-        while (isTyping)
-            yield return null;
-
-        float audioWait = 0f;
-        if (loginSuccessMessage != null && loginSuccessMessage.audioClip != null)
-            audioWait = loginSuccessMessage.audioClip.length;
-
-        if (audioWait > 0f)
-            yield return new WaitForSeconds(audioWait);
-
-        // 👉 NEXT STEP: load scene here
-        // SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene(assessmentScene);
     }
+    else
+    {
+        switch (assessment.ToLower())
+        {
+            case "Beginner":
+                SceneManager.LoadScene(beginnerScene);
+                break;
+
+            case "Intermediate":
+                SceneManager.LoadScene(intermediateScene);
+                break;
+
+            case "Advance":
+                SceneManager.LoadScene(advanceScene);
+                break;
+            default:
+                SceneManager.LoadScene(assessmentScene);
+                break;
+        }
+    }
+}
 
     private void ClearLoginFields()
     {

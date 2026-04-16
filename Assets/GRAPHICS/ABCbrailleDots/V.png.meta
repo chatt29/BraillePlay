@@ -1,10 +1,25 @@
 fileFormatVersion: 2
-guid: e470cc620e8564b4e885df91c24ff869
+guid: 09a03a229b7c32442828cd51d2b82062
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5871036504220654801
-    second: V_0
+      213: -6348937672231404329
+    second: V-removebg-preview_0
+  - first:
+      213: 5137661696699188304
+    second: V-removebg-preview_1
+  - first:
+      213: 7610304526158205225
+    second: V-removebg-preview_2
+  - first:
+      213: 8601024572806995880
+    second: V-removebg-preview_3
+  - first:
+      213: -539925358952695742
+    second: V-removebg-preview_4
+  - first:
+      213: 6260543489740835643
+    second: V-removebg-preview_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +61,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -113,13 +128,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: V_0
+      name: V-removebg-preview_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 403
-        height: 540
+        x: 77
+        y: 342
+        width: 119
+        height: 116
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +143,118 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1dc5c61389c1a7150800000000000000
-      internalID: 5871036504220654801
+      spriteID: 7dc3d8143da04e7a0800000000000000
+      internalID: -6348937672231404329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: V-removebg-preview_1
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 341
+        width: 118
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 054c2e7b714ac4740800000000000000
+      internalID: 5137661696699188304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: V-removebg-preview_2
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 204
+        width: 117
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 921153a35ab3d9960800000000000000
+      internalID: 7610304526158205225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: V-removebg-preview_3
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 204
+        width: 117
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8af119e574afc5770800000000000000
+      internalID: 8601024572806995880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: V-removebg-preview_4
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 66
+        width: 117
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24836662fbcc188f0800000000000000
+      internalID: -539925358952695742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: V-removebg-preview_5
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 66
+        width: 117
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3b03e6522be1e650800000000000000
+      internalID: 6260543489740835643
       vertices: []
       indices: 
       edges: []
@@ -138,7 +263,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +273,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      V_0: 5871036504220654801
+      V-removebg-preview_0: -6348937672231404329
+      V-removebg-preview_1: 5137661696699188304
+      V-removebg-preview_2: 7610304526158205225
+      V-removebg-preview_3: 8601024572806995880
+      V-removebg-preview_4: -539925358952695742
+      V-removebg-preview_5: 6260543489740835643
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
