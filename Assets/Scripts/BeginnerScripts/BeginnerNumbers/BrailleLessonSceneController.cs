@@ -58,6 +58,12 @@ public class BrailleLessonSceneController : MonoBehaviour
         [Header("Sequence Step Messages")]
         [TextArea(2, 4)]
         public List<string> sequenceStepMessages = new List<string>();
+
+        [Header("Support After Mistakes")]
+        [TextArea(2, 4)]
+        public string supportMessage;
+
+        public AudioClip supportAudio;
     }
 
     [Header("UI")]
@@ -95,11 +101,16 @@ public class BrailleLessonSceneController : MonoBehaviour
     public bool showHeldDotsPattern = true;
     public bool resetSequenceToStartOnWrongAnswer = true;
 
+    [Header("Support Settings")]
+    public int mistakesBeforeSupport = 3;
+    public bool resetMistakesAfterSupport = true;
+
     [Header("Debug")]
     public bool logDebug = true;
 
     private int currentLessonIndex = -1;
     private int currentSequenceStep = 0;
+    private int currentMistakeCount = 0;
     private bool lessonActive;
     private bool waitingForNext;
     private bool sceneFinished;
@@ -165,6 +176,7 @@ public class BrailleLessonSceneController : MonoBehaviour
 
         currentLessonIndex = index;
         currentSequenceStep = 0;
+        currentMistakeCount = 0;
         lessonActive = true;
         waitingForNext = false;
 
@@ -296,6 +308,7 @@ public class BrailleLessonSceneController : MonoBehaviour
 
         if (submittedPattern == expectedPattern)
         {
+            currentMistakeCount = 0;
             lessonActive = false;
             waitingForNext = true;
 
@@ -306,10 +319,15 @@ public class BrailleLessonSceneController : MonoBehaviour
         }
         else
         {
+            currentMistakeCount++;
+
             if (flowRoutine != null)
                 StopCoroutine(flowRoutine);
 
-            flowRoutine = StartCoroutine(HandleWrongAnswer(lesson));
+            if (currentMistakeCount >= mistakesBeforeSupport)
+                flowRoutine = StartCoroutine(HandleSupportThenRetry(lesson));
+            else
+                flowRoutine = StartCoroutine(HandleWrongAnswer(lesson));
         }
     }
 
@@ -334,6 +352,7 @@ public class BrailleLessonSceneController : MonoBehaviour
 
         if (submittedPattern == expected)
         {
+            currentMistakeCount = 0;
             currentSequenceStep++;
 
             if (currentSequenceStep >= lesson.expectedSequencePatterns.Count)
@@ -356,13 +375,18 @@ public class BrailleLessonSceneController : MonoBehaviour
         }
         else
         {
+            currentMistakeCount++;
+
             if (resetSequenceToStartOnWrongAnswer)
                 currentSequenceStep = 0;
 
             if (flowRoutine != null)
                 StopCoroutine(flowRoutine);
 
-            flowRoutine = StartCoroutine(HandleWrongAnswer(lesson));
+            if (currentMistakeCount >= mistakesBeforeSupport)
+                flowRoutine = StartCoroutine(HandleSupportThenRetry(lesson));
+            else
+                flowRoutine = StartCoroutine(HandleWrongAnswer(lesson));
         }
     }
 
@@ -431,6 +455,46 @@ public class BrailleLessonSceneController : MonoBehaviour
 
             flowRoutine = StartCoroutine(PlaySequenceStepInstruction(lesson, stepToReplay));
         }
+    }
+
+    private IEnumerator HandleSupportThenRetry(BrailleLesson lesson)
+    {
+        string message = GetSupportMessage(lesson);
+        SetBubbleMessage(message);
+
+        if (lesson.supportAudio != null)
+            yield return PlayClipAndWait(lesson.supportAudio);
+        else
+            yield return new WaitForSeconds(noAudioTextDelay);
+
+        if (resetMistakesAfterSupport)
+            currentMistakeCount = 0;
+
+        if (lesson.lessonKind == LessonKind.Sequence)
+        {
+            int stepToReplay = resetSequenceToStartOnWrongAnswer ? 0 : currentSequenceStep;
+            yield return PlaySequenceStepInstruction(lesson, stepToReplay);
+        }
+        else
+        {
+            yield return RepeatCurrentInstruction(lesson);
+        }
+    }
+
+    private string GetSupportMessage(BrailleLesson lesson)
+    {
+        if (!string.IsNullOrWhiteSpace(lesson.supportMessage))
+            return lesson.supportMessage;
+
+        if (lesson.lessonKind == LessonKind.Sequence)
+        {
+            if (resetSequenceToStartOnWrongAnswer)
+                return $"Here is some help. Start again from {GetSequenceStepName(lesson, 0)}.";
+            else
+                return $"Here is some help. Press {GetSequenceStepName(lesson, currentSequenceStep)}.";
+        }
+
+        return $"Here is some help. {lesson.displayLabel} uses {GetDotsDisplay(lesson.dots)}.";
     }
 
     private void HandleRepeat()
