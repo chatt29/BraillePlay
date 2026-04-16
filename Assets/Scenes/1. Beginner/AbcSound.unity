@@ -1212,11 +1212,12 @@ MonoBehaviour:
   welcomeMessage: Welcome to Alphabet Sounds!
   welcomeAudio: {fileID: 8300000, guid: eccc5b58fcd38d449a17129db9c0f0c4, type: 3}
   instructionMessage: Let's learn the individual sounds of each letter in the alphabet.
-    Press Y to go to the next letter, press R to repeat the current letter, and press
-    Escape to go back to the previous letter.
-  instructionAudio: {fileID: 8300000, guid: 3d6ee52b5e8f07b4d86a4976f81c2676, type: 3}
+  instructionAudio: {fileID: 8300000, guid: a772b65731044334c9668394e5b13c89, type: 3}
   startQuestionMessage: Are you ready to start? Press Y to begin.
   startQuestionAudio: {fileID: 8300000, guid: 531a5ad8aacb41442a3ce43c3292c092, type: 3}
+  nextOrRepeatMessage: Press Yes for the next letter, or press Repeat to hear the
+    current letter again.
+  nextOrRepeatAudio: {fileID: 8300000, guid: 44673807686c0c14184d58706aaca2ac, type: 3}
   completedMessage: Great job! You finished the alphabet sounds.
   completedAudio: {fileID: 8300000, guid: 452b8a930791a154b84d467197de60ea, type: 3}
   replayQuestionMessage: Do you want to repeat the alphabet sounds starting from
