@@ -296,8 +296,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
-  m_fontSizeBase: 100
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -348,6 +348,143 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 176604272}
+  m_CullTransparentMesh: 1
+--- !u!1 &186052601
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 186052602}
+  - component: {fileID: 186052604}
+  - component: {fileID: 186052603}
+  m_Layer: 5
+  m_Name: LetterWordSentence
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &186052602
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186052601}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1791188412}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 33.415, y: 203.8837}
+  m_SizeDelta: {x: 473.41, y: 124.1926}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &186052603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186052601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: c4ae2105d0679bd45932ed513ad0b3bd, type: 2}
+  m_sharedMaterial: {fileID: -2866231447455670809, guid: c4ae2105d0679bd45932ed513ad0b3bd, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 70
+  m_fontSizeBase: 70
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 1
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_characterHorizontalScale: 1
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: -0.4724121, y: 0, z: 3.1901855, w: 0.9960022}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &186052604
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186052601}
   m_CullTransparentMesh: 1
 --- !u!1 &232308968
 GameObject:
@@ -453,7 +590,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1204025120}
-  - {fileID: 1710783190}
   - {fileID: 176604273}
   m_Father: {fileID: 1791188412}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -571,7 +707,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.58009, y: -163.05}
+  m_AnchoredPosition: {x: -1512, y: -228.13}
   m_SizeDelta: {x: 405.4244, y: 456.2524}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &397166430
@@ -1481,46 +1617,102 @@ MonoBehaviour:
   bubbleText: {fileID: 1257937990}
   translationText: {fileID: 2077778574}
   resultText: {fileID: 176604274}
+  stageTypeText: {fileID: 186052603}
   lessonImage: {fileID: 286661654}
   audioSource: {fileID: 1586095478}
-  capitalizationImage: {fileID: -2508448659712056769, guid: 627e40ba14ebaa545b4dea4136eb0f75, type: 3}
-  letterABrailleImage: {fileID: -9140533122301678467, guid: 9cae83eb843b4f2419a2ea6cc8d53bb4, type: 3}
-  welcomeLine:
-    message: Welcome to Usage Of Capitalization.
-    audioClip: {fileID: 8300000, guid: e2fc575b2b114f4449348f51cb2d21d2, type: 3}
-  instructionLine:
-    message: Today, you will learn how to capitalize one letter in braille.
-    audioClip: {fileID: 8300000, guid: dfa31c4c50500cd4ebd3856a80f81853, type: 3}
-  promptCapitalSignLine:
-    message: To capitalize a letter, press dot 6 first.
-    audioClip: {fileID: 8300000, guid: 654df79b785d9664aad502b78d7a6518, type: 3}
-  promptLetterLine:
-    message: Good job. Now press dot 1 to change small a into capital A.
-    audioClip: {fileID: 8300000, guid: a98ee30fd381d064ebff59687d4a72e5, type: 3}
-  wrongCapitalSignLine:
-    message: That is not correct. Please press dot 6 first.
-    audioClip: {fileID: 8300000, guid: 70b0425d429e813498a10c6ec9c4f74e, type: 3}
-  wrongLetterLine:
-    message: That is not correct. Try again. Press dot 6 first, then dot 1 for capital
-      A.
-    audioClip: {fileID: 8300000, guid: c150b5b5ed3b6534f8933bddffa9d135, type: 3}
-  successLine:
-    message: Excellent! You changed small a into capital A.
-    audioClip: {fileID: 8300000, guid: a0c653d7784fd574bb93cb475fc9222d, type: 3}
-  completedLine:
-    message: Great job! You now know how to capitalize a letter.
-    audioClip: {fileID: 8300000, guid: 4b2700fd012107e45bf09f182e39af43, type: 3}
-  replayQuestionLine:
-    message: Do you want to try the capitalization lesson again? Press Yes to repeat
-      or No to end.
-    audioClip: {fileID: 8300000, guid: 7b317693acdf9fd4d8302a26632b3e91, type: 3}
-  endLine:
-    message: Okay. Ending the capitalization lesson. Great job!
-    audioClip: {fileID: 8300000, guid: a4ed1499f6c49db47840a3f5d9b74c4e, type: 3}
-  baseLetter: a
-  capitalLetter: A
+  dot6Image: {fileID: -2508448659712056769, guid: 627e40ba14ebaa545b4dea4136eb0f75, type: 3}
+  readyPromptLine:
+    message: Are you ready to start the capitalization lesson? Press Yes to begin.
+      Press No to end.
+    audioClip: {fileID: 8300000, guid: 00239cad4ecd135488d40d0d707b6e31, type: 3}
+  startLessonLine:
+    message: Let's begin the capitalization lesson.
+    audioClip: {fileID: 8300000, guid: 1ed0906c5c1d3284487ce7b6780f829d, type: 3}
+  letterStageIntroLine:
+    message: Stage one is Letter.
+    audioClip: {fileID: 8300000, guid: 421b67995be349046a09442d90f3f916, type: 3}
+  wordStageIntroLine:
+    message: Stage two is Word.
+    audioClip: {fileID: 8300000, guid: 7d339f917711c74408bb0a07a1638a0a, type: 3}
+  sentenceStageIntroLine:
+    message: Stage three is Sentence.
+    audioClip: {fileID: 8300000, guid: d719d18645e3b5144b15778cd42b6ad4, type: 3}
+  letterStagePromptLine:
+    message: 'We will practice capitalizing one letter. Press dot 6 one time to tell
+      braille that only the first letter should become capital. Then you will type
+      the sentence: The cat is cute.'
+    audioClip: {fileID: 8300000, guid: b29fe3134093185448a5b1ff9f39880e, type: 3}
+  wordStagePromptLine:
+    message: 'Now we will practice capitalizing one whole word. Press dot 6 two times
+      to tell braille that the first word should become capital. Then you will type
+      the sentence: THE cat is cute.'
+    audioClip: {fileID: 8300000, guid: f17e05f49a6746b489800512acc0ffde, type: 3}
+  sentenceStagePromptLine:
+    message: 'Now we will practice capitalizing the whole sentence. Press dot 6 three
+      times to tell braille that every word in the sentence should become capital.
+      Then you will type the sentence: THE CAT IS CUTE.'
+    audioClip: {fileID: 8300000, guid: bd349d528aa93234f99264887deea3cf, type: 3}
+  wordStageSecondPressLine:
+    message: Good job. Press dot 6 one more time.
+    audioClip: {fileID: 8300000, guid: e1bf7e1b2d6e3904d93704bb968efc4c, type: 3}
+  sentenceStageSecondPressLine:
+    message: Good job. Press dot 6 again.
+    audioClip: {fileID: 8300000, guid: 7e0b35d5b35b3ff408756c5b0964d375, type: 3}
+  sentenceStageThirdPressLine:
+    message: Great. Press dot 6 one more time.
+    audioClip: {fileID: 8300000, guid: e1bf7e1b2d6e3904d93704bb968efc4c, type: 3}
+  letterTypingPromptLine:
+    message: 'Good job. Now type the sentence: The cat is cute.'
+    audioClip: {fileID: 8300000, guid: 1a917be56fcffe541b7c5fb3083eba1e, type: 3}
+  wordTypingPromptLine:
+    message: 'Good job. Now type the sentence: THE cat is cute.'
+    audioClip: {fileID: 8300000, guid: 1a917be56fcffe541b7c5fb3083eba1e, type: 3}
+  sentenceTypingPromptLine:
+    message: 'Good job. Now type the sentence: THE CAT IS CUTE.'
+    audioClip: {fileID: 8300000, guid: 1a917be56fcffe541b7c5fb3083eba1e, type: 3}
+  wrongLetterStageLine:
+    message: That is incorrect. For the Letter stage, press dot 6 one time.
+    audioClip: {fileID: 8300000, guid: 7e529a8148c802742ab0f0ec1cc98ce1, type: 3}
+  wrongWordStageLine:
+    message: That is incorrect. For the Word stage, press dot 6 two times.
+    audioClip: {fileID: 8300000, guid: 080eb9351fc36f34a8e6973a7c78c698, type: 3}
+  wrongSentenceStageLine:
+    message: That is incorrect. For the Sentence stage, press dot 6 three times.
+    audioClip: {fileID: 8300000, guid: dc1204418b53c874fa88a015ae780ece, type: 3}
+  wrongTypingLine:
+    message: That is incorrect. Try typing the sentence again.
+    audioClip: {fileID: 8300000, guid: 0f1ccaf99f15ef04587107f9deed246a, type: 3}
+  letterStageSuccessLine:
+    message: Excellent. You capitalized the first letter.
+    audioClip: {fileID: 8300000, guid: c9bc786bc6bd43c4abf37e115f9009f5, type: 3}
+  wordStageSuccessLine:
+    message: Excellent. You capitalized a word and typed the sentence correctly.
+    audioClip: {fileID: 8300000, guid: d69914a9090b0634b9b333a5feae60a6, type: 3}
+  sentenceStageSuccessLine:
+    message: Excellent. You capitalized the whole sentence and typed it correctly.
+    audioClip: {fileID: 8300000, guid: 4d65b89e516e63a4cbeee204f8773a6e, type: 3}
+  stageDecisionLine:
+    message: Do you want to repeat the current stage or continue? Press No to repeat
+      this stage. Press Yes to continue.
+    audioClip: {fileID: 8300000, guid: 2655c21c0616b6a4a9a9dc89c357b72c, type: 3}
+  completedLessonLine:
+    message: Congratulations. You now know how to capitalize in braille.
+    audioClip: {fileID: 8300000, guid: f95b2a1be74bbc54a95eb37d300a88dc, type: 3}
+  restartOrNextLessonLine:
+    message: Do you want to repeat the lesson from the start or continue to the next
+      lesson? Press Yes to repeat from the start. Press No to continue to the next
+      lesson.
+    audioClip: {fileID: 8300000, guid: b1faf1c3177234e46b41e83c5bf5072d, type: 3}
+  endLessonLine:
+    message: Okay. Ending the capitalization lesson. Great job.
+    audioClip: {fileID: 8300000, guid: 861fcf891e0db684590c5dd3d675753c, type: 3}
+  baseSentence: the cat is cute.
+  letterSentence: The cat is cute.
+  wordSentence: THE cat is cute.
+  sentenceSentence: THE CAT IS CUTE.
   playOnStart: 1
   extraWaitAfterAudio: 0.15
+  nextLessonSceneName: 
 --- !u!114 &1586095480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1534,143 +1726,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UsageOfCapitalization_InputHandler
   capitalizationLesson: {fileID: 0}
---- !u!1 &1710783189
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1710783190}
-  - component: {fileID: 1710783192}
-  - component: {fileID: 1710783191}
-  m_Layer: 5
-  m_Name: HowToCapitalize.Txt
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1710783190
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1710783189}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 270223250}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -56, y: 181.5}
-  m_SizeDelta: {x: 452.4714, y: 183.8403}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1710783191
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1710783189}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: how to capitalize
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a66db046ab4320b408a76ab376bdacca, type: 2}
-  m_sharedMaterial: {fileID: 6244326952053564057, guid: a66db046ab4320b408a76ab376bdacca, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 90
-  m_fontSizeBase: 90
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_characterHorizontalScale: 1
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_EmojiFallbackSupport: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: -0.000061035156, z: -126.267944, w: -27.482924}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &1710783192
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1710783189}
-  m_CullTransparentMesh: 1
 --- !u!1 &1791188411
 GameObject:
   m_ObjectHideFlags: 0
@@ -1709,6 +1764,7 @@ RectTransform:
   - {fileID: 270223250}
   - {fileID: 397166429}
   - {fileID: 2077778576}
+  - {fileID: 186052602}
   - {fileID: 1586095474}
   - {fileID: 286661653}
   m_Father: {fileID: 83132950}
@@ -1793,7 +1849,7 @@ GameObject:
   - component: {fileID: 2077778575}
   - component: {fileID: 2077778574}
   m_Layer: 5
-  m_Name: Translation
+  m_Name: TheCatIsCute
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1846,8 +1902,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 320
-  m_fontSizeBase: 320
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1885,7 +1941,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 76.01709, y: 0, z: 33.785767, w: 43.830017}
+  m_margin: {x: -0.4724121, y: 0, z: 3.1901855, w: 144.79639}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1915,8 +1971,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.1603, y: -171.54}
-  m_SizeDelta: {x: 404.264, y: 343.074}
+  m_AnchoredPosition: {x: 33.413, y: -137.5565}
+  m_SizeDelta: {x: 473.41, y: 464.807}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

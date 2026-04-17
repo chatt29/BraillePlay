@@ -21,7 +21,9 @@ public class AlphabetSounds_Script : MonoBehaviour
     public enum LessonState
     {
         Intro,
-        PlayingLetters,
+        WaitingToStart,
+        PlayingLetter,
+        WaitingAfterLetterChoice,
         WaitingForReplayChoice,
         Ended
     }
@@ -41,8 +43,17 @@ public class AlphabetSounds_Script : MonoBehaviour
     public AudioClip welcomeAudio;
 
     [TextArea(2, 4)]
-    public string instructionMessage = "Let's learn what are the individual sounds of each letter in the alphabet.";
+    public string instructionMessage = "Let's learn the individual sounds of each letter in the alphabet.";
     public AudioClip instructionAudio;
+
+    [TextArea(2, 4)]
+    public string startQuestionMessage = "Are you ready to start? Press Yes to begin the alphabet sounds.";
+    public AudioClip startQuestionAudio;
+
+    [Header("Per Letter Prompt")]
+    [TextArea(2, 4)]
+    public string nextOrRepeatMessage = "Press Yes for the next letter, or press Repeat to hear the current letter again.";
+    public AudioClip nextOrRepeatAudio;
 
     [Header("Completion Sequence")]
     [TextArea(2, 4)]
@@ -73,6 +84,12 @@ public class AlphabetSounds_Script : MonoBehaviour
 
     private void Start()
     {
+        if (objectImage != null)
+        {
+            objectImage.sprite = null;
+            objectImage.enabled = false;
+        }
+
         if (playOnStart)
         {
             StartLesson();
@@ -97,16 +114,21 @@ public class AlphabetSounds_Script : MonoBehaviour
 
         SetBubbleOnly(welcomeMessage);
         ClearLetterFields();
+        HideObjectImage();
         PlayAudio(welcomeAudio);
         yield return WaitForAudio(welcomeAudio);
 
         SetBubbleOnly(instructionMessage);
+        HideObjectImage();
         PlayAudio(instructionAudio);
         yield return WaitForAudio(instructionAudio);
 
-        currentIndex = 0;
-        CurrentState = LessonState.PlayingLetters;
-        ShowCurrentEntry(true);
+        SetBubbleOnly(startQuestionMessage);
+        HideObjectImage();
+        PlayAudio(startQuestionAudio);
+        yield return WaitForAudio(startQuestionAudio);
+
+        CurrentState = LessonState.WaitingToStart;
     }
 
     public void ShowCurrentEntry(bool playAudio = true)
@@ -131,8 +153,29 @@ public class AlphabetSounds_Script : MonoBehaviour
             objectImage.sprite = entry.image;
             objectImage.enabled = entry.image != null;
         }
+
         if (playAudio)
-            PlayAudio(entry.audioClip);
+        {
+            StopRunningRoutine();
+            sequenceRoutine = StartCoroutine(PlayLetterThenAskChoice(entry.audioClip));
+        }
+    }
+
+    private IEnumerator PlayLetterThenAskChoice(AudioClip letterClip)
+    {
+        CurrentState = LessonState.PlayingLetter;
+
+        PlayAudio(letterClip);
+        yield return WaitForAudio(letterClip);
+
+        if (CurrentState == LessonState.Ended)
+            yield break;
+
+        SetBubbleOnly(nextOrRepeatMessage);
+        PlayAudio(nextOrRepeatAudio);
+        yield return WaitForAudio(nextOrRepeatAudio);
+
+        CurrentState = LessonState.WaitingAfterLetterChoice;
     }
 
     public void NextLetterOrConfirmYes()
@@ -140,30 +183,39 @@ public class AlphabetSounds_Script : MonoBehaviour
         if (alphabetEntries == null || alphabetEntries.Count == 0)
             return;
 
+        if (CurrentState == LessonState.WaitingToStart)
+        {
+            currentIndex = 0;
+            ShowCurrentEntry(true);
+            return;
+        }
+
+        if (CurrentState == LessonState.WaitingAfterLetterChoice)
+        {
+            if (currentIndex < alphabetEntries.Count - 1)
+            {
+                currentIndex++;
+                ShowCurrentEntry(true);
+            }
+            else
+            {
+                StopRunningRoutine();
+                sequenceRoutine = StartCoroutine(FinishAndAskReplay());
+            }
+            return;
+        }
+
         if (CurrentState == LessonState.WaitingForReplayChoice)
         {
             RestartFromBeginning();
             return;
         }
-
-        if (CurrentState != LessonState.PlayingLetters)
-            return;
-
-        if (currentIndex < alphabetEntries.Count - 1)
-        {
-            currentIndex++;
-            ShowCurrentEntry(true);
-        }
-        else
-        {
-            StopRunningRoutine();
-            sequenceRoutine = StartCoroutine(FinishAndAskReplay());
-        }
     }
 
     public void PreviousLetter()
     {
-        if (CurrentState != LessonState.PlayingLetters)
+        if (CurrentState != LessonState.WaitingAfterLetterChoice &&
+            CurrentState != LessonState.PlayingLetter)
             return;
 
         if (currentIndex > 0)
@@ -184,9 +236,15 @@ public class AlphabetSounds_Script : MonoBehaviour
 
     public void RepeatCurrent()
     {
-        if (CurrentState == LessonState.PlayingLetters)
+        if (CurrentState == LessonState.WaitingAfterLetterChoice ||
+            CurrentState == LessonState.PlayingLetter)
         {
             ShowCurrentEntry(true);
+        }
+        else if (CurrentState == LessonState.WaitingToStart)
+        {
+            SetBubbleOnly(startQuestionMessage);
+            PlayAudio(startQuestionAudio);
         }
         else if (CurrentState == LessonState.WaitingForReplayChoice)
         {
@@ -202,11 +260,11 @@ public class AlphabetSounds_Script : MonoBehaviour
 
     public void NoOrEndLesson()
     {
-        if (CurrentState != LessonState.WaitingForReplayChoice)
-            return;
-
-        StopRunningRoutine();
-        sequenceRoutine = StartCoroutine(EndLessonRoutine());
+        if (CurrentState == LessonState.WaitingForReplayChoice)
+        {
+            StopRunningRoutine();
+            sequenceRoutine = StartCoroutine(EndLessonRoutine());
+        }
     }
 
     private IEnumerator FinishAndAskReplay()
@@ -214,6 +272,8 @@ public class AlphabetSounds_Script : MonoBehaviour
         CurrentState = LessonState.Intro;
 
         SetBubbleOnly(completedMessage);
+        HideObjectImage();
+        ClearLetterFields();
         PlayAudio(completedAudio);
         yield return WaitForAudio(completedAudio);
 
@@ -229,6 +289,8 @@ public class AlphabetSounds_Script : MonoBehaviour
         CurrentState = LessonState.Ended;
 
         SetBubbleOnly(endMessage);
+        HideObjectImage();
+        ClearLetterFields();
         PlayAudio(endAudio);
         yield return WaitForAudio(endAudio);
 
@@ -239,7 +301,6 @@ public class AlphabetSounds_Script : MonoBehaviour
     {
         StopRunningRoutine();
         currentIndex = 0;
-        CurrentState = LessonState.PlayingLetters;
         ShowCurrentEntry(true);
     }
 
@@ -256,6 +317,15 @@ public class AlphabetSounds_Script : MonoBehaviour
 
         if (objectNameText != null)
             objectNameText.text = "";
+    }
+
+    private void HideObjectImage()
+    {
+        if (objectImage != null)
+        {
+            objectImage.sprite = null;
+            objectImage.enabled = false;
+        }
     }
 
     private void PlayAudio(AudioClip clip)
