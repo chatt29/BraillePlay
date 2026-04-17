@@ -383,7 +383,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 54.606, y: 0}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &232308970
@@ -828,7 +828,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -603, y: 372}
+  m_AnchoredPosition: {x: -539, y: 364}
   m_SizeDelta: {x: 604.788, y: 272.913}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1170168102
@@ -881,7 +881,7 @@ GameObject:
   - component: {fileID: 1204025122}
   - component: {fileID: 1204025121}
   m_Layer: 5
-  m_Name: NUMBERS.TXT
+  m_Name: Contraction.TXT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -903,7 +903,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 194, y: 401}
+  m_AnchoredPosition: {x: 14, y: 419}
   m_SizeDelta: {x: 536.2007, y: 189.4903}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1204025121
@@ -926,7 +926,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: NUMBERS
+  m_text: BRAILLE CONTRACTIONS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1a98abfae0e1fc34282e9b7fd0f3a427, type: 2}
   m_sharedMaterial: {fileID: -8189821304231711609, guid: 1a98abfae0e1fc34282e9b7fd0f3a427, type: 2}
@@ -953,8 +953,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 130
-  m_fontSizeBase: 130
+  m_fontSize: 90
+  m_fontSizeBase: 90
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -992,7 +992,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -159.27966, w: 0}
+  m_margin: {x: 0, y: 0, z: -572.43335, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1379,10 +1379,9 @@ GameObject:
   - component: {fileID: 1586095474}
   - component: {fileID: 1586095476}
   - component: {fileID: 1586095478}
-  - component: {fileID: 1586095480}
-  - component: {fileID: 1586095479}
+  - component: {fileID: 1586095481}
   m_Layer: 5
-  m_Name: NumberTranslationManager
+  m_Name: CommonContractionManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1542,7 +1541,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1586095479
+--- !u!114 &1586095481
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1551,24 +1550,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1586095473}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0673b95465c5e046a8fb5098241f44b, type: 3}
+  m_Script: {fileID: 11500000, guid: 63e56be46e2d45a4991248084c258f2f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BrailleLessonInputHandler
-  lessonScript: {fileID: 0}
-  livePatternText: {fileID: 0}
-  showHeldDotsPattern: 1
---- !u!114 &1586095480
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1586095473}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51725f3fe6e978b4a8031c0d3563413b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BrailleLessonSceneController
+  m_EditorClassIdentifier: Assembly-CSharp::CommonContractionScript
   bubbleMessageText: {fileID: 1257937990}
   translationText: {fileID: 2077778574}
   pressText: {fileID: 176604274}
@@ -1576,484 +1560,374 @@ MonoBehaviour:
   livePatternText: {fileID: 1697798612}
   lessonImage: {fileID: 286661654}
   voiceAudioSource: {fileID: 1586095478}
-  welcomeAudio: {fileID: 8300000, guid: 99f810b3940cebd43ba543f6da78b021, type: 3}
-  letsLearnAudio: {fileID: 8300000, guid: a7fbd5f6913259a4ea600be62dba7267, type: 3}
+  welcomeAudio: {fileID: 8300000, guid: 3b2196e3660c2c94c88c8a437ed21c6f, type: 3}
+  letsLearnAudio: {fileID: 8300000, guid: 89a18c643b1d93840b2547e936cab635, type: 3}
   genericCorrectAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
   genericTryAgainAudio: {fileID: 8300000, guid: dd615f4eef83e3b49b22a11445f9b6d6, type: 3}
-  genericCompletedAudio: {fileID: 8300000, guid: af652ce1713801846ba385167d93d7fe, type: 3}
-  welcomeMessage: Welcome to Number Translation!
-  letsLearnMessage: Let's learn how to translate numbers into braille.
-  completedMessage: Great job! You finished learning how to translate numbers into
-    Braille!
+  genericCompletedAudio: {fileID: 8300000, guid: 09c5a0cf3308c814cafc2208e2dcdbc2, type: 3}
+  repeatQuestionAudio: {fileID: 8300000, guid: 7e3fb266cac5251478e47a26ab035d67, type: 3}
+  welcomeMessage: Welcome to One-Cell Contraction!
+  letsLearnMessage: Let's Learn How to Use Common Contractions!
+  completedMessage: Great job! You've finished learning how to do One-Cell Contraction
+    in Braille.
+  repeatQuestionMessage: You've finished learning how to do One-Cell Contraction
+    in Braille. Do you want to repeat again? Press R to repeat or next to finish.
   lessons:
-  - displayLabel: 1
-    categoryLabel: Number
-    promptMessage: This is number 1. Press dot 1.
-    repeatMessage: Number 1. Press dot 1.
-    successMessage: Correct! That is number 1. Press Y for next.
-    wrongMessage: Try again. Number 1 uses dot 1.
-    lessonKind: 0
-    dots: 01000000
-    expectedSequencePatterns: []
-    expectedSequenceNames: []
-    lessonSprite: {fileID: 21300000, guid: 9268c89b41a702c40a4e883d30550dcc, type: 3}
-    introAudio: {fileID: 8300000, guid: beffe5d16ebbc1941a2def3be7ca3dc0, type: 3}
-    instructionAudio: {fileID: 8300000, guid: d6bffd3117000af44a23176ab530a097, type: 3}
-    successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
-    sequenceStepAudios: []
-    sequenceStepMessages: []
-    supportMessage: Remember, number 1 uses dot number 1.
-    supportAudio: {fileID: 8300000, guid: a322b0a940e749b46a749f0b1a9dcf4a, type: 3}
-  - displayLabel: 2
-    categoryLabel: Number
-    promptMessage: This is number 2. Press dots 1 & 2.
-    repeatMessage: Number 2. Press dots 1 & 2.
-    successMessage: Correct! That is number 2. Press next to continue.
-    wrongMessage: Try again. Number 2 uses dots 1 & 2.
+  - displayLabel: but
+    categoryLabel: Conjunction
+    promptMessage: B stands for "But" in Contractions. Press Dots 1&2.
+    repeatMessage: B stands for "But" in Contractions. Press Dots 1&2.
+    successMessage: Correct! That is for "But". Press Y for next.
+    wrongMessage: Wrong. Please Try Again.
+    descriptionMessage: '"But" is a conjunction. It is used to introduce a phrase
+      or clause contrasting with what has already been mentioned.'
+    descriptionAudio: {fileID: 8300000, guid: 38a2cee1fb206ca40b44bf264f75f907, type: 3}
     lessonKind: 0
     dots: 0100000002000000
     expectedSequencePatterns: []
     expectedSequenceNames: []
-    lessonSprite: {fileID: 21300000, guid: ced3af70cc3eca14bb60e0c1a7f4eb81, type: 3}
-    introAudio: {fileID: 0}
-    instructionAudio: {fileID: 8300000, guid: d88a2cf5cbc24854c91b04cf54505a58, type: 3}
-    successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
+    lessonSprite: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: 3effcc4d4342b8f43bd5ddbccbdf49f4, type: 3}
+    instructionAudio: {fileID: 8300000, guid: 42f55a2f17fb4c641a46389fa1e632ad, type: 3}
+    successAudio: {fileID: 8300000, guid: 6ce1a95829ab7c2469e0f356a067ef67, type: 3}
     sequenceStepAudios: []
     sequenceStepMessages: []
-    supportMessage: Remember, number 2 uses dots number 1&2.
-    supportAudio: {fileID: 8300000, guid: 429e908fdece8b34ebc34979dde0cf19, type: 3}
-  - displayLabel: 3
-    categoryLabel: Number
-    promptMessage: This is number 3. Press dots 1 & 4.
-    repeatMessage: Number 3. Press dots 1 & 4.
-    successMessage: Correct! That is number 3. Press next to continue.
-    wrongMessage: Try again. Number 3 uses dots 1 & 4.
+    supportMessage: Remember B stands for But, Press dots 1&2.
+    supportAudio: {fileID: 8300000, guid: 5c78a370a7bc2e445830e4a5ae19b297, type: 3}
+  - displayLabel: can
+    categoryLabel: Verb
+    promptMessage: C stands for "Can" in Contractions. Press Dots 1&4.
+    repeatMessage: C stands for "Can" in Contractions. Press Dots 1&4.
+    successMessage: Correct! That is for "Can". Press Next to Continue.
+    wrongMessage: Wrong. Please Try Again.
+    descriptionMessage: '"Can" is a verb. It refers to the ability to do something,
+      or a communication protocol in technology.'
+    descriptionAudio: {fileID: 8300000, guid: 7271d1accdc7abb4da70c6f46f3aa6a5, type: 3}
     lessonKind: 0
     dots: 0100000004000000
     expectedSequencePatterns: []
     expectedSequenceNames: []
-    lessonSprite: {fileID: 21300000, guid: 63a2d10c538cc744fa3b3277a8d77de2, type: 3}
-    introAudio: {fileID: 0}
-    instructionAudio: {fileID: 8300000, guid: 5eda0aa895c371d4695051ee9f4c559f, type: 3}
-    successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
+    lessonSprite: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: b2ef1309c3b1a0241878cc1d03b5fde8, type: 3}
+    instructionAudio: {fileID: 8300000, guid: 0475c26ea4ca7694db5fd497432f8181, type: 3}
+    successAudio: {fileID: 8300000, guid: 6ce1a95829ab7c2469e0f356a067ef67, type: 3}
     sequenceStepAudios: []
     sequenceStepMessages: []
-    supportMessage: Remember, number 3 uses dots number 1&4.
-    supportAudio: {fileID: 8300000, guid: 9ab37e14d6349dc408b3ff922e0bd5bc, type: 3}
-  - displayLabel: 4
-    categoryLabel: Number
-    promptMessage: This is number 4. Press dots 1, 4 & 5.
-    repeatMessage: Number 4. Press dots 1, 4 & 5.
-    successMessage: Correct! That is number 4. Press next to continue.
-    wrongMessage: Try again. Number 4 uses dots 1, 4 & 5.
-    lessonKind: 0
-    dots: 010000000400000005000000
-    expectedSequencePatterns: []
-    expectedSequenceNames: []
-    lessonSprite: {fileID: 21300000, guid: 0277ae2cde1f51c419f9b397704a4cfd, type: 3}
-    introAudio: {fileID: 0}
-    instructionAudio: {fileID: 8300000, guid: ac8c595efefb65a46a1495b5f3de5ec1, type: 3}
-    successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
-    sequenceStepAudios: []
-    sequenceStepMessages: []
-    supportMessage: Remember, number 4 uses dots number 1, 4 & 5.
-    supportAudio: {fileID: 8300000, guid: dcea7b2fa1b094643adc1e6765bc861b, type: 3}
-  - displayLabel: 5
-    categoryLabel: Number
-    promptMessage: This is number 5. Press dots 1 & 5.
-    repeatMessage: Number 5. Press dots 1 & 5.
-    successMessage: Correct! That is number 5. Press next to continue.
-    wrongMessage: Try again. Number 5 uses dots 1 & 5.
-    lessonKind: 0
-    dots: 0100000005000000
-    expectedSequencePatterns: []
-    expectedSequenceNames: []
-    lessonSprite: {fileID: 21300000, guid: a45f6b511b9ff1646a8640738d85622e, type: 3}
-    introAudio: {fileID: 0}
-    instructionAudio: {fileID: 8300000, guid: 4d1de74e3e9961e48b376dbfb5783580, type: 3}
-    successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
-    sequenceStepAudios: []
-    sequenceStepMessages: []
-    supportMessage: Remember, number 5 uses dots number 1&5.
-    supportAudio: {fileID: 8300000, guid: 20633448bee365f468066b127672c3a4, type: 3}
-  - displayLabel: 6
-    categoryLabel: Number
-    promptMessage: This is number 6. Press dots 1, 2 & 4.
-    repeatMessage: Number 6. Press dots 1, 2 & 4.
-    successMessage: Correct! That is number 6. Press next to continue.
-    wrongMessage: Try again. Number 6 uses dots 1, 2 & 4.
+    supportMessage: Remember C stands for Can, Press dots 1&4.
+    supportAudio: {fileID: 8300000, guid: 246c706c348dc8d4a8922d53c2889a16, type: 3}
+  - displayLabel: do
+    categoryLabel: Verb
+    promptMessage: D stands for "Do" in Contractions. Press Dots 1, 2&4.
+    repeatMessage: D stands for "Do" in Contractions. Press Dots 1, 2&4.
+    successMessage: Correct! That is for "Do". Press Next to Continue.
+    wrongMessage: Wrong. Please Try Again.
+    descriptionMessage: '"Do" is a Verb. It means to perform, carry out, or execute
+      an action.'
+    descriptionAudio: {fileID: 8300000, guid: 50d74c431e992b147884b44f7c73ff2e, type: 3}
     lessonKind: 0
     dots: 010000000200000004000000
     expectedSequencePatterns: []
     expectedSequenceNames: []
-    lessonSprite: {fileID: 21300000, guid: f82cea2587461bf4282a43f5769410d0, type: 3}
-    introAudio: {fileID: 0}
-    instructionAudio: {fileID: 8300000, guid: a617cfd6ef07f0546861c7a2a09a2d54, type: 3}
-    successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
+    lessonSprite: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: aed464abe6e208e4080410a1fb836042, type: 3}
+    instructionAudio: {fileID: 8300000, guid: 22ce9e9b2dace0942a2c320ce95e1380, type: 3}
+    successAudio: {fileID: 8300000, guid: 6ce1a95829ab7c2469e0f356a067ef67, type: 3}
     sequenceStepAudios: []
     sequenceStepMessages: []
-    supportMessage: Remember, number 6 uses dots number 1, 2&4.
-    supportAudio: {fileID: 8300000, guid: 3349375d717977447a16d6ad80c06da3, type: 3}
-  - displayLabel: 7
-    categoryLabel: Number
-    promptMessage: This is number 7. Press dots 1, 2, 4 & 5.
-    repeatMessage: Number 7. Press dots 1, 2, 4 & 5.
-    successMessage: Correct! That is number 7. Press next to continue.
-    wrongMessage: Try again. Number 7 uses dots 1, 2, 4 & 5.
+    supportMessage: Remember D stands for Do, Press dots 1, 2&4.
+    supportAudio: {fileID: 8300000, guid: c2ef761da3fb7a54baa114d761f51e15, type: 3}
+  - displayLabel: every
+    categoryLabel: Determiner and Adjective
+    promptMessage: E stands for "Every" in Contractions. Press Dots 1&5.
+    repeatMessage: E stands for "Every" in Contractions. Press Dots 1&5.
+    successMessage: Correct! That is for "Every". Press Next to Continue.
+    wrongMessage: Wrong. Please Try Again.
+    descriptionMessage: '"Every" is a determiner and adjective used to refer to all
+      members of a group individually, or to indicate regular intervals or occurrences.'
+    descriptionAudio: {fileID: 8300000, guid: 9e0b9274691f2314dae11f2d7f88d143, type: 3}
+    lessonKind: 0
+    dots: 0100000005000000
+    expectedSequencePatterns: []
+    expectedSequenceNames: []
+    lessonSprite: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: c609d9721ccfad048adc413160e5e047, type: 3}
+    instructionAudio: {fileID: 8300000, guid: f87235f42f25112468a106aea76f694d, type: 3}
+    successAudio: {fileID: 8300000, guid: 6ce1a95829ab7c2469e0f356a067ef67, type: 3}
+    sequenceStepAudios: []
+    sequenceStepMessages: []
+    supportMessage: Remember E stands for Every, Press dots 1&5.
+    supportAudio: {fileID: 8300000, guid: 52fb771deea4a4e4f92aa08ebce585ca, type: 3}
+  - displayLabel: from
+    categoryLabel: Preposition
+    promptMessage: F stands for "From" in Contractions. Press Dots 1, 2&4.
+    repeatMessage: F stands for "From" in Contractions. Press Dots 1, 2&4.
+    successMessage: Correct! That is for "From". Press Next to Continue.
+    wrongMessage: Wrong. Please Try Again.
+    descriptionMessage: '"From" is a preposition that indicates the point in space
+      at which a journey, motion, or action starts.'
+    descriptionAudio: {fileID: 8300000, guid: 9c43c1cc0cbf92a46a833a25aa89a657, type: 3}
+    lessonKind: 0
+    dots: 010000000200000004000000
+    expectedSequencePatterns: []
+    expectedSequenceNames: []
+    lessonSprite: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: 16aca7a87ce112a4bb7c67638ec3f53b, type: 3}
+    instructionAudio: {fileID: 8300000, guid: 0b80d693dfd1cb14289c0743a9d4b050, type: 3}
+    successAudio: {fileID: 8300000, guid: 6ce1a95829ab7c2469e0f356a067ef67, type: 3}
+    sequenceStepAudios: []
+    sequenceStepMessages: []
+    supportMessage: Remember F stands for Every, Press dots 1, 2&4.
+    supportAudio: {fileID: 8300000, guid: 8501f32e85dba734ebf555e1b862ff1e, type: 3}
+  - displayLabel: go
+    categoryLabel: Verb
+    promptMessage: G stands for "Go" in Contractions. Press Dots 1, 2, 4&5.
+    repeatMessage: G stands for "Go" in Contractions. Press Dots 1, 2, 4&5.
+    successMessage: Correct! That is for "Go". Press Next to Continue.
+    wrongMessage: Wrong. Please Try Again.
+    descriptionMessage: '"Go" is a Verb that means to move from one place to another
+      or to travel.'
+    descriptionAudio: {fileID: 8300000, guid: 6d7eaf0707b03ff448b9f4b858d526cd, type: 3}
     lessonKind: 0
     dots: 01000000020000000400000005000000
     expectedSequencePatterns: []
     expectedSequenceNames: []
-    lessonSprite: {fileID: 21300000, guid: dc22d5020a1cd2842aa671163a50c49d, type: 3}
-    introAudio: {fileID: 0}
-    instructionAudio: {fileID: 8300000, guid: 822ea0a9f4489694dbea1a7e85e837f4, type: 3}
-    successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
+    lessonSprite: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: 4b03bf1e8997b6745a00f3513a699fc8, type: 3}
+    instructionAudio: {fileID: 8300000, guid: 169785069e90b7a4d80c6ab1d365ece7, type: 3}
+    successAudio: {fileID: 8300000, guid: 6ce1a95829ab7c2469e0f356a067ef67, type: 3}
     sequenceStepAudios: []
     sequenceStepMessages: []
-    supportMessage: Remember, number 7 uses dots number 1, 2, 4&5.
-    supportAudio: {fileID: 8300000, guid: cd615c0890c5fc24a98b37c716c86181, type: 3}
-  - displayLabel: 8
-    categoryLabel: Number
-    promptMessage: This is number 8. Press dots 1, 2 & 5.
-    repeatMessage: Number 8. Press dots 1, 2 & 5.
-    successMessage: Correct! That is number 8. Press next to continue.
-    wrongMessage: Try again. Number 8 uses dots 1, 2 & 5.
+    supportMessage: Remember G stands for "Go", Press dots 1, 2, 4&5.
+    supportAudio: {fileID: 8300000, guid: 8c58472e0ebdaec45afcf3b33aaa7033, type: 3}
+  - displayLabel: have
+    categoryLabel: Verb
+    promptMessage: H stands for "Have" in Contractions. Press Dots 1, 2&5.
+    repeatMessage: H stands for "Have" in Contractions. Press Dots 1, 2&5.
+    successMessage: Correct! That is for "Have". Press Next to Continue.
+    wrongMessage: Wrong. Please Try Again.
+    descriptionMessage: '"Have" is a Verb that means to hold or maintain something
+      as a possession.'
+    descriptionAudio: {fileID: 8300000, guid: e7baf2bc9620cca4fab4dc03d809637a, type: 3}
     lessonKind: 0
     dots: 010000000200000005000000
     expectedSequencePatterns: []
     expectedSequenceNames: []
-    lessonSprite: {fileID: 21300000, guid: 26b1434cb7af98e44a34a241350015b4, type: 3}
-    introAudio: {fileID: 0}
-    instructionAudio: {fileID: 8300000, guid: 35a6eb505189d8e488df140a5104086c, type: 3}
-    successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
+    lessonSprite: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: b173cace92de62346998c0d16674cc21, type: 3}
+    instructionAudio: {fileID: 8300000, guid: 759d96cafe5ea0e409df3abeecf0b630, type: 3}
+    successAudio: {fileID: 8300000, guid: 6ce1a95829ab7c2469e0f356a067ef67, type: 3}
     sequenceStepAudios: []
     sequenceStepMessages: []
-    supportMessage: Remember, number 8 uses dots number 1, 2&5.
-    supportAudio: {fileID: 8300000, guid: a2f29c2e605d45d4bb7828bd4ef8494f, type: 3}
-  - displayLabel: 9
-    categoryLabel: Number
-    promptMessage: This is number 9. Press dots 2 & 4.
-    repeatMessage: Number 2. Press dots 2 & 4.
-    successMessage: Correct! That is number 9. Press next to continue.
-    wrongMessage: Try again. Number 9 uses dots 2 & 4.
-    lessonKind: 0
-    dots: 0200000004000000
-    expectedSequencePatterns: []
-    expectedSequenceNames: []
-    lessonSprite: {fileID: 21300000, guid: c6311e57aa02a2f4abd7219406cda76a, type: 3}
-    introAudio: {fileID: 0}
-    instructionAudio: {fileID: 8300000, guid: 173025cace273164c98320185aa99cde, type: 3}
-    successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
-    sequenceStepAudios: []
-    sequenceStepMessages: []
-    supportMessage: Remember, number 9 uses dots number 2&4.
-    supportAudio: {fileID: 8300000, guid: 91021259bd97aa540a041ec7e74c51bb, type: 3}
-  - displayLabel: 0
-    categoryLabel: Number
-    promptMessage: This is number 0. Press dots 2, 4 & 5.
-    repeatMessage: Number 0. Press dots 2, 4 & 5.
-    successMessage: Correct! That is number 0. Press next to continue.
-    wrongMessage: Try again. Number 0 uses dots 2, 4 & 5.
+    supportMessage: Remember H stands for "Have", Press dots 1, 2&5.
+    supportAudio: {fileID: 8300000, guid: d98afba6e9d80614ebe1353182ef524b, type: 3}
+  - displayLabel: just
+    categoryLabel: Adverb
+    promptMessage: J stands for "Just" in Contractions. Press Dots 2, 4&5.
+    repeatMessage: J stands for "Just" in Contractions. Press Dots 2, 4&5.
+    successMessage: Correct! That is for "Just". Press Next to Continue.
+    wrongMessage: Wrong. Please Try Again.
+    descriptionMessage: '"Just" is an Adverb that means exactly or almost exactly
+      at this or that moment.'
+    descriptionAudio: {fileID: 8300000, guid: 346dd9e9f7b51a547be91f713d17cb00, type: 3}
     lessonKind: 0
     dots: 020000000400000005000000
     expectedSequencePatterns: []
     expectedSequenceNames: []
-    lessonSprite: {fileID: 21300000, guid: f0b27abdf4ff1ca4790c53d621e148dc, type: 3}
-    introAudio: {fileID: 0}
-    instructionAudio: {fileID: 8300000, guid: 5551da29d4767c746b233cf5bb0d1eb1, type: 3}
-    successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
+    lessonSprite: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: 955aef14d85e54e4892686dd7edf4295, type: 3}
+    instructionAudio: {fileID: 8300000, guid: 955aef14d85e54e4892686dd7edf4295, type: 3}
+    successAudio: {fileID: 8300000, guid: 6ce1a95829ab7c2469e0f356a067ef67, type: 3}
     sequenceStepAudios: []
     sequenceStepMessages: []
-    supportMessage: Remember, number 0 uses dots number 2, 4&5.
-    supportAudio: {fileID: 8300000, guid: ac0eaa89e7bb19d439e79f7e5c1b9687, type: 3}
-  - displayLabel: '#'
-    categoryLabel: Number Sign
-    promptMessage: This is number sign or hashtag. Press dots 3, 4, 5 & 6.
-    repeatMessage: Number sign or hashtag. Press dots 3, 4, 5 & 6.
-    successMessage: Correct! That is number sign or hashtag. Press next to continue.
-    wrongMessage: Try again. Number sign or hashtag uses dots 3, 4, 5 & 6.
+    supportMessage: Remember J stands for "Just", Press dots 2, 4&5.
+    supportAudio: {fileID: 8300000, guid: 7d5b172056f1be34bbaedaf71caa6cc7, type: 3}
+  - displayLabel: like
+    categoryLabel: Preposition
+    promptMessage: L stands for "Like" in Contractions. Press Dots 1, 2&3.
+    repeatMessage: L stands for "Like" in Contractions. Press Dots 1, 2&3.
+    successMessage: Correct! That is for "Like". Press Next to Continue.
+    wrongMessage: Wrong. Please Try Again.
+    descriptionMessage: '"Like" is a Preposition that means having the same characteristics
+      or qualities as or similar to.'
+    descriptionAudio: {fileID: 8300000, guid: 8ebca91ef12cb4d4fa7f2249e1367a77, type: 3}
     lessonKind: 0
-    dots: 03000000040000000500000006000000
+    dots: 010000000200000003000000
     expectedSequencePatterns: []
     expectedSequenceNames: []
-    lessonSprite: {fileID: 21300000, guid: 171dd3b3e05f21747a4d39f6492099a7, type: 3}
-    introAudio: {fileID: 0}
-    instructionAudio: {fileID: 8300000, guid: 7282d6b811df829449708f87635be9a3, type: 3}
-    successAudio: {fileID: 8300000, guid: 9de73416f6220ff4abd3bf40ceaa1ee7, type: 3}
+    lessonSprite: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: 434e4a5c8d9c8bd48aade567045eda5d, type: 3}
+    instructionAudio: {fileID: 8300000, guid: 47e3388b548f2ba489d814c35cd29f73, type: 3}
+    successAudio: {fileID: 8300000, guid: 6ce1a95829ab7c2469e0f356a067ef67, type: 3}
     sequenceStepAudios: []
     sequenceStepMessages: []
-    supportMessage: Remember, Hashtag uses dots number 3, 4, 5&6.
-    supportAudio: {fileID: 8300000, guid: 73975ca93ac35a2488b67d381496e51e, type: 3}
-  - displayLabel: '#1'
-    categoryLabel: Number Practice
-    promptMessage: 
-    repeatMessage: 
-    successMessage: Correct! That is #1. Press next to continue.
-    wrongMessage: Try again. #1 uses dots 3, 4, 5 & 6 then dot 1.
-    lessonKind: 1
-    dots: 
-    expectedSequencePatterns:
-    - 001111
-    - 100000
-    expectedSequenceNames:
-    - '#'
-    - 1
-    lessonSprite: {fileID: 21300000, guid: 3a8c4f018d2c367498c6569fc46ebbac, type: 3}
-    introAudio: {fileID: 0}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 660e546f63e3ebd4d96609fdc84faa6a, type: 3}
-    sequenceStepAudios:
-    - {fileID: 8300000, guid: abd393c6f8cddf949b5eb99b796a94db, type: 3}
-    - {fileID: 8300000, guid: 02fcba06f6d7d414ca06c9cef3acd3cb, type: 3}
-    sequenceStepMessages:
-    - This is #1 the proper way of typing number 1. Press Dots 3, 4, 5 & 6 then dot
-      1.
-    - Now type number 1. Press dot 1.
-    supportMessage: 
-    supportAudio: {fileID: 0}
-  - displayLabel: '#2'
-    categoryLabel: Number Practice
-    promptMessage: 
-    repeatMessage: 
-    successMessage: Correct! That is #2. Press next to continue.
-    wrongMessage: Try again. #2 uses dots 3, 4, 5 & 6 then dots 1 & 2.
-    lessonKind: 1
-    dots: 
-    expectedSequencePatterns:
-    - 001111
-    - 110000
-    expectedSequenceNames:
-    - '#'
-    - 2
-    lessonSprite: {fileID: 21300000, guid: 78091e3973e09dd4b9c718b451ef5418, type: 3}
-    introAudio: {fileID: 0}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
-    sequenceStepAudios:
-    - {fileID: 8300000, guid: 97a34352dd1e53b4fa7cf9d87aa628fd, type: 3}
-    - {fileID: 8300000, guid: ed576abb2fcd1e044a9cafbdd8505f5f, type: 3}
-    sequenceStepMessages:
-    - This is #2 the proper way of typing number 2. Press Dots 3, 4, 5 & 6 then dots
-      1&2.
-    - Now type number 2. Press dots 1&2.
-    supportMessage: 
-    supportAudio: {fileID: 0}
-  - displayLabel: '#3'
-    categoryLabel: Number Practice
-    promptMessage: 
-    repeatMessage: 
-    successMessage: Correct! That is #3. Press next to continue.
-    wrongMessage: Try again. #3 uses dots 3, 4, 5 & 6 then dot 1&4.
-    lessonKind: 1
-    dots: 
-    expectedSequencePatterns:
-    - 001111
-    - 100100
-    expectedSequenceNames:
-    - '#'
-    - 3
-    lessonSprite: {fileID: 21300000, guid: 29c6dccd899d42148aa4efd82cff7a73, type: 3}
-    introAudio: {fileID: 0}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
-    sequenceStepAudios:
-    - {fileID: 8300000, guid: 9ade241a6410aa8468cc1bf641a6cdac, type: 3}
-    - {fileID: 8300000, guid: 5eedf622cc33cad448b8143da08ba1ed, type: 3}
-    sequenceStepMessages:
-    - This is #3 the proper way of typing number 3. Press Dots 3, 4, 5 & 6 then dot
-      1&4.
-    - Now type number 3. Press dot 1&4.
-    supportMessage: 
-    supportAudio: {fileID: 0}
-  - displayLabel: '#4'
-    categoryLabel: Number Practice
-    promptMessage: 
-    repeatMessage: 
-    successMessage: Correct! That is #4. Press next to continue.
-    wrongMessage: Try again. #4 uses dots 3, 4, 5 & 6 then dot 1, 4&5.
-    lessonKind: 1
-    dots: 
-    expectedSequencePatterns:
-    - 001111
-    - 100110
-    expectedSequenceNames:
-    - '#'
-    - 4
-    lessonSprite: {fileID: 21300000, guid: 5c501832f0950934dac78d12dfa0dc5d, type: 3}
-    introAudio: {fileID: 0}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
-    sequenceStepAudios:
-    - {fileID: 8300000, guid: 3bbad93cc1348fe4aa0c815ad1dbaf79, type: 3}
-    - {fileID: 8300000, guid: 88d4d31d59f985b49bc5005adf0add6a, type: 3}
-    sequenceStepMessages:
-    - This is #4 the proper way of typing number 4. Press Dots 3, 4, 5 & 6 then dot
-      1, 4&5.
-    - Now type number 4. Press dot 1, 4&5.
-    supportMessage: 
-    supportAudio: {fileID: 0}
-  - displayLabel: '#5'
-    categoryLabel: Number Practice
-    promptMessage: 
-    repeatMessage: 
-    successMessage: Correct! That is #5. Press next to continue.
-    wrongMessage: Try again. #5 uses dots 3, 4, 5 & 6 then dot 1&5.
-    lessonKind: 1
-    dots: 
-    expectedSequencePatterns:
-    - 001111
-    - 100010
-    expectedSequenceNames:
-    - '#'
-    - 5
-    lessonSprite: {fileID: 21300000, guid: 4a0e9b052e398bb46b1b3989e5ced1f5, type: 3}
-    introAudio: {fileID: 0}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
-    sequenceStepAudios:
-    - {fileID: 8300000, guid: 9acf51396cadbac42b447955a295caf2, type: 3}
-    - {fileID: 8300000, guid: e3736d9647461ef439af9b8b8f35b19b, type: 3}
-    sequenceStepMessages:
-    - This is #5 the proper way of typing number 5. Press Dots 3, 4, 5 & 6 then dot
-      1&5.
-    - Now type number 5. Press dot 1&5.
-    supportMessage: 
-    supportAudio: {fileID: 0}
-  - displayLabel: '#6'
-    categoryLabel: Number Practice
-    promptMessage: 
-    repeatMessage: 
-    successMessage: Correct! That is #6. Press next to continue.
-    wrongMessage: Try again. #1 uses dots 3, 4, 5 & 6 then dot 1, 2&4.
-    lessonKind: 1
-    dots: 
-    expectedSequencePatterns:
-    - 001111
-    - 110100
-    expectedSequenceNames:
-    - '#'
-    - 6
-    lessonSprite: {fileID: 21300000, guid: c8712ef6dace79f4ea80f51122e97cea, type: 3}
-    introAudio: {fileID: 0}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
-    sequenceStepAudios:
-    - {fileID: 8300000, guid: 9be71d08fbcda2d469996652d3fac495, type: 3}
-    - {fileID: 8300000, guid: 398188dbcac1b7849b87d04a2b41ee3b, type: 3}
-    sequenceStepMessages:
-    - This is #6 the proper way of typing number 6. Press Dots 3, 4, 5 & 6 then dot
-      1, 2&4.
-    - Now type number 6. Press dot 1, 2&4.
-    supportMessage: 
-    supportAudio: {fileID: 0}
-  - displayLabel: '#7'
-    categoryLabel: Number Practice
-    promptMessage: 
-    repeatMessage: 
-    successMessage: Correct! That is #7. Press next to continue.
-    wrongMessage: Try again. #7 uses dots 3, 4, 5 & 6 then dot 1, 2, 4&5.
-    lessonKind: 1
-    dots: 
-    expectedSequencePatterns:
-    - 001111
-    - 110110
-    expectedSequenceNames:
-    - '#'
-    - 7
-    lessonSprite: {fileID: 21300000, guid: ff38b062283a26f4da7ed346f9ccb152, type: 3}
-    introAudio: {fileID: 0}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
-    sequenceStepAudios:
-    - {fileID: 8300000, guid: 9d4da18aae31317458766cb99a7d8824, type: 3}
-    - {fileID: 8300000, guid: c965f5b4f534dfd408b0e698e056b55b, type: 3}
-    sequenceStepMessages:
-    - This is #7 the proper way of typing number 7. Press Dots 3, 4, 5 & 6 then dot
-      1, 2, 4&5.
-    - Now type number 1. Press dot 1.
-    supportMessage: 
-    supportAudio: {fileID: 0}
-  - displayLabel: '#8'
-    categoryLabel: Number Practice
-    promptMessage: 
-    repeatMessage: 
-    successMessage: Correct! That is #8. Press next to continue.
-    wrongMessage: Try again. #8 uses dots 3, 4, 5 & 6 then dot 1, 2&5.
-    lessonKind: 1
-    dots: 
-    expectedSequencePatterns:
-    - 001111
-    - 110010
-    expectedSequenceNames:
-    - '#'
-    - 8
-    lessonSprite: {fileID: 21300000, guid: 0123f8838b4d23349bece3d00cc061a9, type: 3}
-    introAudio: {fileID: 0}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
-    sequenceStepAudios:
-    - {fileID: 8300000, guid: fccdec1d89fc63744b43317a231e89a6, type: 3}
-    - {fileID: 8300000, guid: 8b3926be33dc3044481dca43643c0329, type: 3}
-    sequenceStepMessages:
-    - This is #8 the proper way of typing number 8. Press Dots 3, 4, 5 & 6 then dot
-      1, 2&5.
-    - Now type number 8. Press dot 1, 2&5.
-    supportMessage: 
-    supportAudio: {fileID: 0}
-  - displayLabel: '#9'
-    categoryLabel: Number Practice
-    promptMessage: 
-    repeatMessage: 
-    successMessage: Correct! That is #9. Press next to continue.
-    wrongMessage: Try again. #1 uses dots 3, 4, 5 & 6 then dot 2&4.
-    lessonKind: 1
-    dots: 
-    expectedSequencePatterns:
-    - 001111
-    - 010100
-    expectedSequenceNames:
-    - '#'
-    - 9
-    lessonSprite: {fileID: 21300000, guid: 0d4ab4d9dc8f9754487b692eeb4a6f96, type: 3}
-    introAudio: {fileID: 0}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
-    sequenceStepAudios:
-    - {fileID: 8300000, guid: 314776c7e4bc3b848bc4fde44afe580c, type: 3}
-    - {fileID: 8300000, guid: 314776c7e4bc3b848bc4fde44afe580c, type: 3}
-    sequenceStepMessages:
-    - This is #9 the proper way of typing number 9. Press Dots 3, 4, 5 & 6 then dot
-      2&4.
-    - Now type number 9. Press dot 2&4.
-    supportMessage: 
-    supportAudio: {fileID: 0}
-  - displayLabel: '#0'
-    categoryLabel: Number Practice
-    promptMessage: 
-    repeatMessage: 
-    successMessage: Correct! That is #0. Press next to continue.
-    wrongMessage: Try again. #1 uses dots 3, 4, 5 & 6 then dot 2, 4&5.
-    lessonKind: 1
-    dots: 
-    expectedSequencePatterns:
-    - 001111
-    - 010110
-    expectedSequenceNames:
-    - '#'
-    - 0
-    lessonSprite: {fileID: 21300000, guid: 0bc55ee76cecb464095755326d155dd3, type: 3}
-    introAudio: {fileID: 0}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
-    sequenceStepAudios:
-    - {fileID: 8300000, guid: ec40794df8bdf7140af335cf9415e6c3, type: 3}
-    - {fileID: 8300000, guid: 5e4b4ac4e1d53b545940a4c7965bc2a5, type: 3}
-    sequenceStepMessages:
-    - This is #0 the proper way of typing number 0. Press Dots 3, 4, 5 & 6 then dot
-      2, 4 &5.
-    - Now type number 0. Press dot 2, 4 &5.
-    supportMessage: 
-    supportAudio: {fileID: 0}
+    supportMessage: Remember L stands for "Like", Press dots 1, 2&3.
+    supportAudio: {fileID: 8300000, guid: 4fb3c3a6dcabf27428421ec40abf5bb3, type: 3}
+  - displayLabel: more
+    categoryLabel: Determiner
+    promptMessage: M stands for "More" in Contractions. Press Dots 1, 3&4.
+    repeatMessage: M stands for "More" in Contractions. Press Dots 1, 3&4.
+    successMessage: Correct! That is for "More". Press Next to Continue.
+    wrongMessage: Wrong. Please Try Again.
+    descriptionMessage: '"More" is a determiner and means a greater or additional
+      amount or degree of.'
+    descriptionAudio: {fileID: 8300000, guid: 7e6358078180316428cc3786ec6ad74f, type: 3}
+    lessonKind: 0
+    dots: 010000000300000004000000
+    expectedSequencePatterns: []
+    expectedSequenceNames: []
+    lessonSprite: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: e2d5a3d7d8b1e6d41842ca80d8c2b0bb, type: 3}
+    instructionAudio: {fileID: 8300000, guid: 8c1b9c6675241ce499a63cd5b9f7b8ef, type: 3}
+    successAudio: {fileID: 8300000, guid: 6ce1a95829ab7c2469e0f356a067ef67, type: 3}
+    sequenceStepAudios: []
+    sequenceStepMessages: []
+    supportMessage: Remember M stands for "More", Press dots 1, 3&4.
+    supportAudio: {fileID: 8300000, guid: 778ed270aef9841448cbd71a40fd865d, type: 3}
+  - displayLabel: not
+    categoryLabel: Adverb
+    promptMessage: N stands for "Not" in Contractions. Press Dots 1, 3, 4&5.
+    repeatMessage: N stands for "Not" in Contractions. Press Dots 1, 3, 4&5.
+    successMessage: Correct! That is for "Not". Press Next to Continue.
+    wrongMessage: Wrong. Please Try Again.
+    descriptionMessage: "\"Not\" is an adverb and used with an auxiliary verb or
+      \u2018be\u2019 to form the negative."
+    descriptionAudio: {fileID: 8300000, guid: c8b74c34abefab14b919c4ab32fb4eb6, type: 3}
+    lessonKind: 0
+    dots: 01000000030000000400000005000000
+    expectedSequencePatterns: []
+    expectedSequenceNames: []
+    lessonSprite: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: c73b5e27b68e4d048a00f1fcd7ecad24, type: 3}
+    instructionAudio: {fileID: 8300000, guid: fc5e18ef3f0241c40a01f205215e4d13, type: 3}
+    successAudio: {fileID: 8300000, guid: 6ce1a95829ab7c2469e0f356a067ef67, type: 3}
+    sequenceStepAudios: []
+    sequenceStepMessages: []
+    supportMessage: Remember N stands for "Not", Press dots 1, 3, 4&5.
+    supportAudio: {fileID: 8300000, guid: 0ce2e3932635b2c478484291ef5bd178, type: 3}
+  - displayLabel: rather
+    categoryLabel: Adverb
+    promptMessage: R stands for "rather" in Contractions. Press Dots 1, 2,3&5.
+    repeatMessage: R stands for "rather" in Contractions. Press Dots 1, 2,3&5.
+    successMessage: Correct! That is for "Rather". Press Next to Continue.
+    wrongMessage: Wrong. Please Try Again.
+    descriptionMessage: '"Rather" is an Adverb and used to indicate one''s preference
+      in a particular matter.'
+    descriptionAudio: {fileID: 8300000, guid: a32aa25f5b0ce7941995371668b72009, type: 3}
+    lessonKind: 0
+    dots: 01000000020000000300000005000000
+    expectedSequencePatterns: []
+    expectedSequenceNames: []
+    lessonSprite: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: 18d6eba30cbb55842a49706d58b1d3fe, type: 3}
+    instructionAudio: {fileID: 8300000, guid: 52f120a40538ea047925dfe0ba00748e, type: 3}
+    successAudio: {fileID: 8300000, guid: 6ce1a95829ab7c2469e0f356a067ef67, type: 3}
+    sequenceStepAudios: []
+    sequenceStepMessages: []
+    supportMessage: Remember R stands for "Rather", Press dots 1, 2, 3&5.
+    supportAudio: {fileID: 8300000, guid: 52c6a8e009198c845884c98379d7626e, type: 3}
+  - displayLabel: so
+    categoryLabel: Adverb
+    promptMessage: S stands for "so" in Contractions. Press Dots 2,3&4.
+    repeatMessage: S stands for "so" in Contractions. Press Dots 2,3&4.
+    successMessage: Correct! That is for "So". Press Next to Continue.
+    wrongMessage: Wrong. Please Try Again.
+    descriptionMessage: '"So" mean to such a great extent or extremely or very much.'
+    descriptionAudio: {fileID: 8300000, guid: 5b7e67cdb9d51af4487ad47e4b5d8504, type: 3}
+    lessonKind: 0
+    dots: 020000000300000004000000
+    expectedSequencePatterns: []
+    expectedSequenceNames: []
+    lessonSprite: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: ce0e857279b19da47b4e739ca1bec5d1, type: 3}
+    instructionAudio: {fileID: 8300000, guid: 927fc6865eabc124e8a437af05472d93, type: 3}
+    successAudio: {fileID: 8300000, guid: 6ce1a95829ab7c2469e0f356a067ef67, type: 3}
+    sequenceStepAudios: []
+    sequenceStepMessages: []
+    supportMessage: Remember R stands for "So", Press dots 2, 3&4.
+    supportAudio: {fileID: 8300000, guid: d7bbc457a2b159142a886dd3e23824a9, type: 3}
+  - displayLabel: that
+    categoryLabel: Pronoun
+    promptMessage: T stands for "that" in Contractions. Press Dots 2,3, 4&5.
+    repeatMessage: T stands for "that" in Contractions. Press Dots 2,3, 4&5.
+    successMessage: Correct! That is for "That". Press Next to Continue.
+    wrongMessage: Wrong. Please Try Again.
+    descriptionMessage: '"That" is a Pronoun and used to identify a specific person
+      or thing observed or heard by the speaker.'
+    descriptionAudio: {fileID: 8300000, guid: 93f6acd0496ba6d448c993170d2cd00e, type: 3}
+    lessonKind: 0
+    dots: 02000000030000000400000005000000
+    expectedSequencePatterns: []
+    expectedSequenceNames: []
+    lessonSprite: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: b06043055e63d23448a53d6953a50350, type: 3}
+    instructionAudio: {fileID: 8300000, guid: a7b49c13547598549a1b37287067bb51, type: 3}
+    successAudio: {fileID: 8300000, guid: 6ce1a95829ab7c2469e0f356a067ef67, type: 3}
+    sequenceStepAudios: []
+    sequenceStepMessages: []
+    supportMessage: Remember T stands for "That", Press dots 2, 3, 4&5.
+    supportAudio: {fileID: 8300000, guid: 12c3969b8fb260b4fa67d0da49e6e4a1, type: 3}
+  - displayLabel: us
+    categoryLabel: Pronoun
+    promptMessage: U stands for "us" in Contractions. Press Dots 1, 3&6.
+    repeatMessage: U stands for "us" in Contractions. Press Dots 1, 3&6.
+    successMessage: Correct! That is for "Us". Press Next to Continue.
+    wrongMessage: Wrong. Please Try Again.
+    descriptionMessage: '"Us" is a personal pronoun used as the object of a verb
+      or preposition to refer to the speaker and at least one other person.'
+    descriptionAudio: {fileID: 8300000, guid: f3f421a6b3dd8074784da314d85adc2b, type: 3}
+    lessonKind: 0
+    dots: 010000000300000006000000
+    expectedSequencePatterns: []
+    expectedSequenceNames: []
+    lessonSprite: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: abdf7fe131689c9448efa28a2f8a46c3, type: 3}
+    instructionAudio: {fileID: 8300000, guid: 6fa4726727097ac4197f09f9868eeb2b, type: 3}
+    successAudio: {fileID: 8300000, guid: 6ce1a95829ab7c2469e0f356a067ef67, type: 3}
+    sequenceStepAudios: []
+    sequenceStepMessages: []
+    supportMessage: Remember T stands for "Us", Press dots 1, 3&6.
+    supportAudio: {fileID: 8300000, guid: ee359b088a0d7bc468b0c7377cb3a265, type: 3}
+  - displayLabel: very
+    categoryLabel: Adverb
+    promptMessage: V stands for "very" in Contractions. Press Dots 1, 2, 3&6.
+    repeatMessage: V stands for "very" in Contractions. Press Dots 1, 2, 3&6.
+    successMessage: Correct! That is for "Very". Press Next to Continue.
+    wrongMessage: Wrong. Please Try Again.
+    descriptionMessage: '"Very" is an adverb that means in a high degree.'
+    descriptionAudio: {fileID: 8300000, guid: 879d8c21d2b491f4ea349ed821d1b44a, type: 3}
+    lessonKind: 0
+    dots: 01000000020000000300000006000000
+    expectedSequencePatterns: []
+    expectedSequenceNames: []
+    lessonSprite: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: b4be1e16c27aa6440b792b18e8d0c5ee, type: 3}
+    instructionAudio: {fileID: 8300000, guid: 301bb31eee3b7a0448ed6e82f4ae11b4, type: 3}
+    successAudio: {fileID: 8300000, guid: 6ce1a95829ab7c2469e0f356a067ef67, type: 3}
+    sequenceStepAudios: []
+    sequenceStepMessages: []
+    supportMessage: Remember V stands for "Very", Press dots 1, 2, 3&6.
+    supportAudio: {fileID: 8300000, guid: 927aa58db57d80d41b9d080a61ea1986, type: 3}
+  - displayLabel: will
+    categoryLabel: Verb
+    promptMessage: W stands for "will" in Contractions. Press Dots 2, 4, 5&6.
+    repeatMessage: W stands for "will" in Contractions. Press Dots 2, 4, 5&6.
+    successMessage: Correct! That is for "Will". Press Next to Continue.
+    wrongMessage: Wrong. Please Try Again.
+    descriptionMessage: '"Will" is a Verb that means expressing the future tense
+      or expressing inevitable events.'
+    descriptionAudio: {fileID: 8300000, guid: f786401f82ca91c4db4b8102760df420, type: 3}
+    lessonKind: 0
+    dots: 02000000040000000500000006000000
+    expectedSequencePatterns: []
+    expectedSequenceNames: []
+    lessonSprite: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: fc96b01b0e5aa4648ba81903f1cc6907, type: 3}
+    instructionAudio: {fileID: 8300000, guid: 55f79680da75f3b4fbc5111f2ada8e4e, type: 3}
+    successAudio: {fileID: 8300000, guid: 6ce1a95829ab7c2469e0f356a067ef67, type: 3}
+    sequenceStepAudios: []
+    sequenceStepMessages: []
+    supportMessage: Remember W stands for "Will", Press dots 2, 4, 5&6.
+    supportAudio: {fileID: 8300000, guid: d37a68f4a191a6244bfc20351b6c07f4, type: 3}
   playInstructionOnLessonStart: 1
   delayAfterVoice: 0.35
   noAudioTextDelay: 2
@@ -2062,6 +1936,11 @@ MonoBehaviour:
   resetSequenceToStartOnWrongAnswer: 1
   mistakesBeforeSupport: 3
   resetMistakesAfterSupport: 1
+  useTypewriterEffect: 1
+  defaultTypewriterCharacterDelay: 0.03
+  minSyncedCharacterDelay: 0.01
+  maxSyncedCharacterDelay: 0.12
+  waitForFullAudioBeforeContinuing: 1
   logDebug: 1
 --- !u!1 &1697798611
 GameObject:
@@ -2197,7 +2076,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -629, y: 153}
+  m_AnchoredPosition: {x: -645, y: 139.33}
   m_SizeDelta: {x: 452.4714, y: 183.8403}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1710783189
@@ -2212,7 +2091,7 @@ GameObject:
   - component: {fileID: 1710783192}
   - component: {fileID: 1710783191}
   m_Layer: 5
-  m_Name: NumberTranslation.Txt
+  m_Name: Common.Txt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2257,7 +2136,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Number Translation
+  m_text: Common Contraction
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a66db046ab4320b408a76ab376bdacca, type: 2}
   m_sharedMaterial: {fileID: 6244326952053564057, guid: a66db046ab4320b408a76ab376bdacca, type: 2}
@@ -2405,7 +2284,7 @@ MonoBehaviour:
   m_fontSize: 50
   m_fontSizeBase: 50
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -2441,7 +2320,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: -0.000061035156, z: -126.267944, w: -27.482924}
+  m_margin: {x: 19.46106, y: 55.264862, z: -98.46643, w: 30.54529}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2651,12 +2530,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 250
-  m_fontSizeBase: 250
+  m_fontSize: 200
+  m_fontSizeBase: 200
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 250
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -2690,7 +2569,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 10.044708}
+  m_margin: {x: 23.94342, y: 0, z: 31.924805, w: 10.044708}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
