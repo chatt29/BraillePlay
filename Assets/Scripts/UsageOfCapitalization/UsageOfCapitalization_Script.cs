@@ -1,26 +1,36 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class UsageOfCapitalization_Script : MonoBehaviour
 {
     public enum LessonState
     {
-        Intro,
-        Teaching,
-        WaitingForCapitalSign,
-        WaitingForLetterInput,
-        Success,
-        WaitingForReplayChoice,
+        AskingReady,
+        StageIntro,
+        WaitingForCapitalizationInput,
+        WaitingForSentenceTyping,
+        AskingRepeatOrContinue,
+        AskingRestartOrNextLesson,
         Ended
+    }
+
+    public enum CapitalizationStage
+    {
+        Letter = 0,
+        Word = 1,
+        Sentence = 2
     }
 
     [Serializable]
     public class LessonLine
     {
-        [TextArea(2, 4)] public string message;
+        [TextArea(2, 4)]
+        public string message;
         public AudioClip audioClip;
     }
 
@@ -28,46 +38,97 @@ public class UsageOfCapitalization_Script : MonoBehaviour
     public TMP_Text bubbleText;
     public TMP_Text translationText;
     public TMP_Text resultText;
+    public TMP_Text stageTypeText;
     public Image lessonImage;
 
     [Header("Audio")]
     public AudioSource audioSource;
 
     [Header("Lesson Visuals")]
-    public Sprite capitalizationImage;
-    public Sprite letterABrailleImage;
+    public Sprite dot6Image;
 
-    [Header("Intro Sequence")]
-    public LessonLine welcomeLine;
-    public LessonLine instructionLine;
+    [Header("Ready / Start")]
+    public LessonLine readyPromptLine;
+    public LessonLine startLessonLine;
 
-    [Header("Teaching / Practice")]
-    public LessonLine promptCapitalSignLine;
-    public LessonLine promptLetterLine;
-    public LessonLine wrongCapitalSignLine;
-    public LessonLine wrongLetterLine;
-    public LessonLine successLine;
+    [Header("Stage Intro Lines")]
+    public LessonLine letterStageIntroLine;
+    public LessonLine wordStageIntroLine;
+    public LessonLine sentenceStageIntroLine;
 
-    [Header("Completion Sequence")]
-    public LessonLine completedLine;
-    public LessonLine replayQuestionLine;
-    public LessonLine endLine;
+    [Header("Stage Prompt Lines")]
+    public LessonLine letterStagePromptLine;
+    public LessonLine wordStagePromptLine;
+    public LessonLine sentenceStagePromptLine;
 
-    [Header("Lesson Content")]
-    public string baseLetter = "a";
-    public string capitalLetter = "A";
+    [Header("Stage Progress Lines")]
+    public LessonLine wordStageSecondPressLine;
+    public LessonLine sentenceStageSecondPressLine;
+    public LessonLine sentenceStageThirdPressLine;
+
+    [Header("Typing Prompt Lines")]
+    public LessonLine letterTypingPromptLine;
+    public LessonLine wordTypingPromptLine;
+    public LessonLine sentenceTypingPromptLine;
+
+    [Header("Wrong Input Lines")]
+    public LessonLine wrongLetterStageLine;
+    public LessonLine wrongWordStageLine;
+    public LessonLine wrongSentenceStageLine;
+    public LessonLine wrongTypingLine;
+
+    [Header("Stage Success Lines")]
+    public LessonLine letterStageSuccessLine;
+    public LessonLine wordStageSuccessLine;
+    public LessonLine sentenceStageSuccessLine;
+
+    [Header("Repeat Or Continue")]
+    public LessonLine stageDecisionLine;
+
+    [Header("Lesson Completion")]
+    public LessonLine completedLessonLine;
+    public LessonLine restartOrNextLessonLine;
+    public LessonLine endLessonLine;
+
+    [Header("Sentence Content")]
+    public string baseSentence = "the cat is cute.";
+    public string letterSentence = "The cat is cute.";
+    public string wordSentence = "THE cat is cute.";
+    public string sentenceSentence = "THE CAT IS CUTE.";
 
     [Header("Options")]
     public bool playOnStart = true;
     public float extraWaitAfterAudio = 0.15f;
+    public string nextLessonSceneName = "";
 
-    private const string DOT_1 = "100000";
     private const string DOT_6 = "000001";
+    private const string LETTERS_ONLY_SENTENCE = "thecatiscute";
 
     private Coroutine sequenceRoutine;
-    private bool capitalSignEntered = false;
+    private int currentStageIndex = 0;
+    private int currentDot6Count = 0;
+    private string typedLetters = "";
+    private bool pendingCapitalSignDuringTyping = false;
 
-    public LessonState CurrentState { get; private set; } = LessonState.Intro;
+    private Dictionary<string, char> brailleToLetter;
+
+    public LessonState CurrentState { get; private set; } = LessonState.AskingReady;
+    public CapitalizationStage CurrentStage => (CapitalizationStage)currentStageIndex;
+
+    private void Awake()
+    {
+        BuildBrailleDictionary();
+    }
+
+    private void OnEnable()
+    {
+        BrailleMapping.OnSubmit += HandleSecretAutoType;
+    }
+
+    private void OnDisable()
+    {
+        BrailleMapping.OnSubmit -= HandleSecretAutoType;
+    }
 
     private void Start()
     {
@@ -78,111 +139,101 @@ public class UsageOfCapitalization_Script : MonoBehaviour
     public void StartLesson()
     {
         StopRunningRoutine();
-        sequenceRoutine = StartCoroutine(IntroSequence());
+        sequenceRoutine = StartCoroutine(StartLessonRoutine());
     }
 
-    private IEnumerator IntroSequence()
+    private IEnumerator StartLessonRoutine()
     {
-        CurrentState = LessonState.Intro;
-        capitalSignEntered = false;
+        currentStageIndex = 0;
+        currentDot6Count = 0;
+        typedLetters = "";
+        pendingCapitalSignDuringTyping = false;
 
-        SetTranslation(baseLetter);
+        SetStageType("");
+        SetTranslation(baseSentence);
         SetResult("");
-        SetLessonImage(capitalizationImage);
+        SetLessonImage(dot6Image);
 
-        ShowLine(welcomeLine);
-        yield return WaitForAudio(welcomeLine.audioClip);
-
-        ShowLine(instructionLine);
-        yield return WaitForAudio(instructionLine.audioClip);
-
-        CurrentState = LessonState.Teaching;
-        ShowCapitalSignStep();
-
-        yield return WaitForAudio(promptCapitalSignLine.audioClip);
-
-        CurrentState = LessonState.WaitingForCapitalSign;
-    }
-
-    public void HandleBrailleInput(string pattern)
-    {
-        if (CurrentState == LessonState.WaitingForCapitalSign)
-        {
-            if (pattern == DOT_6)
-            {
-                capitalSignEntered = true;
-                SetResult("Correct!");
-                CurrentState = LessonState.WaitingForLetterInput;
-                ShowLetterStep();
-            }
-            else
-            {
-                capitalSignEntered = false;
-                SetResult("Incorrect");
-                ShowCapitalSignStep(wrongCapitalSignLine);
-            }
-
-            return;
-        }
-
-        if (CurrentState == LessonState.WaitingForLetterInput)
-        {
-            if (capitalSignEntered && pattern == DOT_1)
-            {
-                capitalSignEntered = false;
-                SetTranslation(capitalLetter);
-                SetResult("Correct!");
-                SetLessonImage(letterABrailleImage);
-
-                CurrentState = LessonState.Success;
-
-                StopRunningRoutine();
-                sequenceRoutine = StartCoroutine(SuccessSequence());
-            }
-            else
-            {
-                capitalSignEntered = false;
-                SetTranslation(baseLetter);
-                SetResult("Incorrect");
-                ShowCapitalSignStep(wrongLetterLine);
-                CurrentState = LessonState.WaitingForCapitalSign;
-            }
-        }
-    }
-
-    private IEnumerator SuccessSequence()
-    {
-        ShowLine(successLine);
-        yield return WaitForAudio(successLine.audioClip);
-
-        ShowLine(completedLine);
-        yield return WaitForAudio(completedLine.audioClip);
-
-        ShowLine(replayQuestionLine);
-        yield return WaitForAudio(replayQuestionLine.audioClip);
-
-        CurrentState = LessonState.WaitingForReplayChoice;
+        CurrentState = LessonState.AskingReady;
+        ShowLine(readyPromptLine);
+        yield return WaitForAudio(readyPromptLine != null ? readyPromptLine.audioClip : null);
     }
 
     public void NextOrConfirmYes()
     {
-        if (CurrentState == LessonState.WaitingForReplayChoice)
-            RestartLesson();
+        switch (CurrentState)
+        {
+            case LessonState.AskingReady:
+                StopRunningRoutine();
+                sequenceRoutine = StartCoroutine(BeginStageRoutine());
+                break;
+
+            case LessonState.AskingRepeatOrContinue:
+                ContinueToNextStageOrFinish();
+                break;
+
+            case LessonState.AskingRestartOrNextLesson:
+                RestartLessonFromBeginning();
+                break;
+        }
+    }
+
+    public void NoOrEndLesson()
+    {
+        switch (CurrentState)
+        {
+            case LessonState.AskingReady:
+                StopRunningRoutine();
+                sequenceRoutine = StartCoroutine(EndLessonRoutine());
+                break;
+
+            case LessonState.AskingRepeatOrContinue:
+                RepeatCurrentStage();
+                break;
+
+            case LessonState.AskingRestartOrNextLesson:
+                ContinueToNextLesson();
+                break;
+
+            case LessonState.WaitingForSentenceTyping:
+                typedLetters = "";
+                pendingCapitalSignDuringTyping = false;
+                SetTranslation(GetTargetSentenceForStage(CurrentStage));
+                SetResult("Typing cleared. Try again.");
+                ShowLine(GetTypingPromptLine(CurrentStage));
+                break;
+        }
     }
 
     public void GoBackOrRestartPrompt()
     {
-        if (CurrentState == LessonState.WaitingForLetterInput)
+        switch (CurrentState)
         {
-            capitalSignEntered = false;
-            SetTranslation(baseLetter);
-            SetResult("");
-            ShowCapitalSignStep();
-            CurrentState = LessonState.WaitingForCapitalSign;
-        }
-        else if (CurrentState == LessonState.WaitingForCapitalSign)
-        {
-            ShowCapitalSignStep();
+            case LessonState.WaitingForCapitalizationInput:
+                RepeatCurrentStage();
+                break;
+
+            case LessonState.WaitingForSentenceTyping:
+                typedLetters = "";
+                pendingCapitalSignDuringTyping = false;
+                currentDot6Count = 0;
+                SetTranslation(baseSentence);
+                SetResult("Back to capitalization step.");
+                CurrentState = LessonState.WaitingForCapitalizationInput;
+                ReplayCurrentStagePrompt();
+                break;
+
+            case LessonState.AskingRepeatOrContinue:
+                ShowLine(stageDecisionLine);
+                break;
+
+            case LessonState.AskingRestartOrNextLesson:
+                ShowLine(restartOrNextLessonLine);
+                break;
+
+            case LessonState.AskingReady:
+                ShowLine(readyPromptLine);
+                break;
         }
     }
 
@@ -190,75 +241,456 @@ public class UsageOfCapitalization_Script : MonoBehaviour
     {
         switch (CurrentState)
         {
-            case LessonState.Intro:
-                ShowLine(welcomeLine);
+            case LessonState.AskingReady:
+                ShowLine(readyPromptLine);
                 break;
 
-            case LessonState.Teaching:
-            case LessonState.WaitingForCapitalSign:
-                ShowCapitalSignStep();
+            case LessonState.StageIntro:
+            case LessonState.WaitingForCapitalizationInput:
+            case LessonState.WaitingForSentenceTyping:
+                ReplayCurrentStagePrompt();
                 break;
 
-            case LessonState.WaitingForLetterInput:
-                ShowLetterStep();
+            case LessonState.AskingRepeatOrContinue:
+                ShowLine(stageDecisionLine);
                 break;
 
-            case LessonState.Success:
-                SetLessonImage(letterABrailleImage);
-                ShowLine(successLine);
-                break;
-
-            case LessonState.WaitingForReplayChoice:
-                SetLessonImage(letterABrailleImage);
-                ShowLine(replayQuestionLine);
+            case LessonState.AskingRestartOrNextLesson:
+                ShowLine(restartOrNextLessonLine);
                 break;
 
             case LessonState.Ended:
-                ShowLine(endLine);
+                ShowLine(endLessonLine);
                 break;
         }
     }
 
-    public void NoOrEndLesson()
+    public void HandleBrailleInput(string pattern)
     {
-        if (CurrentState != LessonState.WaitingForReplayChoice)
+        if (CurrentState == LessonState.WaitingForCapitalizationInput)
+        {
+            HandleCapitalizationInput(pattern);
+            return;
+        }
+
+        if (CurrentState == LessonState.WaitingForSentenceTyping)
+        {
+            HandleSentenceTyping(pattern);
+        }
+    }
+
+    private IEnumerator BeginStageRoutine()
+    {
+        CurrentState = LessonState.StageIntro;
+        currentDot6Count = 0;
+        typedLetters = "";
+        pendingCapitalSignDuringTyping = false;
+
+        SetLessonImage(dot6Image);
+        SetResult("");
+        SetStageType(GetStageLabel(CurrentStage));
+        SetTranslation(baseSentence);
+
+        ShowLine(startLessonLine);
+        yield return WaitForAudio(startLessonLine != null ? startLessonLine.audioClip : null);
+
+        LessonLine introLine = GetStageIntroLine(CurrentStage);
+        ShowLine(introLine);
+        yield return WaitForAudio(introLine != null ? introLine.audioClip : null);
+
+        LessonLine promptLine = GetStagePromptLine(CurrentStage);
+        ShowLine(promptLine);
+        yield return WaitForAudio(promptLine != null ? promptLine.audioClip : null);
+
+        CurrentState = LessonState.WaitingForCapitalizationInput;
+    }
+
+    private void HandleCapitalizationInput(string pattern)
+    {
+        if (pattern != DOT_6)
+        {
+            ResetCapitalizationAttempt();
+            SetResult("Incorrect.");
+            ShowLine(GetWrongStageLine(CurrentStage));
+            return;
+        }
+
+        currentDot6Count++;
+
+        switch (CurrentStage)
+        {
+            case CapitalizationStage.Letter:
+                if (currentDot6Count == 1)
+                {
+                    BeginTypingPhase();
+                    return;
+                }
+                break;
+
+            case CapitalizationStage.Word:
+                if (currentDot6Count == 1)
+                {
+                    SetResult("Good job. Press dot 6 one more time.");
+                    ShowLine(wordStageSecondPressLine);
+                    return;
+                }
+
+                if (currentDot6Count == 2)
+                {
+                    BeginTypingPhase();
+                    return;
+                }
+                break;
+
+            case CapitalizationStage.Sentence:
+                if (currentDot6Count == 1)
+                {
+                    SetResult("Good job. Press dot 6 again.");
+                    ShowLine(sentenceStageSecondPressLine);
+                    return;
+                }
+
+                if (currentDot6Count == 2)
+                {
+                    SetResult("Great. Press dot 6 one more time.");
+                    ShowLine(sentenceStageThirdPressLine);
+                    return;
+                }
+
+                if (currentDot6Count == 3)
+                {
+                    BeginTypingPhase();
+                    return;
+                }
+                break;
+        }
+
+        ResetCapitalizationAttempt();
+        SetResult("Incorrect.");
+        ShowLine(GetWrongStageLine(CurrentStage));
+    }
+
+    private void BeginTypingPhase()
+    {
+        typedLetters = "";
+        pendingCapitalSignDuringTyping = false;
+        SetTranslation(GetTargetSentenceForStage(CurrentStage));
+        SetResult("Now type the sentence.");
+        ShowLine(GetTypingPromptLine(CurrentStage));
+        CurrentState = LessonState.WaitingForSentenceTyping;
+    }
+
+    private void HandleSentenceTyping(string pattern)
+    {
+        if (pattern == DOT_6)
+        {
+            pendingCapitalSignDuringTyping = true;
+            SetResult("Capital sign entered. Continue typing.");
+            return;
+        }
+
+        if (!brailleToLetter.TryGetValue(pattern, out char typedLetter))
+        {
+            FailTypingAttempt();
+            return;
+        }
+
+        int nextIndex = typedLetters.Length;
+
+        if (nextIndex >= LETTERS_ONLY_SENTENCE.Length)
             return;
 
+        char expected = LETTERS_ONLY_SENTENCE[nextIndex];
+
+        if (typedLetter != expected)
+        {
+            Debug.Log("Typing mismatch. Expected: " + expected + " but got: " + typedLetter + " from pattern: " + pattern);
+            FailTypingAttempt();
+            return;
+        }
+
+        typedLetters += typedLetter;
+        pendingCapitalSignDuringTyping = false;
+
+        string progress = FormatTypedProgress(typedLetters, CurrentStage);
+        SetTranslation(progress);
+        SetResult("Typed correctly.");
+
+        if (typedLetters.Length >= LETTERS_ONLY_SENTENCE.Length)
+        {
+            StopRunningRoutine();
+            sequenceRoutine = StartCoroutine(FinishCurrentStageRoutine(GetSuccessLine(CurrentStage)));
+        }
+    }
+
+    private void HandleSecretAutoType()
+    {
+        if (CurrentState != LessonState.WaitingForSentenceTyping)
+            return;
+
+        typedLetters = LETTERS_ONLY_SENTENCE;
+        pendingCapitalSignDuringTyping = false;
+
+        SetTranslation(GetTargetSentenceForStage(CurrentStage));
+        SetResult("Sentence completed.");
+
         StopRunningRoutine();
-        sequenceRoutine = StartCoroutine(EndLessonRoutine());
+        sequenceRoutine = StartCoroutine(FinishCurrentStageRoutine(GetSuccessLine(CurrentStage)));
+    }
+
+    private IEnumerator FinishCurrentStageRoutine(LessonLine successLine)
+    {
+        CurrentState = LessonState.StageIntro;
+
+        SetTranslation(GetTargetSentenceForStage(CurrentStage));
+        SetResult("Correct!");
+
+        ShowLine(successLine);
+        yield return WaitForAudio(successLine != null ? successLine.audioClip : null);
+
+        CurrentState = LessonState.AskingRepeatOrContinue;
+        ShowLine(stageDecisionLine);
+        yield return WaitForAudio(stageDecisionLine != null ? stageDecisionLine.audioClip : null);
+    }
+
+    private void ContinueToNextStageOrFinish()
+    {
+        if (CurrentState != LessonState.AskingRepeatOrContinue)
+            return;
+
+        if (currentStageIndex < 2)
+        {
+            currentStageIndex++;
+            StopRunningRoutine();
+            sequenceRoutine = StartCoroutine(BeginStageRoutine());
+        }
+        else
+        {
+            StopRunningRoutine();
+            sequenceRoutine = StartCoroutine(FinishLessonRoutine());
+        }
+    }
+
+    private void RepeatCurrentStage()
+    {
+        currentDot6Count = 0;
+        typedLetters = "";
+        pendingCapitalSignDuringTyping = false;
+        StopRunningRoutine();
+        sequenceRoutine = StartCoroutine(BeginStageRoutine());
+    }
+
+    private IEnumerator FinishLessonRoutine()
+    {
+        CurrentState = LessonState.StageIntro;
+
+        SetStageType("Sentence");
+        SetTranslation(sentenceSentence);
+        SetLessonImage(dot6Image);
+        SetResult("");
+
+        ShowLine(completedLessonLine);
+        yield return WaitForAudio(completedLessonLine != null ? completedLessonLine.audioClip : null);
+
+        CurrentState = LessonState.AskingRestartOrNextLesson;
+        ShowLine(restartOrNextLessonLine);
+        yield return WaitForAudio(restartOrNextLessonLine != null ? restartOrNextLessonLine.audioClip : null);
     }
 
     private IEnumerator EndLessonRoutine()
     {
         CurrentState = LessonState.Ended;
-        ShowLine(endLine);
-        yield return WaitForAudio(endLine.audioClip);
+        ShowLine(endLessonLine);
+        yield return WaitForAudio(endLessonLine != null ? endLessonLine.audioClip : null);
     }
 
-    private void RestartLesson()
+    private void RestartLessonFromBeginning()
     {
         StopRunningRoutine();
-        capitalSignEntered = false;
-        SetTranslation(baseLetter);
-        SetResult("");
-        StartLesson();
+        currentStageIndex = 0;
+        currentDot6Count = 0;
+        typedLetters = "";
+        pendingCapitalSignDuringTyping = false;
+        sequenceRoutine = StartCoroutine(StartLessonRoutine());
     }
 
-    private void ShowCapitalSignStep()
+    private void ContinueToNextLesson()
     {
-        ShowCapitalSignStep(promptCapitalSignLine);
+        StopRunningRoutine();
+
+        if (!string.IsNullOrEmpty(nextLessonSceneName))
+        {
+            SceneManager.LoadScene(nextLessonSceneName);
+            return;
+        }
+
+        CurrentState = LessonState.Ended;
+        SetResult(" ");
+        ShowLine(endLessonLine);
+        Debug.Log("No next lesson scene assigned yet. Showing end lesson line instead.");
     }
 
-    private void ShowCapitalSignStep(LessonLine line)
+    private void ReplayCurrentStagePrompt()
     {
-        SetLessonImage(capitalizationImage);
-        ShowLine(line);
+        SetLessonImage(dot6Image);
+        SetStageType(GetStageLabel(CurrentStage));
+
+        if (CurrentState == LessonState.WaitingForSentenceTyping)
+        {
+            SetTranslation(GetTargetSentenceForStage(CurrentStage));
+            ShowLine(GetTypingPromptLine(CurrentStage));
+            return;
+        }
+
+        switch (CurrentStage)
+        {
+            case CapitalizationStage.Letter:
+                SetTranslation(baseSentence);
+                ShowLine(letterStagePromptLine);
+                break;
+
+            case CapitalizationStage.Word:
+                SetTranslation(baseSentence);
+                if (currentDot6Count == 0) ShowLine(wordStagePromptLine);
+                else ShowLine(wordStageSecondPressLine);
+                break;
+
+            case CapitalizationStage.Sentence:
+                SetTranslation(baseSentence);
+                if (currentDot6Count == 0) ShowLine(sentenceStagePromptLine);
+                else if (currentDot6Count == 1) ShowLine(sentenceStageSecondPressLine);
+                else ShowLine(sentenceStageThirdPressLine);
+                break;
+        }
     }
 
-    private void ShowLetterStep()
+    private void ResetCapitalizationAttempt()
     {
-        SetLessonImage(letterABrailleImage);
-        ShowLine(promptLetterLine);
+        currentDot6Count = 0;
+        typedLetters = "";
+        pendingCapitalSignDuringTyping = false;
+        SetLessonImage(dot6Image);
+        SetTranslation(baseSentence);
+    }
+
+    private void FailTypingAttempt()
+    {
+        typedLetters = "";
+        pendingCapitalSignDuringTyping = false;
+        SetTranslation(GetTargetSentenceForStage(CurrentStage));
+        SetResult("Incorrect. Try typing the sentence again.");
+        ShowLine(wrongTypingLine);
+    }
+
+    private LessonLine GetStageIntroLine(CapitalizationStage stage)
+    {
+        switch (stage)
+        {
+            case CapitalizationStage.Letter: return letterStageIntroLine;
+            case CapitalizationStage.Word: return wordStageIntroLine;
+            default: return sentenceStageIntroLine;
+        }
+    }
+
+    private LessonLine GetStagePromptLine(CapitalizationStage stage)
+    {
+        switch (stage)
+        {
+            case CapitalizationStage.Letter: return letterStagePromptLine;
+            case CapitalizationStage.Word: return wordStagePromptLine;
+            default: return sentenceStagePromptLine;
+        }
+    }
+
+    private LessonLine GetTypingPromptLine(CapitalizationStage stage)
+    {
+        switch (stage)
+        {
+            case CapitalizationStage.Letter: return letterTypingPromptLine;
+            case CapitalizationStage.Word: return wordTypingPromptLine;
+            default: return sentenceTypingPromptLine;
+        }
+    }
+
+    private LessonLine GetWrongStageLine(CapitalizationStage stage)
+    {
+        switch (stage)
+        {
+            case CapitalizationStage.Letter: return wrongLetterStageLine;
+            case CapitalizationStage.Word: return wrongWordStageLine;
+            default: return wrongSentenceStageLine;
+        }
+    }
+
+    private LessonLine GetSuccessLine(CapitalizationStage stage)
+    {
+        switch (stage)
+        {
+            case CapitalizationStage.Letter: return letterStageSuccessLine;
+            case CapitalizationStage.Word: return wordStageSuccessLine;
+            default: return sentenceStageSuccessLine;
+        }
+    }
+
+    private string GetStageLabel(CapitalizationStage stage)
+    {
+        switch (stage)
+        {
+            case CapitalizationStage.Letter: return "Letter";
+            case CapitalizationStage.Word: return "Word";
+            default: return "Sentence";
+        }
+    }
+
+    private string GetTargetSentenceForStage(CapitalizationStage stage)
+    {
+        switch (stage)
+        {
+            case CapitalizationStage.Letter: return letterSentence;
+            case CapitalizationStage.Word: return wordSentence;
+            default: return sentenceSentence;
+        }
+    }
+
+    private string FormatTypedProgress(string rawLetters, CapitalizationStage stage)
+    {
+        char[] chars = rawLetters.ToCharArray();
+
+        switch (stage)
+        {
+            case CapitalizationStage.Letter:
+                if (chars.Length > 0)
+                    chars[0] = char.ToUpper(chars[0]);
+                break;
+
+            case CapitalizationStage.Word:
+                for (int i = 0; i < chars.Length && i < 3; i++)
+                    chars[i] = char.ToUpper(chars[i]);
+                break;
+
+            case CapitalizationStage.Sentence:
+                for (int i = 0; i < chars.Length; i++)
+                    chars[i] = char.ToUpper(chars[i]);
+                break;
+        }
+
+        string noSpaces = new string(chars);
+
+        if (noSpaces.Length == 0) return "";
+        if (noSpaces.Length <= 3) return noSpaces;
+        if (noSpaces.Length <= 6) return noSpaces.Substring(0, 3) + " " + noSpaces.Substring(3);
+        if (noSpaces.Length <= 8) return noSpaces.Substring(0, 3) + " " + noSpaces.Substring(3, 3) + " " + noSpaces.Substring(6);
+
+        string formatted =
+            noSpaces.Substring(0, 3) + " " +
+            noSpaces.Substring(3, 3) + " " +
+            noSpaces.Substring(6, 2) + " " +
+            noSpaces.Substring(8);
+
+        if (rawLetters.Length == LETTERS_ONLY_SENTENCE.Length)
+            formatted += ".";
+
+        return formatted;
     }
 
     private void ShowLine(LessonLine line)
@@ -279,6 +711,12 @@ public class UsageOfCapitalization_Script : MonoBehaviour
     {
         if (resultText != null)
             resultText.text = value;
+    }
+
+    private void SetStageType(string value)
+    {
+        if (stageTypeText != null)
+            stageTypeText.text = value;
     }
 
     private void SetLessonImage(Sprite sprite)
@@ -316,5 +754,38 @@ public class UsageOfCapitalization_Script : MonoBehaviour
             StopCoroutine(sequenceRoutine);
             sequenceRoutine = null;
         }
+    }
+
+    private void BuildBrailleDictionary()
+    {
+        brailleToLetter = new Dictionary<string, char>
+        {
+            { "100000", 'a' },
+            { "110000", 'b' },
+            { "100100", 'c' },
+            { "100110", 'd' },
+            { "100010", 'e' },
+            { "110100", 'f' },
+            { "110110", 'g' },
+            { "110010", 'h' },
+            { "010100", 'i' },
+            { "010110", 'j' },
+            { "101000", 'k' },
+            { "111000", 'l' },
+            { "101100", 'm' },
+            { "101110", 'n' },
+            { "101010", 'o' },
+            { "111100", 'p' },
+            { "111110", 'q' },
+            { "111010", 'r' },
+            { "011100", 's' },
+            { "011110", 't' },
+            { "101001", 'u' },
+            { "111001", 'v' },
+            { "010111", 'w' },
+            { "101101", 'x' },
+            { "101111", 'y' },
+            { "101011", 'z' }
+        };
     }
 }
