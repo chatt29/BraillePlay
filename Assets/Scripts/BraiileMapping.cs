@@ -23,6 +23,9 @@ public class BrailleMapping : MonoBehaviour
     public static event Action OnBack;
     public static event Action OnSpace;
 
+    public static event Action OnCorrect;
+    public static event Action OnWrong;
+
     [Header("Braille Dots")]
     public KeyCode dot1Key = KeyCode.F;
     public KeyCode dot2Key = KeyCode.D;
@@ -43,6 +46,10 @@ public class BrailleMapping : MonoBehaviour
     public KeyCode loginKey = KeyCode.Return;
     public KeyCode spaceKey = KeyCode.Space;
 
+    [Header("Feedback Keys")]
+    public KeyCode correctKey = KeyCode.Alpha1;
+    public KeyCode wrongKey = KeyCode.Alpha2;
+
     [Header("Audio")]
     public AudioSource audioSource;
 
@@ -59,6 +66,18 @@ public class BrailleMapping : MonoBehaviour
     public AudioClip yesOrNextSfx;
     public AudioClip loginSfx;
     public AudioClip spaceSfx;
+
+    public AudioClip correctSfx;
+    public AudioClip wrongSfx;
+
+    [Header("Stereo Pan")]
+    [Range(-1f, 1f)] public float leftEarPan = -1f;
+    [Range(-1f, 1f)] public float rightEarPan = 1f;
+
+    [Header("Volume")]
+    [Range(0f, 3f)] public float dotVolume = 2.0f;
+    [Range(0f, 3f)] public float actionVolume = 1.5f;
+    [Range(0f, 3f)] public float feedbackVolume = 2.0f;
 
     [Header("Options")]
     public bool logInputs = false;
@@ -80,12 +99,32 @@ public class BrailleMapping : MonoBehaviour
     {
         CheckDotChordInputs();
         CheckActionInputs();
+        CheckFeedbackInputs();
     }
 
-    private void PlaySfx(AudioClip clip)
+    private void PlaySfx(AudioClip clip, float volumeMultiplier = 1f)
     {
         if (audioSource != null && clip != null)
-            audioSource.PlayOneShot(clip);
+            audioSource.PlayOneShot(clip, volumeMultiplier);
+    }
+
+    private void PlayPannedSfx(AudioClip clip, float pan, float volumeMultiplier = 1f)
+    {
+        if (audioSource == null || clip == null) return;
+
+        GameObject tempAudio = new GameObject("TempPannedAudio");
+        tempAudio.transform.SetParent(transform);
+
+        AudioSource tempSource = tempAudio.AddComponent<AudioSource>();
+        tempSource.outputAudioMixerGroup = audioSource.outputAudioMixerGroup;
+        tempSource.volume = Mathf.Max(0f, audioSource.volume * volumeMultiplier);
+        tempSource.pitch = audioSource.pitch;
+        tempSource.spatialBlend = 0f;
+        tempSource.panStereo = pan;
+        tempSource.clip = clip;
+        tempSource.Play();
+
+        Destroy(tempAudio, clip.length + 0.1f);
     }
 
     private void CheckDotChordInputs()
@@ -94,6 +133,7 @@ public class BrailleMapping : MonoBehaviour
         {
             chordStarted = true;
             chordDot1 = true;
+            PlayPannedSfx(dot1Sfx, rightEarPan, dotVolume);
             if (logInputs) Debug.Log("Braille Dot 1 pressed");
         }
 
@@ -101,6 +141,7 @@ public class BrailleMapping : MonoBehaviour
         {
             chordStarted = true;
             chordDot2 = true;
+            PlayPannedSfx(dot2Sfx, rightEarPan, dotVolume);
             if (logInputs) Debug.Log("Braille Dot 2 pressed");
         }
 
@@ -108,6 +149,7 @@ public class BrailleMapping : MonoBehaviour
         {
             chordStarted = true;
             chordDot3 = true;
+            PlayPannedSfx(dot3Sfx, rightEarPan, dotVolume);
             if (logInputs) Debug.Log("Braille Dot 3 pressed");
         }
 
@@ -115,6 +157,7 @@ public class BrailleMapping : MonoBehaviour
         {
             chordStarted = true;
             chordDot4 = true;
+            PlayPannedSfx(dot4Sfx, leftEarPan, dotVolume);
             if (logInputs) Debug.Log("Braille Dot 4 pressed");
         }
 
@@ -122,6 +165,7 @@ public class BrailleMapping : MonoBehaviour
         {
             chordStarted = true;
             chordDot5 = true;
+            PlayPannedSfx(dot5Sfx, leftEarPan, dotVolume);
             if (logInputs) Debug.Log("Braille Dot 5 pressed");
         }
 
@@ -129,6 +173,7 @@ public class BrailleMapping : MonoBehaviour
         {
             chordStarted = true;
             chordDot6 = true;
+            PlayPannedSfx(dot6Sfx, leftEarPan, dotVolume);
             if (logInputs) Debug.Log("Braille Dot 6 pressed");
         }
 
@@ -162,13 +207,6 @@ public class BrailleMapping : MonoBehaviour
         if (chordDot4) OnDot4?.Invoke();
         if (chordDot5) OnDot5?.Invoke();
         if (chordDot6) OnDot6?.Invoke();
-
-        if (chordDot1) PlaySfx(dot1Sfx);
-        if (chordDot2) PlaySfx(dot2Sfx);
-        if (chordDot3) PlaySfx(dot3Sfx);
-        if (chordDot4) PlaySfx(dot4Sfx);
-        if (chordDot5) PlaySfx(dot5Sfx);
-        if (chordDot6) PlaySfx(dot6Sfx);
 
         string pattern =
             (chordDot1 ? "1" : "0") +
@@ -208,35 +246,35 @@ public class BrailleMapping : MonoBehaviour
         if (Input.GetKeyDown(repeatKey))
         {
             if (logInputs) Debug.Log("Repeat");
-            PlaySfx(repeatSfx);
+            PlaySfx(repeatSfx, actionVolume);
             OnRepeat?.Invoke();
         }
 
         if (Input.GetKeyDown(submitKey))
         {
             if (logInputs) Debug.Log("Submit");
-            PlaySfx(submitSfx);
+            PlaySfx(submitSfx, actionVolume);
             OnSubmit?.Invoke();
         }
 
         if (Input.GetKeyDown(deleteOrNoKey))
         {
             if (logInputs) Debug.Log("Delete / No");
-            PlaySfx(deleteOrNoSfx);
+            PlaySfx(deleteOrNoSfx, actionVolume);
             OnDeleteOrNo?.Invoke();
         }
 
         if (Input.GetKeyDown(yesOrNextKey))
         {
             if (logInputs) Debug.Log("Yes / Next");
-            PlaySfx(yesOrNextSfx);
+            PlaySfx(yesOrNextSfx, actionVolume);
             OnYesOrNext?.Invoke();
         }
 
         if (Input.GetKeyDown(loginKey))
         {
             if (logInputs) Debug.Log("Login");
-            PlaySfx(loginSfx);
+            PlaySfx(loginSfx, actionVolume);
             OnLogin?.Invoke();
         }
 
@@ -246,6 +284,35 @@ public class BrailleMapping : MonoBehaviour
             PlaySfx(spaceSfx);
             OnSpace?.Invoke();
         }
+    }
+
+    private void CheckFeedbackInputs()
+    {
+        if (Input.GetKeyDown(correctKey))
+        {
+            if (logInputs) Debug.Log("Correct");
+            PlaySfx(correctSfx, feedbackVolume);
+            OnCorrect?.Invoke();
+        }
+
+        if (Input.GetKeyDown(wrongKey))
+        {
+            if (logInputs) Debug.Log("Wrong");
+            PlaySfx(wrongSfx, feedbackVolume);
+            OnWrong?.Invoke();
+        }
+    }
+
+    public void PlayCorrectSfx()
+    {
+        PlaySfx(correctSfx, feedbackVolume);
+        OnCorrect?.Invoke();
+    }
+
+    public void PlayWrongSfx()
+    {
+        PlaySfx(wrongSfx, feedbackVolume);
+        OnWrong?.Invoke();
     }
 
     public bool GetDot1() => Input.GetKey(dot1Key);
