@@ -1381,7 +1381,8 @@ GameObject:
   - component: {fileID: 1586095474}
   - component: {fileID: 1586095476}
   - component: {fileID: 1586095478}
-  - component: {fileID: 1586095481}
+  - component: {fileID: 1586095483}
+  - component: {fileID: 1586095482}
   m_Layer: 5
   m_Name: PunctuationsManager
   m_TagString: Untagged
@@ -1429,10 +1430,11 @@ MonoBehaviour:
   pauseKey: 112
   backKey: 27
   repeatKey: 114
-  submitKey: 32
+  submitKey: 273
   deleteOrNoKey: 8
   yesOrNextKey: 121
   loginKey: 13
+  spaceKey: 32
   audioSource: {fileID: 0}
   dot1Sfx: {fileID: 0}
   dot2Sfx: {fileID: 0}
@@ -1445,6 +1447,7 @@ MonoBehaviour:
   deleteOrNoSfx: {fileID: 0}
   yesOrNextSfx: {fileID: 0}
   loginSfx: {fileID: 0}
+  spaceSfx: {fileID: 0}
   logInputs: 0
 --- !u!82 &1586095478
 AudioSource:
@@ -1543,7 +1546,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1586095481
+--- !u!114 &1586095482
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1552,9 +1555,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 1586095473}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63e56be46e2d45a4991248084c258f2f, type: 3}
+  m_Script: {fileID: 11500000, guid: 27b96dc1a3cd25849bfc03c9531c302c, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CommonContractionScript
+  m_EditorClassIdentifier: Assembly-CSharp::PunctuationInputHandler
+  lessonScript: {fileID: 0}
+  livePatternText: {fileID: 0}
+  showHeldDotsPattern: 1
+--- !u!114 &1586095483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586095473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38c06b4776d8ccc43b65a367fb34e2b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PunctuationScript
   bubbleMessageText: {fileID: 1257937990}
   translationText: {fileID: 2077778574}
   pressText: {fileID: 176604274}
@@ -1578,7 +1596,7 @@ MonoBehaviour:
   - displayLabel: .
     categoryLabel: Period
     promptMessage: 'This is Period ".". Press the Dots 2, 5&6. '
-    repeatMessage: 'Period ".". Press the Dots 2, 5&6. '
+    repeatMessage: 'This is Period ".". Press the Dots 2, 5&6. '
     successMessage: That's Correct. That's how you type "Period" in Braille.
     wrongMessage: Wrong. Please try again.
     descriptionMessage: The period is perhaps the easiest punctuation mark to master.
@@ -1594,27 +1612,40 @@ MonoBehaviour:
     successAudio: {fileID: 8300000, guid: d376210924505a34899d8e12046d7832, type: 3}
     sequenceStepAudios: []
     sequenceStepMessages: []
+    sequenceStepWrongAudios: []
+    sequenceStepWrongMessages: []
     supportMessage: Remember period uses dots 2, 5&6. Press the dots 2, 5&6.
     supportAudio: {fileID: 8300000, guid: d67aaafec0c9346488c55e23b64d6e70, type: 3}
-  - displayLabel: ','
-    categoryLabel: Comma
-    promptMessage: 'This is Comma ",". Press the Dot 2. '
-    repeatMessage: Comma ",". Press the Dot 2.
-    successMessage: That's Correct. That's how you type "Comma" in Braille.
+  - displayLabel: .
+    categoryLabel: Period
+    promptMessage: 'Let''s try using period in a sentence. Complete this sentence.
+      "I have to go." '
+    repeatMessage: 'Let''s try using period in a sentence. Complete this sentence.
+      "I have to go." '
+    successMessage: That's Correct. Good Job!
     wrongMessage: Wrong. Please try again.
-    descriptionMessage: Comma is perhaps the easiest punctuation mark to master.
-      It ends a sentence.
+    descriptionMessage: Also, If a sentence ends with an abbreviation, the period
+      used for the abbreviation also serves as the period for the sentence. This
+      is true even if the abbreviation is contained within a quotation.
     descriptionAudio: {fileID: 8300000, guid: ff46780778b946c4db4e1e66f06055f8, type: 3}
-    lessonKind: 0
-    dots: 02000000
-    expectedSequencePatterns: []
-    expectedSequenceNames: []
+    lessonKind: 1
+    dots: 
+    expectedSequencePatterns:
+    - 100000
+    - 000000
+    - 110000
+    expectedSequenceNames:
+    - 1
+    - 
+    - 1
     lessonSprite: {fileID: 0}
     introAudio: {fileID: 8300000, guid: 7fffc685fc046804f9c175b8a950a56e, type: 3}
     instructionAudio: {fileID: 0}
     successAudio: {fileID: 8300000, guid: d376210924505a34899d8e12046d7832, type: 3}
     sequenceStepAudios: []
     sequenceStepMessages: []
+    sequenceStepWrongAudios: []
+    sequenceStepWrongMessages: []
     supportMessage: Remember period uses dots 2, 5&6. Press the dots 2, 5&6.
     supportAudio: {fileID: 8300000, guid: d67aaafec0c9346488c55e23b64d6e70, type: 3}
   playInstructionOnLessonStart: 1
@@ -1623,6 +1654,8 @@ MonoBehaviour:
   delayAfterCorrect: 0.75
   showHeldDotsPattern: 1
   resetSequenceToStartOnWrongAnswer: 1
+  allowSpaceAsSequenceInput: 1
+  spaceSequencePattern: 000000
   mistakesBeforeSupport: 3
   resetMistakesAfterSupport: 1
   useTypewriterEffect: 1
