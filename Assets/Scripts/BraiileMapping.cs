@@ -19,6 +19,9 @@ public class BrailleMapping : MonoBehaviour
     public static event Action OnDeleteOrNo;
     public static event Action OnYesOrNext;
     public static event Action OnLogin;
+    public static event Action OnPause;
+    public static event Action OnBack;
+    public static event Action OnSpace;
 
     public static event Action OnCorrect;
     public static event Action OnWrong;
@@ -35,15 +38,13 @@ public class BrailleMapping : MonoBehaviour
     public KeyCode pauseKey = KeyCode.P;
     public KeyCode backKey = KeyCode.Escape;
 
-    public static event Action OnPause;
-    public static event Action OnBack;
-
     [Header("Actions")]
     public KeyCode repeatKey = KeyCode.R;
-    public KeyCode submitKey = KeyCode.Space;
+    public KeyCode submitKey = KeyCode.Return;
     public KeyCode deleteOrNoKey = KeyCode.Backspace;
     public KeyCode yesOrNextKey = KeyCode.Y;
     public KeyCode loginKey = KeyCode.Return;
+    public KeyCode spaceKey = KeyCode.Space;
 
     [Header("Feedback Keys")]
     public KeyCode correctKey = KeyCode.Alpha1;
@@ -64,6 +65,7 @@ public class BrailleMapping : MonoBehaviour
     public AudioClip deleteOrNoSfx;
     public AudioClip yesOrNextSfx;
     public AudioClip loginSfx;
+    public AudioClip spaceSfx;
 
     public AudioClip correctSfx;
     public AudioClip wrongSfx;
@@ -274,6 +276,13 @@ public class BrailleMapping : MonoBehaviour
             if (logInputs) Debug.Log("Login");
             PlaySfx(loginSfx, actionVolume);
             OnLogin?.Invoke();
+        }
+
+        if (Input.GetKeyDown(spaceKey))
+        {
+            if (logInputs) Debug.Log("Space");
+            PlaySfx(spaceSfx);
+            OnSpace?.Invoke();
         }
     }
 
