@@ -296,15 +296,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
+  m_fontSize: 113
   m_fontSizeBase: 100
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 200
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_characterHorizontalScale: 1
@@ -335,7 +335,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -2.815918, y: 0, z: -66.84956, w: -14.077393}
+  m_margin: {x: -2.815918, y: 0, z: -66.84956, w: -49.007874}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1631,23 +1631,223 @@ MonoBehaviour:
     lessonKind: 1
     dots: 
     expectedSequencePatterns:
-    - 100000
+    - 000001
+    - 010100
     - 000000
-    - 110000
+    - 110010
+    - 100000
+    - 111001
+    - 100010
+    - 000000
+    - 011110
+    - 101010
+    - 000000
+    - 110110
+    - 101010
+    - 010011
     expectedSequenceNames:
-    - 1
-    - 
-    - 1
+    - ^
+    - I
+    - ' '
+    - h
+    - a
+    - v
+    - e
+    - ' '
+    - t
+    - o
+    - ' '
+    - g
+    - o
+    - .
     lessonSprite: {fileID: 0}
-    introAudio: {fileID: 8300000, guid: 7fffc685fc046804f9c175b8a950a56e, type: 3}
+    introAudio: {fileID: 8300000, guid: c936e15052b870841bb5597d67b52722, type: 3}
     instructionAudio: {fileID: 0}
     successAudio: {fileID: 8300000, guid: d376210924505a34899d8e12046d7832, type: 3}
-    sequenceStepAudios: []
-    sequenceStepMessages: []
-    sequenceStepWrongAudios: []
-    sequenceStepWrongMessages: []
-    supportMessage: Remember period uses dots 2, 5&6. Press the dots 2, 5&6.
-    supportAudio: {fileID: 8300000, guid: d67aaafec0c9346488c55e23b64d6e70, type: 3}
+    sequenceStepAudios:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 0622e17681c1d9747a952cdfc368644f, type: 3}
+    - {fileID: 8300000, guid: efaa1cde875a8f74a97e8d8f18c0c5ef, type: 3}
+    - {fileID: 8300000, guid: 507e6e21ec3099a4dbbd8dfc112663cf, type: 3}
+    - {fileID: 8300000, guid: 17cbd7cd9a746054c9e37b57c02870f2, type: 3}
+    - {fileID: 8300000, guid: 2d48057eda8aca345846ee47791c11ba, type: 3}
+    - {fileID: 8300000, guid: d472b9cd93b9c5941b342fcf7b9d1f66, type: 3}
+    - {fileID: 8300000, guid: 429eb1ac2e798084bacf535a9e9ad688, type: 3}
+    - {fileID: 8300000, guid: 507e6e21ec3099a4dbbd8dfc112663cf, type: 3}
+    - {fileID: 8300000, guid: 5a5c5ded30729d743b295b136af14578, type: 3}
+    - {fileID: 8300000, guid: 3bf9e1255f417674cbe7bc51213915fa, type: 3}
+    - {fileID: 8300000, guid: 507e6e21ec3099a4dbbd8dfc112663cf, type: 3}
+    - {fileID: 8300000, guid: 92b0c099b231e0a478ff7018760a7270, type: 3}
+    - {fileID: 8300000, guid: 3bf9e1255f417674cbe7bc51213915fa, type: 3}
+    - {fileID: 8300000, guid: 92c844c4b5b3cdd4287f886b8f04a16d, type: 3}
+    sequenceStepMessages:
+    - 
+    - I
+    - ' '
+    - h
+    - a
+    - v
+    - e
+    - ' '
+    - t
+    - o
+    - ' '
+    - g
+    - o
+    - .
+    sequenceStepWrongAudios:
+    - {fileID: 8300000, guid: a06bd0c523d048d47b15e9d747380a4e, type: 3}
+    - {fileID: 8300000, guid: ee419e33bf0104c4086c4582d12bbd05, type: 3}
+    - {fileID: 8300000, guid: 08b80871d2c17fc429ed651d5071b118, type: 3}
+    - {fileID: 8300000, guid: 09e6f4550e2024348a845cf4022d03af, type: 3}
+    - {fileID: 8300000, guid: 44a3cc00710e72d4ab604ac3af2ca19e, type: 3}
+    - {fileID: 8300000, guid: c8c890841fdd94749940ca76a51dcf55, type: 3}
+    - {fileID: 8300000, guid: 1c860b20e47214247b2bc49a5b35ed14, type: 3}
+    - {fileID: 8300000, guid: 08b80871d2c17fc429ed651d5071b118, type: 3}
+    - {fileID: 8300000, guid: 0aa28d3259f65054a99aa68876891d11, type: 3}
+    - {fileID: 8300000, guid: 35502c1306ce3c4468e70b5842fc772e, type: 3}
+    - {fileID: 8300000, guid: 08b80871d2c17fc429ed651d5071b118, type: 3}
+    - {fileID: 8300000, guid: 0517ce0e8379b3b4d938cb512559e95a, type: 3}
+    - {fileID: 8300000, guid: 35502c1306ce3c4468e70b5842fc772e, type: 3}
+    - {fileID: 8300000, guid: bd57d6865621fa4429989e6ddd32a105, type: 3}
+    sequenceStepWrongMessages:
+    - Remember, to capitalize a letter you have to press dot 6 before the letter.
+      Let's try it again from the start.
+    - Remember I uses dots number 2&5. Let's try it again from the start.
+    - You forgot to add space before the preceding word. Let's try it again from
+      the start.
+    - Remember H uses dots number 1, 2&5. Let's try it again from the start.
+    - Remember A uses dot number 1. Let's try it again from the start.
+    - Remember V uses dots number 1, 2&5. Let's try it again from the start.
+    - Remember E uses dots number 1&5. Let's try it again from the start.
+    - You forgot to add space before the preceding word. Let's try it again from
+      the start.
+    - Remember T uses dots number 2, 3, 4&5. Let's try it again from the start.
+    - Remember O uses dots number 1, 3&5. Let's try it again from the start.
+    - You forgot to add space before the preceding word. Let's try it again from
+      the start.
+    - Remember G uses dots number 1, 2, 4&5. Let's try it again from the start.
+    - Remember O uses dots number 1, 3&5. Let's try it again from the start.
+    - Remember, period uses dots number 2, 5&6. Let's try again from the start and
+      finish the sentence with a period.
+    supportMessage: 
+    supportAudio: {fileID: 0}
+  - displayLabel: '?'
+    categoryLabel: Question Mark
+    promptMessage: 'Let''s try using period in a sentence. Complete this sentence.
+      "I have to go." '
+    repeatMessage: 'Let''s try using period in a sentence. Complete this sentence.
+      "I have to go." '
+    successMessage: That's Correct. Good Job!
+    wrongMessage: Wrong. Please try again.
+    descriptionMessage: Also, If a sentence ends with an abbreviation, the period
+      used for the abbreviation also serves as the period for the sentence. This
+      is true even if the abbreviation is contained within a quotation.
+    descriptionAudio: {fileID: 8300000, guid: ff46780778b946c4db4e1e66f06055f8, type: 3}
+    lessonKind: 1
+    dots: 
+    expectedSequencePatterns:
+    - 000001
+    - 010100
+    - 000000
+    - 110010
+    - 100000
+    - 111001
+    - 100010
+    - 000000
+    - 011110
+    - 101010
+    - 000000
+    - 110110
+    - 101010
+    - 010011
+    expectedSequenceNames:
+    - ^
+    - I
+    - ' '
+    - h
+    - a
+    - v
+    - e
+    - ' '
+    - t
+    - o
+    - ' '
+    - g
+    - o
+    - .
+    lessonSprite: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: c936e15052b870841bb5597d67b52722, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: d376210924505a34899d8e12046d7832, type: 3}
+    sequenceStepAudios:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 0622e17681c1d9747a952cdfc368644f, type: 3}
+    - {fileID: 8300000, guid: efaa1cde875a8f74a97e8d8f18c0c5ef, type: 3}
+    - {fileID: 8300000, guid: 507e6e21ec3099a4dbbd8dfc112663cf, type: 3}
+    - {fileID: 8300000, guid: 17cbd7cd9a746054c9e37b57c02870f2, type: 3}
+    - {fileID: 8300000, guid: 2d48057eda8aca345846ee47791c11ba, type: 3}
+    - {fileID: 8300000, guid: d472b9cd93b9c5941b342fcf7b9d1f66, type: 3}
+    - {fileID: 8300000, guid: 429eb1ac2e798084bacf535a9e9ad688, type: 3}
+    - {fileID: 8300000, guid: 507e6e21ec3099a4dbbd8dfc112663cf, type: 3}
+    - {fileID: 8300000, guid: 5a5c5ded30729d743b295b136af14578, type: 3}
+    - {fileID: 8300000, guid: 3bf9e1255f417674cbe7bc51213915fa, type: 3}
+    - {fileID: 8300000, guid: 507e6e21ec3099a4dbbd8dfc112663cf, type: 3}
+    - {fileID: 8300000, guid: 92b0c099b231e0a478ff7018760a7270, type: 3}
+    - {fileID: 8300000, guid: 3bf9e1255f417674cbe7bc51213915fa, type: 3}
+    - {fileID: 8300000, guid: 92c844c4b5b3cdd4287f886b8f04a16d, type: 3}
+    sequenceStepMessages:
+    - 
+    - I
+    - ' '
+    - h
+    - a
+    - v
+    - e
+    - ' '
+    - t
+    - o
+    - ' '
+    - g
+    - o
+    - .
+    sequenceStepWrongAudios:
+    - {fileID: 8300000, guid: a06bd0c523d048d47b15e9d747380a4e, type: 3}
+    - {fileID: 8300000, guid: ee419e33bf0104c4086c4582d12bbd05, type: 3}
+    - {fileID: 8300000, guid: 08b80871d2c17fc429ed651d5071b118, type: 3}
+    - {fileID: 8300000, guid: 09e6f4550e2024348a845cf4022d03af, type: 3}
+    - {fileID: 8300000, guid: 44a3cc00710e72d4ab604ac3af2ca19e, type: 3}
+    - {fileID: 8300000, guid: c8c890841fdd94749940ca76a51dcf55, type: 3}
+    - {fileID: 8300000, guid: 1c860b20e47214247b2bc49a5b35ed14, type: 3}
+    - {fileID: 8300000, guid: 08b80871d2c17fc429ed651d5071b118, type: 3}
+    - {fileID: 8300000, guid: 0aa28d3259f65054a99aa68876891d11, type: 3}
+    - {fileID: 8300000, guid: 35502c1306ce3c4468e70b5842fc772e, type: 3}
+    - {fileID: 8300000, guid: 08b80871d2c17fc429ed651d5071b118, type: 3}
+    - {fileID: 8300000, guid: 0517ce0e8379b3b4d938cb512559e95a, type: 3}
+    - {fileID: 8300000, guid: 35502c1306ce3c4468e70b5842fc772e, type: 3}
+    - {fileID: 8300000, guid: bd57d6865621fa4429989e6ddd32a105, type: 3}
+    sequenceStepWrongMessages:
+    - Remember, to capitalize a letter you have to press dot 6 before the letter.
+      Let's try it again from the start.
+    - Remember I uses dots number 2&5. Let's try it again from the start.
+    - You forgot to add space before the preceding word. Let's try it again from
+      the start.
+    - Remember H uses dots number 1, 2&5. Let's try it again from the start.
+    - Remember A uses dot number 1. Let's try it again from the start.
+    - Remember V uses dots number 1, 2&5. Let's try it again from the start.
+    - Remember E uses dots number 1&5. Let's try it again from the start.
+    - You forgot to add space before the preceding word. Let's try it again from
+      the start.
+    - Remember T uses dots number 2, 3, 4&5. Let's try it again from the start.
+    - Remember O uses dots number 1, 3&5. Let's try it again from the start.
+    - You forgot to add space before the preceding word. Let's try it again from
+      the start.
+    - Remember G uses dots number 1, 2, 4&5. Let's try it again from the start.
+    - Remember O uses dots number 1, 3&5. Let's try it again from the start.
+    - Remember, period uses dots number 2, 5&6. Let's try again from the start and
+      finish the sentence with a period.
+    supportMessage: 
+    supportAudio: {fileID: 0}
   playInstructionOnLessonStart: 1
   delayAfterVoice: 0.35
   noAudioTextDelay: 2

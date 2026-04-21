@@ -291,7 +291,7 @@ public class PunctuationScript : MonoBehaviour
         string stepMessage = GetSequenceStepMessage(lesson, stepIndex);
         AudioClip clip = GetSequenceStepAudio(lesson, stepIndex);
 
-        yield return ShowBubbleMessageSynced(stepMessage, clip, noAudioTextDelay);
+        yield return ShowBubbleMessageThenPlayAudio(stepMessage, clip, noAudioTextDelay);
     }
 
     private string GetSequenceStepMessage(BrailleLesson lesson, int stepIndex)
