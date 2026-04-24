@@ -268,6 +268,25 @@ public class PunctuationScript : MonoBehaviour
         }
         else
         {
+            string message = GetLessonPrompt(lesson);
+
+            if (playInstructionOnLessonStart)
+            {
+                yield return ShowBubbleMessageWithAudioSequence(
+                    message,
+                    noAudioTextDelay,
+                    lesson.introAudio,
+                    lesson.instructionAudio
+                );
+
+                yield return new WaitForSeconds(delayAfterVoice);
+            }
+            else
+            {
+                yield return ShowBubbleMessageSynced(message, null, noAudioTextDelay);
+                yield return new WaitForSeconds(delayAfterVoice);
+            }
+
             yield return PlaySequenceStepInstruction(lesson, 0);
         }
     }
@@ -291,7 +310,7 @@ public class PunctuationScript : MonoBehaviour
         string stepMessage = GetSequenceStepMessage(lesson, stepIndex);
         AudioClip clip = GetSequenceStepAudio(lesson, stepIndex);
 
-        yield return ShowBubbleMessageThenPlayAudio(stepMessage, clip, noAudioTextDelay);
+        yield return ShowBubbleMessageSynced(stepMessage, clip, noAudioTextDelay);
     }
 
     private string GetSequenceStepMessage(BrailleLesson lesson, int stepIndex)

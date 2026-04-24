@@ -24,7 +24,14 @@ public class AlphabetSounds_InputHandler : MonoBehaviour
     private void Start()
     {
         if (alphabetSounds == null)
-            alphabetSounds = FindObjectOfType<AlphabetSounds_Script>();
+        {
+            alphabetSounds = FindFirstObjectByType<AlphabetSounds_Script>();
+        }
+
+        if (alphabetSounds == null)
+        {
+            Debug.LogWarning("AlphabetSounds_InputHandler could not find AlphabetSounds_Script in the scene.");
+        }
     }
 
     private void HandleNextOrYes()

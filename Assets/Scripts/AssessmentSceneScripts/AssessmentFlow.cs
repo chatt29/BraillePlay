@@ -381,16 +381,16 @@ public class AssessmentFlow : MonoBehaviour
     {
         yield return new WaitForSeconds(sceneLoadDelay);
 
-        string sceneToLoad = "";
-
         switch (level)
         {
             case AssessmentLevel.Beginner:
                 SceneManager.LoadScene("BeginnerScene");
                 break;
+
             case AssessmentLevel.Intermediate:
                 SceneManager.LoadScene("IntermediateScene");
                 break;
+
             case AssessmentLevel.Advance:
                 SceneManager.LoadScene("AdvanceScene");
                 break;
