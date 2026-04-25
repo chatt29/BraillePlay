@@ -16,6 +16,7 @@ MonoImporter:
   - deleteOrNoSfx: {fileID: 8300000, guid: 1162c61933e148c45bef68b06d74ac47, type: 3}
   - yesOrNextSfx: {fileID: 8300000, guid: 1162c61933e148c45bef68b06d74ac47, type: 3}
   - loginSfx: {instanceID: 0}
+  - spaceSfx: {fileID: 8300000, guid: 0797e54434a89144b924840ca19dd5f5, type: 3}
   - correctSfx: {fileID: 8300000, guid: c1b476596f306b245904f433dc1bf816, type: 3}
   - wrongSfx: {fileID: 8300000, guid: 8674ad609afeaae4b9739c6fa8f1abd3, type: 3}
   executionOrder: 0
