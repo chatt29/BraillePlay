@@ -46,10 +46,6 @@ public class AlphabetSounds_Script : MonoBehaviour
     public string instructionMessage = "Let's learn the individual sounds of each letter in the alphabet.";
     public AudioClip instructionAudio;
 
-    [TextArea(2, 4)]
-    public string startQuestionMessage = "Are you ready to start? Press Yes to begin the alphabet sounds.";
-    public AudioClip startQuestionAudio;
-
     [Header("Per Letter Prompt")]
     [TextArea(2, 4)]
     public string nextOrRepeatMessage = "Press Yes for the next letter, or press Repeat to hear the current letter again.";
@@ -123,12 +119,8 @@ public class AlphabetSounds_Script : MonoBehaviour
         PlayAudio(instructionAudio);
         yield return WaitForAudio(instructionAudio);
 
-        SetBubbleOnly(startQuestionMessage);
-        HideObjectImage();
-        PlayAudio(startQuestionAudio);
-        yield return WaitForAudio(startQuestionAudio);
-
-        CurrentState = LessonState.WaitingToStart;
+        currentIndex = 0;
+        ShowCurrentEntry(true);
     }
 
     public void ShowCurrentEntry(bool playAudio = true)
@@ -172,10 +164,13 @@ public class AlphabetSounds_Script : MonoBehaviour
             yield break;
 
         SetBubbleOnly(nextOrRepeatMessage);
+
+        // The player can now press Yes or Repeat immediately,
+        // even while the prompt audio is still playing.
+        CurrentState = LessonState.WaitingAfterLetterChoice;
+
         PlayAudio(nextOrRepeatAudio);
         yield return WaitForAudio(nextOrRepeatAudio);
-
-        CurrentState = LessonState.WaitingAfterLetterChoice;
     }
 
     public void NextLetterOrConfirmYes()
@@ -202,6 +197,7 @@ public class AlphabetSounds_Script : MonoBehaviour
                 StopRunningRoutine();
                 sequenceRoutine = StartCoroutine(FinishAndAskReplay());
             }
+
             return;
         }
 
@@ -240,11 +236,6 @@ public class AlphabetSounds_Script : MonoBehaviour
             CurrentState == LessonState.PlayingLetter)
         {
             ShowCurrentEntry(true);
-        }
-        else if (CurrentState == LessonState.WaitingToStart)
-        {
-            SetBubbleOnly(startQuestionMessage);
-            PlayAudio(startQuestionAudio);
         }
         else if (CurrentState == LessonState.WaitingForReplayChoice)
         {
