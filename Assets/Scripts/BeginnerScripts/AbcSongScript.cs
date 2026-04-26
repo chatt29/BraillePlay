@@ -7,7 +7,6 @@ public class AbcMessage
 {
     [TextArea(2, 4)]
     public string messageText;
-
     public AudioClip messageAudio;
 }
 
@@ -35,11 +34,60 @@ public class AbcSongScript : MonoBehaviour
     private int step = 0;
     private bool songPlaying = false;
 
+    void OnEnable()
+    {
+        BrailleMapping.OnSubmit += HandleFastForward;      // +10s
+        BrailleMapping.OnDeleteOrNo += HandleRewind;       // -10s
+    }
+
+    void OnDisable()
+    {
+        BrailleMapping.OnSubmit -= HandleFastForward;
+        BrailleMapping.OnDeleteOrNo -= HandleRewind;
+    }
+
     void Start()
     {
         PlayCurrent();
     }
 
+    // ---------- FAST FORWARD (+10s) ----------
+    void HandleFastForward()
+    {
+        FastForward10();
+    }
+
+    public void FastForward10()
+    {
+        if (audioSource == null || audioSource.clip == null) return;
+
+        audioSource.time += 10f;
+
+        if (audioSource.time > audioSource.clip.length)
+        {
+            audioSource.time = audioSource.clip.length - 0.1f;
+        }
+    }
+
+    // ---------- REWIND (-10s) ----------
+    void HandleRewind()
+    {
+        Rewind10();
+    }
+
+    public void Rewind10()
+    {
+        if (audioSource == null || audioSource.clip == null) return;
+
+        audioSource.time -= 10f;
+
+        if (audioSource.time < 0f)
+        {
+            audioSource.time = 0f;
+        }
+    }
+
+    // ---------- MESSAGE FLOW ----------
     AbcMessage GetMessage(int index)
     {
         switch (index)
@@ -51,7 +99,6 @@ public class AbcSongScript : MonoBehaviour
             case 5: return message5;
             case 6: return message6;
         }
-
         return null;
     }
 
@@ -99,7 +146,7 @@ public class AbcSongScript : MonoBehaviour
 
     public void Next()
     {
-        if (songPlaying) return; // prevents skipping during song
+        if (songPlaying) return;
 
         if (step < 6)
         {
