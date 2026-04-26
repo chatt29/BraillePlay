@@ -10,8 +10,6 @@ public class BeginnerProgressInitializer : MonoBehaviour
         SetDefaultIfMissing(GameProgressKeys.LetterToBrailleUnlocked, 0);
 
         SetDefaultIfMissing(GameProgressKeys.QuizUnlocked, 0);
-        SetDefaultIfMissing(GameProgressKeys.JumbleLettersUnlocked, 0);
-        SetDefaultIfMissing(GameProgressKeys.BasicWordsUnlocked, 0);
 
         PlayerPrefs.Save();
     }

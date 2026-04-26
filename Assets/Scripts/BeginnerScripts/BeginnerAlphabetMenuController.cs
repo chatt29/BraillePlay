@@ -1,14 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class BeginnerAlphabetMenuController : MonoBehaviour
 {
     public enum MenuType
     {
         Learn,
         Quiz,
-        JumbleLetters,
-        BasicWords
     }
 
     public enum FocusArea
@@ -16,6 +14,9 @@ public class BeginnerAlphabetMenuController : MonoBehaviour
         MainMenu,
         ContentPanel
     }
+    [Header("Quiz Scenes")]
+public string randomizedLettersScene = "AlphabetTranslation";
+public string basicWordsScene = "BasicWordsScene";
 
     [Header("Current Menu")]
     public MenuType currentMenu = MenuType.Learn;
@@ -29,25 +30,17 @@ public class BeginnerAlphabetMenuController : MonoBehaviour
     [Header("Menu Buttons")]
     public RectTransform learnBtn;
     public RectTransform quizBtn;
-    public RectTransform jumbleLettersBtn;
-    public RectTransform basicWordsBtn;
 
     [Header("Lock States (optional for locked modes)")]
     public LockableUIButton quizLock;
-    public LockableUIButton jumbleLettersLock;
-    public LockableUIButton basicWordsLock;
 
     [Header("Content Groups")]
     public GameObject learnContent;
     public GameObject quizContent;
-    public GameObject jumbleLettersContent;
-    public GameObject basicWordsContent;
 
     [Header("Content Buttons")]
     public RectTransform[] learnButtons;
     public RectTransform[] quizButtons;
-    public RectTransform[] jumbleLettersButtons;
-    public RectTransform[] basicWordsButtons;
 
     [Header("Hover Effect")]
     public Vector3 normalScale = Vector3.one;
@@ -89,33 +82,17 @@ public class BeginnerAlphabetMenuController : MonoBehaviour
         RefreshMenu();
     }
 
-    public void SelectQuiz()
-    {
-        if (quizLock != null && !quizLock.IsUnlocked()) return;
+   public void SelectQuiz()
+{
+    if (quizLock != null && !quizLock.IsUnlocked()) return;
 
-        currentMenu = MenuType.Quiz;
-        RefreshMenu();
-    }
-
-    public void SelectJumbleLetters()
-    {
-        if (jumbleLettersLock != null && !jumbleLettersLock.IsUnlocked()) return;
-
-        currentMenu = MenuType.JumbleLetters;
-        RefreshMenu();
-    }
-
-    public void SelectBasicWords()
-    {
-        if (basicWordsLock != null && !basicWordsLock.IsUnlocked()) return;
-
-        currentMenu = MenuType.BasicWords;
-        RefreshMenu();
-    }
+    currentMenu = MenuType.Quiz;
+    RefreshMenu();
+}
 
     public void SelectNextUnlockedMenu()
     {
-        MenuType[] order = { MenuType.Learn, MenuType.Quiz, MenuType.JumbleLetters, MenuType.BasicWords };
+        MenuType[] order = { MenuType.Learn, MenuType.Quiz};
 
         int currentIndex = System.Array.IndexOf(order, currentMenu);
 
@@ -135,7 +112,7 @@ public class BeginnerAlphabetMenuController : MonoBehaviour
 
     public void SelectPreviousUnlockedMenu()
     {
-        MenuType[] order = { MenuType.Learn, MenuType.Quiz, MenuType.JumbleLetters, MenuType.BasicWords };
+        MenuType[] order = { MenuType.Learn, MenuType.Quiz};
 
         int currentIndex = System.Array.IndexOf(order, currentMenu);
 
@@ -162,12 +139,6 @@ public class BeginnerAlphabetMenuController : MonoBehaviour
 
             case MenuType.Quiz:
                 return quizLock == null || quizLock.IsUnlocked();
-
-            case MenuType.JumbleLetters:
-                return jumbleLettersLock == null || jumbleLettersLock.IsUnlocked();
-
-            case MenuType.BasicWords:
-                return basicWordsLock == null || basicWordsLock.IsUnlocked();
         }
 
         return false;
@@ -177,9 +148,7 @@ public class BeginnerAlphabetMenuController : MonoBehaviour
     {
         if (learnContent != null) learnContent.SetActive(currentMenu == MenuType.Learn);
         if (quizContent != null) quizContent.SetActive(currentMenu == MenuType.Quiz);
-        if (jumbleLettersContent != null) jumbleLettersContent.SetActive(currentMenu == MenuType.JumbleLetters);
-        if (basicWordsContent != null) basicWordsContent.SetActive(currentMenu == MenuType.BasicWords);
-    }
+        }
 
     private void MoveArrowToCurrentMenu()
     {
@@ -201,10 +170,6 @@ public class BeginnerAlphabetMenuController : MonoBehaviour
                 return learnBtn;
             case MenuType.Quiz:
                 return quizBtn;
-            case MenuType.JumbleLetters:
-                return jumbleLettersBtn;
-            case MenuType.BasicWords:
-                return basicWordsBtn;
         }
 
         return learnBtn;
@@ -218,10 +183,6 @@ public class BeginnerAlphabetMenuController : MonoBehaviour
                 return learnButtons;
             case MenuType.Quiz:
                 return quizButtons;
-            case MenuType.JumbleLetters:
-                return jumbleLettersButtons;
-            case MenuType.BasicWords:
-                return basicWordsButtons;
         }
 
         return null;
@@ -259,37 +220,43 @@ public class BeginnerAlphabetMenuController : MonoBehaviour
         }
     }
 
-    private void HandleSubmit()
+  private void HandleSubmit()
+{
+    if (currentFocus == FocusArea.MainMenu)
     {
-        if (currentFocus == FocusArea.MainMenu)
-        {
-            RectTransform[] buttons = GetCurrentContentButtons();
-            if (buttons == null || buttons.Length == 0)
-            {
-                Debug.Log("No content buttons assigned for: " + currentMenu);
-                return;
-            }
+        RectTransform[] buttons = GetCurrentContentButtons();
+        if (buttons == null || buttons.Length == 0) return;
 
-            currentFocus = FocusArea.ContentPanel;
-            currentContentIndex = 0;
-            UpdateContentHover();
-            Debug.Log("Entered content panel: " + currentMenu);
-            return;
-        }
-
-        RectTransform[] currentButtons = GetCurrentContentButtons();
-        if (currentButtons == null || currentButtons.Length == 0) return;
-
-        RectTransform selectedButton = currentButtons[currentContentIndex];
-        Debug.Log("Confirmed content button: " + selectedButton.name);
-
-        Button btn = selectedButton.GetComponent<Button>();
-        if (btn != null)
-        {
-            btn.onClick.Invoke();
-        }
+        currentFocus = FocusArea.ContentPanel;
+        currentContentIndex = 0;
+        UpdateContentHover();
+        return;
     }
 
+    RectTransform[] buttonsPanel = GetCurrentContentButtons();
+    if (buttonsPanel == null || buttonsPanel.Length == 0) return;
+
+    RectTransform selected = buttonsPanel[currentContentIndex];
+
+    Debug.Log("Selected: " + selected.name);
+
+    // QUIZ = same navigation style as Learn, just different action
+    if (currentMenu == MenuType.Quiz)
+{
+    if (selected == quizButtons[0])
+        SceneManager.LoadScene("AlphabetTranslation");
+
+    else if (selected == quizButtons[1])
+        SceneManager.LoadScene(basicWordsScene);
+
+    return;
+}
+
+    // LEARN fallback (if you add actions later)
+    Button btn = selected.GetComponent<Button>();
+    if (btn != null)
+        btn.onClick.Invoke();
+}
     private void HandleCancel()
     {
         if (currentFocus == FocusArea.ContentPanel)
@@ -328,8 +295,6 @@ public class BeginnerAlphabetMenuController : MonoBehaviour
     {
         ResetButtonArray(learnButtons);
         ResetButtonArray(quizButtons);
-        ResetButtonArray(jumbleLettersButtons);
-        ResetButtonArray(basicWordsButtons);
     }
 
     private void ResetButtonArray(RectTransform[] buttons)

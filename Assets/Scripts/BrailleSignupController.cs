@@ -15,7 +15,8 @@ using UnityEngine.SceneManagement;
 public class BrailleSignupController : MonoBehaviour
 {
     [Header("Fields")]
-    public TMP_InputField nameField;
+    public TMP_InputField fnameField;
+    public TMP_InputField lnameField;
     public TMP_InputField usernameField;
     public TMP_InputField passwordField;
 
@@ -78,7 +79,7 @@ public class BrailleSignupController : MonoBehaviour
 
     void Start()
     {
-        fields = new TMP_InputField[] { nameField, usernameField, passwordField };
+        fields = new TMP_InputField[] { fnameField, lnameField , usernameField, passwordField };
         warnings = new TMP_Text[] { nameWarning, usernameWarning, passwordWarning };
 
         BuildBrailleMap();
@@ -288,26 +289,11 @@ public class BrailleSignupController : MonoBehaviour
     }
 
     // Clean inputs
-    string fullName = nameField.text.Trim();
+    string firstName = fnameField.text.Trim();
+    string lastName =  lnameField.text.Trim();
     string username = usernameField.text.Trim();
     string password = passwordField.text.Trim();
 
-    // 🔥 Split name safely
-    string[] nameParts = fullName.Split(' ');
-
-    string firstName = "";
-    string lastName = "";
-
-    if (nameParts.Length == 1)
-    {
-        firstName = nameParts[0];
-        lastName = ""; // optional
-    }
-    else if (nameParts.Length >= 2)
-    {
-        firstName = nameParts[0];
-        lastName = nameParts[nameParts.Length - 1]; // last word as last name
-    }
 
     // Debug logs
     Debug.Log("Signup submitted");
