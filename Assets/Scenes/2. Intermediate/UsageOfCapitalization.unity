@@ -246,8 +246,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 548, y: 194}
-  m_SizeDelta: {x: 291.2548, y: 75}
+  m_AnchoredPosition: {x: 580, y: 201.7312}
+  m_SizeDelta: {x: 281.9776, y: 59.5376}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &176604274
 MonoBehaviour:
@@ -296,7 +296,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 152.1
+  m_fontSize: 141.45
   m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -632,7 +632,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 559.4374, y: -146.63815}
+  m_AnchoredPosition: {x: 620, y: -145.70995}
   m_SizeDelta: {x: 358.3467, y: 446.6544}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &286661654
@@ -673,6 +673,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 286661652}
   m_CullTransparentMesh: 1
+--- !u!1 &333712502
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 333712503}
+  - component: {fileID: 333712505}
+  - component: {fileID: 333712504}
+  m_Layer: 5
+  m_Name: SmallBox.Image (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &333712503
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 333712502}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1791188412}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 620, y: -145.71}
+  m_SizeDelta: {x: 435.9485, y: 529.68}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &333712504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 333712502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -2090746625060802979, guid: 98913bed01e13994bb159d884ef43c2a, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &333712505
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 333712502}
+  m_CullTransparentMesh: 1
 --- !u!1 &397166428
 GameObject:
   m_ObjectHideFlags: 0
@@ -707,8 +782,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1512, y: -228.13}
-  m_SizeDelta: {x: 405.4244, y: 456.2524}
+  m_AnchoredPosition: {x: 28.698496, y: -145.715}
+  m_SizeDelta: {x: 658.607, y: 529.6824}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &397166430
 MonoBehaviour:
@@ -1438,9 +1513,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1586095474}
   - component: {fileID: 1586095478}
-  - component: {fileID: 1586095479}
   - component: {fileID: 1586095480}
   - component: {fileID: 1586095481}
+  - component: {fileID: 1586095482}
   m_Layer: 5
   m_Name: CapitalizationManager
   m_TagString: Untagged
@@ -1564,117 +1639,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1586095479
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1586095473}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7c1514bb51c05d46b23edef8384a4ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UsageOfCapitalizationLesson
-  bubbleText: {fileID: 1257937990}
-  translationText: {fileID: 2077778574}
-  resultText: {fileID: 176604274}
-  stageTypeText: {fileID: 186052603}
-  lessonImage: {fileID: 286661654}
-  audioSource: {fileID: 1586095478}
-  dot6Image: {fileID: -2508448659712056769, guid: 627e40ba14ebaa545b4dea4136eb0f75, type: 3}
-  readyPromptLine:
-    message: Are you ready to start the capitalization lesson? Press Yes to begin.
-      Press No to end.
-    audioClip: {fileID: 8300000, guid: 00239cad4ecd135488d40d0d707b6e31, type: 3}
-  startLessonLine:
-    message: Let's begin the capitalization lesson.
-    audioClip: {fileID: 8300000, guid: 1ed0906c5c1d3284487ce7b6780f829d, type: 3}
-  letterStageIntroLine:
-    message: Stage one is Letter.
-    audioClip: {fileID: 8300000, guid: 421b67995be349046a09442d90f3f916, type: 3}
-  wordStageIntroLine:
-    message: Stage two is Word.
-    audioClip: {fileID: 8300000, guid: 7d339f917711c74408bb0a07a1638a0a, type: 3}
-  sentenceStageIntroLine:
-    message: Stage three is Sentence.
-    audioClip: {fileID: 8300000, guid: d719d18645e3b5144b15778cd42b6ad4, type: 3}
-  letterStagePromptLine:
-    message: 'We will practice capitalizing one letter. Press dot 6 one time to tell
-      braille that only the first letter should become capital. Then you will type
-      the sentence: The cat is cute.'
-    audioClip: {fileID: 8300000, guid: b29fe3134093185448a5b1ff9f39880e, type: 3}
-  wordStagePromptLine:
-    message: 'Now we will practice capitalizing one whole word. Press dot 6 two times
-      to tell braille that the first word should become capital. Then you will type
-      the sentence: THE cat is cute.'
-    audioClip: {fileID: 8300000, guid: f17e05f49a6746b489800512acc0ffde, type: 3}
-  sentenceStagePromptLine:
-    message: 'Now we will practice capitalizing the whole sentence. Press dot 6 three
-      times to tell braille that every word in the sentence should become capital.
-      Then you will type the sentence: THE CAT IS CUTE.'
-    audioClip: {fileID: 8300000, guid: bd349d528aa93234f99264887deea3cf, type: 3}
-  wordStageSecondPressLine:
-    message: Good job. Press dot 6 one more time.
-    audioClip: {fileID: 8300000, guid: e1bf7e1b2d6e3904d93704bb968efc4c, type: 3}
-  sentenceStageSecondPressLine:
-    message: Good job. Press dot 6 again.
-    audioClip: {fileID: 8300000, guid: 7e0b35d5b35b3ff408756c5b0964d375, type: 3}
-  sentenceStageThirdPressLine:
-    message: Great. Press dot 6 one more time.
-    audioClip: {fileID: 8300000, guid: e1bf7e1b2d6e3904d93704bb968efc4c, type: 3}
-  letterTypingPromptLine:
-    message: 'Good job. Now type the sentence: The cat is cute.'
-    audioClip: {fileID: 8300000, guid: 1a917be56fcffe541b7c5fb3083eba1e, type: 3}
-  wordTypingPromptLine:
-    message: 'Good job. Now type the sentence: THE cat is cute.'
-    audioClip: {fileID: 8300000, guid: 1a917be56fcffe541b7c5fb3083eba1e, type: 3}
-  sentenceTypingPromptLine:
-    message: 'Good job. Now type the sentence: THE CAT IS CUTE.'
-    audioClip: {fileID: 8300000, guid: 1a917be56fcffe541b7c5fb3083eba1e, type: 3}
-  wrongLetterStageLine:
-    message: That is incorrect. For the Letter stage, press dot 6 one time.
-    audioClip: {fileID: 8300000, guid: 7e529a8148c802742ab0f0ec1cc98ce1, type: 3}
-  wrongWordStageLine:
-    message: That is incorrect. For the Word stage, press dot 6 two times.
-    audioClip: {fileID: 8300000, guid: 080eb9351fc36f34a8e6973a7c78c698, type: 3}
-  wrongSentenceStageLine:
-    message: That is incorrect. For the Sentence stage, press dot 6 three times.
-    audioClip: {fileID: 8300000, guid: dc1204418b53c874fa88a015ae780ece, type: 3}
-  wrongTypingLine:
-    message: That is incorrect. Try typing the sentence again.
-    audioClip: {fileID: 8300000, guid: 0f1ccaf99f15ef04587107f9deed246a, type: 3}
-  letterStageSuccessLine:
-    message: Excellent. You capitalized the first letter.
-    audioClip: {fileID: 8300000, guid: c9bc786bc6bd43c4abf37e115f9009f5, type: 3}
-  wordStageSuccessLine:
-    message: Excellent. You capitalized a word and typed the sentence correctly.
-    audioClip: {fileID: 8300000, guid: d69914a9090b0634b9b333a5feae60a6, type: 3}
-  sentenceStageSuccessLine:
-    message: Excellent. You capitalized the whole sentence and typed it correctly.
-    audioClip: {fileID: 8300000, guid: 4d65b89e516e63a4cbeee204f8773a6e, type: 3}
-  stageDecisionLine:
-    message: Do you want to repeat the current stage or continue? Press No to repeat
-      this stage. Press Yes to continue.
-    audioClip: {fileID: 8300000, guid: 2655c21c0616b6a4a9a9dc89c357b72c, type: 3}
-  completedLessonLine:
-    message: Congratulations. You now know how to capitalize in braille.
-    audioClip: {fileID: 8300000, guid: f95b2a1be74bbc54a95eb37d300a88dc, type: 3}
-  restartOrNextLessonLine:
-    message: Do you want to repeat the lesson from the start or continue to the next
-      lesson? Press Yes to repeat from the start. Press No to continue to the next
-      lesson.
-    audioClip: {fileID: 8300000, guid: b1faf1c3177234e46b41e83c5bf5072d, type: 3}
-  endLessonLine:
-    message: Okay. Ending the capitalization lesson. Great job.
-    audioClip: {fileID: 8300000, guid: 861fcf891e0db684590c5dd3d675753c, type: 3}
-  baseSentence: the cat is cute.
-  letterSentence: The cat is cute.
-  wordSentence: THE cat is cute.
-  sentenceSentence: THE CAT IS CUTE.
-  playOnStart: 1
-  extraWaitAfterAudio: 0.15
-  nextLessonSceneName: 
 --- !u!114 &1586095480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1713,6 +1677,7 @@ MonoBehaviour:
   deleteOrNoKey: 8
   yesOrNextKey: 121
   loginKey: 13
+  spaceKey: 32
   correctKey: 49
   wrongKey: 50
   audioSource: {fileID: 1586095478}
@@ -1727,6 +1692,7 @@ MonoBehaviour:
   deleteOrNoSfx: {fileID: 8300000, guid: 1162c61933e148c45bef68b06d74ac47, type: 3}
   yesOrNextSfx: {fileID: 8300000, guid: 1162c61933e148c45bef68b06d74ac47, type: 3}
   loginSfx: {fileID: 0}
+  spaceSfx: {fileID: 8300000, guid: 0797e54434a89144b924840ca19dd5f5, type: 3}
   correctSfx: {fileID: 8300000, guid: c1b476596f306b245904f433dc1bf816, type: 3}
   wrongSfx: {fileID: 8300000, guid: 8674ad609afeaae4b9739c6fa8f1abd3, type: 3}
   leftEarPan: -1
@@ -1735,6 +1701,115 @@ MonoBehaviour:
   actionVolume: 1.5
   feedbackVolume: 2
   logInputs: 0
+--- !u!114 &1586095482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586095473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7c1514bb51c05d46b23edef8384a4ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UsageOfCapitalization_Script
+  bubbleText: {fileID: 1257937990}
+  translationText: {fileID: 2077778574}
+  resultText: {fileID: 176604274}
+  stageTypeText: {fileID: 186052603}
+  lessonImage: {fileID: 286661654}
+  audioSource: {fileID: 1586095478}
+  dot6Image: {fileID: 21300000, guid: 02136a454370e16498891dca3ded243d, type: 3}
+  startLessonLine:
+    message: Welcome to Usage of Capitalization. In this lesson, you will learn how
+      to capitalize a letter, a word, and a sentence.
+    audioClip: {fileID: 8300000, guid: 9742a791078ba1d4cae85d7568d8cee3, type: 3}
+  letterStageIntroLine:
+    message: "First, let\u2019s learn how to capitalize one letter."
+    audioClip: {fileID: 8300000, guid: c9fff2f713ab23145ba3e0d95589af65, type: 3}
+  wordStageIntroLine:
+    message: "Now let\u2019s learn how to capitalize one word."
+    audioClip: {fileID: 8300000, guid: 62179a82510809b409935d35d5c483ad, type: 3}
+  sentenceStageIntroLine:
+    message: "Now let\u2019s learn how to capitalize a full sentence."
+    audioClip: {fileID: 8300000, guid: 2295d17f5f144e1499a64b3db55efb7a, type: 3}
+  letterStagePromptLine:
+    message: Press dot 6 one time. Dot 6 tells Braille that the next letter should
+      be capitalized.
+    audioClip: {fileID: 8300000, guid: b6eb1ee4e11e7bd448fae90ed4b42bf9, type: 3}
+  wordStagePromptLine:
+    message: Press dot 6 two times. Two capital signs tell Braille that the next
+      word should be capitalized.
+    audioClip: {fileID: 8300000, guid: 4b7714a170a399e40a541a888deca18a, type: 3}
+  sentenceStagePromptLine:
+    message: Press dot 6 three times. Three capital signs tell Braille that the whole
+      sentence should be capitalized.
+    audioClip: {fileID: 8300000, guid: 69c689bda54d39f428bffd702df5b3cc, type: 3}
+  wordStageSecondPressLine:
+    message: Good. Press dot 6 one more time to capitalize the whole word.
+    audioClip: {fileID: 8300000, guid: 52b70c5e5ca63a74d98eb09749b917c1, type: 3}
+  sentenceStageSecondPressLine:
+    message: Good. Press dot 6 again.
+    audioClip: {fileID: 8300000, guid: 58a1f9ac358c63a4bbbbd909ce410ff6, type: 3}
+  sentenceStageThirdPressLine:
+    message: Great. Press dot 6 one more time to capitalize the whole sentence.
+    audioClip: {fileID: 8300000, guid: 0f7c54f53bd567d4cbb9993688304780, type: 3}
+  letterTypingPromptLine:
+    message: Now type the sentence. The first letter is capital T.
+    audioClip: {fileID: 8300000, guid: 37eea4cf23be0ab4e853b10a6ac46c77, type: 3}
+  wordTypingPromptLine:
+    message: 'Now type the sentence. The first word is capitalized: capital T, capital
+      H, capital E.'
+    audioClip: {fileID: 8300000, guid: 830dac1f5c647244cb1cfac77bfd3f72, type: 3}
+  sentenceTypingPromptLine:
+    message: Now type the sentence. Every letter is capitalized. In a sentence, the
+      first word always starts with a capital letter.
+    audioClip: {fileID: 8300000, guid: 0e0f3c1003f51cc458830a8e002f7c19, type: 3}
+  wrongLetterStageLine:
+    message: That is not correct. To capitalize one letter, press dot 6 one time.
+    audioClip: {fileID: 8300000, guid: 7ce48777b56806f469e402be44206cf8, type: 3}
+  wrongWordStageLine:
+    message: That is not correct. To capitalize one word, press dot 6 two times.
+    audioClip: {fileID: 8300000, guid: fd0021c471e66674bab141e5d6526174, type: 3}
+  wrongSentenceStageLine:
+    message: That is not correct. To capitalize a full sentence, press dot 6 three
+      times.
+    audioClip: {fileID: 8300000, guid: 5b7fa2d1549616b4388bf667122c708c, type: 3}
+  wrongTypingLine:
+    message: That is not correct. Try typing the sentence again.
+    audioClip: {fileID: 8300000, guid: 9ceb30e0d43f6b64db0a65bc928c9435, type: 3}
+  letterStageSuccessLine:
+    message: Great job. You capitalized one letter. The sentence starts with capital
+      T.
+    audioClip: {fileID: 8300000, guid: e815bd59af582f84ba6f78f3ad141dbd, type: 3}
+  wordStageSuccessLine:
+    message: Great job. You capitalized the whole word THE.
+    audioClip: {fileID: 8300000, guid: 53f1a53377acd454885edca9972abb6a, type: 3}
+  sentenceStageSuccessLine:
+    message: Excellent. You capitalized the full sentence. Remember, in a sentence,
+      the first word always starts with a capital letter.
+    audioClip: {fileID: 8300000, guid: 7c257af464e85394fb53d34d2eeae721, type: 3}
+  stageDecisionLine:
+    message: Do you want to continue to the next part? Press Yes to continue, or
+      No to repeat this part.
+    audioClip: {fileID: 8300000, guid: 021add58bee5ced4b8cf6693cb849f77, type: 3}
+  completedLessonLine:
+    message: Great job. You finished the Usage of Capitalization lesson.
+    audioClip: {fileID: 8300000, guid: f85c555679370c8448731d8258f4bcf4, type: 3}
+  restartOrNextLessonLine:
+    message: Do you want to repeat this lesson? Press Yes to repeat, or No to go
+      to the next lesson.
+    audioClip: {fileID: 8300000, guid: c7f02ff1d272c5c4ab70b4f188c849d6, type: 3}
+  endLessonLine:
+    message: Okay. Ending the capitalization lesson. Great job.
+    audioClip: {fileID: 8300000, guid: 62dba89b58130434fa64cc5244e6f174, type: 3}
+  baseSentence: the cat is cute.
+  letterSentence: The cat is cute.
+  wordSentence: THE cat is cute.
+  sentenceSentence: THE CAT IS CUTE.
+  playOnStart: 1
+  extraWaitAfterAudio: 0.15
+  nextLessonSceneName: 
 --- !u!1 &1791188411
 GameObject:
   m_ObjectHideFlags: 0
@@ -1772,6 +1847,7 @@ RectTransform:
   - {fileID: 653795465}
   - {fileID: 270223250}
   - {fileID: 397166429}
+  - {fileID: 333712503}
   - {fileID: 2077778576}
   - {fileID: 186052602}
   - {fileID: 1586095474}
@@ -1950,7 +2026,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -0.4724121, y: 0, z: 3.1901855, w: 144.79639}
+  m_margin: {x: -0.4724121, y: 0, z: 3.1901855, w: 0.9962158}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1980,8 +2056,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 33.413, y: -137.5565}
-  m_SizeDelta: {x: 473.41, y: 464.807}
+  m_AnchoredPosition: {x: 33.414, y: -146.64}
+  m_SizeDelta: {x: 473.41, y: 446.65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
