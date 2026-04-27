@@ -10,7 +10,6 @@ public class UsageOfCapitalization_Script : MonoBehaviour
 {
     public enum LessonState
     {
-        AskingReady,
         StageIntro,
         WaitingForCapitalizationInput,
         WaitingForSentenceTyping,
@@ -47,8 +46,7 @@ public class UsageOfCapitalization_Script : MonoBehaviour
     [Header("Lesson Visuals")]
     public Sprite dot6Image;
 
-    [Header("Ready / Start")]
-    public LessonLine readyPromptLine;
+    [Header("Start")]
     public LessonLine startLessonLine;
 
     [Header("Stage Intro Lines")]
@@ -103,6 +101,7 @@ public class UsageOfCapitalization_Script : MonoBehaviour
 
     private const string DOT_6 = "000001";
     private const string LETTERS_ONLY_SENTENCE = "thecatiscute";
+    private const string PRESS_TEXT = "PRESS";
 
     private Coroutine sequenceRoutine;
     private int currentStageIndex = 0;
@@ -112,7 +111,7 @@ public class UsageOfCapitalization_Script : MonoBehaviour
 
     private Dictionary<string, char> brailleToLetter;
 
-    public LessonState CurrentState { get; private set; } = LessonState.AskingReady;
+    public LessonState CurrentState { get; private set; } = LessonState.StageIntro;
     public CapitalizationStage CurrentStage => (CapitalizationStage)currentStageIndex;
 
     private void Awake()
@@ -154,20 +153,14 @@ public class UsageOfCapitalization_Script : MonoBehaviour
         SetResult("");
         SetLessonImage(dot6Image);
 
-        CurrentState = LessonState.AskingReady;
-        ShowLine(readyPromptLine);
-        yield return WaitForAudio(readyPromptLine != null ? readyPromptLine.audioClip : null);
+        sequenceRoutine = StartCoroutine(BeginStageRoutine());
+        yield break;
     }
 
     public void NextOrConfirmYes()
     {
         switch (CurrentState)
         {
-            case LessonState.AskingReady:
-                StopRunningRoutine();
-                sequenceRoutine = StartCoroutine(BeginStageRoutine());
-                break;
-
             case LessonState.AskingRepeatOrContinue:
                 ContinueToNextStageOrFinish();
                 break;
@@ -182,11 +175,6 @@ public class UsageOfCapitalization_Script : MonoBehaviour
     {
         switch (CurrentState)
         {
-            case LessonState.AskingReady:
-                StopRunningRoutine();
-                sequenceRoutine = StartCoroutine(EndLessonRoutine());
-                break;
-
             case LessonState.AskingRepeatOrContinue:
                 RepeatCurrentStage();
                 break;
@@ -218,7 +206,6 @@ public class UsageOfCapitalization_Script : MonoBehaviour
                 pendingCapitalSignDuringTyping = false;
                 currentDot6Count = 0;
                 SetTranslation(baseSentence);
-                SetResult("Back to capitalization step.");
                 CurrentState = LessonState.WaitingForCapitalizationInput;
                 ReplayCurrentStagePrompt();
                 break;
@@ -230,10 +217,6 @@ public class UsageOfCapitalization_Script : MonoBehaviour
             case LessonState.AskingRestartOrNextLesson:
                 ShowLine(restartOrNextLessonLine);
                 break;
-
-            case LessonState.AskingReady:
-                ShowLine(readyPromptLine);
-                break;
         }
     }
 
@@ -241,10 +224,6 @@ public class UsageOfCapitalization_Script : MonoBehaviour
     {
         switch (CurrentState)
         {
-            case LessonState.AskingReady:
-                ShowLine(readyPromptLine);
-                break;
-
             case LessonState.StageIntro:
             case LessonState.WaitingForCapitalizationInput:
             case LessonState.WaitingForSentenceTyping:
@@ -291,14 +270,18 @@ public class UsageOfCapitalization_Script : MonoBehaviour
         SetStageType(GetStageLabel(CurrentStage));
         SetTranslation(baseSentence);
 
-        ShowLine(startLessonLine);
-        yield return WaitForAudio(startLessonLine != null ? startLessonLine.audioClip : null);
+        if (CurrentStage == CapitalizationStage.Letter)
+        {
+            ShowLine(startLessonLine);
+            yield return WaitForAudio(startLessonLine != null ? startLessonLine.audioClip : null);
+        }
 
         LessonLine introLine = GetStageIntroLine(CurrentStage);
         ShowLine(introLine);
         yield return WaitForAudio(introLine != null ? introLine.audioClip : null);
 
         LessonLine promptLine = GetStagePromptLine(CurrentStage);
+        SetResult(PRESS_TEXT);
         ShowLine(promptLine);
         yield return WaitForAudio(promptLine != null ? promptLine.audioClip : null);
 
@@ -330,7 +313,7 @@ public class UsageOfCapitalization_Script : MonoBehaviour
             case CapitalizationStage.Word:
                 if (currentDot6Count == 1)
                 {
-                    SetResult("Good job. Press dot 6 one more time.");
+                    SetResult(PRESS_TEXT);
                     ShowLine(wordStageSecondPressLine);
                     return;
                 }
@@ -345,14 +328,14 @@ public class UsageOfCapitalization_Script : MonoBehaviour
             case CapitalizationStage.Sentence:
                 if (currentDot6Count == 1)
                 {
-                    SetResult("Good job. Press dot 6 again.");
+                    SetResult(PRESS_TEXT);
                     ShowLine(sentenceStageSecondPressLine);
                     return;
                 }
 
                 if (currentDot6Count == 2)
                 {
-                    SetResult("Great. Press dot 6 one more time.");
+                    SetResult(PRESS_TEXT);
                     ShowLine(sentenceStageThirdPressLine);
                     return;
                 }
@@ -375,7 +358,16 @@ public class UsageOfCapitalization_Script : MonoBehaviour
         typedLetters = "";
         pendingCapitalSignDuringTyping = false;
         SetTranslation(GetTargetSentenceForStage(CurrentStage));
-        SetResult("Now type the sentence.");
+
+        if (CurrentStage == CapitalizationStage.Sentence)
+        {
+            SetResult("Now type the sentence. In a sentence, the first word always starts with a capital letter.");
+        }
+        else
+        {
+            SetResult("Now type the sentence.");
+        }
+
         ShowLine(GetTypingPromptLine(CurrentStage));
         CurrentState = LessonState.WaitingForSentenceTyping;
     }
@@ -385,7 +377,7 @@ public class UsageOfCapitalization_Script : MonoBehaviour
         if (pattern == DOT_6)
         {
             pendingCapitalSignDuringTyping = true;
-            SetResult("Capital sign entered. Continue typing.");
+            SetResult(GetCapitalSignExplanation());
             return;
         }
 
@@ -414,12 +406,57 @@ public class UsageOfCapitalization_Script : MonoBehaviour
 
         string progress = FormatTypedProgress(typedLetters, CurrentStage);
         SetTranslation(progress);
-        SetResult("Typed correctly.");
+
+        if (ShouldBeCapitalAtIndex(nextIndex, CurrentStage))
+        {
+            SetResult("Typed correctly: capital " + char.ToUpper(typedLetter) + ".");
+        }
+        else
+        {
+            SetResult("Typed correctly.");
+        }
 
         if (typedLetters.Length >= LETTERS_ONLY_SENTENCE.Length)
         {
             StopRunningRoutine();
             sequenceRoutine = StartCoroutine(FinishCurrentStageRoutine(GetSuccessLine(CurrentStage)));
+        }
+    }
+
+    private string GetCapitalSignExplanation()
+    {
+        int nextIndex = typedLetters.Length;
+
+        if (nextIndex >= LETTERS_ONLY_SENTENCE.Length)
+            return "Capital sign entered.";
+
+        char nextLetter = char.ToUpper(LETTERS_ONLY_SENTENCE[nextIndex]);
+
+        string message = "Capital sign entered. The next letter is capital " + nextLetter + ".";
+
+        if (CurrentStage == CapitalizationStage.Sentence)
+        {
+            message += " In a sentence, the first word always starts with a capital letter.";
+        }
+
+        return message;
+    }
+
+    private bool ShouldBeCapitalAtIndex(int index, CapitalizationStage stage)
+    {
+        switch (stage)
+        {
+            case CapitalizationStage.Letter:
+                return index == 0;
+
+            case CapitalizationStage.Word:
+                return index >= 0 && index <= 2;
+
+            case CapitalizationStage.Sentence:
+                return true;
+
+            default:
+                return false;
         }
     }
 
@@ -432,7 +469,15 @@ public class UsageOfCapitalization_Script : MonoBehaviour
         pendingCapitalSignDuringTyping = false;
 
         SetTranslation(GetTargetSentenceForStage(CurrentStage));
-        SetResult("Sentence completed.");
+
+        if (CurrentStage == CapitalizationStage.Sentence)
+        {
+            SetResult("Sentence completed. In a sentence, the first word always starts with a capital letter.");
+        }
+        else
+        {
+            SetResult("Sentence completed.");
+        }
 
         StopRunningRoutine();
         sequenceRoutine = StartCoroutine(FinishCurrentStageRoutine(GetSuccessLine(CurrentStage)));
@@ -443,7 +488,15 @@ public class UsageOfCapitalization_Script : MonoBehaviour
         CurrentState = LessonState.StageIntro;
 
         SetTranslation(GetTargetSentenceForStage(CurrentStage));
-        SetResult("Correct!");
+
+        if (CurrentStage == CapitalizationStage.Sentence)
+        {
+            SetResult("Correct! In a sentence, the first word always starts with a capital letter.");
+        }
+        else
+        {
+            SetResult("Correct!");
+        }
 
         ShowLine(successLine);
         yield return WaitForAudio(successLine != null ? successLine.audioClip : null);
@@ -487,7 +540,7 @@ public class UsageOfCapitalization_Script : MonoBehaviour
         SetStageType("Sentence");
         SetTranslation(sentenceSentence);
         SetLessonImage(dot6Image);
-        SetResult("");
+        SetResult("In a sentence, the first word always starts with a capital letter.");
 
         ShowLine(completedLessonLine);
         yield return WaitForAudio(completedLessonLine != null ? completedLessonLine.audioClip : null);
@@ -534,10 +587,17 @@ public class UsageOfCapitalization_Script : MonoBehaviour
     {
         SetLessonImage(dot6Image);
         SetStageType(GetStageLabel(CurrentStage));
+        SetResult(PRESS_TEXT);
 
         if (CurrentState == LessonState.WaitingForSentenceTyping)
         {
             SetTranslation(GetTargetSentenceForStage(CurrentStage));
+
+            if (CurrentStage == CapitalizationStage.Sentence)
+            {
+                SetResult("In a sentence, the first word always starts with a capital letter.");
+            }
+
             ShowLine(GetTypingPromptLine(CurrentStage));
             return;
         }
@@ -557,6 +617,7 @@ public class UsageOfCapitalization_Script : MonoBehaviour
 
             case CapitalizationStage.Sentence:
                 SetTranslation(baseSentence);
+
                 if (currentDot6Count == 0) ShowLine(sentenceStagePromptLine);
                 else if (currentDot6Count == 1) ShowLine(sentenceStageSecondPressLine);
                 else ShowLine(sentenceStageThirdPressLine);
