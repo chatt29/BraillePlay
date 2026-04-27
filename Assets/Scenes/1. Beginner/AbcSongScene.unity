@@ -749,7 +749,7 @@ MonoBehaviour:
   bubbleText: {fileID: 1918177767}
   audioSource: {fileID: 838083183}
   message1:
-    messageText: Hi!!!
+    messageText: Hello
     messageAudio: {fileID: 0}
   message2:
     messageText: Welcome To BraillePlay!
@@ -1958,8 +1958,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a66db046ab4320b408a76ab376bdacca, type: 2}
+  m_sharedMaterial: {fileID: 6244326952053564057, guid: a66db046ab4320b408a76ab376bdacca, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
