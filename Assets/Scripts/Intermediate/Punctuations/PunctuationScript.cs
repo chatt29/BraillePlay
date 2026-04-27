@@ -553,7 +553,7 @@ public class PunctuationScript : MonoBehaviour
             : $"{lesson.displayLabel} is used in punctuation.";
 
         if (pressText != null)
-            pressText.text = "R = REPEAT | Y = NEXT";
+            pressText.text = "Press!";
 
         yield return ShowBubbleMessageSynced(description, lesson.descriptionAudio, noAudioTextDelay);
     }
@@ -740,7 +740,7 @@ public class PunctuationScript : MonoBehaviour
             translationText.text = "-";
 
         if (pressText != null)
-            pressText.text = "R = REPEAT | Y = FINISH";
+            pressText.text = "Press!";
 
         if (lessonImage != null)
             lessonImage.enabled = false;
