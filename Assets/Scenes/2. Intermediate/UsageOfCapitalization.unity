@@ -246,7 +246,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 580, y: 201.7312}
+  m_AnchoredPosition: {x: 592, y: 201.7312}
   m_SizeDelta: {x: 281.9776, y: 59.5376}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &176604274
@@ -296,7 +296,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 141.45
+  m_fontSize: 121.7
   m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -335,7 +335,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -29.87207, y: -34.95923, z: -119.40352, w: -60.689697}
+  m_margin: {x: -29.87207, y: -34.95923, z: -119.40352, w: -39.042236}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -632,7 +632,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 620, y: -145.70995}
+  m_AnchoredPosition: {x: 633.92, y: -145.70995}
   m_SizeDelta: {x: 358.3467, y: 446.6544}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &286661654
@@ -707,8 +707,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 620, y: -145.71}
-  m_SizeDelta: {x: 435.9485, y: 529.68}
+  m_AnchoredPosition: {x: 633.91614, y: -145.71}
+  m_SizeDelta: {x: 463.7808, y: 529.68}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &333712504
 MonoBehaviour:
@@ -1514,8 +1514,8 @@ GameObject:
   - component: {fileID: 1586095474}
   - component: {fileID: 1586095478}
   - component: {fileID: 1586095480}
-  - component: {fileID: 1586095481}
   - component: {fileID: 1586095482}
+  - component: {fileID: 1586095483}
   m_Layer: 5
   m_Name: CapitalizationManager
   m_TagString: Untagged
@@ -1652,55 +1652,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UsageOfCapitalization_InputHandler
   capitalizationLesson: {fileID: 0}
---- !u!114 &1586095481
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1586095473}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4567413ce2987a64b9c79dbfd726b204, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BrailleMapping
-  dot1Key: 102
-  dot2Key: 100
-  dot3Key: 115
-  dot4Key: 106
-  dot5Key: 107
-  dot6Key: 108
-  pauseKey: 112
-  backKey: 27
-  repeatKey: 114
-  submitKey: 32
-  deleteOrNoKey: 8
-  yesOrNextKey: 121
-  loginKey: 13
-  spaceKey: 32
-  correctKey: 49
-  wrongKey: 50
-  audioSource: {fileID: 1586095478}
-  dot1Sfx: {fileID: 8300000, guid: 0797e54434a89144b924840ca19dd5f5, type: 3}
-  dot2Sfx: {fileID: 8300000, guid: 0797e54434a89144b924840ca19dd5f5, type: 3}
-  dot3Sfx: {fileID: 8300000, guid: 0797e54434a89144b924840ca19dd5f5, type: 3}
-  dot4Sfx: {fileID: 8300000, guid: 0797e54434a89144b924840ca19dd5f5, type: 3}
-  dot5Sfx: {fileID: 8300000, guid: 0797e54434a89144b924840ca19dd5f5, type: 3}
-  dot6Sfx: {fileID: 8300000, guid: 0797e54434a89144b924840ca19dd5f5, type: 3}
-  repeatSfx: {fileID: 8300000, guid: 1162c61933e148c45bef68b06d74ac47, type: 3}
-  submitSfx: {fileID: 8300000, guid: 1162c61933e148c45bef68b06d74ac47, type: 3}
-  deleteOrNoSfx: {fileID: 8300000, guid: 1162c61933e148c45bef68b06d74ac47, type: 3}
-  yesOrNextSfx: {fileID: 8300000, guid: 1162c61933e148c45bef68b06d74ac47, type: 3}
-  loginSfx: {fileID: 0}
-  spaceSfx: {fileID: 8300000, guid: 0797e54434a89144b924840ca19dd5f5, type: 3}
-  correctSfx: {fileID: 8300000, guid: c1b476596f306b245904f433dc1bf816, type: 3}
-  wrongSfx: {fileID: 8300000, guid: 8674ad609afeaae4b9739c6fa8f1abd3, type: 3}
-  leftEarPan: -1
-  rightEarPan: 1
-  dotVolume: 2
-  actionVolume: 1.5
-  feedbackVolume: 2
-  logInputs: 0
 --- !u!114 &1586095482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1755,16 +1706,17 @@ MonoBehaviour:
     message: Great. Press dot 6 one more time to capitalize the whole sentence.
     audioClip: {fileID: 8300000, guid: 0f7c54f53bd567d4cbb9993688304780, type: 3}
   letterTypingPromptLine:
-    message: Now type the sentence. The first letter is capital T.
+    message: 'Now type the sentence: the cat is cute. The first letter is capital
+      T.'
     audioClip: {fileID: 8300000, guid: 37eea4cf23be0ab4e853b10a6ac46c77, type: 3}
   wordTypingPromptLine:
-    message: 'Now type the sentence. The first word is capitalized: capital T, capital
-      H, capital E.'
+    message: 'Now type the sentence: the cat is cute. The first word is capitalized:
+      capital T, capital H, capital E.'
     audioClip: {fileID: 8300000, guid: 830dac1f5c647244cb1cfac77bfd3f72, type: 3}
   sentenceTypingPromptLine:
-    message: Now type the sentence. Every letter is capitalized. In a sentence, the
-      first word always starts with a capital letter.
-    audioClip: {fileID: 8300000, guid: 0e0f3c1003f51cc458830a8e002f7c19, type: 3}
+    message: 'Now type the sentence: the cat is cute. Every letter is capitalized.
+      In a sentence, the first word always starts with a capital letter.'
+    audioClip: {fileID: 8300000, guid: 477e1602d4dc5ab4b81c94f24d4bedc1, type: 3}
   wrongLetterStageLine:
     message: That is not correct. To capitalize one letter, press dot 6 one time.
     audioClip: {fileID: 8300000, guid: 7ce48777b56806f469e402be44206cf8, type: 3}
@@ -1810,6 +1762,86 @@ MonoBehaviour:
   playOnStart: 1
   extraWaitAfterAudio: 0.15
   nextLessonSceneName: 
+--- !u!114 &1586095483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586095473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4567413ce2987a64b9c79dbfd726b204, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BrailleMapping
+  dot1Key: 102
+  dot2Key: 100
+  dot3Key: 115
+  dot4Key: 106
+  dot5Key: 107
+  dot6Key: 108
+  pauseKey: 112
+  backKey: 27
+  repeatKey: 114
+  submitKey: 13
+  deleteOrNoKey: 8
+  yesOrNextKey: 121
+  loginKey: 13
+  spaceKey: 32
+  correctKey: 49
+  wrongKey: 50
+  audioSource: {fileID: 1586095478}
+  dot1Sfx: {fileID: 8300000, guid: 0797e54434a89144b924840ca19dd5f5, type: 3}
+  dot2Sfx: {fileID: 8300000, guid: 0797e54434a89144b924840ca19dd5f5, type: 3}
+  dot3Sfx: {fileID: 8300000, guid: 0797e54434a89144b924840ca19dd5f5, type: 3}
+  dot4Sfx: {fileID: 8300000, guid: 0797e54434a89144b924840ca19dd5f5, type: 3}
+  dot5Sfx: {fileID: 8300000, guid: 0797e54434a89144b924840ca19dd5f5, type: 3}
+  dot6Sfx: {fileID: 8300000, guid: 0797e54434a89144b924840ca19dd5f5, type: 3}
+  repeatSfx: {fileID: 8300000, guid: 1162c61933e148c45bef68b06d74ac47, type: 3}
+  submitSfx: {fileID: 8300000, guid: 1162c61933e148c45bef68b06d74ac47, type: 3}
+  deleteOrNoSfx: {fileID: 8300000, guid: 1162c61933e148c45bef68b06d74ac47, type: 3}
+  yesOrNextSfx: {fileID: 8300000, guid: 1162c61933e148c45bef68b06d74ac47, type: 3}
+  loginSfx: {fileID: 0}
+  spaceSfx: {fileID: 8300000, guid: 0797e54434a89144b924840ca19dd5f5, type: 3}
+  correctSfx: {fileID: 8300000, guid: c1b476596f306b245904f433dc1bf816, type: 3}
+  wrongSfx: {fileID: 8300000, guid: 8674ad609afeaae4b9739c6fa8f1abd3, type: 3}
+  aSound: {fileID: 8300000, guid: 2d48057eda8aca345846ee47791c11ba, type: 3}
+  bSound: {fileID: 8300000, guid: e979f2fe6e085304eb7e25c86f188558, type: 3}
+  cSound: {fileID: 8300000, guid: 44f6dcff463891d40a4e7b494e42ea96, type: 3}
+  dSound: {fileID: 8300000, guid: 9d639bf998af6434bb46497e02080619, type: 3}
+  eSound: {fileID: 8300000, guid: 429eb1ac2e798084bacf535a9e9ad688, type: 3}
+  fSound: {fileID: 8300000, guid: e4d730e18d04cee45ba16e76ef99ce42, type: 3}
+  gSound: {fileID: 8300000, guid: 92b0c099b231e0a478ff7018760a7270, type: 3}
+  hSound: {fileID: 8300000, guid: 17cbd7cd9a746054c9e37b57c02870f2, type: 3}
+  iSound: {fileID: 8300000, guid: efaa1cde875a8f74a97e8d8f18c0c5ef, type: 3}
+  jSound: {fileID: 8300000, guid: 748ab0784524060438eb2b95fc759b30, type: 3}
+  kSound: {fileID: 8300000, guid: 71f6e974b35abb948b5c7f920c0adda4, type: 3}
+  lSound: {fileID: 8300000, guid: 9076d37bca4497f41b141a6ca2a8fe6f, type: 3}
+  mSound: {fileID: 8300000, guid: d1a3394f91e7c7343a0edcb2b9500927, type: 3}
+  nSound: {fileID: 8300000, guid: 2056df2ef0125584c8613649accef239, type: 3}
+  oSound: {fileID: 8300000, guid: 3bf9e1255f417674cbe7bc51213915fa, type: 3}
+  pSound: {fileID: 8300000, guid: 6aa4f19ee7449b842ba36c5a4f606b6c, type: 3}
+  qSound: {fileID: 8300000, guid: d270f1607f05c3e42a080fb650bba35b, type: 3}
+  rSound: {fileID: 8300000, guid: 71d2ab669681c854c8255eb930d07e71, type: 3}
+  sSound: {fileID: 8300000, guid: a37f5fa0d317a7344b61a3d987352db3, type: 3}
+  tSound: {fileID: 8300000, guid: 5a5c5ded30729d743b295b136af14578, type: 3}
+  uSound: {fileID: 8300000, guid: 4f888394d1f76654babd501eda8fc34f, type: 3}
+  vSound: {fileID: 8300000, guid: d472b9cd93b9c5941b342fcf7b9d1f66, type: 3}
+  wSound: {fileID: 8300000, guid: 67256beb0e461d042bf9d0fe11c981f5, type: 3}
+  xSound: {fileID: 8300000, guid: 4d04c56d1e292c74e8de07c9549481cf, type: 3}
+  ySound: {fileID: 8300000, guid: 92350685b58b51b478cfaa4dd558ec15, type: 3}
+  zSound: {fileID: 8300000, guid: 77bd63491b0fe334fb9092f60fac69d6, type: 3}
+  letterSoundVolume: 1.5
+  otherDefaultPatternSounds: []
+  otherPatternSoundVolume: 1.5
+  leftEarPan: -1
+  rightEarPan: 1
+  dotVolume: 2
+  actionVolume: 1.5
+  feedbackVolume: 2
+  logInputs: 0
+  playLetterSoundOnChord: 1
+  playOtherPatternSoundOnChord: 1
 --- !u!1 &1791188411
 GameObject:
   m_ObjectHideFlags: 0

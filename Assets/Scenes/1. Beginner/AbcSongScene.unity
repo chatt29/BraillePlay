@@ -573,13 +573,7 @@ MonoBehaviour:
     messageText: 
     messageAudio: {fileID: 0}
   abcSong: {fileID: 0}
-  message4:
-    messageText: 
-    messageAudio: {fileID: 0}
-  message5:
-    messageText: 
-    messageAudio: {fileID: 0}
-  message6:
+  afterSongMessage:
     messageText: 
     messageAudio: {fileID: 0}
 --- !u!1 &838083181
@@ -594,8 +588,8 @@ GameObject:
   - component: {fileID: 838083185}
   - component: {fileID: 838083184}
   - component: {fileID: 838083183}
-  - component: {fileID: 838083186}
   - component: {fileID: 838083187}
+  - component: {fileID: 838083188}
   m_Layer: 5
   m_Name: ABCSongManager
   m_TagString: Untagged
@@ -758,16 +752,23 @@ MonoBehaviour:
     messageText: Enjoy The ABC's Song
     messageAudio: {fileID: 0}
   abcSong: {fileID: 8300000, guid: f807fe123e4368044b31c9d7ebb85061, type: 3}
-  message4:
+  afterSongMessage:
     messageText: 
     messageAudio: {fileID: 0}
-  message5:
-    messageText: 
-    messageAudio: {fileID: 0}
-  message6:
-    messageText: 
-    messageAudio: {fileID: 0}
---- !u!114 &838083186
+--- !u!114 &838083187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 838083181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3094f35013d995e40bc9a93850fa6b72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AbcSongUIHandler
+  audioSource: {fileID: 838083183}
+--- !u!114 &838083188
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -788,47 +789,65 @@ MonoBehaviour:
   pauseKey: 112
   backKey: 27
   repeatKey: 114
-  submitKey: 32
+  submitKey: 13
   deleteOrNoKey: 8
   yesOrNextKey: 121
   loginKey: 13
   spaceKey: 32
   correctKey: 49
   wrongKey: 50
-  audioSource: {fileID: 0}
-  dot1Sfx: {fileID: 0}
-  dot2Sfx: {fileID: 0}
-  dot3Sfx: {fileID: 0}
-  dot4Sfx: {fileID: 0}
-  dot5Sfx: {fileID: 0}
-  dot6Sfx: {fileID: 0}
-  repeatSfx: {fileID: 0}
-  submitSfx: {fileID: 0}
-  deleteOrNoSfx: {fileID: 0}
-  yesOrNextSfx: {fileID: 0}
+  audioSource: {fileID: 838083183}
+  dot1Sfx: {fileID: 8300000, guid: 0797e54434a89144b924840ca19dd5f5, type: 3}
+  dot2Sfx: {fileID: 8300000, guid: 0797e54434a89144b924840ca19dd5f5, type: 3}
+  dot3Sfx: {fileID: 8300000, guid: 0797e54434a89144b924840ca19dd5f5, type: 3}
+  dot4Sfx: {fileID: 8300000, guid: 0797e54434a89144b924840ca19dd5f5, type: 3}
+  dot5Sfx: {fileID: 8300000, guid: 0797e54434a89144b924840ca19dd5f5, type: 3}
+  dot6Sfx: {fileID: 8300000, guid: 0797e54434a89144b924840ca19dd5f5, type: 3}
+  repeatSfx: {fileID: 8300000, guid: 1162c61933e148c45bef68b06d74ac47, type: 3}
+  submitSfx: {fileID: 8300000, guid: 1162c61933e148c45bef68b06d74ac47, type: 3}
+  deleteOrNoSfx: {fileID: 8300000, guid: 1162c61933e148c45bef68b06d74ac47, type: 3}
+  yesOrNextSfx: {fileID: 8300000, guid: 1162c61933e148c45bef68b06d74ac47, type: 3}
   loginSfx: {fileID: 0}
-  spaceSfx: {fileID: 0}
-  correctSfx: {fileID: 0}
-  wrongSfx: {fileID: 0}
+  spaceSfx: {fileID: 8300000, guid: 0797e54434a89144b924840ca19dd5f5, type: 3}
+  correctSfx: {fileID: 8300000, guid: c1b476596f306b245904f433dc1bf816, type: 3}
+  wrongSfx: {fileID: 8300000, guid: 8674ad609afeaae4b9739c6fa8f1abd3, type: 3}
+  aSound: {fileID: 8300000, guid: 2d48057eda8aca345846ee47791c11ba, type: 3}
+  bSound: {fileID: 8300000, guid: e979f2fe6e085304eb7e25c86f188558, type: 3}
+  cSound: {fileID: 8300000, guid: 44f6dcff463891d40a4e7b494e42ea96, type: 3}
+  dSound: {fileID: 8300000, guid: 9d639bf998af6434bb46497e02080619, type: 3}
+  eSound: {fileID: 8300000, guid: 429eb1ac2e798084bacf535a9e9ad688, type: 3}
+  fSound: {fileID: 8300000, guid: e4d730e18d04cee45ba16e76ef99ce42, type: 3}
+  gSound: {fileID: 8300000, guid: 92b0c099b231e0a478ff7018760a7270, type: 3}
+  hSound: {fileID: 8300000, guid: 17cbd7cd9a746054c9e37b57c02870f2, type: 3}
+  iSound: {fileID: 8300000, guid: efaa1cde875a8f74a97e8d8f18c0c5ef, type: 3}
+  jSound: {fileID: 8300000, guid: 748ab0784524060438eb2b95fc759b30, type: 3}
+  kSound: {fileID: 8300000, guid: 71f6e974b35abb948b5c7f920c0adda4, type: 3}
+  lSound: {fileID: 8300000, guid: 9076d37bca4497f41b141a6ca2a8fe6f, type: 3}
+  mSound: {fileID: 8300000, guid: d1a3394f91e7c7343a0edcb2b9500927, type: 3}
+  nSound: {fileID: 8300000, guid: 2056df2ef0125584c8613649accef239, type: 3}
+  oSound: {fileID: 8300000, guid: 3bf9e1255f417674cbe7bc51213915fa, type: 3}
+  pSound: {fileID: 8300000, guid: 6aa4f19ee7449b842ba36c5a4f606b6c, type: 3}
+  qSound: {fileID: 8300000, guid: d270f1607f05c3e42a080fb650bba35b, type: 3}
+  rSound: {fileID: 8300000, guid: 71d2ab669681c854c8255eb930d07e71, type: 3}
+  sSound: {fileID: 8300000, guid: a37f5fa0d317a7344b61a3d987352db3, type: 3}
+  tSound: {fileID: 8300000, guid: 5a5c5ded30729d743b295b136af14578, type: 3}
+  uSound: {fileID: 8300000, guid: 4f888394d1f76654babd501eda8fc34f, type: 3}
+  vSound: {fileID: 8300000, guid: d472b9cd93b9c5941b342fcf7b9d1f66, type: 3}
+  wSound: {fileID: 8300000, guid: 67256beb0e461d042bf9d0fe11c981f5, type: 3}
+  xSound: {fileID: 8300000, guid: 4d04c56d1e292c74e8de07c9549481cf, type: 3}
+  ySound: {fileID: 8300000, guid: 92350685b58b51b478cfaa4dd558ec15, type: 3}
+  zSound: {fileID: 8300000, guid: 77bd63491b0fe334fb9092f60fac69d6, type: 3}
+  letterSoundVolume: 1.5
+  otherDefaultPatternSounds: []
+  otherPatternSoundVolume: 1.5
   leftEarPan: -1
   rightEarPan: 1
   dotVolume: 2
   actionVolume: 1.5
   feedbackVolume: 2
   logInputs: 0
---- !u!114 &838083187
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 838083181}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3094f35013d995e40bc9a93850fa6b72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AbcSongUIHandler
-  audioSource: {fileID: 838083183}
+  playLetterSoundOnChord: 1
+  playOtherPatternSoundOnChord: 1
 --- !u!1 &914939325
 GameObject:
   m_ObjectHideFlags: 0
@@ -1740,13 +1759,7 @@ MonoBehaviour:
     messageText: 
     messageAudio: {fileID: 0}
   abcSong: {fileID: 0}
-  message4:
-    messageText: 
-    messageAudio: {fileID: 0}
-  message5:
-    messageText: 
-    messageAudio: {fileID: 0}
-  message6:
+  afterSongMessage:
     messageText: 
     messageAudio: {fileID: 0}
 --- !u!1 &1577125730
