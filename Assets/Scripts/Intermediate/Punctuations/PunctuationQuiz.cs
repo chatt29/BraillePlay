@@ -1,11 +1,11 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class CommonContractionScript : MonoBehaviour
+public class PunctuationQuiz : MonoBehaviour
 {
     public enum LessonKind
     {
@@ -18,7 +18,7 @@ public class CommonContractionScript : MonoBehaviour
     {
         [Header("Identity")]
         public string displayLabel;
-        public string categoryLabel = "CONTRACTION";
+        public string categoryLabel = "BRAILLE";
 
         [TextArea(2, 4)]
         public string promptMessage;
@@ -44,10 +44,10 @@ public class CommonContractionScript : MonoBehaviour
         [Tooltip("Used for SymbolOnly lessons")]
         public int[] dots;
 
-        [Tooltip("Used for Sequence lessons. Example: 100000 then 000000 then 110000")]
+        [Tooltip("Used for Sequence lessons. Example: 001111 then 100000 then 000000 for space")]
         public List<string> expectedSequencePatterns = new List<string>();
 
-        [Tooltip("Friendly names for each sequence step. Example: a then space then b")]
+        [Tooltip("Friendly names for each sequence step. Example: # then 1 then space")]
         public List<string> expectedSequenceNames = new List<string>();
 
         [Header("Visual")]
@@ -83,10 +83,26 @@ public class CommonContractionScript : MonoBehaviour
     public TMP_Text bubbleMessageText;
     public TMP_Text translationText;
     public TMP_Text typingSessionText;
-    public TMP_Text pressText;
     public TMP_Text categoryText;
     public TMP_Text livePatternText;
     public Image lessonImage;
+
+    [Header("Answer State Image")]
+    public Image answerStateImage;
+    public Sprite correctStateSprite;
+    public Sprite wrongStateSprite;
+    public bool hideAnswerStateAtStart = false;
+
+    [Header("Quiz Score UI")]
+    public TMP_Text fixScoreText;
+    public TMP_Text wrongScoreText;
+    public TMP_Text totalScoreText;
+    public TMP_Text highScoreText;
+
+    [Header("Quiz Score Settings")]
+    public int fixedScore = 100;
+    public int deductionPerMistake = 1;
+    public string highScoreKey = "PunctuationQuizHighScore";
 
     [Header("Audio")]
     public AudioSource voiceAudioSource;
@@ -102,13 +118,13 @@ public class CommonContractionScript : MonoBehaviour
     public string welcomeMessage = "Welcome to Braille Play!";
 
     [TextArea(2, 5)]
-    public string letsLearnMessage = "Let's learn common contractions.";
+    public string letsLearnMessage = "Let's learn punctuation.";
 
     [TextArea(2, 5)]
-    public string completedMessage = "Great job! You finished this common contraction lesson.";
+    public string completedMessage = "Great job! You finished this punctuation lesson.";
 
     [TextArea(2, 5)]
-    public string repeatQuestionMessage = "You finished this common contraction lesson. Do you want to repeat again? Press R to repeat or Y to finish.";
+    public string repeatQuestionMessage = "You finished this punctuation lesson. Do you want to repeat again? Press R to repeat or Y to finish.";
 
     [Header("Lesson Flow")]
     public List<BrailleLesson> lessons = new List<BrailleLesson>();
@@ -138,11 +154,16 @@ public class CommonContractionScript : MonoBehaviour
     private int currentLessonIndex = -1;
     private int currentSequenceStep = 0;
     private int currentMistakeCount = 0;
+    private int totalWrongCount = 0;
+    private int totalScore = 100;
+    private int highScore = 0;
+
     private bool lessonActive;
     private bool waitingForNext;
     private bool sceneFinished;
     private bool waitingForRepeatChoice;
     private bool waitingForDescriptionChoice;
+
     private Coroutine flowRoutine;
     private Coroutine bubbleTypeRoutine;
     private BrailleLesson currentLessonForDescription;
@@ -177,12 +198,84 @@ public class CommonContractionScript : MonoBehaviour
     private void Start()
     {
         if (logDebug)
-            Debug.Log("CommonContractionScript started");
+            Debug.Log("PunctuationQuiz started");
+
+        ResetQuizScore();
 
         if (flowRoutine != null)
             StopCoroutine(flowRoutine);
 
         flowRoutine = StartCoroutine(BeginSceneFlow());
+    }
+
+    private void ResetQuizScore()
+    {
+        totalWrongCount = 0;
+        totalScore = fixedScore;
+        highScore = PlayerPrefs.GetInt(highScoreKey, 0);
+
+        UpdateScoreUI();
+        ResetAnswerState();
+    }
+
+    private void AddMistake()
+    {
+        totalWrongCount++;
+        totalScore = Mathf.Max(0, fixedScore - (totalWrongCount * deductionPerMistake));
+        UpdateScoreUI();
+        SetAnswerState(false);
+    }
+
+    private void UpdateScoreUI()
+    {
+        if (fixScoreText != null)
+            fixScoreText.text = fixedScore.ToString();
+
+        if (wrongScoreText != null)
+            wrongScoreText.text = totalWrongCount.ToString();
+
+        if (totalScoreText != null)
+            totalScoreText.text = totalScore.ToString();
+
+        if (highScoreText != null)
+            highScoreText.text = highScore.ToString();
+    }
+
+    private void SaveHighScoreIfNeeded()
+    {
+        if (totalScore > highScore)
+        {
+            highScore = totalScore;
+            PlayerPrefs.SetInt(highScoreKey, highScore);
+            PlayerPrefs.Save();
+        }
+
+        UpdateScoreUI();
+    }
+
+    private void SetAnswerState(bool isCorrect)
+    {
+        if (answerStateImage == null)
+            return;
+
+        answerStateImage.enabled = true;
+        answerStateImage.sprite = isCorrect ? correctStateSprite : wrongStateSprite;
+    }
+
+    private void ResetAnswerState()
+    {
+        if (answerStateImage == null)
+            return;
+
+        if (hideAnswerStateAtStart)
+        {
+            answerStateImage.enabled = false;
+        }
+        else
+        {
+            answerStateImage.enabled = true;
+            answerStateImage.sprite = wrongStateSprite;
+        }
     }
 
     private IEnumerator BeginSceneFlow()
@@ -217,6 +310,7 @@ public class CommonContractionScript : MonoBehaviour
         currentLessonIndex = index;
         currentSequenceStep = 0;
         currentMistakeCount = 0;
+
         lessonActive = true;
         waitingForNext = false;
         waitingForRepeatChoice = false;
@@ -227,6 +321,8 @@ public class CommonContractionScript : MonoBehaviour
         typedSentence = "";
         capitalizeNextLetter = false;
 
+        ResetAnswerState();
+
         if (typingSessionText != null)
             typingSessionText.text = "";
 
@@ -236,10 +332,7 @@ public class CommonContractionScript : MonoBehaviour
             translationText.text = lesson.displayLabel;
 
         if (categoryText != null)
-            categoryText.text = string.IsNullOrWhiteSpace(lesson.categoryLabel) ? "CONTRACTION" : lesson.categoryLabel;
-
-        if (pressText != null)
-            pressText.text = "PRESS!";
+            categoryText.text = string.IsNullOrWhiteSpace(lesson.categoryLabel) ? "PUNCTUATION" : lesson.categoryLabel;
 
         if (lessonImage != null)
         {
@@ -359,12 +452,10 @@ public class CommonContractionScript : MonoBehaviour
             return lesson.sequenceStepWrongMessages[stepIndex];
         }
 
-        string stepName = GetSequenceStepName(lesson, stepIndex);
-
         if (resetSequenceToStartOnWrongAnswer)
             return $"That was not correct. Start again from {GetSequenceStepName(lesson, 0)}.";
 
-        return $"That was not correct. Try {stepName} again.";
+        return $"That was not correct. Try {GetSequenceStepName(lesson, stepIndex)} again.";
     }
 
     private AudioClip GetSequenceStepWrongAudio(BrailleLesson lesson, int stepIndex)
@@ -432,6 +523,7 @@ public class CommonContractionScript : MonoBehaviour
             {
                 if (logDebug)
                     Debug.Log("Ignoring space input for SymbolOnly lesson");
+
                 return;
             }
 
@@ -457,6 +549,8 @@ public class CommonContractionScript : MonoBehaviour
             waitingForNext = false;
             waitingForDescriptionChoice = false;
 
+            SetAnswerState(true);
+
             if (flowRoutine != null)
                 StopCoroutine(flowRoutine);
 
@@ -465,6 +559,7 @@ public class CommonContractionScript : MonoBehaviour
         else
         {
             currentMistakeCount++;
+            AddMistake();
 
             if (flowRoutine != null)
                 StopCoroutine(flowRoutine);
@@ -509,6 +604,8 @@ public class CommonContractionScript : MonoBehaviour
                 waitingForNext = false;
                 waitingForDescriptionChoice = false;
 
+                SetAnswerState(true);
+
                 if (flowRoutine != null)
                     StopCoroutine(flowRoutine);
 
@@ -526,6 +623,7 @@ public class CommonContractionScript : MonoBehaviour
         {
             int failedStepIndex = currentSequenceStep;
             currentMistakeCount++;
+            AddMistake();
 
             if (resetSequenceToStartOnWrongAnswer)
             {
@@ -570,13 +668,32 @@ public class CommonContractionScript : MonoBehaviour
 
         if (typingSessionText != null)
             typingSessionText.text = typedSentence;
+
+        CheckIfSentenceComplete();
+    }
+
+    private void CheckIfSentenceComplete()
+    {
+        if (currentLessonIndex < 0 || currentLessonIndex >= lessons.Count)
+            return;
+
+        string targetSentence = lessons[currentLessonIndex].displayLabel;
+
+        if (string.IsNullOrEmpty(targetSentence))
+            return;
+
+        bool complete = typedSentence.Trim() == targetSentence.Trim();
+
+        if (complete)
+            SetAnswerState(true);
+        else
+            SetAnswerState(false);
     }
 
     private char GetCharacterFromBraillePattern(string pattern)
     {
         switch (pattern)
         {
-            // Letters
             case "100000": return 'a';
             case "110000": return 'b';
             case "100100": return 'c';
@@ -604,13 +721,10 @@ public class CommonContractionScript : MonoBehaviour
             case "101111": return 'y';
             case "101011": return 'z';
 
-            // Space
             case "000000": return ' ';
 
-            // Capital indicator
             case "000001": return '^';
 
-            // Punctuation
             case "010000": return ',';
             case "010011": return '.';
             case "011001": return '?';
@@ -623,6 +737,8 @@ public class CommonContractionScript : MonoBehaviour
     private IEnumerator HandleCorrectAnswer(BrailleLesson lesson)
     {
         currentLessonForDescription = lesson;
+
+        SaveHighScoreIfNeeded();
 
         string message = !string.IsNullOrWhiteSpace(lesson.successMessage)
             ? lesson.successMessage
@@ -643,10 +759,7 @@ public class CommonContractionScript : MonoBehaviour
 
         string description = !string.IsNullOrWhiteSpace(lesson.descriptionMessage)
             ? lesson.descriptionMessage
-            : $"{lesson.displayLabel} is a common braille contraction.";
-
-        if (pressText != null)
-            pressText.text = "Press!";
+            : $"{lesson.displayLabel} is used in punctuation.";
 
         yield return ShowBubbleMessageSynced(description, lesson.descriptionAudio, noAudioTextDelay);
     }
@@ -756,6 +869,7 @@ public class CommonContractionScript : MonoBehaviour
             if (flowRoutine != null)
                 StopCoroutine(flowRoutine);
 
+            ResetQuizScore();
             StartLesson(0);
             return;
         }
@@ -797,9 +911,6 @@ public class CommonContractionScript : MonoBehaviour
             waitingForDescriptionChoice = false;
             waitingForNext = false;
 
-            if (pressText != null)
-                pressText.text = "PRESS!";
-
             StartLesson(currentLessonIndex + 1);
             return;
         }
@@ -829,17 +940,18 @@ public class CommonContractionScript : MonoBehaviour
         sceneFinished = false;
         waitingForRepeatChoice = true;
 
+        SaveHighScoreIfNeeded();
+
         if (translationText != null)
             translationText.text = "-";
 
         if (typingSessionText != null)
             typingSessionText.text = "";
 
-        if (pressText != null)
-            pressText.text = "Press!";
-
         if (lessonImage != null)
             lessonImage.enabled = false;
+
+        ResetAnswerState();
 
         yield return ShowBubbleMessageSynced(repeatQuestionMessage, repeatQuestionAudio, noAudioTextDelay);
     }
@@ -852,17 +964,18 @@ public class CommonContractionScript : MonoBehaviour
         waitingForRepeatChoice = false;
         waitingForDescriptionChoice = false;
 
+        SaveHighScoreIfNeeded();
+
         if (translationText != null)
             translationText.text = "-";
 
         if (typingSessionText != null)
             typingSessionText.text = "";
 
-        if (pressText != null)
-            pressText.text = "DONE!";
-
         if (lessonImage != null)
             lessonImage.enabled = false;
+
+        ResetAnswerState();
 
         yield return ShowBubbleMessageSynced(completedMessage, genericCompletedAudio, noAudioTextDelay);
     }
@@ -916,6 +1029,7 @@ public class CommonContractionScript : MonoBehaviour
             for (int i = 0; i < clips.Length; i++)
             {
                 AudioClip clip = clips[i];
+
                 if (clip == null)
                     continue;
 
