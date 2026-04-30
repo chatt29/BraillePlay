@@ -5,6 +5,13 @@ public class BrailleMapping : MonoBehaviour
 {
     public static BrailleMapping Instance;
 
+    [Serializable]
+    public class DefaultPatternSound
+    {
+        public string pattern;
+        public AudioClip sound;
+    }
+
     public static event Action OnDot1;
     public static event Action OnDot2;
     public static event Action OnDot3;
@@ -70,6 +77,40 @@ public class BrailleMapping : MonoBehaviour
     public AudioClip correctSfx;
     public AudioClip wrongSfx;
 
+    [Header("Default Braille Letter Sounds")]
+    public AudioClip aSound;
+    public AudioClip bSound;
+    public AudioClip cSound;
+    public AudioClip dSound;
+    public AudioClip eSound;
+    public AudioClip fSound;
+    public AudioClip gSound;
+    public AudioClip hSound;
+    public AudioClip iSound;
+    public AudioClip jSound;
+    public AudioClip kSound;
+    public AudioClip lSound;
+    public AudioClip mSound;
+    public AudioClip nSound;
+    public AudioClip oSound;
+    public AudioClip pSound;
+    public AudioClip qSound;
+    public AudioClip rSound;
+    public AudioClip sSound;
+    public AudioClip tSound;
+    public AudioClip uSound;
+    public AudioClip vSound;
+    public AudioClip wSound;
+    public AudioClip xSound;
+    public AudioClip ySound;
+    public AudioClip zSound;
+
+    [Range(0f, 3f)] public float letterSoundVolume = 1.5f;
+
+    [Header("Other Default Pattern Sounds")]
+    public DefaultPatternSound[] otherDefaultPatternSounds;
+    [Range(0f, 3f)] public float otherPatternSoundVolume = 1.5f;
+
     [Header("Stereo Pan")]
     [Range(-1f, 1f)] public float leftEarPan = -1f;
     [Range(-1f, 1f)] public float rightEarPan = 1f;
@@ -81,6 +122,8 @@ public class BrailleMapping : MonoBehaviour
 
     [Header("Options")]
     public bool logInputs = false;
+    public bool playLetterSoundOnChord = true;
+    public bool playOtherPatternSoundOnChord = true;
 
     private bool chordStarted;
     private bool chordDot1;
@@ -92,7 +135,14 @@ public class BrailleMapping : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Update()
@@ -106,6 +156,79 @@ public class BrailleMapping : MonoBehaviour
     {
         if (audioSource != null && clip != null)
             audioSource.PlayOneShot(clip, volumeMultiplier);
+    }
+
+    private bool PlayOtherDefaultPatternSound(string pattern)
+    {
+        if (!playOtherPatternSoundOnChord)
+            return false;
+
+        if (otherDefaultPatternSounds == null)
+            return false;
+
+        foreach (DefaultPatternSound patternSound in otherDefaultPatternSounds)
+        {
+            if (patternSound == null)
+                continue;
+
+            if (patternSound.pattern == pattern)
+            {
+                PlaySfx(patternSound.sound, otherPatternSoundVolume);
+
+                if (logInputs)
+                    Debug.Log("Played other default pattern sound for: " + pattern);
+
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private void PlayDefaultLetterSound(string pattern)
+    {
+        if (!playLetterSoundOnChord)
+            return;
+
+        AudioClip clip = null;
+
+        switch (pattern)
+        {
+            case "100000": clip = aSound; break; // A
+            case "110000": clip = bSound; break; // B
+            case "100100": clip = cSound; break; // C
+            case "100110": clip = dSound; break; // D
+            case "100010": clip = eSound; break; // E
+            case "110100": clip = fSound; break; // F
+            case "110110": clip = gSound; break; // G
+            case "110010": clip = hSound; break; // H
+            case "010100": clip = iSound; break; // I
+            case "010110": clip = jSound; break; // J
+            case "101000": clip = kSound; break; // K
+            case "111000": clip = lSound; break; // L
+            case "101100": clip = mSound; break; // M
+            case "101110": clip = nSound; break; // N
+            case "101010": clip = oSound; break; // O
+            case "111100": clip = pSound; break; // P
+            case "111110": clip = qSound; break; // Q
+            case "111010": clip = rSound; break; // R
+            case "011100": clip = sSound; break; // S
+            case "011110": clip = tSound; break; // T
+            case "101001": clip = uSound; break; // U
+            case "111001": clip = vSound; break; // V
+            case "010111": clip = wSound; break; // W
+            case "101101": clip = xSound; break; // X
+            case "101111": clip = ySound; break; // Y
+            case "101011": clip = zSound; break; // Z
+        }
+
+        if (clip != null)
+        {
+            PlaySfx(clip, letterSoundVolume);
+
+            if (logInputs)
+                Debug.Log("Played letter sound for pattern: " + pattern);
+        }
     }
 
     private void PlayPannedSfx(AudioClip clip, float pan, float volumeMultiplier = 1f)
@@ -217,6 +340,11 @@ public class BrailleMapping : MonoBehaviour
             (chordDot6 ? "1" : "0");
 
         if (logInputs) Debug.Log("Braille chord submitted: " + pattern);
+
+        if (!PlayOtherDefaultPatternSound(pattern))
+        {
+            PlayDefaultLetterSound(pattern);
+        }
 
         OnBrailleChordSubmitted?.Invoke(pattern);
 

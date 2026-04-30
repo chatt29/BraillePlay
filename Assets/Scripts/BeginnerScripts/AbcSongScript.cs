@@ -21,17 +21,16 @@ public class AbcSongScript : MonoBehaviour
     [Header("Messages Before ABC Song")]
     public AbcMessage message1;
     public AbcMessage message2;
-    public AbcMessage message3;
 
     [Header("ABC Song")]
     public AudioClip abcSong;
 
-    [Header("Message After Song")]
-    public AbcMessage afterSongMessage;
+    [Header("Messages After Song")]
+    public AbcMessage afterMessage1;
+    public AbcMessage afterMessage2;
 
     private int step = 0;
     private bool songPlaying = false;
-    private bool lastPlayedWasSong = false;
 
     void OnEnable()
     {
@@ -52,49 +51,31 @@ public class AbcSongScript : MonoBehaviour
         PlayCurrent();
     }
 
-    // ---------- FAST FORWARD (+10s) ----------
-    void HandleFastForward()
-    {
-        FastForward10();
-    }
+    // ---------- FAST FORWARD ----------
+    void HandleFastForward() => FastForward10();
 
     public void FastForward10()
     {
         if (audioSource == null || audioSource.clip == null) return;
 
         audioSource.time += 10f;
-
         if (audioSource.time > audioSource.clip.length)
-        {
             audioSource.time = audioSource.clip.length - 0.1f;
-        }
     }
 
-    // ---------- REWIND (-10s) ----------
-    void HandleRewind()
-    {
-        Rewind10();
-    }
+    // ---------- REWIND ----------
+    void HandleRewind() => Rewind10();
 
     public void Rewind10()
     {
         if (audioSource == null || audioSource.clip == null) return;
 
         audioSource.time -= 10f;
-
         if (audioSource.time < 0f)
-        {
             audioSource.time = 0f;
-        }
     }
 
-    // ---------- UI BACK BUTTON ----------
-    public void BackButton()
-    {
-        Back();
-    }
-
-    // ---------- BACK TO START / HELLO ----------
+    // ---------- BACK TO START ----------
     public void Back()
     {
         StopAllCoroutines();
@@ -107,14 +88,12 @@ public class AbcSongScript : MonoBehaviour
         }
 
         songPlaying = false;
-        lastPlayedWasSong = false;
         step = 0;
 
-        PlayCurrent(); // back to first message / "Hello"
+        PlayCurrent();
     }
 
-    // ---------- REPEAT SONG BUTTON ----------
-    // Connect your Repeat Button OnClick() to this function.
+    // ---------- REPEAT SONG ----------
     public void RepeatSongButton()
     {
         StopAllCoroutines();
@@ -126,10 +105,9 @@ public class AbcSongScript : MonoBehaviour
         }
 
         songPlaying = false;
-        lastPlayedWasSong = true;
-        step = 3;
+        step = 2; // 👈 song step
 
-        PlayCurrent(); // repeat ABC song
+        PlayCurrent();
     }
 
     // ---------- MESSAGE FLOW ----------
@@ -139,13 +117,12 @@ public class AbcSongScript : MonoBehaviour
         {
             case 0: return message1;
             case 1: return message2;
-            case 2: return message3;
 
-            // Step 3 is the ABC song
+            // step 2 = song
 
-            case 4: return afterSongMessage;
+            case 3: return afterMessage1;
+            case 4: return afterMessage2;
         }
-
         return null;
     }
 
@@ -153,15 +130,10 @@ public class AbcSongScript : MonoBehaviour
     {
         StopAllCoroutines();
 
-        if (step == 3)
+        // 🎵 SONG STEP
+        if (step == 2)
         {
-            lastPlayedWasSong = true;
-
-            if (bubbleText != null)
-            {
-                bubbleText.text = "Lets sing!";
-            }
-
+            bubbleText.text = "Lets sing!";
             StartCoroutine(PlaySong());
             return;
         }
@@ -170,14 +142,9 @@ public class AbcSongScript : MonoBehaviour
 
         if (msg != null)
         {
-            lastPlayedWasSong = false;
-
-            if (bubbleText != null)
-            {
-                bubbleText.text = msg.messageText;
-            }
-
+            bubbleText.text = msg.messageText;
             PlayAudio(msg.messageAudio);
+
             StartCoroutine(AutoNext(msg.messageAudio));
         }
     }
@@ -185,13 +152,9 @@ public class AbcSongScript : MonoBehaviour
     IEnumerator AutoNext(AudioClip clip)
     {
         if (clip != null && audioSource != null)
-        {
             yield return new WaitUntil(() => !audioSource.isPlaying);
-        }
         else
-        {
             yield return new WaitForSeconds(2f);
-        }
 
         if (!songPlaying && step < 4)
         {
@@ -203,32 +166,16 @@ public class AbcSongScript : MonoBehaviour
     IEnumerator PlaySong()
     {
         songPlaying = true;
-        lastPlayedWasSong = true;
 
-        if (bubbleText != null)
-        {
-            bubbleText.text = "Lets sing!";
-        }
+        audioSource.Stop();
+        audioSource.clip = abcSong;
+        audioSource.Play();
 
-        if (audioSource != null && abcSong != null)
-        {
-            audioSource.Stop();
-            audioSource.time = 0f;
-            audioSource.clip = abcSong;
-            audioSource.Play();
-
-            yield return new WaitUntil(() => !audioSource.isPlaying);
-        }
-        else
-        {
-            yield return new WaitForSeconds(2f);
-        }
+        yield return new WaitUntil(() => !audioSource.isPlaying);
 
         songPlaying = false;
-        lastPlayedWasSong = true;
-
         step++;
-        PlayCurrent(); // plays "I hope you enjoyed the song."
+        PlayCurrent();
     }
 
     void PlayAudio(AudioClip clip)
