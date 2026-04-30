@@ -34,12 +34,12 @@ public class BrailleMapping : MonoBehaviour
     public static event Action OnWrong;
 
     [Header("Braille Dots")]
-    public KeyCode dot1Key = KeyCode.F;
-    public KeyCode dot2Key = KeyCode.D;
-    public KeyCode dot3Key = KeyCode.S;
-    public KeyCode dot4Key = KeyCode.J;
-    public KeyCode dot5Key = KeyCode.K;
-    public KeyCode dot6Key = KeyCode.L;
+    public KeyCode dot1Key = KeyCode.J;
+    public KeyCode dot2Key = KeyCode.K;
+    public KeyCode dot3Key = KeyCode.L;
+    public KeyCode dot4Key = KeyCode.F;
+    public KeyCode dot5Key = KeyCode.D;
+    public KeyCode dot6Key = KeyCode.S;
 
     [Header("Extra Controls")]
     public KeyCode pauseKey = KeyCode.P;
