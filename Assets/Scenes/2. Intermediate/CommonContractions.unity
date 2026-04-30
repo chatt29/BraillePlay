@@ -1974,7 +1974,19 @@ MonoBehaviour:
   ySound: {fileID: 8300000, guid: 92350685b58b51b478cfaa4dd558ec15, type: 3}
   zSound: {fileID: 8300000, guid: 77bd63491b0fe334fb9092f60fac69d6, type: 3}
   letterSoundVolume: 1.5
-  otherDefaultPatternSounds: []
+  otherDefaultPatternSounds:
+  - pattern: 000001
+    sound: {fileID: 8300000, guid: 0622e17681c1d9747a952cdfc368644f, type: 3}
+  - pattern: 000000
+    sound: {fileID: 8300000, guid: 507e6e21ec3099a4dbbd8dfc112663cf, type: 3}
+  - pattern: 010011
+    sound: {fileID: 8300000, guid: 92c844c4b5b3cdd4287f886b8f04a16d, type: 3}
+  - pattern: 011001
+    sound: {fileID: 8300000, guid: ab2be8d914d984844901de186de4bb4e, type: 3}
+  - pattern: 010000
+    sound: {fileID: 8300000, guid: 36e662f15e18c9941bac3198f72868ae, type: 3}
+  - pattern: 011010
+    sound: {fileID: 8300000, guid: 7a707332265f18f48b49580b27513660, type: 3}
   otherPatternSoundVolume: 1.5
   leftEarPan: -1
   rightEarPan: 1
