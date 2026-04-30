@@ -754,6 +754,7 @@ MonoBehaviour:
   abcSong: {fileID: 8300000, guid: f807fe123e4368044b31c9d7ebb85061, type: 3}
   afterSongMessage:
     messageText: Repeat the song and sing with me
+    messageText: 
     messageAudio: {fileID: 0}
 --- !u!114 &838083187
 MonoBehaviour:
