@@ -18,7 +18,7 @@ public class CommonContractionScript : MonoBehaviour
     {
         [Header("Identity")]
         public string displayLabel;
-        public string categoryLabel = "BRAILLE";
+        public string categoryLabel = "CONTRACTION";
 
         [TextArea(2, 4)]
         public string promptMessage;
@@ -44,10 +44,10 @@ public class CommonContractionScript : MonoBehaviour
         [Tooltip("Used for SymbolOnly lessons")]
         public int[] dots;
 
-        [Tooltip("Used for Sequence lessons. Example: 001111 then 100000")]
+        [Tooltip("Used for Sequence lessons. Example: 100000 then 000000 then 110000")]
         public List<string> expectedSequencePatterns = new List<string>();
 
-        [Tooltip("Friendly names for each sequence step. Example: # then 1")]
+        [Tooltip("Friendly names for each sequence step. Example: a then space then b")]
         public List<string> expectedSequenceNames = new List<string>();
 
         [Header("Visual")]
@@ -65,6 +65,13 @@ public class CommonContractionScript : MonoBehaviour
         [TextArea(2, 4)]
         public List<string> sequenceStepMessages = new List<string>();
 
+        [Header("Sequence Step Wrong Audio")]
+        public List<AudioClip> sequenceStepWrongAudios = new List<AudioClip>();
+
+        [Header("Sequence Step Wrong Messages")]
+        [TextArea(2, 4)]
+        public List<string> sequenceStepWrongMessages = new List<string>();
+
         [Header("Support After Mistakes")]
         [TextArea(2, 4)]
         public string supportMessage;
@@ -75,6 +82,7 @@ public class CommonContractionScript : MonoBehaviour
     [Header("UI")]
     public TMP_Text bubbleMessageText;
     public TMP_Text translationText;
+    public TMP_Text typingSessionText;
     public TMP_Text pressText;
     public TMP_Text categoryText;
     public TMP_Text livePatternText;
@@ -94,13 +102,13 @@ public class CommonContractionScript : MonoBehaviour
     public string welcomeMessage = "Welcome to Braille Play!";
 
     [TextArea(2, 5)]
-    public string letsLearnMessage = "Let's learn braille.";
+    public string letsLearnMessage = "Let's learn common contractions.";
 
     [TextArea(2, 5)]
-    public string completedMessage = "Great job! You finished this braille lesson.";
+    public string completedMessage = "Great job! You finished this common contraction lesson.";
 
     [TextArea(2, 5)]
-    public string repeatQuestionMessage = "You finished this braille lesson. Do you want to repeat again? Press R to repeat or next to finish.";
+    public string repeatQuestionMessage = "You finished this common contraction lesson. Do you want to repeat again? Press R to repeat or Y to finish.";
 
     [Header("Lesson Flow")]
     public List<BrailleLesson> lessons = new List<BrailleLesson>();
@@ -110,6 +118,8 @@ public class CommonContractionScript : MonoBehaviour
     public float delayAfterCorrect = 0.75f;
     public bool showHeldDotsPattern = true;
     public bool resetSequenceToStartOnWrongAnswer = true;
+    public bool allowSpaceAsSequenceInput = true;
+    public string spaceSequencePattern = "000000";
 
     [Header("Support Settings")]
     public int mistakesBeforeSupport = 3;
@@ -137,11 +147,15 @@ public class CommonContractionScript : MonoBehaviour
     private Coroutine bubbleTypeRoutine;
     private BrailleLesson currentLessonForDescription;
 
+    private string typedSentence = "";
+    private bool capitalizeNextLetter = false;
+
     private void OnEnable()
     {
         BrailleMapping.OnBrailleChordSubmitted += HandleBrailleChordSubmitted;
         BrailleMapping.OnRepeat += HandleRepeat;
         BrailleMapping.OnYesOrNext += HandleNext;
+        BrailleMapping.OnSpace += HandleSpaceInput;
     }
 
     private void OnDisable()
@@ -149,6 +163,7 @@ public class CommonContractionScript : MonoBehaviour
         BrailleMapping.OnBrailleChordSubmitted -= HandleBrailleChordSubmitted;
         BrailleMapping.OnRepeat -= HandleRepeat;
         BrailleMapping.OnYesOrNext -= HandleNext;
+        BrailleMapping.OnSpace -= HandleSpaceInput;
     }
 
     private void Update()
@@ -162,7 +177,7 @@ public class CommonContractionScript : MonoBehaviour
     private void Start()
     {
         if (logDebug)
-            Debug.Log("BrailleLessonSceneController started");
+            Debug.Log("CommonContractionScript started");
 
         if (flowRoutine != null)
             StopCoroutine(flowRoutine);
@@ -209,13 +224,19 @@ public class CommonContractionScript : MonoBehaviour
         sceneFinished = false;
         currentLessonForDescription = null;
 
+        typedSentence = "";
+        capitalizeNextLetter = false;
+
+        if (typingSessionText != null)
+            typingSessionText.text = "";
+
         BrailleLesson lesson = lessons[currentLessonIndex];
 
         if (translationText != null)
             translationText.text = lesson.displayLabel;
 
         if (categoryText != null)
-            categoryText.text = string.IsNullOrWhiteSpace(lesson.categoryLabel) ? "BRAILLE" : lesson.categoryLabel;
+            categoryText.text = string.IsNullOrWhiteSpace(lesson.categoryLabel) ? "CONTRACTION" : lesson.categoryLabel;
 
         if (pressText != null)
             pressText.text = "PRESS!";
@@ -257,6 +278,25 @@ public class CommonContractionScript : MonoBehaviour
         }
         else
         {
+            string message = GetLessonPrompt(lesson);
+
+            if (playInstructionOnLessonStart)
+            {
+                yield return ShowBubbleMessageWithAudioSequence(
+                    message,
+                    noAudioTextDelay,
+                    lesson.introAudio,
+                    lesson.instructionAudio
+                );
+
+                yield return new WaitForSeconds(delayAfterVoice);
+            }
+            else
+            {
+                yield return ShowBubbleMessageSynced(message, null, noAudioTextDelay);
+                yield return new WaitForSeconds(delayAfterVoice);
+            }
+
             yield return PlaySequenceStepInstruction(lesson, 0);
         }
     }
@@ -273,17 +313,6 @@ public class CommonContractionScript : MonoBehaviour
             return $"{lesson.displayLabel}. Step 1: press {lesson.expectedSequenceNames[0]}.";
 
         return $"{lesson.displayLabel}. Enter the braille sequence.";
-    }
-
-    private IEnumerator PlayLessonInstruction(BrailleLesson lesson)
-    {
-        if (lesson.introAudio != null)
-            yield return PlayClipAndWait(lesson.introAudio);
-
-        if (lesson.instructionAudio != null)
-            yield return PlayClipAndWait(lesson.instructionAudio);
-        else
-            yield return new WaitForSeconds(noAudioTextDelay);
     }
 
     private IEnumerator PlaySequenceStepInstruction(BrailleLesson lesson, int stepIndex)
@@ -320,7 +349,74 @@ public class CommonContractionScript : MonoBehaviour
         return null;
     }
 
+    private string GetSequenceStepWrongMessage(BrailleLesson lesson, int stepIndex)
+    {
+        if (lesson.sequenceStepWrongMessages != null &&
+            stepIndex >= 0 &&
+            stepIndex < lesson.sequenceStepWrongMessages.Count &&
+            !string.IsNullOrWhiteSpace(lesson.sequenceStepWrongMessages[stepIndex]))
+        {
+            return lesson.sequenceStepWrongMessages[stepIndex];
+        }
+
+        string stepName = GetSequenceStepName(lesson, stepIndex);
+
+        if (resetSequenceToStartOnWrongAnswer)
+            return $"That was not correct. Start again from {GetSequenceStepName(lesson, 0)}.";
+
+        return $"That was not correct. Try {stepName} again.";
+    }
+
+    private AudioClip GetSequenceStepWrongAudio(BrailleLesson lesson, int stepIndex)
+    {
+        if (lesson.sequenceStepWrongAudios != null &&
+            stepIndex >= 0 &&
+            stepIndex < lesson.sequenceStepWrongAudios.Count)
+        {
+            return lesson.sequenceStepWrongAudios[stepIndex];
+        }
+
+        return genericTryAgainAudio;
+    }
+
+    private string GetSequenceStepName(BrailleLesson lesson, int stepIndex)
+    {
+        if (lesson.expectedSequenceNames != null &&
+            stepIndex >= 0 &&
+            stepIndex < lesson.expectedSequenceNames.Count &&
+            !string.IsNullOrWhiteSpace(lesson.expectedSequenceNames[stepIndex]))
+        {
+            return lesson.expectedSequenceNames[stepIndex];
+        }
+
+        if (lesson.expectedSequencePatterns != null &&
+            stepIndex >= 0 &&
+            stepIndex < lesson.expectedSequencePatterns.Count &&
+            lesson.expectedSequencePatterns[stepIndex] == spaceSequencePattern)
+        {
+            return "space";
+        }
+
+        return $"step {stepIndex + 1}";
+    }
+
     private void HandleBrailleChordSubmitted(string submittedPattern)
+    {
+        HandleSubmittedPattern(submittedPattern);
+    }
+
+    private void HandleSpaceInput()
+    {
+        if (!allowSpaceAsSequenceInput)
+            return;
+
+        if (logDebug)
+            Debug.Log("Space submitted as sequence pattern: " + spaceSequencePattern);
+
+        HandleSubmittedPattern(spaceSequencePattern);
+    }
+
+    private void HandleSubmittedPattern(string submittedPattern)
     {
         if (!lessonActive || waitingForNext || sceneFinished || waitingForRepeatChoice || waitingForDescriptionChoice)
             return;
@@ -331,9 +427,20 @@ public class CommonContractionScript : MonoBehaviour
         BrailleLesson lesson = lessons[currentLessonIndex];
 
         if (lesson.lessonKind == LessonKind.SymbolOnly)
+        {
+            if (submittedPattern == spaceSequencePattern && allowSpaceAsSequenceInput)
+            {
+                if (logDebug)
+                    Debug.Log("Ignoring space input for SymbolOnly lesson");
+                return;
+            }
+
             HandleSinglePatternLesson(lesson, submittedPattern);
+        }
         else
+        {
             HandleSequenceLesson(lesson, submittedPattern);
+        }
     }
 
     private void HandleSinglePatternLesson(BrailleLesson lesson, string submittedPattern)
@@ -391,6 +498,9 @@ public class CommonContractionScript : MonoBehaviour
         if (submittedPattern == expected)
         {
             currentMistakeCount = 0;
+
+            AddTypedCharacterFromPattern(submittedPattern);
+
             currentSequenceStep++;
 
             if (currentSequenceStep >= lesson.expectedSequencePatterns.Count)
@@ -414,10 +524,18 @@ public class CommonContractionScript : MonoBehaviour
         }
         else
         {
+            int failedStepIndex = currentSequenceStep;
             currentMistakeCount++;
 
             if (resetSequenceToStartOnWrongAnswer)
+            {
                 currentSequenceStep = 0;
+                typedSentence = "";
+                capitalizeNextLetter = false;
+
+                if (typingSessionText != null)
+                    typingSessionText.text = "";
+            }
 
             if (flowRoutine != null)
                 StopCoroutine(flowRoutine);
@@ -425,21 +543,81 @@ public class CommonContractionScript : MonoBehaviour
             if (currentMistakeCount >= mistakesBeforeSupport)
                 flowRoutine = StartCoroutine(HandleSupportThenRetry(lesson));
             else
-                flowRoutine = StartCoroutine(HandleWrongAnswer(lesson));
+                flowRoutine = StartCoroutine(HandleSequenceWrongAnswer(lesson, failedStepIndex));
         }
     }
 
-    private string GetSequenceStepName(BrailleLesson lesson, int stepIndex)
+    private void AddTypedCharacterFromPattern(string pattern)
     {
-        if (lesson.expectedSequenceNames != null &&
-            stepIndex >= 0 &&
-            stepIndex < lesson.expectedSequenceNames.Count &&
-            !string.IsNullOrWhiteSpace(lesson.expectedSequenceNames[stepIndex]))
+        char character = GetCharacterFromBraillePattern(pattern);
+
+        if (character == '\0')
+            return;
+
+        if (character == '^')
         {
-            return lesson.expectedSequenceNames[stepIndex];
+            capitalizeNextLetter = true;
+            return;
         }
 
-        return $"step {stepIndex + 1}";
+        if (capitalizeNextLetter && char.IsLetter(character))
+        {
+            character = char.ToUpper(character);
+            capitalizeNextLetter = false;
+        }
+
+        typedSentence += character;
+
+        if (typingSessionText != null)
+            typingSessionText.text = typedSentence;
+    }
+
+    private char GetCharacterFromBraillePattern(string pattern)
+    {
+        switch (pattern)
+        {
+            // Letters
+            case "100000": return 'a';
+            case "110000": return 'b';
+            case "100100": return 'c';
+            case "100110": return 'd';
+            case "100010": return 'e';
+            case "110100": return 'f';
+            case "110110": return 'g';
+            case "110010": return 'h';
+            case "010100": return 'i';
+            case "010110": return 'j';
+            case "101000": return 'k';
+            case "111000": return 'l';
+            case "101100": return 'm';
+            case "101110": return 'n';
+            case "101010": return 'o';
+            case "111100": return 'p';
+            case "111110": return 'q';
+            case "111010": return 'r';
+            case "011100": return 's';
+            case "011110": return 't';
+            case "101001": return 'u';
+            case "111001": return 'v';
+            case "010111": return 'w';
+            case "101101": return 'x';
+            case "101111": return 'y';
+            case "101011": return 'z';
+
+            // Space
+            case "000000": return ' ';
+
+            // Capital indicator
+            case "000001": return '^';
+
+            // Punctuation
+            case "010000": return ',';
+            case "010011": return '.';
+            case "011001": return '?';
+            case "011010": return '!';
+
+            default: return '\0';
+        }
     }
 
     private IEnumerator HandleCorrectAnswer(BrailleLesson lesson)
@@ -465,7 +643,7 @@ public class CommonContractionScript : MonoBehaviour
 
         string description = !string.IsNullOrWhiteSpace(lesson.descriptionMessage)
             ? lesson.descriptionMessage
-            : $"{lesson.displayLabel} is a braille contraction.";
+            : $"{lesson.displayLabel} is a common braille contraction.";
 
         if (pressText != null)
             pressText.text = "Press!";
@@ -504,6 +682,21 @@ public class CommonContractionScript : MonoBehaviour
 
             flowRoutine = StartCoroutine(PlaySequenceStepInstruction(lesson, stepToReplay));
         }
+    }
+
+    private IEnumerator HandleSequenceWrongAnswer(BrailleLesson lesson, int failedStepIndex)
+    {
+        string message = GetSequenceStepWrongMessage(lesson, failedStepIndex);
+        AudioClip clip = GetSequenceStepWrongAudio(lesson, failedStepIndex);
+
+        yield return ShowBubbleMessageSynced(message, clip, noAudioTextDelay);
+
+        int stepToReplay = resetSequenceToStartOnWrongAnswer ? 0 : currentSequenceStep;
+
+        if (flowRoutine != null)
+            StopCoroutine(flowRoutine);
+
+        flowRoutine = StartCoroutine(PlaySequenceStepInstruction(lesson, stepToReplay));
     }
 
     private IEnumerator HandleSupportThenRetry(BrailleLesson lesson)
@@ -558,9 +751,6 @@ public class CommonContractionScript : MonoBehaviour
 
         if (waitingForRepeatChoice)
         {
-            if (logDebug)
-                Debug.Log("Repeat selected after lesson completion");
-
             waitingForRepeatChoice = false;
 
             if (flowRoutine != null)
@@ -642,6 +832,9 @@ public class CommonContractionScript : MonoBehaviour
         if (translationText != null)
             translationText.text = "-";
 
+        if (typingSessionText != null)
+            typingSessionText.text = "";
+
         if (pressText != null)
             pressText.text = "Press!";
 
@@ -661,6 +854,9 @@ public class CommonContractionScript : MonoBehaviour
 
         if (translationText != null)
             translationText.text = "-";
+
+        if (typingSessionText != null)
+            typingSessionText.text = "";
 
         if (pressText != null)
             pressText.text = "DONE!";
@@ -839,32 +1035,6 @@ public class CommonContractionScript : MonoBehaviour
         }
 
         return total;
-    }
-
-    private void SetBubbleMessage(string message)
-    {
-        if (bubbleMessageText != null)
-            bubbleMessageText.text = message;
-    }
-
-    private IEnumerator PlayClipOrWait(AudioClip clip, float fallbackWait)
-    {
-        if (voiceAudioSource != null && clip != null)
-            yield return PlayClipAndWait(clip);
-        else
-            yield return new WaitForSeconds(fallbackWait);
-    }
-
-    private IEnumerator PlayClipAndWait(AudioClip clip)
-    {
-        if (voiceAudioSource == null || clip == null)
-            yield break;
-
-        voiceAudioSource.Stop();
-        voiceAudioSource.clip = clip;
-        voiceAudioSource.Play();
-
-        yield return new WaitForSeconds(clip.length);
     }
 
     public static string PatternFromDots(int[] dots)

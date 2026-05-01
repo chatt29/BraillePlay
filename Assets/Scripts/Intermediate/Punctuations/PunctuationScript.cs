@@ -82,6 +82,7 @@ public class PunctuationScript : MonoBehaviour
     [Header("UI")]
     public TMP_Text bubbleMessageText;
     public TMP_Text translationText;
+    public TMP_Text typingSessionText;
     public TMP_Text pressText;
     public TMP_Text categoryText;
     public TMP_Text livePatternText;
@@ -145,6 +146,9 @@ public class PunctuationScript : MonoBehaviour
     private Coroutine flowRoutine;
     private Coroutine bubbleTypeRoutine;
     private BrailleLesson currentLessonForDescription;
+
+    private string typedSentence = "";
+    private bool capitalizeNextLetter = false;
 
     private void OnEnable()
     {
@@ -219,6 +223,12 @@ public class PunctuationScript : MonoBehaviour
         waitingForDescriptionChoice = false;
         sceneFinished = false;
         currentLessonForDescription = null;
+
+        typedSentence = "";
+        capitalizeNextLetter = false;
+
+        if (typingSessionText != null)
+            typingSessionText.text = "";
 
         BrailleLesson lesson = lessons[currentLessonIndex];
 
@@ -488,6 +498,9 @@ public class PunctuationScript : MonoBehaviour
         if (submittedPattern == expected)
         {
             currentMistakeCount = 0;
+
+            AddTypedCharacterFromPattern(submittedPattern);
+
             currentSequenceStep++;
 
             if (currentSequenceStep >= lesson.expectedSequencePatterns.Count)
@@ -515,7 +528,14 @@ public class PunctuationScript : MonoBehaviour
             currentMistakeCount++;
 
             if (resetSequenceToStartOnWrongAnswer)
+            {
                 currentSequenceStep = 0;
+                typedSentence = "";
+                capitalizeNextLetter = false;
+
+                if (typingSessionText != null)
+                    typingSessionText.text = "";
+            }
 
             if (flowRoutine != null)
                 StopCoroutine(flowRoutine);
@@ -524,6 +544,79 @@ public class PunctuationScript : MonoBehaviour
                 flowRoutine = StartCoroutine(HandleSupportThenRetry(lesson));
             else
                 flowRoutine = StartCoroutine(HandleSequenceWrongAnswer(lesson, failedStepIndex));
+        }
+    }
+
+    private void AddTypedCharacterFromPattern(string pattern)
+    {
+        char character = GetCharacterFromBraillePattern(pattern);
+
+        if (character == '\0')
+            return;
+
+        if (character == '^')
+        {
+            capitalizeNextLetter = true;
+            return;
+        }
+
+        if (capitalizeNextLetter && char.IsLetter(character))
+        {
+            character = char.ToUpper(character);
+            capitalizeNextLetter = false;
+        }
+
+        typedSentence += character;
+
+        if (typingSessionText != null)
+            typingSessionText.text = typedSentence;
+    }
+
+    private char GetCharacterFromBraillePattern(string pattern)
+    {
+        switch (pattern)
+        {
+            // Letters
+            case "100000": return 'a';
+            case "110000": return 'b';
+            case "100100": return 'c';
+            case "100110": return 'd';
+            case "100010": return 'e';
+            case "110100": return 'f';
+            case "110110": return 'g';
+            case "110010": return 'h';
+            case "010100": return 'i';
+            case "010110": return 'j';
+            case "101000": return 'k';
+            case "111000": return 'l';
+            case "101100": return 'm';
+            case "101110": return 'n';
+            case "101010": return 'o';
+            case "111100": return 'p';
+            case "111110": return 'q';
+            case "111010": return 'r';
+            case "011100": return 's';
+            case "011110": return 't';
+            case "101001": return 'u';
+            case "111001": return 'v';
+            case "010111": return 'w';
+            case "101101": return 'x';
+            case "101111": return 'y';
+            case "101011": return 'z';
+
+            // Space
+            case "000000": return ' ';
+
+            // Capital indicator
+            case "000001": return '^';
+
+            // Punctuation
+            case "010000": return ',';
+            case "010011": return '.';
+            case "011001": return '?';
+            case "011010": return '!';
+
+            default: return '\0';
         }
     }
 
@@ -739,6 +832,9 @@ public class PunctuationScript : MonoBehaviour
         if (translationText != null)
             translationText.text = "-";
 
+        if (typingSessionText != null)
+            typingSessionText.text = "";
+
         if (pressText != null)
             pressText.text = "Press!";
 
@@ -758,6 +854,9 @@ public class PunctuationScript : MonoBehaviour
 
         if (translationText != null)
             translationText.text = "-";
+
+        if (typingSessionText != null)
+            typingSessionText.text = "";
 
         if (pressText != null)
             pressText.text = "DONE!";

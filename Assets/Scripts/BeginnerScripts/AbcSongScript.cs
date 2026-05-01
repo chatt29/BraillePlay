@@ -1,4 +1,5 @@
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using System.Collections;
 
@@ -18,6 +19,11 @@ public class AbcSongScript : MonoBehaviour
     [Header("Audio")]
     public AudioSource audioSource;
 
+    [Header("Pause / Play Image")]
+    public Image pausePlayImage;
+    public Sprite pauseSprite; // Pause.Image_0
+    public Sprite playSprite;  // Play.Image_0
+
     [Header("Messages Before ABC Song")]
     public AbcMessage message1;
     public AbcMessage message2;
@@ -27,31 +33,88 @@ public class AbcSongScript : MonoBehaviour
     public AudioClip abcSong;
 
     [Header("Messages After Song")]
-    public AbcMessage message4;
-    public AbcMessage message5;
-    public AbcMessage message6;
+    public AbcMessage afterMessage1;
+    public AbcMessage afterMessage2;
 
     private int step = 0;
     private bool songPlaying = false;
+    private bool isPaused = false;
 
     void OnEnable()
     {
-        BrailleMapping.OnSubmit += HandleFastForward;      // +10s
-        BrailleMapping.OnDeleteOrNo += HandleRewind;       // -10s
+        BrailleMapping.OnSubmit += HandleFastForward;
+        BrailleMapping.OnDeleteOrNo += HandleRewind;
+        BrailleMapping.OnRepeat += RepeatSongButton;
+        BrailleMapping.OnPause += TogglePausePlay; // P key
     }
 
     void OnDisable()
     {
         BrailleMapping.OnSubmit -= HandleFastForward;
         BrailleMapping.OnDeleteOrNo -= HandleRewind;
+        BrailleMapping.OnRepeat -= RepeatSongButton;
+        BrailleMapping.OnPause -= TogglePausePlay;
     }
 
     void Start()
     {
+        isPaused = false;
+        ShowPauseImage();
         PlayCurrent();
     }
 
-    // ---------- FAST FORWARD (+10s) ----------
+    // ---------- PAUSE / PLAY ----------
+    public void TogglePausePlay()
+    {
+        if (isPaused)
+        {
+            PlayButton();
+        }
+        else
+        {
+            PauseButton();
+        }
+    }
+
+    public void PauseButton()
+    {
+        if (audioSource != null && audioSource.isPlaying)
+        {
+            audioSource.Pause();
+        }
+
+        isPaused = true;
+        ShowPlayImage();
+    }
+
+    public void PlayButton()
+    {
+        if (audioSource != null)
+        {
+            audioSource.UnPause();
+        }
+
+        isPaused = false;
+        ShowPauseImage();
+    }
+
+    void ShowPauseImage()
+    {
+        if (pausePlayImage != null && pauseSprite != null)
+        {
+            pausePlayImage.sprite = pauseSprite;
+        }
+    }
+
+    void ShowPlayImage()
+    {
+        if (pausePlayImage != null && playSprite != null)
+        {
+            pausePlayImage.sprite = playSprite;
+        }
+    }
+
+    // ---------- FAST FORWARD ----------
     void HandleFastForward()
     {
         FastForward10();
@@ -69,7 +132,7 @@ public class AbcSongScript : MonoBehaviour
         }
     }
 
-    // ---------- REWIND (-10s) ----------
+    // ---------- REWIND ----------
     void HandleRewind()
     {
         Rewind10();
@@ -87,26 +150,84 @@ public class AbcSongScript : MonoBehaviour
         }
     }
 
+    // ---------- BACK TO START ----------
+    public void Back()
+    {
+        StopAllCoroutines();
+
+        if (audioSource != null)
+        {
+            audioSource.Stop();
+            audioSource.time = 0f;
+            audioSource.clip = null;
+        }
+
+        songPlaying = false;
+        isPaused = false;
+        step = 0;
+
+        ShowPauseImage();
+        PlayCurrent();
+    }
+
+    // ---------- REPEAT ----------
+    public void RepeatSongButton()
+    {
+        StopAllCoroutines();
+
+        if (audioSource != null)
+        {
+            audioSource.Stop();
+            audioSource.time = 0f;
+        }
+
+        songPlaying = false;
+        isPaused = false;
+
+        // Go back to the 3rd message first.
+        // Then it will automatically continue to the song.
+        step = 2;
+
+        ShowPauseImage();
+        PlayCurrent();
+    }
+
     // ---------- MESSAGE FLOW ----------
     AbcMessage GetMessage(int index)
     {
         switch (index)
         {
-            case 0: return message1;
-            case 1: return message2;
-            case 2: return message3;
-            case 4: return message4;
-            case 5: return message5;
-            case 6: return message6;
+            case 0:
+                return message1;
+
+            case 1:
+                return message2;
+
+            case 2:
+                return message3;
+
+            // step 3 = ABC song
+
+            case 4:
+                return afterMessage1;
+
+            case 5:
+                return afterMessage2;
         }
+
         return null;
     }
 
     public void PlayCurrent()
     {
+        StopAllCoroutines();
+
+        isPaused = false;
+        ShowPauseImage();
+
+        // ABC song step
         if (step == 3)
         {
-            bubbleText.text = "Let's sing!";
             StartCoroutine(PlaySong());
             return;
         }
@@ -117,6 +238,26 @@ public class AbcSongScript : MonoBehaviour
         {
             bubbleText.text = msg.messageText;
             PlayAudio(msg.messageAudio);
+
+            StartCoroutine(AutoNext(msg.messageAudio));
+        }
+    }
+
+    IEnumerator AutoNext(AudioClip clip)
+    {
+        if (clip != null && audioSource != null)
+        {
+            yield return new WaitUntil(() => !audioSource.isPlaying && !isPaused);
+        }
+        else
+        {
+            yield return new WaitForSeconds(2f);
+        }
+
+        if (!songPlaying && step < 5)
+        {
+            step++;
+            PlayCurrent();
         }
     }
 
@@ -124,11 +265,19 @@ public class AbcSongScript : MonoBehaviour
     {
         songPlaying = true;
 
-        audioSource.Stop();
-        audioSource.clip = abcSong;
-        audioSource.Play();
+        if (audioSource != null && abcSong != null)
+        {
+            audioSource.Stop();
+            audioSource.time = 0f;
+            audioSource.clip = abcSong;
+            audioSource.Play();
 
-        yield return new WaitForSeconds(abcSong.length);
+            yield return new WaitUntil(() => !audioSource.isPlaying && !isPaused);
+        }
+        else
+        {
+            yield return new WaitForSeconds(2f);
+        }
 
         songPlaying = false;
         step++;
@@ -137,18 +286,19 @@ public class AbcSongScript : MonoBehaviour
 
     void PlayAudio(AudioClip clip)
     {
-        if (clip == null) return;
+        if (audioSource == null || clip == null) return;
 
         audioSource.Stop();
+        audioSource.time = 0f;
         audioSource.clip = clip;
         audioSource.Play();
     }
 
     public void Next()
     {
-        if (songPlaying) return;
+        if (songPlaying || isPaused) return;
 
-        if (step < 6)
+        if (step < 5)
         {
             step++;
             PlayCurrent();
@@ -157,8 +307,6 @@ public class AbcSongScript : MonoBehaviour
 
     public void Repeat()
     {
-        if (songPlaying) return;
-
-        PlayCurrent();
+        RepeatSongButton();
     }
 }
