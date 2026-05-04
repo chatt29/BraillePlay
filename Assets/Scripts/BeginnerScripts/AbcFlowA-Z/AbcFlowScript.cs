@@ -4,6 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+[System.Serializable]
+public class MessageData
+{
+    [TextArea(2, 5)]
+    public string messageText;
+    public AudioClip voiceClip;
+}
+
 public class AbcFlowScript : MonoBehaviour
 {
     [Header("UI")]
@@ -24,6 +32,9 @@ public class AbcFlowScript : MonoBehaviour
     [Header("Audio")]
     public AudioSource voiceSource;
 
+    [Header("Intro / Instruction Messages")]
+    public List<MessageData> introMessages = new List<MessageData>();
+
     [Header("Letter Audio A-Z")]
     public AudioClip aClip, bClip, cClip, dClip, eClip, fClip, gClip, hClip, iClip, jClip, kClip, lClip, mClip;
     public AudioClip nClip, oClip, pClip, qClip, rClip, sClip, tClip, uClip, vClip, wClip, xClip, yClip, zClip;
@@ -39,10 +50,33 @@ public class AbcFlowScript : MonoBehaviour
     private int wrongScore = 0;
     private int totalScore = 0;
 
+    private int introIndex = 0;
+    private bool showingIntro = true;
+
+
+
+    private void Update()
+    {
+        if (showingIntro && Input.GetKeyDown(KeyCode.Y))
+        {
+            NextIntroMessage();
+        }
+    }
+
     private void Start()
     {
         InitMaps();
-        StartGame();
+
+        if (introMessages.Count > 0)
+        {
+            showingIntro = true;
+            ShowIntroMessage();
+        }
+        else
+        {
+            showingIntro = false;
+            StartGame();
+        }
     }
 
     void InitMaps()
@@ -75,6 +109,52 @@ public class AbcFlowScript : MonoBehaviour
         };
     }
 
+    void ShowIntroMessage()
+    {
+        if (introIndex >= introMessages.Count)
+        {
+            showingIntro = false;
+            StartGame();
+            return;
+        }
+
+        if (letterText != null)
+            letterText.text = "";
+
+        if (resultText != null)
+            resultText.text = "";
+
+        if (resultIcon != null)
+            resultIcon.gameObject.SetActive(false);
+
+        MessageData currentMessage = introMessages[introIndex];
+
+        if (speechBubbleText != null)
+            speechBubbleText.text = currentMessage.messageText;
+
+        if (voiceSource != null)
+        {
+            voiceSource.Stop();
+
+            if (currentMessage.voiceClip != null)
+                voiceSource.PlayOneShot(currentMessage.voiceClip);
+        }
+    }
+
+    public void NextIntroMessage()
+    {
+        if (!showingIntro)
+            return;
+
+        introIndex++;
+        ShowIntroMessage();
+    }
+
+    public bool IsShowingIntro()
+    {
+        return showingIntro;
+    }
+
     void StartGame()
     {
         currentIndex = 0;
@@ -102,11 +182,17 @@ public class AbcFlowScript : MonoBehaviour
             resultIcon.gameObject.SetActive(false);
 
         if (audioMap[currentLetter] != null && voiceSource != null)
+        {
+            voiceSource.Stop();
             voiceSource.PlayOneShot(audioMap[currentLetter]);
+        }
     }
 
     public void CheckAnswer(string inputPattern)
     {
+        if (showingIntro)
+            return;
+
         string correctPattern = brailleMap[currentLetter];
 
         if (resultIcon != null)
