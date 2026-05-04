@@ -1190,6 +1190,9 @@ MonoBehaviour:
   deleteOrNoKey: 8
   yesOrNextKey: 121
   loginKey: 13
+  spaceKey: 32
+  correctKey: 49
+  wrongKey: 50
   audioSource: {fileID: 0}
   dot1Sfx: {fileID: 0}
   dot2Sfx: {fileID: 0}
@@ -1202,7 +1205,46 @@ MonoBehaviour:
   deleteOrNoSfx: {fileID: 0}
   yesOrNextSfx: {fileID: 0}
   loginSfx: {fileID: 0}
+  spaceSfx: {fileID: 0}
+  correctSfx: {fileID: 0}
+  wrongSfx: {fileID: 0}
+  aSound: {fileID: 0}
+  bSound: {fileID: 0}
+  cSound: {fileID: 0}
+  dSound: {fileID: 0}
+  eSound: {fileID: 0}
+  fSound: {fileID: 0}
+  gSound: {fileID: 0}
+  hSound: {fileID: 0}
+  iSound: {fileID: 0}
+  jSound: {fileID: 0}
+  kSound: {fileID: 0}
+  lSound: {fileID: 0}
+  mSound: {fileID: 0}
+  nSound: {fileID: 0}
+  oSound: {fileID: 0}
+  pSound: {fileID: 0}
+  qSound: {fileID: 0}
+  rSound: {fileID: 0}
+  sSound: {fileID: 0}
+  tSound: {fileID: 0}
+  uSound: {fileID: 0}
+  vSound: {fileID: 0}
+  wSound: {fileID: 0}
+  xSound: {fileID: 0}
+  ySound: {fileID: 0}
+  zSound: {fileID: 0}
+  letterSoundVolume: 1.5
+  otherDefaultPatternSounds: []
+  otherPatternSoundVolume: 1.5
+  leftEarPan: -1
+  rightEarPan: 1
+  dotVolume: 2
+  actionVolume: 1.5
+  feedbackVolume: 2
   logInputs: 0
+  playLetterSoundOnChord: 1
+  playOtherPatternSoundOnChord: 1
 --- !u!4 &908718610
 Transform:
   m_ObjectHideFlags: 0
@@ -1292,7 +1334,6 @@ GameObject:
   - component: {fileID: 1065862681}
   - component: {fileID: 1065862680}
   - component: {fileID: 1065862679}
-  - component: {fileID: 1065862682}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -1350,18 +1391,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1065862682
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1065862678}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fa947a2952bef943852166740e21d10, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BeginnerProgressInitializer
 --- !u!1 &1072390225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1893,8 +1922,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Basic Words
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 4dda0f44afbea5e49a808d133fb35c91, type: 2}
-  m_sharedMaterial: {fileID: -6309607922362337119, guid: 4dda0f44afbea5e49a808d133fb35c91, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c4ae2105d0679bd45932ed513ad0b3bd, type: 2}
+  m_sharedMaterial: {fileID: -2866231447455670809, guid: c4ae2105d0679bd45932ed513ad0b3bd, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1984,7 +2013,7 @@ GameObject:
   - component: {fileID: 1508097028}
   - component: {fileID: 1508097027}
   m_Layer: 0
-  m_Name: RandomizedLettersBtn
+  m_Name: JumbledLettersBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2036,7 +2065,7 @@ MonoBehaviour:
     m_PressedColor: {r: 0, g: 0, b: 0, a: 1}
     m_SelectedColor: {r: 0, g: 0, b: 0, a: 1}
     m_DisabledColor: {r: 0, g: 0, b: 0, a: 0.5019608}
-    m_ColorMultiplier: 1.06
+    m_ColorMultiplier: 1.58
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
@@ -2481,17 +2510,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Randomized Letters
+  m_text: Jumbled Letters
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 4dda0f44afbea5e49a808d133fb35c91, type: 2}
-  m_sharedMaterial: {fileID: -6309607922362337119, guid: 4dda0f44afbea5e49a808d133fb35c91, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c4ae2105d0679bd45932ed513ad0b3bd, type: 2}
+  m_sharedMaterial: {fileID: -2866231447455670809, guid: c4ae2105d0679bd45932ed513ad0b3bd, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4280295456
+  m_fontColor: {r: 0.1254902, g: 0.1254902, b: 0.1254902, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
