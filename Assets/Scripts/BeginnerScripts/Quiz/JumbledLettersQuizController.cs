@@ -104,10 +104,27 @@ public string quizSelectionScene = "BeginnerQuizSelection";
         audioLoader.PlayLetter(currentLetter);
     }
 }
+public void LoadQuizScene(string quizSelectionScene)
+{
+    // Save the current scene BEFORE switching
+    PlayerPrefs.SetString("PreviousScene", SceneManager.GetActiveScene().name);
+
+    SceneManager.LoadScene(quizSelectionScene);
+}
 IEnumerator FinishQuiz()
 {
     yield return StartCoroutine(PostScore(1, score));
-    SceneManager.LoadScene(quizSelectionScene);
+
+    string previousScene = PlayerPrefs.GetString("PreviousScene", "");
+
+    if (!string.IsNullOrEmpty(previousScene))
+    {
+        SceneManager.LoadScene(previousScene);
+    }
+    else
+    {
+        Debug.LogWarning("No previous scene found!");
+    }
 }
    
 

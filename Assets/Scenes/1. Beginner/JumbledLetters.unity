@@ -911,6 +911,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 951d9e262c8956049b41b0d8d534d19a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::JumbledLettersQuizController
+  quizType: Beginner
   quizSelectionScene: BeginnerQuizSelectionScene
   letterDisplay: {fileID: 879875}
   scoreDisplay: {fileID: 1057484657}
@@ -1170,10 +1171,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 951d9e262c8956049b41b0d8d534d19a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RandomLetterImageAudio
+  quizType: Beginner
   quizSelectionScene: BeginnerQuizSelectionScene
   letterDisplay: {fileID: 879875}
   scoreDisplay: {fileID: 1057484657}
-  audioLoader: {fileID: 0}
+  audioLoader: {fileID: 1338465882}
 --- !u!1 &1310194924
 GameObject:
   m_ObjectHideFlags: 0

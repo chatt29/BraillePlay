@@ -76,10 +76,12 @@ public RectTransform arrowIndicator;
     switch (currentOption)
     {
         case QuizOption.JumbledLetters:
+            PlayerPrefs.SetString("PreviousScene", SceneManager.GetActiveScene().name);
             SceneManager.LoadScene("JumbledLetters");
             break;
 
         case QuizOption.BasicWords:
+        PlayerPrefs.SetString("PreviousScene", SceneManager.GetActiveScene().name);
             SceneManager.LoadScene("BasicWordsScene");
             break;
     }
