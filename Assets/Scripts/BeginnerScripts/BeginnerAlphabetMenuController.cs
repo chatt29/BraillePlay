@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+
 public class BeginnerAlphabetMenuController : MonoBehaviour
 {
     public enum MenuType
@@ -14,9 +15,6 @@ public class BeginnerAlphabetMenuController : MonoBehaviour
         MainMenu,
         ContentPanel
     }
-    [Header("Quiz Scenes")]
-public string randomizedLettersScene = "AlphabetTranslation";
-public string basicWordsScene = "BasicWordsScene";
 
     [Header("Current Menu")]
     public MenuType currentMenu = MenuType.Learn;
@@ -30,9 +28,6 @@ public string basicWordsScene = "BasicWordsScene";
     [Header("Menu Buttons")]
     public RectTransform learnBtn;
     public RectTransform quizBtn;
-
-    [Header("Lock States (optional for locked modes)")]
-    public LockableUIButton quizLock;
 
     [Header("Content Groups")]
     public GameObject learnContent;
@@ -82,73 +77,29 @@ public string basicWordsScene = "BasicWordsScene";
         RefreshMenu();
     }
 
-   public void SelectQuiz()
-{
-    if (quizLock != null && !quizLock.IsUnlocked()) return;
-
-    currentMenu = MenuType.Quiz;
-    RefreshMenu();
-}
-
-    public void SelectNextUnlockedMenu()
+    public void SelectQuiz()
     {
-        MenuType[] order = { MenuType.Learn, MenuType.Quiz};
-
-        int currentIndex = System.Array.IndexOf(order, currentMenu);
-
-        for (int i = 1; i <= order.Length; i++)
-        {
-            int nextIndex = (currentIndex + i) % order.Length;
-            MenuType candidate = order[nextIndex];
-
-            if (IsMenuUnlocked(candidate))
-            {
-                currentMenu = candidate;
-                RefreshMenu();
-                return;
-            }
-        }
+        currentMenu = MenuType.Quiz;
+        RefreshMenu();
     }
 
-    public void SelectPreviousUnlockedMenu()
+    public void SelectNextMenu()
     {
-        MenuType[] order = { MenuType.Learn, MenuType.Quiz};
-
-        int currentIndex = System.Array.IndexOf(order, currentMenu);
-
-        for (int i = 1; i <= order.Length; i++)
-        {
-            int prevIndex = (currentIndex - i + order.Length) % order.Length;
-            MenuType candidate = order[prevIndex];
-
-            if (IsMenuUnlocked(candidate))
-            {
-                currentMenu = candidate;
-                RefreshMenu();
-                return;
-            }
-        }
+        currentMenu = (currentMenu == MenuType.Learn) ? MenuType.Quiz : MenuType.Learn;
+        RefreshMenu();
     }
 
-    private bool IsMenuUnlocked(MenuType menu)
+    public void SelectPreviousMenu()
     {
-        switch (menu)
-        {
-            case MenuType.Learn:
-                return true;
-
-            case MenuType.Quiz:
-                return quizLock == null || quizLock.IsUnlocked();
-        }
-
-        return false;
+        currentMenu = (currentMenu == MenuType.Learn) ? MenuType.Quiz : MenuType.Learn;
+        RefreshMenu();
     }
 
     private void UpdateMenuUI()
     {
         if (learnContent != null) learnContent.SetActive(currentMenu == MenuType.Learn);
         if (quizContent != null) quizContent.SetActive(currentMenu == MenuType.Quiz);
-        }
+    }
 
     private void MoveArrowToCurrentMenu()
     {
@@ -164,35 +115,19 @@ public string basicWordsScene = "BasicWordsScene";
 
     private RectTransform GetCurrentMenuButton()
     {
-        switch (currentMenu)
-        {
-            case MenuType.Learn:
-                return learnBtn;
-            case MenuType.Quiz:
-                return quizBtn;
-        }
-
-        return learnBtn;
+        return currentMenu == MenuType.Learn ? learnBtn : quizBtn;
     }
 
     private RectTransform[] GetCurrentContentButtons()
     {
-        switch (currentMenu)
-        {
-            case MenuType.Learn:
-                return learnButtons;
-            case MenuType.Quiz:
-                return quizButtons;
-        }
-
-        return null;
+        return currentMenu == MenuType.Learn ? learnButtons : quizButtons;
     }
 
     private void HandleNext()
     {
         if (currentFocus == FocusArea.MainMenu)
         {
-            SelectNextUnlockedMenu();
+            SelectNextMenu();
         }
         else
         {
@@ -208,7 +143,7 @@ public string basicWordsScene = "BasicWordsScene";
     {
         if (currentFocus == FocusArea.MainMenu)
         {
-            SelectPreviousUnlockedMenu();
+            SelectPreviousMenu();
         }
         else
         {
@@ -220,43 +155,39 @@ public string basicWordsScene = "BasicWordsScene";
         }
     }
 
-  private void HandleSubmit()
-{
-    if (currentFocus == FocusArea.MainMenu)
+    private void HandleSubmit()
     {
-        RectTransform[] buttons = GetCurrentContentButtons();
-        if (buttons == null || buttons.Length == 0) return;
+        if (currentFocus == FocusArea.MainMenu)
+        {
+            // 👉 Quiz goes directly to scene
+            if (currentMenu == MenuType.Quiz)
+            {
+                SceneManager.LoadScene("BeginnerQuizSelection");
+                return;
+            }
 
-        currentFocus = FocusArea.ContentPanel;
-        currentContentIndex = 0;
-        UpdateContentHover();
-        return;
+            // 👉 Learn enters content
+            RectTransform[] buttons = GetCurrentContentButtons();
+            if (buttons == null || buttons.Length == 0) return;
+
+            currentFocus = FocusArea.ContentPanel;
+            currentContentIndex = 0;
+            UpdateContentHover();
+            return;
+        }
+
+        RectTransform[] buttonsPanel = GetCurrentContentButtons();
+        if (buttonsPanel == null || buttonsPanel.Length == 0) return;
+
+        RectTransform selected = buttonsPanel[currentContentIndex];
+
+        Debug.Log("Selected: " + selected.name);
+
+        Button btn = selected.GetComponent<Button>();
+        if (btn != null)
+            btn.onClick.Invoke();
     }
 
-    RectTransform[] buttonsPanel = GetCurrentContentButtons();
-    if (buttonsPanel == null || buttonsPanel.Length == 0) return;
-
-    RectTransform selected = buttonsPanel[currentContentIndex];
-
-    Debug.Log("Selected: " + selected.name);
-
-    // QUIZ = same navigation style as Learn, just different action
-    if (currentMenu == MenuType.Quiz)
-{
-    if (selected == quizButtons[0])
-        SceneManager.LoadScene("AlphabetTranslation");
-
-    else if (selected == quizButtons[1])
-        SceneManager.LoadScene(basicWordsScene);
-
-    return;
-}
-
-    // LEARN fallback (if you add actions later)
-    Button btn = selected.GetComponent<Button>();
-    if (btn != null)
-        btn.onClick.Invoke();
-}
     private void HandleCancel()
     {
         if (currentFocus == FocusArea.ContentPanel)
@@ -264,13 +195,11 @@ public string basicWordsScene = "BasicWordsScene";
             currentFocus = FocusArea.MainMenu;
             ClearContentHover();
             RefreshMenu();
-            Debug.Log("Returned to main menu.");
             return;
         }
 
         currentMenu = MenuType.Learn;
         RefreshMenu();
-        Debug.Log("Menu selection canceled, returned to Learn.");
     }
 
     private void UpdateContentHover()

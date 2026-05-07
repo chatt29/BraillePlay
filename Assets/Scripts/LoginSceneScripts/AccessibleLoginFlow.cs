@@ -183,11 +183,19 @@ public class AccessibleLoginFlow : MonoBehaviour
 
             if (response.StartsWith("SUCCESS"))
 {
+    string[] parts = response.Split('|');
+
+    int userId = -1;
     string assessment = "";
 
-    string[] parts = response.Split('|');
     if (parts.Length > 1)
-        assessment = parts[1].Trim();
+        int.TryParse(parts[1], out userId);
+
+    if (parts.Length > 2)
+        assessment = parts[2].Trim();
+
+    // ✅ SAVE USER ID HERE (THIS IS WHAT YOU ASKED)
+    PlayerPrefs.SetInt("UserID", userId);
 
     LoggedInUsername = username;
     PlayerPrefs.SetString("username", username);
@@ -195,7 +203,7 @@ public class AccessibleLoginFlow : MonoBehaviour
     PlayerPrefs.SetInt("isLoggedIn", 1);
     PlayerPrefs.Save();
 
-    Debug.Log("Login success. Saved username: " + username);
+    Debug.Log("UserID saved: " + userId);
     Debug.Log("Assessment: " + assessment);
 
     StartCoroutine(HandleSuccessfulLoginFlow(assessment));
