@@ -32,12 +32,6 @@ public class PunctuationQuiz : MonoBehaviour
         [TextArea(2, 4)]
         public string wrongMessage;
 
-        [Header("Description")]
-        [TextArea(2, 4)]
-        public string descriptionMessage;
-
-        public AudioClip descriptionAudio;
-
         [Header("Lesson Type")]
         public LessonKind lessonKind = LessonKind.SymbolOnly;
 
@@ -104,6 +98,62 @@ public class PunctuationQuiz : MonoBehaviour
     public int deductionPerMistake = 1;
     public string highScoreKey = "PunctuationQuizHighScore";
 
+
+    private AudioClip GetNumberAudio(int number)
+    {
+        if (numberAudios == null || numberAudios.Count == 0)
+            return null;
+
+        if (number < 0 || number >= numberAudios.Count)
+            return null;
+
+        return numberAudios[number];
+    }
+
+    private IEnumerator PlayFinalScoreAudio()
+    {
+        if (voiceAudioSource == null)
+            yield break;
+
+        int finalScore = totalScore;
+        int bestScore = highScore;
+
+        AudioClip finalScoreClip = GetNumberAudio(finalScore);
+        AudioClip highScoreClip = GetNumberAudio(bestScore);
+
+        if (yourScoreIsAudio != null)
+        {
+            voiceAudioSource.Stop();
+            voiceAudioSource.clip = yourScoreIsAudio;
+            voiceAudioSource.Play();
+            yield return new WaitForSeconds(yourScoreIsAudio.length);
+        }
+
+        if (finalScoreClip != null)
+        {
+            voiceAudioSource.Stop();
+            voiceAudioSource.clip = finalScoreClip;
+            voiceAudioSource.Play();
+            yield return new WaitForSeconds(finalScoreClip.length);
+        }
+
+        if (whileYourHighestScoreIsAudio != null)
+        {
+            voiceAudioSource.Stop();
+            voiceAudioSource.clip = whileYourHighestScoreIsAudio;
+            voiceAudioSource.Play();
+            yield return new WaitForSeconds(whileYourHighestScoreIsAudio.length);
+        }
+
+        if (highScoreClip != null)
+        {
+            voiceAudioSource.Stop();
+            voiceAudioSource.clip = highScoreClip;
+            voiceAudioSource.Play();
+            yield return new WaitForSeconds(highScoreClip.length);
+        }
+    }
+
     [Header("Audio")]
     public AudioSource voiceAudioSource;
     public AudioClip welcomeAudio;
@@ -112,6 +162,13 @@ public class PunctuationQuiz : MonoBehaviour
     public AudioClip genericTryAgainAudio;
     public AudioClip genericCompletedAudio;
     public AudioClip repeatQuestionAudio;
+
+    [Header("Final Score Audio")]
+    public AudioClip yourScoreIsAudio;
+    public AudioClip whileYourHighestScoreIsAudio;
+
+    [Header("Number Audios 0-100")]
+    public List<AudioClip> numberAudios = new List<AudioClip>();
 
     [Header("Scene Text")]
     [TextArea(2, 5)]
@@ -133,7 +190,7 @@ public class PunctuationQuiz : MonoBehaviour
     public float noAudioTextDelay = 2f;
     public float delayAfterCorrect = 0.75f;
     public bool showHeldDotsPattern = true;
-    public bool resetSequenceToStartOnWrongAnswer = true;
+    public bool resetSequenceToStartOnWrongAnswer = false;
     public bool allowSpaceAsSequenceInput = true;
     public string spaceSequencePattern = "000000";
 
@@ -162,11 +219,9 @@ public class PunctuationQuiz : MonoBehaviour
     private bool waitingForNext;
     private bool sceneFinished;
     private bool waitingForRepeatChoice;
-    private bool waitingForDescriptionChoice;
 
     private Coroutine flowRoutine;
     private Coroutine bubbleTypeRoutine;
-    private BrailleLesson currentLessonForDescription;
 
     private string typedSentence = "";
     private bool capitalizeNextLetter = false;
@@ -284,8 +339,6 @@ public class PunctuationQuiz : MonoBehaviour
         waitingForNext = false;
         sceneFinished = false;
         waitingForRepeatChoice = false;
-        waitingForDescriptionChoice = false;
-        currentLessonForDescription = null;
 
         yield return ShowBubbleMessageSynced(welcomeMessage, welcomeAudio, noAudioTextDelay);
         yield return new WaitForSeconds(delayAfterVoice);
@@ -314,9 +367,7 @@ public class PunctuationQuiz : MonoBehaviour
         lessonActive = true;
         waitingForNext = false;
         waitingForRepeatChoice = false;
-        waitingForDescriptionChoice = false;
         sceneFinished = false;
-        currentLessonForDescription = null;
 
         typedSentence = "";
         capitalizeNextLetter = false;
@@ -460,6 +511,10 @@ public class PunctuationQuiz : MonoBehaviour
 
     private AudioClip GetSequenceStepWrongAudio(BrailleLesson lesson, int stepIndex)
     {
+        // Only play wrong audio after 3 mistakes
+        if (currentMistakeCount < 3)
+            return null;
+
         if (lesson.sequenceStepWrongAudios != null &&
             stepIndex >= 0 &&
             stepIndex < lesson.sequenceStepWrongAudios.Count)
@@ -509,7 +564,7 @@ public class PunctuationQuiz : MonoBehaviour
 
     private void HandleSubmittedPattern(string submittedPattern)
     {
-        if (!lessonActive || waitingForNext || sceneFinished || waitingForRepeatChoice || waitingForDescriptionChoice)
+        if (!lessonActive || waitingForNext || sceneFinished || waitingForRepeatChoice)
             return;
 
         if (currentLessonIndex < 0 || currentLessonIndex >= lessons.Count)
@@ -547,7 +602,6 @@ public class PunctuationQuiz : MonoBehaviour
             currentMistakeCount = 0;
             lessonActive = false;
             waitingForNext = false;
-            waitingForDescriptionChoice = false;
 
             SetAnswerState(true);
 
@@ -602,7 +656,6 @@ public class PunctuationQuiz : MonoBehaviour
             {
                 lessonActive = false;
                 waitingForNext = false;
-                waitingForDescriptionChoice = false;
 
                 SetAnswerState(true);
 
@@ -625,23 +678,12 @@ public class PunctuationQuiz : MonoBehaviour
             currentMistakeCount++;
             AddMistake();
 
-            if (resetSequenceToStartOnWrongAnswer)
-            {
-                currentSequenceStep = 0;
-                typedSentence = "";
-                capitalizeNextLetter = false;
-
-                if (typingSessionText != null)
-                    typingSessionText.text = "";
-            }
-
             if (flowRoutine != null)
                 StopCoroutine(flowRoutine);
 
-            if (currentMistakeCount >= mistakesBeforeSupport)
-                flowRoutine = StartCoroutine(HandleSupportThenRetry(lesson));
-            else
-                flowRoutine = StartCoroutine(HandleSequenceWrongAnswer(lesson, failedStepIndex));
+            flowRoutine = StartCoroutine(
+                HandleSequenceWrongAnswer(lesson, failedStepIndex)
+            );
         }
     }
 
@@ -736,33 +778,27 @@ public class PunctuationQuiz : MonoBehaviour
 
     private IEnumerator HandleCorrectAnswer(BrailleLesson lesson)
     {
-        currentLessonForDescription = lesson;
-
         SaveHighScoreIfNeeded();
 
         string message = !string.IsNullOrWhiteSpace(lesson.successMessage)
             ? lesson.successMessage
             : $"Correct! {lesson.displayLabel}.";
 
-        AudioClip clipToUse = lesson.successAudio != null ? lesson.successAudio : genericCorrectAudio;
+        AudioClip clipToUse = lesson.successAudio != null
+            ? lesson.successAudio
+            : genericCorrectAudio;
 
-        yield return ShowBubbleMessageSynced(message, clipToUse, noAudioTextDelay);
+        yield return ShowBubbleMessageSynced(
+            message,
+            clipToUse,
+            noAudioTextDelay
+        );
+
         yield return new WaitForSeconds(delayAfterCorrect);
 
-        yield return StartCoroutine(ShowLessonDescription(lesson));
+        StartLesson(currentLessonIndex + 1);
     }
 
-    private IEnumerator ShowLessonDescription(BrailleLesson lesson)
-    {
-        waitingForNext = false;
-        waitingForDescriptionChoice = true;
-
-        string description = !string.IsNullOrWhiteSpace(lesson.descriptionMessage)
-            ? lesson.descriptionMessage
-            : $"{lesson.displayLabel} is used in punctuation.";
-
-        yield return ShowBubbleMessageSynced(description, lesson.descriptionAudio, noAudioTextDelay);
-    }
 
     private IEnumerator HandleWrongAnswer(BrailleLesson lesson)
     {
@@ -798,19 +834,45 @@ public class PunctuationQuiz : MonoBehaviour
     }
 
     private IEnumerator HandleSequenceWrongAnswer(BrailleLesson lesson, int failedStepIndex)
+{
+    string message;
+
+    // Before 3 mistakes
+    if (currentMistakeCount < 3)
     {
-        string message = GetSequenceStepWrongMessage(lesson, failedStepIndex);
+        message = "Try again.";
+
+        yield return ShowBubbleMessageSynced(
+            message,
+            genericTryAgainAudio,
+            noAudioTextDelay
+        );
+    }
+    // After 3 mistakes
+    else
+    {
+        message = GetSequenceStepWrongMessage(lesson, failedStepIndex);
+
         AudioClip clip = GetSequenceStepWrongAudio(lesson, failedStepIndex);
 
-        yield return ShowBubbleMessageSynced(message, clip, noAudioTextDelay);
+        yield return ShowBubbleMessageSynced(
+            message,
+            clip,
+            noAudioTextDelay
+        );
 
-        int stepToReplay = resetSequenceToStartOnWrongAnswer ? 0 : currentSequenceStep;
+        int stepToReplay = resetSequenceToStartOnWrongAnswer
+            ? 0
+            : currentSequenceStep;
 
         if (flowRoutine != null)
             StopCoroutine(flowRoutine);
 
-        flowRoutine = StartCoroutine(PlaySequenceStepInstruction(lesson, stepToReplay));
+        flowRoutine = StartCoroutine(
+            PlaySequenceStepInstruction(lesson, stepToReplay)
+        );
     }
+}
 
     private IEnumerator HandleSupportThenRetry(BrailleLesson lesson)
     {
@@ -850,18 +912,6 @@ public class PunctuationQuiz : MonoBehaviour
 
     private void HandleRepeat()
     {
-        if (waitingForDescriptionChoice)
-        {
-            if (currentLessonForDescription == null)
-                return;
-
-            if (flowRoutine != null)
-                StopCoroutine(flowRoutine);
-
-            flowRoutine = StartCoroutine(ShowLessonDescription(currentLessonForDescription));
-            return;
-        }
-
         if (waitingForRepeatChoice)
         {
             waitingForRepeatChoice = false;
@@ -906,15 +956,6 @@ public class PunctuationQuiz : MonoBehaviour
 
     private void HandleNext()
     {
-        if (waitingForDescriptionChoice)
-        {
-            waitingForDescriptionChoice = false;
-            waitingForNext = false;
-
-            StartLesson(currentLessonIndex + 1);
-            return;
-        }
-
         if (waitingForRepeatChoice)
         {
             waitingForRepeatChoice = false;
@@ -936,9 +977,8 @@ public class PunctuationQuiz : MonoBehaviour
     {
         lessonActive = false;
         waitingForNext = false;
-        waitingForDescriptionChoice = false;
         sceneFinished = false;
-        waitingForRepeatChoice = true;
+        waitingForRepeatChoice = false;  // <-- stays false until AFTER score plays
 
         SaveHighScoreIfNeeded();
 
@@ -953,6 +993,16 @@ public class PunctuationQuiz : MonoBehaviour
 
         ResetAnswerState();
 
+        // 1. Completed message + audio
+        yield return ShowBubbleMessageSynced(completedMessage, genericCompletedAudio, noAudioTextDelay);
+        yield return new WaitForSeconds(delayAfterVoice);
+
+        // 2. Final score audio (your score is X, highest score is Y)
+        yield return PlayFinalScoreAudio();
+        yield return new WaitForSeconds(delayAfterVoice);
+
+        // 3. Now ask to repeat — only NOW set waitingForRepeatChoice
+        waitingForRepeatChoice = true;
         yield return ShowBubbleMessageSynced(repeatQuestionMessage, repeatQuestionAudio, noAudioTextDelay);
     }
 
@@ -962,7 +1012,6 @@ public class PunctuationQuiz : MonoBehaviour
         lessonActive = false;
         waitingForNext = false;
         waitingForRepeatChoice = false;
-        waitingForDescriptionChoice = false;
 
         SaveHighScoreIfNeeded();
 
@@ -977,7 +1026,16 @@ public class PunctuationQuiz : MonoBehaviour
 
         ResetAnswerState();
 
-        yield return ShowBubbleMessageSynced(completedMessage, genericCompletedAudio, noAudioTextDelay);
+        string finalMessage =
+            $"Your score is {totalScore}, while your highest score is {highScore}.";
+
+        yield return ShowBubbleMessageSynced(
+            finalMessage,
+            genericCompletedAudio,
+            noAudioTextDelay
+        );
+
+        yield return PlayFinalScoreAudio();
     }
 
     private IEnumerator ShowBubbleMessageSynced(string message, AudioClip clip, float fallbackWait)
