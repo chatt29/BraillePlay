@@ -967,7 +967,7 @@ GameObject:
   m_Component:
   - component: {fileID: 160477282}
   - component: {fileID: 160477284}
-  - component: {fileID: 160477285}
+  - component: {fileID: 160477283}
   m_Layer: 5
   m_Name: SceneManager
   m_TagString: Untagged
@@ -994,6 +994,26 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &160477283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160477281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 993ce4b17d840544f8eee0632b395289, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NumberFlow10_1InputHandler
+  dot1: {fileID: 63356774}
+  dot2: {fileID: 89685872}
+  dot3: {fileID: 1391729577}
+  dot4: {fileID: 339577804}
+  dot5: {fileID: 226173094}
+  dot6: {fileID: 1078743048}
+  idleColor: {r: 1, g: 1, b: 1, a: 1}
+  activeColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!114 &160477284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1003,10 +1023,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 160477281}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80f8677c5078f7845a98d704c344c34c, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b2123df13d21af42bf384d401526f4a, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AbcFlowZ_AScript
-  letterText: {fileID: 637889036}
+  m_EditorClassIdentifier: Assembly-CSharp::NumberFlow10_1Script
+  numberText: {fileID: 637889036}
   resultText: {fileID: 9297084}
   speechBubbleText: {fileID: 1857143643}
   correctScoreText: {fileID: 123402818}
@@ -1017,52 +1037,16 @@ MonoBehaviour:
   wrongSprite: {fileID: -1447605698058687634, guid: c2ad3f9c76950584ebfbb37df66ef340, type: 3}
   voiceSource: {fileID: 0}
   introMessages: []
-  aClip: {fileID: 0}
-  bClip: {fileID: 0}
-  cClip: {fileID: 0}
-  dClip: {fileID: 0}
-  eClip: {fileID: 0}
-  fClip: {fileID: 0}
-  gClip: {fileID: 0}
-  hClip: {fileID: 0}
-  iClip: {fileID: 0}
-  jClip: {fileID: 0}
-  kClip: {fileID: 0}
-  lClip: {fileID: 0}
-  mClip: {fileID: 0}
-  nClip: {fileID: 0}
-  oClip: {fileID: 0}
-  pClip: {fileID: 0}
-  qClip: {fileID: 0}
-  rClip: {fileID: 0}
-  sClip: {fileID: 0}
-  tClip: {fileID: 0}
-  uClip: {fileID: 0}
-  vClip: {fileID: 0}
-  wClip: {fileID: 0}
-  xClip: {fileID: 0}
-  yClip: {fileID: 0}
-  zClip: {fileID: 0}
---- !u!114 &160477285
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 160477281}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42a26a45fa0df034585f255aba5efb68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AbcFlowInoutZ_AHandler
-  dot1: {fileID: 63356774}
-  dot2: {fileID: 89685872}
-  dot3: {fileID: 1391729577}
-  dot4: {fileID: 339577804}
-  dot5: {fileID: 226173094}
-  dot6: {fileID: 1078743048}
-  idleColor: {r: 1, g: 1, b: 1, a: 1}
-  activeColor: {r: 0, g: 0, b: 0, a: 1}
+  oneClip: {fileID: 0}
+  twoClip: {fileID: 0}
+  threeClip: {fileID: 0}
+  fourClip: {fileID: 0}
+  fiveClip: {fileID: 0}
+  sixClip: {fileID: 0}
+  sevenClip: {fileID: 0}
+  eightClip: {fileID: 0}
+  nineClip: {fileID: 0}
+  tenClip: {fileID: 0}
 --- !u!1 &166705778
 GameObject:
   m_ObjectHideFlags: 0
@@ -1388,7 +1372,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ALPHABET
+  m_text: NUMBERS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1a98abfae0e1fc34282e9b7fd0f3a427, type: 2}
   m_sharedMaterial: {fileID: -8189821304231711609, guid: 1a98abfae0e1fc34282e9b7fd0f3a427, type: 2}
@@ -2433,7 +2417,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ABC FLOW (Z-A)
+  m_text: Number Flow (10-1)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1a98abfae0e1fc34282e9b7fd0f3a427, type: 2}
   m_sharedMaterial: {fileID: -8189821304231711609, guid: 1a98abfae0e1fc34282e9b7fd0f3a427, type: 2}
@@ -2460,7 +2444,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 78.15
+  m_fontSize: 67.65
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
