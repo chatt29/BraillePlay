@@ -728,8 +728,6 @@ public class PunctuationQuiz : MonoBehaviour
 
         if (complete)
             SetAnswerState(true);
-        else
-            SetAnswerState(false);
     }
 
     private char GetCharacterFromBraillePattern(string pattern)
