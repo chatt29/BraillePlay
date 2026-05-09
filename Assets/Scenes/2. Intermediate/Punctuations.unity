@@ -2592,7 +2592,7 @@ MonoBehaviour:
   repeatKey: 114
   submitKey: 13
   deleteOrNoKey: 8
-  yesOrNextKey: 121
+  yesOrNextKey: 13
   loginKey: 13
   spaceKey: 32
   correctKey: 49
