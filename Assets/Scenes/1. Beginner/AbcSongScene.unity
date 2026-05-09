@@ -418,8 +418,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 25.994995, y: -68.900024}
-  m_SizeDelta: {x: 100, y: 65.9435}
+  m_AnchoredPosition: {x: 40, y: -63}
+  m_SizeDelta: {x: 56.8936, y: 47.846}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &281784703
 MonoBehaviour:
@@ -443,8 +443,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: -10
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 4dda0f44afbea5e49a808d133fb35c91, type: 2}
-  m_sharedMaterial: {fileID: -6309607922362337119, guid: 4dda0f44afbea5e49a808d133fb35c91, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c4ae2105d0679bd45932ed513ad0b3bd, type: 2}
+  m_sharedMaterial: {fileID: -2866231447455670809, guid: c4ae2105d0679bd45932ed513ad0b3bd, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -468,8 +468,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -507,7 +507,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -53.369812, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -961,7 +961,7 @@ MonoBehaviour:
   bubbleText: {fileID: 1918177767}
   audioSource: {fileID: 838083183}
   pausePlayImage: {fileID: 881015924}
-  pauseSprite: {fileID: -4677556811483301959, guid: b72ab5da842152d4c8de8df95119a7a3, type: 3}
+  pauseSprite: {fileID: -2494408091038240009, guid: 75b246e51f1e8c54fa7b4312db69569e, type: 3}
   playSprite: {fileID: -5556519961868701338, guid: 4e3a41299c21f3d4780a72977a7bad2d, type: 3}
   message1:
     messageText: "Welcome! Let\u2019s begin learning the alphabet."
@@ -1198,7 +1198,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4677556811483301959, guid: b72ab5da842152d4c8de8df95119a7a3, type: 3}
+  m_Sprite: {fileID: -2494408091038240009, guid: 75b246e51f1e8c54fa7b4312db69569e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1860,8 +1860,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 68.81006, y: -60.900024}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 18, y: -62}
+  m_SizeDelta: {x: 96.0752, y: 43.0717}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1858527487
 MonoBehaviour:
@@ -1885,8 +1885,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 10+
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 4dda0f44afbea5e49a808d133fb35c91, type: 2}
-  m_sharedMaterial: {fileID: -6309607922362337119, guid: 4dda0f44afbea5e49a808d133fb35c91, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c4ae2105d0679bd45932ed513ad0b3bd, type: 2}
+  m_sharedMaterial: {fileID: -2866231447455670809, guid: c4ae2105d0679bd45932ed513ad0b3bd, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1910,8 +1910,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
