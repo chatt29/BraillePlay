@@ -847,7 +847,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: d525966734ffeb8468ea0a22a6c19249, type: 3}
+  m_Resource: {fileID: 8300000, guid: f807fe123e4368044b31c9d7ebb85061, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -972,7 +972,7 @@ MonoBehaviour:
   message3:
     messageText: Let's Sing.
     messageAudio: {fileID: 8300000, guid: 171b1ef34ef4d9b42846815f6bcbe836, type: 3}
-  abcSong: {fileID: 8300000, guid: d525966734ffeb8468ea0a22a6c19249, type: 3}
+  abcSong: {fileID: 8300000, guid: f807fe123e4368044b31c9d7ebb85061, type: 3}
   afterMessage1:
     messageText: Repeat the song and sing with me
     messageAudio: {fileID: 8300000, guid: d6a48fac08611f348a8d0bb9f4cc6f19, type: 3}
@@ -2022,8 +2022,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1a98abfae0e1fc34282e9b7fd0f3a427, type: 2}
-  m_sharedMaterial: {fileID: -8189821304231711609, guid: 1a98abfae0e1fc34282e9b7fd0f3a427, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4dda0f44afbea5e49a808d133fb35c91, type: 2}
+  m_sharedMaterial: {fileID: -6309607922362337119, guid: 4dda0f44afbea5e49a808d133fb35c91, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

@@ -21,8 +21,8 @@ public class AbcSongScript : MonoBehaviour
 
     [Header("Pause / Play Image")]
     public Image pausePlayImage;
-    public Sprite pauseSprite;
-    public Sprite playSprite;
+    public Sprite pauseSprite; // Pause.Image_0
+    public Sprite playSprite;  // Play.Image_0
 
     [Header("Messages Before ABC Song")]
     public AbcMessage message1;
@@ -36,23 +36,19 @@ public class AbcSongScript : MonoBehaviour
     public AbcMessage afterMessage1;
     public AbcMessage afterMessage2;
 
-    [Header("Audio Speed")]
-    [Range(1f, 2f)]
-    public float audioSpeed = 1f;
-
     private int step = 0;
     private bool songPlaying = false;
     private bool isPaused = false;
 
-    private void OnEnable()
+    void OnEnable()
     {
         BrailleMapping.OnSubmit += HandleFastForward;
         BrailleMapping.OnDeleteOrNo += HandleRewind;
         BrailleMapping.OnRepeat += RepeatSongButton;
-        BrailleMapping.OnPause += TogglePausePlay;
+        BrailleMapping.OnPause += TogglePausePlay; // P key
     }
 
-    private void OnDisable()
+    void OnDisable()
     {
         BrailleMapping.OnSubmit -= HandleFastForward;
         BrailleMapping.OnDeleteOrNo -= HandleRewind;
@@ -60,37 +56,32 @@ public class AbcSongScript : MonoBehaviour
         BrailleMapping.OnPause -= TogglePausePlay;
     }
 
-    private void Start()
+    void Start()
     {
         isPaused = false;
         ShowPauseImage();
         PlayCurrent();
     }
 
-    public void SetAudioSpeed(float speed)
-    {
-        audioSpeed = Mathf.Clamp(speed, 1f, 2f);
-
-        if (audioSource != null && audioSource.clip == abcSong)
-        {
-            audioSource.pitch = audioSpeed;
-        }
-
-        Debug.Log("ABC Song speed set to: " + audioSpeed + "x");
-    }
-
+    // ---------- PAUSE / PLAY ----------
     public void TogglePausePlay()
     {
         if (isPaused)
+        {
             PlayButton();
+        }
         else
+        {
             PauseButton();
+        }
     }
 
     public void PauseButton()
     {
         if (audioSource != null && audioSource.isPlaying)
+        {
             audioSource.Pause();
+        }
 
         isPaused = true;
         ShowPlayImage();
@@ -99,25 +90,32 @@ public class AbcSongScript : MonoBehaviour
     public void PlayButton()
     {
         if (audioSource != null)
+        {
             audioSource.UnPause();
+        }
 
         isPaused = false;
         ShowPauseImage();
     }
 
-    private void ShowPauseImage()
+    void ShowPauseImage()
     {
         if (pausePlayImage != null && pauseSprite != null)
+        {
             pausePlayImage.sprite = pauseSprite;
+        }
     }
 
-    private void ShowPlayImage()
+    void ShowPlayImage()
     {
         if (pausePlayImage != null && playSprite != null)
+        {
             pausePlayImage.sprite = playSprite;
+        }
     }
 
-    private void HandleFastForward()
+    // ---------- FAST FORWARD ----------
+    void HandleFastForward()
     {
         FastForward10();
     }
@@ -129,10 +127,13 @@ public class AbcSongScript : MonoBehaviour
         audioSource.time += 10f;
 
         if (audioSource.time > audioSource.clip.length)
+        {
             audioSource.time = audioSource.clip.length - 0.1f;
+        }
     }
 
-    private void HandleRewind()
+    // ---------- REWIND ----------
+    void HandleRewind()
     {
         Rewind10();
     }
@@ -144,9 +145,12 @@ public class AbcSongScript : MonoBehaviour
         audioSource.time -= 10f;
 
         if (audioSource.time < 0f)
+        {
             audioSource.time = 0f;
+        }
     }
 
+    // ---------- BACK TO START ----------
     public void Back()
     {
         StopAllCoroutines();
@@ -156,7 +160,6 @@ public class AbcSongScript : MonoBehaviour
             audioSource.Stop();
             audioSource.time = 0f;
             audioSource.clip = null;
-            audioSource.pitch = 1f;
         }
 
         songPlaying = false;
@@ -167,6 +170,7 @@ public class AbcSongScript : MonoBehaviour
         PlayCurrent();
     }
 
+    // ---------- REPEAT ----------
     public void RepeatSongButton()
     {
         StopAllCoroutines();
@@ -179,21 +183,36 @@ public class AbcSongScript : MonoBehaviour
 
         songPlaying = false;
         isPaused = false;
+
+        // Go back to the 3rd message first.
+        // Then it will automatically continue to the song.
         step = 2;
 
         ShowPauseImage();
         PlayCurrent();
     }
 
-    private AbcMessage GetMessage(int index)
+    // ---------- MESSAGE FLOW ----------
+    AbcMessage GetMessage(int index)
     {
         switch (index)
         {
-            case 0: return message1;
-            case 1: return message2;
-            case 2: return message3;
-            case 4: return afterMessage1;
-            case 5: return afterMessage2;
+            case 0:
+                return message1;
+
+            case 1:
+                return message2;
+
+            case 2:
+                return message3;
+
+            // step 3 = ABC song
+
+            case 4:
+                return afterMessage1;
+
+            case 5:
+                return afterMessage2;
         }
 
         return null;
@@ -206,6 +225,7 @@ public class AbcSongScript : MonoBehaviour
         isPaused = false;
         ShowPauseImage();
 
+        // ABC song step
         if (step == 3)
         {
             StartCoroutine(PlaySong());
@@ -216,20 +236,23 @@ public class AbcSongScript : MonoBehaviour
 
         if (msg != null)
         {
-            if (bubbleText != null)
-                bubbleText.text = msg.messageText;
-
+            bubbleText.text = msg.messageText;
             PlayAudio(msg.messageAudio);
+
             StartCoroutine(AutoNext(msg.messageAudio));
         }
     }
 
-    private IEnumerator AutoNext(AudioClip clip)
+    IEnumerator AutoNext(AudioClip clip)
     {
         if (clip != null && audioSource != null)
+        {
             yield return new WaitUntil(() => !audioSource.isPlaying && !isPaused);
+        }
         else
+        {
             yield return new WaitForSeconds(2f);
+        }
 
         if (!songPlaying && step < 5)
         {
@@ -238,7 +261,7 @@ public class AbcSongScript : MonoBehaviour
         }
     }
 
-    private IEnumerator PlaySong()
+    IEnumerator PlaySong()
     {
         songPlaying = true;
 
@@ -247,7 +270,6 @@ public class AbcSongScript : MonoBehaviour
             audioSource.Stop();
             audioSource.time = 0f;
             audioSource.clip = abcSong;
-            audioSource.pitch = audioSpeed;
             audioSource.Play();
 
             yield return new WaitUntil(() => !audioSource.isPlaying && !isPaused);
@@ -262,14 +284,13 @@ public class AbcSongScript : MonoBehaviour
         PlayCurrent();
     }
 
-    private void PlayAudio(AudioClip clip)
+    void PlayAudio(AudioClip clip)
     {
         if (audioSource == null || clip == null) return;
 
         audioSource.Stop();
         audioSource.time = 0f;
         audioSource.clip = clip;
-        audioSource.pitch = 1f; // messages stay normal speed
         audioSource.Play();
     }
 

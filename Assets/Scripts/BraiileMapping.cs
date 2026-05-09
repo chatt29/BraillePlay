@@ -30,27 +30,16 @@ public class BrailleMapping : MonoBehaviour
     public static event Action OnBack;
     public static event Action OnSpace;
 
-    public static event Action OnUp;
-    public static event Action OnLeft;
-    public static event Action OnRight;
-    public static event Action OnDown;
-
     public static event Action OnCorrect;
     public static event Action OnWrong;
 
     [Header("Braille Dots")]
-    public KeyCode dot1Key = KeyCode.J;
-    public KeyCode dot2Key = KeyCode.K;
-    public KeyCode dot3Key = KeyCode.L;
-    public KeyCode dot4Key = KeyCode.F;
-    public KeyCode dot5Key = KeyCode.D;
-    public KeyCode dot6Key = KeyCode.S;
-
-    [Header("Directional Controls")]
-    public KeyCode upKey = KeyCode.UpArrow;
-    public KeyCode leftKey = KeyCode.LeftArrow;
-    public KeyCode rightKey = KeyCode.RightArrow;
-    public KeyCode downKey = KeyCode.DownArrow;
+    public KeyCode dot1Key = KeyCode.F;
+    public KeyCode dot2Key = KeyCode.J;
+    public KeyCode dot3Key = KeyCode.K;
+    public KeyCode dot4Key = KeyCode.D;
+    public KeyCode dot5Key = KeyCode.S;
+    public KeyCode dot6Key = KeyCode.L;
 
     [Header("Extra Controls")]
     public KeyCode pauseKey = KeyCode.P;
@@ -60,7 +49,7 @@ public class BrailleMapping : MonoBehaviour
     public KeyCode repeatKey = KeyCode.R;
     public KeyCode submitKey = KeyCode.Return;
     public KeyCode deleteOrNoKey = KeyCode.Backspace;
-    public KeyCode yesOrNextKey = KeyCode.Space;
+    public KeyCode yesOrNextKey = KeyCode.Y;
     public KeyCode loginKey = KeyCode.Return;
     public KeyCode spaceKey = KeyCode.Space;
 
@@ -205,32 +194,32 @@ public class BrailleMapping : MonoBehaviour
 
         switch (pattern)
         {
-            case "100000": clip = aSound; break;
-            case "110000": clip = bSound; break;
-            case "100100": clip = cSound; break;
-            case "100110": clip = dSound; break;
-            case "100010": clip = eSound; break;
-            case "110100": clip = fSound; break;
-            case "110110": clip = gSound; break;
-            case "110010": clip = hSound; break;
-            case "010100": clip = iSound; break;
-            case "010110": clip = jSound; break;
-            case "101000": clip = kSound; break;
-            case "111000": clip = lSound; break;
-            case "101100": clip = mSound; break;
-            case "101110": clip = nSound; break;
-            case "101010": clip = oSound; break;
-            case "111100": clip = pSound; break;
-            case "111110": clip = qSound; break;
-            case "111010": clip = rSound; break;
-            case "011100": clip = sSound; break;
-            case "011110": clip = tSound; break;
-            case "101001": clip = uSound; break;
-            case "111001": clip = vSound; break;
-            case "010111": clip = wSound; break;
-            case "101101": clip = xSound; break;
-            case "101111": clip = ySound; break;
-            case "101011": clip = zSound; break;
+            case "100000": clip = aSound; break; // A
+            case "110000": clip = bSound; break; // B
+            case "100100": clip = cSound; break; // C
+            case "100110": clip = dSound; break; // D
+            case "100010": clip = eSound; break; // E
+            case "110100": clip = fSound; break; // F
+            case "110110": clip = gSound; break; // G
+            case "110010": clip = hSound; break; // H
+            case "010100": clip = iSound; break; // I
+            case "010110": clip = jSound; break; // J
+            case "101000": clip = kSound; break; // K
+            case "111000": clip = lSound; break; // L
+            case "101100": clip = mSound; break; // M
+            case "101110": clip = nSound; break; // N
+            case "101010": clip = oSound; break; // O
+            case "111100": clip = pSound; break; // P
+            case "111110": clip = qSound; break; // Q
+            case "111010": clip = rSound; break; // R
+            case "011100": clip = sSound; break; // S
+            case "011110": clip = tSound; break; // T
+            case "101001": clip = uSound; break; // U
+            case "111001": clip = vSound; break; // V
+            case "010111": clip = wSound; break; // W
+            case "101101": clip = xSound; break; // X
+            case "101111": clip = ySound; break; // Y
+            case "101011": clip = zSound; break; // Z
         }
 
         if (clip != null)
@@ -370,30 +359,6 @@ public class BrailleMapping : MonoBehaviour
 
     private void CheckActionInputs()
     {
-        if (Input.GetKeyDown(upKey))
-        {
-            if (logInputs) Debug.Log("Up");
-            OnUp?.Invoke();
-        }
-
-        if (Input.GetKeyDown(leftKey))
-        {
-            if (logInputs) Debug.Log("Left");
-            OnLeft?.Invoke();
-        }
-
-        if (Input.GetKeyDown(rightKey))
-        {
-            if (logInputs) Debug.Log("Right");
-            OnRight?.Invoke();
-        }
-
-        if (Input.GetKeyDown(downKey))
-        {
-            if (logInputs) Debug.Log("Down");
-            OnDown?.Invoke();
-        }
-
         if (Input.GetKeyDown(pauseKey))
         {
             if (logInputs) Debug.Log("Pause");
