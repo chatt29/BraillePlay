@@ -334,56 +334,57 @@ public class JumbledLettersController : MonoBehaviour
     }
 
     IEnumerator PostScore(
-        int userId,
-        int finalScore
-    )
+    int userId,
+    int finalScore
+)
+{
+    WWWForm form =
+        new WWWForm();
+
+    form.AddField(
+        "user_id",
+        userId
+    );
+
+    form.AddField(
+        "score",
+        finalScore
+    );
+
+    // USE CURRENT SCENE NAME
+    form.AddField(
+        "quiz_name",
+        SceneManager
+            .GetActiveScene()
+            .name
+    );
+
+    UnityWebRequest www =
+        UnityWebRequest.Post(
+            "http://localhost/brailleplay/save_score.php",
+            form
+        );
+
+    yield return www.SendWebRequest();
+
+    Debug.Log(
+        "SERVER RESPONSE: "
+        + www.downloadHandler.text
+    );
+
+    if (www.result ==
+        UnityWebRequest.Result.Success)
     {
-        WWWForm form =
-            new WWWForm();
-
-        form.AddField(
-            "user_id",
-            userId
-        );
-
-        form.AddField(
-            "score",
-            finalScore
-        );
-
-        form.AddField(
-            "quiz_name",
-            SceneManager
-                .GetActiveScene()
-                .name
-        );
-
-        UnityWebRequest www =
-            UnityWebRequest.Post(
-                "http://localhost/brailleplay/save_score.php",
-                form
-            );
-
-        yield return www.SendWebRequest();
-
         Debug.Log(
-            "SERVER RESPONSE: "
-            + www.downloadHandler.text
+            "Score saved successfully!"
         );
-
-        if (www.result ==
-            UnityWebRequest.Result.Success)
-        {
-            Debug.Log(
-                "Score saved successfully!"
-            );
-        }
-        else
-        {
-            Debug.LogError(
-                "Error: "
-                + www.error
-            );
-        }
     }
+    else
+    {
+        Debug.LogError(
+            "Error: "
+            + www.error
+        );
+    }
+       }
 }
