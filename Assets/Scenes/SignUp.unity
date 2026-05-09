@@ -1012,8 +1012,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 752777626}
-  - component: {fileID: 752777630}
   - component: {fileID: 752777628}
+  - component: {fileID: 752777629}
   m_Layer: 0
   m_Name: BrailleSignupManager
   m_TagString: Untagged
@@ -1133,7 +1133,7 @@ MonoBehaviour:
   submitFocusMessage:
     message: 
     audioClip: {fileID: 0}
---- !u!114 &752777630
+--- !u!114 &752777629
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1152,7 +1152,7 @@ MonoBehaviour:
   nameWarning: {fileID: 0}
   usernameWarning: {fileID: 0}
   passwordWarning: {fileID: 0}
-  submitBtn: {fileID: 0}
+  submitBtn: {fileID: 1626152883}
 --- !u!1 &777252864
 GameObject:
   m_ObjectHideFlags: 0
@@ -2361,8 +2361,6 @@ GameObject:
   - component: {fileID: 1195135200}
   - component: {fileID: 1195135199}
   - component: {fileID: 1195135198}
-  - component: {fileID: 1195135202}
-  - component: {fileID: 1195135201}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -2412,111 +2410,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1195135201
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1195135197}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 991fbfd860ad53344ba71bf201f5d854, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AccessibleSignupFlow
-  messageText: {fileID: 0}
-  firstNameInput: {fileID: 1868649464}
-  lastNameInput: {fileID: 900027624}
-  usernameInput: {fileID: 750178148}
-  passwordInput: {fileID: 1832399166}
-  submitButton: {fileID: 1626152883}
-  firstNameHighlightTarget: {fileID: 0}
-  lastNameHighlightTarget: {fileID: 0}
-  usernameHighlightTarget: {fileID: 0}
-  passwordHighlightTarget: {fileID: 0}
-  submitHighlightTarget: {fileID: 0}
-  audioSource: {fileID: 0}
-  introMessages: []
-  useTypewriter: 1
-  charactersPerSecond: 30
-  delayAfterMessage: 0.75
-  requireNextButtonForIntroAdvance: 1
-  minFirstNameLength: 2
-  minLastNameLength: 2
-  minUsernameLength: 4
-  minPasswordLength: 6
-  usernameAllowLetters: 1
-  usernameAllowNumbers: 1
-  usernameAllowUnderscore: 1
-  usernameAllowSpaces: 0
-  usePulseEffect: 1
-  pulseSpeed: 3
-  pulseScaleAmount: 0.04
-  readyForFirstNameMessage:
-    message: 
-    audioClip: {fileID: 0}
-  firstNameFocusMessage:
-    message: 
-    audioClip: {fileID: 0}
-  firstNameEmptyMessage:
-    message: 
-    audioClip: {fileID: 0}
-  firstNameTooShortMessage:
-    message: 
-    audioClip: {fileID: 0}
-  lastNameFocusMessage:
-    message: 
-    audioClip: {fileID: 0}
-  lastNameEmptyMessage:
-    message: 
-    audioClip: {fileID: 0}
-  lastNameTooShortMessage:
-    message: 
-    audioClip: {fileID: 0}
-  usernameFocusMessage:
-    message: 
-    audioClip: {fileID: 0}
-  usernameEmptyMessage:
-    message: 
-    audioClip: {fileID: 0}
-  usernameTooShortMessage:
-    message: 
-    audioClip: {fileID: 0}
-  usernameInvalidCharactersMessage:
-    message: 
-    audioClip: {fileID: 0}
-  passwordFocusMessage:
-    message: 
-    audioClip: {fileID: 0}
-  passwordEmptyMessage:
-    message: 
-    audioClip: {fileID: 0}
-  passwordTooShortMessage:
-    message: 
-    audioClip: {fileID: 0}
-  submitFocusMessage:
-    message: 
-    audioClip: {fileID: 0}
---- !u!114 &1195135202
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1195135197}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10f8d2ba398fa6c478aa1f27fdc1cd14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SignupBrailleInput
-  firstNameInput: {fileID: 1868649464}
-  lastNameInput: {fileID: 900027624}
-  usernameInput: {fileID: 750178148}
-  passwordInput: {fileID: 1832399166}
-  signupFlow: {fileID: 1195135201}
-  blockPhysicalKeyboardTyping: 1
-  logBrailleLetters: 0
-  allowSpaceCharacter: 0
 --- !u!1 &1235775335
 GameObject:
   m_ObjectHideFlags: 0

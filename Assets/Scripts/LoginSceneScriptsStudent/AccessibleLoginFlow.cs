@@ -92,7 +92,8 @@ public class AccessibleLoginFlow : MonoBehaviour
 
     private string lastAnnouncedMessage = "";
     private AudioClip lastAnnouncedClip = null;
-    public static string LoggedInUsername; // global access (important)
+    public static string LoggedInUsername;
+    public static int LoggedInUserId; // global access (important)
 
     private void Awake()
     {
@@ -194,35 +195,20 @@ public class AccessibleLoginFlow : MonoBehaviour
     if (parts.Length > 2)
         assessment = parts[2].Trim();
 
-    // ✅ SAVE USER ID HERE (THIS IS WHAT YOU ASKED)
-    PlayerPrefs.SetInt("UserID", userId);
+    // ✅ GLOBAL USER ID
+    LoggedInUserId = userId;
 
     LoggedInUsername = username;
     PlayerPrefs.SetString("username", username);
     PlayerPrefs.SetString("assessment", assessment);
+    PlayerPrefs.SetInt("UserID", userId);
     PlayerPrefs.SetInt("isLoggedIn", 1);
     PlayerPrefs.Save();
 
-    Debug.Log("UserID saved: " + userId);
-    Debug.Log("Assessment: " + assessment);
+    Debug.Log("UserID saved globally: " + LoggedInUserId);
 
     StartCoroutine(HandleSuccessfulLoginFlow(assessment));
-            }
-            else if (response == "WRONG_PASSWORD")
-            {
-                Debug.Log("PHP says wrong password");
-                StartCoroutine(HandleFailedLoginFlow());
-            }
-            else if (response == "NO_USER")
-            {
-                Debug.Log("PHP says no user");
-                StartCoroutine(HandleFailedLoginFlow());
-            }
-            else
-            {
-                Debug.LogWarning("Unexpected PHP response: " + response);
-                StartCoroutine(HandleFailedLoginFlow());
-            }
+}
         }
     }
 }
@@ -522,35 +508,37 @@ public class AccessibleLoginFlow : MonoBehaviour
         yield return null;
 
     float audioWait = 0f;
+
     if (loginSuccessMessage != null && loginSuccessMessage.audioClip != null)
         audioWait = loginSuccessMessage.audioClip.length;
 
     if (audioWait > 0f)
         yield return new WaitForSeconds(audioWait);
 
-    if (string.IsNullOrWhiteSpace(assessment) || assessment.ToLower() == "null")
-    {
-        SceneManager.LoadScene(assessmentScene);
-    }
-    else
-    {
-        switch (assessment.ToLower())
-        {
-            case "Beginner":
-                SceneManager.LoadScene(beginnerScene);
-                break;
+    assessment = assessment.Trim().ToLower();
 
-            case "Intermediate":
-                SceneManager.LoadScene(intermediateScene);
-                break;
+    Debug.Log("Loading assessment level: " + assessment);
 
-            case "Advance":
-                SceneManager.LoadScene(advanceScene);
-                break;
-            default:
-                SceneManager.LoadScene(assessmentScene);
-                break;
-        }
+    switch (assessment)
+    {
+        case "beginner":
+            SceneManager.LoadScene(beginnerScene);
+            break;
+
+        case "intermediate":
+            SceneManager.LoadScene(intermediateScene);
+            break;
+
+        case "advance":
+            SceneManager.LoadScene(advanceScene);
+            break;
+
+        default:
+            Debug.LogWarning("Unknown assessment: " + assessment);
+
+            // fallback if assessment is missing/invalid
+            SceneManager.LoadScene(beginnerScene);
+            break;
     }
 }
 

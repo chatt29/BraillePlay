@@ -523,15 +523,18 @@ public class AccessibleSignupFlow : MonoBehaviour
     }
 
     private void SetSelected(TMP_InputField field)
-    {
-        if (field == null || EventSystem.current == null)
-            return;
+{
+    if (field == null || EventSystem.current == null)
+        return;
 
-        EventSystem.current.SetSelectedGameObject(field.gameObject);
-        field.ActivateInputField();
-        field.Select();
-        MoveCaretToEnd(field);
-    }
+    if (EventSystem.current.currentSelectedGameObject == field.gameObject)
+        return; // prevent re-overriding selection
+
+    EventSystem.current.SetSelectedGameObject(field.gameObject);
+    field.ActivateInputField();
+    field.Select();
+    MoveCaretToEnd(field);
+}
 
     private void MoveCaretToEnd(TMP_InputField field)
     {
