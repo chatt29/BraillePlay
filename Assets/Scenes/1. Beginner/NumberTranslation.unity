@@ -1985,7 +1985,7 @@ MonoBehaviour:
     successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
     sequenceStepAudios:
     - {fileID: 8300000, guid: 314776c7e4bc3b848bc4fde44afe580c, type: 3}
-    - {fileID: 8300000, guid: 314776c7e4bc3b848bc4fde44afe580c, type: 3}
+    - {fileID: 8300000, guid: 1036de674efb78a42bfbd96caef17b1a, type: 3}
     sequenceStepMessages:
     - This is #9 the proper way of typing number 9. Press Dots 3, 4, 5 & 6 then dot
       2&4.
