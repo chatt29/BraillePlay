@@ -2,11 +2,15 @@ using UnityEngine;
 
 public class MainMenuSceneLoader : MonoBehaviour
 {
-    public void GoToLogin()
+    public void GoToLoginS()
     {
-        SceneTransition.Instance.LoadSceneWithFade("Login");
+        SceneTransition.Instance.LoadSceneWithFade("LoginStudent");
     }
 
+    public void GoToLoginT()
+    {
+        SceneTransition.Instance.LoadSceneWithFade("LoginTeacher");
+    }
     public void GoToCreateAccount()
     {
         SceneTransition.Instance.LoadSceneWithFade("SignUp");
