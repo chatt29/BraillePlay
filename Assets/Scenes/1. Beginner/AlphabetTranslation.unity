@@ -913,7 +913,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1204025119}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -1556,470 +1556,470 @@ MonoBehaviour:
     promptMessage: This is letter A. Press dot 1.
     repeatMessage: Letter A. Press dot 1.
     successMessage: Correct! That is letter A. Press next to next.
-    wrongMessage: Try again. Letter A uses dot 1.
+    wrongMessage: Try again.
     lessonKind: 0
     dots: 01000000
     expectedSequencePatterns: []
     expectedSequenceNames: []
     lessonSprite: {fileID: 21300000, guid: b8df670c7e9957a45b35c5685879a322, type: 3}
-    introAudio: {fileID: 8300000, guid: beffe5d16ebbc1941a2def3be7ca3dc0, type: 3}
-    instructionAudio: {fileID: 8300000, guid: d6bffd3117000af44a23176ab530a097, type: 3}
+    introAudio: {fileID: 8300000, guid: 42701a2ed6601e345945e43b1120e18e, type: 3}
+    instructionAudio: {fileID: 8300000, guid: a3a821dc474e32b43ac45dab4fa0b793, type: 3}
     successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
     sequenceStepAudios: []
     sequenceStepMessages: []
-    supportMessage: Remember, Leter A uses dot number 1.
-    supportAudio: {fileID: 8300000, guid: a322b0a940e749b46a749f0b1a9dcf4a, type: 3}
-  - displayLabel: A
+    supportMessage: Remember, Letter A uses dot number 1.
+    supportAudio: {fileID: 8300000, guid: 9ff3fc9eb7264154981299ec6589b4d0, type: 3}
+  - displayLabel: B
     categoryLabel: Letter
-    promptMessage: This is letter A. Press dot 1.
-    repeatMessage: Letter A. Press dot 1.
-    successMessage: Correct! That is letter A. Press next to next.
-    wrongMessage: Try again. Letter A uses dot 1.
+    promptMessage: This is letter B. Press dots 1&2 at the same time.
+    repeatMessage: Letter B. Press dots 1&2.
+    successMessage: Correct! That is letter B. Press next to next.
+    wrongMessage: Try again.
     lessonKind: 0
-    dots: 01000000
+    dots: 0100000002000000
     expectedSequencePatterns: []
     expectedSequenceNames: []
-    lessonSprite: {fileID: 21300000, guid: b8df670c7e9957a45b35c5685879a322, type: 3}
-    introAudio: {fileID: 8300000, guid: beffe5d16ebbc1941a2def3be7ca3dc0, type: 3}
-    instructionAudio: {fileID: 8300000, guid: d6bffd3117000af44a23176ab530a097, type: 3}
+    lessonSprite: {fileID: 21300000, guid: cc6bae3515a12144da0cb8e13ecbcaad, type: 3}
+    introAudio: {fileID: 8300000, guid: c8c1c489208b62d4a8fc76e6666cbd62, type: 3}
+    instructionAudio: {fileID: 8300000, guid: da2be904c7cb89143b60fb0cc68ffd58, type: 3}
     successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
     sequenceStepAudios: []
     sequenceStepMessages: []
-    supportMessage: Remember, Leter A uses dot number 1.
-    supportAudio: {fileID: 8300000, guid: a322b0a940e749b46a749f0b1a9dcf4a, type: 3}
-  - displayLabel: A
+    supportMessage: Remember, Letter B uses dots number 1&2.
+    supportAudio: {fileID: 8300000, guid: f69d361ebaf6f8f448f1f8ac3f790c73, type: 3}
+  - displayLabel: C
     categoryLabel: Letter
-    promptMessage: This is letter A. Press dot 1.
-    repeatMessage: Letter A. Press dot 1.
-    successMessage: Correct! That is letter A. Press next to next.
-    wrongMessage: Try again. Letter A uses dot 1.
+    promptMessage: This is letter C. Press dots 1&4 at the same time.
+    repeatMessage: Letter C. Press dots 1&4.
+    successMessage: Correct! That is letter C. Press next to next.
+    wrongMessage: Try again.
     lessonKind: 0
-    dots: 01000000
+    dots: 0100000004000000
     expectedSequencePatterns: []
     expectedSequenceNames: []
-    lessonSprite: {fileID: 21300000, guid: b8df670c7e9957a45b35c5685879a322, type: 3}
-    introAudio: {fileID: 8300000, guid: beffe5d16ebbc1941a2def3be7ca3dc0, type: 3}
-    instructionAudio: {fileID: 8300000, guid: d6bffd3117000af44a23176ab530a097, type: 3}
+    lessonSprite: {fileID: 21300000, guid: f1f1d850f3dbd5e4387cef24e691c6dc, type: 3}
+    introAudio: {fileID: 8300000, guid: 90c6142c3d1a7464ebe56f87204bea71, type: 3}
+    instructionAudio: {fileID: 8300000, guid: 2f1565027f9fe4b49b7d2571f250126e, type: 3}
     successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
     sequenceStepAudios: []
     sequenceStepMessages: []
-    supportMessage: Remember, Leter A uses dot number 1.
-    supportAudio: {fileID: 8300000, guid: a322b0a940e749b46a749f0b1a9dcf4a, type: 3}
-  - displayLabel: A
+    supportMessage: Remember, Letter C uses dots number 1&4.
+    supportAudio: {fileID: 8300000, guid: 24f7f0aab47616e4989e773369fee4fa, type: 3}
+  - displayLabel: D
     categoryLabel: Letter
-    promptMessage: This is letter A. Press dot 1.
-    repeatMessage: Letter A. Press dot 1.
-    successMessage: Correct! That is letter A. Press next to next.
-    wrongMessage: Try again. Letter A uses dot 1.
+    promptMessage: This is letter D. Press dots 1, 4&5 at the same time.
+    repeatMessage: Letter D. Press dots 1, 4&5.
+    successMessage: Correct! That is letter D. Press next to next.
+    wrongMessage: Try again.
     lessonKind: 0
-    dots: 01000000
+    dots: 010000000400000005000000
     expectedSequencePatterns: []
     expectedSequenceNames: []
-    lessonSprite: {fileID: 21300000, guid: b8df670c7e9957a45b35c5685879a322, type: 3}
-    introAudio: {fileID: 8300000, guid: beffe5d16ebbc1941a2def3be7ca3dc0, type: 3}
-    instructionAudio: {fileID: 8300000, guid: d6bffd3117000af44a23176ab530a097, type: 3}
+    lessonSprite: {fileID: 21300000, guid: 29d8da1320b989c47bd80f8c60959c07, type: 3}
+    introAudio: {fileID: 8300000, guid: 0601bf2b0db857c4eaffb6ba222204bd, type: 3}
+    instructionAudio: {fileID: 8300000, guid: 19cd2fcbcf0c84344bf129e4bb718e65, type: 3}
     successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
     sequenceStepAudios: []
     sequenceStepMessages: []
-    supportMessage: Remember, Leter A uses dot number 1.
-    supportAudio: {fileID: 8300000, guid: a322b0a940e749b46a749f0b1a9dcf4a, type: 3}
-  - displayLabel: A
+    supportMessage: Remember, Letter D uses dots number 1, 4&5.
+    supportAudio: {fileID: 8300000, guid: 5cd4c14c56df128498d239c7c78c78ed, type: 3}
+  - displayLabel: E
     categoryLabel: Letter
-    promptMessage: This is letter A. Press dot 1.
-    repeatMessage: Letter A. Press dot 1.
-    successMessage: Correct! That is letter A. Press next to next.
-    wrongMessage: Try again. Letter A uses dot 1.
+    promptMessage: This is letter E. Press dots 1&5 at the same time.
+    repeatMessage: Letter E. Press dots 1&5.
+    successMessage: Correct! That is letter E. Press next to next.
+    wrongMessage: Try again.
     lessonKind: 0
-    dots: 01000000
+    dots: 0100000005000000
     expectedSequencePatterns: []
     expectedSequenceNames: []
-    lessonSprite: {fileID: 21300000, guid: b8df670c7e9957a45b35c5685879a322, type: 3}
-    introAudio: {fileID: 8300000, guid: beffe5d16ebbc1941a2def3be7ca3dc0, type: 3}
-    instructionAudio: {fileID: 8300000, guid: d6bffd3117000af44a23176ab530a097, type: 3}
+    lessonSprite: {fileID: 21300000, guid: 5b4a69441bbaebb40964c9ca4d8df3f3, type: 3}
+    introAudio: {fileID: 8300000, guid: 707ccab107fb44046a819e4824579270, type: 3}
+    instructionAudio: {fileID: 8300000, guid: 289ed225566031f43936497de449e91f, type: 3}
     successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
     sequenceStepAudios: []
     sequenceStepMessages: []
-    supportMessage: Remember, Leter A uses dot number 1.
-    supportAudio: {fileID: 8300000, guid: a322b0a940e749b46a749f0b1a9dcf4a, type: 3}
-  - displayLabel: A
+    supportMessage: Remember, Letter E uses dots number 1&5.
+    supportAudio: {fileID: 8300000, guid: 5cd4c14c56df128498d239c7c78c78ed, type: 3}
+  - displayLabel: F
     categoryLabel: Letter
-    promptMessage: This is letter A. Press dot 1.
-    repeatMessage: Letter A. Press dot 1.
-    successMessage: Correct! That is letter A. Press next to next.
-    wrongMessage: Try again. Letter A uses dot 1.
+    promptMessage: This is letter F. Press dots 1, 2&4 at the same time.
+    repeatMessage: Letter F. Press dots 1, 2&4.
+    successMessage: Correct! That is letter F. Press next to next.
+    wrongMessage: Try again.
     lessonKind: 0
-    dots: 01000000
+    dots: 010000000200000004000000
     expectedSequencePatterns: []
     expectedSequenceNames: []
-    lessonSprite: {fileID: 21300000, guid: b8df670c7e9957a45b35c5685879a322, type: 3}
-    introAudio: {fileID: 8300000, guid: beffe5d16ebbc1941a2def3be7ca3dc0, type: 3}
-    instructionAudio: {fileID: 8300000, guid: d6bffd3117000af44a23176ab530a097, type: 3}
+    lessonSprite: {fileID: 21300000, guid: 16eb9b6d350ca0c49a5de0e2ad74e2cd, type: 3}
+    introAudio: {fileID: 8300000, guid: 2edf166576d86a340b0b442b03457ea2, type: 3}
+    instructionAudio: {fileID: 8300000, guid: e7df56fc6bca53649a1c9e7ee28954ea, type: 3}
     successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
     sequenceStepAudios: []
     sequenceStepMessages: []
-    supportMessage: Remember, Leter A uses dot number 1.
-    supportAudio: {fileID: 8300000, guid: a322b0a940e749b46a749f0b1a9dcf4a, type: 3}
-  - displayLabel: A
+    supportMessage: Remember, Letter F uses dots number 1, 2&4.
+    supportAudio: {fileID: 8300000, guid: ded91ce8cd3026848914f6b8045585e3, type: 3}
+  - displayLabel: G
     categoryLabel: Letter
-    promptMessage: This is letter A. Press dot 1.
-    repeatMessage: Letter A. Press dot 1.
-    successMessage: Correct! That is letter A. Press next to next.
-    wrongMessage: Try again. Letter A uses dot 1.
+    promptMessage: This is letter G. Press dots 1, 2, 4&5 at the same time.
+    repeatMessage: Letter D. Press dots 1, 2, 4&5.
+    successMessage: Correct! That is letter D. Press next to next.
+    wrongMessage: Try again.
     lessonKind: 0
-    dots: 01000000
+    dots: 01000000020000000400000005000000
     expectedSequencePatterns: []
     expectedSequenceNames: []
-    lessonSprite: {fileID: 21300000, guid: b8df670c7e9957a45b35c5685879a322, type: 3}
-    introAudio: {fileID: 8300000, guid: beffe5d16ebbc1941a2def3be7ca3dc0, type: 3}
-    instructionAudio: {fileID: 8300000, guid: d6bffd3117000af44a23176ab530a097, type: 3}
+    lessonSprite: {fileID: 21300000, guid: 0f9e6be4fff70d14eb1277785886c3ed, type: 3}
+    introAudio: {fileID: 8300000, guid: d21c6d0632512224ea753b19452a0b68, type: 3}
+    instructionAudio: {fileID: 8300000, guid: 26adec60c2b7a5a4f9afcb534b5f1d17, type: 3}
     successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
     sequenceStepAudios: []
     sequenceStepMessages: []
-    supportMessage: Remember, Leter A uses dot number 1.
-    supportAudio: {fileID: 8300000, guid: a322b0a940e749b46a749f0b1a9dcf4a, type: 3}
-  - displayLabel: A
+    supportMessage: Remember, Letter G uses dots number 1, 2, 4&5.
+    supportAudio: {fileID: 8300000, guid: 862bdc40cb1e867489917e082c1bbb28, type: 3}
+  - displayLabel: H
     categoryLabel: Letter
-    promptMessage: This is letter A. Press dot 1.
-    repeatMessage: Letter A. Press dot 1.
-    successMessage: Correct! That is letter A. Press next to next.
-    wrongMessage: Try again. Letter A uses dot 1.
+    promptMessage: This is letter H. Press dots 1, 2&5 at the same time.
+    repeatMessage: Letter H. Press dots 1, 2&5.
+    successMessage: Correct! That is letter H. Press next to next.
+    wrongMessage: Try again.
     lessonKind: 0
-    dots: 01000000
+    dots: 010000000200000005000000
     expectedSequencePatterns: []
     expectedSequenceNames: []
-    lessonSprite: {fileID: 21300000, guid: b8df670c7e9957a45b35c5685879a322, type: 3}
-    introAudio: {fileID: 8300000, guid: beffe5d16ebbc1941a2def3be7ca3dc0, type: 3}
-    instructionAudio: {fileID: 8300000, guid: d6bffd3117000af44a23176ab530a097, type: 3}
+    lessonSprite: {fileID: 21300000, guid: fb4de746635d3504f9267576a921c678, type: 3}
+    introAudio: {fileID: 8300000, guid: 361a5119156095a49a65409f2c997d00, type: 3}
+    instructionAudio: {fileID: 8300000, guid: 0786219909687444ab5f03cf285614e6, type: 3}
     successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
     sequenceStepAudios: []
     sequenceStepMessages: []
-    supportMessage: Remember, Leter A uses dot number 1.
-    supportAudio: {fileID: 8300000, guid: a322b0a940e749b46a749f0b1a9dcf4a, type: 3}
-  - displayLabel: A
+    supportMessage: Remember, Letter H uses dots number 1, 2&5.
+    supportAudio: {fileID: 8300000, guid: 9dbe87af02b782c46b5d100ebd8f7192, type: 3}
+  - displayLabel: I
     categoryLabel: Letter
-    promptMessage: This is letter A. Press dot 1.
-    repeatMessage: Letter A. Press dot 1.
-    successMessage: Correct! That is letter A. Press next to next.
-    wrongMessage: Try again. Letter A uses dot 1.
+    promptMessage: This is letter I. Press dots 2&4 at the same time.
+    repeatMessage: Letter I. Press dots 2&4.
+    successMessage: Correct! That is letter I. Press next to next.
+    wrongMessage: Try again.
     lessonKind: 0
-    dots: 01000000
+    dots: 0200000004000000
     expectedSequencePatterns: []
     expectedSequenceNames: []
-    lessonSprite: {fileID: 21300000, guid: b8df670c7e9957a45b35c5685879a322, type: 3}
-    introAudio: {fileID: 8300000, guid: beffe5d16ebbc1941a2def3be7ca3dc0, type: 3}
-    instructionAudio: {fileID: 8300000, guid: d6bffd3117000af44a23176ab530a097, type: 3}
+    lessonSprite: {fileID: 21300000, guid: 21e0753a5fadda94c899fb06ee93f6f9, type: 3}
+    introAudio: {fileID: 8300000, guid: 443317135d675eb41b96738d455c2d56, type: 3}
+    instructionAudio: {fileID: 8300000, guid: c9245a80df18e874ebccb0b598a21ea5, type: 3}
     successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
     sequenceStepAudios: []
     sequenceStepMessages: []
-    supportMessage: Remember, Leter A uses dot number 1.
-    supportAudio: {fileID: 8300000, guid: a322b0a940e749b46a749f0b1a9dcf4a, type: 3}
-  - displayLabel: A
+    supportMessage: Remember, Letter I uses dots number 2&4.
+    supportAudio: {fileID: 8300000, guid: 3cf02b4ce0b3e734f8ae209c23c364c3, type: 3}
+  - displayLabel: J
     categoryLabel: Letter
-    promptMessage: This is letter A. Press dot 1.
-    repeatMessage: Letter A. Press dot 1.
-    successMessage: Correct! That is letter A. Press next to next.
-    wrongMessage: Try again. Letter A uses dot 1.
+    promptMessage: This is letter J. Press dots 2, 4&5 at the same time.
+    repeatMessage: Letter J. Press dots 2, 4&5.
+    successMessage: Correct! That is letter J. Press next to next.
+    wrongMessage: Try again.
     lessonKind: 0
-    dots: 01000000
+    dots: 020000000400000005000000
     expectedSequencePatterns: []
     expectedSequenceNames: []
-    lessonSprite: {fileID: 21300000, guid: b8df670c7e9957a45b35c5685879a322, type: 3}
-    introAudio: {fileID: 8300000, guid: beffe5d16ebbc1941a2def3be7ca3dc0, type: 3}
-    instructionAudio: {fileID: 8300000, guid: d6bffd3117000af44a23176ab530a097, type: 3}
+    lessonSprite: {fileID: 21300000, guid: c4c666fbffcfe64428e48fe0addb7245, type: 3}
+    introAudio: {fileID: 8300000, guid: 71c615913ca1398498f4a6c52acf90f6, type: 3}
+    instructionAudio: {fileID: 8300000, guid: d250dea8334ef854b8ab00c5a980583f, type: 3}
     successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
     sequenceStepAudios: []
     sequenceStepMessages: []
-    supportMessage: Remember, Leter A uses dot number 1.
-    supportAudio: {fileID: 8300000, guid: a322b0a940e749b46a749f0b1a9dcf4a, type: 3}
-  - displayLabel: A
+    supportMessage: Remember, Letter J uses dots number 2, 4&5.
+    supportAudio: {fileID: 8300000, guid: da66c4178b4c56a45b0dda18276bedb8, type: 3}
+  - displayLabel: K
     categoryLabel: Letter
-    promptMessage: This is letter A. Press dot 1.
-    repeatMessage: Letter A. Press dot 1.
-    successMessage: Correct! That is letter A. Press next to next.
-    wrongMessage: Try again. Letter A uses dot 1.
+    promptMessage: This is letter K. Press dots 1&3 at the same time.
+    repeatMessage: Letter K. Press dots 1&3.
+    successMessage: Correct! That is letter K. Press next to next.
+    wrongMessage: Try again.
     lessonKind: 0
-    dots: 01000000
+    dots: 0100000003000000
     expectedSequencePatterns: []
     expectedSequenceNames: []
-    lessonSprite: {fileID: 21300000, guid: b8df670c7e9957a45b35c5685879a322, type: 3}
-    introAudio: {fileID: 8300000, guid: beffe5d16ebbc1941a2def3be7ca3dc0, type: 3}
-    instructionAudio: {fileID: 8300000, guid: d6bffd3117000af44a23176ab530a097, type: 3}
+    lessonSprite: {fileID: 21300000, guid: 916ad18e87679fe43941bef9320ba836, type: 3}
+    introAudio: {fileID: 8300000, guid: fa4fece67e4badf4488b8303b03a60f9, type: 3}
+    instructionAudio: {fileID: 8300000, guid: 7fac0170c8a6702479367ffae1b2c88c, type: 3}
     successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
     sequenceStepAudios: []
     sequenceStepMessages: []
-    supportMessage: Remember, Leter A uses dot number 1.
-    supportAudio: {fileID: 8300000, guid: a322b0a940e749b46a749f0b1a9dcf4a, type: 3}
-  - displayLabel: A
+    supportMessage: Remember, Letter K uses dots number 1&3.
+    supportAudio: {fileID: 8300000, guid: b32a237b247419f4a940c2701376c888, type: 3}
+  - displayLabel: L
     categoryLabel: Letter
-    promptMessage: This is letter A. Press dot 1.
-    repeatMessage: Letter A. Press dot 1.
-    successMessage: Correct! That is letter A. Press next to next.
-    wrongMessage: Try again. Letter A uses dot 1.
+    promptMessage: This is letter L. Press dots 1, 2&3 at the same time.
+    repeatMessage: Letter L. Press dots 1, 2&3.
+    successMessage: Correct! That is letter L. Press next to next.
+    wrongMessage: Try again.
     lessonKind: 0
-    dots: 01000000
+    dots: 010000000200000003000000
     expectedSequencePatterns: []
     expectedSequenceNames: []
-    lessonSprite: {fileID: 21300000, guid: b8df670c7e9957a45b35c5685879a322, type: 3}
-    introAudio: {fileID: 8300000, guid: beffe5d16ebbc1941a2def3be7ca3dc0, type: 3}
-    instructionAudio: {fileID: 8300000, guid: d6bffd3117000af44a23176ab530a097, type: 3}
+    lessonSprite: {fileID: 21300000, guid: 4372d825dd8500e4f94669f265eb3f91, type: 3}
+    introAudio: {fileID: 8300000, guid: f34da036c91ea0140a3c9dcaff8472e6, type: 3}
+    instructionAudio: {fileID: 8300000, guid: 7f48dcf4229b41445a1c7993e9c7334e, type: 3}
     successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
     sequenceStepAudios: []
     sequenceStepMessages: []
-    supportMessage: Remember, Leter A uses dot number 1.
-    supportAudio: {fileID: 8300000, guid: a322b0a940e749b46a749f0b1a9dcf4a, type: 3}
-  - displayLabel: A
+    supportMessage: Remember, Letter L uses dots number 1, 2&3.
+    supportAudio: {fileID: 8300000, guid: c72a7152292fc7340bb783590f0250fa, type: 3}
+  - displayLabel: M
     categoryLabel: Letter
-    promptMessage: This is letter A. Press dot 1.
-    repeatMessage: Letter A. Press dot 1.
-    successMessage: Correct! That is letter A. Press next to next.
-    wrongMessage: Try again. Letter A uses dot 1.
+    promptMessage: This is letter M. Press dots 1, 3&4 at the same time.
+    repeatMessage: Letter M. Press dots 1, 3&4.
+    successMessage: Correct! That is letter M. Press next to next.
+    wrongMessage: Try again.
     lessonKind: 0
-    dots: 01000000
+    dots: 010000000300000004000000
     expectedSequencePatterns: []
     expectedSequenceNames: []
-    lessonSprite: {fileID: 21300000, guid: b8df670c7e9957a45b35c5685879a322, type: 3}
-    introAudio: {fileID: 8300000, guid: beffe5d16ebbc1941a2def3be7ca3dc0, type: 3}
-    instructionAudio: {fileID: 8300000, guid: d6bffd3117000af44a23176ab530a097, type: 3}
+    lessonSprite: {fileID: 21300000, guid: a7ec38fd03d2e1e46b362270aa1f53a7, type: 3}
+    introAudio: {fileID: 8300000, guid: 8949e4c617afc5a4d838638e7dcd044d, type: 3}
+    instructionAudio: {fileID: 8300000, guid: 9e07367c923ef3641b7dad053ec62a7e, type: 3}
     successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
     sequenceStepAudios: []
     sequenceStepMessages: []
-    supportMessage: Remember, Leter A uses dot number 1.
-    supportAudio: {fileID: 8300000, guid: a322b0a940e749b46a749f0b1a9dcf4a, type: 3}
-  - displayLabel: A
+    supportMessage: Remember, Letter M uses dots number 1, 3&4.
+    supportAudio: {fileID: 8300000, guid: b4d92b2969663344885501328eaf9c5b, type: 3}
+  - displayLabel: N
     categoryLabel: Letter
-    promptMessage: This is letter A. Press dot 1.
-    repeatMessage: Letter A. Press dot 1.
-    successMessage: Correct! That is letter A. Press next to next.
-    wrongMessage: Try again. Letter A uses dot 1.
+    promptMessage: This is letter N. Press dots 1, 2, 4&5 at the same time.
+    repeatMessage: Letter N. Press dots 1, 2, 4&5.
+    successMessage: Correct! That is letter N. Press next to next.
+    wrongMessage: Try again.
     lessonKind: 0
-    dots: 01000000
+    dots: 01000000030000000400000005000000
     expectedSequencePatterns: []
     expectedSequenceNames: []
-    lessonSprite: {fileID: 21300000, guid: b8df670c7e9957a45b35c5685879a322, type: 3}
-    introAudio: {fileID: 8300000, guid: beffe5d16ebbc1941a2def3be7ca3dc0, type: 3}
-    instructionAudio: {fileID: 8300000, guid: d6bffd3117000af44a23176ab530a097, type: 3}
+    lessonSprite: {fileID: 21300000, guid: f88d5dde49dcd7a438b3db767904d77d, type: 3}
+    introAudio: {fileID: 8300000, guid: c8dc7453d7369d6498cfeb78d9dea367, type: 3}
+    instructionAudio: {fileID: 8300000, guid: a111e42b5ff5bd643a0ac490c9c89d33, type: 3}
     successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
     sequenceStepAudios: []
     sequenceStepMessages: []
-    supportMessage: Remember, Leter A uses dot number 1.
-    supportAudio: {fileID: 8300000, guid: a322b0a940e749b46a749f0b1a9dcf4a, type: 3}
-  - displayLabel: A
+    supportMessage: Remember, Letter N uses dots number 1, 2, 4&5.
+    supportAudio: {fileID: 8300000, guid: ef95908d597d36b428ddc77ef1ef7c1e, type: 3}
+  - displayLabel: O
     categoryLabel: Letter
-    promptMessage: This is letter A. Press dot 1.
-    repeatMessage: Letter A. Press dot 1.
-    successMessage: Correct! That is letter A. Press next to next.
-    wrongMessage: Try again. Letter A uses dot 1.
+    promptMessage: This is letter O. Press dots 1, 3&5 at the same time.
+    repeatMessage: Letter O. Press dots 1, 3&5.
+    successMessage: Correct! That is letter O. Press next to next.
+    wrongMessage: Try again.
     lessonKind: 0
-    dots: 01000000
+    dots: 010000000300000005000000
     expectedSequencePatterns: []
     expectedSequenceNames: []
-    lessonSprite: {fileID: 21300000, guid: b8df670c7e9957a45b35c5685879a322, type: 3}
-    introAudio: {fileID: 8300000, guid: beffe5d16ebbc1941a2def3be7ca3dc0, type: 3}
-    instructionAudio: {fileID: 8300000, guid: d6bffd3117000af44a23176ab530a097, type: 3}
+    lessonSprite: {fileID: 21300000, guid: a6ebf48ba1113204686e1aaa721adcee, type: 3}
+    introAudio: {fileID: 8300000, guid: cd5b40ac7ce53d84d9ba3a0998c87d25, type: 3}
+    instructionAudio: {fileID: 8300000, guid: 532653797345a8f418d07365d1d8f3d2, type: 3}
     successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
     sequenceStepAudios: []
     sequenceStepMessages: []
-    supportMessage: Remember, Leter A uses dot number 1.
-    supportAudio: {fileID: 8300000, guid: a322b0a940e749b46a749f0b1a9dcf4a, type: 3}
-  - displayLabel: A
+    supportMessage: Remember, Letter O uses dots number 1, 3&5.
+    supportAudio: {fileID: 8300000, guid: ad7b8eb4d11df6a4ba3002e312101d2b, type: 3}
+  - displayLabel: P
     categoryLabel: Letter
-    promptMessage: This is letter A. Press dot 1.
-    repeatMessage: Letter A. Press dot 1.
-    successMessage: Correct! That is letter A. Press next to next.
-    wrongMessage: Try again. Letter A uses dot 1.
+    promptMessage: This is letter P. Press dots 1, 2, 3&4 at the same time.
+    repeatMessage: Letter P. Press dots 1, 2, 3&4.
+    successMessage: Correct! That is letter P. Press next to next.
+    wrongMessage: Try again.
     lessonKind: 0
-    dots: 01000000
+    dots: 01000000020000000300000004000000
     expectedSequencePatterns: []
     expectedSequenceNames: []
-    lessonSprite: {fileID: 21300000, guid: b8df670c7e9957a45b35c5685879a322, type: 3}
-    introAudio: {fileID: 8300000, guid: beffe5d16ebbc1941a2def3be7ca3dc0, type: 3}
-    instructionAudio: {fileID: 8300000, guid: d6bffd3117000af44a23176ab530a097, type: 3}
+    lessonSprite: {fileID: 21300000, guid: 148dd5fa508134440b3815acec151e81, type: 3}
+    introAudio: {fileID: 8300000, guid: a8c7c6cfc929a54419567568ba2d7b78, type: 3}
+    instructionAudio: {fileID: 8300000, guid: 610bf70710cd7ae4d81c3052367ada4f, type: 3}
     successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
     sequenceStepAudios: []
     sequenceStepMessages: []
-    supportMessage: Remember, Leter A uses dot number 1.
-    supportAudio: {fileID: 8300000, guid: a322b0a940e749b46a749f0b1a9dcf4a, type: 3}
-  - displayLabel: A
+    supportMessage: Remember, Letter P uses dots number 1, 2, 3&4.
+    supportAudio: {fileID: 8300000, guid: fb2679b951e7e8a47bd1a543f55a36fd, type: 3}
+  - displayLabel: Q
     categoryLabel: Letter
-    promptMessage: This is letter A. Press dot 1.
-    repeatMessage: Letter A. Press dot 1.
-    successMessage: Correct! That is letter A. Press next to next.
-    wrongMessage: Try again. Letter A uses dot 1.
+    promptMessage: This is letter Q. Press dots 1, 2, 3, 4&5 at the same time.
+    repeatMessage: Letter Q. Press dots 1, 2, 3, 4&5.
+    successMessage: Correct! That is letter Q. Press next to next.
+    wrongMessage: Try again.
     lessonKind: 0
-    dots: 01000000
+    dots: 0100000002000000030000000400000005000000
     expectedSequencePatterns: []
     expectedSequenceNames: []
-    lessonSprite: {fileID: 21300000, guid: b8df670c7e9957a45b35c5685879a322, type: 3}
-    introAudio: {fileID: 8300000, guid: beffe5d16ebbc1941a2def3be7ca3dc0, type: 3}
-    instructionAudio: {fileID: 8300000, guid: d6bffd3117000af44a23176ab530a097, type: 3}
+    lessonSprite: {fileID: 21300000, guid: 6143e69fc7956f341a0b807f2a0765c2, type: 3}
+    introAudio: {fileID: 8300000, guid: 7064cc81db87d0c4aa9facffb3f17782, type: 3}
+    instructionAudio: {fileID: 8300000, guid: 2eeaba6ab3221824b84a1497b0413fb9, type: 3}
     successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
     sequenceStepAudios: []
     sequenceStepMessages: []
-    supportMessage: Remember, Leter A uses dot number 1.
-    supportAudio: {fileID: 8300000, guid: a322b0a940e749b46a749f0b1a9dcf4a, type: 3}
-  - displayLabel: A
+    supportMessage: Remember, Letter Q uses dots number 1, 2, 3, 4&5.
+    supportAudio: {fileID: 8300000, guid: 74b95dae73c9994468e8121c01a1b000, type: 3}
+  - displayLabel: R
     categoryLabel: Letter
-    promptMessage: This is letter A. Press dot 1.
-    repeatMessage: Letter A. Press dot 1.
-    successMessage: Correct! That is letter A. Press next to next.
-    wrongMessage: Try again. Letter A uses dot 1.
+    promptMessage: This is letter R. Press dots 1, 2, 3&5 at the same time.
+    repeatMessage: Letter R. Press dots 1, 2, 3&5.
+    successMessage: Correct! That is letter R. Press next to next.
+    wrongMessage: Try again.
     lessonKind: 0
-    dots: 01000000
+    dots: 01000000020000000300000005000000
     expectedSequencePatterns: []
     expectedSequenceNames: []
-    lessonSprite: {fileID: 21300000, guid: b8df670c7e9957a45b35c5685879a322, type: 3}
-    introAudio: {fileID: 8300000, guid: beffe5d16ebbc1941a2def3be7ca3dc0, type: 3}
-    instructionAudio: {fileID: 8300000, guid: d6bffd3117000af44a23176ab530a097, type: 3}
+    lessonSprite: {fileID: 21300000, guid: f7691722ae1526243b5e835e1f1f7e85, type: 3}
+    introAudio: {fileID: 8300000, guid: fe8f79f5693b7204e92d3d6353d0a748, type: 3}
+    instructionAudio: {fileID: 8300000, guid: e6aaf93bef15ad14e995b6c098d533ad, type: 3}
     successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
     sequenceStepAudios: []
     sequenceStepMessages: []
-    supportMessage: Remember, Leter A uses dot number 1.
-    supportAudio: {fileID: 8300000, guid: a322b0a940e749b46a749f0b1a9dcf4a, type: 3}
-  - displayLabel: A
+    supportMessage: Remember, Letter R uses dots number 1, 2, 3&5.
+    supportAudio: {fileID: 8300000, guid: de282dcf3af102842bbbb8bb5b94ef11, type: 3}
+  - displayLabel: S
     categoryLabel: Letter
-    promptMessage: This is letter A. Press dot 1.
-    repeatMessage: Letter A. Press dot 1.
-    successMessage: Correct! That is letter A. Press next to next.
-    wrongMessage: Try again. Letter A uses dot 1.
+    promptMessage: This is letter S. Press dots 2, 3&4 at the same time.
+    repeatMessage: Letter S. Press dots 2, 3&4.
+    successMessage: Correct! That is letter S. Press next to next.
+    wrongMessage: Try again.
     lessonKind: 0
-    dots: 01000000
+    dots: 020000000300000004000000
     expectedSequencePatterns: []
     expectedSequenceNames: []
-    lessonSprite: {fileID: 21300000, guid: b8df670c7e9957a45b35c5685879a322, type: 3}
-    introAudio: {fileID: 8300000, guid: beffe5d16ebbc1941a2def3be7ca3dc0, type: 3}
-    instructionAudio: {fileID: 8300000, guid: d6bffd3117000af44a23176ab530a097, type: 3}
+    lessonSprite: {fileID: 21300000, guid: 044df8a8cadddc347a4609cc32c4edb2, type: 3}
+    introAudio: {fileID: 8300000, guid: 62170f84e32f6c24fa9b670ce5e47ac8, type: 3}
+    instructionAudio: {fileID: 8300000, guid: 9207627036a9c6040a87f09fc8767528, type: 3}
     successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
     sequenceStepAudios: []
     sequenceStepMessages: []
-    supportMessage: Remember, Leter A uses dot number 1.
-    supportAudio: {fileID: 8300000, guid: a322b0a940e749b46a749f0b1a9dcf4a, type: 3}
-  - displayLabel: A
+    supportMessage: Remember, Letter S uses dots number 2, 3&4.
+    supportAudio: {fileID: 8300000, guid: 06ae074fc7a78054ca459fa6c4be3552, type: 3}
+  - displayLabel: T
     categoryLabel: Letter
-    promptMessage: This is letter A. Press dot 1.
-    repeatMessage: Letter A. Press dot 1.
-    successMessage: Correct! That is letter A. Press next to next.
-    wrongMessage: Try again. Letter A uses dot 1.
+    promptMessage: This is letter T. Press dots 2, 3, 4&5 at the same time.
+    repeatMessage: Letter T. Press dots 2, 3, 4&5.
+    successMessage: Correct! That is letter T. Press next to next.
+    wrongMessage: Try again.
     lessonKind: 0
-    dots: 01000000
+    dots: 02000000030000000400000005000000
     expectedSequencePatterns: []
     expectedSequenceNames: []
-    lessonSprite: {fileID: 21300000, guid: b8df670c7e9957a45b35c5685879a322, type: 3}
-    introAudio: {fileID: 8300000, guid: beffe5d16ebbc1941a2def3be7ca3dc0, type: 3}
-    instructionAudio: {fileID: 8300000, guid: d6bffd3117000af44a23176ab530a097, type: 3}
+    lessonSprite: {fileID: 21300000, guid: 688485fe27f99f74cb7c4ce07dd91b4d, type: 3}
+    introAudio: {fileID: 8300000, guid: 91a4f22e4d1e56341a91754b151a3966, type: 3}
+    instructionAudio: {fileID: 8300000, guid: ccb2ee6c1da027543acc111a8ad77a3a, type: 3}
     successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
     sequenceStepAudios: []
     sequenceStepMessages: []
-    supportMessage: Remember, Leter A uses dot number 1.
-    supportAudio: {fileID: 8300000, guid: a322b0a940e749b46a749f0b1a9dcf4a, type: 3}
-  - displayLabel: A
+    supportMessage: Remember, Letter T uses dots number 2, 3, 4&5.
+    supportAudio: {fileID: 8300000, guid: e25ecb0159b9bdc41a11828fe14cba0e, type: 3}
+  - displayLabel: U
     categoryLabel: Letter
-    promptMessage: This is letter A. Press dot 1.
-    repeatMessage: Letter A. Press dot 1.
-    successMessage: Correct! That is letter A. Press next to next.
-    wrongMessage: Try again. Letter A uses dot 1.
+    promptMessage: This is letter U. Press dots 1, 3&6 at the same time.
+    repeatMessage: Letter U. Press dots 1, 3&6.
+    successMessage: Correct! That is letter U. Press next to next.
+    wrongMessage: Try again.
     lessonKind: 0
-    dots: 01000000
+    dots: 010000000300000006000000
     expectedSequencePatterns: []
     expectedSequenceNames: []
-    lessonSprite: {fileID: 21300000, guid: b8df670c7e9957a45b35c5685879a322, type: 3}
-    introAudio: {fileID: 8300000, guid: beffe5d16ebbc1941a2def3be7ca3dc0, type: 3}
-    instructionAudio: {fileID: 8300000, guid: d6bffd3117000af44a23176ab530a097, type: 3}
+    lessonSprite: {fileID: 21300000, guid: b214eebfa429b61429a583d7ebd1e103, type: 3}
+    introAudio: {fileID: 8300000, guid: 222e70d6dd8e7234b9b09208a4abf2fe, type: 3}
+    instructionAudio: {fileID: 8300000, guid: c2df0bbeb8891014f95697ade4f7e9f1, type: 3}
     successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
     sequenceStepAudios: []
     sequenceStepMessages: []
-    supportMessage: Remember, Leter A uses dot number 1.
-    supportAudio: {fileID: 8300000, guid: a322b0a940e749b46a749f0b1a9dcf4a, type: 3}
-  - displayLabel: A
+    supportMessage: Remember, Letter U uses dots number 1, 3&6.
+    supportAudio: {fileID: 8300000, guid: f0e38e6e8bec67c438a77948b7ef48c0, type: 3}
+  - displayLabel: V
     categoryLabel: Letter
-    promptMessage: This is letter A. Press dot 1.
-    repeatMessage: Letter A. Press dot 1.
-    successMessage: Correct! That is letter A. Press next to next.
-    wrongMessage: Try again. Letter A uses dot 1.
+    promptMessage: This is letter V. Press dots 1, 2, 3&6 at the same time.
+    repeatMessage: Letter V. Press dots 1, 2, 3&6.
+    successMessage: Correct! That is letter V. Press next to next.
+    wrongMessage: Try again.
     lessonKind: 0
-    dots: 01000000
+    dots: 01000000020000000300000006000000
     expectedSequencePatterns: []
     expectedSequenceNames: []
-    lessonSprite: {fileID: 21300000, guid: b8df670c7e9957a45b35c5685879a322, type: 3}
-    introAudio: {fileID: 8300000, guid: beffe5d16ebbc1941a2def3be7ca3dc0, type: 3}
-    instructionAudio: {fileID: 8300000, guid: d6bffd3117000af44a23176ab530a097, type: 3}
+    lessonSprite: {fileID: 21300000, guid: 09a03a229b7c32442828cd51d2b82062, type: 3}
+    introAudio: {fileID: 8300000, guid: 385b1719cb89d0742a696b8a8479a53c, type: 3}
+    instructionAudio: {fileID: 8300000, guid: 78c858e2e6fc5294fae4a9596f60feda, type: 3}
     successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
     sequenceStepAudios: []
     sequenceStepMessages: []
-    supportMessage: Remember, Leter A uses dot number 1.
-    supportAudio: {fileID: 8300000, guid: a322b0a940e749b46a749f0b1a9dcf4a, type: 3}
-  - displayLabel: A
+    supportMessage: Remember, Letter V uses dots number 1, 2, 3&6.
+    supportAudio: {fileID: 8300000, guid: 3482d2ef78e70ef45b63a39836ce1033, type: 3}
+  - displayLabel: W
     categoryLabel: Letter
-    promptMessage: This is letter A. Press dot 1.
-    repeatMessage: Letter A. Press dot 1.
-    successMessage: Correct! That is letter A. Press next to next.
-    wrongMessage: Try again. Letter A uses dot 1.
+    promptMessage: This is letter W. Press dots 2, 4, 5&6 at the same time.
+    repeatMessage: Letter W. Press dots 2, 4, 5&6.
+    successMessage: Correct! That is letter W. Press next to next.
+    wrongMessage: Try again.
     lessonKind: 0
-    dots: 01000000
+    dots: 02000000040000000500000006000000
     expectedSequencePatterns: []
     expectedSequenceNames: []
-    lessonSprite: {fileID: 21300000, guid: b8df670c7e9957a45b35c5685879a322, type: 3}
-    introAudio: {fileID: 8300000, guid: beffe5d16ebbc1941a2def3be7ca3dc0, type: 3}
-    instructionAudio: {fileID: 8300000, guid: d6bffd3117000af44a23176ab530a097, type: 3}
+    lessonSprite: {fileID: 21300000, guid: 877585566e8a21e4bb0f13bb49266538, type: 3}
+    introAudio: {fileID: 8300000, guid: 58c4a899bb840ee4f98d66227c02654d, type: 3}
+    instructionAudio: {fileID: 8300000, guid: a885b81073ad42c44a8b50c072057e43, type: 3}
     successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
     sequenceStepAudios: []
     sequenceStepMessages: []
-    supportMessage: Remember, Leter A uses dot number 1.
-    supportAudio: {fileID: 8300000, guid: a322b0a940e749b46a749f0b1a9dcf4a, type: 3}
-  - displayLabel: A
+    supportMessage: Remember, Letter W uses dots number 2, 4, 5&6.
+    supportAudio: {fileID: 8300000, guid: 81c5c85069e4a5648a1a9c2d1e2ab8ec, type: 3}
+  - displayLabel: X
     categoryLabel: Letter
-    promptMessage: This is letter A. Press dot 1.
-    repeatMessage: Letter A. Press dot 1.
-    successMessage: Correct! That is letter A. Press next to next.
-    wrongMessage: Try again. Letter A uses dot 1.
+    promptMessage: This is letter X. Press dots 1, 3, 4&6 at the same time.
+    repeatMessage: Letter X. Press dots 1, 3, 4&6.
+    successMessage: Correct! That is letter X. Press next to next.
+    wrongMessage: Try again.
     lessonKind: 0
-    dots: 01000000
+    dots: 01000000030000000400000006000000
     expectedSequencePatterns: []
     expectedSequenceNames: []
-    lessonSprite: {fileID: 21300000, guid: b8df670c7e9957a45b35c5685879a322, type: 3}
-    introAudio: {fileID: 8300000, guid: beffe5d16ebbc1941a2def3be7ca3dc0, type: 3}
-    instructionAudio: {fileID: 8300000, guid: d6bffd3117000af44a23176ab530a097, type: 3}
+    lessonSprite: {fileID: 21300000, guid: 42ee98ec93c15cb41835b5f0af0d2ae8, type: 3}
+    introAudio: {fileID: 8300000, guid: 613b8e4abc60f9144b6e3d048389a9b1, type: 3}
+    instructionAudio: {fileID: 8300000, guid: 0289c15a6b1b3e949ae70c139cba27e9, type: 3}
     successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
     sequenceStepAudios: []
     sequenceStepMessages: []
-    supportMessage: Remember, Leter A uses dot number 1.
-    supportAudio: {fileID: 8300000, guid: a322b0a940e749b46a749f0b1a9dcf4a, type: 3}
-  - displayLabel: A
+    supportMessage: Remember, Letter X uses dots number 1, 3, 4&6.
+    supportAudio: {fileID: 8300000, guid: da9673a9fcb5ec24e8f3d603efa62148, type: 3}
+  - displayLabel: Y
     categoryLabel: Letter
-    promptMessage: This is letter A. Press dot 1.
-    repeatMessage: Letter A. Press dot 1.
-    successMessage: Correct! That is letter A. Press next to next.
-    wrongMessage: Try again. Letter A uses dot 1.
+    promptMessage: This is letter Y. Press dots 1, 3, 4, 5&6 at the same time.
+    repeatMessage: Letter Y. Press dots 1, 3, 4, 5&6.
+    successMessage: Correct! That is letter Y. Press next to next.
+    wrongMessage: Try again.
     lessonKind: 0
-    dots: 01000000
+    dots: 0100000003000000040000000500000006000000
     expectedSequencePatterns: []
     expectedSequenceNames: []
-    lessonSprite: {fileID: 21300000, guid: b8df670c7e9957a45b35c5685879a322, type: 3}
-    introAudio: {fileID: 8300000, guid: beffe5d16ebbc1941a2def3be7ca3dc0, type: 3}
-    instructionAudio: {fileID: 8300000, guid: d6bffd3117000af44a23176ab530a097, type: 3}
+    lessonSprite: {fileID: 21300000, guid: f092d4bafdc95d7478c57bc5be4d24ce, type: 3}
+    introAudio: {fileID: 8300000, guid: b5db0f9dea2bc204995aceda1e8ecf92, type: 3}
+    instructionAudio: {fileID: 8300000, guid: 590d91d9fdcbf424899c445dfa8667ec, type: 3}
     successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
     sequenceStepAudios: []
     sequenceStepMessages: []
-    supportMessage: Remember, Leter A uses dot number 1.
-    supportAudio: {fileID: 8300000, guid: a322b0a940e749b46a749f0b1a9dcf4a, type: 3}
-  - displayLabel: A
+    supportMessage: Remember, Letter Y uses dots number 1, 3, 4, 5&6.
+    supportAudio: {fileID: 8300000, guid: 427e0007e70f8e14d9046534ec1d4e01, type: 3}
+  - displayLabel: Z
     categoryLabel: Letter
-    promptMessage: This is letter A. Press dot 1.
-    repeatMessage: Letter A. Press dot 1.
-    successMessage: Correct! That is letter A. Press next to next.
-    wrongMessage: Try again. Letter A uses dot 1.
+    promptMessage: This is letter Z. Press dots 1, 3, 5&6 at the same time.
+    repeatMessage: Letter Z. Press dots 1, 3, 5&6.
+    successMessage: Correct! That is letter Z. Press next to next.
+    wrongMessage: Try again.
     lessonKind: 0
-    dots: 01000000
+    dots: 01000000030000000500000006000000
     expectedSequencePatterns: []
     expectedSequenceNames: []
-    lessonSprite: {fileID: 21300000, guid: b8df670c7e9957a45b35c5685879a322, type: 3}
-    introAudio: {fileID: 8300000, guid: beffe5d16ebbc1941a2def3be7ca3dc0, type: 3}
-    instructionAudio: {fileID: 8300000, guid: d6bffd3117000af44a23176ab530a097, type: 3}
+    lessonSprite: {fileID: 21300000, guid: d2c58bf2230751740bc32620f255b069, type: 3}
+    introAudio: {fileID: 8300000, guid: 1124d600ea418b440968c94f9e369c05, type: 3}
+    instructionAudio: {fileID: 8300000, guid: b5b0fc8fe813cba4e9bcbfc3436f802a, type: 3}
     successAudio: {fileID: 8300000, guid: 6601c5fc1795155458f542e0004216fc, type: 3}
     sequenceStepAudios: []
     sequenceStepMessages: []
-    supportMessage: Remember, Leter A uses dot number 1.
-    supportAudio: {fileID: 8300000, guid: a322b0a940e749b46a749f0b1a9dcf4a, type: 3}
-  playInstructionOnLessonStart: 0
+    supportMessage: Remember, Letter Z uses dots number 1, 3, 5&6.
+    supportAudio: {fileID: 8300000, guid: 4976185b3a1261f4e9f3cd87b43aae80, type: 3}
+  playInstructionOnLessonStart: 1
   delayAfterVoice: 0.35
   noAudioTextDelay: 2
   delayAfterCorrect: 0.75
@@ -2051,6 +2051,10 @@ MonoBehaviour:
   dot4Key: 106
   dot5Key: 107
   dot6Key: 108
+  upKey: 273
+  downKey: 274
+  leftKey: 276
+  rightKey: 275
   pauseKey: 112
   backKey: 27
   repeatKey: 114
@@ -2424,7 +2428,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1716768800}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
