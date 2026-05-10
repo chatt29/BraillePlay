@@ -154,6 +154,10 @@ MonoBehaviour:
   dot4Key: 106
   dot5Key: 107
   dot6Key: 108
+  upKey: 273
+  downKey: 274
+  leftKey: 276
+  rightKey: 275
   pauseKey: 112
   backKey: 27
   repeatKey: 114
@@ -161,6 +165,9 @@ MonoBehaviour:
   deleteOrNoKey: 8
   yesOrNextKey: 121
   loginKey: 13
+  spaceKey: 32
+  correctKey: 49
+  wrongKey: 50
   audioSource: {fileID: 0}
   dot1Sfx: {fileID: 0}
   dot2Sfx: {fileID: 0}
@@ -173,7 +180,46 @@ MonoBehaviour:
   deleteOrNoSfx: {fileID: 0}
   yesOrNextSfx: {fileID: 0}
   loginSfx: {fileID: 0}
+  spaceSfx: {fileID: 0}
+  correctSfx: {fileID: 0}
+  wrongSfx: {fileID: 0}
+  aSound: {fileID: 0}
+  bSound: {fileID: 0}
+  cSound: {fileID: 0}
+  dSound: {fileID: 0}
+  eSound: {fileID: 0}
+  fSound: {fileID: 0}
+  gSound: {fileID: 0}
+  hSound: {fileID: 0}
+  iSound: {fileID: 0}
+  jSound: {fileID: 0}
+  kSound: {fileID: 0}
+  lSound: {fileID: 0}
+  mSound: {fileID: 0}
+  nSound: {fileID: 0}
+  oSound: {fileID: 0}
+  pSound: {fileID: 0}
+  qSound: {fileID: 0}
+  rSound: {fileID: 0}
+  sSound: {fileID: 0}
+  tSound: {fileID: 0}
+  uSound: {fileID: 0}
+  vSound: {fileID: 0}
+  wSound: {fileID: 0}
+  xSound: {fileID: 0}
+  ySound: {fileID: 0}
+  zSound: {fileID: 0}
+  letterSoundVolume: 1.5
+  otherDefaultPatternSounds: []
+  otherPatternSoundVolume: 1.5
+  leftEarPan: -1
+  rightEarPan: 1
+  dotVolume: 2
+  actionVolume: 1.5
+  feedbackVolume: 2
   logInputs: 0
+  playLetterSoundOnChord: 1
+  playOtherPatternSoundOnChord: 1
 --- !u!4 &364629
 Transform:
   m_ObjectHideFlags: 0
@@ -1568,25 +1614,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 989585278}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e145ea8d831bbb4bab9790799d54ca3, type: 3}
+  m_Script: {fileID: 11500000, guid: 31cf3397665de3d47a265f7fc5f40916, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AccessibleLoginFlow
-  loginURL: http://localhost/brailleplay/login.php
+  m_EditorClassIdentifier: Assembly-CSharp::TeacherLoginFlow
+  loginURL: http://localhost/brailleplay/teacher_login.php
   messageText: {fileID: 205451356}
   usernameInput: {fileID: 2113562707}
   passwordInput: {fileID: 1574297439}
   loginButton: {fileID: 1435535637}
-  beginnerScene: BeginnerScene
-  intermediateScene: IntermediateScene
-  advanceScene: AdvanceScene
-  assessmentScene: Assessment
-  usernameHighlightTarget: {fileID: 2113562706}
-  passwordHighlightTarget: {fileID: 1574297438}
-  loginHighlightTarget: {fileID: 1435535636}
-  audioSource: {fileID: 1814091417}
-  introMessages:
-  - message: Welcome Back!
-    audioClip: {fileID: 8300000, guid: 02ffc33a1dd32a1489ec7aab7e052b46, type: 3}
+  StudentScoreboard: StudentScoreboard
+  usernameHighlightTarget: {fileID: 0}
+  passwordHighlightTarget: {fileID: 0}
+  loginHighlightTarget: {fileID: 0}
+  audioSource: {fileID: 0}
+  introMessages: []
   firstIntroDelay: 1.5
   useTypewriter: 1
   charactersPerSecond: 30
@@ -1600,29 +1641,29 @@ MonoBehaviour:
   pulseSpeed: 3
   pulseScaleAmount: 0.04
   readyForUsernameMessage:
-    message: Please type your username and press SUBMIT when you are done.
-    audioClip: {fileID: 8300000, guid: 8e229110d9036824fa4c86e45e536b42, type: 3}
+    message: 
+    audioClip: {fileID: 0}
   usernameFocusMessage:
-    message: Username field selected, please type your username.
-    audioClip: {fileID: 8300000, guid: 12a6ce648e8fd9c4e97cf53cfa96ab53, type: 3}
+    message: 
+    audioClip: {fileID: 0}
   usernameEmptyMessage:
-    message: Username field is empty. Please enter your username.
-    audioClip: {fileID: 8300000, guid: 64127db519ad3854782ffe49d857b333, type: 3}
+    message: 
+    audioClip: {fileID: 0}
   passwordFocusMessage:
-    message: Password field selected. Please type your password.
-    audioClip: {fileID: 8300000, guid: 365ce1d76e1021740a16094468d010b8, type: 3}
+    message: 
+    audioClip: {fileID: 0}
   passwordEmptyMessage:
-    message: Password field is empty. Please type your password to continue!
-    audioClip: {fileID: 8300000, guid: 1dbeca9e06dcbba4ebc624d932ecb58f, type: 3}
+    message: 
+    audioClip: {fileID: 0}
   loginFocusMessage:
-    message: Ready to log in. Press submit to continue.
-    audioClip: {fileID: 8300000, guid: 29f94551af7207a47a75165571d5a499, type: 3}
+    message: 
+    audioClip: {fileID: 0}
   loginFailedMessage:
-    message: Login failed. Incorrect username or password.
-    audioClip: {fileID: 8300000, guid: 806b76cc39d4bb34bbf98a5bac4fb5b5, type: 3}
+    message: 
+    audioClip: {fileID: 0}
   loginSuccessMessage:
-    message: Login succesful. Please enjoy.
-    audioClip: {fileID: 8300000, guid: 9f01cadc780721448ab59b12eed8d209, type: 3}
+    message: 
+    audioClip: {fileID: 0}
 --- !u!1 &1039156183
 GameObject:
   m_ObjectHideFlags: 0
@@ -3270,7 +3311,6 @@ GameObject:
   - component: {fileID: 1921593675}
   - component: {fileID: 1921593674}
   - component: {fileID: 1921593673}
-  - component: {fileID: 1921593677}
   - component: {fileID: 1921593676}
   m_Layer: 0
   m_Name: EventSystem
@@ -3338,71 +3378,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1921593672}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e145ea8d831bbb4bab9790799d54ca3, type: 3}
+  m_Script: {fileID: 11500000, guid: 6395dc7645409ff4392e818f876aca49, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AccessibleLoginFlow
-  loginURL: http://localhost/brailleplay/login.php
-  messageText: {fileID: 0}
-  usernameInput: {fileID: 2113562707}
-  passwordInput: {fileID: 1574297439}
-  loginButton: {fileID: 1435535637}
-  beginnerScene: BeginnerScene
-  intermediateScene: IntermediateScene
-  advanceScene: AdvanceScene
-  assessmentScene: Assessment
-  usernameHighlightTarget: {fileID: 0}
-  passwordHighlightTarget: {fileID: 0}
-  loginHighlightTarget: {fileID: 0}
-  audioSource: {fileID: 0}
-  introMessages: []
-  firstIntroDelay: 1.5
-  useTypewriter: 1
-  charactersPerSecond: 30
-  delayAfterMessage: 0.75
-  requireNextButtonForIntroAdvance: 1
-  usernameAllowLetters: 1
-  usernameAllowNumbers: 1
-  usernameAllowUnderscore: 1
-  usernameAllowSpaces: 0
-  usePulseEffect: 1
-  pulseSpeed: 3
-  pulseScaleAmount: 0.04
-  readyForUsernameMessage:
-    message: 
-    audioClip: {fileID: 0}
-  usernameFocusMessage:
-    message: 
-    audioClip: {fileID: 0}
-  usernameEmptyMessage:
-    message: 
-    audioClip: {fileID: 0}
-  passwordFocusMessage:
-    message: 
-    audioClip: {fileID: 0}
-  passwordEmptyMessage:
-    message: 
-    audioClip: {fileID: 0}
-  loginFocusMessage:
-    message: 
-    audioClip: {fileID: 0}
-  loginFailedMessage:
-    message: 
-    audioClip: {fileID: 0}
-  loginSuccessMessage:
-    message: 
-    audioClip: {fileID: 0}
---- !u!114 &1921593677
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1921593672}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0535ac852ce03454b8f5692481059cb4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LoginSceneBrailleInput
+  m_EditorClassIdentifier: Assembly-CSharp::TeacherBrailleInput
   usernameInput: {fileID: 2113562707}
   passwordInput: {fileID: 1574297439}
   loginFlow: {fileID: 0}

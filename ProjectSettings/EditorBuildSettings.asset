@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
+    path: Assets/Scenes/SignUpSelection.unity
     guid: b3934fc3240819f4eadae500e8b79726
   - enabled: 1
     path: Assets/Scenes/AlphabetGame.unity
@@ -21,7 +21,7 @@ EditorBuildSettings:
     path: Assets/Scenes/BeginnerScene.unity
     guid: d2318978ecf075647889234e668c9f6e
   - enabled: 1
-    path: Assets/Scenes/SignUp.unity
+    path: Assets/Scenes/SignUpS.unity
     guid: b8cc85cc13ee41847ac04204fd657802
   - enabled: 1
     path: Assets/Scenes/1. Beginner/BeginnerAlphabetScene.unity
@@ -42,8 +42,11 @@ EditorBuildSettings:
     path: Assets/Scenes/1. Beginner/JumbledLetters.unity
     guid: c3700d65b7d0ecd49a9d99a688e6a476
   - enabled: 1
-    path: Assets/Scenes/1. Beginner/Score.unity
-    guid: 1b6d30267c666ef49bbef2fdec03f42d
+    path: Assets/Scenes/SignUpT.unity
+    guid: 49a73cc78db84ad4fb0898734309727c
+  - enabled: 1
+    path: Assets/Scenes/StudentScoreboard.unity
+    guid: c0f1b2cc76f582f45adeb45319a676a7
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
