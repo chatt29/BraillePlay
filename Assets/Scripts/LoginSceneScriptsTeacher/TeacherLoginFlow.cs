@@ -16,7 +16,7 @@ public class TeacherLoginFlow : MonoBehaviour
     [SerializeField] private TMP_Text messageText;
 
     [Header("Scenes")]
-    [SerializeField] private string teacherDashboardScene = "TeacherDashboard";
+    [SerializeField] private string teacherDashboardScene = "StudentScoreboard";
 
     public static string LoggedInTeacher;
 
