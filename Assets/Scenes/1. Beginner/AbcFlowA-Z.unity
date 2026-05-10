@@ -1949,8 +1949,13 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'WRONG:'
   m_isRightToLeft: 0
+ HEAD
   m_fontAsset: {fileID: 11400000, guid: c6c90270eebda8b49b3e69ef35b890ec, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: c6c90270eebda8b49b3e69ef35b890ec, type: 2}
+
+  m_fontAsset: {fileID: 11400000, guid: 1a98abfae0e1fc34282e9b7fd0f3a427, type: 2}
+  m_sharedMaterial: {fileID: -8189821304231711609, guid: 1a98abfae0e1fc34282e9b7fd0f3a427, type: 2}
+parent of 8a33cba (5/9/26)
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2016,7 +2021,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &472820551
@@ -4723,6 +4728,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2106119033}
   m_CullTransparentMesh: 1
+ HEAD
 --- !u!1 &2116491622
 GameObject:
   m_ObjectHideFlags: 0
@@ -4839,6 +4845,8 @@ MonoBehaviour:
   logInputs: 0
   playLetterSoundOnChord: 1
   playOtherPatternSoundOnChord: 1
+
+ parent of 8a33cba (5/9/26)
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
