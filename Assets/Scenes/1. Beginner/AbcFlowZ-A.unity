@@ -2129,6 +2129,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 472820548}
   m_CullTransparentMesh: 1
+HEAD
 --- !u!1 &498256566
 GameObject:
   m_ObjectHideFlags: 0
@@ -2241,6 +2242,8 @@ MonoBehaviour:
   logInputs: 0
   playLetterSoundOnChord: 1
   playOtherPatternSoundOnChord: 1
+
+parent of 074fd1f (Merge branch 'main' of https://github.com/chatt29/BraillePlay)
 --- !u!1 &518460192
 GameObject:
   m_ObjectHideFlags: 0
