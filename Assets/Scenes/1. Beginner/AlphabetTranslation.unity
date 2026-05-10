@@ -119,6 +119,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+<<<<<<< HEAD
 --- !u!1 &83132947
 GameObject:
   m_ObjectHideFlags: 0
@@ -2789,9 +2790,9 @@ RectTransform:
   m_AnchoredPosition: {x: -62.42, y: -171.54}
   m_SizeDelta: {x: 404.264, y: 343.074}
   m_Pivot: {x: 0.5, y: 0.5}
+=======
+>>>>>>> parent of 12bedfe (hay nakong font yan)
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
-  m_Roots:
-  - {fileID: 83132950}
-  - {fileID: 803834285}
+  m_Roots: []
