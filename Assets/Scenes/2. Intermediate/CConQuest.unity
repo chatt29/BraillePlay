@@ -2337,6 +2337,7 @@ GameObject:
   - component: {fileID: 1586095474}
   - component: {fileID: 1586095478}
   - component: {fileID: 1586095484}
+  - component: {fileID: 1586095487}
   - component: {fileID: 1586095489}
   - component: {fileID: 1586095488}
   m_Layer: 5
@@ -2480,10 +2481,6 @@ MonoBehaviour:
   dot4Key: 106
   dot5Key: 107
   dot6Key: 108
-  upKey: 273
-  downKey: 274
-  leftKey: 276
-  rightKey: 275
   pauseKey: 112
   backKey: 27
   repeatKey: 114
@@ -2566,6 +2563,1242 @@ MonoBehaviour:
   logInputs: 0
   playLetterSoundOnChord: 1
   playOtherPatternSoundOnChord: 1
+--- !u!114 &1586095487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586095473}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0ed6c9d18b8a6440930fd5d36671e53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PunctuationQuiz
+  bubbleMessageText: {fileID: 1257937990}
+  translationText: {fileID: 2077778574}
+  typingSessionText: {fileID: 1155271827}
+  categoryText: {fileID: 1716768801}
+  livePatternText: {fileID: 1697798612}
+  lessonImage: {fileID: 286661654}
+  answerStateImage: {fileID: 2047379756}
+  correctStateSprite: {fileID: -4207999480553683411, guid: 4e35d4a30fee8cc4580f2983361350b4, type: 3}
+  wrongStateSprite: {fileID: 7071201414940298460, guid: bee3415c56ef4054aa185675bb6dc185, type: 3}
+  hideAnswerStateAtStart: 1
+  fixScoreText: {fileID: 1777884057}
+  wrongScoreText: {fileID: 1070165176}
+  totalScoreText: {fileID: 1113401178}
+  highScoreText: {fileID: 1262590508}
+  fixedScore: 100
+  deductionPerMistake: 1
+  highScoreKey: PunctuationQuizHighScore
+  voiceAudioSource: {fileID: 1586095478}
+  welcomeAudio: {fileID: 8300000, guid: bc15668749d26244aadb1c7703260971, type: 3}
+  letsLearnAudio: {fileID: 8300000, guid: 0ad21cb80fc126f4aa7202a671931cae, type: 3}
+  genericCorrectAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
+  genericTryAgainAudio: {fileID: 8300000, guid: dd615f4eef83e3b49b22a11445f9b6d6, type: 3}
+  genericCompletedAudio: {fileID: 8300000, guid: 2f7d33b29a77ed647a2cf5848dae96c9, type: 3}
+  repeatQuestionAudio: {fileID: 8300000, guid: c9027ba7d2c5243479dc0445bb05dbd7, type: 3}
+  yourScoreIsAudio: {fileID: 8300000, guid: 87b8db9fefb037c45a47d8c5dfa472c3, type: 3}
+  whileYourHighestScoreIsAudio: {fileID: 8300000, guid: 0d6892ffde47dba4ab52e7a334aeff53, type: 3}
+  numberAudios:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: 21a469d6598c3204ab82b509e42e89f8, type: 3}
+  - {fileID: 8300000, guid: 5bd190e14c182b24d9e04c61a35f3b29, type: 3}
+  - {fileID: 8300000, guid: c6f4937e92350a04a82d4bd76eef52ba, type: 3}
+  - {fileID: 8300000, guid: 701a3679a01f84e43aa1fa9d4a3c0785, type: 3}
+  - {fileID: 8300000, guid: bde38e84ced6de84cb95115723d7bdf4, type: 3}
+  - {fileID: 8300000, guid: fe9932ae0117e154d998e51d9ed611e0, type: 3}
+  - {fileID: 8300000, guid: f9c3c9338c8ce6a4a8497117f987d318, type: 3}
+  - {fileID: 8300000, guid: ee8cfcb8b3588954ea24c10457255924, type: 3}
+  - {fileID: 8300000, guid: 7dac08d99a43ee2409fdc9bb386adf9c, type: 3}
+  - {fileID: 8300000, guid: 65fabefe77170f948ba6088e0e5a0f95, type: 3}
+  - {fileID: 8300000, guid: 6a0ec25b8a422c646b399ddcae7b2c62, type: 3}
+  - {fileID: 8300000, guid: 437fe84d57fc7f64cad7d56e2a8c9a89, type: 3}
+  - {fileID: 8300000, guid: 0d5771525d0e1814ab6d369e7eb1c3ba, type: 3}
+  - {fileID: 8300000, guid: 8881ea521aa0c7a4f9ae441c637350e6, type: 3}
+  - {fileID: 8300000, guid: e8c2b8bd9bd8f9e428347c57e9710cd4, type: 3}
+  - {fileID: 8300000, guid: 09027ef61068784478c1b32badf50904, type: 3}
+  - {fileID: 8300000, guid: e8c38c6593d87944187086e01dbfdb98, type: 3}
+  - {fileID: 8300000, guid: 31becc0a3e7892e468b4ac4372db4882, type: 3}
+  - {fileID: 8300000, guid: caf77e0d1f468b64ab86183d4318a7f8, type: 3}
+  - {fileID: 8300000, guid: 579c9253f6a5be6499ca8a1851d07f90, type: 3}
+  welcomeMessage: Welcome to PunctuQuest!
+  letsLearnMessage: Let's put your knowledge to the test.
+  completedMessage: Congratulation! You did an amazing job.
+  repeatQuestionMessage: You finished your journey on Punctuquest. Do you want to
+    repeat again? Press R to repeat or Y to finish.
+  lessons:
+  - displayLabel: Who are you?
+    categoryLabel: 
+    promptMessage: The first sentence you're going to construct with proper punctuations
+      is "Who are you?"
+    repeatMessage: The first sentence you're going to construct with proper punctuations
+      is "Who are you?"
+    successMessage: Who are you? That is correct.
+    wrongMessage: That is wrong try again.
+    lessonKind: 1
+    dots: 
+    expectedSequencePatterns:
+    - 000001
+    - 010111
+    - 110010
+    - 101010
+    - 000000
+    - 100000
+    - 111010
+    - 100010
+    - 000000
+    - 101111
+    - 101010
+    - 101001
+    - 011001
+    expectedSequenceNames:
+    - ^
+    - W
+    - h
+    - o
+    - ' '
+    - a
+    - r
+    - e
+    - ' '
+    - y
+    - o
+    - u
+    - '?'
+    lessonSprite: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: 91745bc44cbfd3a4a880d6f47fc88ab5, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 1dc1eddc7b1377742aa0e71a7e809d5f, type: 3}
+    sequenceStepAudios:
+    - {fileID: 8300000, guid: 4ba2e5887cbe6344e913162a81a4328f, type: 3}
+    sequenceStepMessages: []
+    sequenceStepWrongAudios:
+    - {fileID: 8300000, guid: 548d6c08eeb8a384b8c07f088e2c60b5, type: 3}
+    - {fileID: 8300000, guid: 427bd2285e5530b4da866614035d43df, type: 3}
+    - {fileID: 8300000, guid: 50552a1520abf24499d639061b2c2da5, type: 3}
+    - {fileID: 8300000, guid: 4aa40de616ef2574d9ae0a705f6e033c, type: 3}
+    - {fileID: 8300000, guid: 71fc71f99dd771044a68b3a2c372f341, type: 3}
+    - {fileID: 8300000, guid: c436d7cef08bae043bdb3a807c5e431c, type: 3}
+    - {fileID: 8300000, guid: 4c345551e9f7d5f46bb2b0ab4562651a, type: 3}
+    - {fileID: 8300000, guid: f62eb7bc6c00e5246bf7666f6054df1b, type: 3}
+    - {fileID: 8300000, guid: 71fc71f99dd771044a68b3a2c372f341, type: 3}
+    - {fileID: 8300000, guid: 6fd4c1dbf8377cf4e91ed23fa5e81ac3, type: 3}
+    - {fileID: 8300000, guid: 4aa40de616ef2574d9ae0a705f6e033c, type: 3}
+    - {fileID: 8300000, guid: 4bd3c0fbe4401744999a44a86cdc1089, type: 3}
+    - {fileID: 8300000, guid: df618e04bb3345e4db22ea650be79ddd, type: 3}
+    sequenceStepWrongMessages:
+    - Remember, to capitalize a letter you have to press dot 6 before the letter.
+    - Remember W uses dots number 2, 4, 5&6.
+    - Remember H uses dots number 1, 2&5.
+    - Remember O uses dots number 1, 3&5.
+    - You forgot to add space before the preceding word.
+    - Remember A uses dot number 1.
+    - Remember R uses dots number 1, 2, 3&5.
+    - Remember E uses dots number 1&5.
+    - You forgot to add space before the preceding word.
+    - Remember Y uses dots number 1, 3, 4, 5&6.
+    - Remember O uses dots number 1, 3&5.
+    - Remember U uses dots number 1, 3&6.
+    - Remember, Question Mark uses dots number 1, 2&6.
+    supportMessage: 
+    supportAudio: {fileID: 0}
+  - displayLabel: I said stop!
+    categoryLabel: 
+    promptMessage: The next sentence you're going to construct with proper punctuations
+      is "I said stop!"
+    repeatMessage: The next sentence you're going to construct with proper punctuations
+      is "I said stop!"
+    successMessage: I said stop! That is correct.
+    wrongMessage: That is wrong try again.
+    lessonKind: 1
+    dots: 
+    expectedSequencePatterns:
+    - 000001
+    - 010100
+    - 000000
+    - 011100
+    - 100000
+    - 010100
+    - 100110
+    - 000000
+    - 011100
+    - 011110
+    - 101010
+    - 111100
+    - 011010
+    expectedSequenceNames:
+    - ^
+    - I
+    - ' '
+    - s
+    - a
+    - i
+    - d
+    - ' '
+    - s
+    - t
+    - o
+    - p
+    - '!'
+    lessonSprite: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: 8114cfc94ee116842aec96db3b38dba7, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: b34ef92df6017444cbb05b8e1bd7fd05, type: 3}
+    sequenceStepAudios:
+    - {fileID: 8300000, guid: 871ab894861905647ab1effe6b65fbf0, type: 3}
+    sequenceStepMessages: []
+    sequenceStepWrongAudios:
+    - {fileID: 8300000, guid: 548d6c08eeb8a384b8c07f088e2c60b5, type: 3}
+    - {fileID: 8300000, guid: 0eefbe340b1883d468cef4ba68362eda, type: 3}
+    - {fileID: 8300000, guid: 71fc71f99dd771044a68b3a2c372f341, type: 3}
+    - {fileID: 8300000, guid: c9d273653d1d7dd41a349fb8dc2a5404, type: 3}
+    - {fileID: 8300000, guid: c436d7cef08bae043bdb3a807c5e431c, type: 3}
+    - {fileID: 8300000, guid: 0eefbe340b1883d468cef4ba68362eda, type: 3}
+    - {fileID: 8300000, guid: f5e0964230ec8e348b70b31e49c4be26, type: 3}
+    - {fileID: 8300000, guid: 71fc71f99dd771044a68b3a2c372f341, type: 3}
+    - {fileID: 8300000, guid: c9d273653d1d7dd41a349fb8dc2a5404, type: 3}
+    - {fileID: 8300000, guid: ab2837d49111b064eaa335532bf4935b, type: 3}
+    - {fileID: 8300000, guid: 4aa40de616ef2574d9ae0a705f6e033c, type: 3}
+    - {fileID: 8300000, guid: 1fc7322b8f1714f47bef6c284dbffa02, type: 3}
+    - {fileID: 8300000, guid: 48c1895a39a9d40489ca68309e5bb8b9, type: 3}
+    sequenceStepWrongMessages:
+    - Remember, to capitalize a letter you have to press dot 6 before the letter.
+    - Remember I uses dots number 2&5.
+    - You forgot to add space before the preceding word.
+    - Remember S uses dots number 2, 3&4.
+    - Remember A uses dot number 1.
+    - Remember I uses dots number 2&5.
+    - Remember D uses dots number 1, 4&5.
+    - You forgot to add space before the preceding word.
+    - Remember S uses dots number 2, 3&4.
+    - Remember T uses dots number 2, 3, 4&5.
+    - Remember O uses dots number 1, 3&5.
+    - Remember P uses dots number 1, 2, 3&4.
+    - Remember, Exclamation Point uses dots number 3, 4&5.
+    supportMessage: 
+    supportAudio: {fileID: 0}
+  - displayLabel: I love my mom, dad, and siblings.
+    categoryLabel: 
+    promptMessage: The next sentence you're going to construct with proper punctuations
+      is "I love my mom, dad, and siblings."
+    repeatMessage: The next sentence you're going to construct with proper punctuations
+      is "I love my mom, dad, and siblings."
+    successMessage: I love my mom, dad, and siblings. That is correct.
+    wrongMessage: That is wrong try again.
+    lessonKind: 1
+    dots: 
+    expectedSequencePatterns:
+    - 000001
+    - 010100
+    - 000000
+    - 111000
+    - 101010
+    - 111001
+    - 100010
+    - 000000
+    - 101100
+    - 101111
+    - 000000
+    - 101100
+    - 101010
+    - 101100
+    - 010000
+    - 000000
+    - 100110
+    - 100000
+    - 100110
+    - 010000
+    - 000000
+    - 100000
+    - 101110
+    - 100110
+    - 000000
+    - 011100
+    - 010100
+    - 110000
+    - 111000
+    - 010100
+    - 101110
+    - 110110
+    - 011100
+    - 010011
+    expectedSequenceNames:
+    - ^
+    - I
+    - ' '
+    - l
+    - o
+    - v
+    - e
+    - ' '
+    - m
+    - y
+    - ' '
+    - m
+    - o
+    - m
+    - ','
+    - ' '
+    - d
+    - a
+    - d
+    - ','
+    - ' '
+    - a
+    - n
+    - d
+    - ' '
+    - s
+    - i
+    - b
+    - l
+    - i
+    - n
+    - g
+    - s
+    - .
+    lessonSprite: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: cbeb301a5bdc2b84c94e6b78d1570e81, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 8ac985fd59a4908478748fbf4bf0ba95, type: 3}
+    sequenceStepAudios:
+    - {fileID: 8300000, guid: 56f248bd33c5c27439b3b9dd9efc8e15, type: 3}
+    sequenceStepMessages: []
+    sequenceStepWrongAudios:
+    - {fileID: 8300000, guid: 54a37840daa69df4280d6d45fc911ecd, type: 3}
+    - {fileID: 8300000, guid: 0eefbe340b1883d468cef4ba68362eda, type: 3}
+    - {fileID: 8300000, guid: 71fc71f99dd771044a68b3a2c372f341, type: 3}
+    - {fileID: 8300000, guid: 59a4c0b922ab767489f38ae4350a0fbe, type: 3}
+    - {fileID: 8300000, guid: 4aa40de616ef2574d9ae0a705f6e033c, type: 3}
+    - {fileID: 8300000, guid: 4e7a073ec47a2754fa4fee77ff315cab, type: 3}
+    - {fileID: 8300000, guid: f62eb7bc6c00e5246bf7666f6054df1b, type: 3}
+    - {fileID: 8300000, guid: 71fc71f99dd771044a68b3a2c372f341, type: 3}
+    - {fileID: 8300000, guid: caae83a2734c0eb46af374e01cb9dd32, type: 3}
+    - {fileID: 8300000, guid: 6fd4c1dbf8377cf4e91ed23fa5e81ac3, type: 3}
+    - {fileID: 8300000, guid: 71fc71f99dd771044a68b3a2c372f341, type: 3}
+    - {fileID: 8300000, guid: caae83a2734c0eb46af374e01cb9dd32, type: 3}
+    - {fileID: 8300000, guid: 4aa40de616ef2574d9ae0a705f6e033c, type: 3}
+    - {fileID: 8300000, guid: caae83a2734c0eb46af374e01cb9dd32, type: 3}
+    - {fileID: 8300000, guid: cc7ccdd08a05db444b2edc82abf3f370, type: 3}
+    - {fileID: 8300000, guid: 71fc71f99dd771044a68b3a2c372f341, type: 3}
+    - {fileID: 8300000, guid: f5e0964230ec8e348b70b31e49c4be26, type: 3}
+    - {fileID: 8300000, guid: c436d7cef08bae043bdb3a807c5e431c, type: 3}
+    - {fileID: 8300000, guid: f5e0964230ec8e348b70b31e49c4be26, type: 3}
+    - {fileID: 8300000, guid: cc7ccdd08a05db444b2edc82abf3f370, type: 3}
+    - {fileID: 8300000, guid: 71fc71f99dd771044a68b3a2c372f341, type: 3}
+    - {fileID: 8300000, guid: c436d7cef08bae043bdb3a807c5e431c, type: 3}
+    - {fileID: 8300000, guid: c2cdf06d423bd6a489bb5fe76ba49335, type: 3}
+    - {fileID: 8300000, guid: f5e0964230ec8e348b70b31e49c4be26, type: 3}
+    - {fileID: 8300000, guid: 71fc71f99dd771044a68b3a2c372f341, type: 3}
+    - {fileID: 8300000, guid: c9d273653d1d7dd41a349fb8dc2a5404, type: 3}
+    - {fileID: 8300000, guid: 0eefbe340b1883d468cef4ba68362eda, type: 3}
+    - {fileID: 8300000, guid: 6c336e76fcd6bbb46a74ce59425d5c49, type: 3}
+    - {fileID: 8300000, guid: 59a4c0b922ab767489f38ae4350a0fbe, type: 3}
+    - {fileID: 8300000, guid: 0eefbe340b1883d468cef4ba68362eda, type: 3}
+    - {fileID: 8300000, guid: c2cdf06d423bd6a489bb5fe76ba49335, type: 3}
+    - {fileID: 8300000, guid: f8eff2f2e5d0b2e4fac58678cea0c64e, type: 3}
+    - {fileID: 8300000, guid: c9d273653d1d7dd41a349fb8dc2a5404, type: 3}
+    - {fileID: 8300000, guid: 8396c2d9e7749954dbea78ac379aa1c3, type: 3}
+    sequenceStepWrongMessages:
+    - Remember, you have to capitalize the word "I" when using it in a sentence.
+    - Remember I uses dots number 2&5.
+    - Remember, you have to capitalize the word "I" when using it in a sentence.
+    - Remember L uses dots number 1, 2&3.
+    - Remember O uses dots number 1, 3&5.
+    - Remember V uses dots number 1, 2&5.
+    - Remember E uses dots number 1&5.
+    - Remember, you have to capitalize the word "I" when using it in a sentence.
+    - Remember M uses dots number 1, 3&4.
+    - Remember Y uses dots number 1, 3, 4, 5&6.
+    - You forgot to add space before the preceding word.
+    - Remember M uses dots number 1, 3&4.
+    - Remember O uses dots number 1, 3&5.
+    - Remember M uses dots number 1, 3&4.
+    - Remember, Comma uses dot number 2.
+    - Remember, you have to capitalize the word "I" when using it in a sentence.
+    - Remember D uses dots number 1, 4&5.
+    - Remember A uses dot number 1.
+    - Remember D uses dots number 1, 4&5.
+    - Remember, Comma uses dot number 2.
+    - Remember, you have to capitalize the word "I" when using it in a sentence.
+    - Remember A uses dot number 1.
+    - Remember N uses dots number 1, 3, 4&5.
+    - Remember D uses dots number 1, 4&5.
+    - Remember, you have to capitalize the word "I" when using it in a sentence.
+    - Remember S uses dots number 2, 3&4.
+    - Remember I uses dots number 2&5.
+    - Remember B uses dots number 1&2.
+    - Remember L uses dots number 1, 2&3.
+    - Remember I uses dots number 2&5.
+    - Remember N uses dots number 1, 3, 4&5.
+    - Remember G uses dots number 1, 2, 4&5.
+    - Remember S uses dots number 2, 3&4.
+    - Remember, you have to use period to end a sentence and period uses dots number
+      2, 5&6.
+    supportMessage: 
+    supportAudio: {fileID: 0}
+  - displayLabel: Wait, I have to jump?
+    categoryLabel: 
+    promptMessage: The next sentence you're going to construct with proper punctuations
+      is "Wait, I have to jump?"
+    repeatMessage: The next sentence you're going to construct with proper punctuations
+      is "Wait, I have to jump?"
+    successMessage: Wait, I have to jump? That is correct.
+    wrongMessage: That is wrong try again.
+    lessonKind: 1
+    dots: 
+    expectedSequencePatterns:
+    - 000001
+    - 010111
+    - 100000
+    - 010100
+    - 011110
+    - 010000
+    - 000000
+    - 000001
+    - 010100
+    - 000000
+    - 110010
+    - 100000
+    - 111001
+    - 100010
+    - 000000
+    - 011110
+    - 101010
+    - 000000
+    - 010110
+    - 101001
+    - 101100
+    - 111100
+    - 011001
+    expectedSequenceNames:
+    - ^
+    - W
+    - a
+    - i
+    - t
+    - ','
+    - ' '
+    - ^
+    - I
+    - ' '
+    - h
+    - a
+    - v
+    - e
+    - ' '
+    - t
+    - o
+    - ' '
+    - j
+    - u
+    - m
+    - p
+    - '?'
+    lessonSprite: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: cd95d89c3a561254baf5866a6a1e27e8, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: f4f0ff019dc4263478d0076296b461d5, type: 3}
+    sequenceStepAudios:
+    - {fileID: 8300000, guid: 383a037054418954eaaf75a2a804d371, type: 3}
+    sequenceStepMessages: []
+    sequenceStepWrongAudios:
+    - {fileID: 8300000, guid: 548d6c08eeb8a384b8c07f088e2c60b5, type: 3}
+    - {fileID: 8300000, guid: 427bd2285e5530b4da866614035d43df, type: 3}
+    - {fileID: 8300000, guid: c436d7cef08bae043bdb3a807c5e431c, type: 3}
+    - {fileID: 8300000, guid: 0eefbe340b1883d468cef4ba68362eda, type: 3}
+    - {fileID: 8300000, guid: ab2837d49111b064eaa335532bf4935b, type: 3}
+    - {fileID: 8300000, guid: cc7ccdd08a05db444b2edc82abf3f370, type: 3}
+    - {fileID: 8300000, guid: 71fc71f99dd771044a68b3a2c372f341, type: 3}
+    - {fileID: 8300000, guid: 54a37840daa69df4280d6d45fc911ecd, type: 3}
+    - {fileID: 8300000, guid: 0eefbe340b1883d468cef4ba68362eda, type: 3}
+    - {fileID: 8300000, guid: 71fc71f99dd771044a68b3a2c372f341, type: 3}
+    - {fileID: 8300000, guid: 50552a1520abf24499d639061b2c2da5, type: 3}
+    - {fileID: 8300000, guid: c436d7cef08bae043bdb3a807c5e431c, type: 3}
+    - {fileID: 8300000, guid: 4e7a073ec47a2754fa4fee77ff315cab, type: 3}
+    - {fileID: 8300000, guid: f62eb7bc6c00e5246bf7666f6054df1b, type: 3}
+    - {fileID: 8300000, guid: 71fc71f99dd771044a68b3a2c372f341, type: 3}
+    - {fileID: 8300000, guid: ab2837d49111b064eaa335532bf4935b, type: 3}
+    - {fileID: 8300000, guid: 4aa40de616ef2574d9ae0a705f6e033c, type: 3}
+    - {fileID: 8300000, guid: 71fc71f99dd771044a68b3a2c372f341, type: 3}
+    - {fileID: 8300000, guid: 144671f386118cd47a135fe052492ffe, type: 3}
+    - {fileID: 8300000, guid: 4bd3c0fbe4401744999a44a86cdc1089, type: 3}
+    - {fileID: 8300000, guid: caae83a2734c0eb46af374e01cb9dd32, type: 3}
+    - {fileID: 8300000, guid: 1fc7322b8f1714f47bef6c284dbffa02, type: 3}
+    - {fileID: 8300000, guid: df618e04bb3345e4db22ea650be79ddd, type: 3}
+    sequenceStepWrongMessages:
+    - Remember, you have to capitalize the word "I" when using it in a sentence.
+    - Remember I uses dots number 2&5.
+    - Remember, you have to capitalize the word "I" when using it in a sentence.
+    - Remember L uses dots number 1, 2&3.
+    - Remember O uses dots number 1, 3&5.
+    - Remember V uses dots number 1, 2&5.
+    - Remember E uses dots number 1&5.
+    - Remember, you have to capitalize the word "I" when using it in a sentence.
+    - Remember M uses dots number 1, 3&4.
+    - Remember Y uses dots number 1, 3, 4, 5&6.
+    - You forgot to add space before the preceding word.
+    - Remember M uses dots number 1, 3&4.
+    - Remember O uses dots number 1, 3&5.
+    - Remember M uses dots number 1, 3&4.
+    - Remember, Comma uses dot number 2.
+    - Remember, you have to capitalize the word "I" when using it in a sentence.
+    - Remember D uses dots number 1, 4&5.
+    - Remember A uses dot number 1.
+    - Remember D uses dots number 1, 4&5.
+    - Remember, Comma uses dot number 2.
+    - Remember, you have to capitalize the word "I" when using it in a sentence.
+    - Remember A uses dot number 1.
+    - Remember N uses dots number 1, 3, 4&5.
+    supportMessage: 
+    supportAudio: {fileID: 0}
+  - displayLabel: You have to do it.
+    categoryLabel: 
+    promptMessage: The next sentence you're going to construct with proper punctuations
+      is "You have to do it."
+    repeatMessage: The next sentence you're going to construct with proper punctuations
+      is "You have to do it."
+    successMessage: You have to do it. That is correct.
+    wrongMessage: That is wrong try again.
+    lessonKind: 1
+    dots: 
+    expectedSequencePatterns:
+    - 000001
+    - 101111
+    - 101010
+    - 101001
+    - 000000
+    - 110010
+    - 100000
+    - 111001
+    - 100010
+    - 000000
+    - 011110
+    - 101010
+    - 000000
+    - 100110
+    - 101010
+    - 000000
+    - 010100
+    - 011110
+    - 010011
+    expectedSequenceNames:
+    - ^
+    - Y
+    - o
+    - u
+    - ' '
+    - h
+    - a
+    - v
+    - e
+    - ' '
+    - t
+    - o
+    - ' '
+    - d
+    - o
+    - ' '
+    - i
+    - t
+    - .
+    lessonSprite: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: 9a214284adb915c4aa33ffe450715e78, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 5320a51b9cd92f94a844ed5b65712af6, type: 3}
+    sequenceStepAudios:
+    - {fileID: 8300000, guid: 69e7788707d7603418b80c26a5ef488f, type: 3}
+    sequenceStepMessages: []
+    sequenceStepWrongAudios:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    sequenceStepWrongMessages:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    supportMessage: 
+    supportAudio: {fileID: 0}
+  - displayLabel: I will listen, tell me.
+    categoryLabel: 
+    promptMessage: The next sentence you're going to construct with proper punctuations
+      is "I will listen, tell me."
+    repeatMessage: The next sentence you're going to construct with proper punctuations
+      is "I will listen, tell me."
+    successMessage: I will listen, tell me. That is correct.
+    wrongMessage: That is wrong try again.
+    lessonKind: 1
+    dots: 
+    expectedSequencePatterns:
+    - 000001
+    - 010100
+    - 000000
+    - 010111
+    - 010100
+    - 111000
+    - 111000
+    - 000000
+    - 111000
+    - 010100
+    - 011100
+    - 011110
+    - 100010
+    - 101110
+    - 010000
+    - 000000
+    - 011110
+    - 100010
+    - 111000
+    - 111000
+    - 000000
+    - 101100
+    - 100010
+    - 010011
+    expectedSequenceNames:
+    - ^
+    - I
+    - ' '
+    - w
+    - i
+    - l
+    - l
+    - ' '
+    - l
+    - i
+    - s
+    - t
+    - e
+    - n
+    - ','
+    - ' '
+    - t
+    - e
+    - l
+    - l
+    - ' '
+    - m
+    - e
+    - .
+    lessonSprite: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: 4c7bf2792cccb1a44bb7a50037f57611, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 3baa32ea5c533b34fbcbe420d67065b3, type: 3}
+    sequenceStepAudios:
+    - {fileID: 8300000, guid: 7546e0601cc435843b77a82dbd653218, type: 3}
+    sequenceStepMessages: []
+    sequenceStepWrongAudios:
+    - {fileID: 8300000, guid: 54a37840daa69df4280d6d45fc911ecd, type: 3}
+    - {fileID: 8300000, guid: 0eefbe340b1883d468cef4ba68362eda, type: 3}
+    - {fileID: 8300000, guid: 71fc71f99dd771044a68b3a2c372f341, type: 3}
+    - {fileID: 8300000, guid: 427bd2285e5530b4da866614035d43df, type: 3}
+    - {fileID: 8300000, guid: 0eefbe340b1883d468cef4ba68362eda, type: 3}
+    - {fileID: 8300000, guid: 59a4c0b922ab767489f38ae4350a0fbe, type: 3}
+    - {fileID: 8300000, guid: 59a4c0b922ab767489f38ae4350a0fbe, type: 3}
+    - {fileID: 8300000, guid: 71fc71f99dd771044a68b3a2c372f341, type: 3}
+    - {fileID: 8300000, guid: 59a4c0b922ab767489f38ae4350a0fbe, type: 3}
+    - {fileID: 8300000, guid: 0eefbe340b1883d468cef4ba68362eda, type: 3}
+    - {fileID: 8300000, guid: c9d273653d1d7dd41a349fb8dc2a5404, type: 3}
+    - {fileID: 8300000, guid: ab2837d49111b064eaa335532bf4935b, type: 3}
+    - {fileID: 8300000, guid: f62eb7bc6c00e5246bf7666f6054df1b, type: 3}
+    - {fileID: 8300000, guid: c2cdf06d423bd6a489bb5fe76ba49335, type: 3}
+    - {fileID: 8300000, guid: cc7ccdd08a05db444b2edc82abf3f370, type: 3}
+    - {fileID: 8300000, guid: 71fc71f99dd771044a68b3a2c372f341, type: 3}
+    - {fileID: 8300000, guid: ab2837d49111b064eaa335532bf4935b, type: 3}
+    - {fileID: 8300000, guid: f62eb7bc6c00e5246bf7666f6054df1b, type: 3}
+    - {fileID: 8300000, guid: 59a4c0b922ab767489f38ae4350a0fbe, type: 3}
+    - {fileID: 8300000, guid: 59a4c0b922ab767489f38ae4350a0fbe, type: 3}
+    - {fileID: 8300000, guid: 71fc71f99dd771044a68b3a2c372f341, type: 3}
+    - {fileID: 8300000, guid: caae83a2734c0eb46af374e01cb9dd32, type: 3}
+    - {fileID: 8300000, guid: f62eb7bc6c00e5246bf7666f6054df1b, type: 3}
+    - {fileID: 8300000, guid: 8396c2d9e7749954dbea78ac379aa1c3, type: 3}
+    sequenceStepWrongMessages:
+    - Remember, to capitalize a letter you have to press dot 6 before the letter.
+    - Remember I uses dots number 2&5.
+    - You forgot to add space before the preceding word.
+    - Remember W uses dots number 2, 4, 5&6.
+    - Remember I uses dots number 2&5.
+    - Remember L uses dots number 1, 2&3.
+    - Remember L uses dots number 1, 2&3.
+    - You forgot to add space before the preceding word.
+    - Remember L uses dots number 1, 2&3.
+    - Remember I uses dots number 2&5.
+    - Remember S uses dots number 2, 3&4.
+    - Remember T uses dots number 2, 3, 4&5.
+    - Remember E uses dots number 1&5.
+    - Remember N uses dots number 1, 3, 4&5.
+    - Remember, Comma uses dot number 2.
+    - You forgot to add space before the preceding word.
+    - Remember T uses dots number 2, 3, 4&5.
+    - Remember E uses dots number 1&5.
+    - Remember L uses dots number 1, 2&3.
+    - Remember L uses dots number 1, 2&3.
+    - You forgot to add space before the preceding word.
+    - Remember M uses dots number 1, 3&4.
+    - Remember E uses dots number 1&5.
+    - Remember, you have to use period to end a sentence and period uses dots number
+      2, 5&6.
+    supportMessage: 
+    supportAudio: {fileID: 0}
+  - displayLabel: Really? I could join?
+    categoryLabel: 
+    promptMessage: The next sentence you're going to construct with proper punctuations
+      is "Really? I could join?"
+    repeatMessage: The next sentence you're going to construct with proper punctuations
+      is "Really? I could join?"
+    successMessage: Really? I could join? That is correct.
+    wrongMessage: That is wrong try again.
+    lessonKind: 1
+    dots: 
+    expectedSequencePatterns:
+    - 000001
+    - 111010
+    - 100010
+    - 100000
+    - 111000
+    - 111000
+    - 101111
+    - 011001
+    - 000000
+    - 000001
+    - 010100
+    - 000000
+    - 100100
+    - 101010
+    - 101001
+    - 111000
+    - 100110
+    - 000000
+    - 010110
+    - 101010
+    - 010100
+    - 101110
+    - 011001
+    expectedSequenceNames:
+    - ^
+    - R
+    - e
+    - a
+    - l
+    - l
+    - y
+    - '?'
+    - ' '
+    - ^
+    - I
+    - ' '
+    - c
+    - o
+    - u
+    - l
+    - d
+    - ' '
+    - j
+    - o
+    - i
+    - n
+    - '?'
+    lessonSprite: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: 5ac5ee2dcfe49e5468cc8ae2f0387924, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 54f1bacbaa69ea24db46dc7447e4a075, type: 3}
+    sequenceStepAudios:
+    - {fileID: 8300000, guid: e60bd54ca312d664ba46fb9de8ad9659, type: 3}
+    sequenceStepMessages: []
+    sequenceStepWrongAudios:
+    - {fileID: 8300000, guid: 548d6c08eeb8a384b8c07f088e2c60b5, type: 3}
+    - {fileID: 8300000, guid: 4c345551e9f7d5f46bb2b0ab4562651a, type: 3}
+    - {fileID: 8300000, guid: f62eb7bc6c00e5246bf7666f6054df1b, type: 3}
+    - {fileID: 8300000, guid: c436d7cef08bae043bdb3a807c5e431c, type: 3}
+    - {fileID: 8300000, guid: 59a4c0b922ab767489f38ae4350a0fbe, type: 3}
+    - {fileID: 8300000, guid: 59a4c0b922ab767489f38ae4350a0fbe, type: 3}
+    - {fileID: 8300000, guid: 6fd4c1dbf8377cf4e91ed23fa5e81ac3, type: 3}
+    - {fileID: 8300000, guid: df618e04bb3345e4db22ea650be79ddd, type: 3}
+    - {fileID: 8300000, guid: 71fc71f99dd771044a68b3a2c372f341, type: 3}
+    - {fileID: 8300000, guid: 54a37840daa69df4280d6d45fc911ecd, type: 3}
+    - {fileID: 8300000, guid: 0eefbe340b1883d468cef4ba68362eda, type: 3}
+    - {fileID: 8300000, guid: 71fc71f99dd771044a68b3a2c372f341, type: 3}
+    - {fileID: 8300000, guid: 46ba9ba3959663748bc3e70f5f69a3d1, type: 3}
+    - {fileID: 8300000, guid: 4aa40de616ef2574d9ae0a705f6e033c, type: 3}
+    - {fileID: 8300000, guid: 4bd3c0fbe4401744999a44a86cdc1089, type: 3}
+    - {fileID: 8300000, guid: 59a4c0b922ab767489f38ae4350a0fbe, type: 3}
+    - {fileID: 8300000, guid: f5e0964230ec8e348b70b31e49c4be26, type: 3}
+    - {fileID: 8300000, guid: 71fc71f99dd771044a68b3a2c372f341, type: 3}
+    - {fileID: 8300000, guid: 144671f386118cd47a135fe052492ffe, type: 3}
+    - {fileID: 8300000, guid: 4aa40de616ef2574d9ae0a705f6e033c, type: 3}
+    - {fileID: 8300000, guid: 0eefbe340b1883d468cef4ba68362eda, type: 3}
+    - {fileID: 8300000, guid: c2cdf06d423bd6a489bb5fe76ba49335, type: 3}
+    - {fileID: 8300000, guid: df618e04bb3345e4db22ea650be79ddd, type: 3}
+    sequenceStepWrongMessages:
+    - Remember, to capitalize a letter you have to press dot 6 before the letter.
+    - Remember R uses dots number 1, 2, 3&5.
+    - Remember E uses dots number 1&5.
+    - Remember A uses dot number 1.
+    - Remember L uses dots number 1, 2&3.
+    - Remember L uses dots number 1, 2&3.
+    - Remember Y uses dots number 1, 3, 4, 5&6.
+    - Remember, Question Mark uses dots number 1, 2&6.
+    - You forgot to add space before the preceding word.
+    - Remember, you have to capitalize the word "I" when using it in a sentence.
+    - Remember I uses dots number 2&5.
+    - You forgot to add space before the preceding word.
+    - Remember C uses dots number 1&4.
+    - Remember O uses dots number 1, 3&5.
+    - Remember U uses dots number 1, 3&6.
+    - Remember L uses dots number 1, 2&3.
+    - Remember D uses dots number 1, 4&5.
+    - You forgot to add space before the preceding word.
+    - Remember J uses dots number 2, 4&5.
+    - Remember O uses dots number 1, 3&5.
+    - Remember I uses dots number 2&5.
+    - Remember N uses dots number 1, 3, 4&5.
+    - Remember, Question Mark uses dots number 1, 2&6.
+    supportMessage: 
+    supportAudio: {fileID: 0}
+  - displayLabel: She tried her best.
+    categoryLabel: 
+    promptMessage: The next sentence you're going to construct with proper punctuations
+      is "She tried her best."
+    repeatMessage: The next sentence you're going to construct with proper punctuations
+      is "She tried her best."
+    successMessage: She tried her best. That is correct.
+    wrongMessage: That is wrong try again.
+    lessonKind: 1
+    dots: 
+    expectedSequencePatterns:
+    - 000001
+    - 011100
+    - 110010
+    - 100010
+    - 000000
+    - 011110
+    - 111010
+    - 010100
+    - 100010
+    - 100110
+    - 000000
+    - 110010
+    - 100010
+    - 111010
+    - 000000
+    - 110000
+    - 100010
+    - 011100
+    - 011110
+    - 010011
+    expectedSequenceNames:
+    - ^
+    - S
+    - h
+    - e
+    - ' '
+    - t
+    - r
+    - i
+    - e
+    - d
+    - ' '
+    - h
+    - e
+    - r
+    - ' '
+    - b
+    - e
+    - s
+    - t
+    - .
+    lessonSprite: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: 7ee647c492c5b144b9272fa0a5aeffa0, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 27702c2aabc1e4b4a806781a6bd23652, type: 3}
+    sequenceStepAudios:
+    - {fileID: 8300000, guid: 3734c81587db57349a9e6afb981eab0d, type: 3}
+    sequenceStepMessages: []
+    sequenceStepWrongAudios:
+    - {fileID: 8300000, guid: 548d6c08eeb8a384b8c07f088e2c60b5, type: 3}
+    - {fileID: 8300000, guid: c9d273653d1d7dd41a349fb8dc2a5404, type: 3}
+    - {fileID: 8300000, guid: 50552a1520abf24499d639061b2c2da5, type: 3}
+    - {fileID: 8300000, guid: f62eb7bc6c00e5246bf7666f6054df1b, type: 3}
+    - {fileID: 8300000, guid: 71fc71f99dd771044a68b3a2c372f341, type: 3}
+    - {fileID: 8300000, guid: ab2837d49111b064eaa335532bf4935b, type: 3}
+    - {fileID: 8300000, guid: 4c345551e9f7d5f46bb2b0ab4562651a, type: 3}
+    - {fileID: 8300000, guid: 0eefbe340b1883d468cef4ba68362eda, type: 3}
+    - {fileID: 8300000, guid: f62eb7bc6c00e5246bf7666f6054df1b, type: 3}
+    - {fileID: 8300000, guid: f5e0964230ec8e348b70b31e49c4be26, type: 3}
+    - {fileID: 8300000, guid: 71fc71f99dd771044a68b3a2c372f341, type: 3}
+    - {fileID: 8300000, guid: 50552a1520abf24499d639061b2c2da5, type: 3}
+    - {fileID: 8300000, guid: f62eb7bc6c00e5246bf7666f6054df1b, type: 3}
+    - {fileID: 8300000, guid: 4c345551e9f7d5f46bb2b0ab4562651a, type: 3}
+    - {fileID: 8300000, guid: 71fc71f99dd771044a68b3a2c372f341, type: 3}
+    - {fileID: 8300000, guid: 6c336e76fcd6bbb46a74ce59425d5c49, type: 3}
+    - {fileID: 8300000, guid: f62eb7bc6c00e5246bf7666f6054df1b, type: 3}
+    - {fileID: 8300000, guid: c9d273653d1d7dd41a349fb8dc2a5404, type: 3}
+    - {fileID: 8300000, guid: ab2837d49111b064eaa335532bf4935b, type: 3}
+    - {fileID: 8300000, guid: 8396c2d9e7749954dbea78ac379aa1c3, type: 3}
+    sequenceStepWrongMessages:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    supportMessage: 
+    supportAudio: {fileID: 0}
+  - displayLabel: Wow! That was amazing.
+    categoryLabel: 
+    promptMessage: The next sentence you're going to construct with proper punctuations
+      is "Wow! That was amazing."
+    repeatMessage: The next sentence you're going to construct with proper punctuations
+      is "Wow! That was amazing."
+    successMessage: Wow! That was amazing. That is correct.
+    wrongMessage: That is wrong try again.
+    lessonKind: 1
+    dots: 
+    expectedSequencePatterns:
+    - 000001
+    - 010111
+    - 101010
+    - 010111
+    - 011010
+    - 000000
+    - 000001
+    - 011110
+    - 110010
+    - 100000
+    - 011110
+    - 000000
+    - 010111
+    - 100000
+    - 011100
+    - 000000
+    - 100000
+    - 101100
+    - 100000
+    - 101011
+    - 010100
+    - 101110
+    - 110110
+    - 010011
+    expectedSequenceNames:
+    - ^
+    - W
+    - o
+    - w
+    - '!'
+    - ' '
+    - ^
+    - T
+    - h
+    - a
+    - t
+    - ' '
+    - w
+    - a
+    - s
+    - ' '
+    - a
+    - m
+    - a
+    - z
+    - i
+    - n
+    - g
+    - .
+    lessonSprite: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: 58eecaedc0548344cb8a9f1cc3c79600, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 8dd81dd81775abd418a250d3e03e3b84, type: 3}
+    sequenceStepAudios:
+    - {fileID: 8300000, guid: 05852c68f89d6fc4da47bde5ffa9fad9, type: 3}
+    sequenceStepMessages: []
+    sequenceStepWrongAudios:
+    - {fileID: 8300000, guid: 548d6c08eeb8a384b8c07f088e2c60b5, type: 3}
+    - {fileID: 8300000, guid: 427bd2285e5530b4da866614035d43df, type: 3}
+    - {fileID: 8300000, guid: 4aa40de616ef2574d9ae0a705f6e033c, type: 3}
+    - {fileID: 8300000, guid: 427bd2285e5530b4da866614035d43df, type: 3}
+    - {fileID: 8300000, guid: 48c1895a39a9d40489ca68309e5bb8b9, type: 3}
+    - {fileID: 8300000, guid: 71fc71f99dd771044a68b3a2c372f341, type: 3}
+    - {fileID: 8300000, guid: 6eec1297ccca1a54ab900c6be3055a7f, type: 3}
+    - {fileID: 8300000, guid: ab2837d49111b064eaa335532bf4935b, type: 3}
+    - {fileID: 8300000, guid: 50552a1520abf24499d639061b2c2da5, type: 3}
+    - {fileID: 8300000, guid: c436d7cef08bae043bdb3a807c5e431c, type: 3}
+    - {fileID: 8300000, guid: ab2837d49111b064eaa335532bf4935b, type: 3}
+    - {fileID: 8300000, guid: 71fc71f99dd771044a68b3a2c372f341, type: 3}
+    - {fileID: 8300000, guid: 427bd2285e5530b4da866614035d43df, type: 3}
+    - {fileID: 8300000, guid: c436d7cef08bae043bdb3a807c5e431c, type: 3}
+    - {fileID: 8300000, guid: c9d273653d1d7dd41a349fb8dc2a5404, type: 3}
+    - {fileID: 8300000, guid: 71fc71f99dd771044a68b3a2c372f341, type: 3}
+    - {fileID: 8300000, guid: c436d7cef08bae043bdb3a807c5e431c, type: 3}
+    - {fileID: 8300000, guid: caae83a2734c0eb46af374e01cb9dd32, type: 3}
+    - {fileID: 8300000, guid: c436d7cef08bae043bdb3a807c5e431c, type: 3}
+    - {fileID: 8300000, guid: 93fbf389b24aded4ab037fb99a59d5c6, type: 3}
+    - {fileID: 8300000, guid: 0eefbe340b1883d468cef4ba68362eda, type: 3}
+    - {fileID: 8300000, guid: c2cdf06d423bd6a489bb5fe76ba49335, type: 3}
+    - {fileID: 8300000, guid: f8eff2f2e5d0b2e4fac58678cea0c64e, type: 3}
+    - {fileID: 8300000, guid: 8396c2d9e7749954dbea78ac379aa1c3, type: 3}
+    sequenceStepWrongMessages:
+    - Remember, to capitalize a letter you have to press dot 6 before the letter.
+    - Remember W uses dots number 2, 4, 5&6.
+    - Remember O uses dots number 1, 3&5.
+    - Remember W uses dots number 2, 4, 5&6.
+    - Remember, Exclamation Point uses dots number 3, 4&5.
+    - You forgot to add space before the preceding word.
+    - Remember, the first letter following an exclamation point should be capitalized.
+    - Remember T uses dots number 2, 3, 4&5.
+    - Remember H uses dots number 1, 2&5.
+    - Remember A uses dot number 1.
+    - Remember T uses dots number 2, 3, 4&5.
+    - You forgot to add space before the preceding word.
+    - Remember W uses dots number 2, 4, 5&6.
+    - Remember A uses dot number 1.
+    - Remember S uses dots number 2, 3&4.
+    - You forgot to add space before the preceding word.
+    - Remember A uses dot number 1.
+    - Remember M uses dots number 1, 3&4.
+    - Remember A uses dot number 1.
+    - Remember Z uses dots number 1, 3, 5&6.
+    - Remember I uses dots number 2&5.
+    - Remember N uses dots number 1, 3, 4&5.
+    - Remember G uses dots number 1, 2, 4&5.
+    - Remember, you have to use period to end a sentence and period uses dots number
+      2, 5&6.
+    supportMessage: 
+    supportAudio: {fileID: 0}
+  - displayLabel: This is the end.
+    categoryLabel: 
+    promptMessage: The next sentence you're going to construct with proper punctuations
+      is "This is the end."
+    repeatMessage: The next sentence you're going to construct with proper punctuations
+      is "This is the end."
+    successMessage: This is the end. That is correct.
+    wrongMessage: That is wrong try again.
+    lessonKind: 1
+    dots: 
+    expectedSequencePatterns:
+    - 000001
+    - 011110
+    - 110010
+    - 010100
+    - 011100
+    - 000000
+    - 010100
+    - 011100
+    - 000000
+    - 011110
+    - 110010
+    - 100010
+    - 000000
+    - 100010
+    - 101110
+    - 100110
+    - 010011
+    expectedSequenceNames:
+    - ^
+    - T
+    - h
+    - i
+    - s
+    - ' '
+    - i
+    - s
+    - ' '
+    - t
+    - h
+    - e
+    - ' '
+    - e
+    - n
+    - d
+    - .
+    lessonSprite: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: d509780c2d221a747a4985c52aeaff97, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 136b89612d4315242af784cf2ce6bfb0, type: 3}
+    sequenceStepAudios:
+    - {fileID: 8300000, guid: 5f630c1f57a90734288d0d1706086b97, type: 3}
+    sequenceStepMessages: []
+    sequenceStepWrongAudios:
+    - {fileID: 8300000, guid: 548d6c08eeb8a384b8c07f088e2c60b5, type: 3}
+    - {fileID: 8300000, guid: ab2837d49111b064eaa335532bf4935b, type: 3}
+    - {fileID: 8300000, guid: 50552a1520abf24499d639061b2c2da5, type: 3}
+    - {fileID: 8300000, guid: 0eefbe340b1883d468cef4ba68362eda, type: 3}
+    - {fileID: 8300000, guid: c9d273653d1d7dd41a349fb8dc2a5404, type: 3}
+    - {fileID: 8300000, guid: 71fc71f99dd771044a68b3a2c372f341, type: 3}
+    - {fileID: 8300000, guid: 0eefbe340b1883d468cef4ba68362eda, type: 3}
+    - {fileID: 8300000, guid: c9d273653d1d7dd41a349fb8dc2a5404, type: 3}
+    - {fileID: 8300000, guid: 71fc71f99dd771044a68b3a2c372f341, type: 3}
+    - {fileID: 8300000, guid: ab2837d49111b064eaa335532bf4935b, type: 3}
+    - {fileID: 8300000, guid: 50552a1520abf24499d639061b2c2da5, type: 3}
+    - {fileID: 8300000, guid: f62eb7bc6c00e5246bf7666f6054df1b, type: 3}
+    - {fileID: 8300000, guid: 71fc71f99dd771044a68b3a2c372f341, type: 3}
+    - {fileID: 8300000, guid: f62eb7bc6c00e5246bf7666f6054df1b, type: 3}
+    - {fileID: 8300000, guid: c2cdf06d423bd6a489bb5fe76ba49335, type: 3}
+    - {fileID: 8300000, guid: f5e0964230ec8e348b70b31e49c4be26, type: 3}
+    - {fileID: 8300000, guid: 8396c2d9e7749954dbea78ac379aa1c3, type: 3}
+    sequenceStepWrongMessages:
+    - Remember, to capitalize a letter you have to press dot 6 before the letter.
+    - Remember T uses dots number 2, 3, 4&5.
+    - Remember H uses dots number 1, 2&5.
+    - Remember I uses dots number 2&5.
+    - Remember S uses dots number 2, 3&4.
+    - You forgot to add space before the preceding word.
+    - Remember I uses dots number 2&5.
+    - Remember S uses dots number 2, 3&4.
+    - You forgot to add space before the preceding word.
+    - Remember T uses dots number 2, 3, 4&5.
+    - Remember H uses dots number 1, 2&5.
+    - Remember E uses dots number 1&5.
+    - You forgot to add space before the preceding word.
+    - Remember E uses dots number 1&5.
+    - Remember N uses dots number 1, 3, 4&5.
+    - Remember D uses dots number 1, 4&5.
+    - Remember, you have to use period to end a sentence and period uses dots number
+      2, 5&6.
+    supportMessage: 
+    supportAudio: {fileID: 0}
+  playInstructionOnLessonStart: 1
+  delayAfterVoice: 0.35
+  noAudioTextDelay: 2
+  delayAfterCorrect: 0.75
+  showHeldDotsPattern: 1
+  resetSequenceToStartOnWrongAnswer: 1
+  allowSpaceAsSequenceInput: 1
+  spaceSequencePattern: 000000
+  mistakesBeforeSupport: 3
+  resetMistakesAfterSupport: 1
+  useTypewriterEffect: 1
+  defaultTypewriterCharacterDelay: 0.03
+  minSyncedCharacterDelay: 0.01
+  maxSyncedCharacterDelay: 0.12
+  waitForFullAudioBeforeContinuing: 1
+  logDebug: 1
 --- !u!114 &1586095488
 MonoBehaviour:
   m_ObjectHideFlags: 0
