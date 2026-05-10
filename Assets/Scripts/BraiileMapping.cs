@@ -35,10 +35,10 @@ public class BrailleMapping : MonoBehaviour
 
     [Header("Braille Dots")]
     public KeyCode dot1Key = KeyCode.F;
-    public KeyCode dot2Key = KeyCode.J;
-    public KeyCode dot3Key = KeyCode.K;
-    public KeyCode dot4Key = KeyCode.D;
-    public KeyCode dot5Key = KeyCode.S;
+    public KeyCode dot2Key = KeyCode.D;
+    public KeyCode dot3Key = KeyCode.S;
+    public KeyCode dot4Key = KeyCode.J;
+    public KeyCode dot5Key = KeyCode.K;
     public KeyCode dot6Key = KeyCode.L;
 
     [Header("Extra Controls")]
