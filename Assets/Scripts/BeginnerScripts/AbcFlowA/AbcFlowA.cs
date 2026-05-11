@@ -47,6 +47,7 @@ public class AbcFlowA : MonoBehaviour
     public InstructionLine endingMessage2;
     public InstructionLine endingMessage3;
     public InstructionLine restartPromptMessage;
+    public InstructionLine restartYesMessage;
 
     [Header("Letter Audio A-Z")]
     public LetterAudio[] letterAudios = new LetterAudio[26];
@@ -69,6 +70,12 @@ public class AbcFlowA : MonoBehaviour
 
     private bool acceptingInput;
     private bool isProcessingAnswer;
+    private bool waitingForRestartAnswer;
+
+    private float currentAudioPitch = 1.0f;
+
+    private string lastMessageText = "";
+    private AudioClip lastMessageClip;
 
     private readonly string[] letters =
     {
@@ -87,11 +94,7 @@ public class AbcFlowA : MonoBehaviour
 
     private void Start()
     {
-        currentLetterIndex = 0;
-        score = startingScore;
-        mistakes = 0;
-        deductions = 0;
-
+        ResetQuizValues();
         HideFeedbackImage();
 
         if (input != null)
@@ -107,12 +110,27 @@ public class AbcFlowA : MonoBehaviour
     private void Update()
     {
         HandleSpeedKeys();
+        HandleRestartKeys();
+        HandleRepeatKey();
+    }
+
+    private void ResetQuizValues()
+    {
+        currentLetterIndex = 0;
+        score = startingScore;
+        mistakes = 0;
+        deductions = 0;
+
+        acceptingInput = false;
+        isProcessingAnswer = false;
+        waitingForRestartAnswer = false;
     }
 
     private IEnumerator StartSceneFlow()
     {
         acceptingInput = false;
         isProcessingAnswer = false;
+        waitingForRestartAnswer = false;
 
         if (introClip != null)
             yield return PlayMessage("ABC Flow Quiz", introClip);
@@ -128,13 +146,18 @@ public class AbcFlowA : MonoBehaviour
 
     private IEnumerator PlayMessage(string message, AudioClip clip)
     {
+        lastMessageText = message;
+        lastMessageClip = clip;
+
         if (speechBubbleText != null)
             speechBubbleText.text = message;
 
         if (audioSource != null && clip != null)
         {
+            audioSource.pitch = currentAudioPitch;
             audioSource.clip = clip;
             audioSource.Play();
+
             yield return new WaitWhile(() => audioSource.isPlaying);
         }
         else
@@ -147,6 +170,7 @@ public class AbcFlowA : MonoBehaviour
     {
         acceptingInput = true;
         isProcessingAnswer = false;
+        waitingForRestartAnswer = false;
 
         if (input != null)
             input.SetInputEnabled(true);
@@ -196,8 +220,13 @@ public class AbcFlowA : MonoBehaviour
 
         if (audioSource != null && correctClip != null)
         {
+            lastMessageText = "That is correct!";
+            lastMessageClip = correctClip;
+
+            audioSource.pitch = currentAudioPitch;
             audioSource.clip = correctClip;
             audioSource.Play();
+
             yield return new WaitWhile(() => audioSource.isPlaying);
         }
         else
@@ -208,13 +237,9 @@ public class AbcFlowA : MonoBehaviour
         currentLetterIndex++;
 
         if (currentLetterIndex >= letters.Length)
-        {
             FinishQuiz();
-        }
         else
-        {
             ShowCurrentLetter();
-        }
     }
 
     private IEnumerator WrongFlow()
@@ -240,8 +265,13 @@ public class AbcFlowA : MonoBehaviour
 
         if (audioSource != null && wrongClip != null)
         {
+            lastMessageText = "That is wrong.";
+            lastMessageClip = wrongClip;
+
+            audioSource.pitch = currentAudioPitch;
             audioSource.clip = wrongClip;
             audioSource.Play();
+
             yield return new WaitWhile(() => audioSource.isPlaying);
         }
         else
@@ -252,18 +282,15 @@ public class AbcFlowA : MonoBehaviour
         currentLetterIndex++;
 
         if (currentLetterIndex >= letters.Length)
-        {
             FinishQuiz();
-        }
         else
-        {
             ShowCurrentLetter();
-        }
     }
 
     private void FinishQuiz()
     {
         acceptingInput = false;
+        isProcessingAnswer = false;
 
         if (input != null)
             input.SetInputEnabled(false);
@@ -292,6 +319,96 @@ public class AbcFlowA : MonoBehaviour
 
         if (restartPromptMessage != null)
             yield return PlayMessage(restartPromptMessage.message, restartPromptMessage.audioClip);
+
+        waitingForRestartAnswer = true;
+    }
+
+    private void HandleRestartKeys()
+    {
+        if (!waitingForRestartAnswer)
+            return;
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            waitingForRestartAnswer = false;
+            StartCoroutine(RestartQuizFlow());
+        }
+
+        if (Input.GetKeyDown(KeyCode.Backspace))
+        {
+            waitingForRestartAnswer = false;
+
+            if (speechBubbleText != null)
+                speechBubbleText.text = "Quiz finished.";
+
+            if (resultText != null)
+                resultText.text = "DONE";
+        }
+    }
+
+    private IEnumerator RestartQuizFlow()
+    {
+        ResetQuizValues();
+        UpdateScoreUI();
+        HideFeedbackImage();
+
+        if (restartYesMessage != null)
+            yield return PlayMessage(restartYesMessage.message, restartYesMessage.audioClip);
+        else
+            yield return PlayMessage("Great! Let's go again!", null);
+
+        ShowCurrentLetter();
+    }
+
+    private void HandleRepeatKey()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            RepeatLastMessage();
+        }
+    }
+
+    private void RepeatLastMessage()
+    {
+        if (speechBubbleText != null && !string.IsNullOrEmpty(lastMessageText))
+            speechBubbleText.text = lastMessageText;
+
+        if (audioSource != null && lastMessageClip != null)
+        {
+            audioSource.Stop();
+            audioSource.pitch = currentAudioPitch;
+            audioSource.clip = lastMessageClip;
+            audioSource.Play();
+        }
+    }
+
+    private void HandleSpeedKeys()
+    {
+        if (audioSource == null)
+            return;
+
+        if (Input.GetKeyDown(KeyCode.Alpha7))
+            SetAudioSpeed(1.0f);
+
+        if (Input.GetKeyDown(KeyCode.Alpha8))
+            SetAudioSpeed(1.25f);
+
+        if (Input.GetKeyDown(KeyCode.Alpha9))
+            SetAudioSpeed(1.5f);
+
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+            SetAudioSpeed(1.75f);
+
+        if (Input.GetKeyDown(KeyCode.Minus))
+            SetAudioSpeed(2.0f);
+    }
+
+    private void SetAudioSpeed(float speed)
+    {
+        currentAudioPitch = speed;
+
+        if (audioSource != null)
+            audioSource.pitch = currentAudioPitch;
     }
 
     private void UpdateScoreUI()
@@ -311,29 +428,23 @@ public class AbcFlowA : MonoBehaviour
         if (audioSource == null)
             return;
 
+        lastMessageText = "Letter " + letter;
+        lastMessageClip = null;
+
         foreach (LetterAudio item in letterAudios)
         {
             if (item != null &&
                 item.letter.ToUpper() == letter &&
                 item.clip != null)
             {
+                lastMessageClip = item.clip;
+
+                audioSource.pitch = currentAudioPitch;
                 audioSource.clip = item.clip;
                 audioSource.Play();
                 return;
             }
         }
-    }
-
-    private void HandleSpeedKeys()
-    {
-        if (audioSource == null)
-            return;
-
-        if (Input.GetKeyDown(KeyCode.Alpha7)) audioSource.pitch = 1.0f;
-        if (Input.GetKeyDown(KeyCode.Alpha8)) audioSource.pitch = 1.25f;
-        if (Input.GetKeyDown(KeyCode.Alpha9)) audioSource.pitch = 1.5f;
-        if (Input.GetKeyDown(KeyCode.Alpha0)) audioSource.pitch = 1.75f;
-        if (Input.GetKeyDown(KeyCode.Minus)) audioSource.pitch = 2.0f;
     }
 
     private void ShowFeedbackImage(Sprite sprite)
