@@ -60,6 +60,9 @@ public class AccessibleMenuController : MonoBehaviour
     public float pauseBetweenMessages = 0.75f;
     public float minimumMessageTime = 3f;
 
+    [Header("Wireless Haptics")]
+    public GameObject wirelessHapticsObject;
+
     private int currentIndex = 0;
     private bool menuReady = false;
     private bool introPlaying = false;
@@ -68,19 +71,31 @@ public class AccessibleMenuController : MonoBehaviour
     private Coroutine introCoroutine;
     private Coroutine selectionMessageCoroutine;
 
+    private float currentAudioPitch = 1.0f;
+
     private void OnEnable()
     {
-        BrailleMapping.OnYesOrNext += NextOption;
-        BrailleMapping.OnDeleteOrNo += PreviousOption;
-        BrailleMapping.OnSubmit += SelectOption;
+        BrailleMapping.OnUp += PreviousOption;
+        BrailleMapping.OnLeft += PreviousOption;
+
+        BrailleMapping.OnDown += NextOption;
+        BrailleMapping.OnRight += NextOption;
+
+        BrailleMapping.OnSpace += SelectOption;
+
         BrailleMapping.OnRepeat += RepeatCurrentMessage;
     }
 
     private void OnDisable()
     {
-        BrailleMapping.OnYesOrNext -= NextOption;
-        BrailleMapping.OnDeleteOrNo -= PreviousOption;
-        BrailleMapping.OnSubmit -= SelectOption;
+        BrailleMapping.OnUp -= PreviousOption;
+        BrailleMapping.OnLeft -= PreviousOption;
+
+        BrailleMapping.OnDown -= NextOption;
+        BrailleMapping.OnRight -= NextOption;
+
+        BrailleMapping.OnSpace -= SelectOption;
+
         BrailleMapping.OnRepeat -= RepeatCurrentMessage;
     }
 
@@ -93,6 +108,12 @@ public class AccessibleMenuController : MonoBehaviour
             StopCoroutine(introCoroutine);
 
         introCoroutine = StartCoroutine(PlayIntroSequence());
+    }
+
+    private void Update()
+    {
+        HandleSpeedKeys();
+        HandleKeyboardRepeatKey();
     }
 
     private IEnumerator PlayIntroSequence()
@@ -138,9 +159,10 @@ public class AccessibleMenuController : MonoBehaviour
         if (voiceAudioSource != null && clip != null)
         {
             voiceAudioSource.Stop();
+            voiceAudioSource.pitch = currentAudioPitch;
             voiceAudioSource.clip = clip;
             voiceAudioSource.Play();
-            audioDuration = clip.length;
+            audioDuration = clip.length / currentAudioPitch;
         }
 
         float textDuration = useTypewriter ? GetEstimatedReadTime(message) : messageHoldTime;
@@ -148,6 +170,7 @@ public class AccessibleMenuController : MonoBehaviour
 
         yield return new WaitForSeconds(waitTime);
     }
+
     private IEnumerator DisplayMessage(string message, bool useTypewriter)
     {
         if (speechBubbleText == null)
@@ -227,7 +250,10 @@ public class AccessibleMenuController : MonoBehaviour
 
         MenuItem currentItem = menuItems[currentIndex];
         if (currentItem != null && currentItem.button != null)
+        {
+            TriggerHaptic();
             currentItem.button.onClick.Invoke();
+        }
     }
 
     private void RepeatCurrentMessage()
@@ -308,6 +334,7 @@ public class AccessibleMenuController : MonoBehaviour
         if (voiceAudioSource != null && clip != null)
         {
             voiceAudioSource.Stop();
+            voiceAudioSource.pitch = currentAudioPitch;
             voiceAudioSource.clip = clip;
             voiceAudioSource.Play();
         }
@@ -317,5 +344,53 @@ public class AccessibleMenuController : MonoBehaviour
     {
         if (sfxAudioSource != null && clip != null)
             sfxAudioSource.PlayOneShot(clip);
+    }
+
+    private void HandleSpeedKeys()
+    {
+        if (voiceAudioSource == null)
+            return;
+
+        if (Input.GetKeyDown(KeyCode.Alpha7))
+            SetAudioSpeed(1.0f);
+
+        if (Input.GetKeyDown(KeyCode.Alpha8))
+            SetAudioSpeed(1.25f);
+
+        if (Input.GetKeyDown(KeyCode.Alpha9))
+            SetAudioSpeed(1.5f);
+
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+            SetAudioSpeed(1.75f);
+
+        if (Input.GetKeyDown(KeyCode.Minus))
+            SetAudioSpeed(2.0f);
+    }
+
+    private void SetAudioSpeed(float speed)
+    {
+        currentAudioPitch = speed;
+
+        if (voiceAudioSource != null)
+            voiceAudioSource.pitch = currentAudioPitch;
+    }
+
+    private void HandleKeyboardRepeatKey()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            RepeatCurrentMessage();
+        }
+    }
+
+    private void TriggerHaptic()
+    {
+        if (wirelessHapticsObject != null)
+        {
+            wirelessHapticsObject.SendMessage(
+                "TriggerHaptic",
+                SendMessageOptions.DontRequireReceiver
+            );
+        }
     }
 }
