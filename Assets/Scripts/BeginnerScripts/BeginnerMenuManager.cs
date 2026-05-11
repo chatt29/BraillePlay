@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -10,8 +11,25 @@ public class BeginnerMenuManager : MonoBehaviour
     public Button[] buttons;
     public TMP_Text dialogueText;
 
+    [Header("INTRO")]
+    [TextArea]
+    public string introMessage;
+
+    public AudioClip introClip;
+
     [Header("Dialogue Messages")]
+    [TextArea]
     public string[] messages;
+
+    [Header("Dialogue Audio Clips")]
+    public AudioClip[] dialogueClips;
+
+    [Header("Navigation Sound")]
+    public AudioClip moveSound;
+
+    [Header("Audio Sources")]
+    public AudioSource dialogueAudioSource;
+    public AudioSource sfxAudioSource;
 
     [Header("Selector Settings")]
     public float offsetX = -60f;
@@ -19,13 +37,55 @@ public class BeginnerMenuManager : MonoBehaviour
     private int currentIndex = 0;
     private Vector2 targetPos;
 
-    void Start()
-{
-    Canvas.ForceUpdateCanvases(); // 🔥 ensures UI is fully laid out
+    private bool introFinished = false;
 
-    UpdateSelection();
-    selectorArrow.anchoredPosition = targetPos;
-}
+    void Start()
+    {
+        Canvas.ForceUpdateCanvases();
+
+        RectTransform btnRect = buttons[currentIndex].GetComponent<RectTransform>();
+        RectTransform arrowParent = selectorArrow.parent as RectTransform;
+
+        Vector3 worldPos = btnRect.position;
+
+        Vector2 localPoint;
+
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            arrowParent,
+            RectTransformUtility.WorldToScreenPoint(null, worldPos),
+            null,
+            out localPoint
+        );
+
+        targetPos = new Vector2(localPoint.x + offsetX, localPoint.y);
+
+        selectorArrow.anchoredPosition = targetPos;
+
+        // Start intro first
+        StartCoroutine(PlayIntro());
+    }
+
+    IEnumerator PlayIntro()
+    {
+        // Show intro text
+        dialogueText.text = introMessage;
+
+        // Play intro audio
+        if (introClip != null)
+        {
+            dialogueAudioSource.clip = introClip;
+            dialogueAudioSource.Play();
+
+            // Wait until intro audio finishes
+            yield return new WaitForSeconds(introClip.length);
+        }
+
+        introFinished = true;
+
+        // After intro, load first menu dialogue
+        UpdateSelection();
+    }
+
     void OnEnable()
     {
         BrailleMapping.OnYesOrNext += MoveDown;
@@ -48,7 +108,6 @@ public class BeginnerMenuManager : MonoBehaviour
 
     void Update()
     {
-        // Smooth arrow movement
         selectorArrow.anchoredPosition = Vector2.Lerp(
             selectorArrow.anchoredPosition,
             targetPos,
@@ -56,54 +115,92 @@ public class BeginnerMenuManager : MonoBehaviour
         );
     }
 
-    // 🔽 Move Down (Y key)
+    // 🔽 Move Down
     void MoveDown()
     {
+        // Prevent movement during intro
+        if (!introFinished) return;
+
         currentIndex++;
+
         if (currentIndex >= buttons.Length)
             currentIndex = 0;
 
+        PlayMoveSound();
         UpdateSelection();
     }
 
-    // 🔼 Move Up (Backspace)
+    // 🔼 Move Up
     void MoveUp()
     {
+        // Prevent movement during intro
+        if (!introFinished) return;
+
         currentIndex--;
+
         if (currentIndex < 0)
             currentIndex = buttons.Length - 1;
 
+        PlayMoveSound();
         UpdateSelection();
     }
 
-    // 🎯 Update Arrow + Dialogue
+    // 🎯 Update Arrow + Dialogue + Audio
     void UpdateSelection()
-{
-    RectTransform btnRect = buttons[currentIndex].GetComponent<RectTransform>();
-    RectTransform arrowParent = selectorArrow.parent as RectTransform;
+    {
+        RectTransform btnRect = buttons[currentIndex].GetComponent<RectTransform>();
+        RectTransform arrowParent = selectorArrow.parent as RectTransform;
 
-    // Convert button position to world position
-    Vector3 worldPos = btnRect.position;
+        Vector3 worldPos = btnRect.position;
 
-    // Convert world position to local position relative to arrow's parent
-    Vector2 localPoint;
-    RectTransformUtility.ScreenPointToLocalPointInRectangle(
-        arrowParent,
-        RectTransformUtility.WorldToScreenPoint(null, worldPos),
-        null,
-        out localPoint
-    );
+        Vector2 localPoint;
 
-    // Apply offset so arrow stays beside button
-    targetPos = new Vector2(localPoint.x + offsetX, localPoint.y);
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            arrowParent,
+            RectTransformUtility.WorldToScreenPoint(null, worldPos),
+            null,
+            out localPoint
+        );
 
-    // Update dialogue
-    if (messages.Length > currentIndex)
-        dialogueText.text = messages[currentIndex];
-}
-    // ✅ Select option (Space / Enter)
+        targetPos = new Vector2(localPoint.x + offsetX, localPoint.y);
+
+        // Update dialogue text
+        if (messages.Length > currentIndex)
+        {
+            dialogueText.text = messages[currentIndex];
+        }
+
+        // Play dialogue voice/audio
+        PlayDialogueAudio();
+    }
+
+    // ▶️ Play dialogue audio
+    void PlayDialogueAudio()
+    {
+        if (dialogueClips.Length > currentIndex &&
+            dialogueClips[currentIndex] != null)
+        {
+            dialogueAudioSource.Stop();
+            dialogueAudioSource.clip = dialogueClips[currentIndex];
+            dialogueAudioSource.Play();
+        }
+    }
+
+    // 🔊 Play move/toggle sound
+    void PlayMoveSound()
+    {
+        if (moveSound != null)
+        {
+            sfxAudioSource.PlayOneShot(moveSound);
+        }
+    }
+
+    // ✅ Activate Button
     void ActivateButton()
     {
+        // Prevent activation during intro
+        if (!introFinished) return;
+
         switch (currentIndex)
         {
             case 0:
@@ -116,26 +213,35 @@ public class BeginnerMenuManager : MonoBehaviour
         }
     }
 
-    // 🔁 Repeat dialogue (R key)
+    // 🔁 Repeat dialogue
     void RepeatDialogue()
     {
+        if (!introFinished) return;
+
         if (messages.Length > currentIndex)
         {
             dialogueText.text = messages[currentIndex];
-            Debug.Log("Repeat: " + messages[currentIndex]);
         }
+
+        PlayDialogueAudio();
+
+        Debug.Log("Repeat: " + messages[currentIndex]);
     }
 
-    // 🔙 Back (ESC key)
+    // 🔙 Back
     void GoBack()
     {
-        SceneManager.LoadScene("MainMenu"); // change if needed
+        SceneManager.LoadScene("MainMenu");
     }
 
-    // 🖱️ Optional UI button support
+    // 🖱️ Optional UI Button Support
     public void SelectButton(int index)
     {
+        if (!introFinished) return;
+
         currentIndex = index;
+
+        PlayMoveSound();
         UpdateSelection();
         ActivateButton();
     }
