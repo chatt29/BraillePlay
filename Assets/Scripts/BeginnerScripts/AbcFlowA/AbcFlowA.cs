@@ -2,6 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class AbcFlowA : MonoBehaviour
 {
@@ -317,10 +318,12 @@ public class AbcFlowA : MonoBehaviour
         if (endingMessage3 != null)
             yield return PlayMessage(endingMessage3.message, endingMessage3.audioClip);
 
-        if (restartPromptMessage != null)
-            yield return PlayMessage(restartPromptMessage.message, restartPromptMessage.audioClip);
+       if (restartPromptMessage != null)
+    yield return PlayMessage(restartPromptMessage.message, restartPromptMessage.audioClip);
 
-        waitingForRestartAnswer = true;
+yield return new WaitForSeconds(2f);
+
+SceneManager.LoadScene("BeginnerScene");
     }
 
     private void HandleRestartKeys()

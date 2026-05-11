@@ -7,8 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class JumbledLettersController : MonoBehaviour
 {
-    [Header("Quiz Info")]
-    public string quizType = "Beginner";
+
 
     [Header("Scene")]
     public string beginnerScene = "BeginnerScene";
@@ -207,23 +206,16 @@ public class JumbledLettersController : MonoBehaviour
     PlayerPrefs.Save();
 
     // GET USER ID
-    int userId =
-        PlayerPrefs.GetInt(
-            "user_id",
-            0
-        );
+    int userId = PlayerPrefs.GetInt("user_id", 0);
 
+if (userId > 0)
+{
+    StartCoroutine(PostScore(userId, score));
+}
+ 
     // SAVE TO DATABASE
     // This runs while audio is playing
-    if (userId > 0)
-    {
-        StartCoroutine(
-            PostScore(
-                userId,
-                score
-            )
-        );
-    }
+    
 
     // PLAY FINISH SOUND
     if (audioSource != null &&
@@ -267,6 +259,7 @@ public class JumbledLettersController : MonoBehaviour
             scoreClips[score].length
         );
     }
+    
 
     // SMALL DELAY
     yield return new WaitForSeconds(
@@ -302,10 +295,6 @@ public class JumbledLettersController : MonoBehaviour
         BrailleMapping
             .OnBrailleChordSubmitted
             += HandleBrailleInput;
-
-        BrailleMapping
-            .OnSubmit
-            += NextLetter;
     }
 
     void OnDisable()
@@ -313,16 +302,9 @@ public class JumbledLettersController : MonoBehaviour
         BrailleMapping
             .OnBrailleChordSubmitted
             -= HandleBrailleInput;
-
-        BrailleMapping
-            .OnSubmit
-            -= NextLetter;
+            
     }
 
-    void NextLetter()
-    {
-        PickNextLetter();
-    }
 
     void UpdateScoreUI()
     {
@@ -342,7 +324,7 @@ public class JumbledLettersController : MonoBehaviour
         new WWWForm();
 
     form.AddField(
-        "user_id",
+        "User_ID",
         userId
     );
 
@@ -352,13 +334,14 @@ public class JumbledLettersController : MonoBehaviour
     );
 
     // USE CURRENT SCENE NAME
-    form.AddField(
-        "quiz_name",
-        SceneManager
-            .GetActiveScene()
-            .name
-    );
-
+   form.AddField(
+    "quiz_name",
+    SceneManager.GetActiveScene().name
+);
+Debug.Log("POSTING SCORE...");
+Debug.Log("USER ID: " + userId);
+Debug.Log("SCORE: " + finalScore);
+Debug.Log("QUIZ NAME: " + SceneManager.GetActiveScene().name);
     UnityWebRequest www =
         UnityWebRequest.Post(
             "http://localhost/brailleplay/save_score.php",
