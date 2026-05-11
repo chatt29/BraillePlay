@@ -47,6 +47,7 @@ public class AbcFlowA : MonoBehaviour
     public InstructionLine endingMessage2;
     public InstructionLine endingMessage3;
     public InstructionLine restartPromptMessage;
+    public InstructionLine restartYesMessage;
 
     [Header("Letter Audio A-Z")]
     public LetterAudio[] letterAudios = new LetterAudio[26];
@@ -69,6 +70,7 @@ public class AbcFlowA : MonoBehaviour
 
     private bool acceptingInput;
     private bool isProcessingAnswer;
+    private bool waitingForRestartAnswer;
 
     private readonly string[] letters =
     {
@@ -87,10 +89,7 @@ public class AbcFlowA : MonoBehaviour
 
     private void Start()
     {
-        currentLetterIndex = 0;
-        score = startingScore;
-        mistakes = 0;
-        deductions = 0;
+        ResetQuizValues();
 
         HideFeedbackImage();
 
@@ -107,12 +106,26 @@ public class AbcFlowA : MonoBehaviour
     private void Update()
     {
         HandleSpeedKeys();
+        HandleRestartKeys();
+    }
+
+    private void ResetQuizValues()
+    {
+        currentLetterIndex = 0;
+        score = startingScore;
+        mistakes = 0;
+        deductions = 0;
+
+        acceptingInput = false;
+        isProcessingAnswer = false;
+        waitingForRestartAnswer = false;
     }
 
     private IEnumerator StartSceneFlow()
     {
         acceptingInput = false;
         isProcessingAnswer = false;
+        waitingForRestartAnswer = false;
 
         if (introClip != null)
             yield return PlayMessage("ABC Flow Quiz", introClip);
@@ -147,6 +160,7 @@ public class AbcFlowA : MonoBehaviour
     {
         acceptingInput = true;
         isProcessingAnswer = false;
+        waitingForRestartAnswer = false;
 
         if (input != null)
             input.SetInputEnabled(true);
@@ -208,13 +222,9 @@ public class AbcFlowA : MonoBehaviour
         currentLetterIndex++;
 
         if (currentLetterIndex >= letters.Length)
-        {
             FinishQuiz();
-        }
         else
-        {
             ShowCurrentLetter();
-        }
     }
 
     private IEnumerator WrongFlow()
@@ -252,18 +262,15 @@ public class AbcFlowA : MonoBehaviour
         currentLetterIndex++;
 
         if (currentLetterIndex >= letters.Length)
-        {
             FinishQuiz();
-        }
         else
-        {
             ShowCurrentLetter();
-        }
     }
 
     private void FinishQuiz()
     {
         acceptingInput = false;
+        isProcessingAnswer = false;
 
         if (input != null)
             input.SetInputEnabled(false);
@@ -292,6 +299,45 @@ public class AbcFlowA : MonoBehaviour
 
         if (restartPromptMessage != null)
             yield return PlayMessage(restartPromptMessage.message, restartPromptMessage.audioClip);
+
+        waitingForRestartAnswer = true;
+    }
+
+    private void HandleRestartKeys()
+    {
+        if (!waitingForRestartAnswer)
+            return;
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            waitingForRestartAnswer = false;
+            StartCoroutine(RestartQuizFlow());
+        }
+
+        if (Input.GetKeyDown(KeyCode.Backspace))
+        {
+            waitingForRestartAnswer = false;
+
+            if (speechBubbleText != null)
+                speechBubbleText.text = "Quiz finished.";
+
+            if (resultText != null)
+                resultText.text = "DONE";
+        }
+    }
+
+    private IEnumerator RestartQuizFlow()
+    {
+        ResetQuizValues();
+        UpdateScoreUI();
+        HideFeedbackImage();
+
+        if (restartYesMessage != null)
+            yield return PlayMessage(restartYesMessage.message, restartYesMessage.audioClip);
+        else
+            yield return PlayMessage("Great! Let's go again!", null);
+
+        ShowCurrentLetter();
     }
 
     private void UpdateScoreUI()
