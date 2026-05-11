@@ -113,10 +113,6 @@ public class BeginnerMenuManager : MonoBehaviour
             case 1:
                 SceneManager.LoadScene("NumbersScene");
                 break;
-
-            case 2:
-                SceneManager.LoadScene("CombinationsScene");
-                break;
         }
     }
 

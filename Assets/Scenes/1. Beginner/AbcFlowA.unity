@@ -1201,7 +1201,7 @@ MonoBehaviour:
     message: 
     audioClip: {fileID: 0}
   restartPromptMessage:
-    message: Would you like to restart?
+    message: Great Job!
     audioClip: {fileID: 0}
   restartYesMessage:
     message: Great! Let's go again!

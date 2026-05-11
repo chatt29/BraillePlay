@@ -155,39 +155,73 @@ public class BeginnerAlphabetMenuController : MonoBehaviour
         }
     }
 
-    private void HandleSubmit()
+   private void HandleSubmit()
+{
+    // MAIN MENU
+    if (currentFocus == FocusArea.MainMenu)
     {
-        if (currentFocus == FocusArea.MainMenu)
-        {
-            // 👉 Quiz goes directly to scene
-            if (currentMenu == MenuType.Quiz)
-            {
-                SceneManager.LoadScene("BeginnerQuizSelection");
-                return;
-            }
+        // Enter content panel
+        RectTransform[] buttons = GetCurrentContentButtons();
+        if (buttons == null || buttons.Length == 0) return;
 
-            // 👉 Learn enters content
-            RectTransform[] buttons = GetCurrentContentButtons();
-            if (buttons == null || buttons.Length == 0) return;
-
-            currentFocus = FocusArea.ContentPanel;
-            currentContentIndex = 0;
-            UpdateContentHover();
-            return;
-        }
-
-        RectTransform[] buttonsPanel = GetCurrentContentButtons();
-        if (buttonsPanel == null || buttonsPanel.Length == 0) return;
-
-        RectTransform selected = buttonsPanel[currentContentIndex];
-
-        Debug.Log("Selected: " + selected.name);
-
-        Button btn = selected.GetComponent<Button>();
-        if (btn != null)
-            btn.onClick.Invoke();
+        currentFocus = FocusArea.ContentPanel;
+        currentContentIndex = 0;
+        UpdateContentHover();
+        return;
     }
 
+    // CONTENT PANEL
+    RectTransform[] buttonsPanel = GetCurrentContentButtons();
+    if (buttonsPanel == null || buttonsPanel.Length == 0) return;
+
+    RectTransform selected = buttonsPanel[currentContentIndex];
+
+    if (selected == null)
+        return;
+
+    Debug.Log("Selected: " + selected.name);
+
+    // =========================
+    // LEARN PANEL SCENES
+    // =========================
+    if (selected.name == "AbcSongBtn")
+    {
+        SceneManager.LoadScene("AbcSongScene");
+        return;
+    }
+
+    if (selected.name == "LetterToBrailleBtn")
+    {
+        SceneManager.LoadScene("LetterToBrailleScene");
+        return;
+    }
+
+    if (selected.name == "AbcSoundsBtn")
+    {
+        SceneManager.LoadScene("AbcSoundsScene");
+        return;
+    }
+
+    // =========================
+    // QUIZ PANEL SCENES
+    // =========================
+    if (selected.name == "AbcFlow")
+    {
+        SceneManager.LoadScene("AbcFlowA");
+        return;
+    }
+
+    if (selected.name == "JumbledLetters")
+    {
+        SceneManager.LoadScene("JumbledLetters");
+        return;
+    }
+
+    // fallback
+    Button btn = selected.GetComponent<Button>();
+    if (btn != null)
+        btn.onClick.Invoke();
+}
     private void HandleCancel()
     {
         if (currentFocus == FocusArea.ContentPanel)
