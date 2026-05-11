@@ -3655,6 +3655,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1770267831}
   - component: {fileID: 1770267830}
+  - component: {fileID: 1770267832}
   m_Layer: 0
   m_Name: BrailleSystem
   m_TagString: Untagged
@@ -3761,6 +3762,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1770267832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770267829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f97d31e0a8d486246b7fe1abaf9937ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UniversalBackButtonHandler
+  holdTime: 1.5
+  wirelessHapticsObject: {fileID: 0}
 --- !u!1 &1836061083
 GameObject:
   m_ObjectHideFlags: 0
