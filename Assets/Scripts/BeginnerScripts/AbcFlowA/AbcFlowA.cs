@@ -74,6 +74,9 @@ public class AbcFlowA : MonoBehaviour
 
     private float currentAudioPitch = 1.0f;
 
+    private string lastMessageText = "";
+    private AudioClip lastMessageClip;
+
     private readonly string[] letters =
     {
         "A","B","C","D","E","F","G","H","I","J","K","L","M",
@@ -108,6 +111,7 @@ public class AbcFlowA : MonoBehaviour
     {
         HandleSpeedKeys();
         HandleRestartKeys();
+        HandleRepeatKey();
     }
 
     private void ResetQuizValues()
@@ -142,6 +146,9 @@ public class AbcFlowA : MonoBehaviour
 
     private IEnumerator PlayMessage(string message, AudioClip clip)
     {
+        lastMessageText = message;
+        lastMessageClip = clip;
+
         if (speechBubbleText != null)
             speechBubbleText.text = message;
 
@@ -213,6 +220,9 @@ public class AbcFlowA : MonoBehaviour
 
         if (audioSource != null && correctClip != null)
         {
+            lastMessageText = "That is correct!";
+            lastMessageClip = correctClip;
+
             audioSource.pitch = currentAudioPitch;
             audioSource.clip = correctClip;
             audioSource.Play();
@@ -255,6 +265,9 @@ public class AbcFlowA : MonoBehaviour
 
         if (audioSource != null && wrongClip != null)
         {
+            lastMessageText = "That is wrong.";
+            lastMessageClip = wrongClip;
+
             audioSource.pitch = currentAudioPitch;
             audioSource.clip = wrongClip;
             audioSource.Play();
@@ -347,6 +360,28 @@ public class AbcFlowA : MonoBehaviour
         ShowCurrentLetter();
     }
 
+    private void HandleRepeatKey()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            RepeatLastMessage();
+        }
+    }
+
+    private void RepeatLastMessage()
+    {
+        if (speechBubbleText != null && !string.IsNullOrEmpty(lastMessageText))
+            speechBubbleText.text = lastMessageText;
+
+        if (audioSource != null && lastMessageClip != null)
+        {
+            audioSource.Stop();
+            audioSource.pitch = currentAudioPitch;
+            audioSource.clip = lastMessageClip;
+            audioSource.Play();
+        }
+    }
+
     private void HandleSpeedKeys()
     {
         if (audioSource == null)
@@ -393,12 +428,17 @@ public class AbcFlowA : MonoBehaviour
         if (audioSource == null)
             return;
 
+        lastMessageText = "Letter " + letter;
+        lastMessageClip = null;
+
         foreach (LetterAudio item in letterAudios)
         {
             if (item != null &&
                 item.letter.ToUpper() == letter &&
                 item.clip != null)
             {
+                lastMessageClip = item.clip;
+
                 audioSource.pitch = currentAudioPitch;
                 audioSource.clip = item.clip;
                 audioSource.Play();
