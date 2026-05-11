@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class BeginnerAlphabetMenuController : MonoBehaviour
+public class BeginnerNumbersMenuController : MonoBehaviour
 {
     public enum MenuType
     {
@@ -85,42 +85,59 @@ public class BeginnerAlphabetMenuController : MonoBehaviour
 
     public void SelectNextMenu()
     {
-        currentMenu = (currentMenu == MenuType.Learn) ? MenuType.Quiz : MenuType.Learn;
+        currentMenu = (currentMenu == MenuType.Learn)
+            ? MenuType.Quiz
+            : MenuType.Learn;
+
         RefreshMenu();
     }
 
     public void SelectPreviousMenu()
     {
-        currentMenu = (currentMenu == MenuType.Learn) ? MenuType.Quiz : MenuType.Learn;
+        currentMenu = (currentMenu == MenuType.Learn)
+            ? MenuType.Quiz
+            : MenuType.Learn;
+
         RefreshMenu();
     }
 
     private void UpdateMenuUI()
     {
-        if (learnContent != null) learnContent.SetActive(currentMenu == MenuType.Learn);
-        if (quizContent != null) quizContent.SetActive(currentMenu == MenuType.Quiz);
+        if (learnContent != null)
+            learnContent.SetActive(currentMenu == MenuType.Learn);
+
+        if (quizContent != null)
+            quizContent.SetActive(currentMenu == MenuType.Quiz);
     }
 
     private void MoveArrowToCurrentMenu()
     {
-        if (arrowIndicator == null) return;
+        if (arrowIndicator == null)
+            return;
 
         RectTransform target = GetCurrentMenuButton();
-        if (target == null) return;
+
+        if (target == null)
+            return;
 
         Vector2 pos = arrowIndicator.anchoredPosition;
         pos.y = target.anchoredPosition.y;
+
         arrowIndicator.anchoredPosition = pos;
     }
 
     private RectTransform GetCurrentMenuButton()
     {
-        return currentMenu == MenuType.Learn ? learnBtn : quizBtn;
+        return currentMenu == MenuType.Learn
+            ? learnBtn
+            : quizBtn;
     }
 
     private RectTransform[] GetCurrentContentButtons()
     {
-        return currentMenu == MenuType.Learn ? learnButtons : quizButtons;
+        return currentMenu == MenuType.Learn
+            ? learnButtons
+            : quizButtons;
     }
 
     private void HandleNext()
@@ -132,9 +149,13 @@ public class BeginnerAlphabetMenuController : MonoBehaviour
         else
         {
             RectTransform[] buttons = GetCurrentContentButtons();
-            if (buttons == null || buttons.Length == 0) return;
 
-            currentContentIndex = (currentContentIndex + 1) % buttons.Length;
+            if (buttons == null || buttons.Length == 0)
+                return;
+
+            currentContentIndex =
+                (currentContentIndex + 1) % buttons.Length;
+
             UpdateContentHover();
         }
     }
@@ -148,33 +169,51 @@ public class BeginnerAlphabetMenuController : MonoBehaviour
         else
         {
             RectTransform[] buttons = GetCurrentContentButtons();
-            if (buttons == null || buttons.Length == 0) return;
 
-            currentContentIndex = (currentContentIndex - 1 + buttons.Length) % buttons.Length;
+            if (buttons == null || buttons.Length == 0)
+                return;
+
+            currentContentIndex =
+                (currentContentIndex - 1 + buttons.Length)
+                % buttons.Length;
+
             UpdateContentHover();
         }
     }
 
-   private void HandleSubmit()
+  private void HandleSubmit()
 {
+    // =========================
     // MAIN MENU
+    // =========================
     if (currentFocus == FocusArea.MainMenu)
     {
         // Enter content panel
-        RectTransform[] buttons = GetCurrentContentButtons();
-        if (buttons == null || buttons.Length == 0) return;
+        RectTransform[] buttons =
+            GetCurrentContentButtons();
+
+        if (buttons == null || buttons.Length == 0)
+            return;
 
         currentFocus = FocusArea.ContentPanel;
         currentContentIndex = 0;
+
         UpdateContentHover();
         return;
     }
 
+    // =========================
     // CONTENT PANEL
-    RectTransform[] buttonsPanel = GetCurrentContentButtons();
-    if (buttonsPanel == null || buttonsPanel.Length == 0) return;
+    // =========================
+    RectTransform[] buttonsPanel =
+        GetCurrentContentButtons();
 
-    RectTransform selected = buttonsPanel[currentContentIndex];
+    if (buttonsPanel == null ||
+        buttonsPanel.Length == 0)
+        return;
+
+    RectTransform selected =
+        buttonsPanel[currentContentIndex];
 
     if (selected == null)
         return;
@@ -182,43 +221,38 @@ public class BeginnerAlphabetMenuController : MonoBehaviour
     Debug.Log("Selected: " + selected.name);
 
     // =========================
-    // LEARN PANEL SCENES
+    // LEARN PANEL
     // =========================
-    if (selected.name == "AbcSongBtn")
+    if (selected.name == "NumberTranslation")
     {
-        SceneManager.LoadScene("AbcSongScene");
+        SceneManager.LoadScene("NumberTranslation");
         return;
     }
 
-    if (selected.name == "LetterToBrailleBtn")
+    if (selected.name == "NumberSong")
     {
-        SceneManager.LoadScene("LetterToBrailleScene");
-        return;
-    }
-
-    if (selected.name == "AbcSoundsBtn")
-    {
-        SceneManager.LoadScene("AbcSoundsScene");
+        SceneManager.LoadScene("NumberSong");
         return;
     }
 
     // =========================
-    // QUIZ PANEL SCENES
+    // QUIZ PANEL
     // =========================
-    if (selected.name == "AbcFlowBtn")
+    if (selected.name == "NumberFlow")
     {
-        SceneManager.LoadScene("AbcFlowA");
+        SceneManager.LoadScene("NumberFlow");
         return;
     }
 
-    if (selected.name == "JumbledLettersBtn")
+    if (selected.name == "JumbledNumbers")
     {
-        SceneManager.LoadScene("JumbledLetters");
+        SceneManager.LoadScene("JumbledNumbers");
         return;
     }
 
     // fallback
     Button btn = selected.GetComponent<Button>();
+
     if (btn != null)
         btn.onClick.Invoke();
 }
@@ -227,8 +261,10 @@ public class BeginnerAlphabetMenuController : MonoBehaviour
         if (currentFocus == FocusArea.ContentPanel)
         {
             currentFocus = FocusArea.MainMenu;
+
             ClearContentHover();
             RefreshMenu();
+
             return;
         }
 
@@ -240,16 +276,26 @@ public class BeginnerAlphabetMenuController : MonoBehaviour
     {
         ClearContentHover();
 
-        if (currentFocus != FocusArea.ContentPanel) return;
+        if (currentFocus != FocusArea.ContentPanel)
+            return;
 
-        RectTransform[] buttons = GetCurrentContentButtons();
-        if (buttons == null || buttons.Length == 0) return;
+        RectTransform[] buttons =
+            GetCurrentContentButtons();
 
-        if (currentContentIndex < 0 || currentContentIndex >= buttons.Length)
+        if (buttons == null || buttons.Length == 0)
+            return;
+
+        if (currentContentIndex < 0 ||
+            currentContentIndex >= buttons.Length)
+        {
             currentContentIndex = 0;
+        }
 
-        RectTransform selected = buttons[currentContentIndex];
-        if (selected == null) return;
+        RectTransform selected =
+            buttons[currentContentIndex];
+
+        if (selected == null)
+            return;
 
         selected.localScale = hoverScale;
     }
@@ -262,11 +308,14 @@ public class BeginnerAlphabetMenuController : MonoBehaviour
 
     private void ResetButtonArray(RectTransform[] buttons)
     {
-        if (buttons == null) return;
+        if (buttons == null)
+            return;
 
         foreach (RectTransform btn in buttons)
         {
-            if (btn == null) continue;
+            if (btn == null)
+                continue;
+
             btn.localScale = normalScale;
         }
     }

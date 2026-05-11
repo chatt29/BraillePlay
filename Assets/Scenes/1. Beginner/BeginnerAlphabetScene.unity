@@ -1275,7 +1275,7 @@ GameObject:
   - component: {fileID: 993797867}
   - component: {fileID: 993797868}
   m_Layer: 0
-  m_Name: BeginnerNumberController
+  m_Name: BeginnerAlphabetController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
