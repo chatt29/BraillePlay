@@ -72,6 +72,8 @@ public class AbcFlowA : MonoBehaviour
     private bool isProcessingAnswer;
     private bool waitingForRestartAnswer;
 
+    private float currentAudioPitch = 1.0f;
+
     private readonly string[] letters =
     {
         "A","B","C","D","E","F","G","H","I","J","K","L","M",
@@ -90,7 +92,6 @@ public class AbcFlowA : MonoBehaviour
     private void Start()
     {
         ResetQuizValues();
-
         HideFeedbackImage();
 
         if (input != null)
@@ -146,8 +147,10 @@ public class AbcFlowA : MonoBehaviour
 
         if (audioSource != null && clip != null)
         {
+            audioSource.pitch = currentAudioPitch;
             audioSource.clip = clip;
             audioSource.Play();
+
             yield return new WaitWhile(() => audioSource.isPlaying);
         }
         else
@@ -210,8 +213,10 @@ public class AbcFlowA : MonoBehaviour
 
         if (audioSource != null && correctClip != null)
         {
+            audioSource.pitch = currentAudioPitch;
             audioSource.clip = correctClip;
             audioSource.Play();
+
             yield return new WaitWhile(() => audioSource.isPlaying);
         }
         else
@@ -250,8 +255,10 @@ public class AbcFlowA : MonoBehaviour
 
         if (audioSource != null && wrongClip != null)
         {
+            audioSource.pitch = currentAudioPitch;
             audioSource.clip = wrongClip;
             audioSource.Play();
+
             yield return new WaitWhile(() => audioSource.isPlaying);
         }
         else
@@ -340,6 +347,35 @@ public class AbcFlowA : MonoBehaviour
         ShowCurrentLetter();
     }
 
+    private void HandleSpeedKeys()
+    {
+        if (audioSource == null)
+            return;
+
+        if (Input.GetKeyDown(KeyCode.Alpha7))
+            SetAudioSpeed(1.0f);
+
+        if (Input.GetKeyDown(KeyCode.Alpha8))
+            SetAudioSpeed(1.25f);
+
+        if (Input.GetKeyDown(KeyCode.Alpha9))
+            SetAudioSpeed(1.5f);
+
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+            SetAudioSpeed(1.75f);
+
+        if (Input.GetKeyDown(KeyCode.Minus))
+            SetAudioSpeed(2.0f);
+    }
+
+    private void SetAudioSpeed(float speed)
+    {
+        currentAudioPitch = speed;
+
+        if (audioSource != null)
+            audioSource.pitch = currentAudioPitch;
+    }
+
     private void UpdateScoreUI()
     {
         if (remainingPointsText != null)
@@ -363,23 +399,12 @@ public class AbcFlowA : MonoBehaviour
                 item.letter.ToUpper() == letter &&
                 item.clip != null)
             {
+                audioSource.pitch = currentAudioPitch;
                 audioSource.clip = item.clip;
                 audioSource.Play();
                 return;
             }
         }
-    }
-
-    private void HandleSpeedKeys()
-    {
-        if (audioSource == null)
-            return;
-
-        if (Input.GetKeyDown(KeyCode.Alpha7)) audioSource.pitch = 1.0f;
-        if (Input.GetKeyDown(KeyCode.Alpha8)) audioSource.pitch = 1.25f;
-        if (Input.GetKeyDown(KeyCode.Alpha9)) audioSource.pitch = 1.5f;
-        if (Input.GetKeyDown(KeyCode.Alpha0)) audioSource.pitch = 1.75f;
-        if (Input.GetKeyDown(KeyCode.Minus)) audioSource.pitch = 2.0f;
     }
 
     private void ShowFeedbackImage(Sprite sprite)
