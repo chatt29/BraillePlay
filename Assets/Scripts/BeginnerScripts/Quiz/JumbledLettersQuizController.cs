@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class JumbledLettersController : MonoBehaviour
 {
     [Header("Quiz Info")]
-    public string quizType = "Beginner";
+    public string quiz_name = "JumbledLetters";
 
     [Header("Scene")]
     public string beginnerScene = "BeginnerScene";
@@ -215,15 +215,7 @@ public class JumbledLettersController : MonoBehaviour
 
     // SAVE TO DATABASE
     // This runs while audio is playing
-    if (userId > 0)
-    {
-        StartCoroutine(
-            PostScore(
-                userId,
-                score
-            )
-        );
-    }
+    
 
     // PLAY FINISH SOUND
     if (audioSource != null &&
@@ -265,6 +257,15 @@ public class JumbledLettersController : MonoBehaviour
 
         yield return new WaitForSeconds(
             scoreClips[score].length
+        );
+    }
+    if (userId > 0)
+    {
+        StartCoroutine(
+            PostScore(
+                userId,
+                score
+            )
         );
     }
 
@@ -354,9 +355,7 @@ public class JumbledLettersController : MonoBehaviour
     // USE CURRENT SCENE NAME
     form.AddField(
         "quiz_name",
-        SceneManager
-            .GetActiveScene()
-            .name
+        quiz_name
     );
 
     UnityWebRequest www =
