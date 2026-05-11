@@ -1,0 +1,24 @@
+{
+  "displayName": "UWP BLE Packed as C++ WinRT DLL",
+  "name": "adabru.ble_winrt_dll",
+  "version": "0.1.0",
+  "unity": "2022.3",
+  "description": "BLE for Unity 3d in Windows without UWP. ",
+  "author": {
+    "name" : "Adam Brunnmeier",
+    "url" : "https://adabru.de/"
+  },
+  "keywords": [
+    "WinRT",
+    "BLE",
+    "Bluetooth"
+  ],
+  "category": "Add-Ons",
+  "samples": [
+    {
+      "displayName": "Demo",
+      "description": "A sample demonstrating how to use the Adabru BLE WinRT DLL in a Unity project.",
+      "path": "Samples~/Demo"
+    }
+  ]
+}
