@@ -1000,21 +1000,25 @@ MonoBehaviour:
   pauseSprite: {fileID: -2494408091038240009, guid: 75b246e51f1e8c54fa7b4312db69569e, type: 3}
   playSprite: {fileID: -5556519961868701338, guid: 4e3a41299c21f3d4780a72977a7bad2d, type: 3}
   message1:
-    messageText: "Welcome! Let\u2019s begin learning the alphabet."
-    messageAudio: {fileID: 8300000, guid: b0bd161bd60c078408c15ea7ab79e19b, type: 3}
+    messageText: 'Welcome Beginner! We''re going to start our journey on playing
+      the Alphabet song here in BraillePlay. '
+    messageAudio: {fileID: 8300000, guid: 3ac4b49342f452f428aa568b6e1100df, type: 3}
   message2:
-    messageText: Enjoy The ABC's Song
-    messageAudio: {fileID: 8300000, guid: 7836e1d023f25fa4fa9c95aff949fce1, type: 3}
+    messageText: 'In this session you can pause the song using the Pause button either
+      play it with the same button. You can also skip 10 second of the song forward
+      and backward using the next and back buttons. '
+    messageAudio: {fileID: 8300000, guid: c25cffae99b68fa4481dcbe7efe8ae97, type: 3}
   message3:
-    messageText: Let's Sing.
-    messageAudio: {fileID: 8300000, guid: 171b1ef34ef4d9b42846815f6bcbe836, type: 3}
+    messageText: So, what are we waiting for? Let's Sing!
+    messageAudio: {fileID: 8300000, guid: 3cb0547ba3baac9469ea44b8b4ec014e, type: 3}
   abcSong: {fileID: 8300000, guid: f807fe123e4368044b31c9d7ebb85061, type: 3}
   afterMessage1:
-    messageText: Repeat the song and sing with me
-    messageAudio: {fileID: 8300000, guid: d6a48fac08611f348a8d0bb9f4cc6f19, type: 3}
+    messageText: Would you like to repeat the song? Press repeat to repeat or next
+      to continue.
+    messageAudio: {fileID: 8300000, guid: 57e2eafdc9f517b45a009ad1f6e39654, type: 3}
   afterMessage2:
-    messageText: Click the Repeat Button
-    messageAudio: {fileID: 8300000, guid: 2ea7983e2c064824091e8af5ec8c3948, type: 3}
+    messageText: 
+    messageAudio: {fileID: 0}
   skipSeconds: 10
 --- !u!114 &838083188
 MonoBehaviour:
