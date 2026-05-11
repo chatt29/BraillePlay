@@ -1183,12 +1183,16 @@ MonoBehaviour:
   dot4Key: 106
   dot5Key: 107
   dot6Key: 108
+  upKey: 273
+  downKey: 274
+  leftKey: 276
+  rightKey: 275
   pauseKey: 112
   backKey: 27
   repeatKey: 114
   submitKey: 32
   deleteOrNoKey: 8
-  yesOrNextKey: 121
+  yesOrNextKey: 13
   loginKey: 13
   spaceKey: 32
   correctKey: 49
@@ -1304,14 +1308,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c239d7d25b798534aa2db2cc8d4dd326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BeginnerAlphabetMenuController
-  randomizedLettersScene: AlphabetTranslation
-  basicWordsScene: BasicWordsScene
   currentMenu: 0
   currentFocus: 0
   arrowIndicator: {fileID: 142108270}
   learnBtn: {fileID: 1142536750}
   quizBtn: {fileID: 1940618750}
-  quizLock: {fileID: 0}
   learnContent: {fileID: 838970697}
   quizContent: {fileID: 225771210}
   learnButtons:

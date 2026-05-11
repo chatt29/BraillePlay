@@ -159,7 +159,6 @@ RectTransform:
   - {fileID: 160477282}
   - {fileID: 498256567}
   - {fileID: 1239602701}
-  - {fileID: 1227834501}
   m_Father: {fileID: 166705781}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1107,6 +1106,7 @@ GameObject:
   - component: {fileID: 160477282}
   - component: {fileID: 160477284}
   - component: {fileID: 160477283}
+  - component: {fileID: 160477285}
   m_Layer: 5
   m_Name: SceneManager
   m_TagString: Untagged
@@ -1145,12 +1145,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2034764109bbc246bce7b134abae8d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AbcFlowInput
-  dot1Image: {fileID: 89685872}
-  dot2Image: {fileID: 339577804}
-  dot3Image: {fileID: 1078743048}
-  dot4Image: {fileID: 63356774}
-  dot5Image: {fileID: 1391729577}
-  dot6Image: {fileID: 226173094}
+  dot1Image: {fileID: 63356774}
+  dot2Image: {fileID: 1391729577}
+  dot3Image: {fileID: 226173094}
+  dot4Image: {fileID: 89685872}
+  dot5Image: {fileID: 339577804}
+  dot6Image: {fileID: 1078743048}
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   pressedColor: {r: 0, g: 0, b: 0, a: 1}
   dot1Key: 106
@@ -1173,7 +1173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AbcFlowA
   input: {fileID: 160477283}
   speechBubbleText: {fileID: 1857143643}
-  letterBoxText: {fileID: 637889036}
+  letterBoxText: {fileID: 1502704370}
   remainingPointsText: {fileID: 123402818}
   deductionsText: {fileID: 472820550}
   totalText: {fileID: 696495422}
@@ -1182,15 +1182,19 @@ MonoBehaviour:
   correctImage: {fileID: 5371412345509669250, guid: 2c9a1de97a98c9544a7c3417c782dc38, type: 3}
   wrongImage: {fileID: -1447605698058687634, guid: c2ad3f9c76950584ebfbb37df66ef340, type: 3}
   feedbackFlashSeconds: 1
-  audioSource: {fileID: 1227834502}
-  introClip: {fileID: 0}
+  audioSource: {fileID: 160477285}
+  introClip: {fileID: 8300000, guid: 23a9b070b88b21943afd4e7ba771b02c, type: 3}
   instructions:
-  - message: 
-    audioClip: {fileID: 0}
-  - message: 
-    audioClip: {fileID: 0}
-  - message: 
-    audioClip: {fileID: 0}
+  - message: 'Let''s see if you remember how to translate letters into Braille. '
+    audioClip: {fileID: 8300000, guid: c57f5a72b2cd08f41a79cb067b729104, type: 3}
+  - message: Let's try typing the alphabet from A to Z without any guide.
+    audioClip: {fileID: 8300000, guid: f95015e715ac6204eb4e1e1e6c5308fd, type: 3}
+  - message: 'In this quest, you''re going to have 100 points and will have 1 point
+      deducted every time you make 3 mistakes. '
+    audioClip: {fileID: 8300000, guid: 7e079873f3a4fa74a8064718a1ff99b8, type: 3}
+  - message: So what are we waiting for? Let's start. The first letter you're going
+      to type is...
+    audioClip: {fileID: 8300000, guid: e8812ca02156ee940af3a7ec19d91130, type: 3}
   endingMessage1:
     message: 
     audioClip: {fileID: 0}
@@ -1201,69 +1205,164 @@ MonoBehaviour:
     message: 
     audioClip: {fileID: 0}
   restartPromptMessage:
-    message: Would you like to restart?
-    audioClip: {fileID: 0}
-  restartYesMessage:
-    message: Great! Let's go again!
-    audioClip: {fileID: 0}
+    message: Congratulations! You finished ABCFlow. Would you like to try it again?
+      Press Repeat to repeat or next to continue.
+    audioClip: {fileID: 8300000, guid: 1c18ba2bfec825648ab8782b2f9d5545, type: 3}
   letterAudios:
   - letter: A
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: db2a29692b888a64e9eb5615a35f2067, type: 3}
   - letter: B
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 161edd584651a11458617b73d491f2e2, type: 3}
   - letter: C
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: fb81334d6c05b8d4db30d92ba89ee637, type: 3}
   - letter: D
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 63731e609e7f4d1468e14c34619c7105, type: 3}
   - letter: E
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 2c9b2a1b631f1144f82bae9972a55eb7, type: 3}
   - letter: F
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 418a48a55da15b54b8f63dc1d4ae378e, type: 3}
   - letter: G
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 5ad0698e926b8bc4582d764797ccd5e2, type: 3}
   - letter: H
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: c97a24c02d9962e48b3a59ff0ca2dc84, type: 3}
   - letter: I
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: a30db39a77c61854b92ef58ea77b7a52, type: 3}
   - letter: J
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 6cba588ac41fdb24abf0feb35ee17b53, type: 3}
   - letter: K
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 99d32609fb5cf734e9a73e6fbad2b9fb, type: 3}
   - letter: L
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 1a40d9384c8383044954da59292b60dc, type: 3}
   - letter: M
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 6f76e5d90c2c7c24e92f76289c79853e, type: 3}
   - letter: N
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: e902fa1cdcd6f3741a801fc76d31d3a2, type: 3}
   - letter: O
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 30dc25378aaefad4b952db92ae5b951e, type: 3}
   - letter: P
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 6b5618c2b1bd35f46ab1dd706dff6cb9, type: 3}
   - letter: Q
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 8b802446fedc4b940a85a52977f71165, type: 3}
   - letter: R
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 03317eb06781b13419db5c74837cc572, type: 3}
   - letter: S
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 93b471b106df8854ab8a702d6e760813, type: 3}
   - letter: T
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: a55f62e055ff4744cad992cbc4c3c819, type: 3}
   - letter: U
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: a96204635792b054f841800005d758b1, type: 3}
   - letter: V
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 553c6402511ccac4b91ae8e33ca1e582, type: 3}
   - letter: W
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 3d544f7e96756214ca4c5f1d7940fa60, type: 3}
   - letter: X
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 6a1ba55d7f7e1e448ab24f59b6ad8fa6, type: 3}
   - letter: Y
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 4a27318d1cd76074d906529b0128a696, type: 3}
   - letter: Z
-    clip: {fileID: 0}
-  correctClip: {fileID: 0}
-  wrongClip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 2e61dceb074929243945c5ba92bcbc26, type: 3}
+  correctClip: {fileID: 8300000, guid: fe6beb06190d30148bfa826812a4af0a, type: 3}
+  wrongClip: {fileID: 8300000, guid: b97f7d23e035b5a4792712f993bc257a, type: 3}
   startingScore: 100
   mistakesBeforeDeduction: 3
   wirelessHapticsObject: {fileID: 1239602700}
+--- !u!82 &160477285
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160477281}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: be5e51a110f2768489db678f3dc889f1, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &166705778
 GameObject:
   m_ObjectHideFlags: 0
@@ -2286,7 +2385,7 @@ MonoBehaviour:
   repeatKey: 114
   submitKey: 13
   deleteOrNoKey: 8
-  yesOrNextKey: 121
+  yesOrNextKey: 13
   loginKey: 13
   spaceKey: 32
   correctKey: 49
@@ -3573,139 +3672,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1218685174}
   m_CullTransparentMesh: 1
---- !u!1 &1227834500
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1227834501}
-  - component: {fileID: 1227834502}
-  m_Layer: 5
-  m_Name: Audio Source
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1227834501
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1227834500}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4298462}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!82 &1227834502
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1227834500}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1 &1239602700
 GameObject:
   m_ObjectHideFlags: 0

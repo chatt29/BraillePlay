@@ -2051,12 +2051,16 @@ MonoBehaviour:
   dot4Key: 106
   dot5Key: 107
   dot6Key: 108
+  upKey: 273
+  downKey: 274
+  leftKey: 276
+  rightKey: 275
   pauseKey: 112
   backKey: 27
   repeatKey: 114
   submitKey: 13
   deleteOrNoKey: 8
-  yesOrNextKey: 121
+  yesOrNextKey: 13
   loginKey: 13
   spaceKey: 32
   correctKey: 49
