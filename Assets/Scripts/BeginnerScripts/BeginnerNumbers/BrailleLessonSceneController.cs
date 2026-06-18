@@ -850,4 +850,17 @@ public class BrailleLessonSceneController : MonoBehaviour
 
         return "Dots " + string.Join(", ", dots);
     }
+
+    public BrailleLesson GetCurrentLesson()
+    {
+        if (currentLessonIndex < 0 || currentLessonIndex >= lessons.Count)
+            return null;
+
+        return lessons[currentLessonIndex];
+    }
+
+    public int GetCurrentSequenceStep()
+    {
+        return currentSequenceStep;
+    }
 }
