@@ -487,12 +487,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 286661652}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1791188412}
+  m_Father: {fileID: 1586095474}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2357,7 +2357,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 286661653}
   m_Father: {fileID: 1791188412}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2480,12 +2481,16 @@ MonoBehaviour:
   dot4Key: 106
   dot5Key: 107
   dot6Key: 108
+  upKey: 273
+  downKey: 274
+  leftKey: 276
+  rightKey: 275
   pauseKey: 112
   backKey: 27
   repeatKey: 114
   submitKey: 13
   deleteOrNoKey: 8
-  yesOrNextKey: 121
+  yesOrNextKey: 13
   loginKey: 13
   spaceKey: 32
   correctKey: 49
@@ -4401,7 +4406,6 @@ RectTransform:
   - {fileID: 1777884056}
   - {fileID: 1242371996}
   - {fileID: 1070165175}
-  - {fileID: 286661653}
   - {fileID: 1586095474}
   - {fileID: 1155271826}
   - {fileID: 2047379755}

@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class AbcMessage
@@ -19,10 +20,13 @@ public class AbcSongScript : MonoBehaviour
     [Header("Audio")]
     public AudioSource audioSource;
 
+    [Header("Wireless Haptics")]
+    public GameObject wirelessHapticsObject;
+
     [Header("Pause / Play Image")]
     public Image pausePlayImage;
-    public Sprite pauseSprite; // Pause.Image_0
-    public Sprite playSprite;  // Play.Image_0
+    public Sprite pauseSprite;
+    public Sprite playSprite;
 
     [Header("Messages Before ABC Song")]
     public AbcMessage message1;
@@ -36,121 +40,98 @@ public class AbcSongScript : MonoBehaviour
     public AbcMessage afterMessage1;
     public AbcMessage afterMessage2;
 
+    [Header("Settings")]
+    public float skipSeconds = 10f;
+
     private int step = 0;
     private bool songPlaying = false;
     private bool isPaused = false;
 
-    void OnEnable()
+    private void OnEnable()
     {
-        BrailleMapping.OnSubmit += HandleFastForward;
-        BrailleMapping.OnDeleteOrNo += HandleRewind;
+        BrailleMapping.OnSpace += TogglePausePlay;
+        BrailleMapping.OnLeft += Rewind10;
+        BrailleMapping.OnRight += FastForward10;
         BrailleMapping.OnRepeat += RepeatSongButton;
-        BrailleMapping.OnPause += TogglePausePlay; // P key
+        BrailleMapping.OnBack += BackToMainMenu;
     }
 
-    void OnDisable()
+    private void OnDisable()
     {
-        BrailleMapping.OnSubmit -= HandleFastForward;
-        BrailleMapping.OnDeleteOrNo -= HandleRewind;
+        BrailleMapping.OnSpace -= TogglePausePlay;
+        BrailleMapping.OnLeft -= Rewind10;
+        BrailleMapping.OnRight -= FastForward10;
         BrailleMapping.OnRepeat -= RepeatSongButton;
-        BrailleMapping.OnPause -= TogglePausePlay;
+        BrailleMapping.OnBack -= BackToMainMenu;
     }
 
-    void Start()
+    private void Start()
     {
         isPaused = false;
         ShowPauseImage();
         PlayCurrent();
     }
 
-    // ---------- PAUSE / PLAY ----------
     public void TogglePausePlay()
     {
         if (isPaused)
-        {
             PlayButton();
-        }
         else
-        {
             PauseButton();
-        }
     }
 
     public void PauseButton()
     {
         if (audioSource != null && audioSource.isPlaying)
-        {
             audioSource.Pause();
-        }
 
         isPaused = true;
         ShowPlayImage();
+        TriggerHaptic();
     }
 
     public void PlayButton()
     {
         if (audioSource != null)
-        {
             audioSource.UnPause();
-        }
 
         isPaused = false;
         ShowPauseImage();
-    }
-
-    void ShowPauseImage()
-    {
-        if (pausePlayImage != null && pauseSprite != null)
-        {
-            pausePlayImage.sprite = pauseSprite;
-        }
-    }
-
-    void ShowPlayImage()
-    {
-        if (pausePlayImage != null && playSprite != null)
-        {
-            pausePlayImage.sprite = playSprite;
-        }
-    }
-
-    // ---------- FAST FORWARD ----------
-    void HandleFastForward()
-    {
-        FastForward10();
+        TriggerHaptic();
     }
 
     public void FastForward10()
     {
-        if (audioSource == null || audioSource.clip == null) return;
+        if (!songPlaying) return;
+        if (audioSource == null) return;
+        if (audioSource.clip == null) return;
+        if (audioSource.clip.length <= 0f) return;
 
-        audioSource.time += 10f;
+        float currentTime = audioSource.time;
+        float maxTime = Mathf.Max(0f, audioSource.clip.length - 0.25f);
+        float newTime = Mathf.Clamp(currentTime + skipSeconds, 0f, maxTime);
 
-        if (audioSource.time > audioSource.clip.length)
-        {
-            audioSource.time = audioSource.clip.length - 0.1f;
-        }
-    }
+        audioSource.time = newTime;
 
-    // ---------- REWIND ----------
-    void HandleRewind()
-    {
-        Rewind10();
+        TriggerHaptic();
     }
 
     public void Rewind10()
     {
-        if (audioSource == null || audioSource.clip == null) return;
+        if (!songPlaying) return;
+        if (audioSource == null) return;
+        if (audioSource.clip == null) return;
+        if (audioSource.clip.length <= 0f) return;
 
-        audioSource.time -= 10f;
+        float currentTime = audioSource.time;
+        float maxTime = Mathf.Max(0f, audioSource.clip.length - 0.25f);
+        float newTime = Mathf.Clamp(currentTime - skipSeconds, 0f, maxTime);
 
-        if (audioSource.time < 0f)
-        {
-            audioSource.time = 0f;
-        }
+        audioSource.time = newTime;
+
+        TriggerHaptic();
     }
 
-    // ---------- BACK TO START ----------
     public void Back()
     {
         StopAllCoroutines();
@@ -167,10 +148,21 @@ public class AbcSongScript : MonoBehaviour
         step = 0;
 
         ShowPauseImage();
+        TriggerHaptic();
         PlayCurrent();
     }
 
-    // ---------- REPEAT ----------
+    public void BackToMainMenu()
+    {
+        TriggerHaptic();
+
+        if (audioSource != null)
+            audioSource.Stop();
+
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MainMenu");
+    }
+
     public void RepeatSongButton()
     {
         StopAllCoroutines();
@@ -183,36 +175,39 @@ public class AbcSongScript : MonoBehaviour
 
         songPlaying = false;
         isPaused = false;
-
-        // Go back to the 3rd message first.
-        // Then it will automatically continue to the song.
         step = 2;
 
         ShowPauseImage();
+        TriggerHaptic();
         PlayCurrent();
     }
 
-    // ---------- MESSAGE FLOW ----------
-    AbcMessage GetMessage(int index)
+    public void Next()
+    {
+        if (songPlaying || isPaused)
+            return;
+
+        if (step < 5)
+        {
+            step++;
+            PlayCurrent();
+        }
+    }
+
+    public void Repeat()
+    {
+        RepeatSongButton();
+    }
+
+    private AbcMessage GetMessage(int index)
     {
         switch (index)
         {
-            case 0:
-                return message1;
-
-            case 1:
-                return message2;
-
-            case 2:
-                return message3;
-
-            // step 3 = ABC song
-
-            case 4:
-                return afterMessage1;
-
-            case 5:
-                return afterMessage2;
+            case 0: return message1;
+            case 1: return message2;
+            case 2: return message3;
+            case 4: return afterMessage1;
+            case 5: return afterMessage2;
         }
 
         return null;
@@ -225,7 +220,6 @@ public class AbcSongScript : MonoBehaviour
         isPaused = false;
         ShowPauseImage();
 
-        // ABC song step
         if (step == 3)
         {
             StartCoroutine(PlaySong());
@@ -236,23 +230,20 @@ public class AbcSongScript : MonoBehaviour
 
         if (msg != null)
         {
-            bubbleText.text = msg.messageText;
-            PlayAudio(msg.messageAudio);
+            if (bubbleText != null)
+                bubbleText.text = msg.messageText;
 
+            PlayAudio(msg.messageAudio);
             StartCoroutine(AutoNext(msg.messageAudio));
         }
     }
 
-    IEnumerator AutoNext(AudioClip clip)
+    private IEnumerator AutoNext(AudioClip clip)
     {
         if (clip != null && audioSource != null)
-        {
             yield return new WaitUntil(() => !audioSource.isPlaying && !isPaused);
-        }
         else
-        {
             yield return new WaitForSeconds(2f);
-        }
 
         if (!songPlaying && step < 5)
         {
@@ -261,7 +252,7 @@ public class AbcSongScript : MonoBehaviour
         }
     }
 
-    IEnumerator PlaySong()
+    private IEnumerator PlaySong()
     {
         songPlaying = true;
 
@@ -270,6 +261,7 @@ public class AbcSongScript : MonoBehaviour
             audioSource.Stop();
             audioSource.time = 0f;
             audioSource.clip = abcSong;
+            audioSource.pitch = currentAudioSpeed;
             audioSource.Play();
 
             yield return new WaitUntil(() => !audioSource.isPlaying && !isPaused);
@@ -284,29 +276,72 @@ public class AbcSongScript : MonoBehaviour
         PlayCurrent();
     }
 
-    void PlayAudio(AudioClip clip)
+    private void PlayAudio(AudioClip clip)
     {
         if (audioSource == null || clip == null) return;
 
         audioSource.Stop();
         audioSource.time = 0f;
         audioSource.clip = clip;
+        audioSource.pitch = currentAudioSpeed;
         audioSource.Play();
     }
 
-    public void Next()
+    private void ShowPauseImage()
     {
-        if (songPlaying || isPaused) return;
-
-        if (step < 5)
-        {
-            step++;
-            PlayCurrent();
-        }
+        if (pausePlayImage != null && pauseSprite != null)
+            pausePlayImage.sprite = pauseSprite;
     }
 
-    public void Repeat()
+    private void ShowPlayImage()
     {
-        RepeatSongButton();
+        if (pausePlayImage != null && playSprite != null)
+            pausePlayImage.sprite = playSprite;
+    }
+
+    private float currentAudioSpeed = 1.0f;
+
+    private void Update()
+    {
+        HandleSpeedKeys();
+    }
+
+    private void HandleSpeedKeys()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha7))
+            SetAudioSpeed(1.0f);
+
+        if (Input.GetKeyDown(KeyCode.Alpha8))
+            SetAudioSpeed(1.25f);
+
+        if (Input.GetKeyDown(KeyCode.Alpha9))
+            SetAudioSpeed(1.5f);
+
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+            SetAudioSpeed(1.75f);
+
+        if (Input.GetKeyDown(KeyCode.Minus))
+            SetAudioSpeed(2.0f);
+    }
+
+    private void SetAudioSpeed(float speed)
+    {
+        currentAudioSpeed = speed;
+
+        if (audioSource != null)
+            audioSource.pitch = currentAudioSpeed;
+
+        TriggerHaptic();
+    }
+
+    private void TriggerHaptic()
+    {
+        if (wirelessHapticsObject != null)
+        {
+            wirelessHapticsObject.SendMessage(
+                "TriggerHaptic",
+                SendMessageOptions.DontRequireReceiver
+            );
+        }
     }
 }

@@ -800,7 +800,7 @@ MonoBehaviour:
   repeatKey: 114
   submitKey: 32
   noKey: 8
-  yesKey: 121
+  yesKey: 13
   loginKey: 13
   sfxSource: {fileID: 0}
   dot1Sfx: {fileID: 0}
@@ -1112,11 +1112,20 @@ MonoBehaviour:
   dot4Key: 0
   dot5Key: 0
   dot6Key: 0
+  upKey: 273
+  downKey: 274
+  leftKey: 276
+  rightKey: 275
+  pauseKey: 112
+  backKey: 27
   repeatKey: 114
   submitKey: 32
   deleteOrNoKey: 8
   yesOrNextKey: 121
   loginKey: 13
+  spaceKey: 32
+  correctKey: 49
+  wrongKey: 50
   audioSource: {fileID: 0}
   dot1Sfx: {fileID: 0}
   dot2Sfx: {fileID: 0}
@@ -1129,7 +1138,46 @@ MonoBehaviour:
   deleteOrNoSfx: {fileID: 0}
   yesOrNextSfx: {fileID: 0}
   loginSfx: {fileID: 0}
+  spaceSfx: {fileID: 0}
+  correctSfx: {fileID: 0}
+  wrongSfx: {fileID: 0}
+  aSound: {fileID: 0}
+  bSound: {fileID: 0}
+  cSound: {fileID: 0}
+  dSound: {fileID: 0}
+  eSound: {fileID: 0}
+  fSound: {fileID: 0}
+  gSound: {fileID: 0}
+  hSound: {fileID: 0}
+  iSound: {fileID: 0}
+  jSound: {fileID: 0}
+  kSound: {fileID: 0}
+  lSound: {fileID: 0}
+  mSound: {fileID: 0}
+  nSound: {fileID: 0}
+  oSound: {fileID: 0}
+  pSound: {fileID: 0}
+  qSound: {fileID: 0}
+  rSound: {fileID: 0}
+  sSound: {fileID: 0}
+  tSound: {fileID: 0}
+  uSound: {fileID: 0}
+  vSound: {fileID: 0}
+  wSound: {fileID: 0}
+  xSound: {fileID: 0}
+  ySound: {fileID: 0}
+  zSound: {fileID: 0}
+  letterSoundVolume: 1.5
+  otherDefaultPatternSounds: []
+  otherPatternSoundVolume: 1.5
+  leftEarPan: -1
+  rightEarPan: 1
+  dotVolume: 2
+  actionVolume: 1.5
+  feedbackVolume: 2
   logInputs: 0
+  playLetterSoundOnChord: 1
+  playOtherPatternSoundOnChord: 1
 --- !u!4 &1210669462
 Transform:
   m_ObjectHideFlags: 0
@@ -1155,6 +1203,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1323007481}
   - component: {fileID: 1323007482}
+  - component: {fileID: 1323007484}
   m_Layer: 5
   m_Name: AssessmentManager
   m_TagString: Untagged
@@ -1193,25 +1242,124 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a663270f80905048933c3e0da69e3cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AssessmentFlow
+  updateAssessmentURL: http://localhost/brailleplay/update_assessment.php
   assessmentQuestionText: {fileID: 184854300}
   resultText: {fileID: 184854300}
-  voiceSource: {fileID: 0}
-  sfxSource: {fileID: 0}
+  voiceSource: {fileID: 1323007484}
+  sfxSource: {fileID: 1323007484}
   typewriterTickSfx: {fileID: 0}
-  validButtonPressSfx: {fileID: 0}
-  q1Audio: {fileID: 0}
-  q2Audio: {fileID: 0}
-  q3Audio: {fileID: 0}
-  q4Audio: {fileID: 0}
-  q5Audio: {fileID: 0}
-  q6Audio: {fileID: 0}
-  beginnerAudio: {fileID: 0}
-  intermediateAudio: {fileID: 0}
-  advanceAudio: {fileID: 0}
+  validButtonPressSfx: {fileID: 8300000, guid: 1162c61933e148c45bef68b06d74ac47, type: 3}
+  q1Audio: {fileID: 8300000, guid: f4e19118834beea49a0b65e811bd93de, type: 3}
+  q2Audio: {fileID: 8300000, guid: 81ef6d54e4040924faf626759949b112, type: 3}
+  q3Audio: {fileID: 8300000, guid: 128f1cca6023492428459df5a9e75a63, type: 3}
+  q4Audio: {fileID: 8300000, guid: cf882c4d999b4644b9d7f27963f50f96, type: 3}
+  q5Audio: {fileID: 8300000, guid: 9612af8d1c7e5f94285787a0a8a61263, type: 3}
+  beginnerAudio: {fileID: 8300000, guid: b8cc18b15e2097f4394eeb40c151a0e3, type: 3}
+  intermediateAudio: {fileID: 8300000, guid: c23176539e5c50d47aef52d6b8edbccc, type: 3}
+  advanceAudio: {fileID: 8300000, guid: 6c26e55bbd1409842bf93b4798e2931e, type: 3}
+  loadSceneAfterResult: 1
+  sceneLoadDelay: 2
   characterDelay: 0.03
-  playTickPerCharacter: 0
+  playTickPerCharacter: 1
   autoStartOnEnable: 1
   logFlow: 1
+--- !u!82 &1323007484
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323007480}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: be5e51a110f2768489db678f3dc889f1, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1345631939
 GameObject:
   m_ObjectHideFlags: 0

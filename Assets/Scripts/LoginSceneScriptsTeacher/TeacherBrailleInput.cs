@@ -2,14 +2,14 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class TeacherLoginBrailleInput : MonoBehaviour
+public class TeacherBrailleInput : MonoBehaviour
 {
-    [Header("Teacher Input Fields")]
+    [Header("Scene Only References")]
     [SerializeField] private TMP_InputField usernameInput;
     [SerializeField] private TMP_InputField passwordInput;
 
-    [Header("Teacher Flow")]
-    [SerializeField] private TeacherLoginFlow teacherLoginFlow;
+    [Header("Flow Reference")]
+    [SerializeField] private TeacherLoginFlow loginFlow;
 
     [Header("Options")]
     [SerializeField] private bool blockPhysicalKeyboardTyping = true;
@@ -50,7 +50,13 @@ public class TeacherLoginBrailleInput : MonoBehaviour
         }
 
         GameObject selected = EventSystem.current.currentSelectedGameObject;
-        activeField = selected ? selected.GetComponent<TMP_InputField>() : null;
+        if (selected == null)
+        {
+            activeField = null;
+            return;
+        }
+
+        activeField = selected.GetComponent<TMP_InputField>();
     }
 
     private void HandleBrailleChord(string pattern)
@@ -58,10 +64,14 @@ public class TeacherLoginBrailleInput : MonoBehaviour
         if (activeField == null)
             return;
 
-        // Number sign (3456)
+        // Number sign: dots 3-4-5-6
         if (pattern == "001111")
         {
             numberMode = true;
+
+            if (logBrailleLetters)
+                Debug.Log("Braille Pattern: " + pattern + " -> [NUMBER SIGN]");
+
             return;
         }
 
@@ -74,7 +84,7 @@ public class TeacherLoginBrailleInput : MonoBehaviour
         }
 
         if (logBrailleLetters)
-            Debug.Log("Braille: " + pattern + " -> " + value);
+            Debug.Log("Braille Pattern: " + pattern + " -> " + value);
 
         InsertText(value);
 
@@ -86,6 +96,9 @@ public class TeacherLoginBrailleInput : MonoBehaviour
     {
         if (activeField == null)
         {
+            if (loginFlow != null)
+                loginFlow.GoToPreviousField();
+
             numberMode = false;
             return;
         }
@@ -94,12 +107,16 @@ public class TeacherLoginBrailleInput : MonoBehaviour
 
         if (string.IsNullOrEmpty(text))
         {
+            if (loginFlow != null)
+                loginFlow.GoToPreviousField();
+
             numberMode = false;
             return;
         }
 
         int caret = activeField.stringPosition;
-        if (caret <= 0) caret = text.Length;
+        if (caret <= 0 || caret > text.Length)
+            caret = text.Length;
 
         text = text.Remove(caret - 1, 1);
         activeField.text = text;
@@ -110,7 +127,8 @@ public class TeacherLoginBrailleInput : MonoBehaviour
 
     private void InsertText(string value)
     {
-        if (activeField == null) return;
+        if (activeField == null || string.IsNullOrEmpty(value))
+            return;
 
         string text = activeField.text;
         int caret = activeField.stringPosition;
@@ -136,6 +154,7 @@ public class TeacherLoginBrailleInput : MonoBehaviour
 
     private string TranslateBraille(string pattern)
     {
+        // pattern order: 123456 = F D S J K L
         switch (pattern)
         {
             case "100000": return "a";
@@ -164,6 +183,8 @@ public class TeacherLoginBrailleInput : MonoBehaviour
             case "101101": return "x";
             case "101111": return "y";
             case "101011": return "z";
+
+            case "000000": return "";
             default: return "";
         }
     }
@@ -172,16 +193,16 @@ public class TeacherLoginBrailleInput : MonoBehaviour
     {
         switch (pattern)
         {
-            case "100000": return "1";
-            case "110000": return "2";
-            case "100100": return "3";
-            case "100110": return "4";
-            case "100010": return "5";
-            case "110100": return "6";
-            case "110110": return "7";
-            case "110010": return "8";
-            case "010100": return "9";
-            case "010110": return "0";
+            case "100000": return "1"; // a
+            case "110000": return "2"; // b
+            case "100100": return "3"; // c
+            case "100110": return "4"; // d
+            case "100010": return "5"; // e
+            case "110100": return "6"; // f
+            case "110110": return "7"; // g
+            case "110010": return "8"; // h
+            case "010100": return "9"; // i
+            case "010110": return "0"; // j
             default: return "";
         }
     }

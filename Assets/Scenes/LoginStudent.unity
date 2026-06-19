@@ -154,6 +154,10 @@ MonoBehaviour:
   dot4Key: 106
   dot5Key: 107
   dot6Key: 108
+  upKey: 273
+  downKey: 274
+  leftKey: 276
+  rightKey: 275
   pauseKey: 112
   backKey: 27
   repeatKey: 114
@@ -161,6 +165,9 @@ MonoBehaviour:
   deleteOrNoKey: 8
   yesOrNextKey: 121
   loginKey: 13
+  spaceKey: 32
+  correctKey: 49
+  wrongKey: 50
   audioSource: {fileID: 0}
   dot1Sfx: {fileID: 0}
   dot2Sfx: {fileID: 0}
@@ -173,7 +180,46 @@ MonoBehaviour:
   deleteOrNoSfx: {fileID: 0}
   yesOrNextSfx: {fileID: 0}
   loginSfx: {fileID: 0}
+  spaceSfx: {fileID: 0}
+  correctSfx: {fileID: 0}
+  wrongSfx: {fileID: 0}
+  aSound: {fileID: 0}
+  bSound: {fileID: 0}
+  cSound: {fileID: 0}
+  dSound: {fileID: 0}
+  eSound: {fileID: 0}
+  fSound: {fileID: 0}
+  gSound: {fileID: 0}
+  hSound: {fileID: 0}
+  iSound: {fileID: 0}
+  jSound: {fileID: 0}
+  kSound: {fileID: 0}
+  lSound: {fileID: 0}
+  mSound: {fileID: 0}
+  nSound: {fileID: 0}
+  oSound: {fileID: 0}
+  pSound: {fileID: 0}
+  qSound: {fileID: 0}
+  rSound: {fileID: 0}
+  sSound: {fileID: 0}
+  tSound: {fileID: 0}
+  uSound: {fileID: 0}
+  vSound: {fileID: 0}
+  wSound: {fileID: 0}
+  xSound: {fileID: 0}
+  ySound: {fileID: 0}
+  zSound: {fileID: 0}
+  letterSoundVolume: 1.5
+  otherDefaultPatternSounds: []
+  otherPatternSoundVolume: 1.5
+  leftEarPan: -1
+  rightEarPan: 1
+  dotVolume: 2
+  actionVolume: 1.5
+  feedbackVolume: 2
   logInputs: 0
+  playLetterSoundOnChord: 1
+  playOtherPatternSoundOnChord: 1
 --- !u!4 &364629
 Transform:
   m_ObjectHideFlags: 0

@@ -1,0 +1,487 @@
+using System.Collections;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
+public class AbcFlowA : MonoBehaviour
+{
+    [System.Serializable]
+    public class InstructionLine
+    {
+        [TextArea]
+        public string message;
+        public AudioClip audioClip;
+    }
+
+    [System.Serializable]
+    public class LetterAudio
+    {
+        public string letter;
+        public AudioClip clip;
+    }
+
+    [Header("Input")]
+    public AbcFlowInput input;
+
+    [Header("UI")]
+    public TMP_Text speechBubbleText;
+    public TMP_Text letterBoxText;
+    public TMP_Text remainingPointsText;
+    public TMP_Text deductionsText;
+    public TMP_Text totalText;
+    public TMP_Text resultText;
+
+    [Header("Feedback Image")]
+    public Image feedbackImagePlaceholder;
+    public Sprite correctImage;
+    public Sprite wrongImage;
+    public float feedbackFlashSeconds = 1.0f;
+
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip introClip;
+    public InstructionLine[] instructions;
+
+    [Header("Ending Messages")]
+    public InstructionLine endingMessage1;
+    public InstructionLine endingMessage2;
+    public InstructionLine endingMessage3;
+    public InstructionLine restartPromptMessage;
+    public InstructionLine restartYesMessage;
+
+    [Header("Letter Audio A-Z")]
+    public LetterAudio[] letterAudios = new LetterAudio[26];
+
+    [Header("Feedback Audio")]
+    public AudioClip correctClip;
+    public AudioClip wrongClip;
+
+    [Header("Score")]
+    public int startingScore = 100;
+    public int mistakesBeforeDeduction = 3;
+
+    [Header("Wireless Haptics")]
+    public GameObject wirelessHapticsObject;
+
+    private int currentLetterIndex;
+    private int score;
+    private int mistakes;
+    private int deductions;
+
+    private bool acceptingInput;
+    private bool isProcessingAnswer;
+    private bool waitingForRestartAnswer;
+
+    private float currentAudioPitch = 1.0f;
+
+    private string lastMessageText = "";
+    private AudioClip lastMessageClip;
+
+    private readonly string[] letters =
+    {
+        "A","B","C","D","E","F","G","H","I","J","K","L","M",
+        "N","O","P","Q","R","S","T","U","V","W","X","Y","Z"
+    };
+
+    private readonly string[] brailleAnswers =
+    {
+        "100000","110000","100100","100110","100010",
+        "110100","110110","110010","010100","010110",
+        "101000","111000","101100","101110","101010",
+        "111100","111110","111010","011100","011110",
+        "101001","111001","010111","101101","101111","101011"
+    };
+
+    private void Start()
+    {
+        ResetQuizValues();
+        HideFeedbackImage();
+
+        if (input != null)
+        {
+            input.SetInputEnabled(false);
+            input.OnAnswerSubmitted += CheckAnswer;
+        }
+
+        UpdateScoreUI();
+        StartCoroutine(StartSceneFlow());
+    }
+
+    private void Update()
+    {
+        HandleSpeedKeys();
+        HandleRestartKeys();
+        HandleRepeatKey();
+    }
+
+    private void ResetQuizValues()
+    {
+        currentLetterIndex = 0;
+        score = startingScore;
+        mistakes = 0;
+        deductions = 0;
+
+        acceptingInput = false;
+        isProcessingAnswer = false;
+        waitingForRestartAnswer = false;
+    }
+
+    private IEnumerator StartSceneFlow()
+    {
+        acceptingInput = false;
+        isProcessingAnswer = false;
+        waitingForRestartAnswer = false;
+
+        if (introClip != null)
+            yield return PlayMessage("ABC Flow Quiz", introClip);
+
+        foreach (InstructionLine line in instructions)
+        {
+            if (line != null)
+                yield return PlayMessage(line.message, line.audioClip);
+        }
+
+        ShowCurrentLetter();
+    }
+
+    private IEnumerator PlayMessage(string message, AudioClip clip)
+    {
+        lastMessageText = message;
+        lastMessageClip = clip;
+
+        if (speechBubbleText != null)
+            speechBubbleText.text = message;
+
+        if (audioSource != null && clip != null)
+        {
+            audioSource.pitch = currentAudioPitch;
+            audioSource.clip = clip;
+            audioSource.Play();
+
+            yield return new WaitWhile(() => audioSource.isPlaying);
+        }
+        else
+        {
+            yield return new WaitForSeconds(1.5f);
+        }
+    }
+
+    private void ShowCurrentLetter()
+    {
+        acceptingInput = true;
+        isProcessingAnswer = false;
+        waitingForRestartAnswer = false;
+
+        if (input != null)
+            input.SetInputEnabled(true);
+
+        HideFeedbackImage();
+
+        string currentLetter = letters[currentLetterIndex];
+
+        if (letterBoxText != null)
+            letterBoxText.text = currentLetter;
+
+        if (speechBubbleText != null)
+            speechBubbleText.text = "Letter " + currentLetter;
+
+        if (resultText != null)
+            resultText.text = "";
+
+        PlayLetterAudio(currentLetter);
+    }
+
+    private void CheckAnswer(string pattern)
+    {
+        if (!acceptingInput || isProcessingAnswer)
+            return;
+
+        acceptingInput = false;
+        isProcessingAnswer = true;
+
+        if (input != null)
+            input.SetInputEnabled(false);
+
+        if (pattern == brailleAnswers[currentLetterIndex])
+            StartCoroutine(CorrectFlow());
+        else
+            StartCoroutine(WrongFlow());
+    }
+
+    private IEnumerator CorrectFlow()
+    {
+        if (speechBubbleText != null)
+            speechBubbleText.text = "That is correct!";
+
+        if (resultText != null)
+            resultText.text = "CORRECT";
+
+        ShowFeedbackImage(correctImage);
+
+        if (audioSource != null && correctClip != null)
+        {
+            lastMessageText = "That is correct!";
+            lastMessageClip = correctClip;
+
+            audioSource.pitch = currentAudioPitch;
+            audioSource.clip = correctClip;
+            audioSource.Play();
+
+            yield return new WaitWhile(() => audioSource.isPlaying);
+        }
+        else
+        {
+            yield return new WaitForSeconds(feedbackFlashSeconds);
+        }
+
+        currentLetterIndex++;
+
+        if (currentLetterIndex >= letters.Length)
+            FinishQuiz();
+        else
+            ShowCurrentLetter();
+    }
+
+    private IEnumerator WrongFlow()
+    {
+        mistakes++;
+
+        if (mistakes % mistakesBeforeDeduction == 0)
+        {
+            deductions++;
+            score = Mathf.Max(0, score - 1);
+        }
+
+        UpdateScoreUI();
+        TriggerHaptic();
+
+        if (speechBubbleText != null)
+            speechBubbleText.text = "That is wrong.";
+
+        if (resultText != null)
+            resultText.text = "WRONG";
+
+        ShowFeedbackImage(wrongImage);
+
+        if (audioSource != null && wrongClip != null)
+        {
+            lastMessageText = "That is wrong.";
+            lastMessageClip = wrongClip;
+
+            audioSource.pitch = currentAudioPitch;
+            audioSource.clip = wrongClip;
+            audioSource.Play();
+
+            yield return new WaitWhile(() => audioSource.isPlaying);
+        }
+        else
+        {
+            yield return new WaitForSeconds(feedbackFlashSeconds);
+        }
+
+        currentLetterIndex++;
+
+        if (currentLetterIndex >= letters.Length)
+            FinishQuiz();
+        else
+            ShowCurrentLetter();
+    }
+
+    private void FinishQuiz()
+    {
+        acceptingInput = false;
+        isProcessingAnswer = false;
+
+        if (input != null)
+            input.SetInputEnabled(false);
+
+        StartCoroutine(FinishQuizFlow());
+    }
+
+    private IEnumerator FinishQuizFlow()
+    {
+        if (letterBoxText != null)
+            letterBoxText.text = "";
+
+        if (resultText != null)
+            resultText.text = "DONE";
+
+        HideFeedbackImage();
+
+        if (endingMessage1 != null)
+            yield return PlayMessage(endingMessage1.message, endingMessage1.audioClip);
+
+        if (endingMessage2 != null)
+            yield return PlayMessage(endingMessage2.message, endingMessage2.audioClip);
+
+        if (endingMessage3 != null)
+            yield return PlayMessage(endingMessage3.message, endingMessage3.audioClip);
+
+       if (restartPromptMessage != null)
+    yield return PlayMessage(restartPromptMessage.message, restartPromptMessage.audioClip);
+
+yield return new WaitForSeconds(2f);
+
+SceneManager.LoadScene("BeginnerScene");
+    }
+
+    private void HandleRestartKeys()
+    {
+        if (!waitingForRestartAnswer)
+            return;
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            waitingForRestartAnswer = false;
+            StartCoroutine(RestartQuizFlow());
+        }
+
+        if (Input.GetKeyDown(KeyCode.Backspace))
+        {
+            waitingForRestartAnswer = false;
+
+            if (speechBubbleText != null)
+                speechBubbleText.text = "Quiz finished.";
+
+            if (resultText != null)
+                resultText.text = "DONE";
+        }
+    }
+
+    private IEnumerator RestartQuizFlow()
+    {
+        ResetQuizValues();
+        UpdateScoreUI();
+        HideFeedbackImage();
+
+        if (restartYesMessage != null)
+            yield return PlayMessage(restartYesMessage.message, restartYesMessage.audioClip);
+        else
+            yield return PlayMessage("Great! Let's go again!", null);
+
+        ShowCurrentLetter();
+    }
+
+    private void HandleRepeatKey()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            RepeatLastMessage();
+        }
+    }
+
+    private void RepeatLastMessage()
+    {
+        if (speechBubbleText != null && !string.IsNullOrEmpty(lastMessageText))
+            speechBubbleText.text = lastMessageText;
+
+        if (audioSource != null && lastMessageClip != null)
+        {
+            audioSource.Stop();
+            audioSource.pitch = currentAudioPitch;
+            audioSource.clip = lastMessageClip;
+            audioSource.Play();
+        }
+    }
+
+    private void HandleSpeedKeys()
+    {
+        if (audioSource == null)
+            return;
+
+        if (Input.GetKeyDown(KeyCode.Alpha7))
+            SetAudioSpeed(1.0f);
+
+        if (Input.GetKeyDown(KeyCode.Alpha8))
+            SetAudioSpeed(1.25f);
+
+        if (Input.GetKeyDown(KeyCode.Alpha9))
+            SetAudioSpeed(1.5f);
+
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+            SetAudioSpeed(1.75f);
+
+        if (Input.GetKeyDown(KeyCode.Minus))
+            SetAudioSpeed(2.0f);
+    }
+
+    private void SetAudioSpeed(float speed)
+    {
+        currentAudioPitch = speed;
+
+        if (audioSource != null)
+            audioSource.pitch = currentAudioPitch;
+    }
+
+    private void UpdateScoreUI()
+    {
+        if (remainingPointsText != null)
+            remainingPointsText.text = score.ToString();
+
+        if (deductionsText != null)
+            deductionsText.text = deductions.ToString();
+
+        if (totalText != null)
+            totalText.text = score.ToString();
+    }
+
+    private void PlayLetterAudio(string letter)
+    {
+        if (audioSource == null)
+            return;
+
+        lastMessageText = "Letter " + letter;
+        lastMessageClip = null;
+
+        foreach (LetterAudio item in letterAudios)
+        {
+            if (item != null &&
+                item.letter.ToUpper() == letter &&
+                item.clip != null)
+            {
+                lastMessageClip = item.clip;
+
+                audioSource.pitch = currentAudioPitch;
+                audioSource.clip = item.clip;
+                audioSource.Play();
+                return;
+            }
+        }
+    }
+
+    private void ShowFeedbackImage(Sprite sprite)
+    {
+        if (feedbackImagePlaceholder != null)
+        {
+            feedbackImagePlaceholder.sprite = sprite;
+            feedbackImagePlaceholder.enabled = sprite != null;
+        }
+    }
+
+    private void HideFeedbackImage()
+    {
+        if (feedbackImagePlaceholder != null)
+        {
+            feedbackImagePlaceholder.sprite = null;
+            feedbackImagePlaceholder.enabled = false;
+        }
+    }
+
+    private void TriggerHaptic()
+    {
+        if (wirelessHapticsObject != null)
+        {
+            wirelessHapticsObject.SendMessage(
+                "TriggerHaptic",
+                SendMessageOptions.DontRequireReceiver
+            );
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (input != null)
+            input.OnAnswerSubmitted -= CheckAnswer;
+    }
+}

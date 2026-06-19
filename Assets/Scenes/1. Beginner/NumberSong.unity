@@ -1119,25 +1119,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AbcSongScript
   bubbleText: {fileID: 51738453}
   audioSource: {fileID: 867976303}
+  wirelessHapticsObject: {fileID: 0}
   pausePlayImage: {fileID: 322753606}
   pauseSprite: {fileID: -4677556811483301959, guid: b72ab5da842152d4c8de8df95119a7a3, type: 3}
   playSprite: {fileID: -5556519961868701338, guid: 4e3a41299c21f3d4780a72977a7bad2d, type: 3}
   message1:
-    messageText: Welcome! Let's begin learning the numbers
-    messageAudio: {fileID: 8300000, guid: 31ef5b4268497714985ff53216e75a35, type: 3}
+    messageText: 'The next thing we''re going to learn in this journey is the is
+      Numbers. '
+    messageAudio: {fileID: 8300000, guid: 269293be735464a4a9105e28f83370a1, type: 3}
   message2:
-    messageText: Enjoy The Number's Song
-    messageAudio: {fileID: 8300000, guid: 732b4ad62d3befd4b873b5a2b8cf1a7c, type: 3}
+    messageText: Just like on Alphabets, Lets sing Number song.
+    messageAudio: {fileID: 8300000, guid: 9a7f1f81b071e894ca88c42fa54da6a9, type: 3}
   message3:
-    messageText: Let's Sing
-    messageAudio: {fileID: 8300000, guid: e6d4b7580d1305741988d70afccba67d, type: 3}
+    messageText: You can pause, play, fastforward and backward the song by 10 secs.
+      SO, what are we waiting for? Let's Sing!
+    messageAudio: {fileID: 8300000, guid: fc81d5afc1622f24f9ebad7fcb5eb98b, type: 3}
   abcSong: {fileID: 8300000, guid: befefbcebc70cf3499ce8ed8a98db530, type: 3}
   afterMessage1:
-    messageText: Repeat the song and sing with me
-    messageAudio: {fileID: 8300000, guid: 8b4bf65a197d00240ac362c54a50baf7, type: 3}
+    messageText: Would you like to repeat the song? Press repeat to repeat or next
+      to continue.
+    messageAudio: {fileID: 8300000, guid: 8c4d861dd9045d44ca3f4ac4f68ed5c6, type: 3}
   afterMessage2:
-    messageText: Click the Repeat Button
-    messageAudio: {fileID: 8300000, guid: a9fee9c7b6987e549bcd1b4f13d5a36c, type: 3}
+    messageText: 
+    messageAudio: {fileID: 0}
+  skipSeconds: 10
 --- !u!114 &867976302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1266,12 +1271,16 @@ MonoBehaviour:
   dot4Key: 106
   dot5Key: 107
   dot6Key: 108
+  upKey: 273
+  downKey: 274
+  leftKey: 276
+  rightKey: 275
   pauseKey: 112
   backKey: 27
   repeatKey: 114
   submitKey: 13
   deleteOrNoKey: 8
-  yesOrNextKey: 121
+  yesOrNextKey: 13
   loginKey: 13
   spaceKey: 32
   correctKey: 49

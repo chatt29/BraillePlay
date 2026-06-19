@@ -7,14 +7,16 @@ public class BeginnerQuizSelectionController : MonoBehaviour
     public enum QuizOption
     {
         JumbledLetters,
-        BasicWords
+        
+        AbcFlowA
     }
     [Header("Arrow Indicator")]
 public RectTransform arrowIndicator;
 
     [Header("Buttons")]
+    public RectTransform flowBtn;
     public RectTransform jumbledBtn;
-    public RectTransform basicBtn;
+    
 
     [Header("Hover Effect")]
     public Vector3 normalScale = Vector3.one;
@@ -60,7 +62,7 @@ public RectTransform arrowIndicator;
     private void ToggleOption()
     {
         currentOption = (currentOption == QuizOption.JumbledLetters)
-            ? QuizOption.BasicWords
+            ? QuizOption.AbcFlowA
             : QuizOption.JumbledLetters;
 
         UpdateSelection();
@@ -75,14 +77,13 @@ public RectTransform arrowIndicator;
 
     switch (currentOption)
     {
+         case QuizOption.AbcFlowA:
+        PlayerPrefs.SetString("PreviousScene", SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene("AbcFlowA");
+            break;
         case QuizOption.JumbledLetters:
             PlayerPrefs.SetString("PreviousScene", SceneManager.GetActiveScene().name);
             SceneManager.LoadScene("JumbledLetters");
-            break;
-
-        case QuizOption.BasicWords:
-        PlayerPrefs.SetString("PreviousScene", SceneManager.GetActiveScene().name);
-            SceneManager.LoadScene("BasicWordsScene");
             break;
     }
 }
@@ -114,10 +115,10 @@ private void MoveArrow(RectTransform target)
         target = jumbledBtn;
     }
 
-    if (currentOption == QuizOption.BasicWords && basicBtn != null)
+    if (currentOption == QuizOption.AbcFlowA && flowBtn != null)
     {
-        basicBtn.localScale = hoverScale;
-        target = basicBtn;
+        flowBtn.localScale = hoverScale;
+        target = flowBtn;
     }
 
     MoveArrow(target);
@@ -127,6 +128,6 @@ private void MoveArrow(RectTransform target)
     private void ResetScale()
     {
         if (jumbledBtn != null) jumbledBtn.localScale = normalScale;
-        if (basicBtn != null) basicBtn.localScale = normalScale;
+        if (flowBtn != null) flowBtn.localScale = normalScale;
     }
 }

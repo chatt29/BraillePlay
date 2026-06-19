@@ -13,7 +13,7 @@ public class MainMenuSceneLoader : MonoBehaviour
     }
     public void GoToCreateAccount()
     {
-        SceneTransition.Instance.LoadSceneWithFade("SignUp");
+        SceneTransition.Instance.LoadSceneWithFade("SignUpSelection");
     }
 
     public void GoToBegginerScene()

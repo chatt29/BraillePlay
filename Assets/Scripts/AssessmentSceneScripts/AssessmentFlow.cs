@@ -21,7 +21,6 @@ public class AssessmentFlow : MonoBehaviour
         Q3_NumberSign,
         Q4_OneCellContractions,
         Q5_PunctuationAndCapital,
-        Q6_FinalPunctuationAndCapital,
         Finished
     }
 
@@ -46,7 +45,6 @@ public class AssessmentFlow : MonoBehaviour
     public AudioClip q3Audio;
     public AudioClip q4Audio;
     public AudioClip q5Audio;
-    public AudioClip q6Audio;
 
     [Header("Result Audio")]
     public AudioClip beginnerAudio;
@@ -77,7 +75,6 @@ public class AssessmentFlow : MonoBehaviour
     private const string Q3_TEXT = "Does the student recognize the number sign, numeric indicator, that tells them the next character is a number, not a letter?";
     private const string Q4_TEXT = "Can the student identify one-cell contractions?";
     private const string Q5_TEXT = "Can the student distinguish between a period, a comma, and a capital letter indicator?";
-    private const string Q6_TEXT = "Can the student distinguish between a period, a comma, and a capital letter indicator?";
 
     private void OnEnable()
     {
@@ -142,11 +139,6 @@ public class AssessmentFlow : MonoBehaviour
             case AssessmentNode.Q5_PunctuationAndCapital:
                 ShowQuestion(Q5_TEXT);
                 PlayQuestionAudio(q5Audio);
-                break;
-
-            case AssessmentNode.Q6_FinalPunctuationAndCapital:
-                ShowQuestion(Q6_TEXT);
-                PlayQuestionAudio(q6Audio);
                 break;
         }
     }
@@ -252,10 +244,6 @@ public class AssessmentFlow : MonoBehaviour
                 break;
 
             case AssessmentNode.Q5_PunctuationAndCapital:
-                LoadNode(AssessmentNode.Q6_FinalPunctuationAndCapital);
-                break;
-
-            case AssessmentNode.Q6_FinalPunctuationAndCapital:
                 EndAssessment(AssessmentLevel.Advance);
                 break;
         }
@@ -290,10 +278,6 @@ public class AssessmentFlow : MonoBehaviour
                 break;
 
             case AssessmentNode.Q5_PunctuationAndCapital:
-                EndAssessment(AssessmentLevel.Intermediate);
-                break;
-
-            case AssessmentNode.Q6_FinalPunctuationAndCapital:
                 EndAssessment(AssessmentLevel.Intermediate);
                 break;
         }
@@ -341,30 +325,29 @@ public class AssessmentFlow : MonoBehaviour
         assessmentQuestionText.text = finalText;
         resultText.text = finalText;
 
-        if (voiceSource != null)
+        AudioClip resultClip = null;
+
+        switch (level)
+        {
+            case AssessmentLevel.Beginner:
+                resultClip = beginnerAudio;
+                break;
+
+            case AssessmentLevel.Intermediate:
+                resultClip = intermediateAudio;
+                break;
+
+            case AssessmentLevel.Advance:
+                resultClip = advanceAudio;
+                break;
+        }
+
+        // Play result audio
+        if (voiceSource != null && resultClip != null)
         {
             voiceSource.Stop();
-
-            AudioClip resultClip = null;
-
-            switch (level)
-            {
-                case AssessmentLevel.Beginner:
-                    resultClip = beginnerAudio;
-                    break;
-                case AssessmentLevel.Intermediate:
-                    resultClip = intermediateAudio;
-                    break;
-                case AssessmentLevel.Advance:
-                    resultClip = advanceAudio;
-                    break;
-            }
-
-            if (resultClip != null)
-            {
-                voiceSource.clip = resultClip;
-                voiceSource.Play();
-            }
+            voiceSource.clip = resultClip;
+            voiceSource.Play();
         }
 
         if (logFlow)
@@ -373,13 +356,20 @@ public class AssessmentFlow : MonoBehaviour
         if (loadSceneAfterResult)
         {
             StartCoroutine(UpdateAssessment(level));
-            StartCoroutine(LoadSceneAfterDelay(level));
+
+            // Pass audio length safely
+            float waitTime = 0f;
+
+            if (resultClip != null)
+                waitTime = resultClip.length;
+
+            StartCoroutine(LoadSceneAfterDelay(level, waitTime));
         }
     }
 
-    private IEnumerator LoadSceneAfterDelay(AssessmentLevel level)
+    private IEnumerator LoadSceneAfterDelay(AssessmentLevel level, float waitTime)
     {
-        yield return new WaitForSeconds(sceneLoadDelay);
+        yield return new WaitForSeconds(waitTime);
 
         switch (level)
         {

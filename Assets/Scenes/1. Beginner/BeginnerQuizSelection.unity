@@ -494,7 +494,7 @@ GameObject:
   - component: {fileID: 435859146}
   - component: {fileID: 435859145}
   m_Layer: 0
-  m_Name: BasicWordsBtn
+  m_Name: JumbledLettersBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -659,7 +659,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Quiz Selection
+  m_text: Quiz Selection 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1a98abfae0e1fc34282e9b7fd0f3a427, type: 2}
   m_sharedMaterial: {fileID: -8189821304231711609, guid: 1a98abfae0e1fc34282e9b7fd0f3a427, type: 2}
@@ -686,7 +686,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 97.25
+  m_fontSize: 90.1
   m_fontSizeBase: 130
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -767,8 +767,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 967156961}
   - {fileID: 435859144}
+  - {fileID: 967156961}
   - {fileID: 142108270}
   m_Father: {fileID: 1992108710}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -834,7 +834,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Basic Words
+  m_text: jumbled letters
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a66db046ab4320b408a76ab376bdacca, type: 2}
   m_sharedMaterial: {fileID: 6244326952053564057, guid: a66db046ab4320b408a76ab376bdacca, type: 2}
@@ -861,7 +861,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45.05
+  m_fontSize: 43.4
   m_fontSizeBase: 75
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1062,6 +1062,10 @@ MonoBehaviour:
   dot4Key: 106
   dot5Key: 107
   dot6Key: 108
+  upKey: 273
+  downKey: 274
+  leftKey: 276
+  rightKey: 275
   pauseKey: 112
   backKey: 27
   repeatKey: 114
@@ -1196,7 +1200,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Jumbled Letters
+  m_text: abc flow
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a66db046ab4320b408a76ab376bdacca, type: 2}
   m_sharedMaterial: {fileID: 6244326952053564057, guid: a66db046ab4320b408a76ab376bdacca, type: 2}
@@ -1223,7 +1227,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 43.4
+  m_fontSize: 59.3
   m_fontSizeBase: 75
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1289,7 +1293,7 @@ GameObject:
   - component: {fileID: 967156963}
   - component: {fileID: 967156962}
   m_Layer: 0
-  m_Name: JumbleLettersBtn
+  m_Name: AbcFlowBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1442,8 +1446,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BeginnerQuizSelectionController
   arrowIndicator: {fileID: 142108270}
-  jumbledBtn: {fileID: 967156961}
-  basicBtn: {fileID: 435859144}
+  flowBtn: {fileID: 967156961}
+  jumbledBtn: {fileID: 435859144}
   normalScale: {x: 1, y: 1, z: 1}
   hoverScale: {x: 1.1, y: 1.1, z: 1}
 --- !u!1 &1000162696
