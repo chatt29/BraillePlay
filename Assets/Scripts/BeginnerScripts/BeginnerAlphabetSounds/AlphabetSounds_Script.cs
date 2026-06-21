@@ -72,6 +72,9 @@ public class AlphabetSounds_Script : MonoBehaviour
     public bool loopAroundLetters = false;
     public float extraWaitAfterAudio = 0.15f;
 
+    [Header("Speed Settings (ESP32 Potentiometer)")]
+    public float currentAudioSpeed = 1.0f;
+
     private int currentIndex = 0;
     private Coroutine sequenceRoutine;
 
@@ -86,10 +89,44 @@ public class AlphabetSounds_Script : MonoBehaviour
             objectImage.enabled = false;
         }
 
+        if (audioSource != null)
+            audioSource.pitch = currentAudioSpeed;
+
         if (playOnStart)
         {
             StartLesson();
         }
+    }
+
+    private void Update()
+    {
+        HandleSpeedKeys();
+    }
+
+    private void HandleSpeedKeys()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha7))
+            SetAudioSpeed(1.0f);
+
+        if (Input.GetKeyDown(KeyCode.Alpha8))
+            SetAudioSpeed(1.25f);
+
+        if (Input.GetKeyDown(KeyCode.Alpha9))
+            SetAudioSpeed(1.5f);
+
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+            SetAudioSpeed(1.75f);
+
+        if (Input.GetKeyDown(KeyCode.Minus))
+            SetAudioSpeed(2.0f);
+    }
+
+    private void SetAudioSpeed(float speed)
+    {
+        currentAudioSpeed = speed;
+
+        if (audioSource != null)
+            audioSource.pitch = currentAudioSpeed;
     }
 
     public void StartLesson()
@@ -111,11 +148,13 @@ public class AlphabetSounds_Script : MonoBehaviour
         SetBubbleOnly(welcomeMessage);
         ClearLetterFields();
         HideObjectImage();
+
         PlayAudio(welcomeAudio);
         yield return WaitForAudio(welcomeAudio);
 
         SetBubbleOnly(instructionMessage);
         HideObjectImage();
+
         PlayAudio(instructionAudio);
         yield return WaitForAudio(instructionAudio);
 
@@ -165,8 +204,6 @@ public class AlphabetSounds_Script : MonoBehaviour
 
         SetBubbleOnly(nextOrRepeatMessage);
 
-        // The player can now press Yes or Repeat immediately,
-        // even while the prompt audio is still playing.
         CurrentState = LessonState.WaitingAfterLetterChoice;
 
         PlayAudio(nextOrRepeatAudio);
@@ -265,10 +302,12 @@ public class AlphabetSounds_Script : MonoBehaviour
         SetBubbleOnly(completedMessage);
         HideObjectImage();
         ClearLetterFields();
+
         PlayAudio(completedAudio);
         yield return WaitForAudio(completedAudio);
 
         SetBubbleOnly(replayQuestionMessage);
+
         PlayAudio(replayQuestionAudio);
         yield return WaitForAudio(replayQuestionAudio);
 
@@ -282,6 +321,7 @@ public class AlphabetSounds_Script : MonoBehaviour
         SetBubbleOnly(endMessage);
         HideObjectImage();
         ClearLetterFields();
+
         PlayAudio(endAudio);
         yield return WaitForAudio(endAudio);
 
@@ -326,15 +366,19 @@ public class AlphabetSounds_Script : MonoBehaviour
 
         audioSource.Stop();
         audioSource.clip = clip;
+        audioSource.pitch = currentAudioSpeed;
         audioSource.Play();
     }
 
     private IEnumerator WaitForAudio(AudioClip clip)
     {
-        if (clip == null)
+        if (clip == null || audioSource == null)
             yield break;
 
-        yield return new WaitForSeconds(clip.length + extraWaitAfterAudio);
+        while (audioSource != null && audioSource.isPlaying)
+            yield return null;
+
+        yield return new WaitForSeconds(extraWaitAfterAudio);
     }
 
     private void StopRunningRoutine()

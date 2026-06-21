@@ -28,15 +28,15 @@ public class NumberFlow1_10Script : MonoBehaviour
     public AudioSource clickSource;
     public AudioClip clickClip;
 
-    [Header("Number Audio (1–10)")]
-    public AudioClip oneClip, twoClip, threeClip, fourClip, fiveClip;
-    public AudioClip sixClip, sevenClip, eightClip, nineClip, tenClip;
+    [Header("ENTER SOUND")]
+    public AudioClip enterClip;
 
-    [Header("Message Audio (10 each)")]
-    public AudioClip[] wrongHashtagClips = new AudioClip[10];
-    public AudioClip[] typeNumberClips = new AudioClip[10];
-    public AudioClip[] speechBubbleClips = new AudioClip[10];
-    public AudioClip[] goodNowTypeNumberClips = new AudioClip[10];
+    [Header("Warning Audio")]
+    public AudioClip pressBrailleDotsClip;
+
+    [Header("Hashtag Audio")]
+    public AudioClip hashtagWrongClip;     // ❗ NEW
+    public AudioClip hashtagCorrectClip;   // ❗ NEW
 
     [Header("Result Audio")]
     public AudioClip correctClip;
@@ -44,12 +44,14 @@ public class NumberFlow1_10Script : MonoBehaviour
     public AudioClip doneClip;
     public AudioClip finishedClip;
 
-    [Header("Warning Audio")]
-    public AudioClip pressBrailleDotsClip;
+    [Header("Speech Settings")]
+    public float typeSpeed = 0.045f;
+    public RectTransform speechBox;
+
+    private Coroutine speechCoroutine;
 
     private List<string> numbers;
     private Dictionary<string, string> brailleMap;
-    private Dictionary<string, AudioClip> numberAudioMap;
 
     private int currentIndex = 0;
     private string currentNumber;
@@ -59,17 +61,8 @@ public class NumberFlow1_10Script : MonoBehaviour
     private int totalScore = 0;
 
     private bool waitingForHashtag = true;
-
-    // Prevent repeat audio
-    private string lastPlayedKey = "";
-
-    // Prevent input while audio is playing
     private bool canInput = false;
-
-    // Prevent input after finish
     private bool gameFinished = false;
-
-    // Detect if braille keys were pressed
     private bool brailleKeysPressed = false;
 
     void Start()
@@ -80,7 +73,12 @@ public class NumberFlow1_10Script : MonoBehaviour
 
     void Update()
     {
-        // Detect F D S J K L keys
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            if (enterClip != null)
+                voiceSource.PlayOneShot(enterClip);
+        }
+
         if (
             Input.GetKeyDown(KeyCode.F) ||
             Input.GetKeyDown(KeyCode.D) ||
@@ -91,6 +89,7 @@ public class NumberFlow1_10Script : MonoBehaviour
         )
         {
             brailleKeysPressed = true;
+            PlayClickSound();
         }
     }
 
@@ -115,20 +114,6 @@ public class NumberFlow1_10Script : MonoBehaviour
             {"9","010100"},
             {"10","010110"}
         };
-
-        numberAudioMap = new Dictionary<string, AudioClip>()
-        {
-            {"1", oneClip},
-            {"2", twoClip},
-            {"3", threeClip},
-            {"4", fourClip},
-            {"5", fiveClip},
-            {"6", sixClip},
-            {"7", sevenClip},
-            {"8", eightClip},
-            {"9", nineClip},
-            {"10", tenClip}
-        };
     }
 
     void StartGame()
@@ -142,45 +127,46 @@ public class NumberFlow1_10Script : MonoBehaviour
 
         UpdateScoreUI();
         ShowNumber();
+
+        StartCoroutine(PlayIntroSequence());
     }
 
-    // Button click sound
-    void PlayClickSound()
+    IEnumerator PlayIntroSequence()
     {
-        if (clickSource != null && clickClip != null)
-        {
-            clickSource.PlayOneShot(clickClip);
-        }
+        float oldSpeed = typeSpeed;
+        typeSpeed = 0.08f;
+
+        PlaySpeech("Congratulations! You have successfully completed the Letter to Braille quiz flow.");
+        yield return new WaitForSeconds(6f);
+
+        PlaySpeech("Now, you will move on to the Number Flow. This activity helps you practice Braille using number sequences.");
+        yield return new WaitForSeconds(11f);
+
+        PlaySpeech("making learning both engaging and meaningful as you explore and master each step of the flow.");
+        yield return new WaitForSeconds(6f);
+
+        PlaySpeech("Now start by typing the number 1.");
+        yield return new WaitForSeconds(5f);
+
+        typeSpeed = oldSpeed;
     }
 
-    void PlayClip(AudioClip clip, string key)
+    void PlaySpeech(string message)
     {
-        if (clip == null)
-        {
-            canInput = true;
-            return;
-        }
+        if (speechCoroutine != null)
+            StopCoroutine(speechCoroutine);
 
-        if (lastPlayedKey == key) return;
-
-        StartCoroutine(PlayRoutine(clip, key));
+        speechCoroutine = StartCoroutine(TypeSpeech(message));
     }
 
-    IEnumerator PlayRoutine(AudioClip clip, string key)
+    IEnumerator TypeSpeech(string message)
     {
-        canInput = false;
+        speechBubbleText.text = "";
 
-        lastPlayedKey = key;
-
-        voiceSource.Stop();
-        voiceSource.clip = clip;
-        voiceSource.Play();
-
-        yield return new WaitForSeconds(clip.length);
-
-        if (!gameFinished)
+        foreach (char c in message)
         {
-            canInput = true;
+            speechBubbleText.text += c;
+            yield return new WaitForSeconds(typeSpeed);
         }
     }
 
@@ -188,128 +174,108 @@ public class NumberFlow1_10Script : MonoBehaviour
     {
         currentNumber = numbers[currentIndex];
         waitingForHashtag = true;
-
-        int i = currentIndex;
+        canInput = true;
 
         numberText.text = currentNumber;
         resultText.text = "";
         resultIcon.gameObject.SetActive(false);
 
-        // Reset braille key detection
         brailleKeysPressed = false;
 
-        if (currentIndex == 0)
-        {
-            speechBubbleText.text = "Welcome to Number Flow. Now Type number 1";
-        }
-        else
-        {
-            speechBubbleText.text = "Type Number " + currentNumber;
-        }
+        PlaySpeech("Type the number " + currentNumber);
+    }
 
-        // Speech audio
-        PlayClip(speechBubbleClips[i], "speech_" + currentNumber);
+    void PlayClickSound()
+    {
+        if (clickSource != null && clickClip != null)
+            clickSource.PlayOneShot(clickClip);
     }
 
     public void CheckAnswer(string inputPattern)
     {
-        // Play click sound
-        PlayClickSound();
-
-        // Cannot enter while audio is playing
-        if (!canInput)
+        if (!canInput || gameFinished)
             return;
 
-        // Cannot enter after game finished
-        if (gameFinished)
-            return;
-
-        // Prevent enter if no braille keys pressed
         if (!brailleKeysPressed)
         {
-            resultText.text = "";
-            speechBubbleText.text = "Press Braille dots first before Enter";
+            PlaySpeech("Press Braille dots first before Enter");
 
-            // Play warning audio
-            PlayClip(pressBrailleDotsClip, "press_braille_first");
+            if (pressBrailleDotsClip != null)
+                voiceSource.PlayOneShot(pressBrailleDotsClip);
 
             return;
         }
 
-        string hashtagPattern = "001111";
         string correctPattern = brailleMap[currentNumber];
 
-        int i = currentIndex;
-
-        // =========================
-        // HASHTAG PHASE
-        // =========================
+        // ================= HASHTAG CHECK =================
         if (waitingForHashtag)
         {
-            if (inputPattern != hashtagPattern)
+            if (inputPattern != "001111")
             {
-                speechBubbleText.text =
-                    "Don't forget hashtag first (dot 3,4,5,6). Now Type Number " + currentNumber;
+                PlaySpeech("You must type the hashtag first before entering the number " + currentNumber);
 
-                PlayClip(wrongHashtagClips[i], "hashtag_" + currentNumber);
+                if (hashtagWrongClip != null)
+                    voiceSource.PlayOneShot(hashtagWrongClip);
+
+                StartCoroutine(ContinueToNumberPrompt());
+                return;
             }
-            else
-            {
-                speechBubbleText.text = "Type Number " + currentNumber;
-
-                PlayClip(goodNowTypeNumberClips[i], "good_" + currentNumber);
-            }
-
-            // Reset key detection
-            brailleKeysPressed = false;
 
             waitingForHashtag = false;
+            brailleKeysPressed = false;
+
+            PlaySpeech("Hashtag correct. Now type number " + currentNumber);
+
+            if (hashtagCorrectClip != null)
+                voiceSource.PlayOneShot(hashtagCorrectClip);
+
             return;
         }
 
-        // =========================
-        // NUMBER PHASE ONLY COUNTS
-        // =========================
+        // ================= NUMBER CHECK =================
         totalScore++;
 
         if (inputPattern == correctPattern)
         {
             correctScore++;
-
             resultText.text = "CORRECT";
-            speechBubbleText.text = "Good Job";
 
-            // Correct audio
-            PlayClip(correctClip, "correct_" + currentNumber);
+            if (correctClip != null)
+                voiceSource.PlayOneShot(correctClip);
 
-            ShowCorrect();
+            PlaySpeech("Good Job");
+
+            resultIcon.gameObject.SetActive(true);
+            resultIcon.sprite = correctSprite;
         }
         else
         {
             wrongScore++;
+            resultText.text = "WRONG";
 
-            resultText.text = "Wrong Input";
-            speechBubbleText.text = "Wrong Input";
+            if (wrongInputClip != null)
+                voiceSource.PlayOneShot(wrongInputClip);
 
-            // Wrong audio
-            PlayClip(wrongInputClip, "wrong_" + currentNumber);
+            PlaySpeech("Wrong Input");
 
-            ShowWrong();
+            resultIcon.gameObject.SetActive(true);
+            resultIcon.sprite = wrongSprite;
         }
 
-        // Reset key detection
         brailleKeysPressed = false;
 
         UpdateScoreUI();
-        NextNumber();
+        StartCoroutine(NextNumber());
     }
 
-    void NextNumber()
+    IEnumerator ContinueToNumberPrompt()
     {
-        StartCoroutine(DelayNext());
+        yield return new WaitForSeconds(2f);
+        PlaySpeech("Now type the hashtag first ");
     }
 
-    IEnumerator DelayNext()
+    IEnumerator NextNumber()
     {
         yield return new WaitForSeconds(1.2f);
 
@@ -318,39 +284,21 @@ public class NumberFlow1_10Script : MonoBehaviour
         if (currentIndex >= numbers.Count)
         {
             gameFinished = true;
-
             canInput = false;
 
             resultText.text = "DONE";
-            speechBubbleText.text = "You finished 1 to 10!";
 
-            // Done audio
-            PlayClip(doneClip, "done");
+            PlaySpeech("You finished 1 to 10!");
 
             yield return new WaitForSeconds(1.5f);
 
-            // Finished audio
-            PlayClip(finishedClip, "finished");
+            if (finishedClip != null)
+                voiceSource.PlayOneShot(finishedClip);
 
             yield break;
         }
 
-        // Reset key for next number
-        lastPlayedKey = "";
-
         ShowNumber();
-    }
-
-    void ShowCorrect()
-    {
-        resultIcon.gameObject.SetActive(true);
-        resultIcon.sprite = correctSprite;
-    }
-
-    void ShowWrong()
-    {
-        resultIcon.gameObject.SetActive(true);
-        resultIcon.sprite = wrongSprite;
     }
 
     void UpdateScoreUI()

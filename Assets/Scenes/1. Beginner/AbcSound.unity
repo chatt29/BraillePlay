@@ -1357,6 +1357,7 @@ MonoBehaviour:
   playOnStart: 1
   loopAroundLetters: 0
   extraWaitAfterAudio: 0.15
+  currentAudioSpeed: 1
 --- !u!82 &1447395316
 AudioSource:
   m_ObjectHideFlags: 0
