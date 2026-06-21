@@ -113,6 +113,9 @@ public class IntermediateMenuManager : MonoBehaviour
             case 1:
                 SceneManager.LoadScene("IntermediatePunctuationScene");
                 break;
+        case 2:
+                SceneManager.LoadScene("IntermediateCommonContractionScene");
+                break;
         }
     }
 
