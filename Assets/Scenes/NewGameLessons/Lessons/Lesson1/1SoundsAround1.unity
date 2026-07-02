@@ -787,7 +787,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: eme eme
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c4ae2105d0679bd45932ed513ad0b3bd, type: 2}
   m_sharedMaterial: {fileID: -2866231447455670809, guid: c4ae2105d0679bd45932ed513ad0b3bd, type: 2}
@@ -3209,8 +3209,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BrailleSoundsAround1
   bubbleMessageText: {fileID: 1257937990}
+  translationText: {fileID: 2077778574}
+  typingSessionText: {fileID: 1155271827}
   categoryText: {fileID: 0}
   livePatternText: {fileID: 1697798612}
+  lessonImage: {fileID: 286661654}
   displayImageUI: {fileID: 54352918}
   answerStateImage: {fileID: 2047379756}
   correctStateSprite: {fileID: -4207999480553683411, guid: 4e35d4a30fee8cc4580f2983361350b4, type: 3}
@@ -3346,21 +3349,29 @@ MonoBehaviour:
     repeatMessage: 
     successMessage: 
     wrongMessage: 
+    lessonKind: 0
+    dots: 
+    expectedSequencePatterns: []
+    expectedSequenceNames: []
     displayImage: {fileID: -192078975117302806, guid: 8d1ae2b8f8bd3294eb2c6fb385ba8c76, type: 3}
+    lessonSprite: {fileID: 0}
     introAudio: {fileID: 0}
     instructionAudio: {fileID: 0}
     successAudio: {fileID: 0}
-    repeatAudio: {fileID: 0}
-    useSoundQuestion: 0
-    soundEffectAudio: {fileID: 0}
-    soundQuestionMessage: 
-    soundQuestionAudio: {fileID: 0}
-    correctAnswerIsTrue: 1
+    sequenceStepAudios: []
+    sequenceStepMessages: []
+    sequenceStepWrongAudios: []
+    sequenceStepWrongMessages: []
     supportMessage: 
     supportAudio: {fileID: 0}
+  playInstructionOnLessonStart: 1
   delayAfterVoice: 0.35
   noAudioTextDelay: 2
   delayAfterCorrect: 0.75
+  showHeldDotsPattern: 1
+  resetSequenceToStartOnWrongAnswer: 0
+  allowSpaceAsSequenceInput: 1
+  spaceSequencePattern: 000000
   mistakesBeforeSupport: 3
   resetMistakesAfterSupport: 1
   useTypewriterEffect: 1
