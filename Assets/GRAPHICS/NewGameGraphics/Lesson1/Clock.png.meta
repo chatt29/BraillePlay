@@ -1,25 +1,25 @@
 fileFormatVersion: 2
-guid: 8d1ae2b8f8bd3294eb2c6fb385ba8c76
+guid: d04779da535a9a747b2e65e22db86c74
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -192078975117302806
-    second: Screenshot_2026-06-18_174922-removebg-preview_0
+      213: 4214149858688995037
+    second: Clock_0
   - first:
-      213: 168320085506016336
-    second: Screenshot_2026-06-18_174922-removebg-preview_1
+      213: 7792039334551005206
+    second: Clock_1
   - first:
-      213: -597960865502251823
-    second: Screenshot_2026-06-18_174922-removebg-preview_2
+      213: 8606200704858056018
+    second: Clock_2
   - first:
-      213: -1363620729592387089
-    second: Screenshot_2026-06-18_174922-removebg-preview_3
+      213: -2833443924174910728
+    second: Clock_3
   - first:
-      213: 3039770709806251073
-    second: Screenshot_2026-06-18_174922-removebg-preview_4
+      213: 8661856177940741680
+    second: Clock_4
   - first:
-      213: -4137016033334277013
-    second: Screenshot_2026-06-18_174922-removebg-preview_5
+      213: 1587909880103496020
+    second: Clock_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -61,7 +61,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -128,12 +128,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Screenshot_2026-06-18_174922-removebg-preview_0
+      name: Clock_0
       rect:
         serializedVersion: 2
-        x: 7
-        y: 6
-        width: 164
+        x: 6
+        y: 7
+        width: 88
         height: 86
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -143,19 +143,85 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ae3ef479039955df0800000000000000
-      internalID: -192078975117302806
+      spriteID: dde8b6d08faab7a30800000000000000
+      internalID: 4214149858688995037
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Screenshot_2026-06-18_174922-removebg-preview_1
+      name: Clock_1
       rect:
         serializedVersion: 2
-        x: 42
-        y: 88
-        width: 12
+        x: 87
+        y: 72
+        width: 14
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 618a8c3ad72e22c60800000000000000
+      internalID: 7792039334551005206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clock_2
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 77
+        width: 5
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 255e7c681fd5f6770800000000000000
+      internalID: 8606200704858056018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clock_3
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 66
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fac09063c59da8d0800000000000000
+      internalID: -2833443924174910728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clock_4
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 50
+        width: 11
         height: 10
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -165,20 +231,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0544629d93ef55200800000000000000
-      internalID: 168320085506016336
+      spriteID: 03e3ea52d48153870800000000000000
+      internalID: 8661856177940741680
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Screenshot_2026-06-18_174922-removebg-preview_2
+      name: Clock_5
       rect:
         serializedVersion: 2
-        x: 56
-        y: 87
-        width: 12
-        height: 17
+        x: 93
+        y: 14
+        width: 14
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,74 +253,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1d4372ec2cd93b7f0800000000000000
-      internalID: -597960865502251823
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Screenshot_2026-06-18_174922-removebg-preview_3
-      rect:
-        serializedVersion: 2
-        x: 71
-        y: 82
-        width: 9
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fe96944db22731de0800000000000000
-      internalID: -1363620729592387089
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Screenshot_2026-06-18_174922-removebg-preview_4
-      rect:
-        serializedVersion: 2
-        x: 82
-        y: 89
-        width: 10
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 14c73acea5f6f2a20800000000000000
-      internalID: 3039770709806251073
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Screenshot_2026-06-18_174922-removebg-preview_5
-      rect:
-        serializedVersion: 2
-        x: 100
-        y: 77
-        width: 10
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b6cc30726dd5696c0800000000000000
-      internalID: -4137016033334277013
+      spriteID: 459e6e27f93690610800000000000000
+      internalID: 1587909880103496020
       vertices: []
       indices: 
       edges: []
@@ -263,7 +263,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -273,12 +273,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Screenshot_2026-06-18_174922-removebg-preview_0: -192078975117302806
-      Screenshot_2026-06-18_174922-removebg-preview_1: 168320085506016336
-      Screenshot_2026-06-18_174922-removebg-preview_2: -597960865502251823
-      Screenshot_2026-06-18_174922-removebg-preview_3: -1363620729592387089
-      Screenshot_2026-06-18_174922-removebg-preview_4: 3039770709806251073
-      Screenshot_2026-06-18_174922-removebg-preview_5: -4137016033334277013
+      Clock_0: 4214149858688995037
+      Clock_1: 7792039334551005206
+      Clock_2: 8606200704858056018
+      Clock_3: -2833443924174910728
+      Clock_4: 8661856177940741680
+      Clock_5: 1587909880103496020
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
