@@ -1684,7 +1684,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Sounds Around 1
+  m_text: Animal Sounds 2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1a98abfae0e1fc34282e9b7fd0f3a427, type: 2}
   m_sharedMaterial: {fileID: -8189821304231711609, guid: 1a98abfae0e1fc34282e9b7fd0f3a427, type: 2}
@@ -2412,8 +2412,9 @@ GameObject:
   - component: {fileID: 1586095478}
   - component: {fileID: 1586095484}
   - component: {fileID: 1586095490}
+  - component: {fileID: 1586095491}
   m_Layer: 5
-  m_Name: SoundsAround1Manager
+  m_Name: AnimalSounds2Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2646,7 +2647,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1586095473}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1379a0d4e47bf740a7d7861a7ff4808, type: 3}
   m_Name: 
@@ -2659,7 +2660,7 @@ MonoBehaviour:
   answerStateImage: {fileID: 2047379756}
   correctStateSprite: {fileID: -4207999480553683411, guid: 4e35d4a30fee8cc4580f2983361350b4, type: 3}
   wrongStateSprite: {fileID: 7071201414940298460, guid: bee3415c56ef4054aa185675bb6dc185, type: 3}
-  hideAnswerStateAtStart: 1
+  hideAnswerStateAtStart: 0
   fixScoreText: {fileID: 1777884057}
   wrongScoreText: {fileID: 1070165176}
   totalScoreText: {fileID: 1113401178}
@@ -2976,6 +2977,293 @@ MonoBehaviour:
     correctAnswerIsTrue: 1
     supportMessage: Remember you should press dot number 1 or press number 2 if wrong.
     supportAudio: {fileID: 8300000, guid: b2508d0f2359932438724ebeb86fe090, type: 3}
+  delayAfterVoice: 0.35
+  noAudioTextDelay: 2
+  delayAfterCorrect: 0.75
+  mistakesBeforeSupport: 3
+  resetMistakesAfterSupport: 1
+  useTypewriterEffect: 1
+  defaultTypewriterCharacterDelay: 0.03
+  minSyncedCharacterDelay: 0.01
+  maxSyncedCharacterDelay: 0.12
+  waitForFullAudioBeforeContinuing: 1
+  logDebug: 1
+--- !u!114 &1586095491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586095473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57744976a92ed334c9a1d2d4d5006357, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimalSounds2
+  bubbleMessageText: {fileID: 1257937990}
+  displayLabelText: {fileID: 843676732}
+  categoryText: {fileID: 1155271827}
+  livePatternText: {fileID: 1697798612}
+  displayImageUI: {fileID: 54352918}
+  answerStateImage: {fileID: 2047379756}
+  correctStateSprite: {fileID: -4207999480553683411, guid: 4e35d4a30fee8cc4580f2983361350b4, type: 3}
+  wrongStateSprite: {fileID: 7071201414940298460, guid: bee3415c56ef4054aa185675bb6dc185, type: 3}
+  hideAnswerStateAtStart: 1
+  fixScoreText: {fileID: 1777884057}
+  wrongScoreText: {fileID: 1070165176}
+  totalScoreText: {fileID: 1113401178}
+  highScoreText: {fileID: 1262590508}
+  fixedScore: 100
+  deductionPerMistake: 1
+  highScoreKey: BrailleSoundsAroundHighScore
+  voiceAudioSource: {fileID: 1586095478}
+  welcomeAudio: {fileID: 8300000, guid: 4635029de5a7b614cb0ff623a5048d94, type: 3}
+  letsLearnAudio: {fileID: 8300000, guid: 9dd1202383dafb348b35488773a4d927, type: 3}
+  genericCorrectAudio: {fileID: 8300000, guid: 587dfae100161f646a4b8e246de58429, type: 3}
+  genericTryAgainAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+  genericCompletedAudio: {fileID: 8300000, guid: e4151824f9dfafb48a1db013fdc8a3da, type: 3}
+  repeatQuestionAudio: {fileID: 8300000, guid: bbc527e3e72c56348a8b0047a801f60d, type: 3}
+  letterAAudio: {fileID: 8300000, guid: 42701a2ed6601e345945e43b1120e18e, type: 3}
+  letterBAudio: {fileID: 8300000, guid: c8c1c489208b62d4a8fc76e6666cbd62, type: 3}
+  letterCAudio: {fileID: 8300000, guid: 90c6142c3d1a7464ebe56f87204bea71, type: 3}
+  yourScoreIsAudio: {fileID: 8300000, guid: 613a4ecd64752ee4c8844d8286dca545, type: 3}
+  whileYourHighestScoreIsAudio: {fileID: 8300000, guid: 2525c179990406146becd993f00485ee, type: 3}
+  numberAudios:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: a9afdf1f202626e4d815f3d339f223c4, type: 3}
+  - {fileID: 8300000, guid: 21a469d6598c3204ab82b509e42e89f8, type: 3}
+  - {fileID: 8300000, guid: 5bd190e14c182b24d9e04c61a35f3b29, type: 3}
+  - {fileID: 8300000, guid: c6f4937e92350a04a82d4bd76eef52ba, type: 3}
+  - {fileID: 8300000, guid: 701a3679a01f84e43aa1fa9d4a3c0785, type: 3}
+  - {fileID: 8300000, guid: bde38e84ced6de84cb95115723d7bdf4, type: 3}
+  - {fileID: 8300000, guid: fe9932ae0117e154d998e51d9ed611e0, type: 3}
+  - {fileID: 8300000, guid: 94091ec33fbd6b349ba6e703387e4866, type: 3}
+  - {fileID: 8300000, guid: ee8cfcb8b3588954ea24c10457255924, type: 3}
+  - {fileID: 8300000, guid: 5e889505e0e0d2a4db129b0905352109, type: 3}
+  - {fileID: 8300000, guid: 65fabefe77170f948ba6088e0e5a0f95, type: 3}
+  - {fileID: 8300000, guid: 6a0ec25b8a422c646b399ddcae7b2c62, type: 3}
+  - {fileID: 8300000, guid: 437fe84d57fc7f64cad7d56e2a8c9a89, type: 3}
+  - {fileID: 8300000, guid: 0d5771525d0e1814ab6d369e7eb1c3ba, type: 3}
+  - {fileID: 8300000, guid: 8881ea521aa0c7a4f9ae441c637350e6, type: 3}
+  - {fileID: 8300000, guid: e8c2b8bd9bd8f9e428347c57e9710cd4, type: 3}
+  - {fileID: 8300000, guid: 09027ef61068784478c1b32badf50904, type: 3}
+  - {fileID: 8300000, guid: e8c38c6593d87944187086e01dbfdb98, type: 3}
+  - {fileID: 8300000, guid: 31becc0a3e7892e468b4ac4372db4882, type: 3}
+  - {fileID: 8300000, guid: caf77e0d1f468b64ab86183d4318a7f8, type: 3}
+  - {fileID: 8300000, guid: 579c9253f6a5be6499ca8a1851d07f90, type: 3}
+  welcomeMessage: Welcome to Lesson 2, Animal Sounds Part 2.
+  letsLearnMessage: 'In this lesson, you''re going to choose the correct sound that
+    is produced by the given animals. There will be 3 choices: A, B, and C. Press
+    dot number 1 for A, dot number 2 for B, and dot number 3 for C.'
+  completedMessage: Great Job! You finished Lesson 2 Animal Sounds part 2.
+  repeatQuestionMessage: You finished Lesson 2, Animal Sounds Part 2. Do you want
+    to repeat again? Press R to repeat or Next to go back to main menu.
+  lessons:
+  - displayLabel: Horse
+    categoryLabel: 'A. Meoow
+
+      B. Meeee
+
+      C. Neighh '
+    promptMessage: Number 1 Horse, What do you think the sound produced by a horse?
+    successMessage: That is correct.
+    wrongMessage: Wrong Answer, Please Try again.
+    displayImage: {fileID: 21300000, guid: 8ede91ea780400e4fa5d7443c4caa75e, type: 3}
+    introAudio: {fileID: 8300000, guid: e6061281bf1876f448b97a038f6160bc, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    correctAnswer: 2
+    choiceAAudio: {fileID: 8300000, guid: 789473d6f2023f44aba6ddb9c2eea13e, type: 3}
+    choiceBAudio: {fileID: 8300000, guid: dce348faffb75614f8ffea2d5d28242f, type: 3}
+    choiceCAudio: {fileID: 8300000, guid: da1935713bb5c2d4e9cdd705a4cb916f, type: 3}
+    supportMessage: Remember a horse neigh. Press dot 1 for letter A, dot 2 for letter
+      B, and dot 3 for letter C.
+    supportAudio: {fileID: 8300000, guid: 11183da83cba9e6448413db919059b20, type: 3}
+  - displayLabel: Dog
+    categoryLabel: 'A. Neighh
+
+      B. Arf - Arf
+
+      C. Mooo '
+    promptMessage: Number 2 Dog, What do you think the sound produced by a dog?
+    successMessage: That is correct.
+    wrongMessage: Wrong Answer, Please Try again.
+    displayImage: {fileID: 21300000, guid: 9df8bee007f63024c8ea56096057cb4c, type: 3}
+    introAudio: {fileID: 8300000, guid: 613b4f643fa3ae94b848c4737a018df3, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    correctAnswer: 1
+    choiceAAudio: {fileID: 8300000, guid: da1935713bb5c2d4e9cdd705a4cb916f, type: 3}
+    choiceBAudio: {fileID: 8300000, guid: fb639cbad8fc65f4591dfe41c16820d2, type: 3}
+    choiceCAudio: {fileID: 8300000, guid: 91cc9825a3e7b2548b3fb222e8cf2581, type: 3}
+    supportMessage: Remember a dog barks. Press dot 1 for letter A, dot 2 for letter
+      B, and dot 3 for letter C.
+    supportAudio: {fileID: 8300000, guid: 87f56afcb8d7a37499bd96bd7ac2d41d, type: 3}
+  - displayLabel: Goat
+    categoryLabel: 'A. Mooo
+
+      B. Meeee
+
+      C. Arf - Arf '
+    promptMessage: Number 3 Goat, What do you think the sound produced by a goat?
+    successMessage: That is correct.
+    wrongMessage: Wrong Answer, Please Try again.
+    displayImage: {fileID: 21300000, guid: 125323a3565dd8f4c853c1fb4f0922c7, type: 3}
+    introAudio: {fileID: 8300000, guid: d7309bafba9d1ee4ab6cdefb2aa9f2dd, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    correctAnswer: 1
+    choiceAAudio: {fileID: 8300000, guid: 91cc9825a3e7b2548b3fb222e8cf2581, type: 3}
+    choiceBAudio: {fileID: 8300000, guid: dce348faffb75614f8ffea2d5d28242f, type: 3}
+    choiceCAudio: {fileID: 8300000, guid: fb639cbad8fc65f4591dfe41c16820d2, type: 3}
+    supportMessage: Remember a Goat bleats. Press dot 1 for letter A, dot 2 for letter
+      B, and dot 3 for letter C.
+    supportAudio: {fileID: 8300000, guid: 2664000ce600b724a8a9f02ce1fca837, type: 3}
+  - displayLabel: Cat
+    categoryLabel: 'A. Meoow
+
+      B. Neighh
+
+      C. Tweet '
+    promptMessage: Number 4 Cat, What do you think the sound produced by a cat?
+    successMessage: That is correct.
+    wrongMessage: Wrong Answer, Please Try again.
+    displayImage: {fileID: 21300000, guid: c81aef58ae5bf4641981429b3709ca62, type: 3}
+    introAudio: {fileID: 8300000, guid: 96f4065ede193b14fbfffe113bb765ab, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    correctAnswer: 0
+    choiceAAudio: {fileID: 8300000, guid: 789473d6f2023f44aba6ddb9c2eea13e, type: 3}
+    choiceBAudio: {fileID: 8300000, guid: da1935713bb5c2d4e9cdd705a4cb916f, type: 3}
+    choiceCAudio: {fileID: 8300000, guid: c928eea9a4d6ed746b88d734ec1b873e, type: 3}
+    supportMessage: Remember, a Cat meows. Press dot 1 for letter A, dot 2 for letter
+      B, and dot 3 for letter C.
+    supportAudio: {fileID: 8300000, guid: 738b9dfebe952bf4aab441538bba6802, type: 3}
+  - displayLabel: Cow
+    categoryLabel: 'A. Mooo
+
+      B. Tweet
+
+      C. Meow '
+    promptMessage: Number 5 Cow, What do you think the sound produced by a cow?
+    successMessage: That is correct.
+    wrongMessage: Wrong Answer, Please Try again.
+    displayImage: {fileID: 21300000, guid: b8730347530c29a43ab14aecda1a0a7f, type: 3}
+    introAudio: {fileID: 8300000, guid: da90f80022d702049a8374c5ef8a02f4, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    correctAnswer: 0
+    choiceAAudio: {fileID: 8300000, guid: 91cc9825a3e7b2548b3fb222e8cf2581, type: 3}
+    choiceBAudio: {fileID: 8300000, guid: c928eea9a4d6ed746b88d734ec1b873e, type: 3}
+    choiceCAudio: {fileID: 8300000, guid: 789473d6f2023f44aba6ddb9c2eea13e, type: 3}
+    supportMessage: Remember, a Cow mooos. Press dot 1 for letter A, dot 2 for letter
+      B, and dot 3 for letter C.
+    supportAudio: {fileID: 8300000, guid: 31b83aadd413f5f47960049866cf6630, type: 3}
+  - displayLabel: Bird
+    categoryLabel: 'A. Arf - Arf
+
+      B. Meee
+
+      C. Tweet '
+    promptMessage: Number 6 Bird, What do you think the sound produced by a bird?
+    successMessage: That is correct.
+    wrongMessage: Wrong Answer, Please Try again.
+    displayImage: {fileID: 21300000, guid: c2831bdfcb4f64c4786c7164dd76daa1, type: 3}
+    introAudio: {fileID: 8300000, guid: b62d675798f3fe44b9500f4584991676, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    correctAnswer: 2
+    choiceAAudio: {fileID: 8300000, guid: fb639cbad8fc65f4591dfe41c16820d2, type: 3}
+    choiceBAudio: {fileID: 8300000, guid: dce348faffb75614f8ffea2d5d28242f, type: 3}
+    choiceCAudio: {fileID: 8300000, guid: c928eea9a4d6ed746b88d734ec1b873e, type: 3}
+    supportMessage: Remember, a Bird Tweets. Press dot 1 for letter A, dot 2 for
+      letter B, and dot 3 for letter C.
+    supportAudio: {fileID: 8300000, guid: cb98333fc9131cc44afe477bc0607b5f, type: 3}
   delayAfterVoice: 0.35
   noAudioTextDelay: 2
   delayAfterCorrect: 0.75
