@@ -742,7 +742,7 @@ GameObject:
   - component: {fileID: 843676733}
   - component: {fileID: 843676732}
   m_Layer: 5
-  m_Name: TScoreT (1)
+  m_Name: Displaylabeltxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2411,7 +2411,6 @@ GameObject:
   - component: {fileID: 1586095474}
   - component: {fileID: 1586095478}
   - component: {fileID: 1586095484}
-  - component: {fileID: 1586095489}
   - component: {fileID: 1586095490}
   m_Layer: 5
   m_Name: SoundsAround1Manager
@@ -2640,562 +2639,6 @@ MonoBehaviour:
   logInputs: 0
   playLetterSoundOnChord: 1
   playOtherPatternSoundOnChord: 1
---- !u!114 &1586095489
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1586095473}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83a9af105cd0034439d8f69870e99643, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CConQuest
-  bubbleMessageText: {fileID: 1257937990}
-  translationText: {fileID: 2077778574}
-  typingSessionText: {fileID: 1155271827}
-  categoryText: {fileID: 0}
-  livePatternText: {fileID: 1697798612}
-  lessonImage: {fileID: 286661654}
-  answerStateImage: {fileID: 2047379756}
-  correctStateSprite: {fileID: -4207999480553683411, guid: 4e35d4a30fee8cc4580f2983361350b4, type: 3}
-  wrongStateSprite: {fileID: 7071201414940298460, guid: bee3415c56ef4054aa185675bb6dc185, type: 3}
-  hideAnswerStateAtStart: 1
-  fixScoreText: {fileID: 1777884057}
-  wrongScoreText: {fileID: 1070165176}
-  totalScoreText: {fileID: 1113401178}
-  highScoreText: {fileID: 1262590508}
-  fixedScore: 100
-  deductionPerMistake: 1
-  highScoreKey: CConQuestHighScore
-  voiceAudioSource: {fileID: 1586095478}
-  welcomeAudio: {fileID: 8300000, guid: 435b5a8d7eb29e7458e1586bef2c1784, type: 3}
-  letsLearnAudio: {fileID: 8300000, guid: 38c1e5fbe88b5964691b1bac7786e0a3, type: 3}
-  genericCorrectAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
-  genericTryAgainAudio: {fileID: 8300000, guid: dd615f4eef83e3b49b22a11445f9b6d6, type: 3}
-  genericCompletedAudio: {fileID: 8300000, guid: 2f7d33b29a77ed647a2cf5848dae96c9, type: 3}
-  repeatQuestionAudio: {fileID: 8300000, guid: 4b81b69e25ed3374292b077cb2839772, type: 3}
-  yourScoreIsAudio: {fileID: 8300000, guid: 87b8db9fefb037c45a47d8c5dfa472c3, type: 3}
-  whileYourHighestScoreIsAudio: {fileID: 8300000, guid: 0d6892ffde47dba4ab52e7a334aeff53, type: 3}
-  numberAudios:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 8300000, guid: a9afdf1f202626e4d815f3d339f223c4, type: 3}
-  - {fileID: 8300000, guid: 21a469d6598c3204ab82b509e42e89f8, type: 3}
-  - {fileID: 8300000, guid: 5bd190e14c182b24d9e04c61a35f3b29, type: 3}
-  - {fileID: 8300000, guid: c6f4937e92350a04a82d4bd76eef52ba, type: 3}
-  - {fileID: 8300000, guid: 701a3679a01f84e43aa1fa9d4a3c0785, type: 3}
-  - {fileID: 8300000, guid: bde38e84ced6de84cb95115723d7bdf4, type: 3}
-  - {fileID: 8300000, guid: fe9932ae0117e154d998e51d9ed611e0, type: 3}
-  - {fileID: 8300000, guid: 94091ec33fbd6b349ba6e703387e4866, type: 3}
-  - {fileID: 8300000, guid: ee8cfcb8b3588954ea24c10457255924, type: 3}
-  - {fileID: 8300000, guid: 5e889505e0e0d2a4db129b0905352109, type: 3}
-  - {fileID: 8300000, guid: 65fabefe77170f948ba6088e0e5a0f95, type: 3}
-  - {fileID: 8300000, guid: 6a0ec25b8a422c646b399ddcae7b2c62, type: 3}
-  - {fileID: 8300000, guid: 437fe84d57fc7f64cad7d56e2a8c9a89, type: 3}
-  - {fileID: 8300000, guid: 0d5771525d0e1814ab6d369e7eb1c3ba, type: 3}
-  - {fileID: 8300000, guid: 8881ea521aa0c7a4f9ae441c637350e6, type: 3}
-  - {fileID: 8300000, guid: e8c2b8bd9bd8f9e428347c57e9710cd4, type: 3}
-  - {fileID: 8300000, guid: 09027ef61068784478c1b32badf50904, type: 3}
-  - {fileID: 8300000, guid: e8c38c6593d87944187086e01dbfdb98, type: 3}
-  - {fileID: 8300000, guid: 31becc0a3e7892e468b4ac4372db4882, type: 3}
-  - {fileID: 8300000, guid: caf77e0d1f468b64ab86183d4318a7f8, type: 3}
-  - {fileID: 8300000, guid: 579c9253f6a5be6499ca8a1851d07f90, type: 3}
-  welcomeMessage: Welcome to C-ConQuest! Now that you've learned how to use some
-    common contractions in braille and its proper usage, let's try using it to construct
-    a sentence.
-  letsLearnMessage: Let's put your knowledge to the test. In this quest, you're going
-    to construct a sentence with the use of common contractions.
-  completedMessage: Congratulation! You did an amazing job.
-  repeatQuestionMessage: You finished your journey on C-ConQuest. Do you want to
-    repeat again and try beating your high score? Press repeat to repeat or next
-    to finish.
-  lessons:
-  - displayLabel: You can go.
-    categoryLabel: 
-    promptMessage: The first sentence you're going to construct with the use of common
-      contraction is the sentence "You can go."
-    repeatMessage: Again, construct the sentence "You can go."
-    successMessage: You can go. That is correct.
-    wrongMessage: That is wrong. Try Again.
-    lessonKind: 1
-    dots: 
-    expectedSequencePatterns:
-    - 000001
-    - 101111
-    - 000000
-    - 100100
-    - 000000
-    - 110110
-    - 010011
-    expectedSequenceNames:
-    - 
-    - You
-    - ' '
-    - can
-    - ' '
-    - go
-    - .
-    lessonSprite: {fileID: 0}
-    introAudio: {fileID: 8300000, guid: 5b5947080f6251046bb5dc28af3310c4, type: 3}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 1dfc918e1ea9a7147bcc81f6ba6bc332, type: 3}
-    sequenceStepAudios:
-    - {fileID: 8300000, guid: f7435039438a2e346937f11ffcf48a6f, type: 3}
-    sequenceStepMessages: []
-    sequenceStepWrongAudios:
-    - {fileID: 8300000, guid: 548d6c08eeb8a384b8c07f088e2c60b5, type: 3}
-    - {fileID: 8300000, guid: 61b873c0ced0c014795ea7e94ab639d7, type: 3}
-    - {fileID: 8300000, guid: 71fc71f99dd771044a68b3a2c372f341, type: 3}
-    - {fileID: 8300000, guid: 246c706c348dc8d4a8922d53c2889a16, type: 3}
-    - {fileID: 8300000, guid: 71fc71f99dd771044a68b3a2c372f341, type: 3}
-    - {fileID: 8300000, guid: 8c58472e0ebdaec45afcf3b33aaa7033, type: 3}
-    - {fileID: 8300000, guid: 8396c2d9e7749954dbea78ac379aa1c3, type: 3}
-    sequenceStepWrongMessages:
-    - Remember, to capitalize a letter you have to press dot 6 before the letter.
-    - Remember Y stands for You use the dots number 1, 3, 4, 5&6.
-    - You forgot to add space before the preceding word.
-    - Remember C stands for Can use the dots number 1&4.
-    - You forgot to add space before the preceding word.
-    - Remember G stands for go use the dots number 1, 2, 4&5.
-    - Remember, you have to use period to end a sentence and period uses dots number
-      2, 5&6.
-    supportMessage: 
-    supportAudio: {fileID: 0}
-  - displayLabel: I like bread, but not jam.
-    categoryLabel: 
-    promptMessage: The next sentence you're going to construct with the use of common
-      contraction is the sentence "I like bread, but not jam."
-    repeatMessage: Again, construct the sentence "I like bread, but not jam."
-    successMessage: I like bread, but not jam. That is correct.
-    wrongMessage: That is wrong. Try Again.
-    lessonKind: 1
-    dots: 
-    expectedSequencePatterns:
-    - 000001
-    - 010100
-    - 000000
-    - 111000
-    - 000000
-    - 110000
-    - 111010
-    - 100010
-    - 100000
-    - 100110
-    - 010000
-    - 000000
-    - 110000
-    - 000000
-    - 101110
-    - 101010
-    - 011110
-    - 000000
-    - 010110
-    - 100000
-    - 101100
-    - 010011
-    expectedSequenceNames:
-    - 
-    - I
-    - 
-    - like
-    - ' '
-    - b
-    - r
-    - e
-    - a
-    - d
-    - ','
-    - ' '
-    - but
-    - ' '
-    - n
-    - o
-    - t
-    - ' '
-    - j
-    - a
-    - m
-    - .
-    lessonSprite: {fileID: 0}
-    introAudio: {fileID: 8300000, guid: f12574137b2de3c4795222def6a860db, type: 3}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: dd5dacdc28c5b164686c8f42eacaa398, type: 3}
-    sequenceStepAudios:
-    - {fileID: 8300000, guid: 4e5d2cd212bc45e47abd8b1c9f2a25a7, type: 3}
-    sequenceStepMessages: []
-    sequenceStepWrongAudios:
-    - {fileID: 8300000, guid: 548d6c08eeb8a384b8c07f088e2c60b5, type: 3}
-    - {fileID: 8300000, guid: 0eefbe340b1883d468cef4ba68362eda, type: 3}
-    - {fileID: 8300000, guid: 71fc71f99dd771044a68b3a2c372f341, type: 3}
-    - {fileID: 8300000, guid: 4fb3c3a6dcabf27428421ec40abf5bb3, type: 3}
-    - {fileID: 8300000, guid: 71fc71f99dd771044a68b3a2c372f341, type: 3}
-    - {fileID: 8300000, guid: 6c336e76fcd6bbb46a74ce59425d5c49, type: 3}
-    - {fileID: 8300000, guid: 4c345551e9f7d5f46bb2b0ab4562651a, type: 3}
-    - {fileID: 8300000, guid: f62eb7bc6c00e5246bf7666f6054df1b, type: 3}
-    - {fileID: 8300000, guid: c436d7cef08bae043bdb3a807c5e431c, type: 3}
-    - {fileID: 8300000, guid: f5e0964230ec8e348b70b31e49c4be26, type: 3}
-    - {fileID: 8300000, guid: cc7ccdd08a05db444b2edc82abf3f370, type: 3}
-    - {fileID: 8300000, guid: 71fc71f99dd771044a68b3a2c372f341, type: 3}
-    - {fileID: 8300000, guid: 5c78a370a7bc2e445830e4a5ae19b297, type: 3}
-    - {fileID: 8300000, guid: 71fc71f99dd771044a68b3a2c372f341, type: 3}
-    - {fileID: 8300000, guid: c2cdf06d423bd6a489bb5fe76ba49335, type: 3}
-    - {fileID: 8300000, guid: 4aa40de616ef2574d9ae0a705f6e033c, type: 3}
-    - {fileID: 8300000, guid: ab2837d49111b064eaa335532bf4935b, type: 3}
-    - {fileID: 8300000, guid: 71fc71f99dd771044a68b3a2c372f341, type: 3}
-    - {fileID: 8300000, guid: 144671f386118cd47a135fe052492ffe, type: 3}
-    - {fileID: 8300000, guid: c436d7cef08bae043bdb3a807c5e431c, type: 3}
-    - {fileID: 8300000, guid: caae83a2734c0eb46af374e01cb9dd32, type: 3}
-    - {fileID: 8300000, guid: 8396c2d9e7749954dbea78ac379aa1c3, type: 3}
-    sequenceStepWrongMessages:
-    - Remember, to capitalize a letter you have to press dot 6 before the letter.
-    - Remember I uses dots number 2&5.
-    - You forgot to add space before the preceding word.
-    - Remember L stands for Like use the dots number 1, 2&3.
-    - You forgot to add space before the preceding word.
-    - Remember B uses dots number 1&2.
-    - Remember R uses dots number 1, 2, 3&5.
-    - Remember E uses dots number 1&5.
-    - Remember A uses dot number 1.
-    - Remember D uses dots number 1, 4&5.
-    - Remember, Comma uses dot number 2.
-    - You forgot to add space before the preceding word.
-    - Remember B stands for But use the dots number 1&2.
-    - You forgot to add space before the preceding word.
-    - Remember N uses dots number 1, 3, 4&5.
-    - Remember O uses dots number 1, 3&5.
-    - Remember T uses dots number 2, 3, 4&5.
-    - You forgot to add space before the preceding word.
-    - Remember J uses dots number 2, 4&5.
-    - Remember A uses dot number 1.
-    - Remember M uses dots number 1, 3&4.
-    - Remember, you have to use period to end a sentence and period uses dots number
-      2, 5&6.
-    supportMessage: 
-    supportAudio: {fileID: 0}
-  - displayLabel: Do you have the ball?
-    categoryLabel: 
-    promptMessage: The next sentence you're going to construct with the use of common
-      contraction is the sentence "Do you have the ball?"
-    repeatMessage: Again, construct the sentence "Do you have the ball?"
-    successMessage: Do you have the ball? That is correct.
-    wrongMessage: That is wrong. Try Again.
-    lessonKind: 1
-    dots: 
-    expectedSequencePatterns:
-    - 000001
-    - 100110
-    - 000000
-    - 101111
-    - 000000
-    - 110010
-    - 000000
-    - 011110
-    - 110010
-    - 100010
-    - 000000
-    - 110000
-    - 100000
-    - 111000
-    - 111000
-    - 011001
-    expectedSequenceNames:
-    - 
-    - Do
-    - ' '
-    - you
-    - ' '
-    - have
-    - ' '
-    - t
-    - h
-    - e
-    - ' '
-    - b
-    - a
-    - l
-    - l
-    - '?'
-    lessonSprite: {fileID: 0}
-    introAudio: {fileID: 8300000, guid: aa72c70484dfb524ebf0659182635386, type: 3}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 7eccdaa4bacc19647af45ad57fd54b73, type: 3}
-    sequenceStepAudios:
-    - {fileID: 8300000, guid: e45f41a5db2a3d84fafb927dc3c58f8c, type: 3}
-    sequenceStepMessages: []
-    sequenceStepWrongAudios:
-    - {fileID: 8300000, guid: 548d6c08eeb8a384b8c07f088e2c60b5, type: 3}
-    - {fileID: 8300000, guid: c2ef761da3fb7a54baa114d761f51e15, type: 3}
-    - {fileID: 8300000, guid: 71fc71f99dd771044a68b3a2c372f341, type: 3}
-    - {fileID: 8300000, guid: 61b873c0ced0c014795ea7e94ab639d7, type: 3}
-    - {fileID: 8300000, guid: 71fc71f99dd771044a68b3a2c372f341, type: 3}
-    - {fileID: 8300000, guid: d98afba6e9d80614ebe1353182ef524b, type: 3}
-    - {fileID: 8300000, guid: 71fc71f99dd771044a68b3a2c372f341, type: 3}
-    - {fileID: 8300000, guid: ab2837d49111b064eaa335532bf4935b, type: 3}
-    - {fileID: 8300000, guid: 50552a1520abf24499d639061b2c2da5, type: 3}
-    - {fileID: 8300000, guid: f62eb7bc6c00e5246bf7666f6054df1b, type: 3}
-    - {fileID: 8300000, guid: 71fc71f99dd771044a68b3a2c372f341, type: 3}
-    - {fileID: 8300000, guid: 6c336e76fcd6bbb46a74ce59425d5c49, type: 3}
-    - {fileID: 8300000, guid: c436d7cef08bae043bdb3a807c5e431c, type: 3}
-    - {fileID: 8300000, guid: 59a4c0b922ab767489f38ae4350a0fbe, type: 3}
-    - {fileID: 8300000, guid: 59a4c0b922ab767489f38ae4350a0fbe, type: 3}
-    - {fileID: 8300000, guid: df618e04bb3345e4db22ea650be79ddd, type: 3}
-    sequenceStepWrongMessages:
-    - Remember, to capitalize a letter you have to press dot 6 before the letter.
-    - Remember D stands for Do use the dots number 1, 4&5.
-    - You forgot to add space before the preceding word.
-    - Remember Y stands for You use the dots number 1, 3, 4, 5&6.
-    - You forgot to add space before the preceding word.
-    - Remember H stands for Have use the dots number 1,2&5.
-    - You forgot to add space before the preceding word.
-    - Remember T uses dots number 2, 3, 4&5.
-    - Remember H uses dots number 1, 2&5.
-    - Remember E uses dots number 1&5.
-    - You forgot to add space before the preceding word.
-    - "Remember B uses dots number 1&2.\t"
-    - Remember A uses dot number 1.
-    - Remember L uses dots number 1, 2&3.
-    - Remember L uses dots number 1, 2&3.
-    - Remember, Question Mark uses dots number 2, 3&6.
-    supportMessage: 
-    supportAudio: {fileID: 0}
-  - displayLabel: Fish and chips.
-    categoryLabel: 
-    promptMessage: The next sentence you're going to construct with the use of common
-      contraction is the sentence "Fish and chips."
-    repeatMessage: Again, construct the sentence "Fish and chips."
-    successMessage: Fish and chips. That is correct.
-    wrongMessage: That is wrong. Try Again.
-    lessonKind: 1
-    dots: 
-    expectedSequencePatterns:
-    - 000001
-    - 110100
-    - 010100
-    - 011100
-    - 110010
-    - 000000
-    - 111101
-    - 000000
-    - 100100
-    - 110010
-    - 010100
-    - 111100
-    - 011100
-    - 010011
-    expectedSequenceNames:
-    - 
-    - F
-    - i
-    - s
-    - h
-    - ' '
-    - and
-    - ' '
-    - c
-    - h
-    - i
-    - p
-    - s
-    - .
-    lessonSprite: {fileID: 0}
-    introAudio: {fileID: 8300000, guid: 634fba9ae559c354cafbe8b079a64c01, type: 3}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 321616f607d75a24caeaadc2684763e7, type: 3}
-    sequenceStepAudios:
-    - {fileID: 8300000, guid: af2c2a0f9e28cdc42b4c3ccefa605d2e, type: 3}
-    sequenceStepMessages: []
-    sequenceStepWrongAudios:
-    - {fileID: 8300000, guid: 548d6c08eeb8a384b8c07f088e2c60b5, type: 3}
-    - {fileID: 8300000, guid: 84691bd9c3e007e42b125084fcd6b6e5, type: 3}
-    - {fileID: 8300000, guid: 0eefbe340b1883d468cef4ba68362eda, type: 3}
-    - {fileID: 8300000, guid: c9d273653d1d7dd41a349fb8dc2a5404, type: 3}
-    - {fileID: 8300000, guid: 50552a1520abf24499d639061b2c2da5, type: 3}
-    - {fileID: 8300000, guid: 71fc71f99dd771044a68b3a2c372f341, type: 3}
-    - {fileID: 8300000, guid: 08e1b43d12bead4438b2af3d8725cab7, type: 3}
-    - {fileID: 8300000, guid: 71fc71f99dd771044a68b3a2c372f341, type: 3}
-    - {fileID: 8300000, guid: 46ba9ba3959663748bc3e70f5f69a3d1, type: 3}
-    - {fileID: 8300000, guid: 50552a1520abf24499d639061b2c2da5, type: 3}
-    - {fileID: 8300000, guid: 0eefbe340b1883d468cef4ba68362eda, type: 3}
-    - {fileID: 8300000, guid: 1fc7322b8f1714f47bef6c284dbffa02, type: 3}
-    - {fileID: 8300000, guid: c9d273653d1d7dd41a349fb8dc2a5404, type: 3}
-    - {fileID: 8300000, guid: 8396c2d9e7749954dbea78ac379aa1c3, type: 3}
-    sequenceStepWrongMessages:
-    - Remember, to capitalize a letter you have to press dot 6 before the letter.
-    - Remember F uses dots number 1, 2&4.
-    - Remember I uses dots number 2&5.
-    - Remember S uses dots number 2, 3&4.
-    - Remember H uses dots number 1, 2&5.
-    - You forgot to add space before the preceding word.
-    - Remember And uses dots number 1, 2, 3, 4&6.
-    - You forgot to add space before the preceding word.
-    - Remember C uses dots number 1&4.
-    - Remember H uses dots number 1, 2&5.
-    - Remember I uses dots number 2&5.
-    - Remember P uses dots number 1, 2, 3&4.
-    - Remember S uses dots number 2, 3&4.
-    - Remember, you have to use period to end a sentence and period uses dots number
-      2, 5&6.
-    supportMessage: 
-    supportAudio: {fileID: 0}
-  - displayLabel: Go with him.
-    categoryLabel: 
-    promptMessage: The next sentence you're going to construct with the use of common
-      contraction is the sentence "Go with him."
-    repeatMessage: Again, construct the sentence "Go with him."
-    successMessage: Go with him. That is correct.
-    wrongMessage: That is wrong. Try Again.
-    lessonKind: 1
-    dots: 
-    expectedSequencePatterns:
-    - 000001
-    - 110110
-    - 101010
-    - 000000
-    - 011111
-    - 000000
-    - 110010
-    - 010100
-    - 101100
-    - 010011
-    expectedSequenceNames:
-    - 
-    - G
-    - o
-    - ' '
-    - with
-    - ' '
-    - h
-    - i
-    - m
-    - .
-    lessonSprite: {fileID: 0}
-    introAudio: {fileID: 8300000, guid: 455ab829e29b71446b0eb7b4e99397b1, type: 3}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: f276dce5e406bd449b383ba699abc051, type: 3}
-    sequenceStepAudios:
-    - {fileID: 8300000, guid: 2d07c629a048bcb47b0fa59f6e13c3c5, type: 3}
-    sequenceStepMessages: []
-    sequenceStepWrongAudios:
-    - {fileID: 8300000, guid: 548d6c08eeb8a384b8c07f088e2c60b5, type: 3}
-    - {fileID: 8300000, guid: f8eff2f2e5d0b2e4fac58678cea0c64e, type: 3}
-    - {fileID: 8300000, guid: 4aa40de616ef2574d9ae0a705f6e033c, type: 3}
-    - {fileID: 8300000, guid: 71fc71f99dd771044a68b3a2c372f341, type: 3}
-    - {fileID: 8300000, guid: bfecefa5b1047544db0281bb93d357ef, type: 3}
-    - {fileID: 8300000, guid: 71fc71f99dd771044a68b3a2c372f341, type: 3}
-    - {fileID: 8300000, guid: 50552a1520abf24499d639061b2c2da5, type: 3}
-    - {fileID: 8300000, guid: 0eefbe340b1883d468cef4ba68362eda, type: 3}
-    - {fileID: 8300000, guid: caae83a2734c0eb46af374e01cb9dd32, type: 3}
-    - {fileID: 8300000, guid: 8396c2d9e7749954dbea78ac379aa1c3, type: 3}
-    sequenceStepWrongMessages:
-    - Remember, to capitalize a letter you have to press dot 6 before the letter.
-    - Remember G uses dots number 1, 2, 4&5.
-    - Remember O uses dots number 1, 3&5.
-    - You forgot to add space before the preceding word.
-    - Remember With uses dots number 2, 3, 4, 5&6.
-    - You forgot to add space before the preceding word.
-    - Remember H uses dots number 1, 2&5.
-    - Remember I uses dots number 2&5.
-    - Remember M uses dots number 1, 3&4.
-    - Remember, you have to use period to end a sentence and period uses dots number
-      2, 5&6.
-    supportMessage: 
-    supportAudio: {fileID: 0}
-  playInstructionOnLessonStart: 1
-  delayAfterVoice: 0.35
-  noAudioTextDelay: 2
-  delayAfterCorrect: 0.75
-  showHeldDotsPattern: 1
-  resetSequenceToStartOnWrongAnswer: 0
-  allowSpaceAsSequenceInput: 1
-  spaceSequencePattern: 000000
-  mistakesBeforeSupport: 3
-  resetMistakesAfterSupport: 1
-  useTypewriterEffect: 1
-  defaultTypewriterCharacterDelay: 0.03
-  minSyncedCharacterDelay: 0.01
-  maxSyncedCharacterDelay: 0.12
-  waitForFullAudioBeforeContinuing: 1
-  logDebug: 1
 --- !u!114 &1586095490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3209,16 +2652,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BrailleSoundsAround1
   bubbleMessageText: {fileID: 1257937990}
-  translationText: {fileID: 2077778574}
-  typingSessionText: {fileID: 1155271827}
-  categoryText: {fileID: 0}
+  displayLabelText: {fileID: 843676732}
+  categoryText: {fileID: 1155271827}
   livePatternText: {fileID: 1697798612}
-  lessonImage: {fileID: 286661654}
   displayImageUI: {fileID: 54352918}
   answerStateImage: {fileID: 2047379756}
   correctStateSprite: {fileID: -4207999480553683411, guid: 4e35d4a30fee8cc4580f2983361350b4, type: 3}
   wrongStateSprite: {fileID: 7071201414940298460, guid: bee3415c56ef4054aa185675bb6dc185, type: 3}
-  hideAnswerStateAtStart: 0
+  hideAnswerStateAtStart: 1
   fixScoreText: {fileID: 1777884057}
   wrongScoreText: {fileID: 1070165176}
   totalScoreText: {fileID: 1113401178}
@@ -3227,12 +2668,12 @@ MonoBehaviour:
   deductionPerMistake: 1
   highScoreKey: SoundsAround1HighScore
   voiceAudioSource: {fileID: 1586095478}
-  welcomeAudio: {fileID: 0}
-  letsLearnAudio: {fileID: 0}
+  welcomeAudio: {fileID: 8300000, guid: bc0d82d27e4d0434d91c2574e6354035, type: 3}
+  letsLearnAudio: {fileID: 8300000, guid: f6116e4717c905f49a1bbe1caff8ab87, type: 3}
   genericCorrectAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
   genericTryAgainAudio: {fileID: 8300000, guid: dd615f4eef83e3b49b22a11445f9b6d6, type: 3}
-  genericCompletedAudio: {fileID: 0}
-  repeatQuestionAudio: {fileID: 0}
+  genericCompletedAudio: {fileID: 8300000, guid: 32d695cceeae1b94fbadf86b1043add7, type: 3}
+  repeatQuestionAudio: {fileID: 8300000, guid: b711ec2e0efe9ee47a4a14b90a1bdb19, type: 3}
   yourScoreIsAudio: {fileID: 8300000, guid: 87b8db9fefb037c45a47d8c5dfa472c3, type: 3}
   whileYourHighestScoreIsAudio: {fileID: 8300000, guid: 0d6892ffde47dba4ab52e7a334aeff53, type: 3}
   numberAudios:
@@ -3337,41 +2778,207 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 31becc0a3e7892e468b4ac4372db4882, type: 3}
   - {fileID: 8300000, guid: caf77e0d1f468b64ab86183d4318a7f8, type: 3}
   - {fileID: 8300000, guid: 579c9253f6a5be6499ca8a1851d07f90, type: 3}
-  welcomeMessage: Welcome to Braille Play!
-  letsLearnMessage: Let's learn punctuation.
-  completedMessage: Great job! You finished this punctuation lesson.
-  repeatQuestionMessage: You finished this punctuation lesson. Do you want to repeat
-    again? Press R to repeat or Y to finish.
+  welcomeMessage: Welcome to Lesson 1 Sounds Around Part 1.
+  letsLearnMessage: In this lesson you're going to identifyf whether the given object
+    produces the correct sound. Press dot 1 if correct and dot 2 if wrong.
+  completedMessage: Great job! You finished Lesson 1 Part 1..
+  repeatQuestionMessage: You finished Lesson 1 Part 1. Would you like tot ry again
+    and beat your high score? Press repeat to repeat or press back to go back to
+    main menu.
   lessons:
-  - displayLabel: 
-    categoryLabel: Drum
-    promptMessage: 
-    repeatMessage: 
-    successMessage: 
-    wrongMessage: 
-    lessonKind: 0
-    dots: 
-    expectedSequencePatterns: []
-    expectedSequenceNames: []
-    displayImage: {fileID: -192078975117302806, guid: 8d1ae2b8f8bd3294eb2c6fb385ba8c76, type: 3}
-    lessonSprite: {fileID: 0}
-    introAudio: {fileID: 0}
+  - displayLabel: Drum
+    categoryLabel: Dingdong-Dindong
+    promptMessage: Number 1 Drum.
+    repeatMessage: Number 1 Drum
+    successMessage: That is correct.
+    wrongMessage: Wrong answer, please try again.
+    displayImage: {fileID: 21300000, guid: 8d1ae2b8f8bd3294eb2c6fb385ba8c76, type: 3}
+    introAudio: {fileID: 8300000, guid: a8345ddeaca91fe4ab7421cf8192678b, type: 3}
     instructionAudio: {fileID: 0}
-    successAudio: {fileID: 0}
-    sequenceStepAudios: []
-    sequenceStepMessages: []
-    sequenceStepWrongAudios: []
-    sequenceStepWrongMessages: []
-    supportMessage: 
-    supportAudio: {fileID: 0}
-  playInstructionOnLessonStart: 1
+    successAudio: {fileID: 8300000, guid: 38b046313bf0e4f4d86c76cb8c55bb9f, type: 3}
+    repeatAudio: {fileID: 0}
+    useSoundQuestion: 1
+    soundEffectAudio: {fileID: 8300000, guid: d11036bcb47f7154fa25c58cd62c90a8, type: 3}
+    soundQuestionMessage: Do you think drum produces that sound? Press 1 if True
+      or Press dot 2 if False.
+    soundQuestionAudio: {fileID: 8300000, guid: b9219b997039ee04fb2b4563cdb08be1, type: 3}
+    correctAnswerIsTrue: 0
+    supportMessage: Remember you should press dot number 1 or press number 2 if wrong.
+    supportAudio: {fileID: 8300000, guid: b2508d0f2359932438724ebeb86fe090, type: 3}
+  - displayLabel: Cat
+    categoryLabel: Aw-Aw-Aw-Aw
+    promptMessage: Number 2 Cat.
+    repeatMessage: Number 2 Cat.
+    successMessage: That is correct.
+    wrongMessage: Wrong answer, please try again.
+    displayImage: {fileID: 21300000, guid: c81aef58ae5bf4641981429b3709ca62, type: 3}
+    introAudio: {fileID: 8300000, guid: 3a1d783a07c0e9e439b95cba2a2b5f95, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 38b046313bf0e4f4d86c76cb8c55bb9f, type: 3}
+    repeatAudio: {fileID: 0}
+    useSoundQuestion: 1
+    soundEffectAudio: {fileID: 8300000, guid: 6e9a88023f64ad440a04e6036fe7238c, type: 3}
+    soundQuestionMessage: Do you think a cat produces that sound? Press dot 1 if
+      True or Press dot 2 if False.
+    soundQuestionAudio: {fileID: 8300000, guid: 4c7128571d9890d40b7cf0f079ab8836, type: 3}
+    correctAnswerIsTrue: 0
+    supportMessage: Remember you should press dot number 1 or press number 2 if wrong.
+    supportAudio: {fileID: 8300000, guid: b2508d0f2359932438724ebeb86fe090, type: 3}
+  - displayLabel: Bell
+    categoryLabel: Kling-Kling
+    promptMessage: Number 3 Bell.
+    repeatMessage: Number 3 Bell.
+    successMessage: That is correct.
+    wrongMessage: Wrong answer, please try again.
+    displayImage: {fileID: 21300000, guid: 7ba423c23f0d7904cb661b80a80c3b5b, type: 3}
+    introAudio: {fileID: 8300000, guid: cdfbfceb33860ba489470da89431b3aa, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 38b046313bf0e4f4d86c76cb8c55bb9f, type: 3}
+    repeatAudio: {fileID: 0}
+    useSoundQuestion: 1
+    soundEffectAudio: {fileID: 8300000, guid: ab258ebdc0d1ad24c809ce868227870c, type: 3}
+    soundQuestionMessage: Do you think the bell produces that sound? Press dot 1
+      if True or Press dot 2 if False.
+    soundQuestionAudio: {fileID: 8300000, guid: 3cd41aaca72078047ade5da5ddebc2d2, type: 3}
+    correctAnswerIsTrue: 1
+    supportMessage: Remember you should press dot number 1 or press number 2 if wrong.
+    supportAudio: {fileID: 8300000, guid: b2508d0f2359932438724ebeb86fe090, type: 3}
+  - displayLabel: Violin
+    categoryLabel: Eeeng- Eeeng - Eeeng
+    promptMessage: Number 4 Violin.
+    repeatMessage: Number 4 Violin.
+    successMessage: That is correct.
+    wrongMessage: Wrong answer, please try again.
+    displayImage: {fileID: 21300000, guid: 2b4be63a55d0ba646a74ce34d0117ca7, type: 3}
+    introAudio: {fileID: 8300000, guid: 3db8e52851a3fed4fb7ed9f12bea435e, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 38b046313bf0e4f4d86c76cb8c55bb9f, type: 3}
+    repeatAudio: {fileID: 0}
+    useSoundQuestion: 1
+    soundEffectAudio: {fileID: 8300000, guid: 4a31482cad5b71b4cb299b3445840322, type: 3}
+    soundQuestionMessage: Do you think the violin produces that sound? Press dot
+      1 if True or Press dot 2 if False.
+    soundQuestionAudio: {fileID: 8300000, guid: a9eda57812f8c7548937d48d71976a9f, type: 3}
+    correctAnswerIsTrue: 1
+    supportMessage: Remember you should press dot number 1 or press number 2 if wrong.
+    supportAudio: {fileID: 8300000, guid: b2508d0f2359932438724ebeb86fe090, type: 3}
+  - displayLabel: Hammer
+    categoryLabel: Pok - Pok - Pok
+    promptMessage: Number 5 Hammer.
+    repeatMessage: Number 5 Hammer.
+    successMessage: That is correct.
+    wrongMessage: Wrong answer, please try again.
+    displayImage: {fileID: 21300000, guid: dbd47322212c40a47b9f273d6246a6cd, type: 3}
+    introAudio: {fileID: 8300000, guid: c3ce2005f6450634694a1d66e3d7b168, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 38b046313bf0e4f4d86c76cb8c55bb9f, type: 3}
+    repeatAudio: {fileID: 0}
+    useSoundQuestion: 1
+    soundEffectAudio: {fileID: 8300000, guid: 8937fc304cae58b4da807b63c4fda064, type: 3}
+    soundQuestionMessage: Do you think the hammer produces that sound? Press dot
+      1 if True or Press dot 2 if False.
+    soundQuestionAudio: {fileID: 8300000, guid: b0457353b77f1564e83bc94fc53c004e, type: 3}
+    correctAnswerIsTrue: 1
+    supportMessage: Remember you should press dot number 1 or press number 2 if wrong.
+    supportAudio: {fileID: 8300000, guid: b2508d0f2359932438724ebeb86fe090, type: 3}
+  - displayLabel: Clock
+    categoryLabel: Tick - Tack - Tick - Tack
+    promptMessage: Number 6 Clock.
+    repeatMessage: Number 6 Clock.
+    successMessage: That is correct.
+    wrongMessage: Wrong answer, please try again.
+    displayImage: {fileID: 21300000, guid: d04779da535a9a747b2e65e22db86c74, type: 3}
+    introAudio: {fileID: 8300000, guid: 93280c90c72f63640b9ca9f055389f8d, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 38b046313bf0e4f4d86c76cb8c55bb9f, type: 3}
+    repeatAudio: {fileID: 0}
+    useSoundQuestion: 1
+    soundEffectAudio: {fileID: 8300000, guid: e9482ca3d8b03504dbc5972363d18045, type: 3}
+    soundQuestionMessage: Do you think the clock produces that sound? Press dot 1
+      if True or Press dot 2 if False.
+    soundQuestionAudio: {fileID: 8300000, guid: 4624b72be59a3e34ebfccbf86af27e0a, type: 3}
+    correctAnswerIsTrue: 1
+    supportMessage: Remember you should press dot number 1 or press number 2 if wrong.
+    supportAudio: {fileID: 8300000, guid: b2508d0f2359932438724ebeb86fe090, type: 3}
+  - displayLabel: Horse
+    categoryLabel: Moo - Moo - Moo
+    promptMessage: Number 7 Horse.
+    repeatMessage: Number 7 Horse.
+    successMessage: That is correct.
+    wrongMessage: Wrong answer, please try again.
+    displayImage: {fileID: 21300000, guid: 8ede91ea780400e4fa5d7443c4caa75e, type: 3}
+    introAudio: {fileID: 8300000, guid: 8a59b1181dfa21747862de6ea50a179e, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 38b046313bf0e4f4d86c76cb8c55bb9f, type: 3}
+    repeatAudio: {fileID: 0}
+    useSoundQuestion: 1
+    soundEffectAudio: {fileID: 8300000, guid: bb06603f6d15577439b36bc30e87fe53, type: 3}
+    soundQuestionMessage: Do you think the horse produces that sound? Press dot 1
+      if True or Press dot 2 if False.
+    soundQuestionAudio: {fileID: 8300000, guid: 1a0a6514bf2678b42858894d4188ec12, type: 3}
+    correctAnswerIsTrue: 0
+    supportMessage: Remember you should press dot number 1 or press number 2 if wrong.
+    supportAudio: {fileID: 8300000, guid: b2508d0f2359932438724ebeb86fe090, type: 3}
+  - displayLabel: Car
+    categoryLabel: Broom - Broom - Broom
+    promptMessage: Number 8 Car.
+    repeatMessage: Number 8 Car.
+    successMessage: That is correct.
+    wrongMessage: Wrong answer, please try again.
+    displayImage: {fileID: 21300000, guid: 0946ea466df2bd74a9cb4fa5fee95e49, type: 3}
+    introAudio: {fileID: 8300000, guid: 48f2dd3b583272744b729420f478f2fc, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 38b046313bf0e4f4d86c76cb8c55bb9f, type: 3}
+    repeatAudio: {fileID: 0}
+    useSoundQuestion: 1
+    soundEffectAudio: {fileID: 8300000, guid: ddf8117e995af314dbf323035b7019ef, type: 3}
+    soundQuestionMessage: Do you think a car produces that sound? Press dot 1 if
+      True or Press dot 2 if False.
+    soundQuestionAudio: {fileID: 8300000, guid: a2af3dd05c44e7d46976959717f36cf3, type: 3}
+    correctAnswerIsTrue: 1
+    supportMessage: Remember you should press dot number 1 or press number 2 if wrong.
+    supportAudio: {fileID: 8300000, guid: b2508d0f2359932438724ebeb86fe090, type: 3}
+  - displayLabel: Monkey
+    categoryLabel: Kraa - Kraa - Kraa
+    promptMessage: Number 9 Monkey.
+    repeatMessage: Number 9 Monkey.
+    successMessage: That is correct.
+    wrongMessage: Wrong answer, please try again.
+    displayImage: {fileID: 21300000, guid: b3f1f1ca526d6864abacd1257cf2ff6b, type: 3}
+    introAudio: {fileID: 8300000, guid: 5052ea0105e8dd74a9f68f089a244d50, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 38b046313bf0e4f4d86c76cb8c55bb9f, type: 3}
+    repeatAudio: {fileID: 0}
+    useSoundQuestion: 1
+    soundEffectAudio: {fileID: 8300000, guid: c76ac1ce5e98648408b17ecb38228e0e, type: 3}
+    soundQuestionMessage: Do you think a monkey produces that sound? Press dot 1
+      if True or Press dot 2 if False.
+    soundQuestionAudio: {fileID: 8300000, guid: b65f1bbfb10d4734291aa741aad0b12d, type: 3}
+    correctAnswerIsTrue: 0
+    supportMessage: Remember you should press dot number 1 or press number 2 if wrong.
+    supportAudio: {fileID: 8300000, guid: b2508d0f2359932438724ebeb86fe090, type: 3}
+  - displayLabel: Phone
+    categoryLabel: Kring - Kring - Kring
+    promptMessage: Number 10 Phone.
+    repeatMessage: Number 10 Phone.
+    successMessage: That is correct.
+    wrongMessage: Wrong answer, please try again.
+    displayImage: {fileID: 21300000, guid: b51d8cd36d4931249a51d9c57c016c8e, type: 3}
+    introAudio: {fileID: 8300000, guid: 44be76c5e814d504680f5dfa3197b091, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 38b046313bf0e4f4d86c76cb8c55bb9f, type: 3}
+    repeatAudio: {fileID: 0}
+    useSoundQuestion: 1
+    soundEffectAudio: {fileID: 8300000, guid: 23a9031232c7ae6459d68faf3b31ec7c, type: 3}
+    soundQuestionMessage: Do you think phone produces that sound? Press dot 1 if
+      True or Press dot 2 if False.
+    soundQuestionAudio: {fileID: 8300000, guid: a778b1b0c9008ba4087120613b0f97e7, type: 3}
+    correctAnswerIsTrue: 1
+    supportMessage: Remember you should press dot number 1 or press number 2 if wrong.
+    supportAudio: {fileID: 8300000, guid: b2508d0f2359932438724ebeb86fe090, type: 3}
   delayAfterVoice: 0.35
   noAudioTextDelay: 2
   delayAfterCorrect: 0.75
-  showHeldDotsPattern: 1
-  resetSequenceToStartOnWrongAnswer: 0
-  allowSpaceAsSequenceInput: 1
-  spaceSequencePattern: 000000
   mistakesBeforeSupport: 3
   resetMistakesAfterSupport: 1
   useTypewriterEffect: 1
