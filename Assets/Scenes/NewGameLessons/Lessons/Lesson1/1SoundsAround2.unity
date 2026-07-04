@@ -2086,10 +2086,8 @@ MonoBehaviour:
   yourScoreIsAudio: {fileID: 8300000, guid: 87b8db9fefb037c45a47d8c5dfa472c3, type: 3}
   whileYourHighestScoreIsAudio: {fileID: 8300000, guid: 0d6892ffde47dba4ab52e7a334aeff53, type: 3}
   numberAudios: []
-  welcomeMessage: Welcome to Sounds Around 1 Day 2!
-  letsLearnMessage: Listen to the sound, then identify if its making loud or soft
-    sound. Press numer 1 if the sound is loud and press number 2 if the sound is
-    soft.
+  welcomeMessage: Welcome to Sounds Around 2!
+  letsLearnMessage: Listen to the word, then pick what sound it makes.
   completedMessage: Great job! You finished the lesson.
   repeatQuestionMessage: You finished the lesson. Do you want to repeat again? Press
     R to repeat or Y to finish.

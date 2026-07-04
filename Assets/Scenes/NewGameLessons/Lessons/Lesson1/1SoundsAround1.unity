@@ -2659,7 +2659,7 @@ MonoBehaviour:
   answerStateImage: {fileID: 2047379756}
   correctStateSprite: {fileID: -4207999480553683411, guid: 4e35d4a30fee8cc4580f2983361350b4, type: 3}
   wrongStateSprite: {fileID: 7071201414940298460, guid: bee3415c56ef4054aa185675bb6dc185, type: 3}
-  hideAnswerStateAtStart: 1
+  hideAnswerStateAtStart: 0
   fixScoreText: {fileID: 1777884057}
   wrongScoreText: {fileID: 1070165176}
   totalScoreText: {fileID: 1113401178}
