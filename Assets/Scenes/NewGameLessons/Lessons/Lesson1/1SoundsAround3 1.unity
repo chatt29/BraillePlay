@@ -365,7 +365,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 70, y: 417}
+  m_AnchoredPosition: {x: 14, y: 419}
   m_SizeDelta: {x: 536.2007, y: 189.4903}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &309408615
@@ -388,7 +388,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Sounds Around 1 (Day 2)
+  m_text: Sounds Around 3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1a98abfae0e1fc34282e9b7fd0f3a427, type: 2}
   m_sharedMaterial: {fileID: -8189821304231711609, guid: 1a98abfae0e1fc34282e9b7fd0f3a427, type: 2}
@@ -415,8 +415,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
-  m_fontSizeBase: 100
+  m_fontSize: 120
+  m_fontSizeBase: 120
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1871,7 +1871,7 @@ GameObject:
   - component: {fileID: 1420966140}
   - component: {fileID: 1420966143}
   m_Layer: 5
-  m_Name: SoundsAround1D2Manager
+  m_Name: SoundsAround3Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2691,7 +2691,7 @@ MonoBehaviour:
   yourScoreIsAudio: {fileID: 8300000, guid: 87b8db9fefb037c45a47d8c5dfa472c3, type: 3}
   whileYourHighestScoreIsAudio: {fileID: 8300000, guid: 0d6892ffde47dba4ab52e7a334aeff53, type: 3}
   numberAudios: []
-  welcomeMessage: Welcome to Sounds Around 1 (Day 2)!
+  welcomeMessage: Welcome to Sounds Around 3!
   letsLearnMessage: Listen to the sound, then decide if it produces a loud sound
     or a soft sound.
   completedMessage: Great job! You finished the lesson.
@@ -2711,41 +2711,41 @@ MonoBehaviour:
   softResultMessage: This makes a soft sound.
   softResultAudio: {fileID: 0}
   lessons:
-  - displayLabel: Tricycle
-    wordAudio: {fileID: 8300000, guid: 7e35b1f1ceb94334d8ab36678ab39f61, type: 3}
-    displayImage: {fileID: -1069528232716108159, guid: 54affa30365f7d44f88b0cc80d081412, type: 3}
-    isLoud: 1
-    supportMessage: Remember! The Tricycle makes a loud sound.
-    supportAudio: {fileID: 0}
-  - displayLabel: Bicycle
-    wordAudio: {fileID: 8300000, guid: a15c87636c0a22840bccd1d7418e9715, type: 3}
-    displayImage: {fileID: -460769226430981451, guid: 66e29424b6004674db93b7346181a78e, type: 3}
+  - displayLabel: Telephone
+    wordAudio: {fileID: 0}
+    displayImage: {fileID: 0}
     isLoud: 0
-    supportMessage: Remember! A Bicycle makes a loud sound
+    supportMessage: Remember! A telephone makes a soft sound.
     supportAudio: {fileID: 0}
-  - displayLabel: Ambulance
-    wordAudio: {fileID: 8300000, guid: 9efdcb4b2052c7946b2e9e81d93bfbe1, type: 3}
-    displayImage: {fileID: 6053844527251203986, guid: 3839f4616b730124fa98f01e66c6ff91, type: 3}
+  - displayLabel: Drum
+    wordAudio: {fileID: 0}
+    displayImage: {fileID: 0}
     isLoud: 1
-    supportMessage: Remember! The Ambulance makes a loud sound
+    supportMessage: Remember! A drum makes a loud sound
     supportAudio: {fileID: 0}
-  - displayLabel: Jeepney
-    wordAudio: {fileID: 8300000, guid: 8d573b58609897d4cb0c777947523b7f, type: 3}
-    displayImage: {fileID: -8633747427368569318, guid: b4244ca7db0727048804452e2f143668, type: 3}
+  - displayLabel: Bus
+    wordAudio: {fileID: 0}
+    displayImage: {fileID: 0}
     isLoud: 1
-    supportMessage: Remember! The Jeepney makes a loud sound
+    supportMessage: Remember! A bus makes a loud sound
     supportAudio: {fileID: 0}
-  - displayLabel: Roller Coaster
-    wordAudio: {fileID: 8300000, guid: 77468c3836f69a147952ff80b769f97c, type: 3}
-    displayImage: {fileID: -4962249500389806032, guid: 34531f73b55f7ee4da6c258f453f944b, type: 3}
+  - displayLabel: Crying Baby
+    wordAudio: {fileID: 0}
+    displayImage: {fileID: 0}
     isLoud: 1
-    supportMessage: Remember! The Roller Coaster makes a loud sound
+    supportMessage: Remember! A crying baby makes a loud sound
     supportAudio: {fileID: 0}
-  - displayLabel: Airplane
-    wordAudio: {fileID: 8300000, guid: f71d75377b3029f47816c4623f177677, type: 3}
-    displayImage: {fileID: 635808264844335355, guid: 8675abf8e41db9d4eae9034b32a1c3ce, type: 3}
+  - displayLabel: Tiger
+    wordAudio: {fileID: 0}
+    displayImage: {fileID: 0}
     isLoud: 1
-    supportMessage: Remember! The Airplane  makes a soft sound
+    supportMessage: Remember! A tiger makes a loud sound
+    supportAudio: {fileID: 0}
+  - displayLabel: Mosquito
+    wordAudio: {fileID: 0}
+    displayImage: {fileID: 0}
+    isLoud: 0
+    supportMessage: Remember! A mosquito makes a soft sound
     supportAudio: {fileID: 0}
   loudBraillePattern: 100000
   softBraillePattern: 010000
