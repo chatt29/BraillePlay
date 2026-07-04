@@ -6,21 +6,6 @@
       "source": "embedded",
       "dependencies": {}
     },
-    "com.genesis.sparktts.unity": {
-      "version": "file:C:/Users/Chatrina/Downloads/Spark-TTS-Unity-main/Spark-TTS-Unity-main",
-      "depth": 0,
-      "source": "local",
-      "dependencies": {
-        "com.github.asus4.onnxruntime": "0.4.7",
-        "com.unity.nuget.newtonsoft-json": "3.2.1"
-      }
-    },
-    "com.github.asus4.onnxruntime": {
-      "version": "file:com.github.asus4.onnxruntime",
-      "depth": 0,
-      "source": "embedded",
-      "dependencies": {}
-    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 0,
@@ -49,13 +34,6 @@
       "dependencies": {
         "com.unity.modules.uielements": "1.0.0"
       }
-    },
-    "com.unity.nuget.newtonsoft-json": {
-      "version": "3.2.2",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.com"
     },
     "com.unity.test-framework": {
       "version": "1.6.0",

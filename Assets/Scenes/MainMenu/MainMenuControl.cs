@@ -73,7 +73,7 @@ public class MainMenuControl : MonoBehaviour
 
     private void Start()
     {
-        InitializeTextToSpeech();
+
         StartCoroutine(StartMainMenuSequence());
     }
 
@@ -94,7 +94,7 @@ public class MainMenuControl : MonoBehaviour
         BrailleMapping.OnLogin -= SelectCurrentOption;
         BrailleMapping.OnRepeat -= RepeatCurrentOption;
 
-        ShutdownTextToSpeech();
+ 
     }
 
     private void Update()
@@ -309,7 +309,7 @@ public class MainMenuControl : MonoBehaviour
         if (speechBubbleText != null)
             speechBubbleText.text = message;
 
-        Speak(message);
+        TTSManager.Instance.Speak(message);
     }
 
     private void InitializeTextToSpeech()
