@@ -73,7 +73,11 @@ public class MainMenuControl : MonoBehaviour
 
     private void Start()
     {
+<<<<<<< HEAD
+        InitializeTextToSpeech();
+=======
 
+>>>>>>> f664cd648e1c34121caa4cda2ed7e43396850408
         StartCoroutine(StartMainMenuSequence());
     }
 
@@ -94,7 +98,11 @@ public class MainMenuControl : MonoBehaviour
         BrailleMapping.OnLogin -= SelectCurrentOption;
         BrailleMapping.OnRepeat -= RepeatCurrentOption;
 
+<<<<<<< HEAD
+        ShutdownTextToSpeech();
+=======
  
+>>>>>>> f664cd648e1c34121caa4cda2ed7e43396850408
     }
 
     private void Update()
@@ -309,7 +317,11 @@ public class MainMenuControl : MonoBehaviour
         if (speechBubbleText != null)
             speechBubbleText.text = message;
 
+<<<<<<< HEAD
+        Speak(message);
+=======
         TTSManager.Instance.Speak(message);
+>>>>>>> f664cd648e1c34121caa4cda2ed7e43396850408
     }
 
     private void InitializeTextToSpeech()
