@@ -16,12 +16,27 @@ public class AccessibilityManager : MonoBehaviour
 {
     public static AccessibilityManager Instance { get; private set; }
 
-    [Tooltip("Keep this manager alive across scene loads (signup -> login, etc). Turn off if you'd rather have one per scene.")]
+    [Tooltip("Off by default to match this project's per-scene setup (no DontDestroyOnLoad), so every scene gets its own manager instead of a stale one carried over from the last scene.")]
     public bool dontDestroyOnLoad = false;
 
     private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         Instance = this;
+
+        if (dontDestroyOnLoad)
+            DontDestroyOnLoad(gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        if (Instance == this)
+            Instance = null;
     }
 
     /// <summary>Speaks a message without waiting for it to finish.</summary>
