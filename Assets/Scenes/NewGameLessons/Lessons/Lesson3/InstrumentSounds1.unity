@@ -1586,8 +1586,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -539, y: 364}
-  m_SizeDelta: {x: 604.788, y: 272.913}
+  m_AnchoredPosition: {x: -571.1336, y: 376.8534}
+  m_SizeDelta: {x: 540.5208, y: 247.2061}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1170168102
 MonoBehaviour:
@@ -1684,7 +1684,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Animal Sounds 2
+  m_text: Instrument Sound 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1a98abfae0e1fc34282e9b7fd0f3a427, type: 2}
   m_sharedMaterial: {fileID: -8189821304231711609, guid: 1a98abfae0e1fc34282e9b7fd0f3a427, type: 2}
@@ -2411,9 +2411,9 @@ GameObject:
   - component: {fileID: 1586095474}
   - component: {fileID: 1586095478}
   - component: {fileID: 1586095484}
-  - component: {fileID: 1586095491}
+  - component: {fileID: 1586095492}
   m_Layer: 5
-  m_Name: AnimalSounds2Manager
+  m_Name: InstrumentSound1Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2639,7 +2639,7 @@ MonoBehaviour:
   logInputs: 0
   playLetterSoundOnChord: 1
   playOtherPatternSoundOnChord: 1
---- !u!114 &1586095491
+--- !u!114 &1586095492
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2648,9 +2648,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1586095473}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57744976a92ed334c9a1d2d4d5006357, type: 3}
+  m_Script: {fileID: 11500000, guid: 2a04d5f819ea5294e9bf28e38125caab, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AnimalSounds2
+  m_EditorClassIdentifier: Assembly-CSharp::InstrumentSounds1
   bubbleMessageText: {fileID: 1257937990}
   displayLabelText: {fileID: 843676732}
   categoryText: {fileID: 1155271827}
@@ -2666,17 +2666,15 @@ MonoBehaviour:
   highScoreText: {fileID: 1262590508}
   fixedScore: 100
   deductionPerMistake: 1
-  highScoreKey: BrailleSoundsAroundHighScore
+  highScoreKey: BrailleInstrumentSounds1HighScore
   voiceAudioSource: {fileID: 1586095478}
-  welcomeAudio: {fileID: 8300000, guid: 4635029de5a7b614cb0ff623a5048d94, type: 3}
-  letsLearnAudio: {fileID: 8300000, guid: 9dd1202383dafb348b35488773a4d927, type: 3}
+  sfxAudioSource: {fileID: 1586095478}
+  welcomeAudio: {fileID: 8300000, guid: a3ff7b878d9c2d647b184f3dd99e329a, type: 3}
+  letsLearnAudio: {fileID: 8300000, guid: ec6a1400897480f4090afe4184243113, type: 3}
   genericCorrectAudio: {fileID: 8300000, guid: 587dfae100161f646a4b8e246de58429, type: 3}
   genericTryAgainAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-  genericCompletedAudio: {fileID: 8300000, guid: e4151824f9dfafb48a1db013fdc8a3da, type: 3}
-  repeatQuestionAudio: {fileID: 8300000, guid: bbc527e3e72c56348a8b0047a801f60d, type: 3}
-  letterAAudio: {fileID: 8300000, guid: 42701a2ed6601e345945e43b1120e18e, type: 3}
-  letterBAudio: {fileID: 8300000, guid: c8c1c489208b62d4a8fc76e6666cbd62, type: 3}
-  letterCAudio: {fileID: 8300000, guid: 90c6142c3d1a7464ebe56f87204bea71, type: 3}
+  genericCompletedAudio: {fileID: 8300000, guid: 9b591cbcf7767cd46962f943a70e9eb0, type: 3}
+  repeatQuestionAudio: {fileID: 8300000, guid: 5905f105a49c77a4b9a1e77956180ef1, type: 3}
   yourScoreIsAudio: {fileID: 8300000, guid: 613a4ecd64752ee4c8844d8286dca545, type: 3}
   whileYourHighestScoreIsAudio: {fileID: 8300000, guid: 2525c179990406146becd993f00485ee, type: 3}
   numberAudios:
@@ -2781,140 +2779,151 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 31becc0a3e7892e468b4ac4372db4882, type: 3}
   - {fileID: 8300000, guid: caf77e0d1f468b64ab86183d4318a7f8, type: 3}
   - {fileID: 8300000, guid: 579c9253f6a5be6499ca8a1851d07f90, type: 3}
-  welcomeMessage: Welcome to Lesson 2, Animal Sounds Part 2.
-  letsLearnMessage: 'In this lesson, you''re going to choose the correct sound that
-    is produced by the given animals. There will be 3 choices: A, B, and C. Press
-    dot number 1 for A, dot number 2 for B, and dot number 3 for C.'
-  completedMessage: Great Job! You finished Lesson 2 Animal Sounds part 2.
-  repeatQuestionMessage: You finished Lesson 2, Animal Sounds Part 2. Do you want
-    to repeat again? Press R to repeat or Next to go back to main menu.
+  welcomeMessage: Welcome to Lesson 3, Insstrument Sounds Part 1.
+  letsLearnMessage: In this part of the lesson, you're going to tell whether the
+    given instruments produces loud or soft sound and high or low pitch sounds. Press
+    dot 1 if you think the instrument produces loud or high pitch sound or Press
+    dot 2 if you think the instrument produces Soft or low pitch sound.
+  completedMessage: Great Job! You finished Lesson 3 Instrument Sounds part 1.
+  repeatQuestionMessage: You finished Lesson 3, Instrument Sounds Part 1. Do you
+    want to repeat again? Press repeat to repeat or Next to go back to continue.
   lessons:
-  - displayLabel: Horse
-    categoryLabel: 'A. Meoow
+  - displayLabel: Maracas
+    question1Category: '1. Loud Sound
 
-      B. Meeee
+      2. Soft Sound'
+    question2Category: '1. High Pitch Sound
 
-      C. Neighh '
-    promptMessage: Number 1 Horse, What do you think the sound produced by a horse?
-    successMessage: That is correct.
-    wrongMessage: Wrong Answer, Please Try again.
-    displayImage: {fileID: 21300000, guid: 8ede91ea780400e4fa5d7443c4caa75e, type: 3}
-    introAudio: {fileID: 8300000, guid: e6061281bf1876f448b97a038f6160bc, type: 3}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
-    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-    correctAnswer: 2
-    choiceAAudio: {fileID: 8300000, guid: 789473d6f2023f44aba6ddb9c2eea13e, type: 3}
-    choiceBAudio: {fileID: 8300000, guid: dce348faffb75614f8ffea2d5d28242f, type: 3}
-    choiceCAudio: {fileID: 8300000, guid: da1935713bb5c2d4e9cdd705a4cb916f, type: 3}
-    supportMessage: Remember a horse neigh. Press dot 1 for letter A, dot 2 for letter
-      B, and dot 3 for letter C.
-    supportAudio: {fileID: 8300000, guid: 11183da83cba9e6448413db919059b20, type: 3}
-  - displayLabel: Dog
-    categoryLabel: 'A. Neighh
+      2. Low Pitch Sound'
+    displayImage: {fileID: 21300000, guid: 8974440abe223bb45b2df1a6f9730da6, type: 3}
+    introductionMessage: Number 1, Maracas.
+    introductionAudio: {fileID: 8300000, guid: 9a361087aea32c94b9cc7a9d85a785c2, type: 3}
+    instrumentSoundEffect: {fileID: 8300000, guid: 9877f08d8b3a696439b4ce2d4deca631, type: 3}
+    volumeQuestion:
+      promptMessage: Do you think Maracas produces Loud or Soft Sound? Press dot
+        1 for Loud or Press dot 2 for Soft.
+      promptAudio: {fileID: 8300000, guid: c5b9f0cae44cc8440bdad432d9ecc19f, type: 3}
+      correctAnswer: 1
+      successMessage: That is Correct.
+      successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+      wrongMessage: Wrong Answer, Please Try Again.
+      wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+      supportMessage: Maracas produces soft sound. Press dot 2 to answer soft sound.
+      supportAudio: {fileID: 8300000, guid: 3f638d2e463865846aabf6b2e73da35b, type: 3}
+    pitchQuestion:
+      promptMessage: Do you think Maracas produces High or Low Pitch Sound? Press
+        dot 1 for High or Press dot 2 for Low Pitch.
+      promptAudio: {fileID: 8300000, guid: 8215c8c7ba4299c428c69ee48881398b, type: 3}
+      correctAnswer: 0
+      successMessage: That is Correct.
+      successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+      wrongMessage: Wrong Answer, Please Try Again.
+      wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+      supportMessage: Maracas produces high pitch sound. Press dot 1 to answer high
+        pitch sound.
+      supportAudio: {fileID: 8300000, guid: 8841853e51758b2429f12d26de791597, type: 3}
+  - displayLabel: Violin
+    question1Category: '1. Loud Sound
 
-      B. Arf - Arf
+      2. Soft Sound'
+    question2Category: '1. High Pitch Sound
 
-      C. Mooo '
-    promptMessage: Number 2 Dog, What do you think the sound produced by a dog?
-    successMessage: That is correct.
-    wrongMessage: Wrong Answer, Please Try again.
-    displayImage: {fileID: 21300000, guid: 9df8bee007f63024c8ea56096057cb4c, type: 3}
-    introAudio: {fileID: 8300000, guid: 613b4f643fa3ae94b848c4737a018df3, type: 3}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
-    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-    correctAnswer: 1
-    choiceAAudio: {fileID: 8300000, guid: da1935713bb5c2d4e9cdd705a4cb916f, type: 3}
-    choiceBAudio: {fileID: 8300000, guid: fb639cbad8fc65f4591dfe41c16820d2, type: 3}
-    choiceCAudio: {fileID: 8300000, guid: 91cc9825a3e7b2548b3fb222e8cf2581, type: 3}
-    supportMessage: Remember a dog barks. Press dot 1 for letter A, dot 2 for letter
-      B, and dot 3 for letter C.
-    supportAudio: {fileID: 8300000, guid: 87f56afcb8d7a37499bd96bd7ac2d41d, type: 3}
-  - displayLabel: Goat
-    categoryLabel: 'A. Mooo
+      2. Low Pitch Sound'
+    displayImage: {fileID: 21300000, guid: c76e548ba17798c43b42497d430ef153, type: 3}
+    introductionMessage: Number 2, Violin.
+    introductionAudio: {fileID: 8300000, guid: 2a9e28a69ce2f8444aca5b444a113574, type: 3}
+    instrumentSoundEffect: {fileID: 8300000, guid: 4a31482cad5b71b4cb299b3445840322, type: 3}
+    volumeQuestion:
+      promptMessage: Do you think Violin produces Loud or Soft Sound? Press dot 1
+        for Loud or Press dot 2 for Soft.
+      promptAudio: {fileID: 8300000, guid: 7789c42757e641a4198484140abeb45c, type: 3}
+      correctAnswer: 0
+      successMessage: That is Correct.
+      successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+      wrongMessage: Wrong Answer, Please Try Again.
+      wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+      supportMessage: Violin produces loud sound. Press dot 1 to answer loud sound.
+      supportAudio: {fileID: 8300000, guid: 772310f8fd3605b4cbeeff49f8bb0957, type: 3}
+    pitchQuestion:
+      promptMessage: Do you think Violin produces High or Low Pitch Sound? Press
+        dot 1 for High or Press dot 2 for Low Pitch.
+      promptAudio: {fileID: 8300000, guid: d064b86cf7a5b654688ebed1160544a4, type: 3}
+      correctAnswer: 0
+      successMessage: That is Correct.
+      successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+      wrongMessage: Wrong Answer, Please Try Again.
+      wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+      supportMessage: Violin produces high pitch sound. Press dot 1 to answer high
+        pitch sound.
+      supportAudio: {fileID: 8300000, guid: c496dd93ba2f4024f80d6ca83c1a2665, type: 3}
+  - displayLabel: Guitar
+    question1Category: '1. Loud Sound
 
-      B. Meeee
+      2. Soft Sound'
+    question2Category: '1. High Pitch Sound
 
-      C. Arf - Arf '
-    promptMessage: Number 3 Goat, What do you think the sound produced by a goat?
-    successMessage: That is correct.
-    wrongMessage: Wrong Answer, Please Try again.
-    displayImage: {fileID: 21300000, guid: 125323a3565dd8f4c853c1fb4f0922c7, type: 3}
-    introAudio: {fileID: 8300000, guid: d7309bafba9d1ee4ab6cdefb2aa9f2dd, type: 3}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
-    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-    correctAnswer: 1
-    choiceAAudio: {fileID: 8300000, guid: 91cc9825a3e7b2548b3fb222e8cf2581, type: 3}
-    choiceBAudio: {fileID: 8300000, guid: dce348faffb75614f8ffea2d5d28242f, type: 3}
-    choiceCAudio: {fileID: 8300000, guid: fb639cbad8fc65f4591dfe41c16820d2, type: 3}
-    supportMessage: Remember a Goat bleats. Press dot 1 for letter A, dot 2 for letter
-      B, and dot 3 for letter C.
-    supportAudio: {fileID: 8300000, guid: 2664000ce600b724a8a9f02ce1fca837, type: 3}
-  - displayLabel: Cat
-    categoryLabel: 'A. Meoow
+      2. Low Pitch Sound'
+    displayImage: {fileID: 21300000, guid: 3df0c0a726f63494eb0192349b981522, type: 3}
+    introductionMessage: Number 3, Guitar.
+    introductionAudio: {fileID: 8300000, guid: 3e664d56f17ce374eab3d4a27dd8755a, type: 3}
+    instrumentSoundEffect: {fileID: 8300000, guid: 89578f59890358643a9c68ce20950c27, type: 3}
+    volumeQuestion:
+      promptMessage: Do you think Guitar produces Loud or Soft Sound? Press dot 1
+        for Loud or Press dot 2 for Soft.
+      promptAudio: {fileID: 8300000, guid: 0e4362e41297c43409cd89e64c387422, type: 3}
+      correctAnswer: 1
+      successMessage: That is Correct.
+      successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+      wrongMessage: Wrong Answer, Please Try Again.
+      wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+      supportMessage: Guitar produces soft sound. Press dot 2 to answer soft sound.
+      supportAudio: {fileID: 8300000, guid: 66e06e12cc400b0429a6679706f1e9d5, type: 3}
+    pitchQuestion:
+      promptMessage: Do you think Guitar produces High or Low Pitch Sound? Press
+        dot 1 for High or Press dot 2 for Low Pitch.
+      promptAudio: {fileID: 8300000, guid: f5502a0ed5356eb4da0eb123e45f06ae, type: 3}
+      correctAnswer: 0
+      successMessage: That is Correct.
+      successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+      wrongMessage: Wrong Answer, Please Try Again.
+      wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+      supportMessage: Guitar produces high pitch sound. Press dot 1 to answer high
+        pitch sound.
+      supportAudio: {fileID: 8300000, guid: bfd7a4997f5adb344af3d9a66dfac9a3, type: 3}
+  - displayLabel: Trumpet
+    question1Category: '1. Loud Sound
 
-      B. Neighh
+      2. Soft Sound'
+    question2Category: '1. High Pitch Sound
 
-      C. Tweet '
-    promptMessage: Number 4 Cat, What do you think the sound produced by a cat?
-    successMessage: That is correct.
-    wrongMessage: Wrong Answer, Please Try again.
-    displayImage: {fileID: 21300000, guid: c81aef58ae5bf4641981429b3709ca62, type: 3}
-    introAudio: {fileID: 8300000, guid: 96f4065ede193b14fbfffe113bb765ab, type: 3}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
-    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-    correctAnswer: 0
-    choiceAAudio: {fileID: 8300000, guid: 789473d6f2023f44aba6ddb9c2eea13e, type: 3}
-    choiceBAudio: {fileID: 8300000, guid: da1935713bb5c2d4e9cdd705a4cb916f, type: 3}
-    choiceCAudio: {fileID: 8300000, guid: c928eea9a4d6ed746b88d734ec1b873e, type: 3}
-    supportMessage: Remember, a Cat meows. Press dot 1 for letter A, dot 2 for letter
-      B, and dot 3 for letter C.
-    supportAudio: {fileID: 8300000, guid: 738b9dfebe952bf4aab441538bba6802, type: 3}
-  - displayLabel: Cow
-    categoryLabel: 'A. Mooo
-
-      B. Tweet
-
-      C. Meow '
-    promptMessage: Number 5 Cow, What do you think the sound produced by a cow?
-    successMessage: That is correct.
-    wrongMessage: Wrong Answer, Please Try again.
-    displayImage: {fileID: 21300000, guid: b8730347530c29a43ab14aecda1a0a7f, type: 3}
-    introAudio: {fileID: 8300000, guid: da90f80022d702049a8374c5ef8a02f4, type: 3}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
-    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-    correctAnswer: 0
-    choiceAAudio: {fileID: 8300000, guid: 91cc9825a3e7b2548b3fb222e8cf2581, type: 3}
-    choiceBAudio: {fileID: 8300000, guid: c928eea9a4d6ed746b88d734ec1b873e, type: 3}
-    choiceCAudio: {fileID: 8300000, guid: 789473d6f2023f44aba6ddb9c2eea13e, type: 3}
-    supportMessage: Remember, a Cow mooos. Press dot 1 for letter A, dot 2 for letter
-      B, and dot 3 for letter C.
-    supportAudio: {fileID: 8300000, guid: 31b83aadd413f5f47960049866cf6630, type: 3}
-  - displayLabel: Bird
-    categoryLabel: 'A. Arf - Arf
-
-      B. Meee
-
-      C. Tweet '
-    promptMessage: Number 6 Bird, What do you think the sound produced by a bird?
-    successMessage: That is correct.
-    wrongMessage: Wrong Answer, Please Try again.
-    displayImage: {fileID: 21300000, guid: c2831bdfcb4f64c4786c7164dd76daa1, type: 3}
-    introAudio: {fileID: 8300000, guid: b62d675798f3fe44b9500f4584991676, type: 3}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
-    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-    correctAnswer: 2
-    choiceAAudio: {fileID: 8300000, guid: fb639cbad8fc65f4591dfe41c16820d2, type: 3}
-    choiceBAudio: {fileID: 8300000, guid: dce348faffb75614f8ffea2d5d28242f, type: 3}
-    choiceCAudio: {fileID: 8300000, guid: c928eea9a4d6ed746b88d734ec1b873e, type: 3}
-    supportMessage: Remember, a Bird Tweets. Press dot 1 for letter A, dot 2 for
-      letter B, and dot 3 for letter C.
-    supportAudio: {fileID: 8300000, guid: cb98333fc9131cc44afe477bc0607b5f, type: 3}
+      2. Low Pitch Sound'
+    displayImage: {fileID: 21300000, guid: 04e25486fec78ea4b8c1a4b727466f86, type: 3}
+    introductionMessage: Number 4, Trumpet.
+    introductionAudio: {fileID: 8300000, guid: c138ea44f5835634186c1595a68e82bf, type: 3}
+    instrumentSoundEffect: {fileID: 8300000, guid: 1e60e6199f00ce04591ef72fe60c7ee9, type: 3}
+    volumeQuestion:
+      promptMessage: Do you think Trumpet produces Loud or Soft Sound? Press dot
+        1 for Loud or Press dot 2 for Soft.
+      promptAudio: {fileID: 8300000, guid: 91e0e8fdb9738fe43938a81159e83a0c, type: 3}
+      correctAnswer: 0
+      successMessage: That is Correct.
+      successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+      wrongMessage: Wrong Answer, Please Try Again.
+      wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+      supportMessage: Trumpet produces loud sound. Press dot 1 to answer loud sound.
+      supportAudio: {fileID: 8300000, guid: b79e5e71db4943840a2b15e5e8e5634f, type: 3}
+    pitchQuestion:
+      promptMessage: Do you think Trumpet produces High or Low Pitch Sound? Press
+        dot 1 for High or Press dot 2 for Low Pitch.
+      promptAudio: {fileID: 8300000, guid: 2c33a849fdc3c214aad23d9d1f6acbfc, type: 3}
+      correctAnswer: 1
+      successMessage: That is Correct.
+      successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+      wrongMessage: Wrong Answer, Please Try Again.
+      wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+      supportMessage: Trumpet produces low pitch sound. Press dot 2 to answer low
+        pitch sound.
+      supportAudio: {fileID: 8300000, guid: e72c6f5b90c812441baaada1abca7328, type: 3}
   delayAfterVoice: 0.35
   noAudioTextDelay: 2
   delayAfterCorrect: 0.75
