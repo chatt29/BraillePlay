@@ -11,12 +11,17 @@ using Firebase.Extensions;
 /// could touch FirebaseFirestore.DefaultInstance before this finished,
 /// especially on Android where it may first need to prompt a Google Play
 /// Services update.
+///
 /// Place this on a persistent object in the first scene that loads (e.g.
+/// MainMenu) with DontDestroyOnLoad, so it's already initializing well
 /// before the player reaches a sign-up or login scene.
 /// </summary>
 public class FirebaseManager : MonoBehaviour
 {
     public static FirebaseManager Instance { get; private set; }
+
+    [Tooltip("Off by default to match this project's per-scene setup (no DontDestroyOnLoad), so every scene gets its own manager instead of a stale one carried over from the last scene. Firebase re-initializing per scene is harmless, just slightly redundant.")]
+    public bool dontDestroyOnLoad = false;
 
     public bool IsReady { get; private set; }
     public DependencyStatus Status { get; private set; } = DependencyStatus.UnavailableOther;
@@ -25,7 +30,22 @@ public class FirebaseManager : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         Instance = this;
+
+        if (dontDestroyOnLoad)
+            DontDestroyOnLoad(gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        if (Instance == this)
+            Instance = null;
     }
 
     private void Start()
