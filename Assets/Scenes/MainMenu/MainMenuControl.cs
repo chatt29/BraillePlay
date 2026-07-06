@@ -5,10 +5,6 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-#if UNITY_ANDROID && !UNITY_EDITOR
-using UnityEngine.Android;
-#endif
-
 public class MainMenuControl : MonoBehaviour
 {
     [System.Serializable]
@@ -61,11 +57,6 @@ public class MainMenuControl : MonoBehaviour
     private int currentIndex = 0;
     private bool menuEnabled = false;
 
-#if UNITY_ANDROID && !UNITY_EDITOR
-    private AndroidJavaObject tts;
-    private bool ttsReady = false;
-#endif
-
     private void Awake()
     {
         DisableAllButtons();
@@ -73,11 +64,6 @@ public class MainMenuControl : MonoBehaviour
 
     private void Start()
     {
-<<<<<<< HEAD
-        InitializeTextToSpeech();
-=======
-
->>>>>>> f664cd648e1c34121caa4cda2ed7e43396850408
         StartCoroutine(StartMainMenuSequence());
     }
 
@@ -98,11 +84,6 @@ public class MainMenuControl : MonoBehaviour
         BrailleMapping.OnLogin -= SelectCurrentOption;
         BrailleMapping.OnRepeat -= RepeatCurrentOption;
 
-<<<<<<< HEAD
-        ShutdownTextToSpeech();
-=======
- 
->>>>>>> f664cd648e1c34121caa4cda2ed7e43396850408
     }
 
     private void Update()
@@ -317,59 +298,11 @@ public class MainMenuControl : MonoBehaviour
         if (speechBubbleText != null)
             speechBubbleText.text = message;
 
-<<<<<<< HEAD
-        Speak(message);
-=======
-        TTSManager.Instance.Speak(message);
->>>>>>> f664cd648e1c34121caa4cda2ed7e43396850408
+        if (TTSManager.Instance != null)
+            TTSManager.Instance.Speak(message);
     }
 
-    private void InitializeTextToSpeech()
-    {
-#if UNITY_ANDROID && !UNITY_EDITOR
-        AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
-        AndroidJavaObject activity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
-
-        AndroidJavaProxy listener = new TextToSpeechInitListener(this);
-        tts = new AndroidJavaObject("android.speech.tts.TextToSpeech", activity, listener);
-#else
-        Debug.Log("Text to speech is available on Android device builds. In the Unity Editor, speech will be printed in the Console.");
-#endif
-    }
-
-    public void OnTextToSpeechReady()
-    {
-#if UNITY_ANDROID && !UNITY_EDITOR
-        ttsReady = true;
-#endif
-    }
-
-    private void Speak(string message)
-    {
-        if (string.IsNullOrWhiteSpace(message))
-            return;
-
-#if UNITY_ANDROID && !UNITY_EDITOR
-        if (tts != null && ttsReady)
-        {
-            tts.Call<int>("speak", message, 0, null, "BraillePlaySpeech");
-        }
-#else
-        Debug.Log("Prince says: " + message);
-#endif
-    }
-
-    private void ShutdownTextToSpeech()
-    {
-#if UNITY_ANDROID && !UNITY_EDITOR
-        if (tts != null)
-        {
-            tts.Call("stop");
-            tts.Call("shutdown");
-            tts = null;
-        }
-#endif
-    }
+}
 
 #if UNITY_ANDROID && !UNITY_EDITOR
     private class TextToSpeechInitListener : AndroidJavaProxy
@@ -389,4 +322,3 @@ public class MainMenuControl : MonoBehaviour
         }
     }
 #endif
-}
