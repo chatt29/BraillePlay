@@ -978,6 +978,58 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &467339185
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 467339186}
+  - component: {fileID: 467339187}
+  m_Layer: 0
+  m_Name: TTSManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &467339186
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467339185}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1439342606}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &467339187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467339185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f489b8ae2d2fca489e0d872bc18840c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TTSManager
+  speechRate: 1
+  pitch: 1
+  dontDestroyOnLoad: 1
+  debugLogs: 1
 --- !u!1 &635630119
 GameObject:
   m_ObjectHideFlags: 0
@@ -2582,13 +2634,13 @@ MonoBehaviour:
   options:
   - button: {fileID: 33433639}
     sceneName: Login As student
-    selectedSpeech: Select this if you are a student
+    selectedSpeech: Goodmorning
   - button: {fileID: 910199175}
     sceneName: 
-    selectedSpeech: 
+    selectedSpeech: Good Afternoon
   - button: {fileID: 718217745}
     sceneName: 
-    selectedSpeech: 
+    selectedSpeech: Good evening
   speechBubbleText: {fileID: 1198796439}
   speechBubbleObject: {fileID: 1873925290}
   welcomeSpeech: Welcome to Braille Play.
@@ -2996,6 +3048,7 @@ RectTransform:
   - {fileID: 1081112583}
   - {fileID: 1383475310}
   - {fileID: 1146835945}
+  - {fileID: 467339186}
   m_Father: {fileID: 1622350656}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
