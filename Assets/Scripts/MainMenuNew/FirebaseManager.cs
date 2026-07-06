@@ -11,9 +11,7 @@ using Firebase.Extensions;
 /// could touch FirebaseFirestore.DefaultInstance before this finished,
 /// especially on Android where it may first need to prompt a Google Play
 /// Services update.
-///
 /// Place this on a persistent object in the first scene that loads (e.g.
-/// MainMenu) with DontDestroyOnLoad, so it's already initializing well
 /// before the player reaches a sign-up or login scene.
 /// </summary>
 public class FirebaseManager : MonoBehaviour
@@ -27,14 +25,7 @@ public class FirebaseManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
         Instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()

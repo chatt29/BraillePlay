@@ -12,7 +12,7 @@ public class TTSManager : MonoBehaviour
     [Range(0.5f, 2f)]
     public float pitch = 1f;
 
-    public bool dontDestroyOnLoad = true;
+    public bool dontDestroyOnLoad = false;
 
     public bool debugLogs = true;
 
@@ -37,18 +37,7 @@ public class TTSManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
         Instance = this;
-
-        if (dontDestroyOnLoad)
-            DontDestroyOnLoad(gameObject);
-
-        Initialize();
     }
 
     private void Initialize()
