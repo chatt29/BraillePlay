@@ -6,12 +6,6 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-
-
-
-
-
-
 public class BrailleSignupControllerT : MonoBehaviour
 {
     [Header("Fields")]
@@ -22,6 +16,7 @@ public class BrailleSignupControllerT : MonoBehaviour
 
     [Header("Warnings (optional)")]
     public TMP_Text nameWarning;
+    public TMP_Text lnameWarning; // added
     public TMP_Text usernameWarning;
     public TMP_Text passwordWarning;
     
@@ -38,36 +33,38 @@ public class BrailleSignupControllerT : MonoBehaviour
 
     // Prevent control keys from also being treated like braille text
     private bool controlKeyPressedThisFrame = false;
+
     private IEnumerator RegisterToDatabase(string first_name, string last_name, string username, string password)
-{
-    WWWForm form = new WWWForm();
-    form.AddField("first_name", first_name);
-    form.AddField("last_name", last_name);
-    form.AddField("username", username);
-    form.AddField("password", password);
-
-    using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/brailleplay/registerT.php", form))       
     {
-        yield return www.SendWebRequest();
+        WWWForm form = new WWWForm();
+        form.AddField("first_name", first_name);
+        form.AddField("last_name", last_name);
+        form.AddField("username", username);
+        form.AddField("password", password);
 
-        if (www.result == UnityWebRequest.Result.Success)
+        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/brailleplay/registerT.php", form))       
         {
-            Debug.Log("Registration Successful: " + www.downloadHandler.text);
+            yield return www.SendWebRequest();
 
-            // 🔥 AUTO LOGIN HERE
-            AccessibleLoginFlow.LoggedInUsername = username;
+            if (www.result == UnityWebRequest.Result.Success)
+            {
+                Debug.Log("Registration Successful: " + www.downloadHandler.text);
 
-            Debug.Log("Auto logged in as: " + AccessibleLoginFlow.LoggedInUsername);
+                // AUTO LOGIN HERE
+                AccessibleLoginFlow.LoggedInUsername = username;
+                Debug.Log("Auto logged in as: " + AccessibleLoginFlow.LoggedInUsername);
 
-            // ✅ NOW go to assessment
-            SceneManager.LoadScene("MainMenu");
-        }
-        else
-        {
-            Debug.LogError("Registration Failed: " + www.error);
+                // NOW go to main menu (only after success)
+                SceneManager.LoadScene("MainMenu");
+            }
+            else
+            {
+                Debug.LogError("Registration Failed: " + www.error);
+                // TODO: show user-facing error (warning text) instead of only logging
+            }
         }
     }
-}
+
     // Dot mapping:
     // 1 = F
     // 2 = D
@@ -80,7 +77,7 @@ public class BrailleSignupControllerT : MonoBehaviour
     void Start()
     {
         fields = new TMP_InputField[] { fnameField, lnameField , usernameField, passwordField };
-        warnings = new TMP_Text[] { nameWarning, usernameWarning, passwordWarning };
+        warnings = new TMP_Text[] { nameWarning, lnameWarning, usernameWarning, passwordWarning }; // updated
 
         BuildBrailleMap();
         ClearWarnings();
@@ -133,16 +130,16 @@ public class BrailleSignupControllerT : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-    controlKeyPressedThisFrame = true;
-    HandleNextOrSubmit();
-    return;
+            controlKeyPressedThisFrame = true;
+            HandleNextOrSubmit();
+            return;
         }
 
         if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
         {
-    controlKeyPressedThisFrame = true;
-    HandleNextOrSubmit();
-    return;
+            controlKeyPressedThisFrame = true;
+            HandleNextOrSubmit();
+            return;
         }
     }
 
@@ -199,24 +196,25 @@ public class BrailleSignupControllerT : MonoBehaviour
             Debug.Log("Unknown braille chord: " + currentChordMask);
         }
     }
-    void HandleNextOrSubmit()
-{
-    // If current field is NOT valid → stay here
-    if (!ValidateField(currentFieldIndex))
-        return;
 
-    // If NOT last field → go next
-    if (currentFieldIndex < fields.Length - 1)
+    void HandleNextOrSubmit()
     {
-        currentFieldIndex++;
-        FocusField(currentFieldIndex);
+        // If current field is NOT valid → stay here
+        if (!ValidateField(currentFieldIndex))
+            return;
+
+        // If NOT last field → go next
+        if (currentFieldIndex < fields.Length - 1)
+        {
+            currentFieldIndex++;
+            FocusField(currentFieldIndex);
+        }
+        else
+        {
+            // Last field → check all then submit
+            SubmitForm();
+        }
     }
-    else
-    {
-        // Last field → check all then submit
-        SubmitForm();
-    }
-}
 
     void AppendCharacter(string character)
     {
@@ -263,50 +261,46 @@ public class BrailleSignupControllerT : MonoBehaviour
     }
 
     void SubmitForm()
-{
-    ClearWarnings();
-
-    bool valid = true;
-    int firstInvalidIndex = -1;
-
-    // Validate all fields
-    for (int i = 0; i < fields.Length; i++)
     {
-        if (!ValidateField(i))
+        ClearWarnings();
+
+        bool valid = true;
+        int firstInvalidIndex = -1;
+
+        // Validate all fields
+        for (int i = 0; i < fields.Length; i++)
         {
-            valid = false;
+            if (!ValidateField(i))
+            {
+                valid = false;
 
-            if (firstInvalidIndex == -1)
-                firstInvalidIndex = i;
+                if (firstInvalidIndex == -1)
+                    firstInvalidIndex = i;
+            }
         }
+
+        // If invalid, focus first error
+        if (!valid)
+        {
+            FocusField(firstInvalidIndex);
+            return;
+        }
+
+        // Clean inputs
+        string firstName = fnameField.text.Trim();
+        string lastName =  lnameField.text.Trim();
+        string username = usernameField.text.Trim();
+        string password = passwordField.text.Trim();
+
+        // Debug logs (do NOT log passwords)
+        Debug.Log("Signup submitted");
+        Debug.Log("First Name: " + firstName);
+        Debug.Log("Last Name: " + lastName);
+        Debug.Log("Username: " + username);
+
+        // Send to database — scene load happens only on successful registration (inside coroutine)
+        StartCoroutine(RegisterToDatabase(firstName, lastName, username, password));
     }
-
-    // If invalid, focus first error
-    if (!valid)
-    {
-        FocusField(firstInvalidIndex);
-        return;
-    }
-
-    // Clean inputs
-    string firstName = fnameField.text.Trim();
-    string lastName =  lnameField.text.Trim();
-    string username = usernameField.text.Trim();
-    string password = passwordField.text.Trim();
-
-
-    // Debug logs
-    Debug.Log("Signup submitted");
-    Debug.Log("First Name: " + firstName);
-    Debug.Log("Last Name: " + lastName);
-    Debug.Log("Username: " + username);
-    Debug.Log("Password: " + password);
-
-    // Send to database
-    StartCoroutine(RegisterToDatabase(firstName, lastName, username, password));
-    SceneManager.LoadScene("MainMenu");
-
-}
 
     bool ValidateField(int index)
     {
@@ -317,21 +311,35 @@ public class BrailleSignupControllerT : MonoBehaviour
 
         switch (index)
         {
-            case 0: // Name
+            case 0: // First name
                 if (value.Length == 0)
                 {
-                    ShowWarning(index, "Please enter your name");
+                    ShowWarning(index, "Please enter your first name");
                     return false;
                 }
 
                 if (value.Length < 2)
                 {
-                    ShowWarning(index, "Name is too short");
+                    ShowWarning(index, "First name is too short");
                     return false;
                 }
                 break;
 
-            case 1: // Username
+            case 1: // Last name
+                if (value.Length == 0)
+                {
+                    ShowWarning(index, "Please enter your last name");
+                    return false;
+                }
+                        
+                if (value.Length < 2)
+                {
+                    ShowWarning(index, "Last name is too short");
+                    return false;
+                }
+                break;
+
+            case 2: // Username
                 if (value.Length == 0)
                 {
                     ShowWarning(index, "Username is required");
@@ -345,7 +353,7 @@ public class BrailleSignupControllerT : MonoBehaviour
                 }
                 break;
 
-            case 2: // Password
+            case 3: // Password
                 if (value.Length == 0)
                 {
                     ShowWarning(index, "Password is required");

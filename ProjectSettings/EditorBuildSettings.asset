@@ -42,7 +42,7 @@ EditorBuildSettings:
     path: Assets/Scenes/1. Beginner/JumbledLetters.unity
     guid: c3700d65b7d0ecd49a9d99a688e6a476
   - enabled: 1
-    path: Assets/Scenes/SignUpT.unity
+    path: Assets/Scenes/SignUp.unity
     guid: 49a73cc78db84ad4fb0898734309727c
   - enabled: 1
     path: Assets/Scenes/StudentScoreboard.unity
