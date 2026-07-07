@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "423463311703",
+    "project_id": "brailleplay-459d7",
+    "storage_bucket": "brailleplay-459d7.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:423463311703:android:52031a658b352395738612",
+        "android_client_info": {
+          "package_name": "com.brailleplay.game"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpNsWpVaV5HT2zVn0t8Cf6MEHGjdOH4PQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
