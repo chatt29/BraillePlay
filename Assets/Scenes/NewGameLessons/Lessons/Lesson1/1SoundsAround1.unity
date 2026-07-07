@@ -2668,12 +2668,12 @@ MonoBehaviour:
   deductionPerMistake: 1
   highScoreKey: SoundsAround1HighScore
   voiceAudioSource: {fileID: 1586095478}
-  welcomeAudio: {fileID: 8300000, guid: bc0d82d27e4d0434d91c2574e6354035, type: 3}
-  letsLearnAudio: {fileID: 8300000, guid: f6116e4717c905f49a1bbe1caff8ab87, type: 3}
+  welcomeAudio: {fileID: 8300000, guid: 3766984f95f2be240aabd05c7167646a, type: 3}
+  letsLearnAudio: {fileID: 8300000, guid: 33e42fa12c121094397b09938f30807f, type: 3}
   genericCorrectAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
   genericTryAgainAudio: {fileID: 8300000, guid: dd615f4eef83e3b49b22a11445f9b6d6, type: 3}
-  genericCompletedAudio: {fileID: 8300000, guid: 32d695cceeae1b94fbadf86b1043add7, type: 3}
-  repeatQuestionAudio: {fileID: 8300000, guid: b711ec2e0efe9ee47a4a14b90a1bdb19, type: 3}
+  genericCompletedAudio: {fileID: 8300000, guid: 1b5173da0bf58024da581d1b52a28539, type: 3}
+  repeatQuestionAudio: {fileID: 8300000, guid: f5b0be677939adb42bc043a3499ff84c, type: 3}
   yourScoreIsAudio: {fileID: 8300000, guid: 87b8db9fefb037c45a47d8c5dfa472c3, type: 3}
   whileYourHighestScoreIsAudio: {fileID: 8300000, guid: 0d6892ffde47dba4ab52e7a334aeff53, type: 3}
   numberAudios:
@@ -2778,13 +2778,55 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 31becc0a3e7892e468b4ac4372db4882, type: 3}
   - {fileID: 8300000, guid: caf77e0d1f468b64ab86183d4318a7f8, type: 3}
   - {fileID: 8300000, guid: 579c9253f6a5be6499ca8a1851d07f90, type: 3}
-  welcomeMessage: Welcome to Lesson 1 Sounds Around Part 1.
-  letsLearnMessage: In this lesson you're going to identifyf whether the given object
+  welcomeMessage: Welcome to Lesson 1 Sounds Around Quiz.
+  letsLearnMessage: In this quiz, you're going to identify whether the given object
     produces the correct sound. Press dot 1 if correct and dot 2 if wrong.
-  completedMessage: Great job! You finished Lesson 1 Part 1..
-  repeatQuestionMessage: You finished Lesson 1 Part 1. Would you like tot ry again
-    and beat your high score? Press repeat to repeat or press back to go back to
-    main menu.
+  completedMessage: Great job! You finished Lesson 1 Sounds Around.
+  repeatQuestionMessage: Would you like to try again and beat your high score? Press
+    repeat to repeat or press next  to continue.
+  repeatLessonMessage: You have finished the lesson. Press repeat to repeat the lesson
+    or press next to begin the quiz.
+  repeatLessonAudio: {fileID: 8300000, guid: cb1703c4d3aad5647bedaee8c8ac303a, type: 3}
+  lessonPages:
+  - title: 
+    lessonText: Welcome to Lesson 1, Sounds Around.
+    lessonImage: {fileID: 0}
+    lessonAudio: {fileID: 8300000, guid: f8665fdea5bd96549b6b7d225ed1c27c, type: 3}
+  - title: 
+    lessonText: 'In this lesson you''re going to learn sounds that is produced around
+      you. '
+    lessonImage: {fileID: 0}
+    lessonAudio: {fileID: 8300000, guid: 68fc8b3c7e7725f49970d03f2943414c, type: 3}
+  - title: 
+    lessonText: Every day, we hear many different sounds around us. These sounds
+      help us understand what is happening even when we cannot see. Listening carefully
+      helps us stay safe and learn about our surroundings.
+    lessonImage: {fileID: 0}
+    lessonAudio: {fileID: 8300000, guid: 2668391df097f274dba2370c98cf262a, type: 3}
+  - title: 
+    lessonText: Some sounds come from animals. Some sounds come from people. Other
+      sounds come from objects and vehicles. By listening carefully, you can recognize
+      and identify these sounds.
+    lessonImage: {fileID: 0}
+    lessonAudio: {fileID: 8300000, guid: 5f0ceb2a7a7ce4c4b8caa1b4aaa74234, type: 3}
+  - title: 
+    lessonText: You may hear a dog barking, a cat meowing, birds singing, a car honking,
+      a telephone ringing, water flowing, rain falling, or a door knocking. These
+      are examples of sounds we hear every day.
+    lessonImage: {fileID: 0}
+    lessonAudio: {fileID: 8300000, guid: 18327a13bbcf94c4297fcdde7d7db4f9, type: 3}
+  - title: 
+    lessonText: When you listen carefully, you can identify where a sound comes from.
+      This skill helps you move safely, communicate with others, and understand your
+      environment.
+    lessonImage: {fileID: 0}
+    lessonAudio: {fileID: 8300000, guid: d4c038b19117b1b4a92ecb2954871810, type: 3}
+  - title: 
+    lessonText: Now it is your turn. Listen carefully to each sound. Think about
+      what you hear, then choose the correct answer using your Braille controller.
+      Take your time and do your best. Good luck!
+    lessonImage: {fileID: 0}
+    lessonAudio: {fileID: 8300000, guid: c66d45fb3b8da894b90dd5949702eb28, type: 3}
   lessons:
   - displayLabel: Drum
     categoryLabel: Dingdong-Dindong
@@ -2976,15 +3018,15 @@ MonoBehaviour:
     correctAnswerIsTrue: 1
     supportMessage: Remember you should press dot number 1 or press number 2 if wrong.
     supportAudio: {fileID: 8300000, guid: b2508d0f2359932438724ebeb86fe090, type: 3}
-  delayAfterVoice: 0.35
+  delayAfterVoice: 0.2
   noAudioTextDelay: 2
   delayAfterCorrect: 0.75
   mistakesBeforeSupport: 3
   resetMistakesAfterSupport: 1
   useTypewriterEffect: 1
-  defaultTypewriterCharacterDelay: 0.03
+  defaultTypewriterCharacterDelay: 0.02
   minSyncedCharacterDelay: 0.01
-  maxSyncedCharacterDelay: 0.12
+  maxSyncedCharacterDelay: 0.05
   waitForFullAudioBeforeContinuing: 1
   logDebug: 1
 --- !u!1 &1697798611
