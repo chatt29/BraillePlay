@@ -1586,8 +1586,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -539, y: 364}
-  m_SizeDelta: {x: 604.788, y: 272.913}
+  m_AnchoredPosition: {x: -571.1336, y: 376.8534}
+  m_SizeDelta: {x: 540.5208, y: 247.2061}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1170168102
 MonoBehaviour:
@@ -1661,7 +1661,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 38, y: 428}
+  m_AnchoredPosition: {x: -72, y: 427}
   m_SizeDelta: {x: 536.2007, y: 189.4903}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1204025121
@@ -1684,7 +1684,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Sounds Around 1 (Day2)
+  m_text: Sound in the Environments
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1a98abfae0e1fc34282e9b7fd0f3a427, type: 2}
   m_sharedMaterial: {fileID: -8189821304231711609, guid: 1a98abfae0e1fc34282e9b7fd0f3a427, type: 2}
@@ -1711,8 +1711,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
-  m_fontSizeBase: 100
+  m_fontSize: 85
+  m_fontSizeBase: 85
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1750,7 +1750,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -572.43335, w: 0}
+  m_margin: {x: 0, y: 0, z: -730.7903, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2411,10 +2411,10 @@ GameObject:
   - component: {fileID: 1586095474}
   - component: {fileID: 1586095478}
   - component: {fileID: 1586095484}
-  - component: {fileID: 1586095490}
-  - component: {fileID: 1586095491}
+  - component: {fileID: 1586095492}
+  - component: {fileID: 1586095493}
   m_Layer: 5
-  m_Name: AnimalSounds1D2Manager
+  m_Name: SoundsInTheEnvironmentManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2640,282 +2640,7 @@ MonoBehaviour:
   logInputs: 0
   playLetterSoundOnChord: 1
   playOtherPatternSoundOnChord: 1
---- !u!114 &1586095490
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1586095473}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1379a0d4e47bf740a7d7861a7ff4808, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BrailleSoundsAround1
-  bubbleMessageText: {fileID: 1257937990}
-  displayLabelText: {fileID: 843676732}
-  categoryText: {fileID: 1155271827}
-  livePatternText: {fileID: 1697798612}
-  displayImageUI: {fileID: 54352918}
-  answerStateImage: {fileID: 2047379756}
-  correctStateSprite: {fileID: -4207999480553683411, guid: 4e35d4a30fee8cc4580f2983361350b4, type: 3}
-  wrongStateSprite: {fileID: 7071201414940298460, guid: bee3415c56ef4054aa185675bb6dc185, type: 3}
-  hideAnswerStateAtStart: 1
-  fixScoreText: {fileID: 1777884057}
-  wrongScoreText: {fileID: 1070165176}
-  totalScoreText: {fileID: 1113401178}
-  highScoreText: {fileID: 1262590508}
-  fixedScore: 100
-  deductionPerMistake: 1
-  highScoreKey: SoundsAround1HighScore
-  voiceAudioSource: {fileID: 1586095478}
-  welcomeAudio: {fileID: 8300000, guid: d4be4549187c55548a55a57876904dfc, type: 3}
-  letsLearnAudio: {fileID: 8300000, guid: 26d29247a97426847a43b39596a00720, type: 3}
-  genericCorrectAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
-  genericTryAgainAudio: {fileID: 8300000, guid: dd615f4eef83e3b49b22a11445f9b6d6, type: 3}
-  genericCompletedAudio: {fileID: 8300000, guid: 32d695cceeae1b94fbadf86b1043add7, type: 3}
-  repeatQuestionAudio: {fileID: 8300000, guid: b711ec2e0efe9ee47a4a14b90a1bdb19, type: 3}
-  yourScoreIsAudio: {fileID: 8300000, guid: 87b8db9fefb037c45a47d8c5dfa472c3, type: 3}
-  whileYourHighestScoreIsAudio: {fileID: 8300000, guid: 0d6892ffde47dba4ab52e7a334aeff53, type: 3}
-  numberAudios:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 8300000, guid: a9afdf1f202626e4d815f3d339f223c4, type: 3}
-  - {fileID: 8300000, guid: 21a469d6598c3204ab82b509e42e89f8, type: 3}
-  - {fileID: 8300000, guid: 5bd190e14c182b24d9e04c61a35f3b29, type: 3}
-  - {fileID: 8300000, guid: c6f4937e92350a04a82d4bd76eef52ba, type: 3}
-  - {fileID: 8300000, guid: 701a3679a01f84e43aa1fa9d4a3c0785, type: 3}
-  - {fileID: 8300000, guid: bde38e84ced6de84cb95115723d7bdf4, type: 3}
-  - {fileID: 8300000, guid: fe9932ae0117e154d998e51d9ed611e0, type: 3}
-  - {fileID: 8300000, guid: 94091ec33fbd6b349ba6e703387e4866, type: 3}
-  - {fileID: 8300000, guid: ee8cfcb8b3588954ea24c10457255924, type: 3}
-  - {fileID: 8300000, guid: 5e889505e0e0d2a4db129b0905352109, type: 3}
-  - {fileID: 8300000, guid: 65fabefe77170f948ba6088e0e5a0f95, type: 3}
-  - {fileID: 8300000, guid: 6a0ec25b8a422c646b399ddcae7b2c62, type: 3}
-  - {fileID: 8300000, guid: 437fe84d57fc7f64cad7d56e2a8c9a89, type: 3}
-  - {fileID: 8300000, guid: 0d5771525d0e1814ab6d369e7eb1c3ba, type: 3}
-  - {fileID: 8300000, guid: 8881ea521aa0c7a4f9ae441c637350e6, type: 3}
-  - {fileID: 8300000, guid: e8c2b8bd9bd8f9e428347c57e9710cd4, type: 3}
-  - {fileID: 8300000, guid: 09027ef61068784478c1b32badf50904, type: 3}
-  - {fileID: 8300000, guid: e8c38c6593d87944187086e01dbfdb98, type: 3}
-  - {fileID: 8300000, guid: 31becc0a3e7892e468b4ac4372db4882, type: 3}
-  - {fileID: 8300000, guid: caf77e0d1f468b64ab86183d4318a7f8, type: 3}
-  - {fileID: 8300000, guid: 579c9253f6a5be6499ca8a1851d07f90, type: 3}
-  welcomeMessage: Welcome to Sounds Around 1 (Day 2)
-  letsLearnMessage: In this lesson you will identify if the vehicle is making loud
-    or soft sound. Remember this, transportations make different sounds. They make
-    loud and soft sounds. Let's started.
-  completedMessage: Great job! You finished Lesson 1 Day 2
-  repeatQuestionMessage: You finished the lesson. Do you want to repeast again? Press
-    R to repeat or Y to finish
-  lessons:
-  - displayLabel: 
-    categoryLabel: Tricycle
-    promptMessage: Number 3 Tricycle.
-    repeatMessage: Number 3 Tricycle.
-    successMessage: That is correct.
-    wrongMessage: Wrong answer, please try again.
-    displayImage: {fileID: -1069528232716108159, guid: 54affa30365f7d44f88b0cc80d081412, type: 3}
-    introAudio: {fileID: 8300000, guid: c0cccf38568202a48b8d079f89f0d76c, type: 3}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 2dd5f2ddf8f785746b9b1f2c722cebd8, type: 3}
-    repeatAudio: {fileID: 0}
-    useSoundQuestion: 1
-    soundEffectAudio: {fileID: 8300000, guid: 7e35b1f1ceb94334d8ab36678ab39f61, type: 3}
-    soundQuestionMessage: Do you think tricycle produces loud or soft sound? Press
-      1 if Loud or Press dot 2 if Soft.
-    soundQuestionAudio: {fileID: 8300000, guid: 2ff7c1104816a67439005283b7a2e977, type: 3}
-    correctAnswerIsTrue: 1
-    supportMessage: Remember you should press dot number 1 if its loud sound or dot
-      number 2 if soft sound.
-    supportAudio: {fileID: 8300000, guid: 515dc7ab65fa93140a5a262f80839372, type: 3}
-  - displayLabel: 
-    categoryLabel: Bicycle
-    promptMessage: Number 2 Bicycle.
-    repeatMessage: Number 2 Bicycle.
-    successMessage: That is correct.
-    wrongMessage: Wrong answer, please try again.
-    displayImage: {fileID: -460769226430981451, guid: 66e29424b6004674db93b7346181a78e, type: 3}
-    introAudio: {fileID: 8300000, guid: 930494978b0014845a0f41cb64c8fea5, type: 3}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 05f3e04a7d509ec4ca45af5fe3b072a1, type: 3}
-    repeatAudio: {fileID: 0}
-    useSoundQuestion: 1
-    soundEffectAudio: {fileID: 8300000, guid: 3da2776c05302064fb0524c68a87c347, type: 3}
-    soundQuestionMessage: Do you think bicycle produces loud or soft sound? Press
-      1 if Loud or Press dot 2 if Soft.
-    soundQuestionAudio: {fileID: 8300000, guid: 43b08952349145b49afd5320c0f8a748, type: 3}
-    correctAnswerIsTrue: 0
-    supportMessage: Remember you should press dot number 1 if its loud sound or dot
-      number 2 if soft sound.
-    supportAudio: {fileID: 8300000, guid: 515dc7ab65fa93140a5a262f80839372, type: 3}
-  - displayLabel: 
-    categoryLabel: Ambulance
-    promptMessage: Number 3 Ambulance.
-    repeatMessage: Number 3 Ambulance.
-    successMessage: That is correct.
-    wrongMessage: Wrong answer, please try again.
-    displayImage: {fileID: 6053844527251203986, guid: 3839f4616b730124fa98f01e66c6ff91, type: 3}
-    introAudio: {fileID: 8300000, guid: e126b9cc2678248409dea2e2da10510b, type: 3}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: d12bc16d351fe5742a5ba906ae6033ee, type: 3}
-    repeatAudio: {fileID: 0}
-    useSoundQuestion: 1
-    soundEffectAudio: {fileID: 8300000, guid: 9efdcb4b2052c7946b2e9e81d93bfbe1, type: 3}
-    soundQuestionMessage: Do you think ambulance produces loud or soft sound? Press
-      1 if Loud or Press dot 2 if Soft.
-    soundQuestionAudio: {fileID: 8300000, guid: 0524b3c5a46be1942bf206b5fc801d8c, type: 3}
-    correctAnswerIsTrue: 1
-    supportMessage: Remember you should press dot number 1 if its loud sound or dot
-      number 2 if soft sound.
-    supportAudio: {fileID: 8300000, guid: 515dc7ab65fa93140a5a262f80839372, type: 3}
-  - displayLabel: 
-    categoryLabel: Jeepney
-    promptMessage: Number 4 Jeepney.
-    repeatMessage: Number 4 Jeepney.
-    successMessage: That is correct.
-    wrongMessage: Wrong answer, please try again.
-    displayImage: {fileID: -8633747427368569318, guid: b4244ca7db0727048804452e2f143668, type: 3}
-    introAudio: {fileID: 8300000, guid: b34d9e8c4297d5f48842917917a83f43, type: 3}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 74524bcb736ff1040bf3d723955b970b, type: 3}
-    repeatAudio: {fileID: 0}
-    useSoundQuestion: 1
-    soundEffectAudio: {fileID: 8300000, guid: 8d573b58609897d4cb0c777947523b7f, type: 3}
-    soundQuestionMessage: 
-    soundQuestionAudio: {fileID: 8300000, guid: e295fba187db9c34c8f676906615c5e3, type: 3}
-    correctAnswerIsTrue: 1
-    supportMessage: 
-    supportAudio: {fileID: 8300000, guid: 515dc7ab65fa93140a5a262f80839372, type: 3}
-  - displayLabel: 
-    categoryLabel: Roller Coaster
-    promptMessage: Number 5 Roller Coaster.
-    repeatMessage: Number 5 Roller Coaster.
-    successMessage: That is correct.
-    wrongMessage: Wrong answer, please try again.
-    displayImage: {fileID: 21300000, guid: 34531f73b55f7ee4da6c258f453f944b, type: 3}
-    introAudio: {fileID: 8300000, guid: 4ef4001f122b1ef4792d5aede5454aa9, type: 3}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 528bb1198bd7ec049ae6419ca55a28f4, type: 3}
-    repeatAudio: {fileID: 0}
-    useSoundQuestion: 1
-    soundEffectAudio: {fileID: 8300000, guid: 77468c3836f69a147952ff80b769f97c, type: 3}
-    soundQuestionMessage: 
-    soundQuestionAudio: {fileID: 8300000, guid: c2ffed7ebf2ae5d4aaf6299b0e281f33, type: 3}
-    correctAnswerIsTrue: 1
-    supportMessage: Remember you should press dot number 1 if its loud sound or dot
-      number 2 if soft sound.
-    supportAudio: {fileID: 8300000, guid: 515dc7ab65fa93140a5a262f80839372, type: 3}
-  - displayLabel: 
-    categoryLabel: Airplane
-    promptMessage: Number 6 Airplane.
-    repeatMessage: Number 6 Airplane.
-    successMessage: That is correct.
-    wrongMessage: Wrong answer, please try again.
-    displayImage: {fileID: 635808264844335355, guid: 8675abf8e41db9d4eae9034b32a1c3ce, type: 3}
-    introAudio: {fileID: 8300000, guid: f232bf14fdcf6854b9e8e8131528b0ab, type: 3}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 0104c513da069b1428396a08c3b4ae8b, type: 3}
-    repeatAudio: {fileID: 0}
-    useSoundQuestion: 1
-    soundEffectAudio: {fileID: 8300000, guid: f71d75377b3029f47816c4623f177677, type: 3}
-    soundQuestionMessage: Do you think Airplane produces loud or soft sound? Press
-      1 if Loud or Press dot 2 if Soft.
-    soundQuestionAudio: {fileID: 8300000, guid: 7fe3823982cc51f4a8e8a8ae6004862a, type: 3}
-    correctAnswerIsTrue: 1
-    supportMessage: Remember you should press dot number 1 if its loud sound or dot
-      number 2 if soft sound.
-    supportAudio: {fileID: 8300000, guid: 515dc7ab65fa93140a5a262f80839372, type: 3}
-  delayAfterVoice: 0.35
-  noAudioTextDelay: 2
-  delayAfterCorrect: 0.75
-  mistakesBeforeSupport: 3
-  resetMistakesAfterSupport: 1
-  useTypewriterEffect: 1
-  defaultTypewriterCharacterDelay: 0.03
-  minSyncedCharacterDelay: 0.01
-  maxSyncedCharacterDelay: 0.12
-  waitForFullAudioBeforeContinuing: 1
-  logDebug: 1
---- !u!114 &1586095491
+--- !u!114 &1586095492
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2924,9 +2649,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1586095473}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57744976a92ed334c9a1d2d4d5006357, type: 3}
+  m_Script: {fileID: 11500000, guid: 2a04d5f819ea5294e9bf28e38125caab, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AnimalSounds2
+  m_EditorClassIdentifier: Assembly-CSharp::InstrumentSounds1
   bubbleMessageText: {fileID: 1257937990}
   displayLabelText: {fileID: 843676732}
   categoryText: {fileID: 1155271827}
@@ -2942,17 +2667,15 @@ MonoBehaviour:
   highScoreText: {fileID: 1262590508}
   fixedScore: 100
   deductionPerMistake: 1
-  highScoreKey: BrailleSoundsAroundHighScore
+  highScoreKey: BrailleInstrumentSounds1HighScore
   voiceAudioSource: {fileID: 1586095478}
-  welcomeAudio: {fileID: 0}
-  letsLearnAudio: {fileID: 0}
+  sfxAudioSource: {fileID: 1586095478}
+  welcomeAudio: {fileID: 8300000, guid: a3ff7b878d9c2d647b184f3dd99e329a, type: 3}
+  letsLearnAudio: {fileID: 8300000, guid: ec6a1400897480f4090afe4184243113, type: 3}
   genericCorrectAudio: {fileID: 8300000, guid: 587dfae100161f646a4b8e246de58429, type: 3}
   genericTryAgainAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-  genericCompletedAudio: {fileID: 8300000, guid: e4151824f9dfafb48a1db013fdc8a3da, type: 3}
-  repeatQuestionAudio: {fileID: 8300000, guid: bbc527e3e72c56348a8b0047a801f60d, type: 3}
-  letterAAudio: {fileID: 8300000, guid: 42701a2ed6601e345945e43b1120e18e, type: 3}
-  letterBAudio: {fileID: 8300000, guid: c8c1c489208b62d4a8fc76e6666cbd62, type: 3}
-  letterCAudio: {fileID: 8300000, guid: 90c6142c3d1a7464ebe56f87204bea71, type: 3}
+  genericCompletedAudio: {fileID: 8300000, guid: 9b591cbcf7767cd46962f943a70e9eb0, type: 3}
+  repeatQuestionAudio: {fileID: 8300000, guid: 5905f105a49c77a4b9a1e77956180ef1, type: 3}
   yourScoreIsAudio: {fileID: 8300000, guid: 613a4ecd64752ee4c8844d8286dca545, type: 3}
   whileYourHighestScoreIsAudio: {fileID: 8300000, guid: 2525c179990406146becd993f00485ee, type: 3}
   numberAudios:
@@ -3057,132 +2780,304 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 31becc0a3e7892e468b4ac4372db4882, type: 3}
   - {fileID: 8300000, guid: caf77e0d1f468b64ab86183d4318a7f8, type: 3}
   - {fileID: 8300000, guid: 579c9253f6a5be6499ca8a1851d07f90, type: 3}
-  welcomeMessage: 
-  letsLearnMessage: 
-  completedMessage: Great job! You finished Lesson 1 Day 2
-  repeatQuestionMessage: You finished the lesson. Do you want to repeast again? Press
-    R to repeat or Y to finish
+  welcomeMessage: Welcome to Lesson 3, Insstrument Sounds Part 1.
+  letsLearnMessage: In this part of the lesson, you're going to tell whether the
+    given instruments produces loud or soft sound and high or low pitch sounds. Press
+    dot 1 if you think the instrument produces loud or high pitch sound or Press
+    dot 2 if you think the instrument produces Soft or low pitch sound.
+  completedMessage: Great Job! You finished Lesson 3 Instrument Sounds part 1.
+  repeatQuestionMessage: You finished Lesson 3, Instrument Sounds Part 1. Do you
+    want to repeat again? Press repeat to repeat or Next to go back to continue.
   lessons:
-  - displayLabel: Tricycle
-    categoryLabel: 'A. Loud
+  - displayLabel: Maracas
+    question1Category: '1. Loud Sound
 
-      B. Soft'
-    promptMessage: Number 1 Tricycle. Do you think tricycle produces loud or soft
-      sound? Press 1 if Loud or Press dot 2 if Soft.
-    successMessage: That is correct.
-    wrongMessage: Wrong Answer, Please Try again.
-    displayImage: {fileID: -1069528232716108159, guid: 54affa30365f7d44f88b0cc80d081412, type: 3}
-    introAudio: {fileID: 8300000, guid: c0cccf38568202a48b8d079f89f0d76c, type: 3}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 2dd5f2ddf8f785746b9b1f2c722cebd8, type: 3}
-    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-    correctAnswer: 0
-    choiceAAudio: {fileID: 8300000, guid: 7e35b1f1ceb94334d8ab36678ab39f61, type: 3}
-    choiceBAudio: {fileID: 0}
-    choiceCAudio: {fileID: 0}
-    supportMessage: Remember you should press dot number 1 if its loud sound or dot
-      number 2 if soft sound.
-    supportAudio: {fileID: 8300000, guid: 515dc7ab65fa93140a5a262f80839372, type: 3}
-  - displayLabel: Bicycle
-    categoryLabel: 'A. Loud
+      2. Soft Sound'
+    question2Category: '1. High Pitch Sound
 
-      B. Soft'
-    promptMessage: Number 2 Bicycle. Do you think tricycle produces loud or soft
-      sound? Press 1 if Loud or Press dot 2 if Soft.
-    successMessage: That is correct.
-    wrongMessage: Wrong Answer, Please Try again.
-    displayImage: {fileID: -460769226430981451, guid: 66e29424b6004674db93b7346181a78e, type: 3}
-    introAudio: {fileID: 8300000, guid: 930494978b0014845a0f41cb64c8fea5, type: 3}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 05f3e04a7d509ec4ca45af5fe3b072a1, type: 3}
-    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-    correctAnswer: 1
-    choiceAAudio: {fileID: 0}
-    choiceBAudio: {fileID: 8300000, guid: 05f3e04a7d509ec4ca45af5fe3b072a1, type: 3}
-    choiceCAudio: {fileID: 0}
-    supportMessage: Remember you should press dot number 1 if its loud sound or dot
-      number 2 if soft sound.
-    supportAudio: {fileID: 8300000, guid: 515dc7ab65fa93140a5a262f80839372, type: 3}
-  - displayLabel: Ambulance
-    categoryLabel: 'A. Loud
+      2. Low Pitch Sound'
+    displayImage: {fileID: 21300000, guid: 8974440abe223bb45b2df1a6f9730da6, type: 3}
+    introductionMessage: Number 1, Maracas.
+    introductionAudio: {fileID: 8300000, guid: 9a361087aea32c94b9cc7a9d85a785c2, type: 3}
+    instrumentSoundEffect: {fileID: 8300000, guid: 9877f08d8b3a696439b4ce2d4deca631, type: 3}
+    volumeQuestion:
+      promptMessage: Do you think Maracas produces Loud or Soft Sound? Press dot
+        1 for Loud or Press dot 2 for Soft.
+      promptAudio: {fileID: 8300000, guid: c5b9f0cae44cc8440bdad432d9ecc19f, type: 3}
+      correctAnswer: 1
+      successMessage: That is Correct.
+      successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+      wrongMessage: Wrong Answer, Please Try Again.
+      wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+      supportMessage: Maracas produces soft sound. Press dot 2 to answer soft sound.
+      supportAudio: {fileID: 8300000, guid: 3f638d2e463865846aabf6b2e73da35b, type: 3}
+    pitchQuestion:
+      promptMessage: Do you think Maracas produces High or Low Pitch Sound? Press
+        dot 1 for High or Press dot 2 for Low Pitch.
+      promptAudio: {fileID: 8300000, guid: 8215c8c7ba4299c428c69ee48881398b, type: 3}
+      correctAnswer: 0
+      successMessage: That is Correct.
+      successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+      wrongMessage: Wrong Answer, Please Try Again.
+      wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+      supportMessage: Maracas produces high pitch sound. Press dot 1 to answer high
+        pitch sound.
+      supportAudio: {fileID: 8300000, guid: 8841853e51758b2429f12d26de791597, type: 3}
+  - displayLabel: Violin
+    question1Category: '1. Loud Sound
 
-      B. Soft'
-    promptMessage: Number 3 Ambulance. Do you think tricycle produces loud or soft
-      sound? Press 1 if Loud or Press dot 2 if Soft.
-    successMessage: That is correct.
-    wrongMessage: Wrong Answer, Please Try again.
-    displayImage: {fileID: 6053844527251203986, guid: 3839f4616b730124fa98f01e66c6ff91, type: 3}
-    introAudio: {fileID: 8300000, guid: e126b9cc2678248409dea2e2da10510b, type: 3}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: d12bc16d351fe5742a5ba906ae6033ee, type: 3}
-    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-    correctAnswer: 1
-    choiceAAudio: {fileID: 8300000, guid: 9efdcb4b2052c7946b2e9e81d93bfbe1, type: 3}
-    choiceBAudio: {fileID: 0}
-    choiceCAudio: {fileID: 0}
-    supportMessage: Remember you should press dot number 1 if its loud sound or dot
-      number 2 if soft sound.
-    supportAudio: {fileID: 8300000, guid: 515dc7ab65fa93140a5a262f80839372, type: 3}
-  - displayLabel: Jeepney
-    categoryLabel: 'A. Loud
+      2. Soft Sound'
+    question2Category: '1. High Pitch Sound
 
-      B. Soft'
-    promptMessage: Number 4 Jeepney. Do you think tricycle produces loud or soft
-      sound? Press 1 if Loud or Press dot 2 if Soft.
-    successMessage: That is correct.
-    wrongMessage: Wrong Answer, Please Try again.
-    displayImage: {fileID: -8633747427368569318, guid: b4244ca7db0727048804452e2f143668, type: 3}
-    introAudio: {fileID: 8300000, guid: b34d9e8c4297d5f48842917917a83f43, type: 3}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 74524bcb736ff1040bf3d723955b970b, type: 3}
-    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-    correctAnswer: 0
-    choiceAAudio: {fileID: 8300000, guid: 8d573b58609897d4cb0c777947523b7f, type: 3}
-    choiceBAudio: {fileID: 0}
-    choiceCAudio: {fileID: 0}
-    supportMessage: Remember you should press dot number 1 if its loud sound or dot
-      number 2 if soft sound.
-    supportAudio: {fileID: 8300000, guid: 515dc7ab65fa93140a5a262f80839372, type: 3}
-  - displayLabel: Roller Coaster
-    categoryLabel: 'A. Loud
+      2. Low Pitch Sound'
+    displayImage: {fileID: 21300000, guid: c76e548ba17798c43b42497d430ef153, type: 3}
+    introductionMessage: Number 2, Violin.
+    introductionAudio: {fileID: 8300000, guid: 2a9e28a69ce2f8444aca5b444a113574, type: 3}
+    instrumentSoundEffect: {fileID: 8300000, guid: 4a31482cad5b71b4cb299b3445840322, type: 3}
+    volumeQuestion:
+      promptMessage: Do you think Violin produces Loud or Soft Sound? Press dot 1
+        for Loud or Press dot 2 for Soft.
+      promptAudio: {fileID: 8300000, guid: 7789c42757e641a4198484140abeb45c, type: 3}
+      correctAnswer: 0
+      successMessage: That is Correct.
+      successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+      wrongMessage: Wrong Answer, Please Try Again.
+      wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+      supportMessage: Violin produces loud sound. Press dot 1 to answer loud sound.
+      supportAudio: {fileID: 8300000, guid: 772310f8fd3605b4cbeeff49f8bb0957, type: 3}
+    pitchQuestion:
+      promptMessage: Do you think Violin produces High or Low Pitch Sound? Press
+        dot 1 for High or Press dot 2 for Low Pitch.
+      promptAudio: {fileID: 8300000, guid: d064b86cf7a5b654688ebed1160544a4, type: 3}
+      correctAnswer: 0
+      successMessage: That is Correct.
+      successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+      wrongMessage: Wrong Answer, Please Try Again.
+      wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+      supportMessage: Violin produces high pitch sound. Press dot 1 to answer high
+        pitch sound.
+      supportAudio: {fileID: 8300000, guid: c496dd93ba2f4024f80d6ca83c1a2665, type: 3}
+  - displayLabel: Guitar
+    question1Category: '1. Loud Sound
 
-      B. Soft'
-    promptMessage: Number 5 Roller Coaster. Do you think tricycle produces loud or
-      soft sound? Press 1 if Loud or Press dot 2 if Soft.
-    successMessage: That is correct.
-    wrongMessage: Wrong Answer, Please Try again.
-    displayImage: {fileID: -4962249500389806032, guid: 34531f73b55f7ee4da6c258f453f944b, type: 3}
-    introAudio: {fileID: 8300000, guid: 4ef4001f122b1ef4792d5aede5454aa9, type: 3}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 528bb1198bd7ec049ae6419ca55a28f4, type: 3}
-    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-    correctAnswer: 0
-    choiceAAudio: {fileID: 8300000, guid: 77468c3836f69a147952ff80b769f97c, type: 3}
-    choiceBAudio: {fileID: 0}
-    choiceCAudio: {fileID: 0}
-    supportMessage: Remember you should press dot number 1 if its loud sound or dot
-      number 2 if soft sound.
-    supportAudio: {fileID: 8300000, guid: 515dc7ab65fa93140a5a262f80839372, type: 3}
-  - displayLabel: Airplane
-    categoryLabel: 'A. Loud
+      2. Soft Sound'
+    question2Category: '1. High Pitch Sound
 
-      B. Soft'
-    promptMessage: Number 6 Ariplane. Do you think tricycle produces loud or soft
-      sound? Press 1 if Loud or Press dot 2 if Soft.
-    successMessage: That is correct.
-    wrongMessage: Wrong Answer, Please Try again.
-    displayImage: {fileID: 635808264844335355, guid: 8675abf8e41db9d4eae9034b32a1c3ce, type: 3}
-    introAudio: {fileID: 8300000, guid: f232bf14fdcf6854b9e8e8131528b0ab, type: 3}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 0104c513da069b1428396a08c3b4ae8b, type: 3}
-    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-    correctAnswer: 0
-    choiceAAudio: {fileID: 8300000, guid: f71d75377b3029f47816c4623f177677, type: 3}
-    choiceBAudio: {fileID: 0}
-    choiceCAudio: {fileID: 0}
-    supportMessage: Remember you should press dot number 1 if its loud sound or dot
-      number 2 if soft sound.
-    supportAudio: {fileID: 8300000, guid: 515dc7ab65fa93140a5a262f80839372, type: 3}
+      2. Low Pitch Sound'
+    displayImage: {fileID: 21300000, guid: 3df0c0a726f63494eb0192349b981522, type: 3}
+    introductionMessage: Number 3, Guitar.
+    introductionAudio: {fileID: 8300000, guid: 3e664d56f17ce374eab3d4a27dd8755a, type: 3}
+    instrumentSoundEffect: {fileID: 8300000, guid: 89578f59890358643a9c68ce20950c27, type: 3}
+    volumeQuestion:
+      promptMessage: Do you think Guitar produces Loud or Soft Sound? Press dot 1
+        for Loud or Press dot 2 for Soft.
+      promptAudio: {fileID: 8300000, guid: 0e4362e41297c43409cd89e64c387422, type: 3}
+      correctAnswer: 1
+      successMessage: That is Correct.
+      successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+      wrongMessage: Wrong Answer, Please Try Again.
+      wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+      supportMessage: Guitar produces soft sound. Press dot 2 to answer soft sound.
+      supportAudio: {fileID: 8300000, guid: 66e06e12cc400b0429a6679706f1e9d5, type: 3}
+    pitchQuestion:
+      promptMessage: Do you think Guitar produces High or Low Pitch Sound? Press
+        dot 1 for High or Press dot 2 for Low Pitch.
+      promptAudio: {fileID: 8300000, guid: f5502a0ed5356eb4da0eb123e45f06ae, type: 3}
+      correctAnswer: 0
+      successMessage: That is Correct.
+      successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+      wrongMessage: Wrong Answer, Please Try Again.
+      wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+      supportMessage: Guitar produces high pitch sound. Press dot 1 to answer high
+        pitch sound.
+      supportAudio: {fileID: 8300000, guid: bfd7a4997f5adb344af3d9a66dfac9a3, type: 3}
+  - displayLabel: Trumpet
+    question1Category: '1. Loud Sound
+
+      2. Soft Sound'
+    question2Category: '1. High Pitch Sound
+
+      2. Low Pitch Sound'
+    displayImage: {fileID: 21300000, guid: 04e25486fec78ea4b8c1a4b727466f86, type: 3}
+    introductionMessage: Number 4, Trumpet.
+    introductionAudio: {fileID: 8300000, guid: c138ea44f5835634186c1595a68e82bf, type: 3}
+    instrumentSoundEffect: {fileID: 8300000, guid: 1e60e6199f00ce04591ef72fe60c7ee9, type: 3}
+    volumeQuestion:
+      promptMessage: Do you think Trumpet produces Loud or Soft Sound? Press dot
+        1 for Loud or Press dot 2 for Soft.
+      promptAudio: {fileID: 8300000, guid: 91e0e8fdb9738fe43938a81159e83a0c, type: 3}
+      correctAnswer: 0
+      successMessage: That is Correct.
+      successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+      wrongMessage: Wrong Answer, Please Try Again.
+      wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+      supportMessage: Trumpet produces loud sound. Press dot 1 to answer loud sound.
+      supportAudio: {fileID: 8300000, guid: b79e5e71db4943840a2b15e5e8e5634f, type: 3}
+    pitchQuestion:
+      promptMessage: Do you think Trumpet produces High or Low Pitch Sound? Press
+        dot 1 for High or Press dot 2 for Low Pitch.
+      promptAudio: {fileID: 8300000, guid: 2c33a849fdc3c214aad23d9d1f6acbfc, type: 3}
+      correctAnswer: 1
+      successMessage: That is Correct.
+      successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+      wrongMessage: Wrong Answer, Please Try Again.
+      wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+      supportMessage: Trumpet produces low pitch sound. Press dot 2 to answer low
+        pitch sound.
+      supportAudio: {fileID: 8300000, guid: e72c6f5b90c812441baaada1abca7328, type: 3}
+  - displayLabel: Bass Drum
+    question1Category: '1. Loud Sound
+
+      2. Soft Sound'
+    question2Category: '1. High Pitch Sound
+
+      2. Low Pitch Sound'
+    displayImage: {fileID: 21300000, guid: 04e25486fec78ea4b8c1a4b727466f86, type: 3}
+    introductionMessage: Number 5, Bass Drum.
+    introductionAudio: {fileID: 8300000, guid: 944140cb83e96234581a91e9b192499e, type: 3}
+    instrumentSoundEffect: {fileID: 8300000, guid: dcb9dc7f9182ac044b11cd47d0b45654, type: 3}
+    volumeQuestion:
+      promptMessage: Do you think Bass Drum produces Loud or Soft Sound? Press dot
+        1 for Loud or Press dot 2 for Soft.
+      promptAudio: {fileID: 8300000, guid: 3cc009741bd4eca409a6ba34e085811e, type: 3}
+      correctAnswer: 0
+      successMessage: That is Correct.
+      successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+      wrongMessage: Wrong Answer, Please Try Again.
+      wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+      supportMessage: Bass Drum produces loud sound. Press dot 1 to answer loud sound.
+      supportAudio: {fileID: 8300000, guid: 6f154a789a300ad4280d6596ca05aad6, type: 3}
+    pitchQuestion:
+      promptMessage: Do you think Bass Drum produces High or Low Pitch Sound? Press
+        dot 1 for High or Press dot 2 for Low Pitch.
+      promptAudio: {fileID: 8300000, guid: 1dafab18bf9fc024ab89bbf85c2bb735, type: 3}
+      correctAnswer: 1
+      successMessage: That is Correct.
+      successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+      wrongMessage: Wrong Answer, Please Try Again.
+      wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+      supportMessage: Bass Drum produces low pitch sound. Press dot 2 to answer low
+        pitch sound.
+      supportAudio: {fileID: 8300000, guid: 3c4647b19c82a9b439eacb15a760bf06, type: 3}
+  - displayLabel: Quad Drum
+    question1Category: '1. Loud Sound
+
+      2. Soft Sound'
+    question2Category: '1. High Pitch Sound
+
+      2. Low Pitch Sound'
+    displayImage: {fileID: 21300000, guid: 04e25486fec78ea4b8c1a4b727466f86, type: 3}
+    introductionMessage: Number 6, Quad Drum.
+    introductionAudio: {fileID: 8300000, guid: 0cad9bebbc9e9624aa335654ab5bff74, type: 3}
+    instrumentSoundEffect: {fileID: 8300000, guid: 12e7bc10db4ae60449177b53a6828a5a, type: 3}
+    volumeQuestion:
+      promptMessage: Do you think Quad Drum produces Loud or Soft Sound? Press dot
+        1 for Loud or Press dot 2 for Soft.
+      promptAudio: {fileID: 8300000, guid: 637dc10f64ea77c49a92bf5ab264af2f, type: 3}
+      correctAnswer: 0
+      successMessage: That is Correct.
+      successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+      wrongMessage: Wrong Answer, Please Try Again.
+      wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+      supportMessage: Quad Drum produces loud sound. Press dot 1 to answer loud sound.
+      supportAudio: {fileID: 8300000, guid: 2dffe576e4d78e7469ca6bd078decd1f, type: 3}
+    pitchQuestion:
+      promptMessage: Do you think Quad Drum produces High or Low Pitch Sound? Press
+        dot 1 for High or Press dot 2 for Low Pitch.
+      promptAudio: {fileID: 8300000, guid: ee4485a412e0978468ad085057fcfacf, type: 3}
+      correctAnswer: 0
+      successMessage: That is Correct.
+      successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+      wrongMessage: Wrong Answer, Please Try Again.
+      wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+      supportMessage: Quad Drum produces high pitch sound. Press dot 1 to answer
+        high pitch sound.
+      supportAudio: {fileID: 8300000, guid: c2c8cc756ccffc54b9f3f5fe448438cc, type: 3}
+  delayAfterVoice: 0.35
+  noAudioTextDelay: 2
+  delayAfterCorrect: 0.75
+  mistakesBeforeSupport: 3
+  resetMistakesAfterSupport: 1
+  useTypewriterEffect: 1
+  defaultTypewriterCharacterDelay: 0.03
+  minSyncedCharacterDelay: 0.01
+  maxSyncedCharacterDelay: 0.12
+  waitForFullAudioBeforeContinuing: 1
+  logDebug: 1
+--- !u!114 &1586095493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586095473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce9d2804ff19a39499c7c99e10ad2fe9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
+  bubbleMessageText: {fileID: 1257937990}
+  displayLabelText: {fileID: 0}
+  categoryText: {fileID: 0}
+  livePatternText: {fileID: 0}
+  displayImageUI: {fileID: 0}
+  answerStateImage: {fileID: 0}
+  correctStateSprite: {fileID: 0}
+  wrongStateSprite: {fileID: 0}
+  hideAnswerStateAtStart: 0
+  fixScoreText: {fileID: 0}
+  wrongScoreText: {fileID: 0}
+  totalScoreText: {fileID: 0}
+  highScoreText: {fileID: 0}
+  fixedScore: 100
+  deductionPerMistake: 1
+  highScoreKey: InstrumentSoundsHighScore
+  voiceAudioSource: {fileID: 0}
+  sfxAudioSource: {fileID: 0}
+  welcomeAudio: {fileID: 0}
+  letsLearnAudio: {fileID: 0}
+  genericCorrectAudio: {fileID: 0}
+  genericTryAgainAudio: {fileID: 0}
+  genericCompletedAudio: {fileID: 0}
+  repeatQuestionAudio: {fileID: 0}
+  yourScoreIsAudio: {fileID: 0}
+  whileYourHighestScoreIsAudio: {fileID: 0}
+  numberAudios: []
+  welcomeMessage: Welcome to Instrument Sounds!
+  letsLearnMessage: Let's identify some sounds.
+  completedMessage: Great job! You finished the lesson.
+  repeatQuestionMessage: You finished the lesson. Do you want to repeat again? Press
+    R to repeat or Y to finish.
+  lessons:
+  - displayLabel: 
+    question1Category: 
+    question2Category: 
+    displayImage: {fileID: 0}
+    introductionMessage: 
+    introductionAudio: {fileID: 0}
+    instrumentSoundEffect: {fileID: 0}
+    sourceQuestion:
+      optionALabel: 
+      optionBLabel: 
+      correctAnswer: 0
+      promptMessageTemplate: 
+      promptAudio: {fileID: 0}
+      successMessage: 
+      successAudio: {fileID: 0}
+      wrongMessage: 
+      wrongAudio: {fileID: 0}
+      supportMessage: 
+      supportAudio: {fileID: 0}
+    volumeQuestion:
+      promptMessage: 
+      promptAudio: {fileID: 0}
+      correctAnswer: 0
+      successMessage: 
+      successAudio: {fileID: 0}
+      wrongMessage: 
+      wrongAudio: {fileID: 0}
+      supportMessage: 
+      supportAudio: {fileID: 0}
   delayAfterVoice: 0.35
   noAudioTextDelay: 2
   delayAfterCorrect: 0.75
