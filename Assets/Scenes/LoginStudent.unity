@@ -902,6 +902,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 351966341}
   m_CullTransparentMesh: 1
+--- !u!1 &399665349
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 399665350}
+  - component: {fileID: 399665351}
+  m_Layer: 0
+  m_Name: SignupBackHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &399665350
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399665349}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &399665351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399665349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0737bf0f35b41a40bf720e61e34a423, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SignupBackHandler
+  mainMenuSceneName: MainMenuNew
+  mainMenuSpokenName: main menu
 --- !u!1 &614713910
 GameObject:
   m_ObjectHideFlags: 0
@@ -1208,7 +1254,7 @@ MonoBehaviour:
   studentNumberField: {fileID: 1574297442}
   navigator: {fileID: 768593871}
   previousSceneName: SignUpS
-  studentHomeSceneName: MainMenu
+  studentHomeSceneName: GameMenu
 --- !u!1 &779346514
 GameObject:
   m_ObjectHideFlags: 0
@@ -1582,16 +1628,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 989624557}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1690292515}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 1280, y: 720}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &989624559
@@ -2615,7 +2661,6 @@ RectTransform:
   - {fileID: 1569112298}
   - {fileID: 768593870}
   - {fileID: 1316352689}
-  - {fileID: 989624558}
   - {fileID: 284635515}
   - {fileID: 614713911}
   m_Father: {fileID: 2121873395}
@@ -3125,65 +3170,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e145ea8d831bbb4bab9790799d54ca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AccessibleLoginFlow
-  loginURL: http://localhost/brailleplay/login.php
-  messageText: {fileID: 0}
-  usernameInput: {fileID: 2113562707}
-  passwordInput: {fileID: 1574297439}
-  loginButton: {fileID: 1435535637}
-  beginnerScene: BeginnerScene
-  intermediateScene: IntermediateScene
-  advanceScene: AdvanceScene
-  assessmentScene: Assessment
-  usernameHighlightTarget: {fileID: 0}
-  passwordHighlightTarget: {fileID: 0}
-  loginHighlightTarget: {fileID: 0}
-  audioSource: {fileID: 0}
-  introMessages: []
-  firstIntroDelay: 1.5
-  useTypewriter: 1
-  charactersPerSecond: 30
-  delayAfterMessage: 0.75
-  requireNextButtonForIntroAdvance: 1
-  usernameAllowLetters: 1
-  usernameAllowNumbers: 1
-  usernameAllowUnderscore: 1
-  usernameAllowSpaces: 0
-  usePulseEffect: 1
-  pulseSpeed: 3
-  pulseScaleAmount: 0.04
-  readyForUsernameMessage:
-    message: 
-    audioClip: {fileID: 0}
-  usernameFocusMessage:
-    message: 
-    audioClip: {fileID: 0}
-  usernameEmptyMessage:
-    message: 
-    audioClip: {fileID: 0}
-  passwordFocusMessage:
-    message: 
-    audioClip: {fileID: 0}
-  passwordEmptyMessage:
-    message: 
-    audioClip: {fileID: 0}
-  loginFocusMessage:
-    message: 
-    audioClip: {fileID: 0}
-  loginFailedMessage:
-    message: 
-    audioClip: {fileID: 0}
-  loginSuccessMessage:
-    message: 
-    audioClip: {fileID: 0}
-  currentStage: 0
-  currentIntroIndex: 0
-  isTyping: 0
-  currentPulseTarget: {fileID: 0}
-  usernameBaseScale: {x: 0, y: 0, z: 0}
-  passwordBaseScale: {x: 0, y: 0, z: 0}
-  loginBaseScale: {x: 0, y: 0, z: 0}
-  lastAnnouncedMessage: 
-  lastAnnouncedClip: {fileID: 0}
 --- !u!114 &1921593677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3196,13 +3182,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0535ac852ce03454b8f5692481059cb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LoginSceneBrailleInput
-  usernameInput: {fileID: 2113562707}
-  passwordInput: {fileID: 1574297439}
-  loginFlow: {fileID: 0}
-  blockPhysicalKeyboardTyping: 1
-  logBrailleLetters: 0
-  activeField: {fileID: 0}
-  numberMode: 0
 --- !u!1 &1922540363
 GameObject:
   m_ObjectHideFlags: 0
@@ -3764,5 +3743,7 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 399665350}
   - {fileID: 2121873395}
   - {fileID: 1921593675}
+  - {fileID: 989624558}

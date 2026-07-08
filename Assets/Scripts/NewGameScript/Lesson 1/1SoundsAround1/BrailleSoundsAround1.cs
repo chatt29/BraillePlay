@@ -50,8 +50,11 @@ public class BrailleSoundsAround1 : MonoBehaviour
         [TextArea(2, 4)]
         public string supportMessage;
 
-        public AudioClip supportAudio;
-    }
+
+        public AudioClip supportAudio; }
+
+    [Header("Quiz Result Reporting")]
+    public QuizResultReporter resultReporter;
 
     // -------------------------------------------------------------------------
     // UI
@@ -597,27 +600,32 @@ public class BrailleSoundsAround1 : MonoBehaviour
         yield return ShowBubbleMessageSynced(repeatQuestionMessage, repeatQuestionAudio, noAudioTextDelay);
     }
 
-    private IEnumerator FinalizeSceneCompletion()
-    {
-        sceneFinished = true;
-        lessonActive = false;
-        waitingForRepeatChoice = false;
+private IEnumerator FinalizeSceneCompletion()
+{
+    sceneFinished = true;
+    lessonActive = false;
+    waitingForRepeatChoice = false;
 
-        SaveHighScoreIfNeeded();
+    SaveHighScoreIfNeeded();
 
-        if (displayImageUI != null)
-            displayImageUI.enabled = false;
+    if (displayImageUI != null)
+        displayImageUI.enabled = false;
 
-        if (displayLabelText != null)
-            displayLabelText.text = string.Empty;
+    if (displayLabelText != null)
+        displayLabelText.text = string.Empty;
 
-        ResetAnswerState();
+    ResetAnswerState();
 
-        string finalMessage = $"Your score is {totalScore}, while your highest score is {highScore}.";
+    string finalMessage = $"Your score is {totalScore}, while your highest score is {highScore}.";
 
-        yield return ShowBubbleMessageSynced(finalMessage, genericCompletedAudio, noAudioTextDelay);
-        yield return PlayFinalScoreAudio();
-    }
+    yield return ShowBubbleMessageSynced(finalMessage, genericCompletedAudio, noAudioTextDelay);
+    yield return PlayFinalScoreAudio();
+
+    if (resultReporter != null)
+        resultReporter.ReportScoreAndReturn(totalScore);
+    else
+        Debug.LogWarning("[BrailleSoundsAround1] No QuizResultReporter assigned - score won't be saved or returned to GameMenu.");
+}
 
     // -------------------------------------------------------------------------
     // Final Score Audio

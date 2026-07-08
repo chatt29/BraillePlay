@@ -20,8 +20,8 @@ public class FirebaseManager : MonoBehaviour
 {
     public static FirebaseManager Instance { get; private set; }
 
-    [Tooltip("Off by default to match this project's per-scene setup (no DontDestroyOnLoad), so every scene gets its own manager instead of a stale one carried over from the last scene. Firebase re-initializing per scene is harmless, just slightly redundant.")]
-    public bool dontDestroyOnLoad = false;
+    [Tooltip("On by default so this survives scene loads and every later scene reuses the same initialized instance instead of re-running Firebase init redundantly.")]
+    public bool dontDestroyOnLoad = true;
 
     public bool IsReady { get; private set; }
     public DependencyStatus Status { get; private set; } = DependencyStatus.UnavailableOther;
@@ -39,7 +39,20 @@ public class FirebaseManager : MonoBehaviour
         Instance = this;
 
         if (dontDestroyOnLoad)
+        {
+            // DontDestroyOnLoad only works on a root-level GameObject (no
+            // parent). If this was dropped inside a Canvas or any other
+            // parented object, detach it first so persistence actually
+            // works instead of silently failing (or logging a warning and
+            // being destroyed on the next scene load anyway).
+            if (transform.parent != null)
+            {
+                Debug.LogWarning("[FirebaseManager] This GameObject had a parent, which breaks DontDestroyOnLoad. Detaching it to the scene root automatically.");
+                transform.SetParent(null);
+            }
+
             DontDestroyOnLoad(gameObject);
+        }
     }
 
     private void OnDestroy()
