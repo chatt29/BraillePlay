@@ -123,4 +123,12 @@ bool DoWordsRhyme(string word1, string word2)
     }
 
     public void ReplayWord()
+{
+    if (words[currentIndex].wordAudio != null)
+    {
+        wordAudioSource.Stop();
+        wordAudioSource.clip = words[currentIndex].wordAudio;
+        wordAudioSource.Play();
+    }
+}
 }
