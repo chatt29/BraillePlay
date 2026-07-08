@@ -2668,12 +2668,12 @@ MonoBehaviour:
   deductionPerMistake: 1
   highScoreKey: BrailleSoundsAroundHighScore
   voiceAudioSource: {fileID: 1586095478}
-  welcomeAudio: {fileID: 8300000, guid: 4635029de5a7b614cb0ff623a5048d94, type: 3}
-  letsLearnAudio: {fileID: 8300000, guid: 9dd1202383dafb348b35488773a4d927, type: 3}
+  welcomeAudio: {fileID: 8300000, guid: 1e5b72b531abe6a419a3a7a0434736c0, type: 3}
+  letsLearnAudio: {fileID: 8300000, guid: 7931dcdc3d1268c4383f9297ab391722, type: 3}
   genericCorrectAudio: {fileID: 8300000, guid: 587dfae100161f646a4b8e246de58429, type: 3}
   genericTryAgainAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-  genericCompletedAudio: {fileID: 8300000, guid: e4151824f9dfafb48a1db013fdc8a3da, type: 3}
-  repeatQuestionAudio: {fileID: 8300000, guid: bbc527e3e72c56348a8b0047a801f60d, type: 3}
+  genericCompletedAudio: {fileID: 8300000, guid: 439e8e52fb219e64e8ebeb888dc1dcb2, type: 3}
+  repeatQuestionAudio: {fileID: 8300000, guid: 6e0af612d0f553543909ab2d4c7f1b7c, type: 3}
   letterAAudio: {fileID: 8300000, guid: 42701a2ed6601e345945e43b1120e18e, type: 3}
   letterBAudio: {fileID: 8300000, guid: c8c1c489208b62d4a8fc76e6666cbd62, type: 3}
   letterCAudio: {fileID: 8300000, guid: 90c6142c3d1a7464ebe56f87204bea71, type: 3}
@@ -2781,13 +2781,94 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 31becc0a3e7892e468b4ac4372db4882, type: 3}
   - {fileID: 8300000, guid: caf77e0d1f468b64ab86183d4318a7f8, type: 3}
   - {fileID: 8300000, guid: 579c9253f6a5be6499ca8a1851d07f90, type: 3}
-  welcomeMessage: Welcome to Lesson 2, Animal Sounds Part 2.
-  letsLearnMessage: 'In this lesson, you''re going to choose the correct sound that
+  welcomeMessage: Welcome to Animal Sounds Quiz.
+  letsLearnMessage: 'In this quiz, you''re going to choose the correct sound that
     is produced by the given animals. There will be 3 choices: A, B, and C. Press
     dot number 1 for A, dot number 2 for B, and dot number 3 for C.'
-  completedMessage: Great Job! You finished Lesson 2 Animal Sounds part 2.
-  repeatQuestionMessage: You finished Lesson 2, Animal Sounds Part 2. Do you want
-    to repeat again? Press R to repeat or Next to go back to main menu.
+  completedMessage: Great Job! You finished Lesson 2 Animal Sounds.
+  repeatQuestionMessage: Do you want to repeat again? Press repeat to repeat or Next
+    to continue.
+  lessonChoiceMessage: You have finished learning about animal sounds. Press repeat
+    to repeat the lesson or press next to begin the quiz.
+  lessonChoiceAudio: {fileID: 8300000, guid: 2a91f4f2e06d82048a1bec8794a94244, type: 3}
+  lessonPages:
+  - title: 
+    lessonText: Welcome to Lesson 2, Animal Sounds.
+    lessonImage: {fileID: 0}
+    lessonAudio: {fileID: 8300000, guid: 07c88ca858526bb4e95592af2b38718f, type: 3}
+  - title: 
+    lessonText: Now that you've learned some of the sounds you can here on your everyday
+      life, lets be specific into learning what are the sounds produced by an animals.
+    lessonImage: {fileID: 0}
+    lessonAudio: {fileID: 8300000, guid: d10e18940478e06409ab472bb847481d, type: 3}
+  - title: 
+    lessonText: Animals make different sounds. These sounds help animals communicate
+      with one another. We can also identify animals by listening carefully to the
+      sounds they make.
+    lessonImage: {fileID: 0}
+    lessonAudio: {fileID: 8300000, guid: d49ef0f243d9ae044a1260d3de23850b, type: 3}
+  - title: 
+    lessonText: For an example, Horses, Horses neighs.
+    lessonImage: {fileID: 0}
+    lessonAudio: {fileID: 8300000, guid: ad81f3f3cf51f4a4f94afca86cb4f550, type: 3}
+  - title: 
+    lessonText: Nneiggh
+    lessonImage: {fileID: 0}
+    lessonAudio: {fileID: 8300000, guid: da1935713bb5c2d4e9cdd705a4cb916f, type: 3}
+  - title: 
+    lessonText: Goat bleets
+    lessonImage: {fileID: 0}
+    lessonAudio: {fileID: 8300000, guid: e2d51d1ff121f9641b300ff173e6c17a, type: 3}
+  - title: 
+    lessonText: Meeee
+    lessonImage: {fileID: 0}
+    lessonAudio: {fileID: 8300000, guid: dce348faffb75614f8ffea2d5d28242f, type: 3}
+  - title: 
+    lessonText: Cat Meows
+    lessonImage: {fileID: 0}
+    lessonAudio: {fileID: 8300000, guid: 74610c52326ac2644a6bdf0a56957053, type: 3}
+  - title: 
+    lessonText: Meow
+    lessonImage: {fileID: 0}
+    lessonAudio: {fileID: 8300000, guid: 789473d6f2023f44aba6ddb9c2eea13e, type: 3}
+  - title: 
+    lessonText: Dog Barks
+    lessonImage: {fileID: 0}
+    lessonAudio: {fileID: 8300000, guid: 6e44cee697282c44895ac4199e233149, type: 3}
+  - title: 
+    lessonText: Arf-Arf
+    lessonImage: {fileID: 0}
+    lessonAudio: {fileID: 8300000, guid: fb639cbad8fc65f4591dfe41c16820d2, type: 3}
+  - title: 
+    lessonText: Cow Moos
+    lessonImage: {fileID: 0}
+    lessonAudio: {fileID: 8300000, guid: 9b06fcae76989394fb1131257d49d40f, type: 3}
+  - title: 
+    lessonText: Moooo
+    lessonImage: {fileID: 0}
+    lessonAudio: {fileID: 8300000, guid: 91cc9825a3e7b2548b3fb222e8cf2581, type: 3}
+  - title: 
+    lessonText: Or even birds sings.
+    lessonImage: {fileID: 0}
+    lessonAudio: {fileID: 8300000, guid: 5ebcc16e894f0294bb4ed3d83eb55bb2, type: 3}
+  - title: 
+    lessonText: Tweet-Tweet
+    lessonImage: {fileID: 0}
+    lessonAudio: {fileID: 8300000, guid: c928eea9a4d6ed746b88d734ec1b873e, type: 3}
+  - title: 
+    lessonText: Every animal has its own special sound.
+    lessonImage: {fileID: 0}
+    lessonAudio: {fileID: 8300000, guid: cbe4359ee18198043bc43781f9ebbe53, type: 3}
+  - title: 
+    lessonText: Sometimes we hear animals without seeing them. By listening carefully,
+      we can tell which animal is nearby. Good listening helps us learn more about
+      the world around us.
+    lessonImage: {fileID: 0}
+    lessonAudio: {fileID: 8300000, guid: f813af262bee9b84fbda0adee6b23198, type: 3}
+  - title: 
+    lessonText: Now you are ready to identify animal sounds. Good luck and have fun!
+    lessonImage: {fileID: 0}
+    lessonAudio: {fileID: 8300000, guid: a9cffb759ae40064b9a6558ceacfd4b6, type: 3}
   lessons:
   - displayLabel: Horse
     categoryLabel: 'A. Meoow
@@ -2915,15 +2996,15 @@ MonoBehaviour:
     supportMessage: Remember, a Bird Tweets. Press dot 1 for letter A, dot 2 for
       letter B, and dot 3 for letter C.
     supportAudio: {fileID: 8300000, guid: cb98333fc9131cc44afe477bc0607b5f, type: 3}
-  delayAfterVoice: 0.35
+  delayAfterVoice: 0.2
   noAudioTextDelay: 2
   delayAfterCorrect: 0.75
   mistakesBeforeSupport: 3
   resetMistakesAfterSupport: 1
   useTypewriterEffect: 1
-  defaultTypewriterCharacterDelay: 0.03
+  defaultTypewriterCharacterDelay: 0.02
   minSyncedCharacterDelay: 0.01
-  maxSyncedCharacterDelay: 0.12
+  maxSyncedCharacterDelay: 0.05
   waitForFullAudioBeforeContinuing: 1
   logDebug: 1
 --- !u!1 &1697798611

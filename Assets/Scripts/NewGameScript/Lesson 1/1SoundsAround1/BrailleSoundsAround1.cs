@@ -8,6 +8,21 @@ using UnityEngine.UI;
 public class BrailleSoundsAround1 : MonoBehaviour
 {
     [Serializable]
+    public class LessonPage
+    {
+        [Header("Display")]
+        public string title;
+
+        [TextArea(5, 10)]
+        public string lessonText;
+
+        public Sprite lessonImage;
+
+        [Header("Audio")]
+        public AudioClip lessonAudio;
+    }
+
+    [Serializable]
     public class BrailleLesson
     {
         [Header("Identity")]
@@ -121,9 +136,18 @@ public class BrailleSoundsAround1 : MonoBehaviour
     [TextArea(2, 5)]
     public string repeatQuestionMessage = "You finished the lesson. Do you want to repeat again? Press R to repeat or Y to finish.";
 
+    [TextArea(2, 5)]
+    public string repeatLessonMessage =
+    "You have finished the lesson. Press R to repeat the lesson or press Y to begin the quiz.";
+
+    public AudioClip repeatLessonAudio;
+
     // -------------------------------------------------------------------------
     // Lesson Flow
     // -------------------------------------------------------------------------
+
+    [Header("Lesson Pages")]
+    public List<LessonPage> lessonPages = new List<LessonPage>();
 
     [Header("Lesson Flow")]
     public List<BrailleLesson> lessons = new List<BrailleLesson>();
@@ -159,6 +183,7 @@ public class BrailleSoundsAround1 : MonoBehaviour
     private bool sceneFinished = false;
     private bool waitingForRepeatChoice = false;
     private bool waitingForSoundQuestion = false;
+    private bool waitingForLessonChoice = false;
 
     private Coroutine flowRoutine;
     private Coroutine bubbleTypeRoutine;
@@ -296,10 +321,80 @@ public class BrailleSoundsAround1 : MonoBehaviour
         sceneFinished = false;
         waitingForRepeatChoice = false;
 
-        yield return ShowBubbleMessageSynced(welcomeMessage, welcomeAudio, noAudioTextDelay);
+        // Play all lesson pages first
+        yield return PlayLessonPages();
+
+        // Welcome message
+        yield return ShowBubbleMessageSynced(
+            welcomeMessage,
+            welcomeAudio,
+            noAudioTextDelay);
+
         yield return new WaitForSeconds(delayAfterVoice);
 
-        yield return ShowBubbleMessageSynced(letsLearnMessage, letsLearnAudio, noAudioTextDelay);
+        // Let's Learn message
+        yield return ShowBubbleMessageSynced(
+            letsLearnMessage,
+            letsLearnAudio,
+            noAudioTextDelay);
+
+        yield return new WaitForSeconds(delayAfterVoice);
+
+        // Start the quiz
+        StartLesson(0);
+    }
+
+    private IEnumerator PlayLessonPages()
+    {
+        foreach (LessonPage page in lessonPages)
+        {
+            if (displayLabelText != null)
+                displayLabelText.text = page.title;
+
+            if (displayImageUI != null)
+            {
+                displayImageUI.sprite = page.lessonImage;
+                displayImageUI.enabled = page.lessonImage != null;
+            }
+
+            if (categoryText != null)
+                categoryText.text = "LESSON";
+
+            yield return ShowBubbleMessageSynced(
+                page.lessonText,
+                page.lessonAudio,
+                noAudioTextDelay
+            );
+
+            yield return new WaitForSeconds(delayAfterVoice);
+        }
+
+        waitingForLessonChoice = true;
+
+        yield return ShowBubbleMessageSynced(
+            repeatLessonMessage,
+            repeatLessonAudio,
+            noAudioTextDelay
+        );
+
+        while (waitingForLessonChoice)
+            yield return null;
+    }
+
+    private IEnumerator StartQuizAfterLesson()
+    {
+        yield return ShowBubbleMessageSynced(
+            welcomeMessage,
+            welcomeAudio,
+            noAudioTextDelay);
+
+        yield return new WaitForSeconds(delayAfterVoice);
+
+        yield return ShowBubbleMessageSynced(
+            letsLearnMessage,
+            letsLearnAudio,
+            noAudioTextDelay);
+
         yield return new WaitForSeconds(delayAfterVoice);
 
         StartLesson(0);
@@ -536,6 +631,13 @@ public class BrailleSoundsAround1 : MonoBehaviour
     /// </summary>
     private void HandleRepeat()
     {
+        if (waitingForLessonChoice)
+        {
+            waitingForLessonChoice = false;
+            RunFlow(PlayLessonPages());
+            return;
+        }
+
         if (waitingForRepeatChoice)
         {
             waitingForRepeatChoice = false;
@@ -562,6 +664,13 @@ public class BrailleSoundsAround1 : MonoBehaviour
 
     private void HandleNext()
     {
+        if (waitingForLessonChoice)
+        {
+            waitingForLessonChoice = false;
+            RunFlow(StartQuizAfterLesson());
+            return;
+        }
+
         if (waitingForRepeatChoice)
         {
             waitingForRepeatChoice = false;

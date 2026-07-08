@@ -2924,6 +2924,74 @@ MonoBehaviour:
       supportMessage: Trumpet produces low pitch sound. Press dot 2 to answer low
         pitch sound.
       supportAudio: {fileID: 8300000, guid: e72c6f5b90c812441baaada1abca7328, type: 3}
+  - displayLabel: Bass Drum
+    question1Category: '1. Loud Sound
+
+      2. Soft Sound'
+    question2Category: '1. High Pitch Sound
+
+      2. Low Pitch Sound'
+    displayImage: {fileID: 21300000, guid: 04e25486fec78ea4b8c1a4b727466f86, type: 3}
+    introductionMessage: Number 5, Bass Drum.
+    introductionAudio: {fileID: 8300000, guid: 944140cb83e96234581a91e9b192499e, type: 3}
+    instrumentSoundEffect: {fileID: 8300000, guid: dcb9dc7f9182ac044b11cd47d0b45654, type: 3}
+    volumeQuestion:
+      promptMessage: Do you think Bass Drum produces Loud or Soft Sound? Press dot
+        1 for Loud or Press dot 2 for Soft.
+      promptAudio: {fileID: 8300000, guid: 3cc009741bd4eca409a6ba34e085811e, type: 3}
+      correctAnswer: 0
+      successMessage: That is Correct.
+      successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+      wrongMessage: Wrong Answer, Please Try Again.
+      wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+      supportMessage: Bass Drum produces loud sound. Press dot 1 to answer loud sound.
+      supportAudio: {fileID: 8300000, guid: 6f154a789a300ad4280d6596ca05aad6, type: 3}
+    pitchQuestion:
+      promptMessage: Do you think Bass Drum produces High or Low Pitch Sound? Press
+        dot 1 for High or Press dot 2 for Low Pitch.
+      promptAudio: {fileID: 8300000, guid: 1dafab18bf9fc024ab89bbf85c2bb735, type: 3}
+      correctAnswer: 1
+      successMessage: That is Correct.
+      successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+      wrongMessage: Wrong Answer, Please Try Again.
+      wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+      supportMessage: Bass Drum produces low pitch sound. Press dot 2 to answer low
+        pitch sound.
+      supportAudio: {fileID: 8300000, guid: 3c4647b19c82a9b439eacb15a760bf06, type: 3}
+  - displayLabel: Quad Drum
+    question1Category: '1. Loud Sound
+
+      2. Soft Sound'
+    question2Category: '1. High Pitch Sound
+
+      2. Low Pitch Sound'
+    displayImage: {fileID: 21300000, guid: 04e25486fec78ea4b8c1a4b727466f86, type: 3}
+    introductionMessage: Number 6, Quad Drum.
+    introductionAudio: {fileID: 8300000, guid: 0cad9bebbc9e9624aa335654ab5bff74, type: 3}
+    instrumentSoundEffect: {fileID: 8300000, guid: 12e7bc10db4ae60449177b53a6828a5a, type: 3}
+    volumeQuestion:
+      promptMessage: Do you think Quad Drum produces Loud or Soft Sound? Press dot
+        1 for Loud or Press dot 2 for Soft.
+      promptAudio: {fileID: 8300000, guid: 637dc10f64ea77c49a92bf5ab264af2f, type: 3}
+      correctAnswer: 0
+      successMessage: That is Correct.
+      successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+      wrongMessage: Wrong Answer, Please Try Again.
+      wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+      supportMessage: Quad Drum produces loud sound. Press dot 1 to answer loud sound.
+      supportAudio: {fileID: 8300000, guid: 2dffe576e4d78e7469ca6bd078decd1f, type: 3}
+    pitchQuestion:
+      promptMessage: Do you think Quad Drum produces High or Low Pitch Sound? Press
+        dot 1 for High or Press dot 2 for Low Pitch.
+      promptAudio: {fileID: 8300000, guid: ee4485a412e0978468ad085057fcfacf, type: 3}
+      correctAnswer: 0
+      successMessage: That is Correct.
+      successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+      wrongMessage: Wrong Answer, Please Try Again.
+      wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+      supportMessage: Quad Drum produces high pitch sound. Press dot 1 to answer
+        high pitch sound.
+      supportAudio: {fileID: 8300000, guid: c2c8cc756ccffc54b9f3f5fe448438cc, type: 3}
   delayAfterVoice: 0.35
   noAudioTextDelay: 2
   delayAfterCorrect: 0.75
