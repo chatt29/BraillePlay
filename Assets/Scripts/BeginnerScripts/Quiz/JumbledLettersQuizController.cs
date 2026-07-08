@@ -334,14 +334,12 @@ if (userId > 0)
     );
 
     // USE CURRENT SCENE NAME
-   form.AddField(
+   string quizName = PlayerPrefs.GetString("PreviousScene", "Unknown");
+
+form.AddField(
     "quiz_name",
-    SceneManager.GetActiveScene().name
+    quizName
 );
-Debug.Log("POSTING SCORE...");
-Debug.Log("USER ID: " + userId);
-Debug.Log("SCORE: " + finalScore);
-Debug.Log("QUIZ NAME: " + SceneManager.GetActiveScene().name);
     UnityWebRequest www =
         UnityWebRequest.Post(
             "http://localhost/brailleplay/save_score.php",

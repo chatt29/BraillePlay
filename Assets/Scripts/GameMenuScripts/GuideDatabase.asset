@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8c807edf513daf438840128c8e4e9b8, type: 3}
+  m_Name: GuideDatabase
+  m_EditorClassIdentifier: Assembly-CSharp::BraillePlay.GameMenu.GuideDatabase
+  guides:
+  - guideTitle: Alphabet Translation
+    sceneName: AlphabetTranslation
+    description: This will guide you how to translate alphabet to braille
+  - guideTitle: Common Contractions
+    sceneName: CommonContractions
+    description: Contractions lower the formality of speech and writing.
+  - guideTitle: Number Translation
+    sceneName: NumberTranslation
+    description: This will guide you how to translate number to braille
+  - guideTitle: Punctuations
+    sceneName: Punctuations
+    description: This will guide you how to use proper punctuations.
+  - guideTitle: Usage Of Capitalization
+    sceneName: UsageOfCapitalization
+    description: This will teach you proper Capitalization
