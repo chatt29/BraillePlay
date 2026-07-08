@@ -27,7 +27,29 @@ public class FirestoreStudentService
     public async Task CreateStudentAsync(string studentNumber, StudentData student)
     {
         await EnsureReadyAsync();
-        await db.Collection(CollectionName).Document(studentNumber).SetAsync(student);
+
+        DocumentReference studentDoc =
+            db.Collection(CollectionName).Document(studentNumber);
+
+        // Create student document
+        await studentDoc.SetAsync(student);
+
+        // Create Lessons subcollection
+        CollectionReference lessons =
+            studentDoc.Collection("Lessons");
+
+        for (int lesson = 1; lesson <= 5; lesson++)
+        {
+            await lessons.Document($"Lesson{lesson}").SetAsync(
+                new Dictionary<string, object>
+                {
+                { "Quiz1Score", 0 },
+                { "Quiz2Score", 0 },
+                { "Quiz3Score", 0 },
+                { "Quiz4Score", 0 },
+                { "Quiz5Score", 0 }
+                });
+        }
     }
 
     /// <summary>Loads a student by student number, or null if none exists.</summary>
