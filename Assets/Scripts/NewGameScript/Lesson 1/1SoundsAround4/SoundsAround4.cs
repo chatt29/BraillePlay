@@ -8,6 +8,19 @@ using UnityEngine.UI;
 public class SoundsAround4 : MonoBehaviour
 {
     // -------------------------------------------------------------------------
+    // Intro Lesson Page (plays before the Welcome Message, one page at a time)
+    // -------------------------------------------------------------------------
+
+    [Serializable]
+    public class IntroLessonPage
+    {
+        [TextArea(2, 4)]
+        public string pageText;
+
+        public AudioClip pageAudio;
+    }
+
+    // -------------------------------------------------------------------------
     // Story Line
     // -------------------------------------------------------------------------
 
@@ -52,6 +65,11 @@ public class SoundsAround4 : MonoBehaviour
 
         [TextArea(2, 4)]
         public string wrongMessage;
+
+        [Header("Support (shown after a wrong answer; falls back to the lesson's Support Message/Audio if left empty)")]
+        [TextArea(2, 4)]
+        public string supportMessage;
+        public AudioClip supportAudio;
     }
 
     [Serializable]
@@ -138,6 +156,14 @@ public class SoundsAround4 : MonoBehaviour
     public List<AudioClip> numberAudios = new List<AudioClip>();
 
     // -------------------------------------------------------------------------
+    // Intro Lesson (plays before the Welcome Message)
+    // -------------------------------------------------------------------------
+
+    [Header("Intro Lesson (plays BEFORE the Welcome Message)")]
+    public List<IntroLessonPage> introLessonPages = new List<IntroLessonPage>();
+    public float delayBetweenIntroPages = 0.5f;
+
+    // -------------------------------------------------------------------------
     // Scene Text
     // -------------------------------------------------------------------------
 
@@ -154,6 +180,11 @@ public class SoundsAround4 : MonoBehaviour
     [TextArea(2, 5)]
     public string repeatQuestionMessage = "You finished the lesson. Do you want to repeat again? Press R to repeat or Y to finish.";
 
+    [Header("Repeat-Story Confirmation (mid-lesson Repeat button)")]
+    [TextArea(2, 5)]
+    public string repeatQuestionConfirmMessage = "Do you want to repeat the question? Press Next to continue.";
+    public AudioClip repeatQuestionConfirmAudio;
+
     // -------------------------------------------------------------------------
     // Lesson Flow
     // -------------------------------------------------------------------------
@@ -166,8 +197,15 @@ public class SoundsAround4 : MonoBehaviour
     public float delayBetweenStoryLines = 0.5f;
 
     [Header("Support Settings")]
-    public int mistakesBeforeSupport = 3;
     public bool resetMistakesAfterSupport = true;
+
+    [Header("Mistake Threshold (Support + Repeat-Story Prompt)")]
+    [Tooltip("Number of consecutive wrong answers on the same question before the Support Message plays and the player is asked whether to repeat the Story.")]
+    public int mistakesBeforeSupportPrompt = 3;
+
+    [TextArea(2, 5)]
+    public string repeatStoryPromptMessage = "Do you want to hear the story again? Press Repeat to hear it again, or press Next to continue with the question.";
+    public AudioClip repeatStoryPromptAudio;
 
     [Header("Typewriter Sync")]
     public bool useTypewriterEffect = true;
@@ -194,6 +232,13 @@ public class SoundsAround4 : MonoBehaviour
     private bool sceneFinished = false;
     private bool waitingForRepeatChoice = false;
     private bool waitingForQuizAnswer = false;
+
+    // True while we've replayed the Story section (via the mid-lesson Repeat
+    // button) and are waiting for the player to press Next to re-ask the
+    // current question. Does NOT touch currentQuestionIndex, score, or
+    // mistake count — it only gates HandleNext() into re-asking the same
+    // question instead of doing nothing.
+    private bool waitingForRepeatConfirmation = false;
 
     private Coroutine flowRoutine;
     private Coroutine bubbleTypeRoutine;
@@ -331,6 +376,10 @@ public class SoundsAround4 : MonoBehaviour
         sceneFinished = false;
         waitingForRepeatChoice = false;
 
+        // Intro Lesson — plays first, before the Welcome Message.
+        yield return PlayIntroLessonPages();
+        yield return new WaitForSeconds(delayAfterVoice);
+
         yield return ShowBubbleMessageSynced(welcomeMessage, welcomeAudio, noAudioTextDelay);
         yield return new WaitForSeconds(delayAfterVoice);
 
@@ -338,6 +387,26 @@ public class SoundsAround4 : MonoBehaviour
         yield return new WaitForSeconds(delayAfterVoice);
 
         StartLesson(0);
+    }
+
+    /// <summary>
+    /// Plays each configured intro page one at a time: shows the text in the
+    /// message bubble, plays its matching audio clip, waits for it to finish,
+    /// then moves on to the next page. Empty/unused page slots (no text and
+    /// no audio) are skipped. Runs once, before the Welcome Message.
+    /// </summary>
+    private IEnumerator PlayIntroLessonPages()
+    {
+        if (introLessonPages == null) yield break;
+
+        foreach (IntroLessonPage page in introLessonPages)
+        {
+            if (page == null) continue;
+            if (string.IsNullOrWhiteSpace(page.pageText) && page.pageAudio == null) continue;
+
+            yield return ShowBubbleMessageSynced(page.pageText, page.pageAudio, noAudioTextDelay);
+            yield return new WaitForSeconds(delayBetweenIntroPages);
+        }
     }
 
     private void StartLesson(int index)
@@ -355,6 +424,7 @@ public class SoundsAround4 : MonoBehaviour
         sceneFinished = false;
         waitingForRepeatChoice = false;
         waitingForQuizAnswer = false;
+        waitingForRepeatConfirmation = false;
 
         if (logDebug)
             Debug.Log($"Starting lesson {currentLessonIndex}: {lessons[currentLessonIndex].displayLabel}");
@@ -371,8 +441,8 @@ public class SoundsAround4 : MonoBehaviour
     //   3. Story Section        -> 4 lines, one text box + audio at a time
     //   4. Question Section     -> 5 multiple-choice questions (A/B/C)
     //        - Success Message on correct answer -> advance to next question
-    //        - Wrong Message on incorrect answer  -> retry logic (existing)
-    //        - Support Message after N consecutive mistakes
+    //        - Wrong Message + Support Message on every incorrect answer,
+    //          then the same question is re-asked (existing retry logic)
     //   5. After the 5th question is answered correctly -> next lesson
     //
     // This single coroutine is reused both when a lesson first starts and
@@ -508,7 +578,7 @@ public class SoundsAround4 : MonoBehaviour
 
     private void HandleBrailleChordSubmitted(string submittedPattern)
     {
-        if (!lessonActive || sceneFinished || waitingForRepeatChoice)
+        if (!lessonActive || sceneFinished || waitingForRepeatChoice || waitingForRepeatConfirmation)
             return;
 
         if (waitingForQuizAnswer)
@@ -549,10 +619,7 @@ public class SoundsAround4 : MonoBehaviour
             currentMistakeCount++;
             AddMistake();
 
-            if (currentMistakeCount >= mistakesBeforeSupport)
-                RunFlow(HandleSupportThenRetry(lesson, question));
-            else
-                RunFlow(HandleWrongAnswer(lesson, question));
+            RunFlow(HandleWrongAnswer(lesson, question));
         }
     }
 
@@ -593,31 +660,57 @@ public class SoundsAround4 : MonoBehaviour
         }
     }
 
-    /// <summary>Wrong Message for the current question, then re-ask the same question (no full restart).</summary>
+    /// <summary>
+    /// Wrong Message for the current question. If the player has now made
+    /// fewer than <see cref="mistakesBeforeSupportPrompt"/> consecutive
+    /// mistakes on this question, the same question is simply re-asked. Once
+    /// the mistake count reaches that threshold, the Support Message plays
+    /// and the player is asked whether they want to repeat the Story —
+    /// pressing Repeat replays the Story section, and pressing Next
+    /// continues on to (re-asks) the current question.
+    /// </summary>
     private IEnumerator HandleWrongAnswer(BrailleLesson lesson, QuizQuestion question)
     {
-        string message = !string.IsNullOrWhiteSpace(question.wrongMessage)
+        string wrongMessage = !string.IsNullOrWhiteSpace(question.wrongMessage)
             ? question.wrongMessage
             : "Try again.";
 
-        yield return ShowBubbleMessageSynced(message, genericTryAgainAudio, noAudioTextDelay);
-        yield return AskQuizQuestion(lesson, currentQuestionIndex);
-    }
+        yield return ShowBubbleMessageSynced(wrongMessage, genericTryAgainAudio, noAudioTextDelay);
+        yield return new WaitForSeconds(delayAfterVoice);
 
-    /// <summary>
-    /// After N consecutive mistakes, play the lesson's Support Message + audio
-    /// to help the player, reset the mistake streak, then re-ask the same question.
-    /// </summary>
-    private IEnumerator HandleSupportThenRetry(BrailleLesson lesson, QuizQuestion question)
-    {
-        string message = !string.IsNullOrWhiteSpace(lesson.supportMessage)
-            ? lesson.supportMessage
-            : "Here is some help. Listen carefully and try again.";
+        if (currentMistakeCount >= mistakesBeforeSupportPrompt)
+        {
+            string supportMessage = !string.IsNullOrWhiteSpace(question.supportMessage)
+                ? question.supportMessage
+                : (!string.IsNullOrWhiteSpace(lesson.supportMessage)
+                    ? lesson.supportMessage
+                    : "Here is some help. Listen carefully and try again.");
 
-        yield return ShowBubbleMessageSynced(message, lesson.supportAudio, noAudioTextDelay);
+            AudioClip supportClip = question.supportAudio != null
+                ? question.supportAudio
+                : lesson.supportAudio;
 
-        if (resetMistakesAfterSupport)
-            currentMistakeCount = 0;
+            yield return ShowBubbleMessageSynced(supportMessage, supportClip, noAudioTextDelay);
+            yield return new WaitForSeconds(delayAfterVoice);
+
+            if (resetMistakesAfterSupport)
+                currentMistakeCount = 0;
+
+            // Ask whether to repeat the Story. Pressing Repeat (HandleRepeat)
+            // replays the Story and re-shows this same prompt; pressing Next
+            // (HandleNext) continues on and re-asks the current question.
+            waitingForRepeatConfirmation = true;
+
+            yield return ShowBubbleMessageSynced(
+                repeatStoryPromptMessage,
+                repeatStoryPromptAudio,
+                noAudioTextDelay
+            );
+
+            // Stays here — waitingForRepeatConfirmation remains true until
+            // the player presses Repeat or Next.
+            yield break;
+        }
 
         yield return AskQuizQuestion(lesson, currentQuestionIndex);
     }
@@ -627,10 +720,17 @@ public class SoundsAround4 : MonoBehaviour
     // -------------------------------------------------------------------------
 
     /// <summary>
-    /// Repeats the current lesson from the very beginning: Display Label,
-    /// Category Label, Prompt Message + audio, Display Image, the full Story
-    /// Section, and the Question Section starting again from question 1. It
-    /// never advances to the next lesson and never replays a previous one.
+    /// Mid-lesson Repeat behavior:
+    ///   - Replays the Story section only (Display Label/Image and the
+    ///     current question index are left untouched — no full lesson
+    ///     restart, no score/mistake reset).
+    ///   - Afterwards asks the player whether they want to repeat the
+    ///     current question ("Press Next to continue").
+    ///   - The current question is only re-asked once HandleNext() fires.
+    ///
+    /// Separately, if the player is at the end-of-scene repeat prompt
+    /// (waitingForRepeatChoice), Repeat still restarts the whole scene from
+    /// lesson 0, exactly as before.
     /// </summary>
     private void HandleRepeat()
     {
@@ -642,25 +742,51 @@ public class SoundsAround4 : MonoBehaviour
             return;
         }
 
-        if (!lessonActive)
+        if (!lessonActive || sceneFinished)
             return;
 
-        if (sceneFinished || currentLessonIndex < 0 || currentLessonIndex >= lessons.Count)
+        if (currentLessonIndex < 0 || currentLessonIndex >= lessons.Count)
             return;
 
         BrailleLesson lesson = lessons[currentLessonIndex];
 
-        // Reset this lesson's state so it plays exactly like a fresh start.
-        lessonActive = true;
+        // Cancel any pending quiz answer wait — we're repeating the story
+        // instead of waiting on an answer right now.
         waitingForQuizAnswer = false;
-        currentQuestionIndex = -1;
-        currentMistakeCount = 0;
+        waitingForRepeatConfirmation = true;
 
-        RunFlow(PlayLessonFromBeginning(lesson));
+        RunFlow(RepeatStorySection(lesson));
+    }
+
+    /// <summary>
+    /// Replays just the Story section for the current lesson, then asks the
+    /// player if they want to repeat the current question. Does not reset
+    /// currentQuestionIndex, score, or mistake count.
+    /// </summary>
+    private IEnumerator RepeatStorySection(BrailleLesson lesson)
+    {
+        yield return PlayStory(lesson);
+        yield return new WaitForSeconds(delayAfterVoice);
+
+        yield return ShowBubbleMessageSynced(
+            repeatQuestionConfirmMessage,
+            repeatQuestionConfirmAudio,
+            noAudioTextDelay
+        );
+
+        // Stays here — waitingForRepeatConfirmation remains true until the
+        // player presses Next (see HandleNext()).
     }
 
     private void HandleNext()
     {
+        if (waitingForRepeatConfirmation)
+        {
+            waitingForRepeatConfirmation = false;
+            RunFlow(AskQuizQuestion(lessons[currentLessonIndex], currentQuestionIndex));
+            return;
+        }
+
         if (waitingForRepeatChoice)
         {
             waitingForRepeatChoice = false;
