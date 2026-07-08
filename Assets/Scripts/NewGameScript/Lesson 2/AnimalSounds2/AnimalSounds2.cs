@@ -10,6 +10,21 @@ public class AnimalSounds2 : MonoBehaviour
     public enum AnswerChoice { A, B, C }
 
     [Serializable]
+    public class LessonPage
+    {
+        [Header("Display")]
+        public string title;
+
+        [TextArea(5, 10)]
+        public string lessonText;
+
+        public Sprite lessonImage;
+
+        [Header("Audio")]
+        public AudioClip lessonAudio;
+    }
+
+    [Serializable]
     public class BrailleLesson
     {
         [Header("Identity")]
@@ -131,9 +146,18 @@ public class AnimalSounds2 : MonoBehaviour
     [TextArea(2, 5)]
     public string repeatQuestionMessage = "You finished the lesson. Do you want to repeat again? Press R to repeat or Y to finish.";
 
+    [TextArea(2, 5)]
+    public string lessonChoiceMessage =
+    "You have finished learning about animal sounds. Press repeat to repeat the lesson or press next to begin the quiz.";
+
+    public AudioClip lessonChoiceAudio;
+
     // -------------------------------------------------------------------------
     // Lesson Flow
     // -------------------------------------------------------------------------
+
+    [Header("Lesson Pages")]
+    public List<LessonPage> lessonPages = new List<LessonPage>();
 
     [Header("Lesson Flow")]
     public List<BrailleLesson> lessons = new List<BrailleLesson>();
@@ -169,6 +193,7 @@ public class AnimalSounds2 : MonoBehaviour
     private bool sceneFinished = false;
     private bool waitingForRepeatChoice = false;
     private bool waitingForChoiceAnswer = false;
+    private bool waitingForLessonChoice = false;
 
     private Coroutine flowRoutine;
     private Coroutine bubbleTypeRoutine;
@@ -305,11 +330,61 @@ public class AnimalSounds2 : MonoBehaviour
         lessonActive = false;
         sceneFinished = false;
         waitingForRepeatChoice = false;
+        waitingForLessonChoice = false;
 
-        yield return ShowBubbleMessageSynced(welcomeMessage, welcomeAudio, noAudioTextDelay);
+        yield return PlayLessonPages();
+    }
+
+    private IEnumerator PlayLessonPages()
+    {
+        foreach (LessonPage page in lessonPages)
+        {
+            if (displayLabelText != null)
+                displayLabelText.text = page.title;
+
+            if (categoryText != null)
+                categoryText.text = "LESSON";
+
+            if (displayImageUI != null)
+            {
+                displayImageUI.sprite = page.lessonImage;
+                displayImageUI.enabled = page.lessonImage != null;
+            }
+
+            yield return ShowBubbleMessageSynced(
+                page.lessonText,
+                page.lessonAudio,
+                noAudioTextDelay
+            );
+
+            yield return new WaitForSeconds(delayAfterVoice);
+        }
+
+        waitingForLessonChoice = true;
+
+        yield return ShowBubbleMessageSynced(
+            lessonChoiceMessage,
+            lessonChoiceAudio,
+            noAudioTextDelay);
+
+        while (waitingForLessonChoice)
+            yield return null;
+    }
+
+    private IEnumerator StartQuizAfterLesson()
+    {
+        yield return ShowBubbleMessageSynced(
+            welcomeMessage,
+            welcomeAudio,
+            noAudioTextDelay);
+
         yield return new WaitForSeconds(delayAfterVoice);
 
-        yield return ShowBubbleMessageSynced(letsLearnMessage, letsLearnAudio, noAudioTextDelay);
+        yield return ShowBubbleMessageSynced(
+            letsLearnMessage,
+            letsLearnAudio,
+            noAudioTextDelay);
+
         yield return new WaitForSeconds(delayAfterVoice);
 
         StartLesson(0);
@@ -575,6 +650,13 @@ public class AnimalSounds2 : MonoBehaviour
     /// </summary>
     private void HandleRepeat()
     {
+        if (waitingForLessonChoice)
+        {
+            waitingForLessonChoice = false;
+            RunFlow(PlayLessonPages());
+            return;
+        }
+
         if (waitingForRepeatChoice)
         {
             waitingForRepeatChoice = false;
@@ -606,6 +688,13 @@ public class AnimalSounds2 : MonoBehaviour
 
     private void HandleNext()
     {
+        if (waitingForLessonChoice)
+        {
+            waitingForLessonChoice = false;
+            RunFlow(StartQuizAfterLesson());
+            return;
+        }
+
         if (waitingForRepeatChoice)
         {
             waitingForRepeatChoice = false;

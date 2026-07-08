@@ -1684,7 +1684,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Sound in the Environments
+  m_text: Identifying Alphabets
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1a98abfae0e1fc34282e9b7fd0f3a427, type: 2}
   m_sharedMaterial: {fileID: -8189821304231711609, guid: 1a98abfae0e1fc34282e9b7fd0f3a427, type: 2}
@@ -2414,7 +2414,7 @@ GameObject:
   - component: {fileID: 1586095492}
   - component: {fileID: 1586095493}
   m_Layer: 5
-  m_Name: SoundsInTheEnvironmentManager
+  m_Name: IdentifyingAlphabetsManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3013,33 +3013,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 1586095473}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce9d2804ff19a39499c7c99e10ad2fe9, type: 3}
+  m_Script: {fileID: 11500000, guid: 42fee0f4a6c82324eb9f1a13c09c46d4, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
+  m_EditorClassIdentifier: Assembly-CSharp::IdentifyingAlphabets
   bubbleMessageText: {fileID: 1257937990}
-  displayLabelText: {fileID: 0}
-  categoryText: {fileID: 0}
-  livePatternText: {fileID: 0}
-  displayImageUI: {fileID: 0}
-  answerStateImage: {fileID: 0}
-  correctStateSprite: {fileID: 0}
-  wrongStateSprite: {fileID: 0}
-  hideAnswerStateAtStart: 0
-  fixScoreText: {fileID: 0}
-  wrongScoreText: {fileID: 0}
-  totalScoreText: {fileID: 0}
-  highScoreText: {fileID: 0}
+  displayLabelText: {fileID: 843676732}
+  categoryText: {fileID: 1155271827}
+  livePatternText: {fileID: 1697798612}
+  displayImageUI: {fileID: 54352918}
+  answerStateImage: {fileID: 2047379756}
+  correctStateSprite: {fileID: -4207999480553683411, guid: 4e35d4a30fee8cc4580f2983361350b4, type: 3}
+  wrongStateSprite: {fileID: 7071201414940298460, guid: bee3415c56ef4054aa185675bb6dc185, type: 3}
+  hideAnswerStateAtStart: 1
+  fixScoreText: {fileID: 1777884057}
+  wrongScoreText: {fileID: 1070165176}
+  totalScoreText: {fileID: 1113401178}
+  highScoreText: {fileID: 1262590508}
   fixedScore: 100
   deductionPerMistake: 1
   highScoreKey: InstrumentSoundsHighScore
-  voiceAudioSource: {fileID: 0}
-  sfxAudioSource: {fileID: 0}
+  voiceAudioSource: {fileID: 1586095478}
   welcomeAudio: {fileID: 0}
   letsLearnAudio: {fileID: 0}
-  genericCorrectAudio: {fileID: 0}
-  genericTryAgainAudio: {fileID: 0}
-  genericCompletedAudio: {fileID: 0}
-  repeatQuestionAudio: {fileID: 0}
+  genericCorrectAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
+  genericTryAgainAudio: {fileID: 8300000, guid: dd615f4eef83e3b49b22a11445f9b6d6, type: 3}
+  genericCompletedAudio: {fileID: 8300000, guid: 613a4ecd64752ee4c8844d8286dca545, type: 3}
+  repeatQuestionAudio: {fileID: 8300000, guid: 2525c179990406146becd993f00485ee, type: 3}
+  letterAAudio: {fileID: 0}
+  letterBAudio: {fileID: 0}
+  letterCAudio: {fileID: 0}
   yourScoreIsAudio: {fileID: 0}
   whileYourHighestScoreIsAudio: {fileID: 0}
   numberAudios: []
@@ -3048,36 +3050,11 @@ MonoBehaviour:
   completedMessage: Great job! You finished the lesson.
   repeatQuestionMessage: You finished the lesson. Do you want to repeat again? Press
     R to repeat or Y to finish.
-  lessons:
-  - displayLabel: 
-    question1Category: 
-    question2Category: 
-    displayImage: {fileID: 0}
-    introductionMessage: 
-    introductionAudio: {fileID: 0}
-    instrumentSoundEffect: {fileID: 0}
-    sourceQuestion:
-      optionALabel: 
-      optionBLabel: 
-      correctAnswer: 0
-      promptMessageTemplate: 
-      promptAudio: {fileID: 0}
-      successMessage: 
-      successAudio: {fileID: 0}
-      wrongMessage: 
-      wrongAudio: {fileID: 0}
-      supportMessage: 
-      supportAudio: {fileID: 0}
-    volumeQuestion:
-      promptMessage: 
-      promptAudio: {fileID: 0}
-      correctAnswer: 0
-      successMessage: 
-      successAudio: {fileID: 0}
-      wrongMessage: 
-      wrongAudio: {fileID: 0}
-      supportMessage: 
-      supportAudio: {fileID: 0}
+  lessonChoiceMessage: You have finished learning about animal sounds. Press repeat
+    to repeat the lesson or press next to begin the quiz.
+  lessonChoiceAudio: {fileID: 0}
+  lessonPages: []
+  lessons: []
   delayAfterVoice: 0.35
   noAudioTextDelay: 2
   delayAfterCorrect: 0.75
