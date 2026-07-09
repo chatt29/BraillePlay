@@ -921,19 +921,155 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40b68a3616a14b44383f4f25f4cc0030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Beginning_Letters
-  words:
-  - word: Cake
-    wordAudio: {fileID: 8300000, guid: 531125f81aa5e3e4d8208e8daac36ac9, type: 3}
-    rhymingAnswers: []
-  wordAudioSource: {fileID: 1111531425}
-  inputAudioSource: {fileID: 0}
-  letterSounds: []
-  inputField: {fileID: 1459693709}
-  scoreText: {fileID: 844742359}
-  wrongText: {fileID: 1242371997}
-  feedbackText: {fileID: 1257937990}
-  startingScore: 100
-  deductionPerWrong: 1
+  resultReporter: {fileID: 0}
+  bubbleMessageText: {fileID: 1257937990}
+  displayLabelText: {fileID: 843676732}
+  categoryText: {fileID: 1155271827}
+  livePatternText: {fileID: 1697798612}
+  displayImageUI: {fileID: 0}
+  answerStateImage: {fileID: 0}
+  correctStateSprite: {fileID: 0}
+  wrongStateSprite: {fileID: 0}
+  hideAnswerStateAtStart: 0
+  fixScoreText: {fileID: 1777884057}
+  wrongScoreText: {fileID: 1070165176}
+  totalScoreText: {fileID: 1113401178}
+  highScoreText: {fileID: 1262590508}
+  fixedScore: 100
+  deductionPerMistake: 1
+  highScoreKey: BrailleRhymeTimeHighScore
+  voiceAudioSource: {fileID: 0}
+  welcomeAudio: {fileID: 0}
+  letsLearnAudio: {fileID: 0}
+  genericCorrectAudio: {fileID: 8300000, guid: d376210924505a34899d8e12046d7832, type: 3}
+  genericTryAgainAudio: {fileID: 8300000, guid: dd615f4eef83e3b49b22a11445f9b6d6, type: 3}
+  genericCompletedAudio: {fileID: 8300000, guid: 2e8ff559eb5aead43a5c8e87b09eb8ca, type: 3}
+  repeatQuestionAudio: {fileID: 8300000, guid: f5b0be677939adb42bc043a3499ff84c, type: 3}
+  yourScoreIsAudio: {fileID: 8300000, guid: 613a4ecd64752ee4c8844d8286dca545, type: 3}
+  whileYourHighestScoreIsAudio: {fileID: 8300000, guid: 2525c179990406146becd993f00485ee, type: 3}
+  numberAudios:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: a9afdf1f202626e4d815f3d339f223c4, type: 3}
+  - {fileID: 8300000, guid: 21a469d6598c3204ab82b509e42e89f8, type: 3}
+  - {fileID: 8300000, guid: 5bd190e14c182b24d9e04c61a35f3b29, type: 3}
+  - {fileID: 8300000, guid: c6f4937e92350a04a82d4bd76eef52ba, type: 3}
+  - {fileID: 8300000, guid: 701a3679a01f84e43aa1fa9d4a3c0785, type: 3}
+  - {fileID: 8300000, guid: bde38e84ced6de84cb95115723d7bdf4, type: 3}
+  - {fileID: 8300000, guid: fe9932ae0117e154d998e51d9ed611e0, type: 3}
+  - {fileID: 8300000, guid: 94091ec33fbd6b349ba6e703387e4866, type: 3}
+  - {fileID: 8300000, guid: ee8cfcb8b3588954ea24c10457255924, type: 3}
+  - {fileID: 8300000, guid: 5e889505e0e0d2a4db129b0905352109, type: 3}
+  - {fileID: 8300000, guid: 65fabefe77170f948ba6088e0e5a0f95, type: 3}
+  - {fileID: 8300000, guid: 6a0ec25b8a422c646b399ddcae7b2c62, type: 3}
+  - {fileID: 8300000, guid: 437fe84d57fc7f64cad7d56e2a8c9a89, type: 3}
+  - {fileID: 8300000, guid: 0d5771525d0e1814ab6d369e7eb1c3ba, type: 3}
+  - {fileID: 8300000, guid: 8881ea521aa0c7a4f9ae441c637350e6, type: 3}
+  - {fileID: 8300000, guid: e8c2b8bd9bd8f9e428347c57e9710cd4, type: 3}
+  - {fileID: 8300000, guid: 09027ef61068784478c1b32badf50904, type: 3}
+  - {fileID: 8300000, guid: e8c38c6593d87944187086e01dbfdb98, type: 3}
+  - {fileID: 8300000, guid: 31becc0a3e7892e468b4ac4372db4882, type: 3}
+  - {fileID: 8300000, guid: caf77e0d1f468b64ab86183d4318a7f8, type: 3}
+  - {fileID: 8300000, guid: 579c9253f6a5be6499ca8a1851d07f90, type: 3}
+  welcomeMessage: Welcome to Lesson 5
+  letsLearnMessage: Let's match some rhyming words.
+  completedMessage: Great job! You finished the rhyme lesson.
+  repeatQuestionMessage: You finished the lesson. Do you want to repeat again? Press
+    R to repeat or Y to finish.
+  repeatLessonMessage: You have finished the lesson. Press R to repeat the lesson
+    or press Y to begin the quiz.
+  repeatLessonAudio: {fileID: 0}
+  lessonPages: []
+  lessons: []
+  delayAfterVoice: 0.35
+  noAudioTextDelay: 2
+  delayAfterCorrect: 0.75
+  mistakesBeforeSupport: 3
+  resetMistakesAfterSupport: 1
+  useTypewriterEffect: 1
+  defaultTypewriterCharacterDelay: 0.03
+  minSyncedCharacterDelay: 0.01
+  maxSyncedCharacterDelay: 0.12
+  waitForFullAudioBeforeContinuing: 1
+  logDebug: 1
 --- !u!1 &803834282
 GameObject:
   m_ObjectHideFlags: 0
@@ -3702,8 +3838,8 @@ RectTransform:
   - {fileID: 286661653}
   - {fileID: 1155271826}
   - {fileID: 2047379755}
-  - {fileID: 54352917}
   - {fileID: 666421660}
+  - {fileID: 54352917}
   - {fileID: 1111531424}
   - {fileID: 1586396261}
   m_Father: {fileID: 83132950}
