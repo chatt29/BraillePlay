@@ -5,7 +5,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class BrailleRhymeTime : MonoBehaviour
+public class BrailleOnsetRimeTime : MonoBehaviour
 {
     [Serializable]
     public class LessonPage
@@ -23,11 +23,11 @@ public class BrailleRhymeTime : MonoBehaviour
     }
 
     [Serializable]
-    public class RhymeLesson
+    public class OnsetRimeLesson
     {
         [Header("Identity")]
-        public string displayLabel; // e.g., "Cat & Hat"
-        public string categoryLabel = "RHYME";
+        public string displayLabel; 
+        public string categoryLabel = "ONSET & RIME";
 
         [Header("Messages")]
         [TextArea(2, 4)]
@@ -51,15 +51,15 @@ public class BrailleRhymeTime : MonoBehaviour
         public AudioClip successAudio;
         public AudioClip repeatAudio;
 
-        [Header("Rhyme Identification")]
-        public bool useRhymeQuestion = false;
-        public AudioClip targetWordAudio; // Audio of the word to match (e.g., "Cat")
+        [Header("Onset & Rime Identification")]
+        public bool useOnsetRimeQuestion = false;
+        public AudioClip targetWordAudio; 
 
         [TextArea(2, 4)]
-        public string rhymeQuestionMessage; // e.g., "Does 'Hat' rhyme with 'Cat'?"
+        public string onsetRimeQuestionMessage; 
 
-        public AudioClip rhymeQuestionAudio; // Audio asking the question
-        public bool correctAnswerIsTrue = true; // True if they rhyme, False if they don't
+        public AudioClip onsetRimeQuestionAudio; 
+        public bool correctAnswerIsTrue = true; 
 
         [Header("Support After Mistakes")]
         [TextArea(2, 4)]
@@ -97,7 +97,7 @@ public class BrailleRhymeTime : MonoBehaviour
     [Header("Quiz Score Settings")]
     public int fixedScore = 100;
     public int deductionPerMistake = 1;
-    public string highScoreKey = "BrailleRhymeTimeHighScore";
+    public string highScoreKey = "BrailleOnsetRimeHighScore";
 
     // -------------------------------------------------------------------------
     // Audio
@@ -125,20 +125,20 @@ public class BrailleRhymeTime : MonoBehaviour
 
     [Header("Scene Text")]
     [TextArea(2, 5)]
-    public string welcomeMessage = "Welcome to Braille Rhyme Time!";
+    public string welcomeMessage = "Welcome to Braille Onset and Rime Time!";
 
     [TextArea(2, 5)]
-    public string letsLearnMessage = "Let's match some rhyming words.";
+    public string letsLearnMessage = "Let's blend some word parts together.";
 
     [TextArea(2, 5)]
-    public string completedMessage = "Great job! You finished the rhyme lesson.";
+    public string completedMessage = "Great job! You finished the onset and rime lesson.";
 
     [TextArea(2, 5)]
     public string repeatQuestionMessage = "You finished the lesson. Do you want to repeat again? Press R to repeat or Y to finish.";
 
     [TextArea(2, 5)]
     public string repeatLessonMessage =
-    "You have finished the lesson. Press R to repeat the lesson or press Y to begin the quiz.";
+    "You have finished the lesson. Press R to repeat the lesson or press Space to begin the quiz.";
 
     public AudioClip repeatLessonAudio;
 
@@ -150,7 +150,7 @@ public class BrailleRhymeTime : MonoBehaviour
     public List<LessonPage> lessonPages = new List<LessonPage>();
 
     [Header("Quiz Flow")]
-    public List<RhymeLesson> lessons = new List<RhymeLesson>();
+    public List<OnsetRimeLesson> lessons = new List<OnsetRimeLesson>();
     public float delayAfterVoice = 0.35f;
     public float noAudioTextDelay = 2f;
     public float delayAfterCorrect = 0.75f;
@@ -182,14 +182,14 @@ public class BrailleRhymeTime : MonoBehaviour
     private bool lessonActive = false;
     private bool sceneFinished = false;
     private bool waitingForRepeatChoice = false;
-    private bool waitingForRhymeQuestion = false;
+    private bool waitingForOnsetRimeQuestion = false;
     private bool waitingForLessonChoice = false;
 
     private Coroutine flowRoutine;
     private Coroutine bubbleTypeRoutine;
 
     // -------------------------------------------------------------------------
-    // Unity Events
+    // Unity Events & Braille Mapping Subscriptions
     // -------------------------------------------------------------------------
 
     private void OnEnable()
@@ -217,7 +217,7 @@ public class BrailleRhymeTime : MonoBehaviour
     private void Start()
     {
         if (logDebug)
-            Debug.Log("BrailleRhymeTime started.");
+            Debug.Log("BrailleOnsetRimeTime successfully mapped and started.");
 
         ResetQuizScore();
         RunFlow(BeginSceneFlow());
@@ -278,6 +278,12 @@ public class BrailleRhymeTime : MonoBehaviour
 
         answerStateImage.enabled = true;
         answerStateImage.sprite = isCorrect ? correctStateSprite : wrongStateSprite;
+
+        if (BrailleMapping.Instance != null)
+        {
+            if (isCorrect) BrailleMapping.Instance.PlayCorrectSfx();
+            else BrailleMapping.Instance.PlayWrongSfx();
+        }
     }
 
     private void ResetAnswerState()
@@ -405,7 +411,7 @@ public class BrailleRhymeTime : MonoBehaviour
         lessonActive = true;
         sceneFinished = false;
         waitingForRepeatChoice = false;
-        waitingForRhymeQuestion = false;
+        waitingForOnsetRimeQuestion = false;
 
         if (logDebug)
             Debug.Log($"Starting lesson {currentLessonIndex}: {lessons[currentLessonIndex].displayLabel}");
@@ -413,7 +419,7 @@ public class BrailleRhymeTime : MonoBehaviour
         RunFlow(PlayLessonFromBeginning(lessons[currentLessonIndex]));
     }
 
-    private IEnumerator PlayLessonFromBeginning(RhymeLesson lesson)
+    private IEnumerator PlayLessonFromBeginning(OnsetRimeLesson lesson)
     {
         ResetAnswerState();
         ApplyLessonDisplay(lesson);
@@ -421,11 +427,11 @@ public class BrailleRhymeTime : MonoBehaviour
         yield return ShowPromptMessage(lesson);
         yield return new WaitForSeconds(delayAfterVoice);
 
-        if (lesson.useRhymeQuestion)
-            yield return AskRhymeQuestion(lesson);
+        if (lesson.useOnsetRimeQuestion)
+            yield return AskOnsetRimeQuestion(lesson);
     }
 
-    private void ApplyLessonDisplay(RhymeLesson lesson)
+    private void ApplyLessonDisplay(OnsetRimeLesson lesson)
     {
         if (displayLabelText != null)
             displayLabelText.text = lesson.displayLabel;
@@ -438,11 +444,11 @@ public class BrailleRhymeTime : MonoBehaviour
 
         if (categoryText != null)
             categoryText.text = string.IsNullOrWhiteSpace(lesson.categoryLabel)
-                ? "RHYME"
+                ? "ONSET & RIME"
                 : lesson.categoryLabel;
     }
 
-    private IEnumerator ShowPromptMessage(RhymeLesson lesson)
+    private IEnumerator ShowPromptMessage(OnsetRimeLesson lesson)
     {
         string introMessage = !string.IsNullOrWhiteSpace(lesson.promptMessage)
             ? lesson.promptMessage
@@ -456,9 +462,9 @@ public class BrailleRhymeTime : MonoBehaviour
         );
     }
 
-    private IEnumerator AskRhymeQuestion(RhymeLesson lesson)
+    private IEnumerator AskOnsetRimeQuestion(OnsetRimeLesson lesson)
     {
-        waitingForRhymeQuestion = true;
+        waitingForOnsetRimeQuestion = true;
 
         if (lesson.targetWordAudio != null && voiceAudioSource != null)
         {
@@ -471,8 +477,8 @@ public class BrailleRhymeTime : MonoBehaviour
         yield return new WaitForSeconds(delayAfterVoice);
 
         yield return ShowBubbleMessageSynced(
-            lesson.rhymeQuestionMessage,
-            lesson.rhymeQuestionAudio,
+            lesson.onsetRimeQuestionMessage,
+            lesson.onsetRimeQuestionAudio,
             noAudioTextDelay
         );
     }
@@ -486,26 +492,26 @@ public class BrailleRhymeTime : MonoBehaviour
         if (!lessonActive || sceneFinished || waitingForRepeatChoice)
             return;
 
-        if (waitingForRhymeQuestion)
+        if (waitingForOnsetRimeQuestion)
         {
-            HandleRhymeQuestion(submittedPattern);
+            HandleOnsetRimeQuestion(submittedPattern);
             return;
         }
     }
 
-    private void HandleRhymeQuestion(string pattern)
+    private void HandleOnsetRimeQuestion(string pattern)
     {
-        if (!waitingForRhymeQuestion) return;
+        if (!waitingForOnsetRimeQuestion) return;
 
-        // Dot 1 = Yes (Rhymes) | Dot 2 = No (Doesn't Rhyme)
+        // Dot 1 (100000) = Yes/True, Dot 2 (010000) = No/False
         bool userAnswer;
 
         if (pattern == "100000") userAnswer = true;
         else if (pattern == "010000") userAnswer = false;
         else return;
 
-        RhymeLesson lesson = lessons[currentLessonIndex];
-        waitingForRhymeQuestion = false;
+        OnsetRimeLesson lesson = lessons[currentLessonIndex];
+        waitingForOnsetRimeQuestion = false;
 
         if (userAnswer == lesson.correctAnswerIsTrue)
         {
@@ -531,13 +537,13 @@ public class BrailleRhymeTime : MonoBehaviour
     // Correct / Wrong / Support
     // -------------------------------------------------------------------------
 
-    private IEnumerator HandleCorrectAnswer(RhymeLesson lesson)
+    private IEnumerator HandleCorrectAnswer(OnsetRimeLesson lesson)
     {
         SaveHighScoreIfNeeded();
 
         string message = !string.IsNullOrWhiteSpace(lesson.successMessage)
             ? lesson.successMessage
-            : $"Correct! They rhyme.";
+            : $"Correct matching!";
 
         AudioClip clip = lesson.successAudio != null
             ? lesson.successAudio
@@ -549,32 +555,32 @@ public class BrailleRhymeTime : MonoBehaviour
         StartLesson(currentLessonIndex + 1);
     }
 
-    private IEnumerator HandleWrongAnswer(RhymeLesson lesson)
+    private IEnumerator HandleWrongAnswer(OnsetRimeLesson lesson)
     {
         string message = !string.IsNullOrWhiteSpace(lesson.wrongMessage)
             ? lesson.wrongMessage
             : "Try again.";
 
         yield return ShowBubbleMessageSynced(message, genericTryAgainAudio, noAudioTextDelay);
-        yield return AskRhymeQuestion(lesson);
+        yield return AskOnsetRimeQuestion(lesson);
     }
 
-    private IEnumerator HandleSupportThenRetry(RhymeLesson lesson)
+    private IEnumerator HandleSupportThenRetry(OnsetRimeLesson lesson)
     {
         string message = !string.IsNullOrWhiteSpace(lesson.supportMessage)
             ? lesson.supportMessage
-            : "Let's listen to the ending sounds together.";
+            : "Let's chunk the onset and rime parts together.";
 
         yield return ShowBubbleMessageSynced(message, lesson.supportAudio, noAudioTextDelay);
 
         if (resetMistakesAfterSupport)
             currentMistakeCount = 0;
 
-        yield return AskRhymeQuestion(lesson);
+        yield return AskOnsetRimeQuestion(lesson);
     }
 
     // -------------------------------------------------------------------------
-    // Repeat / Next handlers
+    // Action Events
     // -------------------------------------------------------------------------
 
     private void HandleRepeat()
@@ -600,10 +606,10 @@ public class BrailleRhymeTime : MonoBehaviour
         if (sceneFinished || currentLessonIndex < 0 || currentLessonIndex >= lessons.Count)
             return;
 
-        RhymeLesson lesson = lessons[currentLessonIndex];
+        OnsetRimeLesson lesson = lessons[currentLessonIndex];
 
         lessonActive = true;
-        waitingForRhymeQuestion = false;
+        waitingForOnsetRimeQuestion = false;
         currentMistakeCount = 0;
 
         RunFlow(PlayLessonFromBeginning(lesson));
@@ -680,7 +686,7 @@ public class BrailleRhymeTime : MonoBehaviour
         if (resultReporter != null)
             resultReporter.ReportScoreAndReturn(totalScore);
         else
-            Debug.LogWarning("[BrailleRhymeTime] No QuizResultReporter assigned - score won't be saved.");
+            Debug.LogWarning("[BrailleOnsetRimeTime] No QuizResultReporter assigned - score won't be saved.");
     }
 
     // -------------------------------------------------------------------------
