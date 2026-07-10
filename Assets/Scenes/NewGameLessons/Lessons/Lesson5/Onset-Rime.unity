@@ -939,8 +939,8 @@ MonoBehaviour:
   deductionPerMistake: 1
   highScoreKey: BrailleRhymeTimeHighScore
   voiceAudioSource: {fileID: 1111531425}
-  welcomeAudio: {fileID: 0}
-  letsLearnAudio: {fileID: 0}
+  welcomeAudio: {fileID: 8300000, guid: 622b6ac6ef733f242a95c23c98119d44, type: 3}
+  letsLearnAudio: {fileID: 8300000, guid: e882295fe614cd54384df05c6ccca3d5, type: 3}
   genericCorrectAudio: {fileID: 8300000, guid: d376210924505a34899d8e12046d7832, type: 3}
   genericTryAgainAudio: {fileID: 8300000, guid: dd615f4eef83e3b49b22a11445f9b6d6, type: 3}
   genericCompletedAudio: {fileID: 8300000, guid: 2e8ff559eb5aead43a5c8e87b09eb8ca, type: 3}
@@ -1049,15 +1049,47 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 31becc0a3e7892e468b4ac4372db4882, type: 3}
   - {fileID: 8300000, guid: caf77e0d1f468b64ab86183d4318a7f8, type: 3}
   - {fileID: 8300000, guid: 579c9253f6a5be6499ca8a1851d07f90, type: 3}
-  welcomeMessage: Welcome to Lesson 5
-  letsLearnMessage: 
+  welcomeMessage: Now that you have finished the lesson,  we will have a quiz.
+  letsLearnMessage: Press the dots of the missing letter which is the onset of the
+    word to complete it.
   completedMessage: Great job! You finished the lesson.
   repeatQuestionMessage: You finished the lesson. Do you want to repeat again? Press
     R to repeat or Y to finish.
   repeatLessonMessage: You have finished the lesson. Press R to repeat the lesson
     or press Y to begin the quiz.
-  repeatLessonAudio: {fileID: 0}
-  lessonPages: []
+  repeatLessonAudio: {fileID: 8300000, guid: eaf9daeefa1d1e14fb457ef584bacd86, type: 3}
+  lessonPages:
+  - title: 
+    lessonText: Welcome to Lesson Five. Today, we will learn about onset and rime
+      using the short E sound.
+    lessonImage: {fileID: 0}
+    lessonAudio: {fileID: 8300000, guid: 1d840590305a28e4596fdacc9e65567f, type: 3}
+  - title: 
+    lessonText: Words are made of different parts. The beginning sound of a word
+      is called the onset.
+    lessonImage: {fileID: 0}
+    lessonAudio: {fileID: 8300000, guid: 9ad3b53a41785ca4ba73b5a9e3b4aba4, type: 3}
+  - title: 
+    lessonText: 'The ending part, including the vowel and any sounds after it, is
+      called the rime.
+
+'
+    lessonImage: {fileID: 0}
+    lessonAudio: {fileID: 8300000, guid: 818599a40fa765f4dae7ff4bd8b971eb, type: 3}
+  - title: 
+    lessonText: 'We can chop these words into two chunks. The onset is the starting
+      consonant sound. '
+    lessonImage: {fileID: 0}
+    lessonAudio: {fileID: 8300000, guid: 7ffbee3265706e548a99dee357bc0a52, type: 3}
+  - title: 
+    lessonText: The rime is the vowel and everything after it.
+    lessonImage: {fileID: 0}
+    lessonAudio: {fileID: 8300000, guid: 88fe25ea2dfd1c04d806a225ba232227, type: 3}
+  - title: 
+    lessonText: For example, in the word 'web', the /w/ is the onset, and /eb/ is
+      the rime.
+    lessonImage: {fileID: 0}
+    lessonAudio: {fileID: 8300000, guid: 1a3ce3db25323b441984988be8eca172, type: 3}
   lessons: []
   delayAfterVoice: 0.35
   noAudioTextDelay: 2
