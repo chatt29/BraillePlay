@@ -2411,7 +2411,6 @@ GameObject:
   - component: {fileID: 1586095474}
   - component: {fileID: 1586095478}
   - component: {fileID: 1586095484}
-  - component: {fileID: 1586095491}
   - component: {fileID: 1586095492}
   m_Layer: 5
   m_Name: RimesEmEllEbManager
@@ -2640,374 +2639,6 @@ MonoBehaviour:
   logInputs: 0
   playLetterSoundOnChord: 1
   playOtherPatternSoundOnChord: 1
---- !u!114 &1586095491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1586095473}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57744976a92ed334c9a1d2d4d5006357, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AnimalSounds2
-  bubbleMessageText: {fileID: 1257937990}
-  displayLabelText: {fileID: 843676732}
-  categoryText: {fileID: 1155271827}
-  livePatternText: {fileID: 1697798612}
-  displayImageUI: {fileID: 54352918}
-  answerStateImage: {fileID: 2047379756}
-  correctStateSprite: {fileID: -4207999480553683411, guid: 4e35d4a30fee8cc4580f2983361350b4, type: 3}
-  wrongStateSprite: {fileID: 7071201414940298460, guid: bee3415c56ef4054aa185675bb6dc185, type: 3}
-  hideAnswerStateAtStart: 1
-  fixScoreText: {fileID: 1777884057}
-  wrongScoreText: {fileID: 1070165176}
-  totalScoreText: {fileID: 1113401178}
-  highScoreText: {fileID: 1262590508}
-  fixedScore: 100
-  deductionPerMistake: 1
-  highScoreKey: BrailleSoundsAroundHighScore
-  voiceAudioSource: {fileID: 1586095478}
-  welcomeAudio: {fileID: 8300000, guid: 1e5b72b531abe6a419a3a7a0434736c0, type: 3}
-  letsLearnAudio: {fileID: 8300000, guid: 7931dcdc3d1268c4383f9297ab391722, type: 3}
-  genericCorrectAudio: {fileID: 8300000, guid: 587dfae100161f646a4b8e246de58429, type: 3}
-  genericTryAgainAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-  genericCompletedAudio: {fileID: 8300000, guid: 439e8e52fb219e64e8ebeb888dc1dcb2, type: 3}
-  repeatQuestionAudio: {fileID: 8300000, guid: 6e0af612d0f553543909ab2d4c7f1b7c, type: 3}
-  letterAAudio: {fileID: 8300000, guid: 42701a2ed6601e345945e43b1120e18e, type: 3}
-  letterBAudio: {fileID: 8300000, guid: c8c1c489208b62d4a8fc76e6666cbd62, type: 3}
-  letterCAudio: {fileID: 8300000, guid: 90c6142c3d1a7464ebe56f87204bea71, type: 3}
-  yourScoreIsAudio: {fileID: 8300000, guid: 613a4ecd64752ee4c8844d8286dca545, type: 3}
-  whileYourHighestScoreIsAudio: {fileID: 8300000, guid: 2525c179990406146becd993f00485ee, type: 3}
-  numberAudios:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 8300000, guid: a9afdf1f202626e4d815f3d339f223c4, type: 3}
-  - {fileID: 8300000, guid: 21a469d6598c3204ab82b509e42e89f8, type: 3}
-  - {fileID: 8300000, guid: 5bd190e14c182b24d9e04c61a35f3b29, type: 3}
-  - {fileID: 8300000, guid: c6f4937e92350a04a82d4bd76eef52ba, type: 3}
-  - {fileID: 8300000, guid: 701a3679a01f84e43aa1fa9d4a3c0785, type: 3}
-  - {fileID: 8300000, guid: bde38e84ced6de84cb95115723d7bdf4, type: 3}
-  - {fileID: 8300000, guid: fe9932ae0117e154d998e51d9ed611e0, type: 3}
-  - {fileID: 8300000, guid: 94091ec33fbd6b349ba6e703387e4866, type: 3}
-  - {fileID: 8300000, guid: ee8cfcb8b3588954ea24c10457255924, type: 3}
-  - {fileID: 8300000, guid: 5e889505e0e0d2a4db129b0905352109, type: 3}
-  - {fileID: 8300000, guid: 65fabefe77170f948ba6088e0e5a0f95, type: 3}
-  - {fileID: 8300000, guid: 6a0ec25b8a422c646b399ddcae7b2c62, type: 3}
-  - {fileID: 8300000, guid: 437fe84d57fc7f64cad7d56e2a8c9a89, type: 3}
-  - {fileID: 8300000, guid: 0d5771525d0e1814ab6d369e7eb1c3ba, type: 3}
-  - {fileID: 8300000, guid: 8881ea521aa0c7a4f9ae441c637350e6, type: 3}
-  - {fileID: 8300000, guid: e8c2b8bd9bd8f9e428347c57e9710cd4, type: 3}
-  - {fileID: 8300000, guid: 09027ef61068784478c1b32badf50904, type: 3}
-  - {fileID: 8300000, guid: e8c38c6593d87944187086e01dbfdb98, type: 3}
-  - {fileID: 8300000, guid: 31becc0a3e7892e468b4ac4372db4882, type: 3}
-  - {fileID: 8300000, guid: caf77e0d1f468b64ab86183d4318a7f8, type: 3}
-  - {fileID: 8300000, guid: 579c9253f6a5be6499ca8a1851d07f90, type: 3}
-  welcomeMessage: Welcome to Animal Sounds Quiz.
-  letsLearnMessage: 'In this quiz, you''re going to choose the correct sound that
-    is produced by the given animals. There will be 3 choices: A, B, and C. Press
-    dot number 1 for A, dot number 2 for B, and dot number 3 for C.'
-  completedMessage: Great Job! You finished Lesson 2 Animal Sounds.
-  repeatQuestionMessage: Do you want to repeat again? Press repeat to repeat or Next
-    to continue.
-  lessonChoiceMessage: You have finished learning about animal sounds. Press repeat
-    to repeat the lesson or press next to begin the quiz.
-  lessonChoiceAudio: {fileID: 8300000, guid: 2a91f4f2e06d82048a1bec8794a94244, type: 3}
-  lessonPages:
-  - title: 
-    lessonText: Welcome to Lesson 2, Animal Sounds.
-    lessonImage: {fileID: 0}
-    lessonAudio: {fileID: 8300000, guid: 07c88ca858526bb4e95592af2b38718f, type: 3}
-  - title: 
-    lessonText: Now that you've learned some of the sounds you can here on your everyday
-      life, lets be specific into learning what are the sounds produced by an animals.
-    lessonImage: {fileID: 0}
-    lessonAudio: {fileID: 8300000, guid: d10e18940478e06409ab472bb847481d, type: 3}
-  - title: 
-    lessonText: Animals make different sounds. These sounds help animals communicate
-      with one another. We can also identify animals by listening carefully to the
-      sounds they make.
-    lessonImage: {fileID: 0}
-    lessonAudio: {fileID: 8300000, guid: d49ef0f243d9ae044a1260d3de23850b, type: 3}
-  - title: 
-    lessonText: For an example, Horses, Horses neighs.
-    lessonImage: {fileID: 0}
-    lessonAudio: {fileID: 8300000, guid: ad81f3f3cf51f4a4f94afca86cb4f550, type: 3}
-  - title: 
-    lessonText: Nneiggh
-    lessonImage: {fileID: 0}
-    lessonAudio: {fileID: 8300000, guid: da1935713bb5c2d4e9cdd705a4cb916f, type: 3}
-  - title: 
-    lessonText: Goat bleets
-    lessonImage: {fileID: 0}
-    lessonAudio: {fileID: 8300000, guid: e2d51d1ff121f9641b300ff173e6c17a, type: 3}
-  - title: 
-    lessonText: Meeee
-    lessonImage: {fileID: 0}
-    lessonAudio: {fileID: 8300000, guid: dce348faffb75614f8ffea2d5d28242f, type: 3}
-  - title: 
-    lessonText: Cat Meows
-    lessonImage: {fileID: 0}
-    lessonAudio: {fileID: 8300000, guid: 74610c52326ac2644a6bdf0a56957053, type: 3}
-  - title: 
-    lessonText: Meow
-    lessonImage: {fileID: 0}
-    lessonAudio: {fileID: 8300000, guid: 789473d6f2023f44aba6ddb9c2eea13e, type: 3}
-  - title: 
-    lessonText: Dog Barks
-    lessonImage: {fileID: 0}
-    lessonAudio: {fileID: 8300000, guid: 6e44cee697282c44895ac4199e233149, type: 3}
-  - title: 
-    lessonText: Arf-Arf
-    lessonImage: {fileID: 0}
-    lessonAudio: {fileID: 8300000, guid: fb639cbad8fc65f4591dfe41c16820d2, type: 3}
-  - title: 
-    lessonText: Cow Moos
-    lessonImage: {fileID: 0}
-    lessonAudio: {fileID: 8300000, guid: 9b06fcae76989394fb1131257d49d40f, type: 3}
-  - title: 
-    lessonText: Moooo
-    lessonImage: {fileID: 0}
-    lessonAudio: {fileID: 8300000, guid: 91cc9825a3e7b2548b3fb222e8cf2581, type: 3}
-  - title: 
-    lessonText: Or even birds sings.
-    lessonImage: {fileID: 0}
-    lessonAudio: {fileID: 8300000, guid: 5ebcc16e894f0294bb4ed3d83eb55bb2, type: 3}
-  - title: 
-    lessonText: Tweet-Tweet
-    lessonImage: {fileID: 0}
-    lessonAudio: {fileID: 8300000, guid: c928eea9a4d6ed746b88d734ec1b873e, type: 3}
-  - title: 
-    lessonText: Every animal has its own special sound.
-    lessonImage: {fileID: 0}
-    lessonAudio: {fileID: 8300000, guid: cbe4359ee18198043bc43781f9ebbe53, type: 3}
-  - title: 
-    lessonText: Sometimes we hear animals without seeing them. By listening carefully,
-      we can tell which animal is nearby. Good listening helps us learn more about
-      the world around us.
-    lessonImage: {fileID: 0}
-    lessonAudio: {fileID: 8300000, guid: f813af262bee9b84fbda0adee6b23198, type: 3}
-  - title: 
-    lessonText: Now you are ready to identify animal sounds. Good luck and have fun!
-    lessonImage: {fileID: 0}
-    lessonAudio: {fileID: 8300000, guid: a9cffb759ae40064b9a6558ceacfd4b6, type: 3}
-  lessons:
-  - displayLabel: Horse
-    categoryLabel: 'A. Meoow
-
-      B. Meeee
-
-      C. Neighh '
-    promptMessage: Number 1 Horse, What do you think the sound produced by a horse?
-    successMessage: That is correct.
-    wrongMessage: Wrong Answer, Please Try again.
-    displayImage: {fileID: 21300000, guid: 8ede91ea780400e4fa5d7443c4caa75e, type: 3}
-    introAudio: {fileID: 8300000, guid: e6061281bf1876f448b97a038f6160bc, type: 3}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
-    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-    correctAnswer: 2
-    choiceAAudio: {fileID: 8300000, guid: 789473d6f2023f44aba6ddb9c2eea13e, type: 3}
-    choiceBAudio: {fileID: 8300000, guid: dce348faffb75614f8ffea2d5d28242f, type: 3}
-    choiceCAudio: {fileID: 8300000, guid: da1935713bb5c2d4e9cdd705a4cb916f, type: 3}
-    supportMessage: Remember a horse neigh. Press dot 1 for letter A, dot 2 for letter
-      B, and dot 3 for letter C.
-    supportAudio: {fileID: 8300000, guid: 11183da83cba9e6448413db919059b20, type: 3}
-  - displayLabel: Dog
-    categoryLabel: 'A. Neighh
-
-      B. Arf - Arf
-
-      C. Mooo '
-    promptMessage: Number 2 Dog, What do you think the sound produced by a dog?
-    successMessage: That is correct.
-    wrongMessage: Wrong Answer, Please Try again.
-    displayImage: {fileID: 21300000, guid: 9df8bee007f63024c8ea56096057cb4c, type: 3}
-    introAudio: {fileID: 8300000, guid: 613b4f643fa3ae94b848c4737a018df3, type: 3}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
-    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-    correctAnswer: 1
-    choiceAAudio: {fileID: 8300000, guid: da1935713bb5c2d4e9cdd705a4cb916f, type: 3}
-    choiceBAudio: {fileID: 8300000, guid: fb639cbad8fc65f4591dfe41c16820d2, type: 3}
-    choiceCAudio: {fileID: 8300000, guid: 91cc9825a3e7b2548b3fb222e8cf2581, type: 3}
-    supportMessage: Remember a dog barks. Press dot 1 for letter A, dot 2 for letter
-      B, and dot 3 for letter C.
-    supportAudio: {fileID: 8300000, guid: 87f56afcb8d7a37499bd96bd7ac2d41d, type: 3}
-  - displayLabel: Goat
-    categoryLabel: 'A. Mooo
-
-      B. Meeee
-
-      C. Arf - Arf '
-    promptMessage: Number 3 Goat, What do you think the sound produced by a goat?
-    successMessage: That is correct.
-    wrongMessage: Wrong Answer, Please Try again.
-    displayImage: {fileID: 21300000, guid: 125323a3565dd8f4c853c1fb4f0922c7, type: 3}
-    introAudio: {fileID: 8300000, guid: d7309bafba9d1ee4ab6cdefb2aa9f2dd, type: 3}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
-    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-    correctAnswer: 1
-    choiceAAudio: {fileID: 8300000, guid: 91cc9825a3e7b2548b3fb222e8cf2581, type: 3}
-    choiceBAudio: {fileID: 8300000, guid: dce348faffb75614f8ffea2d5d28242f, type: 3}
-    choiceCAudio: {fileID: 8300000, guid: fb639cbad8fc65f4591dfe41c16820d2, type: 3}
-    supportMessage: Remember a Goat bleats. Press dot 1 for letter A, dot 2 for letter
-      B, and dot 3 for letter C.
-    supportAudio: {fileID: 8300000, guid: 2664000ce600b724a8a9f02ce1fca837, type: 3}
-  - displayLabel: Cat
-    categoryLabel: 'A. Meoow
-
-      B. Neighh
-
-      C. Tweet '
-    promptMessage: Number 4 Cat, What do you think the sound produced by a cat?
-    successMessage: That is correct.
-    wrongMessage: Wrong Answer, Please Try again.
-    displayImage: {fileID: 21300000, guid: c81aef58ae5bf4641981429b3709ca62, type: 3}
-    introAudio: {fileID: 8300000, guid: 96f4065ede193b14fbfffe113bb765ab, type: 3}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
-    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-    correctAnswer: 0
-    choiceAAudio: {fileID: 8300000, guid: 789473d6f2023f44aba6ddb9c2eea13e, type: 3}
-    choiceBAudio: {fileID: 8300000, guid: da1935713bb5c2d4e9cdd705a4cb916f, type: 3}
-    choiceCAudio: {fileID: 8300000, guid: c928eea9a4d6ed746b88d734ec1b873e, type: 3}
-    supportMessage: Remember, a Cat meows. Press dot 1 for letter A, dot 2 for letter
-      B, and dot 3 for letter C.
-    supportAudio: {fileID: 8300000, guid: 738b9dfebe952bf4aab441538bba6802, type: 3}
-  - displayLabel: Cow
-    categoryLabel: 'A. Mooo
-
-      B. Tweet
-
-      C. Meow '
-    promptMessage: Number 5 Cow, What do you think the sound produced by a cow?
-    successMessage: That is correct.
-    wrongMessage: Wrong Answer, Please Try again.
-    displayImage: {fileID: 21300000, guid: b8730347530c29a43ab14aecda1a0a7f, type: 3}
-    introAudio: {fileID: 8300000, guid: da90f80022d702049a8374c5ef8a02f4, type: 3}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
-    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-    correctAnswer: 0
-    choiceAAudio: {fileID: 8300000, guid: 91cc9825a3e7b2548b3fb222e8cf2581, type: 3}
-    choiceBAudio: {fileID: 8300000, guid: c928eea9a4d6ed746b88d734ec1b873e, type: 3}
-    choiceCAudio: {fileID: 8300000, guid: 789473d6f2023f44aba6ddb9c2eea13e, type: 3}
-    supportMessage: Remember, a Cow mooos. Press dot 1 for letter A, dot 2 for letter
-      B, and dot 3 for letter C.
-    supportAudio: {fileID: 8300000, guid: 31b83aadd413f5f47960049866cf6630, type: 3}
-  - displayLabel: Bird
-    categoryLabel: 'A. Arf - Arf
-
-      B. Meee
-
-      C. Tweet '
-    promptMessage: Number 6 Bird, What do you think the sound produced by a bird?
-    successMessage: That is correct.
-    wrongMessage: Wrong Answer, Please Try again.
-    displayImage: {fileID: 21300000, guid: c2831bdfcb4f64c4786c7164dd76daa1, type: 3}
-    introAudio: {fileID: 8300000, guid: b62d675798f3fe44b9500f4584991676, type: 3}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
-    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-    correctAnswer: 2
-    choiceAAudio: {fileID: 8300000, guid: fb639cbad8fc65f4591dfe41c16820d2, type: 3}
-    choiceBAudio: {fileID: 8300000, guid: dce348faffb75614f8ffea2d5d28242f, type: 3}
-    choiceCAudio: {fileID: 8300000, guid: c928eea9a4d6ed746b88d734ec1b873e, type: 3}
-    supportMessage: Remember, a Bird Tweets. Press dot 1 for letter A, dot 2 for
-      letter B, and dot 3 for letter C.
-    supportAudio: {fileID: 8300000, guid: cb98333fc9131cc44afe477bc0607b5f, type: 3}
-  delayAfterVoice: 0.2
-  noAudioTextDelay: 2
-  delayAfterCorrect: 0.75
-  mistakesBeforeSupport: 3
-  resetMistakesAfterSupport: 1
-  useTypewriterEffect: 1
-  defaultTypewriterCharacterDelay: 0.02
-  minSyncedCharacterDelay: 0.01
-  maxSyncedCharacterDelay: 0.05
-  waitForFullAudioBeforeContinuing: 1
-  logDebug: 1
 --- !u!114 &1586095492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3154,9 +2785,10 @@ MonoBehaviour:
   completedMessage: Great job! You finished the Lesson 9 Rimes.
   repeatQuestionMessage: Do you want to repeat the quiz and try to beat your high
     score? Press repeat to repeat or press next to continue.
-  lessonChoiceMessage: You have finished learning words that ends with the rimes
-    -em, -ell, and -eb. Would you like to repeat the lesson or you want to begin
-    the quiz? Press repeat to repeat the lesson or press next to begin the quiz.
+  lessonChoiceMessage: You have finished learning some of the words that ends with
+    the rimes -em, -ell, and -eb. Would you like to repeat the lesson or you want
+    to begin the quiz? Press repeat to repeat the lesson or press next to begin the
+    quiz.
   lessonChoiceAudio: {fileID: 8300000, guid: e6d7358178525914b9f9f7a8b95e89a5, type: 3}
   lessonPages:
   - title: What is an Initial?
@@ -3165,11 +2797,11 @@ MonoBehaviour:
     pageType: 0
     informationBeats:
     - message: Every word begins with an initial.
-      audio: {fileID: 0}
+      audio: {fileID: 8300000, guid: 4daf0f7d040395e4eb01e4805bab4091, type: 3}
     - message: The initial is the first letter of a word.
-      audio: {fileID: 0}
+      audio: {fileID: 8300000, guid: fddff666afd00514d82deb0be9805df4, type: 3}
     - message: In today's lesson, every word you type will begin with a capital letter.
-      audio: {fileID: 0}
+      audio: {fileID: 8300000, guid: b0826d8f494c0a04a9ff176e7efbd387, type: 3}
     practiceWord: 
     requireCapitalFirstLetter: 1
     promptMessage: 
@@ -3186,11 +2818,11 @@ MonoBehaviour:
     pageType: 0
     informationBeats:
     - message: A rime is the ending part of a word.
-      audio: {fileID: 0}
+      audio: {fileID: 8300000, guid: 5659231b2ff6029428a2d027419a7999, type: 3}
     - message: Words with the same rime usually have similar sounds.
-      audio: {fileID: 0}
+      audio: {fileID: 8300000, guid: 8ee8606ab06c5114b8f9e5b9bc5f190f, type: 3}
     - message: Today, we will learn the rimes -ell, -em, and -eb.
-      audio: {fileID: 0}
+      audio: {fileID: 8300000, guid: 41132bc17e2830e409fbdcfff452f457, type: 3}
     practiceWord: 
     requireCapitalFirstLetter: 1
     promptMessage: 
@@ -3207,7 +2839,7 @@ MonoBehaviour:
     pageType: 0
     informationBeats:
     - message: Let's have some example words.
-      audio: {fileID: 0}
+      audio: {fileID: 8300000, guid: f3163dc313a28704ea4853af6e73fd75, type: 3}
     practiceWord: 
     requireCapitalFirstLetter: 1
     promptMessage: 
@@ -3224,38 +2856,89 @@ MonoBehaviour:
     pageType: 1
     informationBeats:
     - message: The first word you're going to learn is the word bell.
-      audio: {fileID: 0}
+      audio: {fileID: 8300000, guid: bdc6a3aea2ff5e942acfe468d8784ebd, type: 3}
     - message: The word Bell begins with the initial letter B.
-      audio: {fileID: 0}
-    - message: Since B is the initial letter, type it as a capital letter.
-      audio: {fileID: 0}
+      audio: {fileID: 8300000, guid: f49c759108bed3e40a8513262a3bd536, type: 3}
+    - message: Since B is the initial letter, type it as a capital letter. Remember
+        to Capitalize a letter, you have to press dot 6 before the corresponding
+        letter.
+      audio: {fileID: 8300000, guid: b044310bb26699946bbab93e91c9d484, type: 3}
     - message: The word Bell ends with the rime -ell.
-      audio: {fileID: 0}
+      audio: {fileID: 8300000, guid: 8c67cc8b8b42c634ca0740dfb03f1df5, type: 3}
     practiceWord: bell
     requireCapitalFirstLetter: 1
     promptMessage: Can you type the word Bell?
-    promptAudio: {fileID: 0}
+    promptAudio: {fileID: 8300000, guid: 2a4652f6142fd174f82876e51cd25f6d, type: 3}
     successMessage: That is Correct!
-    successAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 806f9040f8926b94db47e2caef85d97b, type: 3}
     wrongMessage: Wrong Answer, Please Try Again.
-    wrongAudio: {fileID: 0}
+    wrongAudio: {fileID: 8300000, guid: dd615f4eef83e3b49b22a11445f9b6d6, type: 3}
     supportMessage: 'Remember, the word is Bell. Begin with a capital B, then type
       e, l, and l. '
-    supportAudio: {fileID: 0}
+    supportAudio: {fileID: 8300000, guid: 1ed0a8d863bb53b45836b1b479067415, type: 3}
+  - title: Well
+    categoryLabel: LESSON
+    lessonImage: {fileID: 0}
+    pageType: 1
+    informationBeats:
+    - message: The next word you're going to learn is the word well.
+      audio: {fileID: 8300000, guid: 08475738521f4fb49b6b7745c7a1bb4e, type: 3}
+    - message: The word Well begins with the initial letter W.
+      audio: {fileID: 8300000, guid: 5e845c6f74f50dd4f853b1dca53d80c2, type: 3}
+    - message: Since W is the initial letter, type it as a capital letter.
+      audio: {fileID: 8300000, guid: 33485cfd767df814c8ba898dfba5d730, type: 3}
+    - message: The word Well ends with the rime -ell. Same as Bell earlier.
+      audio: {fileID: 8300000, guid: 3e0900a8365ceeb438021ea6577b0e88, type: 3}
+    practiceWord: well
+    requireCapitalFirstLetter: 1
+    promptMessage: Can you type the word Well?
+    promptAudio: {fileID: 8300000, guid: a77b4b1bb9ac7c849af8ec86e234b635, type: 3}
+    successMessage: That is Correct!
+    successAudio: {fileID: 8300000, guid: 806f9040f8926b94db47e2caef85d97b, type: 3}
+    wrongMessage: Wrong Answer, Please Try Again.
+    wrongAudio: {fileID: 8300000, guid: dd615f4eef83e3b49b22a11445f9b6d6, type: 3}
+    supportMessage: 'Remember, the word is Well. Begin with a capital W, then type
+      e, l, and l. '
+    supportAudio: {fileID: 8300000, guid: e5a7c8ef0386f6546bfe54d6560456c9, type: 3}
+  - title: Sell
+    categoryLabel: LESSON
+    lessonImage: {fileID: 0}
+    pageType: 1
+    informationBeats:
+    - message: The next word you're going to learn is the word well.
+      audio: {fileID: 8300000, guid: 08475738521f4fb49b6b7745c7a1bb4e, type: 3}
+    - message: The word Well begins with the initial letter W.
+      audio: {fileID: 8300000, guid: 5e845c6f74f50dd4f853b1dca53d80c2, type: 3}
+    - message: Since W is the initial letter, type it as a capital letter.
+      audio: {fileID: 8300000, guid: 33485cfd767df814c8ba898dfba5d730, type: 3}
+    - message: The word Well ends with the rime -ell. Same as Bell earlier.
+      audio: {fileID: 8300000, guid: 3e0900a8365ceeb438021ea6577b0e88, type: 3}
+    practiceWord: well
+    requireCapitalFirstLetter: 1
+    promptMessage: Can you type the word Well?
+    promptAudio: {fileID: 8300000, guid: a77b4b1bb9ac7c849af8ec86e234b635, type: 3}
+    successMessage: That is Correct!
+    successAudio: {fileID: 8300000, guid: 806f9040f8926b94db47e2caef85d97b, type: 3}
+    wrongMessage: Wrong Answer, Please Try Again.
+    wrongAudio: {fileID: 8300000, guid: dd615f4eef83e3b49b22a11445f9b6d6, type: 3}
+    supportMessage: 'Remember, the word is Well. Begin with a capital W, then type
+      e, l, and l. '
+    supportAudio: {fileID: 8300000, guid: e5a7c8ef0386f6546bfe54d6560456c9, type: 3}
   lessons:
   - displayLabel: Bell
     categoryLabel: Quiz
     word: Bell
-    promptMessage: Try bell
-    successMessage: correct
-    wrongMessage: wrong
+    promptMessage: Number 1, Bell. Can you type the word Bell?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
     displayImage: {fileID: 0}
-    introAudio: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: 0ccaace2bbf371b4988a6b56a0687333, type: 3}
     instructionAudio: {fileID: 0}
-    successAudio: {fileID: 0}
-    wrongAudio: {fileID: 0}
-    supportMessage: remember
-    supportAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 806f9040f8926b94db47e2caef85d97b, type: 3}
+    wrongAudio: {fileID: 8300000, guid: dd615f4eef83e3b49b22a11445f9b6d6, type: 3}
+    supportMessage: 'Remember, the word is Bell. Begin with a capital B, then type
+      e, l, and l. '
+    supportAudio: {fileID: 8300000, guid: 1ed0a8d863bb53b45836b1b479067415, type: 3}
   delayAfterVoice: 0.2
   noAudioTextDelay: 2
   delayAfterCorrect: 0.5
