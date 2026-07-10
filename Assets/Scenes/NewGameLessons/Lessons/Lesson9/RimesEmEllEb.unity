@@ -2857,8 +2857,12 @@ MonoBehaviour:
     informationBeats:
     - message: The first word you're going to learn is the word bell.
       audio: {fileID: 8300000, guid: bdc6a3aea2ff5e942acfe468d8784ebd, type: 3}
+    - message: A bell makes a ringing sound when you shake or hit it.
+      audio: {fileID: 8300000, guid: 3a34937174ddbd54fa9ba4e80af7363c, type: 3}
     - message: The word Bell begins with the initial letter B.
       audio: {fileID: 8300000, guid: f49c759108bed3e40a8513262a3bd536, type: 3}
+    - message: Followed up by letter e, l, l.
+      audio: {fileID: 8300000, guid: 5305269eee02e4b4b81c64dff5dc38b5, type: 3}
     - message: Since B is the initial letter, type it as a capital letter. Remember
         to Capitalize a letter, you have to press dot 6 before the corresponding
         letter.
@@ -2883,8 +2887,12 @@ MonoBehaviour:
     informationBeats:
     - message: The next word you're going to learn is the word well.
       audio: {fileID: 8300000, guid: 08475738521f4fb49b6b7745c7a1bb4e, type: 3}
+    - message: A well is a deep hole in the ground where people get water.
+      audio: {fileID: 8300000, guid: 506a7f3d8c5ca09469397771618ed768, type: 3}
     - message: The word Well begins with the initial letter W.
       audio: {fileID: 8300000, guid: 5e845c6f74f50dd4f853b1dca53d80c2, type: 3}
+    - message: Followed up by letter e, l, l.
+      audio: {fileID: 8300000, guid: 5305269eee02e4b4b81c64dff5dc38b5, type: 3}
     - message: Since W is the initial letter, type it as a capital letter.
       audio: {fileID: 8300000, guid: 33485cfd767df814c8ba898dfba5d730, type: 3}
     - message: The word Well ends with the rime -ell. Same as Bell earlier.
@@ -2905,25 +2913,113 @@ MonoBehaviour:
     lessonImage: {fileID: 0}
     pageType: 1
     informationBeats:
-    - message: The next word you're going to learn is the word well.
-      audio: {fileID: 8300000, guid: 08475738521f4fb49b6b7745c7a1bb4e, type: 3}
-    - message: The word Well begins with the initial letter W.
-      audio: {fileID: 8300000, guid: 5e845c6f74f50dd4f853b1dca53d80c2, type: 3}
-    - message: Since W is the initial letter, type it as a capital letter.
-      audio: {fileID: 8300000, guid: 33485cfd767df814c8ba898dfba5d730, type: 3}
-    - message: The word Well ends with the rime -ell. Same as Bell earlier.
-      audio: {fileID: 8300000, guid: 3e0900a8365ceeb438021ea6577b0e88, type: 3}
-    practiceWord: well
+    - message: The next word you're going to learn is the word sell.
+      audio: {fileID: 8300000, guid: a8fd0189c1af60844bf4211f583196cb, type: 3}
+    - message: To sell means to give something to someone for money.
+      audio: {fileID: 8300000, guid: f699beda3106c5c42b1612795f22950a, type: 3}
+    - message: The word Sell begins with the initial letter S.
+      audio: {fileID: 8300000, guid: ee6125251ac62d84ca6134632bf92880, type: 3}
+    - message: Followed up by letter e, l, l.
+      audio: {fileID: 8300000, guid: 5305269eee02e4b4b81c64dff5dc38b5, type: 3}
+    - message: Since S is the initial letter, type it as a capital letter.
+      audio: {fileID: 8300000, guid: 0e66153213fcf6044a2efcad01d0fcd0, type: 3}
+    - message: The word Sell ends with the rime -ell. Same as Well earlier.
+      audio: {fileID: 8300000, guid: 30d3efc71868d034b948549c4b1196f1, type: 3}
+    practiceWord: sell
     requireCapitalFirstLetter: 1
-    promptMessage: Can you type the word Well?
-    promptAudio: {fileID: 8300000, guid: a77b4b1bb9ac7c849af8ec86e234b635, type: 3}
+    promptMessage: Can you type the word Sell?
+    promptAudio: {fileID: 8300000, guid: fdc61ec08355a564b83d0a29227641cc, type: 3}
     successMessage: That is Correct!
     successAudio: {fileID: 8300000, guid: 806f9040f8926b94db47e2caef85d97b, type: 3}
     wrongMessage: Wrong Answer, Please Try Again.
     wrongAudio: {fileID: 8300000, guid: dd615f4eef83e3b49b22a11445f9b6d6, type: 3}
-    supportMessage: 'Remember, the word is Well. Begin with a capital W, then type
+    supportMessage: 'Remember, the word is Sell. Begin with a capital S, then type
       e, l, and l. '
-    supportAudio: {fileID: 8300000, guid: e5a7c8ef0386f6546bfe54d6560456c9, type: 3}
+    supportAudio: {fileID: 8300000, guid: 49bfdbb94fc137a409717d1e18ccd2f1, type: 3}
+  - title: Web
+    categoryLabel: LESSON
+    lessonImage: {fileID: 0}
+    pageType: 1
+    informationBeats:
+    - message: The next word you're going to learn is the word web.
+      audio: {fileID: 8300000, guid: d7061a327c8aa9746a98e4f5d27db878, type: 3}
+    - message: A web is a sticky net that a spider makes to catch insects.
+      audio: {fileID: 8300000, guid: ec885a0183699c545993bab4dfdc358b, type: 3}
+    - message: The word Web begins with the initial letter W.
+      audio: {fileID: 8300000, guid: 13ab4582f196fe249b52bfa74a1eaf76, type: 3}
+    - message: Followed up by letter e, b.
+      audio: {fileID: 8300000, guid: ffe59453e0d448d41a2325957c9ad7ae, type: 3}
+    - message: Since W is the initial letter, type it as a capital letter.
+      audio: {fileID: 8300000, guid: bb556cdf6b50374439e526a3d9c0a9cd, type: 3}
+    - message: The word Web ends with the rime -eb.
+      audio: {fileID: 8300000, guid: 4a88befc651096444a4ac4db5d996e7c, type: 3}
+    practiceWord: web
+    requireCapitalFirstLetter: 1
+    promptMessage: Can you type the word Web?
+    promptAudio: {fileID: 8300000, guid: f4aa91d4bd4b96d4989101f9da0d3e64, type: 3}
+    successMessage: That is Correct!
+    successAudio: {fileID: 8300000, guid: 806f9040f8926b94db47e2caef85d97b, type: 3}
+    wrongMessage: Wrong Answer, Please Try Again.
+    wrongAudio: {fileID: 8300000, guid: dd615f4eef83e3b49b22a11445f9b6d6, type: 3}
+    supportMessage: Remember, the word is Web. Begin with a capital W, then type
+      e, and b.
+    supportAudio: {fileID: 8300000, guid: 2c9b4d1fd25ae3048a65225ff2980124, type: 3}
+  - title: Gem
+    categoryLabel: LESSON
+    lessonImage: {fileID: 0}
+    pageType: 1
+    informationBeats:
+    - message: The next word you're going to learn is the word gem.
+      audio: {fileID: 8300000, guid: 67ca62528c5b6a04496cbbdba8238671, type: 3}
+    - message: A gem is a shiny stone that people use to make jewelry.
+      audio: {fileID: 8300000, guid: de9083bc28be1494e8cd041b00a21453, type: 3}
+    - message: The word Gem begins with the initial letter G.
+      audio: {fileID: 8300000, guid: bd4c87661e1ecb745a32e146c6a0cd1c, type: 3}
+    - message: Followed up by letter e, m.
+      audio: {fileID: 8300000, guid: 701e6ae60a2c47d4e887346284222c9e, type: 3}
+    - message: Since G is the initial letter, type it as a capital letter.
+      audio: {fileID: 8300000, guid: adc370856d04de64fb74776fce601f2f, type: 3}
+    - message: The word Ge, ends with the rime -em.
+      audio: {fileID: 8300000, guid: 323f6a9cfa685af4aaecaa571ad54efe, type: 3}
+    practiceWord: gem
+    requireCapitalFirstLetter: 1
+    promptMessage: Can you type the word Gem?
+    promptAudio: {fileID: 8300000, guid: b4662aa44f48c4d44803fbb9948f5c24, type: 3}
+    successMessage: That is Correct!
+    successAudio: {fileID: 8300000, guid: 806f9040f8926b94db47e2caef85d97b, type: 3}
+    wrongMessage: Wrong Answer, Please Try Again.
+    wrongAudio: {fileID: 8300000, guid: dd615f4eef83e3b49b22a11445f9b6d6, type: 3}
+    supportMessage: Remember, the word is Gem. Begin with a capital G, then type
+      e, and m.
+    supportAudio: {fileID: 8300000, guid: fc7d11d0f49dfda42881f50c493cba8c, type: 3}
+  - title: Hem
+    categoryLabel: LESSON
+    lessonImage: {fileID: 0}
+    pageType: 1
+    informationBeats:
+    - message: The next word you're going to learn is the word hem.
+      audio: {fileID: 8300000, guid: 08498f83ad985b941952a3c2ed311698, type: 3}
+    - message: A hem is the edge of a piece of clothing that is folded and sewn.
+      audio: {fileID: 8300000, guid: 7f8c5842621181d4bb57e05daea3a394, type: 3}
+    - message: The word Hem begins with the initial letter H.
+      audio: {fileID: 8300000, guid: 2cbb9dec34332674286347b444539a09, type: 3}
+    - message: Followed up by letter e, m.
+      audio: {fileID: 8300000, guid: 701e6ae60a2c47d4e887346284222c9e, type: 3}
+    - message: Since H is the initial letter, type it as a capital letter.
+      audio: {fileID: 8300000, guid: 88f54abc92bfaab4896300eb3381167a, type: 3}
+    - message: The word Hem ends with the rime -em.
+      audio: {fileID: 8300000, guid: 2e43781b41ec2c94eb9db502aa8d2b69, type: 3}
+    practiceWord: hem
+    requireCapitalFirstLetter: 1
+    promptMessage: Can you type the word Hem?
+    promptAudio: {fileID: 8300000, guid: a103d8fae1794744d84a92c0ce9365bb, type: 3}
+    successMessage: That is Correct!
+    successAudio: {fileID: 8300000, guid: 806f9040f8926b94db47e2caef85d97b, type: 3}
+    wrongMessage: Wrong Answer, Please Try Again.
+    wrongAudio: {fileID: 8300000, guid: dd615f4eef83e3b49b22a11445f9b6d6, type: 3}
+    supportMessage: Remember, the word is Hem. Begin with a capital H, then type
+      e, and m.
+    supportAudio: {fileID: 8300000, guid: 0f8910575ae1acb48b62144cdfcacb5b, type: 3}
   lessons:
   - displayLabel: Bell
     categoryLabel: Quiz
@@ -2939,6 +3035,76 @@ MonoBehaviour:
     supportMessage: 'Remember, the word is Bell. Begin with a capital B, then type
       e, l, and l. '
     supportAudio: {fileID: 8300000, guid: 1ed0a8d863bb53b45836b1b479067415, type: 3}
+  - displayLabel: Gem
+    categoryLabel: Quiz
+    word: Gem
+    promptMessage: Number 2, Gem. Can you type the word Gem?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: 2036a1ae024f3ee42b9d28fff66ba6f7, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 806f9040f8926b94db47e2caef85d97b, type: 3}
+    wrongAudio: {fileID: 8300000, guid: dd615f4eef83e3b49b22a11445f9b6d6, type: 3}
+    supportMessage: Remember, the word is Gem. Begin with a capital G, then type
+      e, and m.
+    supportAudio: {fileID: 8300000, guid: fc7d11d0f49dfda42881f50c493cba8c, type: 3}
+  - displayLabel: Web
+    categoryLabel: Quiz
+    word: Web
+    promptMessage: Number 3, Web. Can you type the word Web?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: c5c575ad120174c4b80c701f499ebccb, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 806f9040f8926b94db47e2caef85d97b, type: 3}
+    wrongAudio: {fileID: 8300000, guid: dd615f4eef83e3b49b22a11445f9b6d6, type: 3}
+    supportMessage: Remember, the word is Web. Begin with a capital W, then type
+      e, and b.
+    supportAudio: {fileID: 8300000, guid: 2c9b4d1fd25ae3048a65225ff2980124, type: 3}
+  - displayLabel: Well
+    categoryLabel: Quiz
+    word: Well
+    promptMessage: Number 4, Well. Can you type the word Well?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: 9a6e21cc85cef7e4e94f0feb10477ae3, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 806f9040f8926b94db47e2caef85d97b, type: 3}
+    wrongAudio: {fileID: 8300000, guid: dd615f4eef83e3b49b22a11445f9b6d6, type: 3}
+    supportMessage: Remember, the word is Well. Begin with a capital W, then type
+      e, l, and l.
+    supportAudio: {fileID: 8300000, guid: e5a7c8ef0386f6546bfe54d6560456c9, type: 3}
+  - displayLabel: Hem
+    categoryLabel: Quiz
+    word: Hem
+    promptMessage: Number 5, Hem. Can you type the word Hem?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: 7b0cef5f7a726ec42bb864c7d7ad58e7, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 806f9040f8926b94db47e2caef85d97b, type: 3}
+    wrongAudio: {fileID: 8300000, guid: dd615f4eef83e3b49b22a11445f9b6d6, type: 3}
+    supportMessage: Remember, the word is Hem. Begin with a capital H, then type
+      e, and m.
+    supportAudio: {fileID: 8300000, guid: 0f8910575ae1acb48b62144cdfcacb5b, type: 3}
+  - displayLabel: Sell
+    categoryLabel: Quiz
+    word: Sell
+    promptMessage: Number 6, Sell. Can you type the word Sell?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: ac8f4ad2dd3aef648bcbb0d27f04baac, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 806f9040f8926b94db47e2caef85d97b, type: 3}
+    wrongAudio: {fileID: 8300000, guid: dd615f4eef83e3b49b22a11445f9b6d6, type: 3}
+    supportMessage: Remember, the word is Sell. Begin with a capital S, then type
+      e, l, and l.
+    supportAudio: {fileID: 8300000, guid: 49bfdbb94fc137a409717d1e18ccd2f1, type: 3}
   delayAfterVoice: 0.2
   noAudioTextDelay: 2
   delayAfterCorrect: 0.5

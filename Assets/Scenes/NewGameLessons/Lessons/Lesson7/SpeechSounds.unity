@@ -2661,7 +2661,7 @@ MonoBehaviour:
   answerStateImage: {fileID: 2047379756}
   correctStateSprite: {fileID: -4207999480553683411, guid: 4e35d4a30fee8cc4580f2983361350b4, type: 3}
   wrongStateSprite: {fileID: 7071201414940298460, guid: bee3415c56ef4054aa185675bb6dc185, type: 3}
-  hideAnswerStateAtStart: 0
+  hideAnswerStateAtStart: 1
   fixScoreText: {fileID: 1777884057}
   wrongScoreText: {fileID: 1070165176}
   totalScoreText: {fileID: 1113401178}
@@ -2782,15 +2782,15 @@ MonoBehaviour:
     letter1Audio: {fileID: 8300000, guid: f803b2a482cd11f4dbb1a2cc19d71e64, type: 3}
     letter2Audio: {fileID: 8300000, guid: 50c78c43b7a61d54c8d4c130f6e6d6bf, type: 3}
     letter3Audio: {fileID: 8300000, guid: 80593880a49bb9c4880f0ae185f440de, type: 3}
-  delayAfterVoice: 0.35
+  delayAfterVoice: 0.2
   noAudioTextDelay: 2
-  delayAfterCorrect: 0.75
+  delayAfterCorrect: 0.5
   mistakesBeforeSupport: 3
   resetMistakesAfterSupport: 1
   useTypewriterEffect: 1
-  defaultTypewriterCharacterDelay: 0.03
+  defaultTypewriterCharacterDelay: 0.02
   minSyncedCharacterDelay: 0.01
-  maxSyncedCharacterDelay: 0.12
+  maxSyncedCharacterDelay: 0.05
   waitForFullAudioBeforeContinuing: 1
   logDebug: 1
 --- !u!1 &1697798611
