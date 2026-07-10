@@ -136,6 +136,16 @@ public class BrailleMapping : MonoBehaviour
     public bool playLetterSoundOnChord = true;
     public bool playOtherPatternSoundOnChord = true;
 
+    // ---------------------------------------------------------------------
+    // Sequential dot entry state
+    //
+    // Dots are no longer chorded by holding multiple keys down at once.
+    // Instead, pressing a dot key TOGGLES that dot on/off in the buffer
+    // below (press dot1, then dot2, etc., one at a time). Pressing the
+    // Submit key (Enter) finalizes whatever dots are currently toggled on
+    // into a single letter pattern and fires OnBrailleChordSubmitted, then
+    // clears the buffer for the next letter.
+    // ---------------------------------------------------------------------
     private bool chordStarted;
     private bool chordDot1;
     private bool chordDot2;
@@ -254,87 +264,70 @@ public class BrailleMapping : MonoBehaviour
         Destroy(tempAudio, clip.length + 0.1f);
     }
 
+    /// <summary>
+    /// Toggles a single dot on/off in the current letter buffer. Pressing an
+    /// already-active dot again removes it (e.g. for correcting a mistake
+    /// before submitting). Plays the dot's panned sound on every press,
+    /// regardless of whether it turned the dot on or off.
+    /// </summary>
+    private void ToggleDot(ref bool dotState, AudioClip sfx, float pan, string dotLabel)
+    {
+        dotState = !dotState;
+        PlayPannedSfx(sfx, pan, dotVolume);
+
+        if (logInputs)
+            Debug.Log($"Braille Dot {dotLabel} {(dotState ? "added" : "removed")}");
+    }
+
     private void CheckDotChordInputs()
     {
         if (Input.GetKeyDown(dot1Key))
         {
-            chordStarted = true;
-            chordDot1 = true;
-            PlayPannedSfx(dot1Sfx, rightEarPan, dotVolume);
-            if (logInputs) Debug.Log("Braille Dot 1 pressed");
+            ToggleDot(ref chordDot1, dot1Sfx, rightEarPan, "1");
+            OnDot1?.Invoke();
         }
 
         if (Input.GetKeyDown(dot2Key))
         {
-            chordStarted = true;
-            chordDot2 = true;
-            PlayPannedSfx(dot2Sfx, rightEarPan, dotVolume);
-            if (logInputs) Debug.Log("Braille Dot 2 pressed");
+            ToggleDot(ref chordDot2, dot2Sfx, rightEarPan, "2");
+            OnDot2?.Invoke();
         }
 
         if (Input.GetKeyDown(dot3Key))
         {
-            chordStarted = true;
-            chordDot3 = true;
-            PlayPannedSfx(dot3Sfx, rightEarPan, dotVolume);
-            if (logInputs) Debug.Log("Braille Dot 3 pressed");
+            ToggleDot(ref chordDot3, dot3Sfx, rightEarPan, "3");
+            OnDot3?.Invoke();
         }
 
         if (Input.GetKeyDown(dot4Key))
         {
-            chordStarted = true;
-            chordDot4 = true;
-            PlayPannedSfx(dot4Sfx, leftEarPan, dotVolume);
-            if (logInputs) Debug.Log("Braille Dot 4 pressed");
+            ToggleDot(ref chordDot4, dot4Sfx, leftEarPan, "4");
+            OnDot4?.Invoke();
         }
 
         if (Input.GetKeyDown(dot5Key))
         {
-            chordStarted = true;
-            chordDot5 = true;
-            PlayPannedSfx(dot5Sfx, leftEarPan, dotVolume);
-            if (logInputs) Debug.Log("Braille Dot 5 pressed");
+            ToggleDot(ref chordDot5, dot5Sfx, leftEarPan, "5");
+            OnDot5?.Invoke();
         }
 
         if (Input.GetKeyDown(dot6Key))
         {
-            chordStarted = true;
-            chordDot6 = true;
-            PlayPannedSfx(dot6Sfx, leftEarPan, dotVolume);
-            if (logInputs) Debug.Log("Braille Dot 6 pressed");
+            ToggleDot(ref chordDot6, dot6Sfx, leftEarPan, "6");
+            OnDot6?.Invoke();
         }
 
-        bool anyDotReleased =
-            Input.GetKeyUp(dot1Key) ||
-            Input.GetKeyUp(dot2Key) ||
-            Input.GetKeyUp(dot3Key) ||
-            Input.GetKeyUp(dot4Key) ||
-            Input.GetKeyUp(dot5Key) ||
-            Input.GetKeyUp(dot6Key);
-
-        bool anyDotStillHeld =
-            Input.GetKey(dot1Key) ||
-            Input.GetKey(dot2Key) ||
-            Input.GetKey(dot3Key) ||
-            Input.GetKey(dot4Key) ||
-            Input.GetKey(dot5Key) ||
-            Input.GetKey(dot6Key);
-
-        if (chordStarted && anyDotReleased && !anyDotStillHeld)
-        {
-            SubmitChord();
-        }
+        chordStarted = chordDot1 || chordDot2 || chordDot3 || chordDot4 || chordDot5 || chordDot6;
     }
 
+    /// <summary>
+    /// Finalizes whatever dots are currently toggled on into a single
+    /// pattern string, fires OnBrailleChordSubmitted, plays the matching
+    /// letter/pattern sound, then clears the buffer so the next letter can
+    /// be entered from scratch.
+    /// </summary>
     private void SubmitChord()
     {
-        if (chordDot1) OnDot1?.Invoke();
-        if (chordDot2) OnDot2?.Invoke();
-        if (chordDot3) OnDot3?.Invoke();
-        if (chordDot4) OnDot4?.Invoke();
-        if (chordDot5) OnDot5?.Invoke();
-        if (chordDot6) OnDot6?.Invoke();
-
         string pattern =
             (chordDot1 ? "1" : "0") +
             (chordDot2 ? "1" : "0") +
@@ -408,9 +401,21 @@ public class BrailleMapping : MonoBehaviour
 
         if (Input.GetKeyDown(submitKey))
         {
-            if (logInputs) Debug.Log("Submit");
-            PlaySfx(submitSfx, actionVolume);
-            OnSubmit?.Invoke();
+            // If any dots have been entered for the current letter, Submit
+            // finalizes that letter instead of firing the generic OnSubmit
+            // event.
+            if (chordStarted)
+            {
+                if (logInputs) Debug.Log("Submit — finalizing letter");
+                PlaySfx(submitSfx, actionVolume);
+                SubmitChord();
+            }
+            else
+            {
+                if (logInputs) Debug.Log("Submit");
+                PlaySfx(submitSfx, actionVolume);
+                OnSubmit?.Invoke();
+            }
         }
 
         if (Input.GetKeyDown(deleteOrNoKey))
@@ -471,21 +476,26 @@ public class BrailleMapping : MonoBehaviour
         OnWrong?.Invoke();
     }
 
-    public bool GetDot1() => Input.GetKey(dot1Key);
-    public bool GetDot2() => Input.GetKey(dot2Key);
-    public bool GetDot3() => Input.GetKey(dot3Key);
-    public bool GetDot4() => Input.GetKey(dot4Key);
-    public bool GetDot5() => Input.GetKey(dot5Key);
-    public bool GetDot6() => Input.GetKey(dot6Key);
+    public bool GetDot1() => chordDot1;
+    public bool GetDot2() => chordDot2;
+    public bool GetDot3() => chordDot3;
+    public bool GetDot4() => chordDot4;
+    public bool GetDot5() => chordDot5;
+    public bool GetDot6() => chordDot6;
 
+    /// <summary>
+    /// Returns the pattern currently being built (dots toggled on so far),
+    /// not just the instantaneous held-key state — since dots are no longer
+    /// held simultaneously, this reflects the in-progress letter buffer.
+    /// </summary>
     public string GetCurrentBraillePattern()
     {
         return
-            (GetDot1() ? "1" : "0") +
-            (GetDot2() ? "1" : "0") +
-            (GetDot3() ? "1" : "0") +
-            (GetDot4() ? "1" : "0") +
-            (GetDot5() ? "1" : "0") +
-            (GetDot6() ? "1" : "0");
+            (chordDot1 ? "1" : "0") +
+            (chordDot2 ? "1" : "0") +
+            (chordDot3 ? "1" : "0") +
+            (chordDot4 ? "1" : "0") +
+            (chordDot5 ? "1" : "0") +
+            (chordDot6 ? "1" : "0");
     }
 }

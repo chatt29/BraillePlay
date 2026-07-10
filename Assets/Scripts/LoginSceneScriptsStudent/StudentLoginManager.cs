@@ -29,7 +29,7 @@ public class StudentLoginManager : MonoBehaviour
     [Tooltip("Scene to load if the student presses Back before logging in.")]
     public string previousSceneName = "MainMenu";
     [Tooltip("Scene to load after a successful login.")]
-    public string studentHomeSceneName = "MainMenu";
+    public string studentHomeSceneName = "GameMenu";
 
     private FirestoreStudentService studentService;
 

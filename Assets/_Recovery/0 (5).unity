@@ -321,7 +321,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 54.606, y: 0}
+  m_AnchoredPosition: {x: 66.57994, y: 0}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &232308970
@@ -764,8 +764,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -22.1251, y: -321.68}
-  m_SizeDelta: {x: 371.572, y: 181.1368}
+  m_AnchoredPosition: {x: -23.932, y: -172}
+  m_SizeDelta: {x: 407.71, y: 315.13}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &843676732
 MonoBehaviour:
@@ -821,7 +821,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -853,7 +853,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 8.009277, y: 55.264862, z: 7.00354, w: 30.54529}
+  m_margin: {x: 8.009277, y: 6.7460327, z: 7.00354, w: 30.54529}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1661,7 +1661,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 14, y: 419}
+  m_AnchoredPosition: {x: 74, y: 404}
   m_SizeDelta: {x: 536.2007, y: 189.4903}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1204025121
@@ -1684,7 +1684,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Speech Sounds
+  m_text: Parts of a Simple Sentence.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1a98abfae0e1fc34282e9b7fd0f3a427, type: 2}
   m_sharedMaterial: {fileID: -8189821304231711609, guid: 1a98abfae0e1fc34282e9b7fd0f3a427, type: 2}
@@ -1711,8 +1711,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 120
-  m_fontSizeBase: 120
+  m_fontSize: 80
+  m_fontSizeBase: 80
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1750,7 +1750,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -572.43335, w: 0}
+  m_margin: {x: 0, y: 0, z: -494.42456, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2411,9 +2411,9 @@ GameObject:
   - component: {fileID: 1586095474}
   - component: {fileID: 1586095478}
   - component: {fileID: 1586095484}
-  - component: {fileID: 1586095492}
+  - component: {fileID: 1586095485}
   m_Layer: 5
-  m_Name: SpeechSoundsManager
+  m_Name: AnimalSounds4Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2639,7 +2639,7 @@ MonoBehaviour:
   logInputs: 0
   playLetterSoundOnChord: 1
   playOtherPatternSoundOnChord: 1
---- !u!114 &1586095492
+--- !u!114 &1586095485
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2648,120 +2648,380 @@ MonoBehaviour:
   m_GameObject: {fileID: 1586095473}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 236e530e8d3d8574fb1c98032dbd435f, type: 3}
+  m_Script: {fileID: 11500000, guid: 47fef0f0e1fe6bb458d310344c93f635, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SpeechSoundsScript
+  m_EditorClassIdentifier: Assembly-CSharp::SoundsAround4
   bubbleMessageText: {fileID: 1257937990}
   displayLabelText: {fileID: 843676732}
   categoryText: {fileID: 1155271827}
   livePatternText: {fileID: 1697798612}
   displayImageUI: {fileID: 54352918}
-  spelledWordText: {fileID: 0}
-  currentLetterPromptText: {fileID: 0}
   answerStateImage: {fileID: 2047379756}
   correctStateSprite: {fileID: -4207999480553683411, guid: 4e35d4a30fee8cc4580f2983361350b4, type: 3}
   wrongStateSprite: {fileID: 7071201414940298460, guid: bee3415c56ef4054aa185675bb6dc185, type: 3}
-  hideAnswerStateAtStart: 0
+  hideAnswerStateAtStart: 1
   fixScoreText: {fileID: 1777884057}
   wrongScoreText: {fileID: 1070165176}
   totalScoreText: {fileID: 1113401178}
   highScoreText: {fileID: 1262590508}
   fixedScore: 100
   deductionPerMistake: 1
-  highScoreKey: SpeechSoundsHighScore
+  highScoreKey: SoundsAround1HighScore
   voiceAudioSource: {fileID: 1586095478}
-  welcomeAudio: {fileID: 0}
-  letsLearnAudio: {fileID: 0}
-  genericCorrectAudio: {fileID: 8300000, guid: 587dfae100161f646a4b8e246de58429, type: 3}
-  genericTryAgainAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-  genericCompletedAudio: {fileID: 0}
-  repeatQuestionAudio: {fileID: 0}
-  lessonIntroAudio: {fileID: 0}
-  lessonIntroMessage: Words like BED, LEG, and RED have E in the middle. C-E-C pattern.
+  welcomeAudio: {fileID: 8300000, guid: cbc578d52ca86bf4c8493340729d1267, type: 3}
+  letsLearnAudio: {fileID: 8300000, guid: 369ddc24d6f1a4e4192a89a1d81c7558, type: 3}
+  genericCorrectAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
+  genericTryAgainAudio: {fileID: 8300000, guid: dd615f4eef83e3b49b22a11445f9b6d6, type: 3}
+  genericCompletedAudio: {fileID: 8300000, guid: ad226ffe4ec86c9429f638d76ec0e68d, type: 3}
+  repeatQuestionAudio: {fileID: 8300000, guid: 7bfae7d00eb980343aafea6df0a68c54, type: 3}
   yourScoreIsAudio: {fileID: 8300000, guid: 613a4ecd64752ee4c8844d8286dca545, type: 3}
   whileYourHighestScoreIsAudio: {fileID: 8300000, guid: 2525c179990406146becd993f00485ee, type: 3}
-  numberAudios: []
-  welcomeMessage: Welcome to Speech Sounds!
-  letsLearnMessage: First, let's learn the pattern.
-  completedMessage: Great job! You finished all the words.
-  repeatQuestionMessage: Do you want to practice again? Press R to repeat or Y to
-    finish.
-  words:
-  - word: jet
-    displayImage: {fileID: 8151910413271119951, guid: c2e2cdc386106524183c4ea0a85ec5cc, type: 3}
-    wordAudio: {fileID: 0}
-    promptMessage: Listen to the word. Now spell it one letter at a time using braille.
-    promptAudio: {fileID: 0}
-    successMessage: Correct! You spelled J-E-T, jet!
-    successAudio: {fileID: 0}
-    wrongLetterMessage: "That\u2019s not the right letter. Try again."
-    wrongLetterAudio: {fileID: 0}
-    supportMessage: J - E - T, Jet! The loud jet took off into the clouds.
-    supportAudio: {fileID: 0}
-    letter1Audio: {fileID: 0}
-    letter2Audio: {fileID: 0}
-    letter3Audio: {fileID: 0}
-  - word: net
-    displayImage: {fileID: -3787186718068959810, guid: 1e649eb8b9c8f4b4ba5597a45105e0fd, type: 3}
-    wordAudio: {fileID: 0}
-    promptMessage: Listen to the word. Now spell it one letter at a time using braille.
-    promptAudio: {fileID: 0}
-    successMessage: Correct! You spelled J-E-T, jet!
-    successAudio: {fileID: 0}
-    wrongLetterMessage: "That\u2019s not the right letter. Try again."
-    wrongLetterAudio: {fileID: 0}
-    supportMessage: J - E - T, Jet! The loud jet took off into the clouds.
-    supportAudio: {fileID: 0}
-    letter1Audio: {fileID: 0}
-    letter2Audio: {fileID: 0}
-    letter3Audio: {fileID: 0}
-  - word: wet
-    displayImage: {fileID: -2403919275376931074, guid: 8bc6acf7221a4484fb85ead96169620a, type: 3}
-    wordAudio: {fileID: 0}
-    promptMessage: Listen to the word. Now spell it one letter at a time using braille.
-    promptAudio: {fileID: 0}
-    successMessage: Correct! You spelled J-E-T, jet!
-    successAudio: {fileID: 0}
-    wrongLetterMessage: "That\u2019s not the right letter. Try again."
-    wrongLetterAudio: {fileID: 0}
-    supportMessage: J - E - T, Jet! The loud jet took off into the clouds.
-    supportAudio: {fileID: 0}
-    letter1Audio: {fileID: 0}
-    letter2Audio: {fileID: 0}
-    letter3Audio: {fileID: 0}
-  - word: men
-    displayImage: {fileID: -4484254831667093391, guid: ef628c7996b36824ab3c1d9466fe5edc, type: 3}
-    wordAudio: {fileID: 0}
-    promptMessage: Listen to the word. Now spell it one letter at a time using braille.
-    promptAudio: {fileID: 0}
-    successMessage: Correct! You spelled J-E-T, jet!
-    successAudio: {fileID: 0}
-    wrongLetterMessage: "That\u2019s not the right letter. Try again."
-    wrongLetterAudio: {fileID: 0}
-    supportMessage: J - E - T, Jet! The loud jet took off into the clouds.
-    supportAudio: {fileID: 0}
-    letter1Audio: {fileID: 0}
-    letter2Audio: {fileID: 0}
-    letter3Audio: {fileID: 0}
-  - word: hen
-    displayImage: {fileID: 2004016079927036183, guid: bb4c50377874d5f4aa9431d2ed7680f8, type: 3}
-    wordAudio: {fileID: 0}
-    promptMessage: Listen to the word. Now spell it one letter at a time using braille.
-    promptAudio: {fileID: 0}
-    successMessage: Correct! You spelled J-E-T, jet!
-    successAudio: {fileID: 0}
-    wrongLetterMessage: "That\u2019s not the right letter. Try again."
-    wrongLetterAudio: {fileID: 0}
-    supportMessage: J - E - T, Jet! The loud jet took off into the clouds.
-    supportAudio: {fileID: 0}
-    letter1Audio: {fileID: 0}
-    letter2Audio: {fileID: 0}
-    letter3Audio: {fileID: 0}
+  numberAudios:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: 21a469d6598c3204ab82b509e42e89f8, type: 3}
+  - {fileID: 8300000, guid: 5bd190e14c182b24d9e04c61a35f3b29, type: 3}
+  - {fileID: 8300000, guid: c6f4937e92350a04a82d4bd76eef52ba, type: 3}
+  - {fileID: 8300000, guid: 701a3679a01f84e43aa1fa9d4a3c0785, type: 3}
+  - {fileID: 8300000, guid: bde38e84ced6de84cb95115723d7bdf4, type: 3}
+  - {fileID: 8300000, guid: fe9932ae0117e154d998e51d9ed611e0, type: 3}
+  - {fileID: 8300000, guid: 94091ec33fbd6b349ba6e703387e4866, type: 3}
+  - {fileID: 8300000, guid: ee8cfcb8b3588954ea24c10457255924, type: 3}
+  - {fileID: 8300000, guid: 5e889505e0e0d2a4db129b0905352109, type: 3}
+  - {fileID: 8300000, guid: 65fabefe77170f948ba6088e0e5a0f95, type: 3}
+  - {fileID: 8300000, guid: 6a0ec25b8a422c646b399ddcae7b2c62, type: 3}
+  - {fileID: 8300000, guid: 437fe84d57fc7f64cad7d56e2a8c9a89, type: 3}
+  - {fileID: 8300000, guid: 0d5771525d0e1814ab6d369e7eb1c3ba, type: 3}
+  - {fileID: 8300000, guid: 8881ea521aa0c7a4f9ae441c637350e6, type: 3}
+  - {fileID: 8300000, guid: e8c2b8bd9bd8f9e428347c57e9710cd4, type: 3}
+  - {fileID: 8300000, guid: 09027ef61068784478c1b32badf50904, type: 3}
+  - {fileID: 8300000, guid: e8c38c6593d87944187086e01dbfdb98, type: 3}
+  - {fileID: 8300000, guid: 31becc0a3e7892e468b4ac4372db4882, type: 3}
+  - {fileID: 8300000, guid: caf77e0d1f468b64ab86183d4318a7f8, type: 3}
+  - {fileID: 8300000, guid: 579c9253f6a5be6499ca8a1851d07f90, type: 3}
+  introLessonPages:
+  - pageText: Hello, class!
+    pageAudio: {fileID: 8300000, guid: 811be15d615b7a54089fa020eae8d4f3, type: 3}
+  - pageText: 'Today, we are going to learn about the parts of a simple sentence.
+      Every sentence tells us something. We can understand a sentence better by asking
+      these questions:'
+    pageAudio: {fileID: 8300000, guid: 63bef7a4573917d408179ba8c2b6f8e8, type: 3}
+  - pageText: 'Who or What?
+
+      What are they doing?
+
+      When, Where, or How?'
+    pageAudio: {fileID: 8300000, guid: 22b98b8297907a840be28d86cbcf40a5, type: 3}
+  - pageText: Let's learn what each part means!
+    pageAudio: {fileID: 8300000, guid: 1ea4c267f81c6b54091121deaff11d0d, type: 3}
+  - pageText: 1. Who or What?
+    pageAudio: {fileID: 8300000, guid: 7a91ae3cf22aaab43a9a231d7c597532, type: 3}
+  - pageText: The Who or What tells us who the sentence is about or what the sentence
+      is talking about. This is called the subject.
+    pageAudio: {fileID: 8300000, guid: 455a70dae0a741c48b1f5d0be6598216, type: 3}
+  - pageText: 'Examples:
+
+
+      Ben feeds the hens.
+
+      The hens live in the
+      hen pen.
+
+      Ren-ren is missing.'
+    pageAudio: {fileID: 8300000, guid: 0c51544a8f5c6e140bc20c24a399088b, type: 3}
+  - pageText: In these sentences, Ben, the hens, and Ren-ren are the Who or What.
+    pageAudio: {fileID: 8300000, guid: 3f0037588d5133747a9a16b2592528a5, type: 3}
+  - pageText: 2. What Are They Doing?
+    pageAudio: {fileID: 8300000, guid: 16c8c3232f7b29e46acbda2fdfa4eead, type: 3}
+  - pageText: This part tells us what the person, animal, or thing is doing. It is
+      called the action or verb.
+    pageAudio: {fileID: 8300000, guid: d49b1a35a6efa8347a543c17508c73c6, type: 3}
+  - pageText: 'Examples:
+
+
+      Ben feeds the hens.
+
+      Ren-ren hides behind
+      the hens.'
+    pageAudio: {fileID: 8300000, guid: 44b2aeabba109aa418ca2e6c6de47598, type: 3}
+  - pageText: The action words are feeds and hides.
+    pageAudio: {fileID: 8300000, guid: 3ab8b6e94cace664dbaaaa3cde410111, type: 3}
+  - pageText: 3. When, Where, or How?
+    pageAudio: {fileID: 8300000, guid: 48664e0e1fb3cb444b7498f7faf719ef, type: 3}
+  - pageText: This part gives us more information about the action.
+    pageAudio: {fileID: 8300000, guid: 87b0a023ffb89134a9197d58c07c7699, type: 3}
+  - pageText: 'When.
+
+
+      When tells us the time something happens.'
+    pageAudio: {fileID: 8300000, guid: 08f82cccefcb5314c9a3630e68f37d67, type: 3}
+  - pageText: 'Examples:
+
+
+      One morning
+
+      Before going to school
+
+      Every
+      morning'
+    pageAudio: {fileID: 8300000, guid: 86417f9bbb9aaf941977a1a43c479775, type: 3}
+  - pageText: 'Where.
+
+
+      Where tells us the place where something happens.'
+    pageAudio: {fileID: 8300000, guid: 7cf4f95a5bb29ac4a808b3adb89713a8, type: 3}
+  - pageText: 'Examples:
+
+
+      In the hen pen
+
+      Beside their house
+
+      Around
+      the yard'
+    pageAudio: {fileID: 8300000, guid: 8d1958b0032da0e4aa7de63d913b6c15, type: 3}
+  - pageText: 'How.
+
+
+      How tells us the way something happens.'
+    pageAudio: {fileID: 8300000, guid: e6b3635e4b7ba24438d88f66376abd0e, type: 3}
+  - pageText: 'Examples:
+
+
+      Happily
+
+      Carefully
+
+      Quickly'
+    pageAudio: {fileID: 8300000, guid: 45a8f929a8175164788a0a9cd1690809, type: 3}
+  - pageText: Let's Listen at an Example
+    pageAudio: {fileID: 8300000, guid: 926f67e6581762d40a1a6127a8692789, type: 3}
+  - pageText: One morning, Ben happily fed the hens in the hen pen.
+    pageAudio: {fileID: 8300000, guid: 3e9c53e6b8a47214a971de8e3542112e, type: 3}
+  - pageText: 'Who or What: Ben
+
+      What are they doing?: Fed the hens
+
+      When:
+      One morning
+
+      Where: In the hen pen
+
+      How: Happily'
+    pageAudio: {fileID: 8300000, guid: b8dfe0639d8fcdf4eb99386bf04e46f0, type: 3}
+  - pageText: 'Great job! Remember, every simple sentence helps us answer these questions:'
+    pageAudio: {fileID: 8300000, guid: c71e1a811c71e694a9b4c5a4e81d70a5, type: 3}
+  - pageText: 'Who or What?
+
+      What are they doing?
+
+      When, Where, or How?'
+    pageAudio: {fileID: 8300000, guid: 22b98b8297907a840be28d86cbcf40a5, type: 3}
+  - pageText: When you can find these parts, it becomes easier to read, understand,
+      and tell stories.
+    pageAudio: {fileID: 8300000, guid: a3e93b7148439c34b9275fcfc6fa0db0, type: 3}
+  delayBetweenIntroPages: 0.5
+  welcomeMessage: Welcome to Lesson 6 (Elements of the story)
+  letsLearnMessage: In this lesson, you will listen to a short story and answer five
+    questions about it using Braille. Listen carefully because your answers should
+    be based on the story.
+  completedMessage: Great job! You finished Lesson 6 (Elments of the story)
+  repeatQuestionMessage: You finished the lesson. Do you want to repeat again? Press
+    R to repeat or Y to finish.
+  repeatQuestionConfirmMessage: Do you want to repeat the question? Press Next to
+    continue.
+  repeatQuestionConfirmAudio: {fileID: 8300000, guid: 2b7796efbf0bc7c4fa6eb1cf648e40c6, type: 3}
+  lessons:
+  - displayLabel: Question
+    categoryLabel: Choices
+    promptMessage: Listen carefully to the story. Pay close attention because after
+      the story, you will answer five questions using Braille. Try to remember the
+      important details. Good luck and have fun learning! To answer the question.
+      you will press the dot number 1 for letter A, dot number 2 for B, and dot number
+      3 for C.
+    repeatMessage: Reating The Story
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: 5ecc2a5875ea96f4c8432176ca5a272f, type: 3}
+    instructionAudio: {fileID: 0}
+    repeatAudio: {fileID: 8300000, guid: 7bfae7d00eb980343aafea6df0a68c54, type: 3}
+    storyLines:
+    - storyText: One morning, Ben woke up early before going to school. Ben father
+        owned seven hens that lived in a small hen pen beside their house. Every
+        morning, Ben made sure to feed the hens before leaving for school.
+      storyAudio: {fileID: 8300000, guid: 171096d914935694db56f376c2377390, type: 3}
+    - storyText: While Ben was feeding them, he noticed that his little chick named
+        Ren-ren was missing. Ben looked around the yard and finally found Ren-ren
+        in the hen pen, hiding behind one of the hens.
+      storyAudio: {fileID: 8300000, guid: cd710ee382c7bf64ea10d4c5e4a53100, type: 3}
+    - storyText: Ben smiled with relief because he had found Ren-ren. After making
+        sure all seven hens and Ren-ren were safe, Ben happily went to school.
+      storyAudio: {fileID: 8300000, guid: a73284442a3e32444858f55749876109, type: 3}
+    questions:
+    - questionText: 1. Who owns the hens?
+      questionAudio: {fileID: 8300000, guid: 2159e168f0124d84eaf79a4ddf227950, type: 3}
+      soundEffectAudio: {fileID: 8300000, guid: 1c211304ba1029b4a95fc1f6bd0eaebc, type: 3}
+      choiceAText: Ben Father
+      choiceBText: Ben
+      choiceCText: Ren-ren
+      correctAnswer: 0
+      successMessage: That is correct.
+      successAudio: {fileID: 8300000, guid: 9c57dcc1a87b36e48a43c926c3756edd, type: 3}
+      wrongMessage: Wrong answer, please try again.
+      supportMessage: Remember. Ben's Father own the hens
+      supportAudio: {fileID: 8300000, guid: 47cbb97e407f9694fbd1663f6ef2f2ff, type: 3}
+    - questionText: 2.How many hens are there?
+      questionAudio: {fileID: 8300000, guid: 3e3a3ced0f4c4a14db1b7c8e03853bc1, type: 3}
+      soundEffectAudio: {fileID: 0}
+      choiceAText: Ten
+      choiceBText: Seven
+      choiceCText: Five
+      correctAnswer: 1
+      successMessage: That is correct.
+      successAudio: {fileID: 8300000, guid: 1fe2683155733904fafba59a47dc9c5b, type: 3}
+      wrongMessage: Wrong answer, please try again.
+      supportMessage: Remember. There is Seven hens
+      supportAudio: {fileID: 8300000, guid: d37b9b334a85c1c4bb5158b42b40e5bc, type: 3}
+    - questionText: 3. Who feeds the hens
+      questionAudio: {fileID: 8300000, guid: 19b1cdf0ecbdb0b4fb36457387e65876, type: 3}
+      soundEffectAudio: {fileID: 0}
+      choiceAText: Mario
+      choiceBText: Ren-ren
+      choiceCText: Ben
+      correctAnswer: 2
+      successMessage: That is correct.
+      successAudio: {fileID: 8300000, guid: 60a395859fc91f442a13ebc6400d0490, type: 3}
+      wrongMessage: Wrong answer, please try again.
+      supportMessage: Remember. Ben the one who feed the hens
+      supportAudio: {fileID: 8300000, guid: 2a273f5c360e9a9488b41c41d9d8dde5, type: 3}
+    - questionText: 4.What does Ben before going to school? ___ the hens
+      questionAudio: {fileID: 8300000, guid: 82102707e5052d94b86256f3d0ba75f8, type: 3}
+      soundEffectAudio: {fileID: 0}
+      choiceAText: Feed
+      choiceBText: Seed
+      choiceCText: Weed
+      correctAnswer: 0
+      successMessage: That is correct.
+      successAudio: {fileID: 8300000, guid: 94dd5f12e2137d34796db321a3161612, type: 3}
+      wrongMessage: Wrong answer, please try again.
+      supportMessage: Remember. Ben feed the hens before going to school
+      supportAudio: {fileID: 8300000, guid: 8c125486ebfc4454fae3215c32576c68, type: 3}
+    - questionText: 5. Where was Ren-ren? In the __
+      questionAudio: {fileID: 8300000, guid: 643bbf2686fed90498053f974b3f9ff2, type: 3}
+      soundEffectAudio: {fileID: 0}
+      choiceAText: House
+      choiceBText: Hen Pen
+      choiceCText: Garage
+      correctAnswer: 1
+      successMessage: That is correct.
+      successAudio: {fileID: 8300000, guid: bde6981386120fb49b5448097adfde77, type: 3}
+      wrongMessage: Wrong answer, please try again.
+      supportMessage: Remember. Ren-ren is in the Hen
+      supportAudio: {fileID: 8300000, guid: 4e8f8119bfce4f248bc10cc8054e618d, type: 3}
+    - questionText: 6. Why was Ben happy? he ___ Ren-ren
+      questionAudio: {fileID: 8300000, guid: 861e578933d352845ab5df4407558770, type: 3}
+      soundEffectAudio: {fileID: 0}
+      choiceAText: Found
+      choiceBText: Lost
+      choiceCText: Feed
+      correctAnswer: 0
+      successMessage: That is correct.
+      successAudio: {fileID: 8300000, guid: 3904e0e4fd0c1ad418de272b7ccaacea, type: 3}
+      wrongMessage: Wrong answer, please try again.
+      supportMessage: Remember. Ben is happy because he found Ren-ren
+      supportAudio: {fileID: 8300000, guid: cce39f3d27510ef45acf898706828186, type: 3}
+    supportMessage: "Congratulations! You have successfully finished the lesson on
+      the 6 Elements of the Story. Great job listening carefully to the stories and
+      answering the questions using Braille. Keep practicing your listening and Braille
+      reading skills. You're doing an excellent job\u2014see you in the next lesson!"
+    supportAudio: {fileID: 8300000, guid: ad226ffe4ec86c9429f638d76ec0e68d, type: 3}
   delayAfterVoice: 0.35
   noAudioTextDelay: 2
   delayAfterCorrect: 0.75
-  mistakesBeforeSupport: 3
+  delayBetweenStoryLines: 0.5
   resetMistakesAfterSupport: 1
+  mistakesBeforeSupportPrompt: 3
+  repeatStoryPromptMessage: Do you want to hear the story again? Press Repeat to
+    hear it again, or press Next to continue with the question.
+  repeatStoryPromptAudio: {fileID: 8300000, guid: dba4b148f8a48734ba002f1e07c20fd8, type: 3}
   useTypewriterEffect: 1
   defaultTypewriterCharacterDelay: 0.03
   minSyncedCharacterDelay: 0.01

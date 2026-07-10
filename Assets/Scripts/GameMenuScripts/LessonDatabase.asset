@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af76fb0cf43258f4aa8fdce999afa46b, type: 3}
+  m_Name: LessonDatabase
+  m_EditorClassIdentifier: Assembly-CSharp::BraillePlay.GameMenu.LessonDatabase
+  lessons:
+  - lessonTitle: 'Lesson 1: Sounds'
+    lessonNumber: 1
+    quizzes:
+    - quizTitle: 'Sounds Around 1 '
+      sceneName: 1SoundsAround1
+      quizNumber: 1
+    - quizTitle: Sounds Around 2
+      sceneName: 1SoundsAround2
+      quizNumber: 2
+    - quizTitle: Sounds Around 3
+      sceneName: 1SoundsAround3
+      quizNumber: 3
+    - quizTitle: Sounds Around 4
+      sceneName: 1SoundsAround4
+      quizNumber: 4
+    - quizTitle: Sounds Around 5
+      sceneName: 1SoundsAround5
+      quizNumber: 5
+  - lessonTitle: 'Lesson 2: Animal Sounds'
+    lessonNumber: 2
+    quizzes:
+    - quizTitle: Animal Sounds
+      sceneName: AnimalSounds2
+      quizNumber: 1
+  - lessonTitle: 'Lesson 3: Instrument Sounds'
+    lessonNumber: 3
+    quizzes:
+    - quizTitle: Instrument Sounds
+      sceneName: InstrumentSounds1
+      quizNumber: 1
+  - lessonTitle: 'Lesson 4: Identifying Alphabets'
+    lessonNumber: 4
+    quizzes:
+    - quizTitle: Identifying Alphabets
+      sceneName: IdentifyingAlphabets
+      quizNumber: 1
