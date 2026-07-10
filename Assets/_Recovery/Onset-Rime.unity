@@ -921,15 +921,187 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40b68a3616a14b44383f4f25f4cc0030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Beginning_Letters
-  words: []
-  wordAudioSource: {fileID: 1111531425}
-  inputAudioSource: {fileID: 1586095478}
-  inputField: {fileID: 0}
-  scoreText: {fileID: 844742359}
-  wrongText: {fileID: 1242371997}
-  feedbackText: {fileID: 0}
-  startingScore: 100
-  deductionPerWrong: 1
+  resultReporter: {fileID: 0}
+  bubbleMessageText: {fileID: 1257937990}
+  displayLabelText: {fileID: 843676732}
+  categoryText: {fileID: 1155271827}
+  livePatternText: {fileID: 1697798612}
+  displayImageUI: {fileID: 0}
+  answerStateImage: {fileID: 2047379756}
+  correctStateSprite: {fileID: 7071201414940298460, guid: bee3415c56ef4054aa185675bb6dc185, type: 3}
+  wrongStateSprite: {fileID: -4207999480553683411, guid: 4e35d4a30fee8cc4580f2983361350b4, type: 3}
+  hideAnswerStateAtStart: 1
+  fixScoreText: {fileID: 1777884057}
+  wrongScoreText: {fileID: 1070165176}
+  totalScoreText: {fileID: 1113401178}
+  highScoreText: {fileID: 1262590508}
+  fixedScore: 100
+  deductionPerMistake: 1
+  highScoreKey: BrailleRhymeTimeHighScore
+  voiceAudioSource: {fileID: 1111531425}
+  welcomeAudio: {fileID: 8300000, guid: 622b6ac6ef733f242a95c23c98119d44, type: 3}
+  letsLearnAudio: {fileID: 8300000, guid: e882295fe614cd54384df05c6ccca3d5, type: 3}
+  genericCorrectAudio: {fileID: 8300000, guid: d376210924505a34899d8e12046d7832, type: 3}
+  genericTryAgainAudio: {fileID: 8300000, guid: dd615f4eef83e3b49b22a11445f9b6d6, type: 3}
+  genericCompletedAudio: {fileID: 8300000, guid: 2e8ff559eb5aead43a5c8e87b09eb8ca, type: 3}
+  repeatQuestionAudio: {fileID: 8300000, guid: f5b0be677939adb42bc043a3499ff84c, type: 3}
+  yourScoreIsAudio: {fileID: 8300000, guid: 613a4ecd64752ee4c8844d8286dca545, type: 3}
+  whileYourHighestScoreIsAudio: {fileID: 8300000, guid: 2525c179990406146becd993f00485ee, type: 3}
+  numberAudios:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: a9afdf1f202626e4d815f3d339f223c4, type: 3}
+  - {fileID: 8300000, guid: 21a469d6598c3204ab82b509e42e89f8, type: 3}
+  - {fileID: 8300000, guid: 5bd190e14c182b24d9e04c61a35f3b29, type: 3}
+  - {fileID: 8300000, guid: c6f4937e92350a04a82d4bd76eef52ba, type: 3}
+  - {fileID: 8300000, guid: 701a3679a01f84e43aa1fa9d4a3c0785, type: 3}
+  - {fileID: 8300000, guid: bde38e84ced6de84cb95115723d7bdf4, type: 3}
+  - {fileID: 8300000, guid: fe9932ae0117e154d998e51d9ed611e0, type: 3}
+  - {fileID: 8300000, guid: 94091ec33fbd6b349ba6e703387e4866, type: 3}
+  - {fileID: 8300000, guid: ee8cfcb8b3588954ea24c10457255924, type: 3}
+  - {fileID: 8300000, guid: 5e889505e0e0d2a4db129b0905352109, type: 3}
+  - {fileID: 8300000, guid: 65fabefe77170f948ba6088e0e5a0f95, type: 3}
+  - {fileID: 8300000, guid: 6a0ec25b8a422c646b399ddcae7b2c62, type: 3}
+  - {fileID: 8300000, guid: 437fe84d57fc7f64cad7d56e2a8c9a89, type: 3}
+  - {fileID: 8300000, guid: 0d5771525d0e1814ab6d369e7eb1c3ba, type: 3}
+  - {fileID: 8300000, guid: 8881ea521aa0c7a4f9ae441c637350e6, type: 3}
+  - {fileID: 8300000, guid: e8c2b8bd9bd8f9e428347c57e9710cd4, type: 3}
+  - {fileID: 8300000, guid: 09027ef61068784478c1b32badf50904, type: 3}
+  - {fileID: 8300000, guid: e8c38c6593d87944187086e01dbfdb98, type: 3}
+  - {fileID: 8300000, guid: 31becc0a3e7892e468b4ac4372db4882, type: 3}
+  - {fileID: 8300000, guid: caf77e0d1f468b64ab86183d4318a7f8, type: 3}
+  - {fileID: 8300000, guid: 579c9253f6a5be6499ca8a1851d07f90, type: 3}
+  welcomeMessage: Now that you have finished the lesson,  we will have a quiz.
+  letsLearnMessage: Press the dots of the missing letter which is the onset of the
+    word to complete it.
+  completedMessage: Great job! You finished the lesson.
+  repeatQuestionMessage: You finished the lesson. Do you want to repeat again? Press
+    R to repeat or Y to finish.
+  repeatLessonMessage: You have finished the lesson. Press R to repeat the lesson
+    or press Y to begin the quiz.
+  repeatLessonAudio: {fileID: 8300000, guid: eaf9daeefa1d1e14fb457ef584bacd86, type: 3}
+  lessonPages:
+  - title: 
+    lessonText: Welcome to Lesson Five. Today, we will learn about onset and rime
+      using the short E sound.
+    lessonImage: {fileID: 0}
+    lessonAudio: {fileID: 8300000, guid: 1d840590305a28e4596fdacc9e65567f, type: 3}
+  - title: 
+    lessonText: Words are made of different parts. The beginning sound of a word
+      is called the onset.
+    lessonImage: {fileID: 0}
+    lessonAudio: {fileID: 8300000, guid: 9ad3b53a41785ca4ba73b5a9e3b4aba4, type: 3}
+  - title: 
+    lessonText: 'The ending part, including the vowel and any sounds after it, is
+      called the rime.
+
+'
+    lessonImage: {fileID: 0}
+    lessonAudio: {fileID: 8300000, guid: 818599a40fa765f4dae7ff4bd8b971eb, type: 3}
+  - title: 
+    lessonText: 'We can chop these words into two chunks. The onset is the starting
+      consonant sound. '
+    lessonImage: {fileID: 0}
+    lessonAudio: {fileID: 8300000, guid: 7ffbee3265706e548a99dee357bc0a52, type: 3}
+  - title: 
+    lessonText: The rime is the vowel and everything after it.
+    lessonImage: {fileID: 0}
+    lessonAudio: {fileID: 8300000, guid: 88fe25ea2dfd1c04d806a225ba232227, type: 3}
+  - title: 
+    lessonText: For example, in the word 'web', the /w/ is the onset, and /eb/ is
+      the rime.
+    lessonImage: {fileID: 0}
+    lessonAudio: {fileID: 8300000, guid: 1a3ce3db25323b441984988be8eca172, type: 3}
+  lessons: []
+  delayAfterVoice: 0.35
+  noAudioTextDelay: 2
+  delayAfterCorrect: 0.75
+  mistakesBeforeSupport: 3
+  resetMistakesAfterSupport: 1
+  useTypewriterEffect: 1
+  defaultTypewriterCharacterDelay: 0.03
+  minSyncedCharacterDelay: 0.01
+  maxSyncedCharacterDelay: 0.12
+  waitForFullAudioBeforeContinuing: 1
+  logDebug: 1
 --- !u!1 &803834282
 GameObject:
   m_ObjectHideFlags: 0
@@ -2085,7 +2257,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Rhymes
+  m_text: Onset-rime
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1a98abfae0e1fc34282e9b7fd0f3a427, type: 2}
   m_sharedMaterial: {fileID: -8189821304231711609, guid: 1a98abfae0e1fc34282e9b7fd0f3a427, type: 2}
@@ -2951,7 +3123,7 @@ GameObject:
   - component: {fileID: 1459693710}
   - component: {fileID: 1459693709}
   m_Layer: 5
-  m_Name: InputField (TMP)
+  m_Name: Answer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3116,7 +3288,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1459693707}
   m_CullTransparentMesh: 1
---- !u!1 &1586095473
+--- !u!1 &1586396260
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3124,24 +3296,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1586095474}
-  - component: {fileID: 1586095478}
-  - component: {fileID: 1586095484}
-  - component: {fileID: 1586095492}
+  - component: {fileID: 1586396261}
+  - component: {fileID: 1586396262}
   m_Layer: 5
-  m_Name: InstrumentSound1Manager
+  m_Name: InputManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &1586095474
+--- !u!224 &1586396261
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1586095473}
+  m_GameObject: {fileID: 1586396260}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -3154,121 +3324,24 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!82 &1586095478
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1586095473}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: be5e51a110f2768489db678f3dc889f1, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 427.38837
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!114 &1586095484
+--- !u!114 &1586396262
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1586095473}
+  m_GameObject: {fileID: 1586396260}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4567413ce2987a64b9c79dbfd726b204, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BrailleMapping
-  dot1Key: 102
-  dot2Key: 100
-  dot3Key: 115
-  dot4Key: 106
-  dot5Key: 107
-  dot6Key: 108
+  dot1Key: 106
+  dot2Key: 107
+  dot3Key: 108
+  dot4Key: 102
+  dot5Key: 100
+  dot6Key: 115
   upKey: 273
   downKey: 274
   leftKey: 276
@@ -3278,12 +3351,12 @@ MonoBehaviour:
   repeatKey: 114
   submitKey: 13
   deleteOrNoKey: 8
-  yesOrNextKey: 13
+  yesOrNextKey: 32
   loginKey: 13
   spaceKey: 32
   correctKey: 49
   wrongKey: 50
-  audioSource: {fileID: 1586095478}
+  audioSource: {fileID: 0}
   dot1Sfx: {fileID: 8300000, guid: 0797e54434a89144b924840ca19dd5f5, type: 3}
   dot2Sfx: {fileID: 8300000, guid: 0797e54434a89144b924840ca19dd5f5, type: 3}
   dot3Sfx: {fileID: 8300000, guid: 0797e54434a89144b924840ca19dd5f5, type: 3}
@@ -3325,27 +3398,7 @@ MonoBehaviour:
   ySound: {fileID: 8300000, guid: 92350685b58b51b478cfaa4dd558ec15, type: 3}
   zSound: {fileID: 8300000, guid: 77bd63491b0fe334fb9092f60fac69d6, type: 3}
   letterSoundVolume: 1.5
-  otherDefaultPatternSounds:
-  - pattern: 000001
-    sound: {fileID: 8300000, guid: 0622e17681c1d9747a952cdfc368644f, type: 3}
-  - pattern: 000000
-    sound: {fileID: 8300000, guid: 507e6e21ec3099a4dbbd8dfc112663cf, type: 3}
-  - pattern: 010011
-    sound: {fileID: 8300000, guid: 92c844c4b5b3cdd4287f886b8f04a16d, type: 3}
-  - pattern: 011001
-    sound: {fileID: 8300000, guid: ab2be8d914d984844901de186de4bb4e, type: 3}
-  - pattern: 010000
-    sound: {fileID: 8300000, guid: 36e662f15e18c9941bac3198f72868ae, type: 3}
-  - pattern: 011010
-    sound: {fileID: 8300000, guid: 7a707332265f18f48b49580b27513660, type: 3}
-  - pattern: 111101
-    sound: {fileID: 8300000, guid: 5f0f5ab296d45d74c931b2e8d0aa79da, type: 3}
-  - pattern: 111111
-    sound: {fileID: 8300000, guid: 08256852daf5efa4fa22b9fcb361effc, type: 3}
-  - pattern: 111011
-    sound: {fileID: 8300000, guid: 997b34216f8d2b34c99ffe7d2e1ab773, type: 3}
-  - pattern: 011111
-    sound: {fileID: 8300000, guid: d79ad1e1d62f577468b4448ee4c887dc, type: 3}
+  otherDefaultPatternSounds: []
   otherPatternSoundVolume: 1.5
   leftEarPan: -1
   rightEarPan: 1
@@ -3355,370 +3408,6 @@ MonoBehaviour:
   logInputs: 0
   playLetterSoundOnChord: 1
   playOtherPatternSoundOnChord: 1
---- !u!114 &1586095492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1586095473}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a04d5f819ea5294e9bf28e38125caab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InstrumentSounds1
-  bubbleMessageText: {fileID: 1257937990}
-  displayLabelText: {fileID: 843676732}
-  categoryText: {fileID: 1155271827}
-  livePatternText: {fileID: 1697798612}
-  displayImageUI: {fileID: 54352918}
-  answerStateImage: {fileID: 2047379756}
-  correctStateSprite: {fileID: -4207999480553683411, guid: 4e35d4a30fee8cc4580f2983361350b4, type: 3}
-  wrongStateSprite: {fileID: 7071201414940298460, guid: bee3415c56ef4054aa185675bb6dc185, type: 3}
-  hideAnswerStateAtStart: 1
-  fixScoreText: {fileID: 1777884057}
-  wrongScoreText: {fileID: 1070165176}
-  totalScoreText: {fileID: 1113401178}
-  highScoreText: {fileID: 1262590508}
-  fixedScore: 100
-  deductionPerMistake: 1
-  highScoreKey: BrailleInstrumentSounds1HighScore
-  voiceAudioSource: {fileID: 1586095478}
-  sfxAudioSource: {fileID: 1586095478}
-  welcomeAudio: {fileID: 8300000, guid: a3ff7b878d9c2d647b184f3dd99e329a, type: 3}
-  letsLearnAudio: {fileID: 8300000, guid: ec6a1400897480f4090afe4184243113, type: 3}
-  genericCorrectAudio: {fileID: 8300000, guid: 587dfae100161f646a4b8e246de58429, type: 3}
-  genericTryAgainAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-  genericCompletedAudio: {fileID: 8300000, guid: 9b591cbcf7767cd46962f943a70e9eb0, type: 3}
-  repeatQuestionAudio: {fileID: 8300000, guid: 5905f105a49c77a4b9a1e77956180ef1, type: 3}
-  yourScoreIsAudio: {fileID: 8300000, guid: 613a4ecd64752ee4c8844d8286dca545, type: 3}
-  whileYourHighestScoreIsAudio: {fileID: 8300000, guid: 2525c179990406146becd993f00485ee, type: 3}
-  numberAudios:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 8300000, guid: a9afdf1f202626e4d815f3d339f223c4, type: 3}
-  - {fileID: 8300000, guid: 21a469d6598c3204ab82b509e42e89f8, type: 3}
-  - {fileID: 8300000, guid: 5bd190e14c182b24d9e04c61a35f3b29, type: 3}
-  - {fileID: 8300000, guid: c6f4937e92350a04a82d4bd76eef52ba, type: 3}
-  - {fileID: 8300000, guid: 701a3679a01f84e43aa1fa9d4a3c0785, type: 3}
-  - {fileID: 8300000, guid: bde38e84ced6de84cb95115723d7bdf4, type: 3}
-  - {fileID: 8300000, guid: fe9932ae0117e154d998e51d9ed611e0, type: 3}
-  - {fileID: 8300000, guid: 94091ec33fbd6b349ba6e703387e4866, type: 3}
-  - {fileID: 8300000, guid: ee8cfcb8b3588954ea24c10457255924, type: 3}
-  - {fileID: 8300000, guid: 5e889505e0e0d2a4db129b0905352109, type: 3}
-  - {fileID: 8300000, guid: 65fabefe77170f948ba6088e0e5a0f95, type: 3}
-  - {fileID: 8300000, guid: 6a0ec25b8a422c646b399ddcae7b2c62, type: 3}
-  - {fileID: 8300000, guid: 437fe84d57fc7f64cad7d56e2a8c9a89, type: 3}
-  - {fileID: 8300000, guid: 0d5771525d0e1814ab6d369e7eb1c3ba, type: 3}
-  - {fileID: 8300000, guid: 8881ea521aa0c7a4f9ae441c637350e6, type: 3}
-  - {fileID: 8300000, guid: e8c2b8bd9bd8f9e428347c57e9710cd4, type: 3}
-  - {fileID: 8300000, guid: 09027ef61068784478c1b32badf50904, type: 3}
-  - {fileID: 8300000, guid: e8c38c6593d87944187086e01dbfdb98, type: 3}
-  - {fileID: 8300000, guid: 31becc0a3e7892e468b4ac4372db4882, type: 3}
-  - {fileID: 8300000, guid: caf77e0d1f468b64ab86183d4318a7f8, type: 3}
-  - {fileID: 8300000, guid: 579c9253f6a5be6499ca8a1851d07f90, type: 3}
-  welcomeMessage: Welcome to Lesson 3, Insstrument Sounds Part 1.
-  letsLearnMessage: In this part of the lesson, you're going to tell whether the
-    given instruments produces loud or soft sound and high or low pitch sounds. Press
-    dot 1 if you think the instrument produces loud or high pitch sound or Press
-    dot 2 if you think the instrument produces Soft or low pitch sound.
-  completedMessage: Great Job! You finished Lesson 3 Instrument Sounds part 1.
-  repeatQuestionMessage: You finished Lesson 3, Instrument Sounds Part 1. Do you
-    want to repeat again? Press repeat to repeat or Next to go back to continue.
-  lessons:
-  - displayLabel: Maracas
-    question1Category: '1. Loud Sound
-
-      2. Soft Sound'
-    question2Category: '1. High Pitch Sound
-
-      2. Low Pitch Sound'
-    displayImage: {fileID: 21300000, guid: 8974440abe223bb45b2df1a6f9730da6, type: 3}
-    introductionMessage: Number 1, Maracas.
-    introductionAudio: {fileID: 8300000, guid: 9a361087aea32c94b9cc7a9d85a785c2, type: 3}
-    instrumentSoundEffect: {fileID: 8300000, guid: 9877f08d8b3a696439b4ce2d4deca631, type: 3}
-    volumeQuestion:
-      promptMessage: Do you think Maracas produces Loud or Soft Sound? Press dot
-        1 for Loud or Press dot 2 for Soft.
-      promptAudio: {fileID: 8300000, guid: c5b9f0cae44cc8440bdad432d9ecc19f, type: 3}
-      correctAnswer: 1
-      successMessage: That is Correct.
-      successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
-      wrongMessage: Wrong Answer, Please Try Again.
-      wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-      supportMessage: Maracas produces soft sound. Press dot 2 to answer soft sound.
-      supportAudio: {fileID: 8300000, guid: 3f638d2e463865846aabf6b2e73da35b, type: 3}
-    pitchQuestion:
-      promptMessage: Do you think Maracas produces High or Low Pitch Sound? Press
-        dot 1 for High or Press dot 2 for Low Pitch.
-      promptAudio: {fileID: 8300000, guid: 8215c8c7ba4299c428c69ee48881398b, type: 3}
-      correctAnswer: 0
-      successMessage: That is Correct.
-      successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
-      wrongMessage: Wrong Answer, Please Try Again.
-      wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-      supportMessage: Maracas produces high pitch sound. Press dot 1 to answer high
-        pitch sound.
-      supportAudio: {fileID: 8300000, guid: 8841853e51758b2429f12d26de791597, type: 3}
-  - displayLabel: Violin
-    question1Category: '1. Loud Sound
-
-      2. Soft Sound'
-    question2Category: '1. High Pitch Sound
-
-      2. Low Pitch Sound'
-    displayImage: {fileID: 21300000, guid: c76e548ba17798c43b42497d430ef153, type: 3}
-    introductionMessage: Number 2, Violin.
-    introductionAudio: {fileID: 8300000, guid: 2a9e28a69ce2f8444aca5b444a113574, type: 3}
-    instrumentSoundEffect: {fileID: 8300000, guid: 4a31482cad5b71b4cb299b3445840322, type: 3}
-    volumeQuestion:
-      promptMessage: Do you think Violin produces Loud or Soft Sound? Press dot 1
-        for Loud or Press dot 2 for Soft.
-      promptAudio: {fileID: 8300000, guid: 7789c42757e641a4198484140abeb45c, type: 3}
-      correctAnswer: 0
-      successMessage: That is Correct.
-      successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
-      wrongMessage: Wrong Answer, Please Try Again.
-      wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-      supportMessage: Violin produces loud sound. Press dot 1 to answer loud sound.
-      supportAudio: {fileID: 8300000, guid: 772310f8fd3605b4cbeeff49f8bb0957, type: 3}
-    pitchQuestion:
-      promptMessage: Do you think Violin produces High or Low Pitch Sound? Press
-        dot 1 for High or Press dot 2 for Low Pitch.
-      promptAudio: {fileID: 8300000, guid: d064b86cf7a5b654688ebed1160544a4, type: 3}
-      correctAnswer: 0
-      successMessage: That is Correct.
-      successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
-      wrongMessage: Wrong Answer, Please Try Again.
-      wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-      supportMessage: Violin produces high pitch sound. Press dot 1 to answer high
-        pitch sound.
-      supportAudio: {fileID: 8300000, guid: c496dd93ba2f4024f80d6ca83c1a2665, type: 3}
-  - displayLabel: Guitar
-    question1Category: '1. Loud Sound
-
-      2. Soft Sound'
-    question2Category: '1. High Pitch Sound
-
-      2. Low Pitch Sound'
-    displayImage: {fileID: 21300000, guid: 3df0c0a726f63494eb0192349b981522, type: 3}
-    introductionMessage: Number 3, Guitar.
-    introductionAudio: {fileID: 8300000, guid: 3e664d56f17ce374eab3d4a27dd8755a, type: 3}
-    instrumentSoundEffect: {fileID: 8300000, guid: 89578f59890358643a9c68ce20950c27, type: 3}
-    volumeQuestion:
-      promptMessage: Do you think Guitar produces Loud or Soft Sound? Press dot 1
-        for Loud or Press dot 2 for Soft.
-      promptAudio: {fileID: 8300000, guid: 0e4362e41297c43409cd89e64c387422, type: 3}
-      correctAnswer: 1
-      successMessage: That is Correct.
-      successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
-      wrongMessage: Wrong Answer, Please Try Again.
-      wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-      supportMessage: Guitar produces soft sound. Press dot 2 to answer soft sound.
-      supportAudio: {fileID: 8300000, guid: 66e06e12cc400b0429a6679706f1e9d5, type: 3}
-    pitchQuestion:
-      promptMessage: Do you think Guitar produces High or Low Pitch Sound? Press
-        dot 1 for High or Press dot 2 for Low Pitch.
-      promptAudio: {fileID: 8300000, guid: f5502a0ed5356eb4da0eb123e45f06ae, type: 3}
-      correctAnswer: 0
-      successMessage: That is Correct.
-      successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
-      wrongMessage: Wrong Answer, Please Try Again.
-      wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-      supportMessage: Guitar produces high pitch sound. Press dot 1 to answer high
-        pitch sound.
-      supportAudio: {fileID: 8300000, guid: bfd7a4997f5adb344af3d9a66dfac9a3, type: 3}
-  - displayLabel: Trumpet
-    question1Category: '1. Loud Sound
-
-      2. Soft Sound'
-    question2Category: '1. High Pitch Sound
-
-      2. Low Pitch Sound'
-    displayImage: {fileID: 21300000, guid: 04e25486fec78ea4b8c1a4b727466f86, type: 3}
-    introductionMessage: Number 4, Trumpet.
-    introductionAudio: {fileID: 8300000, guid: c138ea44f5835634186c1595a68e82bf, type: 3}
-    instrumentSoundEffect: {fileID: 8300000, guid: 1e60e6199f00ce04591ef72fe60c7ee9, type: 3}
-    volumeQuestion:
-      promptMessage: Do you think Trumpet produces Loud or Soft Sound? Press dot
-        1 for Loud or Press dot 2 for Soft.
-      promptAudio: {fileID: 8300000, guid: 91e0e8fdb9738fe43938a81159e83a0c, type: 3}
-      correctAnswer: 0
-      successMessage: That is Correct.
-      successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
-      wrongMessage: Wrong Answer, Please Try Again.
-      wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-      supportMessage: Trumpet produces loud sound. Press dot 1 to answer loud sound.
-      supportAudio: {fileID: 8300000, guid: b79e5e71db4943840a2b15e5e8e5634f, type: 3}
-    pitchQuestion:
-      promptMessage: Do you think Trumpet produces High or Low Pitch Sound? Press
-        dot 1 for High or Press dot 2 for Low Pitch.
-      promptAudio: {fileID: 8300000, guid: 2c33a849fdc3c214aad23d9d1f6acbfc, type: 3}
-      correctAnswer: 1
-      successMessage: That is Correct.
-      successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
-      wrongMessage: Wrong Answer, Please Try Again.
-      wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-      supportMessage: Trumpet produces low pitch sound. Press dot 2 to answer low
-        pitch sound.
-      supportAudio: {fileID: 8300000, guid: e72c6f5b90c812441baaada1abca7328, type: 3}
-  - displayLabel: Bass Drum
-    question1Category: '1. Loud Sound
-
-      2. Soft Sound'
-    question2Category: '1. High Pitch Sound
-
-      2. Low Pitch Sound'
-    displayImage: {fileID: 21300000, guid: 04e25486fec78ea4b8c1a4b727466f86, type: 3}
-    introductionMessage: Number 5, Bass Drum.
-    introductionAudio: {fileID: 8300000, guid: 944140cb83e96234581a91e9b192499e, type: 3}
-    instrumentSoundEffect: {fileID: 8300000, guid: dcb9dc7f9182ac044b11cd47d0b45654, type: 3}
-    volumeQuestion:
-      promptMessage: Do you think Bass Drum produces Loud or Soft Sound? Press dot
-        1 for Loud or Press dot 2 for Soft.
-      promptAudio: {fileID: 8300000, guid: 3cc009741bd4eca409a6ba34e085811e, type: 3}
-      correctAnswer: 0
-      successMessage: That is Correct.
-      successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
-      wrongMessage: Wrong Answer, Please Try Again.
-      wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-      supportMessage: Bass Drum produces loud sound. Press dot 1 to answer loud sound.
-      supportAudio: {fileID: 8300000, guid: 6f154a789a300ad4280d6596ca05aad6, type: 3}
-    pitchQuestion:
-      promptMessage: Do you think Bass Drum produces High or Low Pitch Sound? Press
-        dot 1 for High or Press dot 2 for Low Pitch.
-      promptAudio: {fileID: 8300000, guid: 1dafab18bf9fc024ab89bbf85c2bb735, type: 3}
-      correctAnswer: 1
-      successMessage: That is Correct.
-      successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
-      wrongMessage: Wrong Answer, Please Try Again.
-      wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-      supportMessage: Bass Drum produces low pitch sound. Press dot 2 to answer low
-        pitch sound.
-      supportAudio: {fileID: 8300000, guid: 3c4647b19c82a9b439eacb15a760bf06, type: 3}
-  - displayLabel: Quad Drum
-    question1Category: '1. Loud Sound
-
-      2. Soft Sound'
-    question2Category: '1. High Pitch Sound
-
-      2. Low Pitch Sound'
-    displayImage: {fileID: 21300000, guid: 04e25486fec78ea4b8c1a4b727466f86, type: 3}
-    introductionMessage: Number 6, Quad Drum.
-    introductionAudio: {fileID: 8300000, guid: 0cad9bebbc9e9624aa335654ab5bff74, type: 3}
-    instrumentSoundEffect: {fileID: 8300000, guid: 12e7bc10db4ae60449177b53a6828a5a, type: 3}
-    volumeQuestion:
-      promptMessage: Do you think Quad Drum produces Loud or Soft Sound? Press dot
-        1 for Loud or Press dot 2 for Soft.
-      promptAudio: {fileID: 8300000, guid: 637dc10f64ea77c49a92bf5ab264af2f, type: 3}
-      correctAnswer: 0
-      successMessage: That is Correct.
-      successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
-      wrongMessage: Wrong Answer, Please Try Again.
-      wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-      supportMessage: Quad Drum produces loud sound. Press dot 1 to answer loud sound.
-      supportAudio: {fileID: 8300000, guid: 2dffe576e4d78e7469ca6bd078decd1f, type: 3}
-    pitchQuestion:
-      promptMessage: Do you think Quad Drum produces High or Low Pitch Sound? Press
-        dot 1 for High or Press dot 2 for Low Pitch.
-      promptAudio: {fileID: 8300000, guid: ee4485a412e0978468ad085057fcfacf, type: 3}
-      correctAnswer: 0
-      successMessage: That is Correct.
-      successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
-      wrongMessage: Wrong Answer, Please Try Again.
-      wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-      supportMessage: Quad Drum produces high pitch sound. Press dot 1 to answer
-        high pitch sound.
-      supportAudio: {fileID: 8300000, guid: c2c8cc756ccffc54b9f3f5fe448438cc, type: 3}
-  delayAfterVoice: 0.35
-  noAudioTextDelay: 2
-  delayAfterCorrect: 0.75
-  mistakesBeforeSupport: 3
-  resetMistakesAfterSupport: 1
-  useTypewriterEffect: 1
-  defaultTypewriterCharacterDelay: 0.03
-  minSyncedCharacterDelay: 0.01
-  maxSyncedCharacterDelay: 0.12
-  waitForFullAudioBeforeContinuing: 1
-  logDebug: 1
 --- !u!1 &1697798611
 GameObject:
   m_ObjectHideFlags: 0
@@ -4179,12 +3868,12 @@ RectTransform:
   - {fileID: 1242371996}
   - {fileID: 1070165175}
   - {fileID: 286661653}
-  - {fileID: 1586095474}
   - {fileID: 1155271826}
   - {fileID: 2047379755}
-  - {fileID: 54352917}
   - {fileID: 666421660}
   - {fileID: 1111531424}
+  - {fileID: 1586396261}
+  - {fileID: 54352917}
   m_Father: {fileID: 83132950}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
