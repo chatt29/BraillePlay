@@ -43,3 +43,9 @@ MonoBehaviour:
     - quizTitle: Instrument Sounds
       sceneName: InstrumentSounds1
       quizNumber: 1
+  - lessonTitle: 'Lesson 4: Identifying Alphabets'
+    lessonNumber: 4
+    quizzes:
+    - quizTitle: Identifying Alphabets
+      sceneName: IdentifyingAlphabets
+      quizNumber: 1

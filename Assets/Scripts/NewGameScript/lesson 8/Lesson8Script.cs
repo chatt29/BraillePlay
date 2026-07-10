@@ -5,7 +5,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class SoundsAround4 : MonoBehaviour
+public class Lesson8Script : MonoBehaviour
 {
     // -------------------------------------------------------------------------
     // Intro Lesson Page (plays before the Welcome Message, one page at a time)
@@ -31,6 +31,30 @@ public class SoundsAround4 : MonoBehaviour
         public string storyText;
 
         public AudioClip storyAudio;
+    }
+
+    [Serializable]
+    public class SpellingQuestion
+    {
+        [Header("Word to Spell")]
+        public string word;
+
+        [TextArea(2, 4)]
+        public string instruction;
+
+        public AudioClip instructionAudio;
+
+        [Header("Guide")]
+        [TextArea(2, 6)]
+        public string helpMessage;
+
+        public AudioClip helpAudio;
+
+        [Header("Feedback")]
+        public string successMessage = "Correct!";
+        public AudioClip successAudio;
+
+        public string wrongMessage = "Try Again.";
     }
 
     // -------------------------------------------------------------------------
@@ -97,8 +121,11 @@ public class SoundsAround4 : MonoBehaviour
         [Header("1. Story Section (4 lines)")]
         public List<StoryLine> storyLines = new List<StoryLine>();
 
-        [Header("2. Question Section (5 questions)")]
+        [Header("2. Multiple Choice Questions")]
         public List<QuizQuestion> questions = new List<QuizQuestion>();
+
+        [Header("3. Spelling Quiz")]
+        public List<SpellingQuestion> spellingQuestions = new List<SpellingQuestion>();
 
         [Header("Support After Mistakes")]
         [TextArea(2, 4)]
@@ -223,6 +250,14 @@ public class SoundsAround4 : MonoBehaviour
 
     private int currentLessonIndex = -1;
     private int currentQuestionIndex = -1;
+    private int currentSpellingIndex = 0;
+
+    private bool waitingForSpelling = false;
+
+    private string currentTypedWord = "";
+    private string targetWord = "";
+    private int currentLetterIndex = 0;
+
     private int currentMistakeCount = 0;
     private int totalWrongCount = 0;
     private int totalScore = 100;
@@ -465,11 +500,12 @@ public class SoundsAround4 : MonoBehaviour
 
         // Step 3: Story Section
         yield return PlayStory(lesson);
+
         yield return new WaitForSeconds(delayAfterVoice);
 
-        // Step 4: Question Section — start with the first question
-        currentQuestionIndex = 0;
-        yield return AskQuizQuestion(lesson, currentQuestionIndex);
+        // Start spelling quiz first
+        currentSpellingIndex = 0;
+        yield return AskSpellingQuestion(lesson, currentSpellingIndex);
     }
 
     /// <summary>Display Label, Category Label, Display Image.</summary>
@@ -528,6 +564,30 @@ public class SoundsAround4 : MonoBehaviour
         }
     }
 
+    private IEnumerator AskSpellingQuestion(BrailleLesson lesson, int index)
+    {
+        if (index >= lesson.spellingQuestions.Count)
+        {
+            currentQuestionIndex = 0;
+            yield return AskQuizQuestion(lesson, 0);
+            yield break;
+        }
+
+        SpellingQuestion question = lesson.spellingQuestions[index];
+
+        waitingForSpelling = true;
+
+        displayLabelText.text = "Spell the word";
+
+        categoryText.text = question.word;
+
+        yield return ShowBubbleMessageSynced(
+            question.instruction,
+            question.instructionAudio,
+            noAudioTextDelay
+        );
+    }
+
     /// <summary>
     /// Step 4 — plays the optional sound effect then asks the multiple-choice
     /// question at the given index. Used for the first ask of a question and
@@ -583,6 +643,12 @@ public class SoundsAround4 : MonoBehaviour
         if (!lessonActive || sceneFinished || waitingForRepeatChoice || waitingForRepeatConfirmation)
             return;
 
+        if (waitingForSpelling)
+        {
+            HandleSpelling(submittedPattern);
+            return;
+        }
+
         if (waitingForQuizAnswer)
         {
             HandleQuizAnswer(submittedPattern);
@@ -624,6 +690,93 @@ public class SoundsAround4 : MonoBehaviour
             RunFlow(HandleWrongAnswer(lesson, question));
         }
     }
+
+    private void HandleSpelling(string submittedPattern)
+    {
+        char letter = GetBrailleLetter(submittedPattern);
+
+        if (letter == '\0')
+            return;
+
+        currentTypedWord += char.ToLower(letter);
+
+        Debug.Log("Current Word: " + currentTypedWord);
+
+        if (currentTypedWord.Length >= targetWord.Length)
+        {
+            waitingForSpelling = false;
+
+            if (currentTypedWord == targetWord)
+            {
+                Debug.Log("Correct!");
+
+                // Move to next spelling word
+                currentSpellingIndex++;
+
+                if (currentSpellingIndex < lessons[currentLessonIndex].spellingQuestions.Count)
+                {
+                    RunFlow(AskSpellingQuestion(
+                        lessons[currentLessonIndex],
+                        currentSpellingIndex));
+                }
+                else
+                {
+                    Debug.Log("All spelling words completed!");
+
+                    // Continue to the multiple-choice quiz
+                    currentQuestionIndex = 0;
+                    RunFlow(AskQuizQuestion(
+                        lessons[currentLessonIndex],
+                        currentQuestionIndex));
+                }
+            }
+            else
+            {
+                Debug.Log("Wrong!");
+
+                currentTypedWord = "";
+                currentLetterIndex = 0;
+                waitingForSpelling = true;
+            }
+        }
+    }
+
+    private char GetBrailleLetter(string pattern)
+{
+    switch (pattern)
+    {
+        case "100000": return 'a';
+        case "110000": return 'b';
+        case "100100": return 'c';
+        case "100110": return 'd';
+        case "100010": return 'e';
+        case "110100": return 'f';
+        case "110110": return 'g';
+        case "110010": return 'h';
+        case "010100": return 'i';
+        case "010110": return 'j';
+
+        case "101000": return 'k';
+        case "111000": return 'l';
+        case "101100": return 'm';
+        case "101110": return 'n';
+        case "101010": return 'o';
+        case "111100": return 'p';
+        case "111110": return 'q';
+        case "111010": return 'r';
+        case "011100": return 's';
+        case "011110": return 't';
+
+        case "101001": return 'u';
+        case "111001": return 'v';
+        case "010111": return 'w';
+        case "101101": return 'x';
+        case "101111": return 'y';
+        case "101011": return 'z';
+    }
+
+    return '\0';
+}
 
     // -------------------------------------------------------------------------
     // Correct / Wrong / Support

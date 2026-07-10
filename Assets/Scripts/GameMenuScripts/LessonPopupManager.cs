@@ -83,7 +83,10 @@ namespace BraillePlay.GameMenu
                 return;
             }
 
-            sceneLoader.LoadQuiz(quiz.SceneName, currentLesson.LessonNumber, quiz.QuizNumber);
+            QuizDefinition nextQuiz = currentLesson.GetQuiz(currentQuizIndex + 1);
+            string nextQuizSceneName = nextQuiz != null ? nextQuiz.SceneName : null;
+
+            sceneLoader.LoadQuiz(quiz.SceneName, currentLesson.LessonNumber, quiz.QuizNumber, nextQuizSceneName);
         }
 
         private void ShowCurrentQuizImmediate()
