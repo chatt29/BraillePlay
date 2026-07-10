@@ -1661,7 +1661,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 74, y: 404}
+  m_AnchoredPosition: {x: 76, y: 436}
   m_SizeDelta: {x: 536.2007, y: 189.4903}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1204025121
@@ -1684,7 +1684,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Parts of a Simple Sentence.
+  m_text: 'Lesson 8: Speech Sound Medial /e/, Rimes (-eg, -ed)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1a98abfae0e1fc34282e9b7fd0f3a427, type: 2}
   m_sharedMaterial: {fileID: -8189821304231711609, guid: 1a98abfae0e1fc34282e9b7fd0f3a427, type: 2}
@@ -2412,8 +2412,10 @@ GameObject:
   - component: {fileID: 1586095478}
   - component: {fileID: 1586095484}
   - component: {fileID: 1586095485}
+  - component: {fileID: 1586095486}
+  - component: {fileID: 1586095487}
   m_Layer: 5
-  m_Name: Lesson6Manager
+  m_Name: Lesson8Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2646,7 +2648,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1586095473}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 47fef0f0e1fe6bb458d310344c93f635, type: 3}
   m_Name: 
@@ -3018,7 +3020,7 @@ MonoBehaviour:
   delayAfterCorrect: 0.75
   delayBetweenStoryLines: 0.5
   resetMistakesAfterSupport: 1
-  mistakesBeforeSupportPrompt: 3
+  mistakesBeforeSupport: 3
   repeatStoryPromptMessage: Do you want to hear the story again? Press Repeat to
     hear it again, or press Next to continue with the question.
   repeatStoryPromptAudio: {fileID: 8300000, guid: dba4b148f8a48734ba002f1e07c20fd8, type: 3}
@@ -3028,6 +3030,261 @@ MonoBehaviour:
   maxSyncedCharacterDelay: 0.12
   waitForFullAudioBeforeContinuing: 1
   logDebug: 1
+--- !u!114 &1586095486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586095473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c80e576a363e105468525a9c8907fc5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Lesson8Script
+  bubbleMessageText: {fileID: 1257937990}
+  displayLabelText: {fileID: 843676732}
+  categoryText: {fileID: 1155271827}
+  livePatternText: {fileID: 1697798612}
+  displayImageUI: {fileID: 54352918}
+  answerStateImage: {fileID: 2047379756}
+  correctStateSprite: {fileID: -4207999480553683411, guid: 4e35d4a30fee8cc4580f2983361350b4, type: 3}
+  wrongStateSprite: {fileID: 7071201414940298460, guid: bee3415c56ef4054aa185675bb6dc185, type: 3}
+  hideAnswerStateAtStart: 1
+  fixScoreText: {fileID: 1777884057}
+  wrongScoreText: {fileID: 1070165176}
+  totalScoreText: {fileID: 1113401178}
+  highScoreText: {fileID: 1262590508}
+  fixedScore: 100
+  deductionPerMistake: 1
+  highScoreKey: BrailleSoundsAroundHighScore
+  voiceAudioSource: {fileID: 1586095478}
+  welcomeAudio: {fileID: 8300000, guid: 13e73841e1e6f1a42b427839872c4941, type: 3}
+  letsLearnAudio: {fileID: 8300000, guid: 369ddc24d6f1a4e4192a89a1d81c7558, type: 3}
+  genericCorrectAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
+  genericTryAgainAudio: {fileID: 8300000, guid: dd615f4eef83e3b49b22a11445f9b6d6, type: 3}
+  genericCompletedAudio: {fileID: 8300000, guid: ad226ffe4ec86c9429f638d76ec0e68d, type: 3}
+  repeatQuestionAudio: {fileID: 8300000, guid: 7bfae7d00eb980343aafea6df0a68c54, type: 3}
+  yourScoreIsAudio: {fileID: 8300000, guid: 613a4ecd64752ee4c8844d8286dca545, type: 3}
+  whileYourHighestScoreIsAudio: {fileID: 8300000, guid: 2525c179990406146becd993f00485ee, type: 3}
+  numberAudios:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  introLessonPages:
+  - pageText: 'Welcome to Lesson 8: Speech Sound Medial /e/, Rimes (-eg, -ed)'
+    pageAudio: {fileID: 8300000, guid: 13e73841e1e6f1a42b427839872c4941, type: 3}
+  - pageText: Today, we are going to learn about the medial vowel sound /e/ and the
+      rimes -eg and -ed.
+    pageAudio: {fileID: 8300000, guid: 10dffd4e432ac754fb051a63b5eac375, type: 3}
+  - pageText: The medial sound is the middle sound in a word. The letter e makes
+      the short /e/ sound, like in the words egg, bed, and leg.
+    pageAudio: {fileID: 8300000, guid: d9ec8a58bf4e36540a0b89b2964265bf, type: 3}
+  - pageText: A rime is the part of a word that comes after the first letter or sound.
+      Today, we will learn the rimes -eg and -ed.
+    pageAudio: {fileID: 8300000, guid: 54900b639d2dd414897286c446f9472f, type: 3}
+  - pageText: 'Let''s listen some examples:'
+    pageAudio: {fileID: 8300000, guid: ee89f462d2cbe0a4ba08f3e3332702d9, type: 3}
+  - pageText: 'Rime: -eg
+
+      leg
+
+      peg
+
+      beg'
+    pageAudio: {fileID: 8300000, guid: b389f836181548a4eb2dc7d870d77f6b, type: 3}
+  - pageText: These words all end with -eg and have the short /e/ sound.
+    pageAudio: {fileID: 8300000, guid: 4a45a00211d34f34ca41cc4370ca8dba, type: 3}
+  - pageText: 'Rime: -ed
+
+      bed
+
+      red
+
+      fed'
+    pageAudio: {fileID: 8300000, guid: 119c9f2652db82f489296f41faa00c09, type: 3}
+  - pageText: 123
+    pageAudio: {fileID: 0}
+  - pageText: These words all end with -ed and also have the short /e/ sound.
+    pageAudio: {fileID: 8300000, guid: 67f8ac371596171429f813cfa681a9cb, type: 3}
+  - pageText: Listen carefully to each word. Notice that they all have the short
+      /e/ sound in the middle.
+    pageAudio: {fileID: 8300000, guid: 13469b99ccbdee3429ffa99efd979a31, type: 3}
+  - pageText: When you hear or read a word, try to find its rime. Knowing the rime
+      will help you read new words more easily.
+    pageAudio: {fileID: 8300000, guid: 103bea8787950db4482f27c1d42f5e57, type: 3}
+  - pageText: Great job! Keep practicing the /e/ sound and the rimes -eg and -ed.
+      The more you practice, the better you will become at reading and pronouncing
+      words.
+    pageAudio: {fileID: 8300000, guid: 52977510d75647a4cb46613aff308b99, type: 3}
+  delayBetweenIntroPages: 0.5
+  welcomeMessage: Hello, Class!
+  letsLearnMessage: Let's identify some sounds.
+  completedMessage: Great job! You finished the lesson.
+  repeatQuestionMessage: You finished the lesson. Do you want to repeat again? Press
+    R to repeat or Y to finish.
+  repeatQuestionConfirmMessage: Do you want to repeat the question? Press Next to
+    continue.
+  repeatQuestionConfirmAudio: {fileID: 0}
+  lessons:
+  - displayLabel: Word
+    categoryLabel: Choices
+    promptMessage: Here, you will choose a word that rimes in (-eg, -ed)
+    repeatMessage: 
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: fec17ecbc336264409ee388a12ca4c91, type: 3}
+    instructionAudio: {fileID: 0}
+    repeatAudio: {fileID: 0}
+    storyLines: []
+    questions:
+    - questionText: 1. Leg
+      questionAudio: {fileID: 8300000, guid: d1c5f12a4ff5ce147947185668f40513, type: 3}
+      soundEffectAudio: {fileID: 0}
+      choiceAText: Red
+      choiceBText: Peg
+      choiceCText: Mid
+      correctAnswer: 1
+      successMessage: good
+      successAudio: {fileID: 0}
+      wrongMessage: 
+      supportMessage: 
+      supportAudio: {fileID: 0}
+    spellingQuestions:
+    - word: BED
+      instruction: PRESS DOT
+      instructionAudio: {fileID: 0}
+      helpMessage: TRY
+      helpAudio: {fileID: 0}
+      successMessage: NICE
+      successAudio: {fileID: 0}
+      wrongMessage: WRONG
+    supportMessage: 
+    supportAudio: {fileID: 0}
+  delayAfterVoice: 0.35
+  noAudioTextDelay: 2
+  delayAfterCorrect: 0.75
+  delayBetweenStoryLines: 0.5
+  resetMistakesAfterSupport: 1
+  mistakesBeforeSupport: 3
+  repeatStoryPromptMessage: Do you want to hear the story again? Press Repeat to
+    hear it again, or press Next to continue with the question.
+  repeatStoryPromptAudio: {fileID: 0}
+  useTypewriterEffect: 1
+  defaultTypewriterCharacterDelay: 0.03
+  minSyncedCharacterDelay: 0.01
+  maxSyncedCharacterDelay: 0.12
+  waitForFullAudioBeforeContinuing: 1
+  logDebug: 1
+--- !u!114 &1586095487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586095473}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e467582837f9ef46a0e188d188229f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MapFor8
 --- !u!1 &1697798611
 GameObject:
   m_ObjectHideFlags: 0

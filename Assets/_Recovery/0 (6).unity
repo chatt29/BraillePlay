@@ -1661,7 +1661,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 74, y: 404}
+  m_AnchoredPosition: {x: 76, y: 436}
   m_SizeDelta: {x: 536.2007, y: 189.4903}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1204025121
@@ -1684,7 +1684,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Parts of a Simple Sentence.
+  m_text: 'Lesson 8: Speech Sound Medial /e/, Rimes (-eg, -ed)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1a98abfae0e1fc34282e9b7fd0f3a427, type: 2}
   m_sharedMaterial: {fileID: -8189821304231711609, guid: 1a98abfae0e1fc34282e9b7fd0f3a427, type: 2}
@@ -2412,6 +2412,7 @@ GameObject:
   - component: {fileID: 1586095478}
   - component: {fileID: 1586095484}
   - component: {fileID: 1586095485}
+  - component: {fileID: 1586095486}
   m_Layer: 5
   m_Name: Lesson6Manager
   m_TagString: Untagged
@@ -2646,7 +2647,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1586095473}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 47fef0f0e1fe6bb458d310344c93f635, type: 3}
   m_Name: 
@@ -3018,10 +3019,109 @@ MonoBehaviour:
   delayAfterCorrect: 0.75
   delayBetweenStoryLines: 0.5
   resetMistakesAfterSupport: 1
-  mistakesBeforeSupportPrompt: 3
+  mistakesBeforeSupport: 3
   repeatStoryPromptMessage: Do you want to hear the story again? Press Repeat to
     hear it again, or press Next to continue with the question.
   repeatStoryPromptAudio: {fileID: 8300000, guid: dba4b148f8a48734ba002f1e07c20fd8, type: 3}
+  useTypewriterEffect: 1
+  defaultTypewriterCharacterDelay: 0.03
+  minSyncedCharacterDelay: 0.01
+  maxSyncedCharacterDelay: 0.12
+  waitForFullAudioBeforeContinuing: 1
+  logDebug: 1
+--- !u!114 &1586095486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586095473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c80e576a363e105468525a9c8907fc5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Lesson8Script
+  bubbleMessageText: {fileID: 0}
+  displayLabelText: {fileID: 0}
+  categoryText: {fileID: 0}
+  livePatternText: {fileID: 0}
+  displayImageUI: {fileID: 0}
+  answerStateImage: {fileID: 0}
+  correctStateSprite: {fileID: 0}
+  wrongStateSprite: {fileID: 0}
+  hideAnswerStateAtStart: 0
+  fixScoreText: {fileID: 0}
+  wrongScoreText: {fileID: 0}
+  totalScoreText: {fileID: 0}
+  highScoreText: {fileID: 0}
+  fixedScore: 100
+  deductionPerMistake: 1
+  highScoreKey: BrailleSoundsAroundHighScore
+  voiceAudioSource: {fileID: 0}
+  welcomeAudio: {fileID: 0}
+  letsLearnAudio: {fileID: 0}
+  genericCorrectAudio: {fileID: 0}
+  genericTryAgainAudio: {fileID: 0}
+  genericCompletedAudio: {fileID: 0}
+  repeatQuestionAudio: {fileID: 0}
+  yourScoreIsAudio: {fileID: 0}
+  whileYourHighestScoreIsAudio: {fileID: 0}
+  numberAudios: []
+  introLessonPages: []
+  delayBetweenIntroPages: 0.5
+  welcomeMessage: Welcome to Braille Sounds Around!
+  letsLearnMessage: Let's identify some sounds.
+  completedMessage: Great job! You finished the lesson.
+  repeatQuestionMessage: You finished the lesson. Do you want to repeat again? Press
+    R to repeat or Y to finish.
+  repeatQuestionConfirmMessage: Do you want to repeat the question? Press Next to
+    continue.
+  repeatQuestionConfirmAudio: {fileID: 0}
+  lessons:
+  - displayLabel: 
+    categoryLabel: 
+    promptMessage: 
+    repeatMessage: 
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 0}
+    instructionAudio: {fileID: 0}
+    repeatAudio: {fileID: 0}
+    storyLines:
+    - storyText: 
+      storyAudio: {fileID: 0}
+    questions:
+    - questionText: 
+      questionAudio: {fileID: 0}
+      soundEffectAudio: {fileID: 0}
+      choiceAText: 
+      choiceBText: 
+      choiceCText: 
+      correctAnswer: 0
+      successMessage: 
+      successAudio: {fileID: 0}
+      wrongMessage: 
+      supportMessage: 
+      supportAudio: {fileID: 0}
+    spellingQuestions:
+    - word: 
+      instruction: 
+      instructionAudio: {fileID: 0}
+      helpMessage: 
+      helpAudio: {fileID: 0}
+      successMessage: 
+      successAudio: {fileID: 0}
+      wrongMessage: 
+    supportMessage: 
+    supportAudio: {fileID: 0}
+  delayAfterVoice: 0.35
+  noAudioTextDelay: 2
+  delayAfterCorrect: 0.75
+  delayBetweenStoryLines: 0.5
+  resetMistakesAfterSupport: 1
+  mistakesBeforeSupport: 3
+  repeatStoryPromptMessage: Do you want to hear the story again? Press Repeat to
+    hear it again, or press Next to continue with the question.
+  repeatStoryPromptAudio: {fileID: 0}
   useTypewriterEffect: 1
   defaultTypewriterCharacterDelay: 0.03
   minSyncedCharacterDelay: 0.01
