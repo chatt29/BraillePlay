@@ -2791,6 +2791,27 @@ MonoBehaviour:
     quiz.
   lessonChoiceAudio: {fileID: 8300000, guid: e6d7358178525914b9f9f7a8b95e89a5, type: 3}
   lessonPages:
+  - title: Welcome
+    categoryLabel: LESSON
+    lessonImage: {fileID: 0}
+    pageType: 0
+    informationBeats:
+    - message: 'Welcome to Lesson 9: Words that end with the Rimes -em, -ell, and
+        -eb.'
+      audio: {fileID: 8300000, guid: 2225acb7876e9ca45beb0d3f30f87d75, type: 3}
+    - message: In this lesson you're going to learn some words that end with the
+        Rimes -em, -ell, and -eb
+      audio: {fileID: 8300000, guid: 40907f78d9f2966439220d9a511296cb, type: 3}
+    practiceWord: 
+    requireCapitalFirstLetter: 0
+    promptMessage: 
+    promptAudio: {fileID: 0}
+    successMessage: 
+    successAudio: {fileID: 0}
+    wrongMessage: 
+    wrongAudio: {fileID: 0}
+    supportMessage: 
+    supportAudio: {fileID: 0}
   - title: What is an Initial?
     categoryLabel: LESSON
     lessonImage: {fileID: 0}
