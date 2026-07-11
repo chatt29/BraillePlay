@@ -199,10 +199,10 @@ public class SoundsAround4 : MonoBehaviour
     [Header("Support Settings")]
     public bool resetMistakesAfterSupport = true;
 
-    [Header("Mistake Threshold (Support + Repeat-Story Prompt)")]
-    [Tooltip("Number of consecutive wrong answers on the same question before the Support Message plays and the player is asked whether to repeat the Story.")]
-    public int mistakesBeforeSupportPrompt = 3;
+    [Tooltip("Number of consecutive wrong answers on the same question before the Support Message plays. The 'repeat the story?' prompt still shows after every wrong answer, regardless of this count.")]
+    public int mistakesBeforeSupport = 3;
 
+    [Header("Repeat-Story Prompt (shown after every wrong answer)")]
     [TextArea(2, 5)]
     public string repeatStoryPromptMessage = "Do you want to hear the story again? Press Repeat to hear it again, or press Next to continue with the question.";
     public AudioClip repeatStoryPromptAudio;
@@ -233,11 +233,12 @@ public class SoundsAround4 : MonoBehaviour
     private bool waitingForRepeatChoice = false;
     private bool waitingForQuizAnswer = false;
 
-    // True while we've replayed the Story section (via the mid-lesson Repeat
-    // button) and are waiting for the player to press Next to re-ask the
-    // current question. Does NOT touch currentQuestionIndex, score, or
-    // mistake count — it only gates HandleNext() into re-asking the same
-    // question instead of doing nothing.
+    // True whenever the player is being asked whether to repeat the Story —
+    // either right after a wrong answer (repeatStoryPromptMessage) or after
+    // replaying the Story via the mid-lesson Repeat button
+    // (repeatQuestionConfirmMessage). Does NOT touch currentQuestionIndex,
+    // score, or mistake count — it only gates HandleNext()/HandleRepeat()
+    // into re-asking the same question or replaying the story again.
     private bool waitingForRepeatConfirmation = false;
 
     private Coroutine flowRoutine;
@@ -441,8 +442,9 @@ public class SoundsAround4 : MonoBehaviour
     //   3. Story Section        -> 4 lines, one text box + audio at a time
     //   4. Question Section     -> 5 multiple-choice questions (A/B/C)
     //        - Success Message on correct answer -> advance to next question
-    //        - Wrong Message + Support Message on every incorrect answer,
-    //          then the same question is re-asked (existing retry logic)
+    //        - Wrong Message on every incorrect answer, Support Message only
+    //          after N consecutive mistakes, then a "repeat the story?"
+    //          prompt on EVERY incorrect answer (see HandleWrongAnswer)
     //   5. After the 5th question is answered correctly -> next lesson
     //
     // This single coroutine is reused both when a lesson first starts and
@@ -661,13 +663,13 @@ public class SoundsAround4 : MonoBehaviour
     }
 
     /// <summary>
-    /// Wrong Message for the current question. If the player has now made
-    /// fewer than <see cref="mistakesBeforeSupportPrompt"/> consecutive
-    /// mistakes on this question, the same question is simply re-asked. Once
-    /// the mistake count reaches that threshold, the Support Message plays
-    /// and the player is asked whether they want to repeat the Story —
-    /// pressing Repeat replays the Story section, and pressing Next
-    /// continues on to (re-asks) the current question.
+    /// Wrong Message for the current question, then — only once the player
+    /// has made <see cref="mistakesBeforeSupport"/> consecutive mistakes on
+    /// this question — the Support Message. After that, EVERY wrong answer
+    /// (regardless of mistake count) asks the player whether they want to
+    /// repeat the Story: pressing Repeat replays the Story section (and
+    /// re-shows this same prompt), pressing Next continues on and re-asks
+    /// the current question.
     /// </summary>
     private IEnumerator HandleWrongAnswer(BrailleLesson lesson, QuizQuestion question)
     {
@@ -678,7 +680,7 @@ public class SoundsAround4 : MonoBehaviour
         yield return ShowBubbleMessageSynced(wrongMessage, genericTryAgainAudio, noAudioTextDelay);
         yield return new WaitForSeconds(delayAfterVoice);
 
-        if (currentMistakeCount >= mistakesBeforeSupportPrompt)
+        if (currentMistakeCount >= mistakesBeforeSupport)
         {
             string supportMessage = !string.IsNullOrWhiteSpace(question.supportMessage)
                 ? question.supportMessage
@@ -695,24 +697,22 @@ public class SoundsAround4 : MonoBehaviour
 
             if (resetMistakesAfterSupport)
                 currentMistakeCount = 0;
-
-            // Ask whether to repeat the Story. Pressing Repeat (HandleRepeat)
-            // replays the Story and re-shows this same prompt; pressing Next
-            // (HandleNext) continues on and re-asks the current question.
-            waitingForRepeatConfirmation = true;
-
-            yield return ShowBubbleMessageSynced(
-                repeatStoryPromptMessage,
-                repeatStoryPromptAudio,
-                noAudioTextDelay
-            );
-
-            // Stays here — waitingForRepeatConfirmation remains true until
-            // the player presses Repeat or Next.
-            yield break;
         }
 
-        yield return AskQuizQuestion(lesson, currentQuestionIndex);
+        // Ask whether to repeat the Story — every wrong answer, regardless
+        // of mistake count. Pressing Repeat (HandleRepeat) replays the Story
+        // and re-shows this same prompt; pressing Next (HandleNext)
+        // continues on and re-asks the current question.
+        waitingForRepeatConfirmation = true;
+
+        yield return ShowBubbleMessageSynced(
+            repeatStoryPromptMessage,
+            repeatStoryPromptAudio,
+            noAudioTextDelay
+        );
+
+        // Stays here — waitingForRepeatConfirmation remains true until the
+        // player presses Repeat or Next.
     }
 
     // -------------------------------------------------------------------------
