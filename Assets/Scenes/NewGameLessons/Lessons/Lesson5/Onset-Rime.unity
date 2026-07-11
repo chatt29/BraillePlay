@@ -941,6 +941,7 @@ MonoBehaviour:
   voiceAudioSource: {fileID: 1111531425}
   welcomeAudio: {fileID: 8300000, guid: 622b6ac6ef733f242a95c23c98119d44, type: 3}
   letsLearnAudio: {fileID: 8300000, guid: e882295fe614cd54384df05c6ccca3d5, type: 3}
+  letsQuizAudio: {fileID: 8300000, guid: b3f26469a01241b4e97ded0814832415, type: 3}
   genericCorrectAudio: {fileID: 8300000, guid: d376210924505a34899d8e12046d7832, type: 3}
   genericTryAgainAudio: {fileID: 8300000, guid: dd615f4eef83e3b49b22a11445f9b6d6, type: 3}
   genericCompletedAudio: {fileID: 8300000, guid: 2e8ff559eb5aead43a5c8e87b09eb8ca, type: 3}
@@ -1049,15 +1050,13 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 31becc0a3e7892e468b4ac4372db4882, type: 3}
   - {fileID: 8300000, guid: caf77e0d1f468b64ab86183d4318a7f8, type: 3}
   - {fileID: 8300000, guid: 579c9253f6a5be6499ca8a1851d07f90, type: 3}
-  welcomeMessage: Now that you have finished the lesson,  we will have a quiz.
-  letsLearnMessage: Press the dots of the missing letter which is the onset of the
-    word to complete it.
+  endOfLessonPromptMessage: You have finished the lesson. Press repeat to repeat
+    the lesson or press next to .
+  letsQuizInstructionMessage: Identify the onset of the word by pressing the dots
+    of that letter.
   completedMessage: Great job! You finished the lesson.
-  repeatQuestionMessage: You finished the lesson. Do you want to repeat again? Press
-    R to repeat or Y to finish.
-  repeatLessonMessage: You have finished the lesson. Press R to repeat the lesson
-    or press Y to begin the quiz.
-  repeatLessonAudio: {fileID: 8300000, guid: eaf9daeefa1d1e14fb457ef584bacd86, type: 3}
+  repeatQuestionMessage: 
+  endOfLessonAudio: {fileID: 8300000, guid: eaf9daeefa1d1e14fb457ef584bacd86, type: 3}
   lessonPages:
   - title: 
     lessonText: Welcome to Lesson Five. Today, we will learn about onset and rime
@@ -1090,7 +1089,40 @@ MonoBehaviour:
       the rime.
     lessonImage: {fileID: 0}
     lessonAudio: {fileID: 8300000, guid: 1a3ce3db25323b441984988be8eca172, type: 3}
-  lessons: []
+  quizQuestions:
+  - displayLabel: 'Question 1: Net'
+    categoryLabel: 
+    promptMessage: Listen to the word Net. What is the first sound you hear in Net?
+      Write the letter that makes that sound.
+    successMessage: That is correct!
+    wrongMessage: 
+    displayImage: {fileID: -3454904030082182837, guid: edcc295c2bab20c45b6e5ba6ad6529a8, type: 3}
+    introAudio: {fileID: 0}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
+    targetWordAudio: {fileID: 0}
+    onsetAudioPromptMessage: 'Listen closely to the word: Net. /Nnn/ - et. What is
+      the starting sound you hear in Net? Submit the Braille letter for that sound.'
+    onsetAudioPromptClip: {fileID: 0}
+    correctOnsetBraillePattern: 100111
+    supportMessage: 
+    supportAudio: {fileID: 0}
+  - displayLabel: 'Question 1: Net'
+    categoryLabel: 
+    promptMessage: Listen to the word Net. What is the first sound you hear in Net?
+      Write the letter that makes that sound.
+    successMessage: 
+    wrongMessage: 
+    displayImage: {fileID: -3454904030082182837, guid: edcc295c2bab20c45b6e5ba6ad6529a8, type: 3}
+    introAudio: {fileID: 0}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 0}
+    targetWordAudio: {fileID: 0}
+    onsetAudioPromptMessage: 
+    onsetAudioPromptClip: {fileID: 0}
+    correctOnsetBraillePattern: 
+    supportMessage: 
+    supportAudio: {fileID: 0}
   delayAfterVoice: 0.35
   noAudioTextDelay: 2
   delayAfterCorrect: 0.75

@@ -2869,26 +2869,27 @@ MonoBehaviour:
     wrongAudio: {fileID: 8300000, guid: dd615f4eef83e3b49b22a11445f9b6d6, type: 3}
     supportMessage: Remember Letter B uses Dot number 1&2. Press dot 1&2 at the same
       time to type Letter B.
-    supportAudio: {fileID: 8300000, guid: 2be844648fc5ec04e905c429bfc32607, type: 3}
+    supportAudio: {fileID: 8300000, guid: 0d5a28974a840b841aa699ac53755af3, type: 3}
   - letter: 67
     categoryLabel: Letter
     displayImage: {fileID: 21300000, guid: f1f1d850f3dbd5e4387cef24e691c6dc, type: 3}
     introductionMessage: The next letter is Letter C.
-    introAudio: {fileID: 8300000, guid: ba6f3ce4e21130343aad9123f4d5595b, type: 3}
-    letterSoundMessage: Letter C sounds "k".
-    letterSoundAudio: {fileID: 8300000, guid: 00bfa39b482619544b06c984bb0cceaa, type: 3}
-    brailleInstructionMessage: The letter B in Braille is typed using Dot 1, and
-      2.
-    brailleInstructionAudio: {fileID: 8300000, guid: 7c28cf0b730f6694391e7cef43dbef21, type: 3}
-    promptMessage: Press dot 1 & 2 at the same time to type letter B.
-    promptAudio: {fileID: 8300000, guid: d8b5f609199140646ba7f4f58a34ebe2, type: 3}
+    introAudio: {fileID: 8300000, guid: fe0750ea528c7a9489532a90fcb9bc48, type: 3}
+    letterSoundMessage: Letter C sounds "k" sometimes it sounds "s" depending on
+      how it is used in a word.
+    letterSoundAudio: {fileID: 8300000, guid: bf01bcf0e88b3194e8cf9f8149c64591, type: 3}
+    brailleInstructionMessage: The letter C in Braille is typed using Dot 1, and
+      4.
+    brailleInstructionAudio: {fileID: 8300000, guid: 6a50e5862bc22104b8715e367e75b242, type: 3}
+    promptMessage: Press dot 1 & 4 at the same time to type letter C.
+    promptAudio: {fileID: 8300000, guid: 8f3cf1c4b5628dc44859b730f020be38, type: 3}
     successMessage: That is Correct.
     successAudio: {fileID: 8300000, guid: 806f9040f8926b94db47e2caef85d97b, type: 3}
     wrongMessage: That is wrong, Please Try Again.
     wrongAudio: {fileID: 8300000, guid: dd615f4eef83e3b49b22a11445f9b6d6, type: 3}
-    supportMessage: Remember Letter B uses Dot number 1&2. Press dot 1&2 at the same
-      time to type Letter B.
-    supportAudio: {fileID: 8300000, guid: 2be844648fc5ec04e905c429bfc32607, type: 3}
+    supportMessage: Remember Letter C uses Dot number 1&3. Press dot 1&3 at the same
+      time to type Letter C.
+    supportAudio: {fileID: 8300000, guid: f8fa74582b7f9e5429db6e2ca0bff1f0, type: 3}
   alphabetLessons:
   - letter: 65
     categoryLabel: Letter
@@ -2903,9 +2904,35 @@ MonoBehaviour:
     supportMessage: Remember Letter A uses Dot number 1. Press dot 1 to type Letter
       A.
     supportAudio: {fileID: 8300000, guid: 2be844648fc5ec04e905c429bfc32607, type: 3}
+  - letter: 66
+    categoryLabel: Letter
+    promptMessage: Number 2, Letter B. Can you Type Letter B?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 21300000, guid: cc6bae3515a12144da0cb8e13ecbcaad, type: 3}
+    introAudio: {fileID: 8300000, guid: f90c18509ccc14c46ab869b4f3b480e4, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 806f9040f8926b94db47e2caef85d97b, type: 3}
+    wrongAudio: {fileID: 8300000, guid: dd615f4eef83e3b49b22a11445f9b6d6, type: 3}
+    supportMessage: Remember Letter B uses Dot number 1&2. Press dot 1&2 at the same
+      time to type Letter B.
+    supportAudio: {fileID: 8300000, guid: 0d5a28974a840b841aa699ac53755af3, type: 3}
+  - letter: 67
+    categoryLabel: Letter
+    promptMessage: Number 3, Letter C. Can you Type Letter C?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 21300000, guid: f1f1d850f3dbd5e4387cef24e691c6dc, type: 3}
+    introAudio: {fileID: 8300000, guid: 3a7d1a64334012643b45b5f185ce0ec3, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 806f9040f8926b94db47e2caef85d97b, type: 3}
+    wrongAudio: {fileID: 8300000, guid: dd615f4eef83e3b49b22a11445f9b6d6, type: 3}
+    supportMessage: Remember Letter C uses Dot number 1&3. Press dot 1&3 at the same
+      time to type Letter C.
+    supportAudio: {fileID: 8300000, guid: f8fa74582b7f9e5429db6e2ca0bff1f0, type: 3}
   delayAfterVoice: 0.2
   noAudioTextDelay: 2
-  delayAfterCorrect: 0.75
+  delayAfterCorrect: 0.5
   mistakesBeforeSupport: 3
   resetMistakesAfterSupport: 1
   useTypewriterEffect: 1
