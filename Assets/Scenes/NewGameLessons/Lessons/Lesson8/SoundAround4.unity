@@ -3059,12 +3059,12 @@ MonoBehaviour:
   deductionPerMistake: 1
   highScoreKey: BrailleSoundsAroundHighScore
   voiceAudioSource: {fileID: 1586095478}
-  welcomeAudio: {fileID: 8300000, guid: 13e73841e1e6f1a42b427839872c4941, type: 3}
-  letsLearnAudio: {fileID: 8300000, guid: 369ddc24d6f1a4e4192a89a1d81c7558, type: 3}
-  genericCorrectAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
+  welcomeAudio: {fileID: 8300000, guid: 03fdd53ed357f5f40b54f479432774f0, type: 3}
+  letsLearnAudio: {fileID: 8300000, guid: 0ce3501b4676bbe40978a42b262ad6e2, type: 3}
+  genericCorrectAudio: {fileID: 0}
   genericTryAgainAudio: {fileID: 8300000, guid: dd615f4eef83e3b49b22a11445f9b6d6, type: 3}
-  genericCompletedAudio: {fileID: 8300000, guid: ad226ffe4ec86c9429f638d76ec0e68d, type: 3}
-  repeatQuestionAudio: {fileID: 8300000, guid: 7bfae7d00eb980343aafea6df0a68c54, type: 3}
+  genericCompletedAudio: {fileID: 8300000, guid: 52977510d75647a4cb46613aff308b99, type: 3}
+  repeatQuestionAudio: {fileID: 8300000, guid: 01f9c0d9face66f4aaf36e306f4021d9, type: 3}
   yourScoreIsAudio: {fileID: 8300000, guid: 613a4ecd64752ee4c8844d8286dca545, type: 3}
   whileYourHighestScoreIsAudio: {fileID: 8300000, guid: 2525c179990406146becd993f00485ee, type: 3}
   numberAudios:
@@ -3148,27 +3148,27 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: a9afdf1f202626e4d815f3d339f223c4, type: 3}
+  - {fileID: 8300000, guid: 21a469d6598c3204ab82b509e42e89f8, type: 3}
+  - {fileID: 8300000, guid: 5bd190e14c182b24d9e04c61a35f3b29, type: 3}
+  - {fileID: 8300000, guid: c6f4937e92350a04a82d4bd76eef52ba, type: 3}
+  - {fileID: 8300000, guid: 701a3679a01f84e43aa1fa9d4a3c0785, type: 3}
+  - {fileID: 8300000, guid: bde38e84ced6de84cb95115723d7bdf4, type: 3}
+  - {fileID: 8300000, guid: fe9932ae0117e154d998e51d9ed611e0, type: 3}
+  - {fileID: 8300000, guid: 94091ec33fbd6b349ba6e703387e4866, type: 3}
+  - {fileID: 8300000, guid: ee8cfcb8b3588954ea24c10457255924, type: 3}
+  - {fileID: 8300000, guid: 5e889505e0e0d2a4db129b0905352109, type: 3}
+  - {fileID: 8300000, guid: 65fabefe77170f948ba6088e0e5a0f95, type: 3}
+  - {fileID: 8300000, guid: 6a0ec25b8a422c646b399ddcae7b2c62, type: 3}
+  - {fileID: 8300000, guid: 437fe84d57fc7f64cad7d56e2a8c9a89, type: 3}
+  - {fileID: 8300000, guid: 0d5771525d0e1814ab6d369e7eb1c3ba, type: 3}
+  - {fileID: 8300000, guid: 8881ea521aa0c7a4f9ae441c637350e6, type: 3}
+  - {fileID: 8300000, guid: e8c2b8bd9bd8f9e428347c57e9710cd4, type: 3}
+  - {fileID: 8300000, guid: 09027ef61068784478c1b32badf50904, type: 3}
+  - {fileID: 8300000, guid: e8c38c6593d87944187086e01dbfdb98, type: 3}
+  - {fileID: 8300000, guid: 31becc0a3e7892e468b4ac4372db4882, type: 3}
+  - {fileID: 8300000, guid: caf77e0d1f468b64ab86183d4318a7f8, type: 3}
+  - {fileID: 8300000, guid: 579c9253f6a5be6499ca8a1851d07f90, type: 3}
   introLessonPages:
   - pageText: 'Welcome to Lesson 8: Speech Sound Medial /e/, Rimes (-eg, -ed)'
     pageAudio: {fileID: 8300000, guid: 13e73841e1e6f1a42b427839872c4941, type: 3}
@@ -3201,8 +3201,6 @@ MonoBehaviour:
 
       fed'
     pageAudio: {fileID: 8300000, guid: 119c9f2652db82f489296f41faa00c09, type: 3}
-  - pageText: 123
-    pageAudio: {fileID: 0}
   - pageText: These words all end with -ed and also have the short /e/ sound.
     pageAudio: {fileID: 8300000, guid: 67f8ac371596171429f813cfa681a9cb, type: 3}
   - pageText: Listen carefully to each word. Notice that they all have the short
@@ -3211,51 +3209,157 @@ MonoBehaviour:
   - pageText: When you hear or read a word, try to find its rime. Knowing the rime
       will help you read new words more easily.
     pageAudio: {fileID: 8300000, guid: 103bea8787950db4482f27c1d42f5e57, type: 3}
-  - pageText: Great job! Keep practicing the /e/ sound and the rimes -eg and -ed.
-      The more you practice, the better you will become at reading and pronouncing
-      words.
-    pageAudio: {fileID: 8300000, guid: 52977510d75647a4cb46613aff308b99, type: 3}
   delayBetweenIntroPages: 0.5
   welcomeMessage: Hello, Class!
-  letsLearnMessage: Let's identify some sounds.
-  completedMessage: Great job! You finished the lesson.
-  repeatQuestionMessage: You finished the lesson. Do you want to repeat again? Press
-    R to repeat or Y to finish.
-  repeatQuestionConfirmMessage: Do you want to repeat the question? Press Next to
-    continue.
+  letsLearnMessage: Now that you understand the speech sound medial /e/. rimes (-eg,
+    -ed)
+  completedMessage: Great job! Keep practicing the /e/ sound and the rimes -eg and
+    -ed. The more you practice, the better you will become at reading and pronouncing
+    words.
+  repeatQuestionMessage: Thank you student and see you again in the next lesson!
+  repeatQuestionConfirmMessage: 
   repeatQuestionConfirmAudio: {fileID: 0}
   lessons:
-  - displayLabel: Word
-    categoryLabel: Choices
-    promptMessage: Here, you will choose a word that rimes in (-eg, -ed)
+  - displayLabel: Spell the word
+    categoryLabel: Bed
+    promptMessage: Here, you will spell the word that I will give to you. Let's get
+      started
     repeatMessage: 
     displayImage: {fileID: 0}
-    introAudio: {fileID: 8300000, guid: fec17ecbc336264409ee388a12ca4c91, type: 3}
+    introAudio: {fileID: 8300000, guid: 47d3d5a0c14ba214c978e7b3c9de58d3, type: 3}
     instructionAudio: {fileID: 0}
     repeatAudio: {fileID: 0}
     storyLines: []
-    questions:
-    - questionText: 1. Leg
-      questionAudio: {fileID: 8300000, guid: d1c5f12a4ff5ce147947185668f40513, type: 3}
-      soundEffectAudio: {fileID: 0}
-      choiceAText: Red
-      choiceBText: Peg
-      choiceCText: Mid
-      correctAnswer: 1
-      successMessage: good
-      successAudio: {fileID: 0}
-      wrongMessage: 
-      supportMessage: 
-      supportAudio: {fileID: 0}
     spellingQuestions:
-    - word: BED
-      instruction: PRESS DOT
-      instructionAudio: {fileID: 0}
-      helpMessage: TRY
+    - word: Bed
+      description: A bed is a piece of furniture used for sleeping and resting. It
+        usually has a soft mattress supported by a frame and may include pillows,
+        blankets, and sheets for comfort. Beds come in different sizes and styles
+        and are commonly found in bedrooms at homes, hotels, hospitals, and other
+        places where people sleep.
+      descriptionAudio: {fileID: 8300000, guid: 582fee388b3391b45aeb608a0180562a, type: 3}
+      instruction: Spell the word Bed
+      instructionAudio: {fileID: 8300000, guid: d6504d74a76c96940bec0322ee6aa72e, type: 3}
+      helpMessage: Remember
       helpAudio: {fileID: 0}
-      successMessage: NICE
-      successAudio: {fileID: 0}
-      wrongMessage: WRONG
+      successMessage: Good Job! you spelled the word correctly
+      successAudio: {fileID: 8300000, guid: 91ff4162effae994c91ee49561b58c24, type: 3}
+      letterWrongFeedback:
+      - wrongMessage: Remember the dot number for letter b is dot number 1 and 2
+        wrongAudio: {fileID: 8300000, guid: 59ef7e5353e19b74683838f724cd1c71, type: 3}
+        correctMessage: Correct!
+        correctAudio: {fileID: 8300000, guid: 017737fb4ff3df244919b464613a0720, type: 3}
+      - wrongMessage: Remember the dot number for letter e is dot number 1 and 5
+        wrongAudio: {fileID: 8300000, guid: 5ce62a7e2dc70c84a9c7c72eca115ab5, type: 3}
+        correctMessage: Correct!
+        correctAudio: {fileID: 8300000, guid: 017737fb4ff3df244919b464613a0720, type: 3}
+      - wrongMessage: Remember the dot number for letter d is dot number 1, 4, and
+          5
+        wrongAudio: {fileID: 8300000, guid: 6af2a8bfbba695e42ab57bdd7e8fb3e5, type: 3}
+        correctMessage: Correct!
+        correctAudio: {fileID: 8300000, guid: b2a7d0b4138ab53469a0df071710eed8, type: 3}
+    - word: Keg
+      description: A keg is a small barrel or container used to store and carry liquids,
+        such as water or drinks. It is usually made of metal or wood and has a round
+        shape.
+      descriptionAudio: {fileID: 8300000, guid: bf956c1948800c042bea7fd9f9df3d92, type: 3}
+      instruction: Spell the word Keg
+      instructionAudio: {fileID: 8300000, guid: 6681ed5eaaa90aa4b88423b565a8b251, type: 3}
+      helpMessage: Remember
+      helpAudio: {fileID: 0}
+      successMessage: Good Job! you spelled the word correctly
+      successAudio: {fileID: 8300000, guid: 91ff4162effae994c91ee49561b58c24, type: 3}
+      letterWrongFeedback:
+      - wrongMessage: Remember the dot number for letter k is dot number 1 and 3
+        wrongAudio: {fileID: 8300000, guid: 4dbdfd38568649c4e956353ca4ce033d, type: 3}
+        correctMessage: Correct!
+        correctAudio: {fileID: 8300000, guid: 017737fb4ff3df244919b464613a0720, type: 3}
+      - wrongMessage: Remember the dot number for letter e is dot number 1 and 5
+        wrongAudio: {fileID: 8300000, guid: 5ce62a7e2dc70c84a9c7c72eca115ab5, type: 3}
+        correctMessage: Correct!
+        correctAudio: {fileID: 8300000, guid: 017737fb4ff3df244919b464613a0720, type: 3}
+      - wrongMessage: Remember the dot number for letter g is dot number 1, 2, 4,
+          and 5
+        wrongAudio: {fileID: 8300000, guid: a9ecedb98ec0b434f9064f451d0a6f0e, type: 3}
+        correctMessage: Correct!
+        correctAudio: {fileID: 8300000, guid: a9ecedb98ec0b434f9064f451d0a6f0e, type: 3}
+    - word: Peg
+      description: A peg is a small object used to hold, fasten, or hang things.
+        It can be made of wood, plastic, or metal. People often use pegs to hang
+        clothes on a clothesline, attach papers, or keep items in place.
+      descriptionAudio: {fileID: 8300000, guid: a60191c7f53925941802e91b2a4fcbbc, type: 3}
+      instruction: Spell the word Peg
+      instructionAudio: {fileID: 8300000, guid: 0daef3ee54bb8434f9ffd376ae63919c, type: 3}
+      helpMessage: Remember
+      helpAudio: {fileID: 0}
+      successMessage: Good Job! you spelled the word correctly
+      successAudio: {fileID: 8300000, guid: 91ff4162effae994c91ee49561b58c24, type: 3}
+      letterWrongFeedback:
+      - wrongMessage: Remember the dot number for letter p is dot number 1, 2, 3,
+          and 4
+        wrongAudio: {fileID: 8300000, guid: 2d70668145b56c240bcceb94914fb94a, type: 3}
+        correctMessage: Correct!
+        correctAudio: {fileID: 8300000, guid: 017737fb4ff3df244919b464613a0720, type: 3}
+      - wrongMessage: Remember the dot number for letter e is dot number 1 and 5
+        wrongAudio: {fileID: 8300000, guid: 5ce62a7e2dc70c84a9c7c72eca115ab5, type: 3}
+        correctMessage: Correct!
+        correctAudio: {fileID: 8300000, guid: 017737fb4ff3df244919b464613a0720, type: 3}
+      - wrongMessage: Remember the dot number for letter g is dot number 1, 2, 4,
+          and 5
+        wrongAudio: {fileID: 8300000, guid: a9ecedb98ec0b434f9064f451d0a6f0e, type: 3}
+        correctMessage: Correct!
+        correctAudio: {fileID: 8300000, guid: b2a7d0b4138ab53469a0df071710eed8, type: 3}
+    - word: Leg
+      description: A leg is a part of the body that helps people and animals stand,
+        walk, run, jump, and move. Humans have two legs, and each leg is connected
+        to a foot.
+      descriptionAudio: {fileID: 8300000, guid: f7e92f7bb87fee248a05714e92d634b8, type: 3}
+      instruction: Spell the word Leg
+      instructionAudio: {fileID: 8300000, guid: 2677ae08477163449a7992165fb01c49, type: 3}
+      helpMessage: Remember
+      helpAudio: {fileID: 0}
+      successMessage: Good Job! you spelled the word correctly
+      successAudio: {fileID: 8300000, guid: 91ff4162effae994c91ee49561b58c24, type: 3}
+      letterWrongFeedback:
+      - wrongMessage: Remember the dot number for letter L is dot number 1, 2, and
+          3
+        wrongAudio: {fileID: 8300000, guid: f4d3757f6bcd2b645b49577529207dda, type: 3}
+        correctMessage: Correct!
+        correctAudio: {fileID: 8300000, guid: 017737fb4ff3df244919b464613a0720, type: 3}
+      - wrongMessage: Remember the dot number for letter e is dot number 1 and 5
+        wrongAudio: {fileID: 8300000, guid: 5ce62a7e2dc70c84a9c7c72eca115ab5, type: 3}
+        correctMessage: Correct!
+        correctAudio: {fileID: 8300000, guid: 017737fb4ff3df244919b464613a0720, type: 3}
+      - wrongMessage: Remember the dot number for letter d is dot number 1, 4, and
+          5
+        wrongAudio: {fileID: 8300000, guid: 6af2a8bfbba695e42ab57bdd7e8fb3e5, type: 3}
+        correctMessage: Correct!
+        correctAudio: {fileID: 8300000, guid: b2a7d0b4138ab53469a0df071710eed8, type: 3}
+    - word: Wed
+      description: Wed means to get married or become husband and wife. It describes
+        the act of joining two people in marriage.
+      descriptionAudio: {fileID: 8300000, guid: fef8ca61559584a4dac7493d0e9b419a, type: 3}
+      instruction: Spell the word Wed
+      instructionAudio: {fileID: 8300000, guid: 8daa4833322c74d4ab1f48649012284a, type: 3}
+      helpMessage: Remember
+      helpAudio: {fileID: 0}
+      successMessage: Good Job! you spelled the word correctly
+      successAudio: {fileID: 8300000, guid: 91ff4162effae994c91ee49561b58c24, type: 3}
+      letterWrongFeedback:
+      - wrongMessage: Remember the dot number for letter w is dot number 2,4,5, and
+          6
+        wrongAudio: {fileID: 8300000, guid: 180238576da8f1c4ab22f62a977e3fcc, type: 3}
+        correctMessage: Correct!
+        correctAudio: {fileID: 8300000, guid: 017737fb4ff3df244919b464613a0720, type: 3}
+      - wrongMessage: Remember the dot number for letter e is dot number 1 and 5
+        wrongAudio: {fileID: 8300000, guid: 5ce62a7e2dc70c84a9c7c72eca115ab5, type: 3}
+        correctMessage: Correct!
+        correctAudio: {fileID: 8300000, guid: 017737fb4ff3df244919b464613a0720, type: 3}
+      - wrongMessage: Remember the dot number for letter d is dot number 1, 4, and
+          5
+        wrongAudio: {fileID: 8300000, guid: 6af2a8bfbba695e42ab57bdd7e8fb3e5, type: 3}
+        correctMessage: Correct!
+        correctAudio: {fileID: 8300000, guid: b2a7d0b4138ab53469a0df071710eed8, type: 3}
     supportMessage: 
     supportAudio: {fileID: 0}
   delayAfterVoice: 0.35
@@ -3264,9 +3368,18 @@ MonoBehaviour:
   delayBetweenStoryLines: 0.5
   resetMistakesAfterSupport: 1
   mistakesBeforeSupport: 3
-  repeatStoryPromptMessage: Do you want to hear the story again? Press Repeat to
-    hear it again, or press Next to continue with the question.
+  repeatStoryPromptMessage: 
   repeatStoryPromptAudio: {fileID: 0}
+  spellingLettersToCheck: 3
+  capitalizeNeededMessage: Use capitalize the letter first by pressing dot 6 to capitalize
+    the letter.
+  capitalizeNeededAudio: {fileID: 8300000, guid: 4801fd4470bd697498167176d8957fe1, type: 3}
+  capitalizeNotNeededMessage: This letter doesn't need to be capitalized. Try again
+    without pressing dot 6.
+  capitalizeNotNeededAudio: {fileID: 8300000, guid: 39025c0f2a7db6348aec1005fac196c8, type: 3}
+  repeatSpellingPromptMessage: Do you want to spell that word again? Press Repeat
+    to spell it again, or press Next to continue.
+  repeatSpellingPromptAudio: {fileID: 8300000, guid: 6189f7d323b570f488aacfe8e5d2bc8a, type: 3}
   useTypewriterEffect: 1
   defaultTypewriterCharacterDelay: 0.03
   minSyncedCharacterDelay: 0.01
