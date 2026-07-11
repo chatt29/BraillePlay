@@ -2779,7 +2779,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: caf77e0d1f468b64ab86183d4318a7f8, type: 3}
   - {fileID: 8300000, guid: 579c9253f6a5be6499ca8a1851d07f90, type: 3}
   introLessonPages:
-  - pageText: Welcome to Lesson 6 (Parts of Simple Sentence)
+  - pageText: Hello, Class! Welcome to Lesson 6 (Parts of Simple Sentence)
     pageAudio: {fileID: 8300000, guid: 987c2ab567c418b4ab874cef6729fce8, type: 3}
   - pageText: 'Today, we are going to learn about the parts of a simple sentence.
       Every sentence tells us something. We can understand a sentence better by asking

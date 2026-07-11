@@ -321,7 +321,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 54.606, y: 0}
+  m_AnchoredPosition: {x: 66.57994, y: 0}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &232308970
@@ -503,8 +503,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1459693708}
+  m_Children: []
   m_Father: {fileID: 1791188412}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -550,58 +549,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 397166428}
   m_CullTransparentMesh: 1
---- !u!1 &439182909
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 439182910}
-  - component: {fileID: 439182911}
-  m_Layer: 5
-  m_Name: Text Area
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &439182910
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 439182909}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 656961484}
-  - {fileID: 1213524704}
-  m_Father: {fileID: 1459693708}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.5}
-  m_SizeDelta: {x: -20, y: -13}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &439182911
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 439182909}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RectMask2D
-  m_Padding: {x: -8, y: -5, z: -8, w: -5}
-  m_Softness: {x: 0, y: 0}
 --- !u!1 &500209219
 GameObject:
   m_ObjectHideFlags: 0
@@ -715,393 +662,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &656961483
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 656961484}
-  - component: {fileID: 656961487}
-  - component: {fileID: 656961486}
-  - component: {fileID: 656961485}
-  m_Layer: 5
-  m_Name: Placeholder
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &656961484
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 656961483}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 439182910}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &656961485
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 656961483}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.LayoutElement
-  m_IgnoreLayout: 1
-  m_MinWidth: -1
-  m_MinHeight: -1
-  m_PreferredWidth: -1
-  m_PreferredHeight: -1
-  m_FlexibleWidth: -1
-  m_FlexibleHeight: -1
-  m_LayoutPriority: 1
---- !u!114 &656961486
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 656961483}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: Enter text...
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 0}
-  m_sharedMaterial: {fileID: 0}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 0.5}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 14
-  m_fontSizeBase: 14
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 2
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_characterHorizontalScale: 1
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 0
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
-  m_enableExtraPadding: 1
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_EmojiFallbackSupport: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &656961487
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 656961483}
-  m_CullTransparentMesh: 1
---- !u!1 &666421659
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 666421660}
-  - component: {fileID: 666421661}
-  m_Layer: 5
-  m_Name: LessonManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &666421660
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 666421659}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1791188412}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &666421661
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 666421659}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40b68a3616a14b44383f4f25f4cc0030, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Beginning_Letters
-  resultReporter: {fileID: 0}
-  bubbleMessageText: {fileID: 1257937990}
-  displayLabelText: {fileID: 843676732}
-  categoryText: {fileID: 1155271827}
-  livePatternText: {fileID: 1697798612}
-  displayImageUI: {fileID: 0}
-  answerStateImage: {fileID: 2047379756}
-  correctStateSprite: {fileID: 7071201414940298460, guid: bee3415c56ef4054aa185675bb6dc185, type: 3}
-  wrongStateSprite: {fileID: -4207999480553683411, guid: 4e35d4a30fee8cc4580f2983361350b4, type: 3}
-  hideAnswerStateAtStart: 1
-  fixScoreText: {fileID: 1777884057}
-  wrongScoreText: {fileID: 1070165176}
-  totalScoreText: {fileID: 1113401178}
-  highScoreText: {fileID: 1262590508}
-  fixedScore: 100
-  deductionPerMistake: 1
-  highScoreKey: BrailleRhymeTimeHighScore
-  voiceAudioSource: {fileID: 1111531425}
-  welcomeAudio: {fileID: 8300000, guid: 622b6ac6ef733f242a95c23c98119d44, type: 3}
-  letsLearnAudio: {fileID: 8300000, guid: e882295fe614cd54384df05c6ccca3d5, type: 3}
-  genericCorrectAudio: {fileID: 8300000, guid: d376210924505a34899d8e12046d7832, type: 3}
-  genericTryAgainAudio: {fileID: 8300000, guid: dd615f4eef83e3b49b22a11445f9b6d6, type: 3}
-  genericCompletedAudio: {fileID: 8300000, guid: 2e8ff559eb5aead43a5c8e87b09eb8ca, type: 3}
-  repeatQuestionAudio: {fileID: 8300000, guid: f5b0be677939adb42bc043a3499ff84c, type: 3}
-  yourScoreIsAudio: {fileID: 8300000, guid: 613a4ecd64752ee4c8844d8286dca545, type: 3}
-  whileYourHighestScoreIsAudio: {fileID: 8300000, guid: 2525c179990406146becd993f00485ee, type: 3}
-  numberAudios:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 8300000, guid: a9afdf1f202626e4d815f3d339f223c4, type: 3}
-  - {fileID: 8300000, guid: 21a469d6598c3204ab82b509e42e89f8, type: 3}
-  - {fileID: 8300000, guid: 5bd190e14c182b24d9e04c61a35f3b29, type: 3}
-  - {fileID: 8300000, guid: c6f4937e92350a04a82d4bd76eef52ba, type: 3}
-  - {fileID: 8300000, guid: 701a3679a01f84e43aa1fa9d4a3c0785, type: 3}
-  - {fileID: 8300000, guid: bde38e84ced6de84cb95115723d7bdf4, type: 3}
-  - {fileID: 8300000, guid: fe9932ae0117e154d998e51d9ed611e0, type: 3}
-  - {fileID: 8300000, guid: 94091ec33fbd6b349ba6e703387e4866, type: 3}
-  - {fileID: 8300000, guid: ee8cfcb8b3588954ea24c10457255924, type: 3}
-  - {fileID: 8300000, guid: 5e889505e0e0d2a4db129b0905352109, type: 3}
-  - {fileID: 8300000, guid: 65fabefe77170f948ba6088e0e5a0f95, type: 3}
-  - {fileID: 8300000, guid: 6a0ec25b8a422c646b399ddcae7b2c62, type: 3}
-  - {fileID: 8300000, guid: 437fe84d57fc7f64cad7d56e2a8c9a89, type: 3}
-  - {fileID: 8300000, guid: 0d5771525d0e1814ab6d369e7eb1c3ba, type: 3}
-  - {fileID: 8300000, guid: 8881ea521aa0c7a4f9ae441c637350e6, type: 3}
-  - {fileID: 8300000, guid: e8c2b8bd9bd8f9e428347c57e9710cd4, type: 3}
-  - {fileID: 8300000, guid: 09027ef61068784478c1b32badf50904, type: 3}
-  - {fileID: 8300000, guid: e8c38c6593d87944187086e01dbfdb98, type: 3}
-  - {fileID: 8300000, guid: 31becc0a3e7892e468b4ac4372db4882, type: 3}
-  - {fileID: 8300000, guid: caf77e0d1f468b64ab86183d4318a7f8, type: 3}
-  - {fileID: 8300000, guid: 579c9253f6a5be6499ca8a1851d07f90, type: 3}
-  welcomeMessage: Now that you have finished the lesson,  we will have a quiz.
-  letsLearnMessage: Press the dots of the missing letter which is the onset of the
-    word to complete it.
-  completedMessage: Great job! You finished the lesson.
-  repeatQuestionMessage: You finished the lesson. Do you want to repeat again? Press
-    R to repeat or Y to finish.
-  repeatLessonMessage: You have finished the lesson. Press R to repeat the lesson
-    or press Y to begin the quiz.
-  repeatLessonAudio: {fileID: 8300000, guid: eaf9daeefa1d1e14fb457ef584bacd86, type: 3}
-  lessonPages:
-  - title: 
-    lessonText: Welcome to Lesson Five. Today, we will learn about onset and rime
-      using the short E sound.
-    lessonImage: {fileID: 0}
-    lessonAudio: {fileID: 8300000, guid: 1d840590305a28e4596fdacc9e65567f, type: 3}
-  - title: 
-    lessonText: Words are made of different parts. The beginning sound of a word
-      is called the onset.
-    lessonImage: {fileID: 0}
-    lessonAudio: {fileID: 8300000, guid: 9ad3b53a41785ca4ba73b5a9e3b4aba4, type: 3}
-  - title: 
-    lessonText: 'The ending part, including the vowel and any sounds after it, is
-      called the rime.
-
-'
-    lessonImage: {fileID: 0}
-    lessonAudio: {fileID: 8300000, guid: 818599a40fa765f4dae7ff4bd8b971eb, type: 3}
-  - title: 
-    lessonText: 'We can chop these words into two chunks. The onset is the starting
-      consonant sound. '
-    lessonImage: {fileID: 0}
-    lessonAudio: {fileID: 8300000, guid: 7ffbee3265706e548a99dee357bc0a52, type: 3}
-  - title: 
-    lessonText: The rime is the vowel and everything after it.
-    lessonImage: {fileID: 0}
-    lessonAudio: {fileID: 8300000, guid: 88fe25ea2dfd1c04d806a225ba232227, type: 3}
-  - title: 
-    lessonText: For example, in the word 'web', the /w/ is the onset, and /eb/ is
-      the rime.
-    lessonImage: {fileID: 0}
-    lessonAudio: {fileID: 8300000, guid: 1a3ce3db25323b441984988be8eca172, type: 3}
-  lessons: []
-  delayAfterVoice: 0.35
-  noAudioTextDelay: 2
-  delayAfterCorrect: 0.75
-  mistakesBeforeSupport: 3
-  resetMistakesAfterSupport: 1
-  useTypewriterEffect: 1
-  defaultTypewriterCharacterDelay: 0.03
-  minSyncedCharacterDelay: 0.01
-  maxSyncedCharacterDelay: 0.12
-  waitForFullAudioBeforeContinuing: 1
-  logDebug: 1
 --- !u!1 &803834282
 GameObject:
   m_ObjectHideFlags: 0
@@ -1204,8 +764,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -22.1251, y: -321.68}
-  m_SizeDelta: {x: 371.572, y: 181.1368}
+  m_AnchoredPosition: {x: -23.932, y: -172}
+  m_SizeDelta: {x: 407.71, y: 315.13}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &843676732
 MonoBehaviour:
@@ -1261,7 +821,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1293,7 +853,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 8.009277, y: 55.264862, z: 7.00354, w: 30.54529}
+  m_margin: {x: 8.009277, y: 6.7460327, z: 7.00354, w: 30.54529}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1718,139 +1278,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1070165174}
   m_CullTransparentMesh: 1
---- !u!1 &1111531423
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1111531424}
-  - component: {fileID: 1111531425}
-  m_Layer: 5
-  m_Name: WordManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1111531424
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1111531423}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1791188412}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!82 &1111531425
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1111531423}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1 &1113401176
 GameObject:
   m_ObjectHideFlags: 0
@@ -2159,8 +1586,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -571.1336, y: 376.8534}
-  m_SizeDelta: {x: 540.5208, y: 247.2061}
+  m_AnchoredPosition: {x: -539, y: 364}
+  m_SizeDelta: {x: 604.788, y: 272.913}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1170168102
 MonoBehaviour:
@@ -2234,7 +1661,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 14, y: 419}
+  m_AnchoredPosition: {x: 76, y: 436}
   m_SizeDelta: {x: 536.2007, y: 189.4903}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1204025121
@@ -2257,7 +1684,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Onset-rime
+  m_text: 'Lesson 8: Speech Sound Medial /e/, Rimes (-eg, -ed)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1a98abfae0e1fc34282e9b7fd0f3a427, type: 2}
   m_sharedMaterial: {fileID: -8189821304231711609, guid: 1a98abfae0e1fc34282e9b7fd0f3a427, type: 2}
@@ -2284,8 +1711,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 120
-  m_fontSizeBase: 120
+  m_fontSize: 80
+  m_fontSizeBase: 80
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2323,7 +1750,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -572.43335, w: 0}
+  m_margin: {x: 0, y: 0, z: -494.42456, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2336,143 +1763,6 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1204025119}
-  m_CullTransparentMesh: 1
---- !u!1 &1213524703
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1213524704}
-  - component: {fileID: 1213524706}
-  - component: {fileID: 1213524705}
-  m_Layer: 5
-  m_Name: Text
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1213524704
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1213524703}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 439182910}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1213524705
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1213524703}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: 
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 0}
-  m_sharedMaterial: {fileID: 0}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 14
-  m_fontSizeBase: 14
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_characterHorizontalScale: 1
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 3
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
-  m_enableExtraPadding: 1
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_EmojiFallbackSupport: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &1213524706
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1213524703}
   m_CullTransparentMesh: 1
 --- !u!1 &1242371995
 GameObject:
@@ -3110,7 +2400,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1434168919}
   m_CullTransparentMesh: 1
---- !u!1 &1459693707
+--- !u!1 &1586095473
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3118,200 +2408,26 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1459693708}
-  - component: {fileID: 1459693711}
-  - component: {fileID: 1459693710}
-  - component: {fileID: 1459693709}
+  - component: {fileID: 1586095474}
+  - component: {fileID: 1586095478}
+  - component: {fileID: 1586095484}
+  - component: {fileID: 1586095485}
+  - component: {fileID: 1586095486}
+  - component: {fileID: 1586095487}
   m_Layer: 5
-  m_Name: Answer
+  m_Name: Lesson8Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &1459693708
+--- !u!224 &1586095474
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1459693707}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 439182910}
-  m_Father: {fileID: 397166429}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.71729, y: -13.05}
-  m_SizeDelta: {x: 250, y: 300}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1459693709
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1459693707}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TMP_InputField
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1459693710}
-  m_TextViewport: {fileID: 439182910}
-  m_TextComponent: {fileID: 1213524705}
-  m_Placeholder: {fileID: 656961486}
-  m_VerticalScrollbar: {fileID: 0}
-  m_VerticalScrollbarEventHandler: {fileID: 0}
-  m_LayoutGroup: {fileID: 0}
-  m_ScrollSensitivity: 1
-  m_ContentType: 0
-  m_InputType: 0
-  m_AsteriskChar: 42
-  m_KeyboardType: 0
-  m_LineType: 0
-  m_HideMobileInput: 0
-  m_HideSoftKeyboard: 0
-  m_CharacterValidation: 0
-  m_RegexValue: 
-  m_GlobalPointSize: 14
-  m_CharacterLimit: 0
-  m_OnEndEdit:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnSubmit:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnSelect:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnDeselect:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnTextSelection:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnEndTextSelection:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnValueChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnTouchScreenKeyboardStatusChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_CustomCaretColor: 0
-  m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
-  m_Text: 
-  m_CaretBlinkRate: 0.85
-  m_CaretWidth: 1
-  m_ReadOnly: 0
-  m_RichText: 1
-  m_GlobalFontAsset: {fileID: 0}
-  m_OnFocusSelectAll: 1
-  m_ResetOnDeActivation: 1
-  m_KeepTextSelectionVisible: 0
-  m_RestoreOriginalTextOnEscape: 1
-  m_isRichTextEditingAllowed: 0
-  m_LineLimit: 0
-  isAlert: 0
-  m_InputValidator: {fileID: 0}
-  m_ShouldActivateOnSelect: 1
---- !u!114 &1459693710
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1459693707}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.5686275, g: 0.5294118, b: 0.92549026, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1459693711
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1459693707}
-  m_CullTransparentMesh: 1
---- !u!1 &1586396260
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1586396261}
-  - component: {fileID: 1586396262}
-  m_Layer: 5
-  m_Name: InputManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1586396261
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1586396260}
+  m_GameObject: {fileID: 1586095473}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -3324,24 +2440,121 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1586396262
+--- !u!82 &1586095478
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586095473}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: be5e51a110f2768489db678f3dc889f1, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 427.38837
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &1586095484
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1586396260}
+  m_GameObject: {fileID: 1586095473}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4567413ce2987a64b9c79dbfd726b204, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BrailleMapping
-  dot1Key: 106
-  dot2Key: 107
-  dot3Key: 108
-  dot4Key: 102
-  dot5Key: 100
-  dot6Key: 115
+  dot1Key: 102
+  dot2Key: 100
+  dot3Key: 115
+  dot4Key: 106
+  dot5Key: 107
+  dot6Key: 108
   upKey: 273
   downKey: 274
   leftKey: 276
@@ -3351,12 +2564,12 @@ MonoBehaviour:
   repeatKey: 114
   submitKey: 13
   deleteOrNoKey: 8
-  yesOrNextKey: 32
+  yesOrNextKey: 13
   loginKey: 13
   spaceKey: 32
   correctKey: 49
   wrongKey: 50
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 1586095478}
   dot1Sfx: {fileID: 8300000, guid: 0797e54434a89144b924840ca19dd5f5, type: 3}
   dot2Sfx: {fileID: 8300000, guid: 0797e54434a89144b924840ca19dd5f5, type: 3}
   dot3Sfx: {fileID: 8300000, guid: 0797e54434a89144b924840ca19dd5f5, type: 3}
@@ -3398,7 +2611,27 @@ MonoBehaviour:
   ySound: {fileID: 8300000, guid: 92350685b58b51b478cfaa4dd558ec15, type: 3}
   zSound: {fileID: 8300000, guid: 77bd63491b0fe334fb9092f60fac69d6, type: 3}
   letterSoundVolume: 1.5
-  otherDefaultPatternSounds: []
+  otherDefaultPatternSounds:
+  - pattern: 000001
+    sound: {fileID: 8300000, guid: 0622e17681c1d9747a952cdfc368644f, type: 3}
+  - pattern: 000000
+    sound: {fileID: 8300000, guid: 507e6e21ec3099a4dbbd8dfc112663cf, type: 3}
+  - pattern: 010011
+    sound: {fileID: 8300000, guid: 92c844c4b5b3cdd4287f886b8f04a16d, type: 3}
+  - pattern: 011001
+    sound: {fileID: 8300000, guid: ab2be8d914d984844901de186de4bb4e, type: 3}
+  - pattern: 010000
+    sound: {fileID: 8300000, guid: 36e662f15e18c9941bac3198f72868ae, type: 3}
+  - pattern: 011010
+    sound: {fileID: 8300000, guid: 7a707332265f18f48b49580b27513660, type: 3}
+  - pattern: 111101
+    sound: {fileID: 8300000, guid: 5f0f5ab296d45d74c931b2e8d0aa79da, type: 3}
+  - pattern: 111111
+    sound: {fileID: 8300000, guid: 08256852daf5efa4fa22b9fcb361effc, type: 3}
+  - pattern: 111011
+    sound: {fileID: 8300000, guid: 997b34216f8d2b34c99ffe7d2e1ab773, type: 3}
+  - pattern: 011111
+    sound: {fileID: 8300000, guid: d79ad1e1d62f577468b4448ee4c887dc, type: 3}
   otherPatternSoundVolume: 1.5
   leftEarPan: -1
   rightEarPan: 1
@@ -3408,6 +2641,650 @@ MonoBehaviour:
   logInputs: 0
   playLetterSoundOnChord: 1
   playOtherPatternSoundOnChord: 1
+--- !u!114 &1586095485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586095473}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47fef0f0e1fe6bb458d310344c93f635, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundsAround4
+  bubbleMessageText: {fileID: 1257937990}
+  displayLabelText: {fileID: 843676732}
+  categoryText: {fileID: 1155271827}
+  livePatternText: {fileID: 1697798612}
+  displayImageUI: {fileID: 54352918}
+  answerStateImage: {fileID: 2047379756}
+  correctStateSprite: {fileID: -4207999480553683411, guid: 4e35d4a30fee8cc4580f2983361350b4, type: 3}
+  wrongStateSprite: {fileID: 7071201414940298460, guid: bee3415c56ef4054aa185675bb6dc185, type: 3}
+  hideAnswerStateAtStart: 1
+  fixScoreText: {fileID: 1777884057}
+  wrongScoreText: {fileID: 1070165176}
+  totalScoreText: {fileID: 1113401178}
+  highScoreText: {fileID: 1262590508}
+  fixedScore: 100
+  deductionPerMistake: 1
+  highScoreKey: SoundsAround1HighScore
+  voiceAudioSource: {fileID: 1586095478}
+  welcomeAudio: {fileID: 8300000, guid: 261fc7536a3503846a25226781ed1c5d, type: 3}
+  letsLearnAudio: {fileID: 8300000, guid: 369ddc24d6f1a4e4192a89a1d81c7558, type: 3}
+  genericCorrectAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
+  genericTryAgainAudio: {fileID: 8300000, guid: dd615f4eef83e3b49b22a11445f9b6d6, type: 3}
+  genericCompletedAudio: {fileID: 8300000, guid: ad226ffe4ec86c9429f638d76ec0e68d, type: 3}
+  repeatQuestionAudio: {fileID: 8300000, guid: 7bfae7d00eb980343aafea6df0a68c54, type: 3}
+  yourScoreIsAudio: {fileID: 8300000, guid: 613a4ecd64752ee4c8844d8286dca545, type: 3}
+  whileYourHighestScoreIsAudio: {fileID: 8300000, guid: 2525c179990406146becd993f00485ee, type: 3}
+  numberAudios:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: 21a469d6598c3204ab82b509e42e89f8, type: 3}
+  - {fileID: 8300000, guid: 5bd190e14c182b24d9e04c61a35f3b29, type: 3}
+  - {fileID: 8300000, guid: c6f4937e92350a04a82d4bd76eef52ba, type: 3}
+  - {fileID: 8300000, guid: 701a3679a01f84e43aa1fa9d4a3c0785, type: 3}
+  - {fileID: 8300000, guid: bde38e84ced6de84cb95115723d7bdf4, type: 3}
+  - {fileID: 8300000, guid: fe9932ae0117e154d998e51d9ed611e0, type: 3}
+  - {fileID: 8300000, guid: 94091ec33fbd6b349ba6e703387e4866, type: 3}
+  - {fileID: 8300000, guid: ee8cfcb8b3588954ea24c10457255924, type: 3}
+  - {fileID: 8300000, guid: 5e889505e0e0d2a4db129b0905352109, type: 3}
+  - {fileID: 8300000, guid: 65fabefe77170f948ba6088e0e5a0f95, type: 3}
+  - {fileID: 8300000, guid: 6a0ec25b8a422c646b399ddcae7b2c62, type: 3}
+  - {fileID: 8300000, guid: 437fe84d57fc7f64cad7d56e2a8c9a89, type: 3}
+  - {fileID: 8300000, guid: 0d5771525d0e1814ab6d369e7eb1c3ba, type: 3}
+  - {fileID: 8300000, guid: 8881ea521aa0c7a4f9ae441c637350e6, type: 3}
+  - {fileID: 8300000, guid: e8c2b8bd9bd8f9e428347c57e9710cd4, type: 3}
+  - {fileID: 8300000, guid: 09027ef61068784478c1b32badf50904, type: 3}
+  - {fileID: 8300000, guid: e8c38c6593d87944187086e01dbfdb98, type: 3}
+  - {fileID: 8300000, guid: 31becc0a3e7892e468b4ac4372db4882, type: 3}
+  - {fileID: 8300000, guid: caf77e0d1f468b64ab86183d4318a7f8, type: 3}
+  - {fileID: 8300000, guid: 579c9253f6a5be6499ca8a1851d07f90, type: 3}
+  introLessonPages:
+  - pageText: Hello, Class! Welcome to Lesson 6 (Parts of Simple Sentence)
+    pageAudio: {fileID: 8300000, guid: 987c2ab567c418b4ab874cef6729fce8, type: 3}
+  - pageText: 'Today, we are going to learn about the parts of a simple sentence.
+      Every sentence tells us something. We can understand a sentence better by asking
+      these questions:'
+    pageAudio: {fileID: 8300000, guid: 63bef7a4573917d408179ba8c2b6f8e8, type: 3}
+  - pageText: 'Who or What?
+
+      What are they doing?
+
+      When, Where, or How?'
+    pageAudio: {fileID: 8300000, guid: 22b98b8297907a840be28d86cbcf40a5, type: 3}
+  - pageText: Let's learn what each part means!
+    pageAudio: {fileID: 8300000, guid: 1ea4c267f81c6b54091121deaff11d0d, type: 3}
+  - pageText: 1. Who or What?
+    pageAudio: {fileID: 8300000, guid: 7a91ae3cf22aaab43a9a231d7c597532, type: 3}
+  - pageText: The Who or What tells us who the sentence is about or what the sentence
+      is talking about. This is called the subject.
+    pageAudio: {fileID: 8300000, guid: 455a70dae0a741c48b1f5d0be6598216, type: 3}
+  - pageText: 'Examples:
+
+
+      Ben feeds the hens.
+
+      The hens live in the
+      hen pen.
+
+      Ren-ren is missing.'
+    pageAudio: {fileID: 8300000, guid: 0c51544a8f5c6e140bc20c24a399088b, type: 3}
+  - pageText: In these sentences, Ben, the hens, and Ren-ren are the Who or What.
+    pageAudio: {fileID: 8300000, guid: 3f0037588d5133747a9a16b2592528a5, type: 3}
+  - pageText: 2. What Are They Doing?
+    pageAudio: {fileID: 8300000, guid: 16c8c3232f7b29e46acbda2fdfa4eead, type: 3}
+  - pageText: This part tells us what the person, animal, or thing is doing. It is
+      called the action or verb.
+    pageAudio: {fileID: 8300000, guid: d49b1a35a6efa8347a543c17508c73c6, type: 3}
+  - pageText: 'Examples:
+
+
+      Ben feeds the hens.
+
+      Ren-ren hides behind
+      the hens.'
+    pageAudio: {fileID: 8300000, guid: 44b2aeabba109aa418ca2e6c6de47598, type: 3}
+  - pageText: The action words are feeds and hides.
+    pageAudio: {fileID: 8300000, guid: 3ab8b6e94cace664dbaaaa3cde410111, type: 3}
+  - pageText: 3. When, Where, or How?
+    pageAudio: {fileID: 8300000, guid: 48664e0e1fb3cb444b7498f7faf719ef, type: 3}
+  - pageText: This part gives us more information about the action.
+    pageAudio: {fileID: 8300000, guid: 87b0a023ffb89134a9197d58c07c7699, type: 3}
+  - pageText: 'When.
+
+
+      When tells us the time something happens.'
+    pageAudio: {fileID: 8300000, guid: 08f82cccefcb5314c9a3630e68f37d67, type: 3}
+  - pageText: 'Examples:
+
+
+      One morning
+
+      Before going to school
+
+      Every
+      morning'
+    pageAudio: {fileID: 8300000, guid: 86417f9bbb9aaf941977a1a43c479775, type: 3}
+  - pageText: 'Where.
+
+
+      Where tells us the place where something happens.'
+    pageAudio: {fileID: 8300000, guid: 7cf4f95a5bb29ac4a808b3adb89713a8, type: 3}
+  - pageText: 'Examples:
+
+
+      In the hen pen
+
+      Beside their house
+
+      Around
+      the yard'
+    pageAudio: {fileID: 8300000, guid: 8d1958b0032da0e4aa7de63d913b6c15, type: 3}
+  - pageText: 'How.
+
+
+      How tells us the way something happens.'
+    pageAudio: {fileID: 8300000, guid: e6b3635e4b7ba24438d88f66376abd0e, type: 3}
+  - pageText: 'Examples:
+
+
+      Happily
+
+      Carefully
+
+      Quickly'
+    pageAudio: {fileID: 8300000, guid: 45a8f929a8175164788a0a9cd1690809, type: 3}
+  - pageText: Let's Listen at an Example
+    pageAudio: {fileID: 8300000, guid: 926f67e6581762d40a1a6127a8692789, type: 3}
+  - pageText: One morning, Ben happily fed the hens in the hen pen.
+    pageAudio: {fileID: 8300000, guid: 3e9c53e6b8a47214a971de8e3542112e, type: 3}
+  - pageText: 'Who or What: Ben
+
+      What are they doing?: Fed the hens
+
+      When:
+      One morning
+
+      Where: In the hen pen
+
+      How: Happily'
+    pageAudio: {fileID: 8300000, guid: b8dfe0639d8fcdf4eb99386bf04e46f0, type: 3}
+  - pageText: 'Great job! Remember, every simple sentence helps us answer these questions:'
+    pageAudio: {fileID: 8300000, guid: c71e1a811c71e694a9b4c5a4e81d70a5, type: 3}
+  - pageText: 'Who or What?
+
+      What are they doing?
+
+      When, Where, or How?'
+    pageAudio: {fileID: 8300000, guid: 22b98b8297907a840be28d86cbcf40a5, type: 3}
+  - pageText: When you can find these parts, it becomes easier to read, understand,
+      and tell stories.
+    pageAudio: {fileID: 8300000, guid: a3e93b7148439c34b9275fcfc6fa0db0, type: 3}
+  delayBetweenIntroPages: 0.5
+  welcomeMessage: Hello. Now I'm going to read a short story
+  letsLearnMessage: In this lesson, you will listen to a short story and answer five
+    questions about it using Braille. Listen carefully because your answers should
+    be based on the story.
+  completedMessage: Great job! You finished Lesson 6 (Elments of the story)
+  repeatQuestionMessage: You finished the lesson. Do you want to repeat again? Press
+    R to repeat or Y to finish.
+  repeatQuestionConfirmMessage: Do you want to repeat the question? Press Next to
+    continue.
+  repeatQuestionConfirmAudio: {fileID: 8300000, guid: 2b7796efbf0bc7c4fa6eb1cf648e40c6, type: 3}
+  lessons:
+  - displayLabel: Question
+    categoryLabel: Choices
+    promptMessage: Listen carefully to the story. Pay close attention because after
+      the story, you will answer five questions using Braille. Try to remember the
+      important details. Good luck and have fun learning! To answer the question.
+      you will press the dot number 1 for letter A, dot number 2 for B, and dot number
+      3 for C.
+    repeatMessage: Reating The Story
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: 5ecc2a5875ea96f4c8432176ca5a272f, type: 3}
+    instructionAudio: {fileID: 0}
+    repeatAudio: {fileID: 8300000, guid: 7bfae7d00eb980343aafea6df0a68c54, type: 3}
+    storyLines:
+    - storyText: One morning, Ben woke up early before going to school. Ben father
+        owned seven hens that lived in a small hen pen beside their house. Every
+        morning, Ben made sure to feed the hens before leaving for school.
+      storyAudio: {fileID: 8300000, guid: 171096d914935694db56f376c2377390, type: 3}
+    - storyText: While Ben was feeding them, he noticed that his little chick named
+        Ren-ren was missing. Ben looked around the yard and finally found Ren-ren
+        in the hen pen, hiding behind one of the hens.
+      storyAudio: {fileID: 8300000, guid: cd710ee382c7bf64ea10d4c5e4a53100, type: 3}
+    - storyText: Ben smiled with relief because he had found Ren-ren. After making
+        sure all seven hens and Ren-ren were safe, Ben happily went to school.
+      storyAudio: {fileID: 8300000, guid: a73284442a3e32444858f55749876109, type: 3}
+    questions:
+    - questionText: 1. Who owns the hens?
+      questionAudio: {fileID: 8300000, guid: 2159e168f0124d84eaf79a4ddf227950, type: 3}
+      soundEffectAudio: {fileID: 8300000, guid: 1c211304ba1029b4a95fc1f6bd0eaebc, type: 3}
+      choiceAText: Ben Father
+      choiceBText: Ben
+      choiceCText: Ren-ren
+      correctAnswer: 0
+      successMessage: That is correct.
+      successAudio: {fileID: 8300000, guid: 9c57dcc1a87b36e48a43c926c3756edd, type: 3}
+      wrongMessage: Wrong answer, please try again.
+      supportMessage: Remember. Ben's Father own the hens
+      supportAudio: {fileID: 8300000, guid: 47cbb97e407f9694fbd1663f6ef2f2ff, type: 3}
+    - questionText: 2.How many hens are there?
+      questionAudio: {fileID: 8300000, guid: 3e3a3ced0f4c4a14db1b7c8e03853bc1, type: 3}
+      soundEffectAudio: {fileID: 0}
+      choiceAText: Ten
+      choiceBText: Seven
+      choiceCText: Five
+      correctAnswer: 1
+      successMessage: That is correct.
+      successAudio: {fileID: 8300000, guid: 1fe2683155733904fafba59a47dc9c5b, type: 3}
+      wrongMessage: Wrong answer, please try again.
+      supportMessage: Remember. There is Seven hens
+      supportAudio: {fileID: 8300000, guid: d37b9b334a85c1c4bb5158b42b40e5bc, type: 3}
+    - questionText: 3. Who feeds the hens
+      questionAudio: {fileID: 8300000, guid: 19b1cdf0ecbdb0b4fb36457387e65876, type: 3}
+      soundEffectAudio: {fileID: 0}
+      choiceAText: Mario
+      choiceBText: Ren-ren
+      choiceCText: Ben
+      correctAnswer: 2
+      successMessage: That is correct.
+      successAudio: {fileID: 8300000, guid: 60a395859fc91f442a13ebc6400d0490, type: 3}
+      wrongMessage: Wrong answer, please try again.
+      supportMessage: Remember. Ben the one who feed the hens
+      supportAudio: {fileID: 8300000, guid: 2a273f5c360e9a9488b41c41d9d8dde5, type: 3}
+    - questionText: 4.What does Ben before going to school? ___ the hens
+      questionAudio: {fileID: 8300000, guid: 82102707e5052d94b86256f3d0ba75f8, type: 3}
+      soundEffectAudio: {fileID: 0}
+      choiceAText: Feed
+      choiceBText: Seed
+      choiceCText: Weed
+      correctAnswer: 0
+      successMessage: That is correct.
+      successAudio: {fileID: 8300000, guid: 94dd5f12e2137d34796db321a3161612, type: 3}
+      wrongMessage: Wrong answer, please try again.
+      supportMessage: Remember. Ben feed the hens before going to school
+      supportAudio: {fileID: 8300000, guid: 8c125486ebfc4454fae3215c32576c68, type: 3}
+    - questionText: 5. Where was Ren-ren? In the __
+      questionAudio: {fileID: 8300000, guid: 643bbf2686fed90498053f974b3f9ff2, type: 3}
+      soundEffectAudio: {fileID: 0}
+      choiceAText: House
+      choiceBText: Hen Pen
+      choiceCText: Garage
+      correctAnswer: 1
+      successMessage: That is correct.
+      successAudio: {fileID: 8300000, guid: bde6981386120fb49b5448097adfde77, type: 3}
+      wrongMessage: Wrong answer, please try again.
+      supportMessage: Remember. Ren-ren is in the Hen
+      supportAudio: {fileID: 8300000, guid: 4e8f8119bfce4f248bc10cc8054e618d, type: 3}
+    - questionText: 6. Why was Ben happy? he ___ Ren-ren
+      questionAudio: {fileID: 8300000, guid: 861e578933d352845ab5df4407558770, type: 3}
+      soundEffectAudio: {fileID: 0}
+      choiceAText: Found
+      choiceBText: Lost
+      choiceCText: Feed
+      correctAnswer: 0
+      successMessage: That is correct.
+      successAudio: {fileID: 8300000, guid: 3904e0e4fd0c1ad418de272b7ccaacea, type: 3}
+      wrongMessage: Wrong answer, please try again.
+      supportMessage: Remember. Ben is happy because he found Ren-ren
+      supportAudio: {fileID: 8300000, guid: cce39f3d27510ef45acf898706828186, type: 3}
+    supportMessage: "Congratulations! You have successfully finished the lesson on
+      the 6 Elements of the Story. Great job listening carefully to the stories and
+      answering the questions using Braille. Keep practicing your listening and Braille
+      reading skills. You're doing an excellent job\u2014see you in the next lesson!"
+    supportAudio: {fileID: 8300000, guid: ad226ffe4ec86c9429f638d76ec0e68d, type: 3}
+  delayAfterVoice: 0.35
+  noAudioTextDelay: 2
+  delayAfterCorrect: 0.75
+  delayBetweenStoryLines: 0.5
+  resetMistakesAfterSupport: 1
+  mistakesBeforeSupport: 3
+  repeatStoryPromptMessage: Do you want to hear the story again? Press Repeat to
+    hear it again, or press Next to continue with the question.
+  repeatStoryPromptAudio: {fileID: 8300000, guid: dba4b148f8a48734ba002f1e07c20fd8, type: 3}
+  useTypewriterEffect: 1
+  defaultTypewriterCharacterDelay: 0.03
+  minSyncedCharacterDelay: 0.01
+  maxSyncedCharacterDelay: 0.12
+  waitForFullAudioBeforeContinuing: 1
+  logDebug: 1
+--- !u!114 &1586095486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586095473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c80e576a363e105468525a9c8907fc5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Lesson8Script
+  bubbleMessageText: {fileID: 1257937990}
+  displayLabelText: {fileID: 843676732}
+  categoryText: {fileID: 1155271827}
+  livePatternText: {fileID: 1697798612}
+  displayImageUI: {fileID: 54352918}
+  answerStateImage: {fileID: 2047379756}
+  correctStateSprite: {fileID: -4207999480553683411, guid: 4e35d4a30fee8cc4580f2983361350b4, type: 3}
+  wrongStateSprite: {fileID: 7071201414940298460, guid: bee3415c56ef4054aa185675bb6dc185, type: 3}
+  hideAnswerStateAtStart: 1
+  fixScoreText: {fileID: 1777884057}
+  wrongScoreText: {fileID: 1070165176}
+  totalScoreText: {fileID: 1113401178}
+  highScoreText: {fileID: 1262590508}
+  fixedScore: 100
+  deductionPerMistake: 1
+  highScoreKey: BrailleSoundsAroundHighScore
+  voiceAudioSource: {fileID: 1586095478}
+  welcomeAudio: {fileID: 8300000, guid: 13e73841e1e6f1a42b427839872c4941, type: 3}
+  letsLearnAudio: {fileID: 8300000, guid: 369ddc24d6f1a4e4192a89a1d81c7558, type: 3}
+  genericCorrectAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
+  genericTryAgainAudio: {fileID: 8300000, guid: dd615f4eef83e3b49b22a11445f9b6d6, type: 3}
+  genericCompletedAudio: {fileID: 8300000, guid: ad226ffe4ec86c9429f638d76ec0e68d, type: 3}
+  repeatQuestionAudio: {fileID: 8300000, guid: 7bfae7d00eb980343aafea6df0a68c54, type: 3}
+  yourScoreIsAudio: {fileID: 8300000, guid: 613a4ecd64752ee4c8844d8286dca545, type: 3}
+  whileYourHighestScoreIsAudio: {fileID: 8300000, guid: 2525c179990406146becd993f00485ee, type: 3}
+  numberAudios:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  introLessonPages:
+  - pageText: 'Welcome to Lesson 8: Speech Sound Medial /e/, Rimes (-eg, -ed)'
+    pageAudio: {fileID: 8300000, guid: 13e73841e1e6f1a42b427839872c4941, type: 3}
+  - pageText: Today, we are going to learn about the medial vowel sound /e/ and the
+      rimes -eg and -ed.
+    pageAudio: {fileID: 8300000, guid: 10dffd4e432ac754fb051a63b5eac375, type: 3}
+  - pageText: The medial sound is the middle sound in a word. The letter e makes
+      the short /e/ sound, like in the words egg, bed, and leg.
+    pageAudio: {fileID: 8300000, guid: d9ec8a58bf4e36540a0b89b2964265bf, type: 3}
+  - pageText: A rime is the part of a word that comes after the first letter or sound.
+      Today, we will learn the rimes -eg and -ed.
+    pageAudio: {fileID: 8300000, guid: 54900b639d2dd414897286c446f9472f, type: 3}
+  - pageText: 'Let''s listen some examples:'
+    pageAudio: {fileID: 8300000, guid: ee89f462d2cbe0a4ba08f3e3332702d9, type: 3}
+  - pageText: 'Rime: -eg
+
+      leg
+
+      peg
+
+      beg'
+    pageAudio: {fileID: 8300000, guid: b389f836181548a4eb2dc7d870d77f6b, type: 3}
+  - pageText: These words all end with -eg and have the short /e/ sound.
+    pageAudio: {fileID: 8300000, guid: 4a45a00211d34f34ca41cc4370ca8dba, type: 3}
+  - pageText: 'Rime: -ed
+
+      bed
+
+      red
+
+      fed'
+    pageAudio: {fileID: 8300000, guid: 119c9f2652db82f489296f41faa00c09, type: 3}
+  - pageText: 123
+    pageAudio: {fileID: 0}
+  - pageText: These words all end with -ed and also have the short /e/ sound.
+    pageAudio: {fileID: 8300000, guid: 67f8ac371596171429f813cfa681a9cb, type: 3}
+  - pageText: Listen carefully to each word. Notice that they all have the short
+      /e/ sound in the middle.
+    pageAudio: {fileID: 8300000, guid: 13469b99ccbdee3429ffa99efd979a31, type: 3}
+  - pageText: When you hear or read a word, try to find its rime. Knowing the rime
+      will help you read new words more easily.
+    pageAudio: {fileID: 8300000, guid: 103bea8787950db4482f27c1d42f5e57, type: 3}
+  - pageText: Great job! Keep practicing the /e/ sound and the rimes -eg and -ed.
+      The more you practice, the better you will become at reading and pronouncing
+      words.
+    pageAudio: {fileID: 8300000, guid: 52977510d75647a4cb46613aff308b99, type: 3}
+  delayBetweenIntroPages: 0.5
+  welcomeMessage: Hello, Class!
+  letsLearnMessage: Let's identify some sounds.
+  completedMessage: Great job! You finished the lesson.
+  repeatQuestionMessage: You finished the lesson. Do you want to repeat again? Press
+    R to repeat or Y to finish.
+  repeatQuestionConfirmMessage: Do you want to repeat the question? Press Next to
+    continue.
+  repeatQuestionConfirmAudio: {fileID: 0}
+  lessons:
+  - displayLabel: Word
+    categoryLabel: Choices
+    promptMessage: Here, you will choose a word that rimes in (-eg, -ed)
+    repeatMessage: 
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: fec17ecbc336264409ee388a12ca4c91, type: 3}
+    instructionAudio: {fileID: 0}
+    repeatAudio: {fileID: 0}
+    storyLines: []
+    questions:
+    - questionText: 1. Leg
+      questionAudio: {fileID: 8300000, guid: d1c5f12a4ff5ce147947185668f40513, type: 3}
+      soundEffectAudio: {fileID: 0}
+      choiceAText: Red
+      choiceBText: Peg
+      choiceCText: Mid
+      correctAnswer: 1
+      successMessage: good
+      successAudio: {fileID: 0}
+      wrongMessage: 
+      supportMessage: 
+      supportAudio: {fileID: 0}
+    spellingQuestions:
+    - word: BED
+      instruction: PRESS DOT
+      instructionAudio: {fileID: 0}
+      helpMessage: TRY
+      helpAudio: {fileID: 0}
+      successMessage: NICE
+      successAudio: {fileID: 0}
+      wrongMessage: WRONG
+    supportMessage: 
+    supportAudio: {fileID: 0}
+  delayAfterVoice: 0.35
+  noAudioTextDelay: 2
+  delayAfterCorrect: 0.75
+  delayBetweenStoryLines: 0.5
+  resetMistakesAfterSupport: 1
+  mistakesBeforeSupport: 3
+  repeatStoryPromptMessage: Do you want to hear the story again? Press Repeat to
+    hear it again, or press Next to continue with the question.
+  repeatStoryPromptAudio: {fileID: 0}
+  useTypewriterEffect: 1
+  defaultTypewriterCharacterDelay: 0.03
+  minSyncedCharacterDelay: 0.01
+  maxSyncedCharacterDelay: 0.12
+  waitForFullAudioBeforeContinuing: 1
+  logDebug: 1
+--- !u!114 &1586095487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586095473}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e467582837f9ef46a0e188d188229f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MapFor8
 --- !u!1 &1697798611
 GameObject:
   m_ObjectHideFlags: 0
@@ -3868,11 +3745,9 @@ RectTransform:
   - {fileID: 1242371996}
   - {fileID: 1070165175}
   - {fileID: 286661653}
+  - {fileID: 1586095474}
   - {fileID: 1155271826}
   - {fileID: 2047379755}
-  - {fileID: 666421660}
-  - {fileID: 1111531424}
-  - {fileID: 1586396261}
   - {fileID: 54352917}
   m_Father: {fileID: 83132950}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

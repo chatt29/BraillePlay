@@ -2413,7 +2413,7 @@ GameObject:
   - component: {fileID: 1586095484}
   - component: {fileID: 1586095485}
   m_Layer: 5
-  m_Name: Lesson6Manager
+  m_Name: AnimalSounds4Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2668,7 +2668,7 @@ MonoBehaviour:
   deductionPerMistake: 1
   highScoreKey: SoundsAround1HighScore
   voiceAudioSource: {fileID: 1586095478}
-  welcomeAudio: {fileID: 8300000, guid: 261fc7536a3503846a25226781ed1c5d, type: 3}
+  welcomeAudio: {fileID: 8300000, guid: cbc578d52ca86bf4c8493340729d1267, type: 3}
   letsLearnAudio: {fileID: 8300000, guid: 369ddc24d6f1a4e4192a89a1d81c7558, type: 3}
   genericCorrectAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
   genericTryAgainAudio: {fileID: 8300000, guid: dd615f4eef83e3b49b22a11445f9b6d6, type: 3}
@@ -2779,8 +2779,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: caf77e0d1f468b64ab86183d4318a7f8, type: 3}
   - {fileID: 8300000, guid: 579c9253f6a5be6499ca8a1851d07f90, type: 3}
   introLessonPages:
-  - pageText: Welcome to Lesson 6 (Parts of Simple Sentence)
-    pageAudio: {fileID: 8300000, guid: 987c2ab567c418b4ab874cef6729fce8, type: 3}
+  - pageText: Hello, class!
+    pageAudio: {fileID: 8300000, guid: 811be15d615b7a54089fa020eae8d4f3, type: 3}
   - pageText: 'Today, we are going to learn about the parts of a simple sentence.
       Every sentence tells us something. We can understand a sentence better by asking
       these questions:'
@@ -2900,7 +2900,7 @@ MonoBehaviour:
       and tell stories.
     pageAudio: {fileID: 8300000, guid: a3e93b7148439c34b9275fcfc6fa0db0, type: 3}
   delayBetweenIntroPages: 0.5
-  welcomeMessage: Hello. Now I'm going to read a short story
+  welcomeMessage: Welcome to Lesson 6 (Elements of the story)
   letsLearnMessage: In this lesson, you will listen to a short story and answer five
     questions about it using Braille. Listen carefully because your answers should
     be based on the story.
