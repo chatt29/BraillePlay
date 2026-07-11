@@ -133,7 +133,10 @@ public class SoundsAround4 : MonoBehaviour
     [Header("Quiz Score Settings")]
     public int fixedScore = 100;
     public int deductionPerMistake = 1;
-    public string highScoreKey = "BrailleSoundsAroundHighScore";
+    public string highScoreKey = "SoundsAround4HighScore";
+
+    [Header("Quiz Result Reporting")]
+    public QuizResultReporter resultReporter;
 
     // -------------------------------------------------------------------------
     // Audio
@@ -845,6 +848,11 @@ public class SoundsAround4 : MonoBehaviour
 
         yield return ShowBubbleMessageSynced(finalMessage, genericCompletedAudio, noAudioTextDelay);
         yield return PlayFinalScoreAudio();
+
+        if (resultReporter != null)
+            resultReporter.ReportScoreAndReturn(totalScore);
+        else
+            Debug.LogWarning("[SoundsAround4] No QuizResultReporter assigned - score won't be saved or returned to GameMenu.");
     }
 
     // -------------------------------------------------------------------------

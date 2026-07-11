@@ -4,16 +4,18 @@ using TMPro;
 /// <summary>
 /// Lets the player quit a quiz scene at any time via the global 3-second
 /// long-press-back gesture, with a confirmation step so an accidental hold
-/// doesn't throw away progress. Quiz scenes have no TTS (see the TTS
-/// boundary requirement), so this confirmation is shown as on-screen text
-/// only, never spoken.
+/// doesn't throw away progress. Uses the same Space = yes / Backspace = no
+/// convention as the rest of the app (quiz-end continue prompt, Game Menu
+/// logout prompt). Speaks the prompt via AccessibilityManager - this scene
+/// already has a local TTSManager for QuizEndMenu, so there's no reason for
+/// this confirmation to be visual-only.
 /// </summary>
 public class QuizBackHandler : MonoBehaviour
 {
     [SerializeField] private QuizResultReporter resultReporter;
     [SerializeField] private GameObject confirmOverlay;
     [SerializeField] private TMP_Text confirmText;
-    [SerializeField] private string confirmMessage = "Quit lesson? Press Enter to confirm. Press Escape to cancel.";
+    [SerializeField] private string confirmMessage = "Quit lesson? Press Space for yes. Press Backspace for no.";
 
     private bool awaitingConfirmation;
 
@@ -46,8 +48,11 @@ public class QuizBackHandler : MonoBehaviour
         if (confirmText != null) confirmText.text = confirmMessage;
         if (confirmOverlay != null) confirmOverlay.SetActive(true);
 
-        BrailleMapping.OnSubmit += HandleConfirm;
-        BrailleMapping.OnBack += HandleCancel;
+        if (AccessibilityManager.Instance != null)
+            AccessibilityManager.Instance.Announce(confirmMessage);
+
+        BrailleMapping.OnYesOrNext += HandleConfirm;
+        BrailleMapping.OnDeleteOrNo += HandleCancel;
     }
 
     private void HandleConfirm()
@@ -69,7 +74,7 @@ public class QuizBackHandler : MonoBehaviour
         if (!awaitingConfirmation) return;
 
         awaitingConfirmation = false;
-        BrailleMapping.OnSubmit -= HandleConfirm;
-        BrailleMapping.OnBack -= HandleCancel;
+        BrailleMapping.OnYesOrNext -= HandleConfirm;
+        BrailleMapping.OnDeleteOrNo -= HandleCancel;
     }
 }

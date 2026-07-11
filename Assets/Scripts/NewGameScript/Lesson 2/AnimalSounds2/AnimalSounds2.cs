@@ -99,7 +99,10 @@ public class AnimalSounds2 : MonoBehaviour
     [Header("Quiz Score Settings")]
     public int fixedScore = 100;
     public int deductionPerMistake = 1;
-    public string highScoreKey = "BrailleSoundsAroundHighScore";
+    public string highScoreKey = "AnimalSounds2HighScore";
+
+    [Header("Quiz Result Reporting")]
+    public QuizResultReporter resultReporter;
 
     // -------------------------------------------------------------------------
     // Audio
@@ -753,6 +756,11 @@ public class AnimalSounds2 : MonoBehaviour
 
         yield return ShowBubbleMessageSynced(finalMessage, genericCompletedAudio, noAudioTextDelay);
         yield return PlayFinalScoreAudio();
+
+        if (resultReporter != null)
+            resultReporter.ReportScoreAndReturn(totalScore);
+        else
+            Debug.LogWarning("[AnimalSounds2] No QuizResultReporter assigned - score won't be saved or returned to GameMenu.");
     }
 
     // -------------------------------------------------------------------------
