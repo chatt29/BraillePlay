@@ -19,18 +19,6 @@ MonoBehaviour:
     - quizTitle: 'Sounds Around 1 '
       sceneName: 1SoundsAround1
       quizNumber: 1
-    - quizTitle: Sounds Around 2
-      sceneName: 1SoundsAround2
-      quizNumber: 2
-    - quizTitle: Sounds Around 3
-      sceneName: 1SoundsAround3
-      quizNumber: 3
-    - quizTitle: Sounds Around 4
-      sceneName: 1SoundsAround4
-      quizNumber: 4
-    - quizTitle: Sounds Around 5
-      sceneName: 1SoundsAround5
-      quizNumber: 5
   - lessonTitle: 'Lesson 2: Animal Sounds'
     lessonNumber: 2
     quizzes:
@@ -48,4 +36,40 @@ MonoBehaviour:
     quizzes:
     - quizTitle: Identifying Alphabets
       sceneName: IdentifyingAlphabets
+      quizNumber: 1
+  - lessonTitle: 'Lesson 5: Onset-Rime'
+    lessonNumber: 5
+    quizzes:
+    - quizTitle: Onset-Rime
+      sceneName: Onset-Rime
+      quizNumber: 1
+  - lessonTitle: 'Lesson 6: Simple Sentence'
+    lessonNumber: 6
+    quizzes:
+    - quizTitle: Parts of a Simple Sentence
+      sceneName: Lesson6
+      quizNumber: 1
+  - lessonTitle: 'Lesson 7:  Speech Sounds '
+    lessonNumber: 7
+    quizzes:
+    - quizTitle: Speech Sounds
+      sceneName: SpeechSounds
+      quizNumber: 1
+  - lessonTitle: 'Lesson 8: Speech Sound Medial Rhymes '
+    lessonNumber: 8
+    quizzes:
+    - quizTitle: Speech Sounds Medial Rhymes
+      sceneName: SoundAround4
+      quizNumber: 1
+  - lessonTitle: 'Lesson 9: Basic Rhymes '
+    lessonNumber: 9
+    quizzes:
+    - quizTitle: Basic Rhymes
+      sceneName: RimesEmEllEb
+      quizNumber: 1
+  - lessonTitle: 'Lesson 10:  '
+    lessonNumber: 10
+    quizzes:
+    - quizTitle: Lesson 10
+      sceneName: Lesson10
       quizNumber: 1

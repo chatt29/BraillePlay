@@ -5,7 +5,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class NewMonoBehaviourScript : MonoBehaviour
+public class SoundsInTheEnvironment : MonoBehaviour
 {
     // Two named choices for "what makes the sound" (e.g. Cow / Horse).
     public enum SourceAnswer { OptionA, OptionB }
@@ -136,7 +136,10 @@ public class NewMonoBehaviourScript : MonoBehaviour
     [Header("Quiz Score Settings")]
     public int fixedScore = 100;
     public int deductionPerMistake = 1;
-    public string highScoreKey = "InstrumentSoundsHighScore";
+    public string highScoreKey = "SoundsInTheEnvironmentHighScore";
+
+    [Header("Quiz Result Reporting")]
+    public QuizResultReporter resultReporter;
 
     // -------------------------------------------------------------------------
     // Audio
@@ -364,7 +367,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
     {
         if (index < 0 || index >= lessons.Count)
         {
-            RunFlow(CompleteScene());
+            RunFlow(FinalizeSceneCompletion());
             return;
         }
 
@@ -739,43 +742,11 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
     private void HandleNext()
     {
-        if (waitingForRepeatChoice)
-        {
-            waitingForRepeatChoice = false;
-            RunFlow(FinalizeSceneCompletion());
-            return;
-        }
     }
 
     // -------------------------------------------------------------------------
     // Scene Completion
     // -------------------------------------------------------------------------
-
-    private IEnumerator CompleteScene()
-    {
-        lessonActive = false;
-        sceneFinished = false;
-        waitingForRepeatChoice = false;
-
-        SaveHighScoreIfNeeded();
-
-        if (displayImageUI != null)
-            displayImageUI.enabled = false;
-
-        if (displayLabelText != null)
-            displayLabelText.text = string.Empty;
-
-        ResetAnswerState();
-
-        yield return ShowBubbleMessageSynced(completedMessage, genericCompletedAudio, noAudioTextDelay);
-        yield return new WaitForSeconds(delayAfterVoice);
-
-        yield return PlayFinalScoreAudio();
-        yield return new WaitForSeconds(delayAfterVoice);
-
-        waitingForRepeatChoice = true;
-        yield return ShowBubbleMessageSynced(repeatQuestionMessage, repeatQuestionAudio, noAudioTextDelay);
-    }
 
     private IEnumerator FinalizeSceneCompletion()
     {
@@ -797,6 +768,11 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
         yield return ShowBubbleMessageSynced(finalMessage, genericCompletedAudio, noAudioTextDelay);
         yield return PlayFinalScoreAudio();
+
+        if (resultReporter != null)
+            resultReporter.ReportScoreAndReturn(totalScore);
+        else
+            Debug.LogWarning("[SoundsInTheEnvironment] No QuizResultReporter assigned - score won't be saved or returned to GameMenu.");
     }
 
     // -------------------------------------------------------------------------

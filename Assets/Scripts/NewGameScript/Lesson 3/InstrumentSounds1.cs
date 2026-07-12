@@ -118,7 +118,10 @@ public class InstrumentSounds1 : MonoBehaviour
     [Header("Quiz Score Settings")]
     public int fixedScore = 100;
     public int deductionPerMistake = 1;
-    public string highScoreKey = "InstrumentSoundsHighScore";
+    public string highScoreKey = "InstrumentSounds1HighScore";
+
+    [Header("Quiz Result Reporting")]
+    public QuizResultReporter resultReporter;
 
     // -------------------------------------------------------------------------
     // Audio
@@ -346,7 +349,7 @@ public class InstrumentSounds1 : MonoBehaviour
     {
         if (index < 0 || index >= lessons.Count)
         {
-            RunFlow(CompleteScene());
+            RunFlow(FinalizeSceneCompletion());
             return;
         }
 
@@ -710,43 +713,11 @@ public class InstrumentSounds1 : MonoBehaviour
 
     private void HandleNext()
     {
-        if (waitingForRepeatChoice)
-        {
-            waitingForRepeatChoice = false;
-            RunFlow(FinalizeSceneCompletion());
-            return;
-        }
     }
 
     // -------------------------------------------------------------------------
     // Scene Completion
     // -------------------------------------------------------------------------
-
-    private IEnumerator CompleteScene()
-    {
-        lessonActive = false;
-        sceneFinished = false;
-        waitingForRepeatChoice = false;
-
-        SaveHighScoreIfNeeded();
-
-        if (displayImageUI != null)
-            displayImageUI.enabled = false;
-
-        if (displayLabelText != null)
-            displayLabelText.text = string.Empty;
-
-        ResetAnswerState();
-
-        yield return ShowBubbleMessageSynced(completedMessage, genericCompletedAudio, noAudioTextDelay);
-        yield return new WaitForSeconds(delayAfterVoice);
-
-        yield return PlayFinalScoreAudio();
-        yield return new WaitForSeconds(delayAfterVoice);
-
-        waitingForRepeatChoice = true;
-        yield return ShowBubbleMessageSynced(repeatQuestionMessage, repeatQuestionAudio, noAudioTextDelay);
-    }
 
     private IEnumerator FinalizeSceneCompletion()
     {
@@ -768,6 +739,11 @@ public class InstrumentSounds1 : MonoBehaviour
 
         yield return ShowBubbleMessageSynced(finalMessage, genericCompletedAudio, noAudioTextDelay);
         yield return PlayFinalScoreAudio();
+
+        if (resultReporter != null)
+            resultReporter.ReportScoreAndReturn(totalScore);
+        else
+            Debug.LogWarning("[InstrumentSounds1] No QuizResultReporter assigned - score won't be saved or returned to GameMenu.");
     }
 
     // -------------------------------------------------------------------------

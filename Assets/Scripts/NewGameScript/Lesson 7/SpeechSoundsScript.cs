@@ -72,6 +72,9 @@ public class SpeechSoundsScript : MonoBehaviour
     public int deductionPerMistake = 1;
     public string highScoreKey = "SpeechSoundsHighScore";
 
+    [Header("Quiz Result Reporting")]
+    public QuizResultReporter resultReporter;
+
     // -------------------------------------------------------------------------
     // Audio
     // -------------------------------------------------------------------------
@@ -302,7 +305,7 @@ public class SpeechSoundsScript : MonoBehaviour
     {
         if (index < 0 || index >= words.Count)
         {
-            RunFlow(CompleteScene());
+            RunFlow(FinalizeSceneCompletion());
             return;
         }
 
@@ -508,40 +511,11 @@ public class SpeechSoundsScript : MonoBehaviour
 
     private void HandleNext()
     {
-        if (waitingForRepeatChoice)
-        {
-            waitingForRepeatChoice = false;
-            RunFlow(FinalizeSceneCompletion());
-            return;
-        }
     }
 
     // -------------------------------------------------------------------------
     // Scene Completion
     // -------------------------------------------------------------------------
-    private IEnumerator CompleteScene()
-    {
-        lessonActive = false;
-        sceneFinished = false;
-        waitingForRepeatChoice = false;
-        SaveHighScoreIfNeeded();
-
-        if (displayImageUI != null) displayImageUI.enabled = false;
-        if (displayLabelText != null) displayLabelText.text = string.Empty;
-        if (spelledWordText != null) spelledWordText.text = string.Empty;
-        if (currentLetterPromptText != null) currentLetterPromptText.text = string.Empty;
-        ResetAnswerState();
-
-        yield return ShowBubbleMessageSynced(completedMessage, genericCompletedAudio, noAudioTextDelay);
-        yield return new WaitForSeconds(delayAfterVoice);
-
-        yield return PlayFinalScoreAudio();
-        yield return new WaitForSeconds(delayAfterVoice);
-
-        waitingForRepeatChoice = true;
-        yield return ShowBubbleMessageSynced(repeatQuestionMessage, repeatQuestionAudio, noAudioTextDelay);
-    }
-
     private IEnumerator FinalizeSceneCompletion()
     {
         sceneFinished = true;
@@ -558,6 +532,11 @@ public class SpeechSoundsScript : MonoBehaviour
         string finalMessage = $"Your score is {totalScore}, while your highest score is {highScore}.";
         yield return ShowBubbleMessageSynced(finalMessage, genericCompletedAudio, noAudioTextDelay);
         yield return PlayFinalScoreAudio();
+
+        if (resultReporter != null)
+            resultReporter.ReportScoreAndReturn(totalScore);
+        else
+            Debug.LogWarning("[SpeechSoundsScript] No QuizResultReporter assigned - score won't be saved or returned to GameMenu.");
     }
 
     // -------------------------------------------------------------------------

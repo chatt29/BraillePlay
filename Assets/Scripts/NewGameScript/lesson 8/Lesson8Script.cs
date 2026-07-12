@@ -34,10 +34,31 @@ public class Lesson8Script : MonoBehaviour
     }
 
     [Serializable]
+    public class LetterFeedback
+    {
+        [Header("Wrong Letter Feedback")]
+        [TextArea(2, 4)]
+        public string wrongMessage = "Try again.";
+        public AudioClip wrongAudio;
+
+        [Header("Correct Letter Feedback")]
+        [TextArea(2, 4)]
+        public string correctMessage = "Correct!";
+        public AudioClip correctAudio;
+    }
+
+    [Serializable]
     public class SpellingQuestion
     {
         [Header("Word to Spell")]
         public string word;
+
+        [Header("Word Description")]
+        [Tooltip("Optional description of the word (e.g. what it means), shown AFTER the player spells the word correctly — right before the success message.")]
+        [TextArea(2, 6)]
+        public string description;
+
+        public AudioClip descriptionAudio;
 
         [TextArea(2, 4)]
         public string instruction;
@@ -54,46 +75,9 @@ public class Lesson8Script : MonoBehaviour
         public string successMessage = "Correct!";
         public AudioClip successAudio;
 
-        public string wrongMessage = "Try Again.";
-    }
-
-    // -------------------------------------------------------------------------
-    // Quiz Question (3 choices: A, B, C — answered via Braille input)
-    // -------------------------------------------------------------------------
-
-    public enum AnswerChoice { A, B, C }
-
-    [Serializable]
-    public class QuizQuestion
-    {
-        [TextArea(2, 4)]
-        public string questionText;
-
-        public AudioClip questionAudio;
-
-        [Header("Optional sound effect played before the question")]
-        public AudioClip soundEffectAudio;
-
-        [Header("Answer Choices")]
-        public string choiceAText = "A";
-        public string choiceBText = "B";
-        public string choiceCText = "C";
-
-        [Header("Correct Answer (Braille: Dot1=A, Dot2=B, Dot3=C)")]
-        public AnswerChoice correctAnswer = AnswerChoice.A;
-
-        [Header("Feedback")]
-        [TextArea(2, 4)]
-        public string successMessage;
-        public AudioClip successAudio;
-
-        [TextArea(2, 4)]
-        public string wrongMessage;
-
-        [Header("Support (shown after a wrong answer; falls back to the lesson's Support Message/Audio if left empty)")]
-        [TextArea(2, 4)]
-        public string supportMessage;
-        public AudioClip supportAudio;
+        [Header("Per-Letter Feedback")]
+        [Tooltip("One entry per letter position of the word (index 0 = 1st letter, index 1 = 2nd letter, etc). The wrong side is shown when the player types the wrong letter at that position; the correct side is shown when they type the right letter at that position (including right after a wrong attempt, which replaces the wrong message).")]
+        public List<LetterFeedback> letterWrongFeedback = new List<LetterFeedback>();
     }
 
     [Serializable]
@@ -121,10 +105,7 @@ public class Lesson8Script : MonoBehaviour
         [Header("1. Story Section (4 lines)")]
         public List<StoryLine> storyLines = new List<StoryLine>();
 
-        [Header("2. Multiple Choice Questions")]
-        public List<QuizQuestion> questions = new List<QuizQuestion>();
-
-        [Header("3. Spelling Quiz")]
+        [Header("2. Spelling Quiz")]
         public List<SpellingQuestion> spellingQuestions = new List<SpellingQuestion>();
 
         [Header("Support After Mistakes")]
@@ -160,7 +141,10 @@ public class Lesson8Script : MonoBehaviour
     [Header("Quiz Score Settings")]
     public int fixedScore = 100;
     public int deductionPerMistake = 1;
-    public string highScoreKey = "BrailleSoundsAroundHighScore";
+    public string highScoreKey = "Lesson8HighScore";
+
+    [Header("Quiz Result Reporting")]
+    public QuizResultReporter resultReporter;
 
     // -------------------------------------------------------------------------
     // Audio
@@ -234,6 +218,26 @@ public class Lesson8Script : MonoBehaviour
     public string repeatStoryPromptMessage = "Do you want to hear the story again? Press Repeat to hear it again, or press Next to continue with the question.";
     public AudioClip repeatStoryPromptAudio;
 
+    [Header("Spelling Settings")]
+    [Tooltip("Only this many letters of the target word are checked/required (your spelling words are 3-letter words).")]
+    public int spellingLettersToCheck = 3;
+
+    [Header("Capitalization Settings")]
+    [Tooltip("Pressing dot 6 by itself marks the next letter as capitalized. Put capital letters directly in a Spelling Question's Word field (e.g. \"Bed\") to require this on that letter.")]
+    [TextArea(2, 4)]
+    public string capitalizeNeededMessage = "Use capitalize the letter first by pressing dot 6 to capitalize the letter.";
+    public AudioClip capitalizeNeededAudio;
+
+    [Tooltip("Shown when the player presses dot 6 before a letter that did NOT need to be capitalized (e.g. capitalizing the 'e' in \"Bed\").")]
+    [TextArea(2, 4)]
+    public string capitalizeNotNeededMessage = "That letter doesn't need to be capitalized. Try again without pressing dot 6.";
+    public AudioClip capitalizeNotNeededAudio;
+
+    [Header("Repeat-Word Prompt (shown after a word is spelled correctly)")]
+    [TextArea(2, 5)]
+    public string repeatSpellingPromptMessage = "Do you want to spell that word again? Press Repeat to spell it again, or press Next to continue.";
+    public AudioClip repeatSpellingPromptAudio;
+
     [Header("Typewriter Sync")]
     public bool useTypewriterEffect = true;
     [Min(0.005f)] public float defaultTypewriterCharacterDelay = 0.03f;
@@ -249,7 +253,6 @@ public class Lesson8Script : MonoBehaviour
     // -------------------------------------------------------------------------
 
     private int currentLessonIndex = -1;
-    private int currentQuestionIndex = -1;
     private int currentSpellingIndex = 0;
 
     private bool waitingForSpelling = false;
@@ -258,7 +261,13 @@ public class Lesson8Script : MonoBehaviour
     private string targetWord = "";
     private int currentLetterIndex = 0;
 
-    private int currentMistakeCount = 0;
+    // True after the player presses dot 6 by itself; consumed by the next
+    // letter they type (that letter is compared as uppercase).
+    private bool pendingCapitalize = false;
+
+    // Dot 6 alone (Dot1=idx0 ... Dot6=idx5) — the "capitalize next letter" chord.
+    private const string CapitalizeDotPattern = "000001";
+
     private int totalWrongCount = 0;
     private int totalScore = 100;
     private int highScore = 0;
@@ -266,15 +275,20 @@ public class Lesson8Script : MonoBehaviour
     private bool lessonActive = false;
     private bool sceneFinished = false;
     private bool waitingForRepeatChoice = false;
-    private bool waitingForQuizAnswer = false;
 
     // True whenever the player is being asked whether to repeat the Story —
-    // either right after a wrong answer (repeatStoryPromptMessage) or after
-    // replaying the Story via the mid-lesson Repeat button
-    // (repeatQuestionConfirmMessage). Does NOT touch currentQuestionIndex,
-    // score, or mistake count — it only gates HandleNext()/HandleRepeat()
-    // into re-asking the same question or replaying the story again.
+    // either right after a wrong answer or after replaying the Story via the
+    // mid-lesson Repeat button (repeatQuestionConfirmMessage). Does NOT touch
+    // currentSpellingIndex, score, or mistake count — it only gates
+    // HandleNext()/HandleRepeat() into re-asking the current spelling word or
+    // replaying the story again.
     private bool waitingForRepeatConfirmation = false;
+
+    // True after a word has been spelled correctly, while the player is
+    // being asked whether to spell that same word again (Repeat) or move on
+    // (Next). Gates HandleRepeat()/HandleNext() into replaying the current
+    // spelling word or advancing to the next one/the next lesson.
+    private bool waitingForSpellingRepeatChoice = false;
 
     private Coroutine flowRoutine;
     private Coroutine bubbleTypeRoutine;
@@ -449,18 +463,16 @@ public class Lesson8Script : MonoBehaviour
     {
         if (index < 0 || index >= lessons.Count)
         {
-            RunFlow(CompleteScene());
+            RunFlow(FinalizeSceneCompletion());
             return;
         }
 
         currentLessonIndex = index;
-        currentQuestionIndex = -1;
-        currentMistakeCount = 0;
         lessonActive = true;
         sceneFinished = false;
         waitingForRepeatChoice = false;
-        waitingForQuizAnswer = false;
         waitingForRepeatConfirmation = false;
+        waitingForSpellingRepeatChoice = false;
 
         if (logDebug)
             Debug.Log($"Starting lesson {currentLessonIndex}: {lessons[currentLessonIndex].displayLabel}");
@@ -475,12 +487,10 @@ public class Lesson8Script : MonoBehaviour
     //   1. Display Label / Category Label / Display Image
     //   2. Prompt Message (+ audio)
     //   3. Story Section        -> 4 lines, one text box + audio at a time
-    //   4. Question Section     -> 5 multiple-choice questions (A/B/C)
-    //        - Success Message on correct answer -> advance to next question
-    //        - Wrong Message on every incorrect answer, Support Message only
-    //          after N consecutive mistakes, then a "repeat the story?"
-    //          prompt on EVERY incorrect answer (see HandleWrongAnswer)
-    //   5. After the 5th question is answered correctly -> next lesson
+    //   4. Spelling Section     -> for each spelling word: instruction, then
+    //        per-letter input, then (once correct) the optional Word
+    //        Description followed by the success message
+    //   5. After the last spelling word is completed -> next lesson
     //
     // This single coroutine is reused both when a lesson first starts and
     // whenever the player asks to repeat the current lesson, so there is one
@@ -503,7 +513,7 @@ public class Lesson8Script : MonoBehaviour
 
         yield return new WaitForSeconds(delayAfterVoice);
 
-        // Start spelling quiz first
+        // Step 4: Spelling Section
         currentSpellingIndex = 0;
         yield return AskSpellingQuestion(lesson, currentSpellingIndex);
     }
@@ -564,74 +574,47 @@ public class Lesson8Script : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Sets up the spelling question at the given index: assigns the target
+    /// word being checked against (capped to spellingLettersToCheck letters),
+    /// resets the player's in-progress typed word, and shows the spelling
+    /// instruction ("Spell the word..."). The player spells the word first —
+    /// the Word Description (if any) is shown afterwards, once the word has
+    /// been spelled correctly (see HandleCorrectSpelling). Once the last
+    /// spelling word has been asked, moves on to the next lesson.
+    /// </summary>
     private IEnumerator AskSpellingQuestion(BrailleLesson lesson, int index)
     {
         if (index >= lesson.spellingQuestions.Count)
         {
-            currentQuestionIndex = 0;
-            yield return AskQuizQuestion(lesson, 0);
+            StartLesson(currentLessonIndex + 1);
             yield break;
         }
 
         SpellingQuestion question = lesson.spellingQuestions[index];
 
-        waitingForSpelling = true;
+        string word = question.word ?? string.Empty;
+        int lettersToCheck = Mathf.Min(spellingLettersToCheck, word.Length);
+        // Case is preserved (not lowercased) so capital letters in the Word
+        // field require the player to press dot 6 before typing that letter.
+        targetWord = word.Substring(0, Mathf.Max(0, lettersToCheck));
+
+        currentTypedWord = "";
+        currentLetterIndex = 0;
+        pendingCapitalize = false;
 
         displayLabelText.text = "Spell the word";
-
         categoryText.text = question.word;
 
+        // Spelling instruction — the player spells the word from this alone;
+        // the Description (if any) is saved for after they get it right.
         yield return ShowBubbleMessageSynced(
             question.instruction,
             question.instructionAudio,
             noAudioTextDelay
         );
-    }
 
-    /// <summary>
-    /// Step 4 — plays the optional sound effect then asks the multiple-choice
-    /// question at the given index. Used for the first ask of a question and
-    /// every re-ask after a wrong answer or support message, so the sound
-    /// effect + formatting logic only lives here.
-    /// </summary>
-    private IEnumerator AskQuizQuestion(BrailleLesson lesson, int questionIndex)
-    {
-        if (lesson.questions == null || questionIndex < 0 || questionIndex >= lesson.questions.Count)
-        {
-            // No (more) questions configured — treat lesson as complete.
-            StartLesson(currentLessonIndex + 1);
-            yield break;
-        }
-
-        waitingForQuizAnswer = true;
-        QuizQuestion question = lesson.questions[questionIndex];
-
-        if (question.soundEffectAudio != null && voiceAudioSource != null)
-        {
-            voiceAudioSource.Stop();
-            voiceAudioSource.clip = question.soundEffectAudio;
-            voiceAudioSource.Play();
-            yield return new WaitForSeconds(question.soundEffectAudio.length);
-            yield return new WaitForSeconds(delayAfterVoice);
-        }
-
-        // Question text goes on the display label, answer choices go on the
-        // category text.
-        if (categoryText != null)
-            categoryText.text = BuildChoicesText(question);
-
-        yield return ShowBubbleMessageSynced(
-            question.questionText,
-            question.questionAudio,
-            noAudioTextDelay,
-            displayLabelText
-        );
-    }
-
-    /// <summary>Formats the A/B/C answer choices for display on the category text.</summary>
-    private string BuildChoicesText(QuizQuestion question)
-    {
-        return $"A) {question.choiceAText}   B) {question.choiceBText}   C) {question.choiceCText}";
+        waitingForSpelling = true;
     }
 
     // -------------------------------------------------------------------------
@@ -640,7 +623,7 @@ public class Lesson8Script : MonoBehaviour
 
     private void HandleBrailleChordSubmitted(string submittedPattern)
     {
-        if (!lessonActive || sceneFinished || waitingForRepeatChoice || waitingForRepeatConfirmation)
+        if (!lessonActive || sceneFinished || waitingForRepeatChoice || waitingForRepeatConfirmation || waitingForSpellingRepeatChoice)
             return;
 
         if (waitingForSpelling)
@@ -648,224 +631,273 @@ public class Lesson8Script : MonoBehaviour
             HandleSpelling(submittedPattern);
             return;
         }
-
-        if (waitingForQuizAnswer)
-        {
-            HandleQuizAnswer(submittedPattern);
-            return;
-        }
     }
 
     /// <summary>
-    /// Validates the submitted Braille pattern against the current question's
-    /// correct answer. Dot 1 = A, Dot 2 = B, Dot 3 = C.
+    /// Checks each typed letter against the expected letter at that position
+    /// in the target word (capped to spellingLettersToCheck letters — the
+    /// spelling words are 3-letter words). As soon as a wrong letter is
+    /// typed, the wrong message configured for that letter position is
+    /// shown and the player retries just that letter (progress on earlier
+    /// letters is kept). When the correct letter is typed at a position —
+    /// whether on the first try or after a wrong attempt — that position's
+    /// correct message is shown instead (replacing any wrong message that
+    /// was just shown), before moving on to the next letter. Once all
+    /// required letters are typed correctly, the overall success message is
+    /// shown and the player is asked whether to repeat the word or continue.
     /// </summary>
-    private void HandleQuizAnswer(string pattern)
+    private void HandleSpelling(string submittedPattern)
     {
-        if (!waitingForQuizAnswer) return;
+        if (!waitingForSpelling) return;
 
-        AnswerChoice userAnswer;
+        // Dot 6 by itself — flags the next letter typed as a capital.
+        // Doesn't consume a letter position or count as an attempt.
+        if (submittedPattern == CapitalizeDotPattern)
+        {
+            pendingCapitalize = true;
+            return;
+        }
 
-        if (pattern == "100000") userAnswer = AnswerChoice.A;
-        else if (pattern == "010000") userAnswer = AnswerChoice.B;
-        else if (pattern == "001000") userAnswer = AnswerChoice.C;
-        else return;
+        char letter = GetBrailleLetter(submittedPattern);
+        if (letter == '\0') return;
 
         BrailleLesson lesson = lessons[currentLessonIndex];
-        QuizQuestion question = lesson.questions[currentQuestionIndex];
-        waitingForQuizAnswer = false;
+        SpellingQuestion question = lesson.spellingQuestions[currentSpellingIndex];
 
-        if (userAnswer == question.correctAnswer)
+        bool capitalizeWasRequested = pendingCapitalize;
+        pendingCapitalize = false; // consumed by this letter attempt either way
+
+        char typedLetter = capitalizeWasRequested ? char.ToUpper(letter) : letter;
+        char expectedLetter = currentLetterIndex < targetWord.Length ? targetWord[currentLetterIndex] : '\0';
+
+        if (typedLetter != expectedLetter)
         {
-            currentMistakeCount = 0;
+            waitingForSpelling = false;
+            AddMistake();
 
-            SetAnswerState(true);
-            RunFlow(HandleCorrectAnswer(lesson, question));
+            // Letter itself is right but it needed a capital and dot 6
+            // wasn't pressed first — give the specific capitalize reminder
+            // instead of the normal per-letter wrong message.
+            bool neededCapitalize = char.IsUpper(expectedLetter)
+                && !capitalizeWasRequested
+                && char.ToLower(typedLetter) == char.ToLower(expectedLetter);
+
+            // Letter itself is right but dot 6 was pressed even though this
+            // letter did NOT need to be capitalized.
+            bool capitalizeNotNeeded = capitalizeWasRequested
+                && char.IsLower(expectedLetter)
+                && char.ToLower(typedLetter) == char.ToLower(expectedLetter);
+
+            if (neededCapitalize)
+                RunFlow(HandleNeedsCapitalize(lesson, question));
+            else if (capitalizeNotNeeded)
+                RunFlow(HandleCapitalizeNotNeeded(lesson, question));
+            else
+                RunFlow(HandleWrongSpelling(lesson, question));
+
+            return;
+        }
+
+        // Correct letter — remember which position this was for, since
+        // currentLetterIndex advances right after.
+        int correctedLetterIndex = currentLetterIndex;
+
+        waitingForSpelling = false;
+        SetAnswerState(true);
+
+        currentTypedWord += typedLetter;
+        currentLetterIndex++;
+
+        if (logDebug)
+            Debug.Log("Current Word: " + currentTypedWord);
+
+        if (currentLetterIndex >= targetWord.Length)
+        {
+            // Last letter of the word — go straight to the overall success
+            // message rather than an individual per-letter one.
+            RunFlow(HandleCorrectSpelling(lesson, question));
         }
         else
         {
-            currentMistakeCount++;
-            AddMistake();
-
-            RunFlow(HandleWrongAnswer(lesson, question));
+            // Show this letter's correct message (replacing any wrong
+            // message that was on screen), then let the player continue
+            // typing the next letter.
+            RunFlow(HandleCorrectLetter(lesson, question, correctedLetterIndex));
         }
     }
 
-    private void HandleSpelling(string submittedPattern)
+    /// <summary>Shows the wrong message for the specific letter position that was typed incorrectly, then lets the player retry that letter.</summary>
+    private IEnumerator HandleWrongSpelling(BrailleLesson lesson, SpellingQuestion question)
     {
-        char letter = GetBrailleLetter(submittedPattern);
+        LetterFeedback feedback = (question.letterWrongFeedback != null && currentLetterIndex < question.letterWrongFeedback.Count)
+            ? question.letterWrongFeedback[currentLetterIndex]
+            : null;
 
-        if (letter == '\0')
-            return;
+        string wrongMessage = (feedback != null && !string.IsNullOrWhiteSpace(feedback.wrongMessage))
+            ? feedback.wrongMessage
+            : "Try again.";
 
-        currentTypedWord += char.ToLower(letter);
+        AudioClip wrongClip = (feedback != null && feedback.wrongAudio != null)
+            ? feedback.wrongAudio
+            : genericTryAgainAudio;
 
-        Debug.Log("Current Word: " + currentTypedWord);
+        yield return ShowBubbleMessageSynced(wrongMessage, wrongClip, noAudioTextDelay);
+        yield return new WaitForSeconds(delayAfterVoice);
 
-        if (currentTypedWord.Length >= targetWord.Length)
+        waitingForSpelling = true;
+    }
+
+    /// <summary>
+    /// Shown when the player types the right letter for the current position
+    /// but that letter needed to be capitalized (dot 6) first and wasn't.
+    /// Tells them to press dot 6 to capitalize, then lets them retry the
+    /// same letter (progress on earlier letters is kept).
+    /// </summary>
+    private IEnumerator HandleNeedsCapitalize(BrailleLesson lesson, SpellingQuestion question)
+    {
+        yield return ShowBubbleMessageSynced(capitalizeNeededMessage, capitalizeNeededAudio, noAudioTextDelay);
+        yield return new WaitForSeconds(delayAfterVoice);
+
+        waitingForSpelling = true;
+    }
+
+    /// <summary>
+    /// Shown when the player types the right letter for the current position
+    /// but pressed dot 6 first even though that letter did NOT need to be
+    /// capitalized (e.g. capitalizing the "e" in "Bed"). Lets them retry the
+    /// same letter without dot 6 (progress on earlier letters is kept).
+    /// </summary>
+    private IEnumerator HandleCapitalizeNotNeeded(BrailleLesson lesson, SpellingQuestion question)
+    {
+        yield return ShowBubbleMessageSynced(capitalizeNotNeededMessage, capitalizeNotNeededAudio, noAudioTextDelay);
+        yield return new WaitForSeconds(delayAfterVoice);
+
+        waitingForSpelling = true;
+    }
+
+    /// <summary>
+    /// Shows the correct message for the specific letter position that was
+    /// just typed correctly (falling back to a generic "Correct!" if that
+    /// position has no message configured), then lets the player continue
+    /// with the next letter. If this letter had a wrong message showing a
+    /// moment ago, this message replaces it on screen.
+    /// </summary>
+    private IEnumerator HandleCorrectLetter(BrailleLesson lesson, SpellingQuestion question, int letterIndex)
+    {
+        LetterFeedback feedback = (question.letterWrongFeedback != null && letterIndex < question.letterWrongFeedback.Count)
+            ? question.letterWrongFeedback[letterIndex]
+            : null;
+
+        string correctMessage = (feedback != null && !string.IsNullOrWhiteSpace(feedback.correctMessage))
+            ? feedback.correctMessage
+            : "Correct!";
+
+        AudioClip correctClip = (feedback != null && feedback.correctAudio != null)
+            ? feedback.correctAudio
+            : genericCorrectAudio;
+
+        yield return ShowBubbleMessageSynced(correctMessage, correctClip, noAudioTextDelay);
+        yield return new WaitForSeconds(delayAfterVoice);
+
+        waitingForSpelling = true;
+    }
+
+    /// <summary>
+    /// Shows the per-question success message first, then the word's
+    /// Description (if any) now that it's been spelled correctly, then asks
+    /// the player whether they want to spell the same word again (Repeat) or
+    /// move on (Next). See HandleRepeat()/HandleNext() for what each choice
+    /// does.
+    /// </summary>
+    private IEnumerator HandleCorrectSpelling(BrailleLesson lesson, SpellingQuestion question)
+    {
+        SaveHighScoreIfNeeded();
+
+        string successMessage = !string.IsNullOrWhiteSpace(question.successMessage)
+            ? question.successMessage
+            : "Correct!";
+
+        AudioClip successClip = question.successAudio != null
+            ? question.successAudio
+            : genericCorrectAudio;
+
+        yield return ShowBubbleMessageSynced(successMessage, successClip, noAudioTextDelay);
+        yield return new WaitForSeconds(delayAfterVoice);
+
+        // Word Description (optional) — shown after the success message.
+        if (!string.IsNullOrWhiteSpace(question.description) || question.descriptionAudio != null)
         {
-            waitingForSpelling = false;
+            yield return ShowBubbleMessageSynced(question.description, question.descriptionAudio, noAudioTextDelay);
+            yield return new WaitForSeconds(delayAfterVoice);
+        }
 
-            if (currentTypedWord == targetWord)
-            {
-                Debug.Log("Correct!");
+        yield return new WaitForSeconds(delayAfterCorrect);
 
-                // Move to next spelling word
-                currentSpellingIndex++;
+        waitingForSpellingRepeatChoice = true;
 
-                if (currentSpellingIndex < lessons[currentLessonIndex].spellingQuestions.Count)
-                {
-                    RunFlow(AskSpellingQuestion(
-                        lessons[currentLessonIndex],
-                        currentSpellingIndex));
-                }
-                else
-                {
-                    Debug.Log("All spelling words completed!");
+        yield return ShowBubbleMessageSynced(
+            repeatSpellingPromptMessage,
+            repeatSpellingPromptAudio,
+            noAudioTextDelay
+        );
 
-                    // Continue to the multiple-choice quiz
-                    currentQuestionIndex = 0;
-                    RunFlow(AskQuizQuestion(
-                        lessons[currentLessonIndex],
-                        currentQuestionIndex));
-                }
-            }
-            else
-            {
-                Debug.Log("Wrong!");
+        // Stays here — waitingForSpellingRepeatChoice remains true until the
+        // player presses Repeat or Next.
+    }
 
-                currentTypedWord = "";
-                currentLetterIndex = 0;
-                waitingForSpelling = true;
-            }
+    /// <summary>Advances past the current spelling word to the next one, or into the next lesson if none remain.</summary>
+    private IEnumerator AdvancePastSpellingWord(BrailleLesson lesson)
+    {
+        currentSpellingIndex++;
+
+        if (currentSpellingIndex < lesson.spellingQuestions.Count)
+        {
+            yield return AskSpellingQuestion(lesson, currentSpellingIndex);
+        }
+        else
+        {
+            if (logDebug)
+                Debug.Log("All spelling words completed!");
+
+            StartLesson(currentLessonIndex + 1);
         }
     }
 
     private char GetBrailleLetter(string pattern)
-{
-    switch (pattern)
     {
-        case "100000": return 'a';
-        case "110000": return 'b';
-        case "100100": return 'c';
-        case "100110": return 'd';
-        case "100010": return 'e';
-        case "110100": return 'f';
-        case "110110": return 'g';
-        case "110010": return 'h';
-        case "010100": return 'i';
-        case "010110": return 'j';
-
-        case "101000": return 'k';
-        case "111000": return 'l';
-        case "101100": return 'm';
-        case "101110": return 'n';
-        case "101010": return 'o';
-        case "111100": return 'p';
-        case "111110": return 'q';
-        case "111010": return 'r';
-        case "011100": return 's';
-        case "011110": return 't';
-
-        case "101001": return 'u';
-        case "111001": return 'v';
-        case "010111": return 'w';
-        case "101101": return 'x';
-        case "101111": return 'y';
-        case "101011": return 'z';
-    }
-
-    return '\0';
-}
-
-    // -------------------------------------------------------------------------
-    // Correct / Wrong / Support
-    // -------------------------------------------------------------------------
-
-    /// <summary>
-    /// Success Message for the current question, then advance to the next
-    /// question — or, if that was the last of the 5 questions, advance to the
-    /// next lesson.
-    /// </summary>
-    private IEnumerator HandleCorrectAnswer(BrailleLesson lesson, QuizQuestion question)
-    {
-        SaveHighScoreIfNeeded();
-
-        string message = !string.IsNullOrWhiteSpace(question.successMessage)
-            ? question.successMessage
-            : $"Correct! {lesson.displayLabel}.";
-
-        AudioClip clip = question.successAudio != null
-            ? question.successAudio
-            : genericCorrectAudio;
-
-        yield return ShowBubbleMessageSynced(message, clip, noAudioTextDelay);
-        yield return new WaitForSeconds(delayAfterCorrect);
-
-        currentQuestionIndex++;
-
-        if (lesson.questions == null || currentQuestionIndex >= lesson.questions.Count)
+        switch (pattern)
         {
-            // All 5 questions answered correctly — move on to the next lesson.
-            StartLesson(currentLessonIndex + 1);
-        }
-        else
-        {
-            RunFlow(AskQuizQuestion(lesson, currentQuestionIndex));
-        }
-    }
+            case "100000": return 'a';
+            case "110000": return 'b';
+            case "100100": return 'c';
+            case "100110": return 'd';
+            case "100010": return 'e';
+            case "110100": return 'f';
+            case "110110": return 'g';
+            case "110010": return 'h';
+            case "010100": return 'i';
+            case "010110": return 'j';
 
-    /// <summary>
-    /// Wrong Message for the current question, then — only once the player
-    /// has made <see cref="mistakesBeforeSupport"/> consecutive mistakes on
-    /// this question — the Support Message. After that, EVERY wrong answer
-    /// (regardless of mistake count) asks the player whether they want to
-    /// repeat the Story: pressing Repeat replays the Story section (and
-    /// re-shows this same prompt), pressing Next continues on and re-asks
-    /// the current question.
-    /// </summary>
-    private IEnumerator HandleWrongAnswer(BrailleLesson lesson, QuizQuestion question)
-    {
-        string wrongMessage = !string.IsNullOrWhiteSpace(question.wrongMessage)
-            ? question.wrongMessage
-            : "Try again.";
+            case "101000": return 'k';
+            case "111000": return 'l';
+            case "101100": return 'm';
+            case "101110": return 'n';
+            case "101010": return 'o';
+            case "111100": return 'p';
+            case "111110": return 'q';
+            case "111010": return 'r';
+            case "011100": return 's';
+            case "011110": return 't';
 
-        yield return ShowBubbleMessageSynced(wrongMessage, genericTryAgainAudio, noAudioTextDelay);
-        yield return new WaitForSeconds(delayAfterVoice);
-
-        if (currentMistakeCount >= mistakesBeforeSupport)
-        {
-            string supportMessage = !string.IsNullOrWhiteSpace(question.supportMessage)
-                ? question.supportMessage
-                : (!string.IsNullOrWhiteSpace(lesson.supportMessage)
-                    ? lesson.supportMessage
-                    : "Here is some help. Listen carefully and try again.");
-
-            AudioClip supportClip = question.supportAudio != null
-                ? question.supportAudio
-                : lesson.supportAudio;
-
-            yield return ShowBubbleMessageSynced(supportMessage, supportClip, noAudioTextDelay);
-            yield return new WaitForSeconds(delayAfterVoice);
-
-            if (resetMistakesAfterSupport)
-                currentMistakeCount = 0;
+            case "101001": return 'u';
+            case "111001": return 'v';
+            case "010111": return 'w';
+            case "101101": return 'x';
+            case "101111": return 'y';
+            case "101011": return 'z';
         }
 
-        // Ask whether to repeat the Story — every wrong answer, regardless
-        // of mistake count. Pressing Repeat (HandleRepeat) replays the Story
-        // and re-shows this same prompt; pressing Next (HandleNext)
-        // continues on and re-asks the current question.
-        waitingForRepeatConfirmation = true;
-
-        yield return ShowBubbleMessageSynced(
-            repeatStoryPromptMessage,
-            repeatStoryPromptAudio,
-            noAudioTextDelay
-        );
-
-        // Stays here — waitingForRepeatConfirmation remains true until the
-        // player presses Repeat or Next.
+        return '\0';
     }
 
     // -------------------------------------------------------------------------
@@ -875,11 +907,11 @@ public class Lesson8Script : MonoBehaviour
     /// <summary>
     /// Mid-lesson Repeat behavior:
     ///   - Replays the Story section only (Display Label/Image and the
-    ///     current question index are left untouched — no full lesson
-    ///     restart, no score/mistake reset).
+    ///     current spelling index are left untouched — no full lesson
+    ///     restart, no score reset).
     ///   - Afterwards asks the player whether they want to repeat the
-    ///     current question ("Press Next to continue").
-    ///   - The current question is only re-asked once HandleNext() fires.
+    ///     current spelling word ("Press Next to continue").
+    ///   - The current spelling word is only re-asked once HandleNext() fires.
     ///
     /// Separately, if the player is at the end-of-scene repeat prompt
     /// (waitingForRepeatChoice), Repeat still restarts the whole scene from
@@ -895,6 +927,13 @@ public class Lesson8Script : MonoBehaviour
             return;
         }
 
+        if (waitingForSpellingRepeatChoice)
+        {
+            waitingForSpellingRepeatChoice = false;
+            RunFlow(AskSpellingQuestion(lessons[currentLessonIndex], currentSpellingIndex));
+            return;
+        }
+
         if (!lessonActive || sceneFinished)
             return;
 
@@ -903,9 +942,9 @@ public class Lesson8Script : MonoBehaviour
 
         BrailleLesson lesson = lessons[currentLessonIndex];
 
-        // Cancel any pending quiz answer wait — we're repeating the story
-        // instead of waiting on an answer right now.
-        waitingForQuizAnswer = false;
+        // Cancel any pending spelling input wait — we're repeating the story
+        // instead of waiting on a letter right now.
+        waitingForSpelling = false;
         waitingForRepeatConfirmation = true;
 
         RunFlow(RepeatStorySection(lesson));
@@ -913,8 +952,8 @@ public class Lesson8Script : MonoBehaviour
 
     /// <summary>
     /// Replays just the Story section for the current lesson, then asks the
-    /// player if they want to repeat the current question. Does not reset
-    /// currentQuestionIndex, score, or mistake count.
+    /// player if they want to repeat the current spelling word. Does not
+    /// reset currentSpellingIndex or score.
     /// </summary>
     private IEnumerator RepeatStorySection(BrailleLesson lesson)
     {
@@ -933,50 +972,25 @@ public class Lesson8Script : MonoBehaviour
 
     private void HandleNext()
     {
-        if (waitingForRepeatConfirmation)
+        if (waitingForSpellingRepeatChoice)
         {
-            waitingForRepeatConfirmation = false;
-            RunFlow(AskQuizQuestion(lessons[currentLessonIndex], currentQuestionIndex));
+            waitingForSpellingRepeatChoice = false;
+            RunFlow(AdvancePastSpellingWord(lessons[currentLessonIndex]));
             return;
         }
 
-        if (waitingForRepeatChoice)
+        if (waitingForRepeatConfirmation)
         {
-            waitingForRepeatChoice = false;
-            RunFlow(FinalizeSceneCompletion());
+            waitingForRepeatConfirmation = false;
+            RunFlow(AskSpellingQuestion(lessons[currentLessonIndex], currentSpellingIndex));
             return;
         }
+
     }
 
     // -------------------------------------------------------------------------
     // Scene Completion
     // -------------------------------------------------------------------------
-
-    private IEnumerator CompleteScene()
-    {
-        lessonActive = false;
-        sceneFinished = false;
-        waitingForRepeatChoice = false;
-
-        SaveHighScoreIfNeeded();
-
-        if (displayImageUI != null)
-            displayImageUI.enabled = false;
-
-        if (displayLabelText != null)
-            displayLabelText.text = string.Empty;
-
-        ResetAnswerState();
-
-        yield return ShowBubbleMessageSynced(completedMessage, genericCompletedAudio, noAudioTextDelay);
-        yield return new WaitForSeconds(delayAfterVoice);
-
-        yield return PlayFinalScoreAudio();
-        yield return new WaitForSeconds(delayAfterVoice);
-
-        waitingForRepeatChoice = true;
-        yield return ShowBubbleMessageSynced(repeatQuestionMessage, repeatQuestionAudio, noAudioTextDelay);
-    }
 
     private IEnumerator FinalizeSceneCompletion()
     {
@@ -998,6 +1012,11 @@ public class Lesson8Script : MonoBehaviour
 
         yield return ShowBubbleMessageSynced(finalMessage, genericCompletedAudio, noAudioTextDelay);
         yield return PlayFinalScoreAudio();
+
+        if (resultReporter != null)
+            resultReporter.ReportScoreAndReturn(totalScore);
+        else
+            Debug.LogWarning("[Lesson8Script] No QuizResultReporter assigned - score won't be saved or returned to GameMenu.");
     }
 
     // -------------------------------------------------------------------------

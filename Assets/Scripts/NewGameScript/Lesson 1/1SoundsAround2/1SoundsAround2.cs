@@ -79,6 +79,9 @@ public class BrailleSoundsAround2 : MonoBehaviour
     public int deductionPerMistake = 1;
     public string highScoreKey = "BrailleSoundsAround2HighScore";
 
+    [Header("Quiz Result Reporting")]
+    public QuizResultReporter resultReporter;
+
     // -------------------------------------------------------------------------
     // Audio
     // -------------------------------------------------------------------------
@@ -697,6 +700,11 @@ public class BrailleSoundsAround2 : MonoBehaviour
         string finalMessage = $"Your score is {totalScore}, while your highest score is {highScore}.";
         yield return ShowBubbleMessageSynced(finalMessage, genericCompletedAudio, noAudioTextDelay);
         yield return PlayFinalScoreAudio();
+
+        if (resultReporter != null)
+            resultReporter.ReportScoreAndReturn(totalScore);
+        else
+            Debug.LogWarning("[BrailleSoundsAround2] No QuizResultReporter assigned - score won't be saved or returned to GameMenu.");
     }
 
     private IEnumerator PlayFinalScoreAudio()
