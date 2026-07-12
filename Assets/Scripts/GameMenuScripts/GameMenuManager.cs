@@ -54,7 +54,7 @@ namespace BraillePlay.GameMenu
             navigator.OnLeft += HandleLeft;
             navigator.OnRight += HandleRight;
             navigator.OnEnter += HandleEnter;
-            navigator.OnEscape += HandleEscape;
+            navigator.OnBack += HandleBack;
         }
 
         private void OnDisable()
@@ -64,7 +64,7 @@ namespace BraillePlay.GameMenu
             navigator.OnLeft -= HandleLeft;
             navigator.OnRight -= HandleRight;
             navigator.OnEnter -= HandleEnter;
-            navigator.OnEscape -= HandleEscape;
+            navigator.OnBack -= HandleBack;
         }
 
         private void Start()
@@ -214,7 +214,7 @@ namespace BraillePlay.GameMenu
                 lessonPopup.HandleEnter();
         }
 
-        private void HandleEscape()
+        private void HandleBack()
         {
             if (state != GameMenuState.LessonPopup) return;
 

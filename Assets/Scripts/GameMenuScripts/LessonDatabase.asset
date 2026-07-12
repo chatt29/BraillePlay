@@ -19,18 +19,6 @@ MonoBehaviour:
     - quizTitle: 'Sounds Around 1 '
       sceneName: 1SoundsAround1
       quizNumber: 1
-    - quizTitle: Sounds Around 2
-      sceneName: 1SoundsAround2
-      quizNumber: 2
-    - quizTitle: Sounds Around 3
-      sceneName: 1SoundsAround3
-      quizNumber: 3
-    - quizTitle: Sounds Around 4
-      sceneName: 1SoundsAround4
-      quizNumber: 4
-    - quizTitle: Sounds Around 5
-      sceneName: 1SoundsAround5
-      quizNumber: 5
   - lessonTitle: 'Lesson 2: Animal Sounds'
     lessonNumber: 2
     quizzes:
