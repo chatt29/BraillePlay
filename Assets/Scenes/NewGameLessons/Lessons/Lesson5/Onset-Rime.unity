@@ -1338,15 +1338,15 @@ MonoBehaviour:
     correctOnsetBraillePattern: 
     supportMessage: 
     supportAudio: {fileID: 0}
-  delayAfterVoice: 0.35
+  delayAfterVoice: 0.2
   noAudioTextDelay: 2
-  delayAfterCorrect: 0.75
+  delayAfterCorrect: 0.5
   mistakesBeforeSupport: 3
   resetMistakesAfterSupport: 1
   useTypewriterEffect: 1
-  defaultTypewriterCharacterDelay: 0.03
+  defaultTypewriterCharacterDelay: 0.02
   minSyncedCharacterDelay: 0.01
-  maxSyncedCharacterDelay: 0.12
+  maxSyncedCharacterDelay: 0.05
   waitForFullAudioBeforeContinuing: 1
   logDebug: 1
 --- !u!1 &803834282
