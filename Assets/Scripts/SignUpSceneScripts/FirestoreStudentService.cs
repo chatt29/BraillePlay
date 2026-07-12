@@ -79,6 +79,47 @@ public class FirestoreStudentService
         await doc.UpdateAsync(updates);
     }
 
+    /// <summary>Loads every student in the collection, for the teacher-facing student list. Returns (studentNumber, data) pairs since StudentData itself doesn't carry its own document ID.</summary>
+    public async Task<List<(string StudentNumber, StudentData Data)>> ListAllStudentsAsync()
+    {
+        await EnsureReadyAsync();
+
+        QuerySnapshot snapshot = await db.Collection(CollectionName).GetSnapshotAsync();
+
+        var results = new List<(string, StudentData)>();
+        foreach (DocumentSnapshot doc in snapshot.Documents)
+        {
+            if (doc.Exists)
+                results.Add((doc.Id, doc.ConvertTo<StudentData>()));
+        }
+
+        return results;
+    }
+
+    /// <summary>Deletes a student's document AND their Lessons/Progress subcollections. Caller should confirm with the teacher first - this can't be undone.</summary>
+    public async Task DeleteStudentAsync(string studentNumber)
+    {
+        await EnsureReadyAsync();
+
+        DocumentReference studentDoc = db.Collection(CollectionName).Document(studentNumber);
+
+        // Firestore doesn't cascade-delete subcollections automatically -
+        // each one has to be cleared out document by document first, or
+        // Lessons/Progress data will silently linger as an orphaned
+        // subcollection under a document ID that no longer "exists".
+        await DeleteSubcollectionAsync(studentDoc.Collection("Lessons"));
+        await DeleteSubcollectionAsync(studentDoc.Collection("Progress"));
+
+        await studentDoc.DeleteAsync();
+    }
+
+    private static async Task DeleteSubcollectionAsync(CollectionReference collection)
+    {
+        QuerySnapshot snapshot = await collection.GetSnapshotAsync();
+        foreach (DocumentSnapshot doc in snapshot.Documents)
+            await doc.Reference.DeleteAsync();
+    }
+
     private static async Task EnsureReadyAsync()
     {
         if (FirebaseManager.Instance == null)

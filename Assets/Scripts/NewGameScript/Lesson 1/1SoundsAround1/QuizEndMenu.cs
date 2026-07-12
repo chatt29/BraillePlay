@@ -17,6 +17,12 @@ using TMPro;
 /// Requires a TTSManager to exist in THIS scene specifically (add one here
 /// with Dont Destroy On Load unchecked) since quiz scenes normally destroy
 /// the persistent TTSManager via TTSBoundary for embedded-voice-clip lessons.
+///
+/// Some quiz scenes (BrailleSoundsAround1 and friends) already speak the
+/// score themselves with recorded audio clips before handing off here - so
+/// this only re-speaks the score if told to. Pass announceScore: false when
+/// the caller already said it, so the student doesn't hear it twice back to
+/// back. The score is always shown as on-screen text either way.
 /// </summary>
 public class QuizEndMenu : MonoBehaviour
 {
@@ -39,24 +45,30 @@ public class QuizEndMenu : MonoBehaviour
         StopListening();
     }
 
-    public void Show(int scorePercent, bool hasNextQuiz, Action onNextQuiz, Action onBackToMenu)
+    public void Show(int scorePercent, bool hasNextQuiz, Action onNextQuiz, Action onBackToMenu, bool announceScore = true)
     {
         this.hasNextQuiz = hasNextQuiz;
         this.onNextQuiz = onNextQuiz;
         this.onBackToMenu = onBackToMenu;
 
-        string message = hasNextQuiz
-            ? $"Quiz complete. Your score is {scorePercent} percent. Would you like to continue to the next quiz? Press Space for yes, or Backspace for no."
-            : $"Quiz complete. Your score is {scorePercent} percent. That was the last quiz. Press Backspace to return to the menu.";
+        string scoreMessage = $"Quiz complete. Your score is {scorePercent} percent.";
 
+        string choiceMessage = hasNextQuiz
+            ? "Would you like to continue to the next quiz? Press Space for yes, or Backspace for no."
+            : "That was the last quiz. Press Backspace to return to the menu.";
+
+        string fullMessage = $"{scoreMessage} {choiceMessage}";
+
+        // On-screen text always shows the score, regardless of whether it
+        // gets spoken here - sighted users/parents watching still benefit.
         if (messageText != null)
-            messageText.text = message;
+            messageText.text = fullMessage;
 
         if (panel != null)
             panel.SetActive(true);
 
         if (TTSManager.Instance != null)
-            TTSManager.Instance.Speak(message);
+            TTSManager.Instance.Speak(announceScore ? fullMessage : choiceMessage);
         else
             Debug.LogWarning("[QuizEndMenu] No TTSManager found in this scene - the choice won't be spoken, only shown as text.");
 

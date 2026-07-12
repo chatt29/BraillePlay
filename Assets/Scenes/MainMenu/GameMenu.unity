@@ -2393,6 +2393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BraillePlay.GameMenu.SceneLoader
   gameMenuSceneName: GameMenu
+  lessonDatabase: {fileID: 11400000, guid: c7e4fda5888e6c3498e24fe8d4e6d8b1, type: 2}
 --- !u!114 &1146835948
 MonoBehaviour:
   m_ObjectHideFlags: 0

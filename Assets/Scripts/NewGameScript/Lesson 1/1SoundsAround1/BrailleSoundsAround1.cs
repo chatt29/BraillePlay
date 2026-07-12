@@ -66,7 +66,8 @@ public class BrailleSoundsAround1 : MonoBehaviour
         public string supportMessage;
 
 
-        public AudioClip supportAudio; }
+        public AudioClip supportAudio;
+    }
 
     [Header("Quiz Result Reporting")]
     public QuizResultReporter resultReporter;
@@ -404,7 +405,15 @@ public class BrailleSoundsAround1 : MonoBehaviour
     {
         if (index < 0 || index >= lessons.Count)
         {
-            RunFlow(CompleteScene());
+            // Used to go through CompleteScene(), which asked an old "Press R
+            // to repeat or Y to finish" question with its own key scheme
+            // (R/Space) before ever reaching QuizResultReporter - so Enter
+            // and Backspace did nothing because the scene was still waiting
+            // on that old prompt, and the score got announced twice on top
+            // of that. FinalizeSceneCompletion() already does the same
+            // cleanup and score announcement, then correctly hands off to
+            // QuizEndMenu (Space = next quiz, Backspace = back to menu).
+            RunFlow(FinalizeSceneCompletion());
             return;
         }
 
@@ -683,10 +692,10 @@ public class BrailleSoundsAround1 : MonoBehaviour
     // Scene Completion
     // -------------------------------------------------------------------------
 
-    private IEnumerator CompleteScene()
+    private IEnumerator FinalizeSceneCompletion()
     {
+        sceneFinished = true;
         lessonActive = false;
-        sceneFinished = false;
         waitingForRepeatChoice = false;
 
         SaveHighScoreIfNeeded();
@@ -699,42 +708,16 @@ public class BrailleSoundsAround1 : MonoBehaviour
 
         ResetAnswerState();
 
-        yield return ShowBubbleMessageSynced(completedMessage, genericCompletedAudio, noAudioTextDelay);
-        yield return new WaitForSeconds(delayAfterVoice);
+        string finalMessage = $"Your score is {totalScore}, while your highest score is {highScore}.";
 
+        yield return ShowBubbleMessageSynced(finalMessage, genericCompletedAudio, noAudioTextDelay);
         yield return PlayFinalScoreAudio();
-        yield return new WaitForSeconds(delayAfterVoice);
 
-        waitingForRepeatChoice = true;
-        yield return ShowBubbleMessageSynced(repeatQuestionMessage, repeatQuestionAudio, noAudioTextDelay);
+        if (resultReporter != null)
+            resultReporter.ReportScoreAndReturn(totalScore);
+        else
+            Debug.LogWarning("[BrailleSoundsAround1] No QuizResultReporter assigned - score won't be saved or returned to GameMenu.");
     }
-
-private IEnumerator FinalizeSceneCompletion()
-{
-    sceneFinished = true;
-    lessonActive = false;
-    waitingForRepeatChoice = false;
-
-    SaveHighScoreIfNeeded();
-
-    if (displayImageUI != null)
-        displayImageUI.enabled = false;
-
-    if (displayLabelText != null)
-        displayLabelText.text = string.Empty;
-
-    ResetAnswerState();
-
-    string finalMessage = $"Your score is {totalScore}, while your highest score is {highScore}.";
-
-    yield return ShowBubbleMessageSynced(finalMessage, genericCompletedAudio, noAudioTextDelay);
-    yield return PlayFinalScoreAudio();
-
-    if (resultReporter != null)
-        resultReporter.ReportScoreAndReturn(totalScore);
-    else
-        Debug.LogWarning("[BrailleSoundsAround1] No QuizResultReporter assigned - score won't be saved or returned to GameMenu.");
-}
 
     // -------------------------------------------------------------------------
     // Final Score Audio
