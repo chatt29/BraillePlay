@@ -2157,8 +2157,16 @@ MonoBehaviour:
     voiceClip: {fileID: 0}
   moveSelectionSfx: {fileID: 8300000, guid: 4fe0213031a306e48847e27aa6b8772e, type: 3}
   confirmSelectionSfx: {fileID: 8300000, guid: e0e8a0690df80ac439e27263914e9067, type: 3}
-  normalColor: {r: 1, g: 1, b: 1, a: 1}
-  selectedColor: {r: 1, g: 0.95, b: 0.6, a: 1}
+  normalColor:
+    r: 1
+    g: 1
+    b: 1
+    a: 1
+  selectedColor:
+    r: 1
+    g: 0.95
+    b: 0.6
+    a: 1
   normalScale: {x: 1, y: 1, z: 1}
   selectedScale: {x: 1.1, y: 1.1, z: 1.1}
   typewriterSpeed: 0.04
@@ -2166,6 +2174,11 @@ MonoBehaviour:
   skipTypewriterWhenRepeatingSelection: 0
   pauseBetweenMessages: 0.75
   minimumMessageTime: 3
+  wirelessHapticsObject: {fileID: 0}
+  currentIndex: 0
+  menuReady: 0
+  introPlaying: 0
+  currentAudioPitch: 1
 --- !u!1 &1198796437
 GameObject:
   m_ObjectHideFlags: 0
@@ -2865,6 +2878,7 @@ MonoBehaviour:
   fadeImage: {fileID: 1919607262}
   fadeDuration: 2
   waitBeforeLoad: 0.25
+  isTransitioning: 0
 --- !u!1 &1622350653
 GameObject:
   m_ObjectHideFlags: 0
