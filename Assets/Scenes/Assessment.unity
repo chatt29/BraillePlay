@@ -1263,10 +1263,6 @@ MonoBehaviour:
   playTickPerCharacter: 1
   autoStartOnEnable: 1
   logFlow: 1
-  currentNode: 0
-  isTyping: 0
-  currentFullText: 
-  isFinished: 0
 --- !u!82 &1323007484
 AudioSource:
   m_ObjectHideFlags: 0
