@@ -2636,7 +2636,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17ca376137c4c5847a61688bec420d76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AccessibilityManager
-  dontDestroyOnLoad: 0
+  dontDestroyOnLoad: 1
 --- !u!1 &1439342605
 GameObject:
   m_ObjectHideFlags: 0

@@ -45,7 +45,7 @@ EditorBuildSettings:
     path: Assets/Scenes/NewGameLessons/Lessons/Lesson9/RimesEmEllEb.unity
     guid: 0357d9b12283ae94e9eae464b6d8fa5a
   - enabled: 1
-    path: Assets/Scenes/NewGameLessons/Lessons/Lesson13/Lession13.unity
+    path: Assets/Scenes/NewGameLessons/Lessons/Lesson13/Lesson13.unity
     guid: 91a5430d8a88ffd429ccdf0ecb111974
   - enabled: 1
     path: Assets/Scenes/BeginnerScene.unity
