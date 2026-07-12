@@ -221,7 +221,10 @@ public class IdentifyingAlphabets : MonoBehaviour
     [Header("Quiz Score Settings")]
     public int fixedScore = 100;
     public int deductionPerMistake = 1;
-    public string highScoreKey = "BrailleSoundsAroundHighScore";
+    public string highScoreKey = "IdentifyingAlphabetsHighScore";
+
+    [Header("Quiz Result Reporting")]
+    public QuizResultReporter resultReporter;
 
     // -------------------------------------------------------------------------
     // Audio
@@ -777,7 +780,7 @@ public class IdentifyingAlphabets : MonoBehaviour
     {
         if (index < 0 || index >= alphabetLessons.Count)
         {
-            RunFlow(CompleteScene());
+            RunFlow(FinalizeSceneCompletion());
             return;
         }
 
@@ -1054,44 +1057,11 @@ public class IdentifyingAlphabets : MonoBehaviour
             RunFlow(StartQuizAfterLesson());
             return;
         }
-
-        if (waitingForRepeatChoice)
-        {
-            waitingForRepeatChoice = false;
-            RunFlow(FinalizeSceneCompletion());
-            return;
-        }
     }
 
     // -------------------------------------------------------------------------
     // Scene Completion (after Quiz Mode finishes)
     // -------------------------------------------------------------------------
-
-    private IEnumerator CompleteScene()
-    {
-        lessonActive = false;
-        sceneFinished = false;
-        waitingForRepeatChoice = false;
-
-        SaveHighScoreIfNeeded();
-
-        if (displayImageUI != null)
-            displayImageUI.enabled = false;
-
-        if (displayLabelText != null)
-            displayLabelText.text = string.Empty;
-
-        ResetAnswerState();
-
-        yield return ShowBubbleMessageSynced(completedMessage, genericCompletedAudio, noAudioTextDelay);
-        yield return new WaitForSeconds(delayAfterVoice);
-
-        yield return PlayFinalScoreAudio();
-        yield return new WaitForSeconds(delayAfterVoice);
-
-        waitingForRepeatChoice = true;
-        yield return ShowBubbleMessageSynced(repeatQuestionMessage, repeatQuestionAudio, noAudioTextDelay);
-    }
 
     private IEnumerator FinalizeSceneCompletion()
     {
@@ -1113,6 +1083,11 @@ public class IdentifyingAlphabets : MonoBehaviour
 
         yield return ShowBubbleMessageSynced(finalMessage, genericCompletedAudio, noAudioTextDelay);
         yield return PlayFinalScoreAudio();
+
+        if (resultReporter != null)
+            resultReporter.ReportScoreAndReturn(totalScore);
+        else
+            Debug.LogWarning("[IdentifyingAlphabets] No QuizResultReporter assigned - score won't be saved or returned to GameMenu.");
     }
 
     // -------------------------------------------------------------------------

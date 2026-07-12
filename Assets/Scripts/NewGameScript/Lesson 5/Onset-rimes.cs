@@ -357,7 +357,7 @@ public class BrailleOnsetRimeTime : MonoBehaviour
     {
         if (index < 0 || index >= quizQuestions.Count)
         {
-            RunFlow(CompleteSceneQuiz());
+            RunFlow(FinalizeSceneCompletion());
             return;
         }
 
@@ -509,23 +509,16 @@ public class BrailleOnsetRimeTime : MonoBehaviour
             RunFlow(TransitionToQuizPhase());
             return;
         }
-
-        if (waitingForRepeatChoice)
-        {
-            waitingForRepeatChoice = false;
-            RunFlow(FinalizeSceneCompletion());
-            return;
-        }
     }
 
     // -------------------------------------------------------------------------
     // Termination Flow
     // -------------------------------------------------------------------------
 
-    private IEnumerator CompleteSceneQuiz()
+    private IEnumerator FinalizeSceneCompletion()
     {
         quizActive = false;
-        waitingForRepeatChoice = false;
+        sceneFinished = true;
         SaveHighScoreIfNeeded();
 
         if (displayImageUI != null) displayImageUI.enabled = false;
@@ -538,17 +531,10 @@ public class BrailleOnsetRimeTime : MonoBehaviour
         yield return PlayFinalScoreAudio();
         yield return new WaitForSeconds(delayAfterVoice);
 
-        waitingForRepeatChoice = true;
-        yield return ShowBubbleMessageSynced(repeatQuestionMessage, repeatQuestionAudio, noAudioTextDelay);
-    }
-
-    private IEnumerator FinalizeSceneCompletion()
-    {
-        sceneFinished = true;
         if (resultReporter != null)
             resultReporter.ReportScoreAndReturn(totalScore);
-        
-        yield break;
+        else
+            Debug.LogWarning("[Onset-rimes] No QuizResultReporter assigned - score won't be saved or returned to GameMenu.");
     }
 
     // -------------------------------------------------------------------------

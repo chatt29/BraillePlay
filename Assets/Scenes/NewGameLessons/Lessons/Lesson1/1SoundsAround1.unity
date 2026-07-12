@@ -2573,8 +2573,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 195, y: 28}
+  m_SizeDelta: {x: -433.67, y: -474.92}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1443055792
 MonoBehaviour:
@@ -2589,15 +2589,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0.9, g: 0.9, b: 0.9, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -5890285294879058642, guid: f78ea27f4c97c154bb8a7d082b9e309f, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3869,6 +3869,7 @@ GameObject:
   - component: {fileID: 1873085818}
   - component: {fileID: 1873085820}
   - component: {fileID: 1873085821}
+  - component: {fileID: 1873085822}
   m_Layer: 0
   m_Name: QuizFlowBridge
   m_TagString: Untagged
@@ -3951,6 +3952,18 @@ MonoBehaviour:
   pitch: 1
   dontDestroyOnLoad: 0
   debugLogs: 1
+--- !u!114 &1873085822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1873085816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ebf808f2b135d84a9903d9340da983c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TTSBoundary
 --- !u!1 &2022413009
 GameObject:
   m_ObjectHideFlags: 0
@@ -3985,8 +3998,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 9.0457, y: -49.7517}
-  m_SizeDelta: {x: 729.1773, y: 506.8112}
+  m_AnchoredPosition: {x: -45.8797, y: 0.9485}
+  m_SizeDelta: {x: 799.594, y: 337.8106}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2022413011
 MonoBehaviour:
