@@ -37,6 +37,8 @@ public class RimesItIpIgIdInIll : MonoBehaviour
     // -------------------------------------------------------------------------
     // Lesson Pages — each page can be Information Only or Interactive Practice
     // -------------------------------------------------------------------------
+
+
     public enum LessonPageType { InformationOnly, InteractivePractice }
 
     [Serializable]
@@ -50,6 +52,9 @@ public class RimesItIpIgIdInIll : MonoBehaviour
     [Serializable]
     public class LessonPage
     {
+
+
+
         [Header("Display")]
         public string title;
 
@@ -189,6 +194,9 @@ public class RimesItIpIgIdInIll : MonoBehaviour
     // -------------------------------------------------------------------------
     // UI
     // -------------------------------------------------------------------------
+    [Header("Quiz Result Reporting")]
+    public QuizResultReporter resultReporter;
+
     [Header("UI")]
     public TMP_Text bubbleMessageText;
     public TMP_Text displayLabelText;
@@ -1021,6 +1029,11 @@ public class RimesItIpIgIdInIll : MonoBehaviour
 
         yield return ShowBubbleMessageSynced(finalMessage, genericCompletedAudio, noAudioTextDelay);
         yield return PlayFinalScoreAudio();
+
+        if (resultReporter != null)
+            resultReporter.ReportScoreAndReturn(totalScore);
+        else
+            Debug.LogWarning("[RimesItIpIgIdInIll] No QuizResultReporter assigned - score won't be saved or returned to GameMenu.");
     }
 
     private IEnumerator PlayFinalScoreAudio()
