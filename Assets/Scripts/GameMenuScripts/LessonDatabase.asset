@@ -55,10 +55,10 @@ MonoBehaviour:
     - quizTitle: Speech Sounds
       sceneName: SpeechSounds
       quizNumber: 1
-  - lessonTitle: 'Lesson 8: Speech Sound Medial Rhymes '
+  - lessonTitle: 'Lesson 8: Speech Sound Medial Rimes '
     lessonNumber: 8
     quizzes:
-    - quizTitle: Speech Sounds Medial Rhymes
+    - quizTitle: Speech Sounds Medial Rimes
       sceneName: SoundAround4
       quizNumber: 1
   - lessonTitle: 'Lesson 9: Basic Rhymes '
@@ -67,9 +67,39 @@ MonoBehaviour:
     - quizTitle: Basic Rhymes
       sceneName: RimesEmEllEb
       quizNumber: 1
-  - lessonTitle: 'Lesson 10:  '
+  - lessonTitle: 'Lesson 10: Bat Cat & Fat Rat '
     lessonNumber: 10
     quizzes:
-    - quizTitle: Lesson 10
+    - quizTitle: Bat Cat & Fat Rat Story Quiz
       sceneName: Lesson10
+      quizNumber: 1
+  - lessonTitle: 'Lesson 11:  Rimes (-am, -an, -at)'
+    lessonNumber: 11
+    quizzes:
+    - quizTitle: 'Lesson 11: Rime Quiz'
+      sceneName: RimesAmAnAtManager
+      quizNumber: 1
+  - lessonTitle: 'Lesson 12:  Rimes (-ag, -ap, -ad)'
+    lessonNumber: 12
+    quizzes:
+    - quizTitle: 'Lesson 12: Rime Quiz'
+      sceneName: RimesAgApAd
+      quizNumber: 1
+  - lessonTitle: 'Lesson 13: Pink WIg'
+    lessonNumber: 13
+    quizzes:
+    - quizTitle: Pink Wig Story Quiz
+      sceneName: Lesson13
+      quizNumber: 1
+  - lessonTitle: 'Lesson 14: Rhymes'
+    lessonNumber: 14
+    quizzes:
+    - quizTitle: Rhymes Quiz
+      sceneName: Lession14
+      quizNumber: 1
+  - lessonTitle: 'Lesson 15: Rimes (-it, -ip, -ig, -in, -ill)'
+    lessonNumber: 15
+    quizzes:
+    - quizTitle: 'Lesson 15: Rimes Quiz'
+      sceneName: RimesItIpIgiIdInIll
       quizNumber: 1
