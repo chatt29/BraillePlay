@@ -5,8 +5,8 @@ using BraillePlay.GameMenu;
 /// <summary>
 /// Bridges a quiz scene back to GameMenu's ProgressManager/SceneLoader.
 /// Records the score immediately once the quiz finishes, then hands off to
-/// QuizEndMenu to ask the student what to do next (repeat / next quiz /
-/// back to menu) instead of navigating away right away.
+/// QuizEndMenu to ask the student what to do next (next quiz / back to
+/// menu) instead of navigating away right away.
 /// </summary>
 public class QuizResultReporter : MonoBehaviour
 {
@@ -79,7 +79,6 @@ public class QuizResultReporter : MonoBehaviour
             endMenu.Show(
                 scorePercent,
                 hasNextQuiz: !string.IsNullOrEmpty(nextQuizSceneName),
-                onRepeat: RepeatThisQuiz,
                 onNextQuiz: GoToNextQuiz,
                 onBackToMenu: GoBackToMenu,
                 announceScore: !scoreAlreadyAnnounced);
@@ -95,11 +94,6 @@ public class QuizResultReporter : MonoBehaviour
     public void QuitWithoutReporting()
     {
         SceneManager.LoadScene(returnSceneName);
-    }
-
-    private void RepeatThisQuiz()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     private void GoToNextQuiz()
