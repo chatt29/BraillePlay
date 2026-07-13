@@ -285,6 +285,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1791188412}
+  - {fileID: 198172528}
   - {fileID: 563796115}
   - {fileID: 151686054}
   m_Father: {fileID: 0}
@@ -383,6 +384,7 @@ MonoBehaviour:
   confirmOverlay: {fileID: 2015483307}
   confirmText: {fileID: 1142113496}
   confirmMessage: Quit lesson? Press Enter to confirm. Press Back to cancel.
+  gameplayAudioSource: {fileID: 1586095478}
 --- !u!114 &151686059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -398,6 +400,51 @@ MonoBehaviour:
   fallbackReturnSceneName: GameMenu
   endMenu: {fileID: 151686057}
   backHandler: {fileID: 151686058}
+--- !u!1 &198172527
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 198172528}
+  - component: {fileID: 198172529}
+  m_Layer: 0
+  m_Name: AccessibilityManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &198172528
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198172527}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 83132950}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &198172529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198172527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ca376137c4c5847a61688bec420d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AccessibilityManager
+  dontDestroyOnLoad: 0
 --- !u!1 &232308968
 GameObject:
   m_ObjectHideFlags: 0
@@ -432,7 +479,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 54.606, y: 0}
+  m_AnchoredPosition: {x: -0.000019073, y: 0}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &232308970
@@ -2949,6 +2996,7 @@ MonoBehaviour:
   displayLabelText: {fileID: 843676732}
   categoryText: {fileID: 1155271827}
   livePatternText: {fileID: 1697798612}
+  typedWordText: {fileID: 0}
   displayImageUI: {fileID: 54352918}
   spelledWordText: {fileID: 1155271827}
   currentLetterPromptText: {fileID: 0}
@@ -2971,21 +3019,136 @@ MonoBehaviour:
   genericTryAgainAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
   genericCompletedAudio: {fileID: 8300000, guid: b73d53ef362a3534eb21642dde5f48c4, type: 3}
   repeatQuestionAudio: {fileID: 8300000, guid: a6489a828ae24e141a353f5d242c1b3c, type: 3}
-  lessonIntroAudio: {fileID: 8300000, guid: 53df5b85cf486d7499fe34e0a11d1358, type: 3}
-  lessonIntroMessage: "Today we're going to find the letter E! Can you hear it? In
-    the word bed, we say B-E-D. The E is right in the middle! Let's try another one.
-    Leg. L-E-G. Do you hear the E in the middle of leg? One more! Red. R-E-D. E is
-    in the middle again! When E is in the middle like this, we call it a C-E-C word.
-    That just means consonant, then E, then consonant. You\u2019re ready! Now let\u2019s
-    spell some E words together"
   yourScoreIsAudio: {fileID: 8300000, guid: 613a4ecd64752ee4c8844d8286dca545, type: 3}
   whileYourHighestScoreIsAudio: {fileID: 8300000, guid: 2525c179990406146becd993f00485ee, type: 3}
-  numberAudios: []
-  welcomeMessage: Welcome to Speech Sounds!
-  letsLearnMessage: 'Today we will learn words with E in the middle. '
+  numberAudios:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: a9afdf1f202626e4d815f3d339f223c4, type: 3}
+  - {fileID: 8300000, guid: 21a469d6598c3204ab82b509e42e89f8, type: 3}
+  - {fileID: 8300000, guid: 5bd190e14c182b24d9e04c61a35f3b29, type: 3}
+  - {fileID: 8300000, guid: c6f4937e92350a04a82d4bd76eef52ba, type: 3}
+  - {fileID: 8300000, guid: 701a3679a01f84e43aa1fa9d4a3c0785, type: 3}
+  - {fileID: 8300000, guid: bde38e84ced6de84cb95115723d7bdf4, type: 3}
+  - {fileID: 8300000, guid: fe9932ae0117e154d998e51d9ed611e0, type: 3}
+  - {fileID: 8300000, guid: 94091ec33fbd6b349ba6e703387e4866, type: 3}
+  - {fileID: 8300000, guid: ee8cfcb8b3588954ea24c10457255924, type: 3}
+  - {fileID: 8300000, guid: 5e889505e0e0d2a4db129b0905352109, type: 3}
+  - {fileID: 8300000, guid: 65fabefe77170f948ba6088e0e5a0f95, type: 3}
+  - {fileID: 8300000, guid: 6a0ec25b8a422c646b399ddcae7b2c62, type: 3}
+  - {fileID: 8300000, guid: 437fe84d57fc7f64cad7d56e2a8c9a89, type: 3}
+  - {fileID: 8300000, guid: 0d5771525d0e1814ab6d369e7eb1c3ba, type: 3}
+  - {fileID: 8300000, guid: 8881ea521aa0c7a4f9ae441c637350e6, type: 3}
+  - {fileID: 8300000, guid: e8c2b8bd9bd8f9e428347c57e9710cd4, type: 3}
+  - {fileID: 8300000, guid: 09027ef61068784478c1b32badf50904, type: 3}
+  - {fileID: 8300000, guid: e8c38c6593d87944187086e01dbfdb98, type: 3}
+  - {fileID: 8300000, guid: 31becc0a3e7892e468b4ac4372db4882, type: 3}
+  - {fileID: 8300000, guid: caf77e0d1f468b64ab86183d4318a7f8, type: 3}
+  - {fileID: 8300000, guid: 579c9253f6a5be6499ca8a1851d07f90, type: 3}
+  welcomeMessage: Welcome to Speech Sounds Quiz!
+  letsLearnMessage: 'In this quiz you''re going to '
   completedMessage: Excellent spelling! You learned all about E in the middle today.
   repeatQuestionMessage: You finished Lesson 7, Speech Sounds. Do you want to repeat
     again? Press R to repeat or Next to go back to main menu.
+  lessonChoiceMessage: You have finished the lesson pages. Press repeat to repeat
+    them or press next to begin the quiz.
+  lessonChoiceAudio: {fileID: 0}
+  lessonPages:
+  - title: 
+    categoryLabel: 
+    lessonImage: {fileID: 0}
+    pageType: 0
+    informationBeats:
+    - message: Welcome to Lesson 7, Speech Sounds- RIme.
+      audio: {fileID: 0}
+    practiceWord: 
+    requireCapitalFirstLetter: 0
+    promptMessage: 
+    promptAudio: {fileID: 0}
+    successMessage: 
+    successAudio: {fileID: 0}
+    wrongMessage: 
+    wrongAudio: {fileID: 0}
+    supportMessage: 
+    supportAudio: {fileID: 0}
   words:
   - word: Jet
     displayImage: {fileID: 8151910413271119951, guid: c2e2cdc386106524183c4ea0a85ec5cc, type: 3}
