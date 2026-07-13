@@ -3148,7 +3148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1379a0d4e47bf740a7d7861a7ff4808, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BrailleSoundsAround1
-  resultReporter: {fileID: 0}
+  resultReporter: {fileID: 689221804}
   bubbleMessageText: {fileID: 1257937990}
   displayLabelText: {fileID: 843676732}
   categoryText: {fileID: 1155271827}
