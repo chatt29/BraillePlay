@@ -3971,7 +3971,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::QuizResultReporter
   fallbackReturnSceneName: GameMenu
   endMenu: {fileID: 1873085820}
-  backHandler: {fileID: 0}
+  backHandler: {fileID: 1873085818}
 --- !u!114 &1873085820
 MonoBehaviour:
   m_ObjectHideFlags: 0
