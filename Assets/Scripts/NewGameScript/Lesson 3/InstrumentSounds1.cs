@@ -11,6 +11,27 @@ public class InstrumentSounds1 : MonoBehaviour
     public enum PitchAnswer { High, Low }
 
     // -------------------------------------------------------------------------
+    // Lesson Pages (ported from AnimalSounds2) — plain informational pages
+    // shown before the quiz begins. Each page shows text + plays audio, with
+    // no player input required.
+    // -------------------------------------------------------------------------
+
+    [Serializable]
+    public class LessonPage
+    {
+        [Header("Display")]
+        public string title;
+
+        [TextArea(5, 10)]
+        public string lessonText;
+
+        public Sprite lessonImage;
+
+        [Header("Audio")]
+        public AudioClip lessonAudio;
+    }
+
+    // -------------------------------------------------------------------------
     // Question sub-classes (kept separate so each question's prompt / success /
     // wrong / support content is self-contained and easy to author in Inspector)
     // -------------------------------------------------------------------------
@@ -161,9 +182,18 @@ public class InstrumentSounds1 : MonoBehaviour
     [TextArea(2, 5)]
     public string repeatQuestionMessage = "You finished the lesson. Do you want to repeat again? Press R to repeat or Y to finish.";
 
+    [TextArea(2, 5)]
+    public string lessonChoiceMessage =
+    "You have finished the lesson pages. Press repeat to repeat them or press next to begin the quiz.";
+
+    public AudioClip lessonChoiceAudio;
+
     // -------------------------------------------------------------------------
     // Lesson Flow
     // -------------------------------------------------------------------------
+
+    [Header("Lesson Pages")]
+    public List<LessonPage> lessonPages = new List<LessonPage>();
 
     [Header("Lesson Flow")]
     public List<InstrumentLesson> lessons = new List<InstrumentLesson>();
@@ -203,6 +233,7 @@ public class InstrumentSounds1 : MonoBehaviour
     private bool sceneFinished = false;
     private bool waitingForRepeatChoice = false;
     private bool waitingForChoiceAnswer = false;
+    private bool waitingForLessonChoice = false;
 
     private Coroutine flowRoutine;
     private Coroutine bubbleTypeRoutine;
@@ -335,7 +366,55 @@ public class InstrumentSounds1 : MonoBehaviour
         lessonActive = false;
         sceneFinished = false;
         waitingForRepeatChoice = false;
+        waitingForLessonChoice = false;
 
+        yield return PlayLessonPages();
+    }
+
+    /// <summary>
+    /// Plays each informational Lesson Page in order (text + audio, no input
+    /// required), then waits for the player to choose Repeat (replay the
+    /// pages) or Next (move on to the quiz).
+    /// </summary>
+    private IEnumerator PlayLessonPages()
+    {
+        foreach (LessonPage page in lessonPages)
+        {
+            if (displayLabelText != null)
+                displayLabelText.text = page.title;
+
+            if (categoryText != null)
+                categoryText.text = "LESSON";
+
+            if (displayImageUI != null)
+            {
+                displayImageUI.sprite = page.lessonImage;
+                displayImageUI.enabled = page.lessonImage != null;
+            }
+
+            yield return ShowBubbleMessageSynced(
+                page.lessonText,
+                page.lessonAudio,
+                noAudioTextDelay
+            );
+
+            yield return new WaitForSeconds(delayAfterVoice);
+        }
+
+        waitingForLessonChoice = true;
+
+        yield return ShowBubbleMessageSynced(
+            lessonChoiceMessage,
+            lessonChoiceAudio,
+            noAudioTextDelay);
+
+        while (waitingForLessonChoice)
+            yield return null;
+    }
+
+    /// <summary>Welcome/intro messages, then starts the first instrument quiz item.</summary>
+    private IEnumerator StartQuizAfterLesson()
+    {
         yield return ShowBubbleMessageSynced(welcomeMessage, welcomeAudio, noAudioTextDelay);
         yield return new WaitForSeconds(delayAfterVoice);
 
@@ -685,6 +764,13 @@ public class InstrumentSounds1 : MonoBehaviour
     /// </summary>
     private void HandleRepeat()
     {
+        if (waitingForLessonChoice)
+        {
+            waitingForLessonChoice = false;
+            RunFlow(PlayLessonPages());
+            return;
+        }
+
         if (waitingForRepeatChoice)
         {
             waitingForRepeatChoice = false;
@@ -713,6 +799,12 @@ public class InstrumentSounds1 : MonoBehaviour
 
     private void HandleNext()
     {
+        if (waitingForLessonChoice)
+        {
+            waitingForLessonChoice = false;
+            RunFlow(StartQuizAfterLesson());
+            return;
+        }
     }
 
     // -------------------------------------------------------------------------
