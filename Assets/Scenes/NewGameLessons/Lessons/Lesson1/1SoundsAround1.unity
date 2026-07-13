@@ -287,7 +287,10 @@ Transform:
   - {fileID: 1791188412}
   - {fileID: 1073172896}
   - {fileID: 1994920828}
+  - {fileID: 689221805}
+  - {fileID: 1520855080}
   - {fileID: 1873085817}
+  - {fileID: 1330788240}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &232308968
@@ -802,6 +805,53 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &689221803
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 689221805}
+  - component: {fileID: 689221804}
+  m_Layer: 0
+  m_Name: QuizResultReporter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &689221804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 689221803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca16e861051a50440bb9c3814c440e56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QuizResultReporter
+  fallbackReturnSceneName: GameMenu
+  endMenu: {fileID: 1873085820}
+  backHandler: {fileID: 1520855081}
+--- !u!4 &689221805
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 689221803}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 83132950}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &803834282
 GameObject:
   m_ObjectHideFlags: 0
@@ -1462,8 +1512,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6016412d895336145aed3cc8df150c61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LongPressBackDetector
+  backKey: 8
   holdSeconds: 3
-  suppressed: 0
 --- !u!1 &1113401176
 GameObject:
   m_ObjectHideFlags: 0
@@ -2436,6 +2486,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1321976831}
   m_CullTransparentMesh: 1
+--- !u!1 &1330788239
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1330788240}
+  - component: {fileID: 1330788242}
+  - component: {fileID: 1330788241}
+  m_Layer: 0
+  m_Name: TTSManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1330788240
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1330788239}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 83132950}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1330788241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1330788239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f489b8ae2d2fca489e0d872bc18840c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TTSManager
+  speechRate: 1
+  pitch: 1
+  dontDestroyOnLoad: 0
+  debugLogs: 1
+--- !u!114 &1330788242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1330788239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ebf808f2b135d84a9903d9340da983c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TTSBoundary
 --- !u!1 &1381365064
 GameObject:
   m_ObjectHideFlags: 0
@@ -2738,6 +2849,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1472856059}
   m_CullTransparentMesh: 1
+--- !u!1 &1520855079
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1520855080}
+  - component: {fileID: 1520855081}
+  m_Layer: 0
+  m_Name: QuizBackHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1520855080
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520855079}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 83132950}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1520855081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520855079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67c9cf01d0ca7864b81658460badd23e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QuizBackHandler
+  resultReporter: {fileID: 689221804}
+  confirmOverlay: {fileID: 1472856059}
+  confirmText: {fileID: 245076417}
+  confirmMessage: Quit lesson? Press Enter to confirm. Press Escape to cancel.
 --- !u!1 &1586095473
 GameObject:
   m_ObjectHideFlags: 0
@@ -2989,7 +3148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1379a0d4e47bf740a7d7861a7ff4808, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BrailleSoundsAround1
-  resultReporter: {fileID: 1873085819}
+  resultReporter: {fileID: 0}
   bubbleMessageText: {fileID: 1257937990}
   displayLabelText: {fileID: 843676732}
   categoryText: {fileID: 1155271827}
@@ -3913,13 +4072,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1873085817}
-  - component: {fileID: 1873085819}
-  - component: {fileID: 1873085818}
   - component: {fileID: 1873085820}
-  - component: {fileID: 1873085821}
-  - component: {fileID: 1873085822}
   m_Layer: 0
-  m_Name: QuizFlowBridge
+  m_Name: QuizEndMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3940,38 +4095,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 83132950}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1873085818
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1873085816}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67c9cf01d0ca7864b81658460badd23e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::QuizBackHandler
-  resultReporter: {fileID: 1873085819}
-  confirmOverlay: {fileID: 1472856059}
-  confirmText: {fileID: 245076417}
-  confirmMessage: Quit lesson? Press Enter to confirm. Press Escape to cancel.
-  gameplayAudioSource: {fileID: 1586095478}
---- !u!114 &1873085819
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1873085816}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca16e861051a50440bb9c3814c440e56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::QuizResultReporter
-  fallbackReturnSceneName: GameMenu
-  endMenu: {fileID: 1873085820}
-  backHandler: {fileID: 1873085818}
 --- !u!114 &1873085820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3986,34 +4109,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::QuizEndMenu
   panel: {fileID: 1443055790}
   messageText: {fileID: 2022413011}
---- !u!114 &1873085821
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1873085816}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f489b8ae2d2fca489e0d872bc18840c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TTSManager
-  speechRate: 1
-  pitch: 1
-  dontDestroyOnLoad: 0
-  debugLogs: 1
---- !u!114 &1873085822
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1873085816}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ebf808f2b135d84a9903d9340da983c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TTSBoundary
 --- !u!1 &1994920827
 GameObject:
   m_ObjectHideFlags: 0
