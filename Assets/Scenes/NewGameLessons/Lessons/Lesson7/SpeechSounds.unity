@@ -3013,12 +3013,12 @@ MonoBehaviour:
   highScoreKey: SpeechSoundsHighScore
   resultReporter: {fileID: 151686059}
   voiceAudioSource: {fileID: 1586095478}
-  welcomeAudio: {fileID: 8300000, guid: 269e56725ab8d55458f1fea0044320d0, type: 3}
-  letsLearnAudio: {fileID: 8300000, guid: fd56aa8be65bcc644817997956beac8a, type: 3}
+  welcomeAudio: {fileID: 8300000, guid: ac7cde6b65f19b643a60a54f119e95e4, type: 3}
+  letsLearnAudio: {fileID: 8300000, guid: e0870bc6d66177f46953598e60e8e1c3, type: 3}
   genericCorrectAudio: {fileID: 8300000, guid: 587dfae100161f646a4b8e246de58429, type: 3}
   genericTryAgainAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-  genericCompletedAudio: {fileID: 8300000, guid: b73d53ef362a3534eb21642dde5f48c4, type: 3}
-  repeatQuestionAudio: {fileID: 8300000, guid: a6489a828ae24e141a353f5d242c1b3c, type: 3}
+  genericCompletedAudio: {fileID: 8300000, guid: a144a165ea517784e97550ff92a1d69b, type: 3}
+  repeatQuestionAudio: {fileID: 8300000, guid: 5ba414379afa79042a083f858dec6202, type: 3}
   yourScoreIsAudio: {fileID: 8300000, guid: 613a4ecd64752ee4c8844d8286dca545, type: 3}
   whileYourHighestScoreIsAudio: {fileID: 8300000, guid: 2525c179990406146becd993f00485ee, type: 3}
   numberAudios:
@@ -3124,21 +3124,26 @@ MonoBehaviour:
   - {fileID: 8300000, guid: caf77e0d1f468b64ab86183d4318a7f8, type: 3}
   - {fileID: 8300000, guid: 579c9253f6a5be6499ca8a1851d07f90, type: 3}
   welcomeMessage: Welcome to Speech Sounds Quiz!
-  letsLearnMessage: 'In this quiz you''re going to '
-  completedMessage: Excellent spelling! You learned all about E in the middle today.
-  repeatQuestionMessage: You finished Lesson 7, Speech Sounds. Do you want to repeat
-    again? Press R to repeat or Next to go back to main menu.
-  lessonChoiceMessage: You have finished the lesson pages. Press repeat to repeat
-    them or press next to begin the quiz.
-  lessonChoiceAudio: {fileID: 0}
+  letsLearnMessage: In this quiz, you're going to type words that ends with the Rimes
+    -et, and -en. Type the word with the correct spelling.
+  completedMessage: Great job! You finished the Lesson 7, Speech Sounds.
+  repeatQuestionMessage: Do you want to repeat the quiz and try to beat your high
+    score? Press repeat to repeat or press next to continue.
+  lessonChoiceMessage: You have finished learning some of the words that ends with
+    the rimes -en, and -et. Would you like to repeat the lesson or you want to begin
+    the quiz? Press repeat to repeat the lesson or press next to begin the quiz.
+  lessonChoiceAudio: {fileID: 8300000, guid: 97da0b9e673ba8b42b07bcacc069627d, type: 3}
   lessonPages:
-  - title: 
-    categoryLabel: 
+  - title: Welcome
+    categoryLabel: LESSON
     lessonImage: {fileID: 0}
     pageType: 0
     informationBeats:
-    - message: Welcome to Lesson 7, Speech Sounds- RIme.
-      audio: {fileID: 0}
+    - message: Welcome to Lesson 7, Speech Sounds- RIme -en, and -et.
+      audio: {fileID: 8300000, guid: 1b3ed5287c8d81a47933d96ecfffc801, type: 3}
+    - message: In this lesson you're going to learn some words that end with the
+        Rimes -en, and -et
+      audio: {fileID: 8300000, guid: a22b8595e4800b24aa200b0f5fdf8fd1, type: 3}
     practiceWord: 
     requireCapitalFirstLetter: 0
     promptMessage: 
@@ -3149,7 +3154,255 @@ MonoBehaviour:
     wrongAudio: {fileID: 0}
     supportMessage: 
     supportAudio: {fileID: 0}
+  - title: 'What is an Initial? '
+    categoryLabel: LESSON
+    lessonImage: {fileID: 0}
+    pageType: 0
+    informationBeats:
+    - message: Every word begins with an initial.
+      audio: {fileID: 8300000, guid: 05f6d96c3b65c234887df22a7f455be9, type: 3}
+    - message: The initial is the first letter of a word.
+      audio: {fileID: 8300000, guid: 27a64c3220eb59245bdc3c640058d3b4, type: 3}
+    - message: In today's lesson, every word you type will begin with a capital letter.
+      audio: {fileID: 8300000, guid: 948b552ba8c592a44b2d7b33e71c406a, type: 3}
+    practiceWord: 
+    requireCapitalFirstLetter: 0
+    promptMessage: 
+    promptAudio: {fileID: 0}
+    successMessage: 
+    successAudio: {fileID: 0}
+    wrongMessage: 
+    wrongAudio: {fileID: 0}
+    supportMessage: 
+    supportAudio: {fileID: 0}
+  - title: What is a Rime?
+    categoryLabel: LESSON
+    lessonImage: {fileID: 0}
+    pageType: 0
+    informationBeats:
+    - message: Rime, spelled R, I, M, E, is the ending part of a word.
+      audio: {fileID: 8300000, guid: c748663a2fca32d4696b146f509cc8b4, type: 3}
+    - message: 'Words with the same rime usually have similar sounds.
+
+'
+      audio: {fileID: 8300000, guid: a9fb0e4d34381764f8872336692f9cac, type: 3}
+    - message: Today, we will learn the rimes -et, and -en.
+      audio: {fileID: 8300000, guid: 25e7eb5a94839e84e91a975a3118b1fa, type: 3}
+    practiceWord: 
+    requireCapitalFirstLetter: 0
+    promptMessage: 
+    promptAudio: {fileID: 0}
+    successMessage: 
+    successAudio: {fileID: 0}
+    wrongMessage: 
+    wrongAudio: {fileID: 0}
+    supportMessage: 
+    supportAudio: {fileID: 0}
+  - title: Example
+    categoryLabel: LESSON
+    lessonImage: {fileID: 0}
+    pageType: 0
+    informationBeats:
+    - message: 'Let''s have some example words.
+
+'
+      audio: {fileID: 8300000, guid: d626f95cfebf450498ad8f2e0a89371d, type: 3}
+    practiceWord: 
+    requireCapitalFirstLetter: 0
+    promptMessage: 
+    promptAudio: {fileID: 0}
+    successMessage: 
+    successAudio: {fileID: 0}
+    wrongMessage: 
+    wrongAudio: {fileID: 0}
+    supportMessage: 
+    supportAudio: {fileID: 0}
+  - title: Jet
+    categoryLabel: LESSON
+    lessonImage: {fileID: 0}
+    pageType: 1
+    informationBeats:
+    - message: The first word you're going to learn is the word Jet.
+      audio: {fileID: 8300000, guid: a32fd2ffd48becc43ad6e2874d7d059d, type: 3}
+    - message: A jet is a fast airplane that flies high in the sky.
+      audio: {fileID: 8300000, guid: 85111f954bb2dc1469981ae5d1c90b6a, type: 3}
+    - message: The word Jet begins with the initial letter J.
+      audio: {fileID: 8300000, guid: d4ef1bcd24e27a944a17cae7074f4f1d, type: 3}
+    - message: Followed up by letter e, t.
+      audio: {fileID: 8300000, guid: a1d8ec042c8272541b3617acea1dcf47, type: 3}
+    - message: Since J is the initial letter, type it as a capital letter. Remember
+        to Capitalize a letter, you have to press dot 6 before the corresponding
+        letter.
+      audio: {fileID: 8300000, guid: 4f1b6c2793a1167478b5cc89455f5183, type: 3}
+    - message: The word Jet ends with the rime -et.
+      audio: {fileID: 8300000, guid: db65b82b8a0d2f44aa0e04f50df9f5b5, type: 3}
+    practiceWord: jet
+    requireCapitalFirstLetter: 1
+    promptMessage: Can you type the word Jet?
+    promptAudio: {fileID: 8300000, guid: 81a00a930ca4f0f44b3a4a32aa9a0f68, type: 3}
+    successMessage: That is Correct.
+    successAudio: {fileID: 8300000, guid: fe6beb06190d30148bfa826812a4af0a, type: 3}
+    wrongMessage: Wrong Answer, Please Try Again.
+    wrongAudio: {fileID: 8300000, guid: dd615f4eef83e3b49b22a11445f9b6d6, type: 3}
+    supportMessage: Remember, the word is Jet. Begin with a capital J, then type
+      e, and t.
+    supportAudio: {fileID: 8300000, guid: 54da8612f6c710e4db2c669b4e30ab94, type: 3}
+  - title: Wet
+    categoryLabel: LESSON
+    lessonImage: {fileID: 0}
+    pageType: 1
+    informationBeats:
+    - message: The next word you're going to learn is the word Wet.
+      audio: {fileID: 8300000, guid: 59c78c0600b985c4ea0280f8cd46196d, type: 3}
+    - message: Wet means something has water on it.
+      audio: {fileID: 8300000, guid: 95aeefde9f29cfa4bb3ef649421e4444, type: 3}
+    - message: The word Wet begins with the initial letter W.
+      audio: {fileID: 8300000, guid: 14bb3c0f7ebc6544baf44ed93e984261, type: 3}
+    - message: Followed up by letter e, t.
+      audio: {fileID: 8300000, guid: a1d8ec042c8272541b3617acea1dcf47, type: 3}
+    - message: Since W is the initial letter, type it as a capital letter.
+      audio: {fileID: 8300000, guid: ce751fe4b787b7545a85e70eabe3357a, type: 3}
+    - message: The word Wet ends with the rime -et. same as Jet earlier.
+      audio: {fileID: 8300000, guid: d4789089561c7e640be09b46cebe6611, type: 3}
+    practiceWord: wet
+    requireCapitalFirstLetter: 1
+    promptMessage: Can you type the word Wet?
+    promptAudio: {fileID: 8300000, guid: f0346054e6dd56e47855b64dd20b78ef, type: 3}
+    successMessage: That is Correct.
+    successAudio: {fileID: 8300000, guid: fe6beb06190d30148bfa826812a4af0a, type: 3}
+    wrongMessage: Wrong Answer, Please Try Again.
+    wrongAudio: {fileID: 8300000, guid: dd615f4eef83e3b49b22a11445f9b6d6, type: 3}
+    supportMessage: Remember, the word is Wet. Begin with a capital W, then type
+      e, and t.
+    supportAudio: {fileID: 8300000, guid: 7919613fa5484c6458efc0578087545b, type: 3}
+  - title: Net
+    categoryLabel: LESSON
+    lessonImage: {fileID: 0}
+    pageType: 1
+    informationBeats:
+    - message: The next word you're going to learn is the word Net.
+      audio: {fileID: 8300000, guid: 3c04b6376c8b749458d53a00f8c31663, type: 3}
+    - message: A net is something used to catch or hold things.
+      audio: {fileID: 8300000, guid: 7ede57ec7ffec5d4fbe10798597371e2, type: 3}
+    - message: The word net begins with the initial letter N.
+      audio: {fileID: 8300000, guid: 4d1565c396b5c0e44a7c521f6d9eb7fb, type: 3}
+    - message: Followed up by letter e, t.
+      audio: {fileID: 8300000, guid: a1d8ec042c8272541b3617acea1dcf47, type: 3}
+    - message: Since N is the initial letter, type it as a capital letter.
+      audio: {fileID: 8300000, guid: 254b6420eb29708419e72af8e23cd1e6, type: 3}
+    - message: The word Net ends with the rime -et.
+      audio: {fileID: 8300000, guid: 97df62c79a4823046967a32da3d4fdef, type: 3}
+    practiceWord: net
+    requireCapitalFirstLetter: 1
+    promptMessage: Can you type the word Net?
+    promptAudio: {fileID: 8300000, guid: 12a5f9e19d119194fbd972d4c33d4525, type: 3}
+    successMessage: That is Correct.
+    successAudio: {fileID: 8300000, guid: fe6beb06190d30148bfa826812a4af0a, type: 3}
+    wrongMessage: Wrong Answer, Please Try Again.
+    wrongAudio: {fileID: 8300000, guid: dd615f4eef83e3b49b22a11445f9b6d6, type: 3}
+    supportMessage: Remember, the word is Net. Begin with a capital N, then type
+      e, and t.
+    supportAudio: {fileID: 8300000, guid: d7397ebb18413e1429ccce3d127ca180, type: 3}
+  - title: Men
+    categoryLabel: LESSON
+    lessonImage: {fileID: 0}
+    pageType: 1
+    informationBeats:
+    - message: The next word you're going to learn is the word Men.
+      audio: {fileID: 8300000, guid: 051078dc62f80cc438ca488ef0d8fcd6, type: 3}
+    - message: Men are grown-up boys.
+      audio: {fileID: 8300000, guid: 463ef468f56798e4aa2b5729f2ce8a1b, type: 3}
+    - message: The word Men begins with the initial letter M.
+      audio: {fileID: 8300000, guid: 098534c82a6cf484ab0ea3821eb9b468, type: 3}
+    - message: Followed up by letter e, n.
+      audio: {fileID: 8300000, guid: d189e22fe79c44d4f83caadbba85c55d, type: 3}
+    - message: Since M is the initial letter, type it as a capital letter.
+      audio: {fileID: 8300000, guid: 0e14d7c9bfc5c6742941e50fb73cd870, type: 3}
+    - message: The word Men ends with the rime -en.
+      audio: {fileID: 8300000, guid: 6e64eef097b67d440959b7c7e739e173, type: 3}
+    practiceWord: men
+    requireCapitalFirstLetter: 1
+    promptMessage: Can you type the word Men?
+    promptAudio: {fileID: 8300000, guid: 440f546363b8b8840a67ad5fb9a0d361, type: 3}
+    successMessage: That is Correct.
+    successAudio: {fileID: 8300000, guid: fe6beb06190d30148bfa826812a4af0a, type: 3}
+    wrongMessage: Wrong Answer, Please Try Again.
+    wrongAudio: {fileID: 8300000, guid: dd615f4eef83e3b49b22a11445f9b6d6, type: 3}
+    supportMessage: Remember, the word is Men. Begin with a capital M, then type
+      e, and n.
+    supportAudio: {fileID: 8300000, guid: d778b359f0941ec40acfcbe4fbb2121a, type: 3}
+  - title: Hen
+    categoryLabel: LESSON
+    lessonImage: {fileID: 0}
+    pageType: 1
+    informationBeats:
+    - message: The next word you're going to learn is the word Hen.
+      audio: {fileID: 8300000, guid: be0c84dcdf0b4bc40a7239b37aa4f1e8, type: 3}
+    - message: A hen is a chicken that lays eggs or a female chicken.
+      audio: {fileID: 8300000, guid: c30f992760cb02f4984ae0716381f2d9, type: 3}
+    - message: The word Hen begins with the initial letter H.
+      audio: {fileID: 8300000, guid: 2d8572a8da031964f8c3cc187d9fa6f4, type: 3}
+    - message: Followed up by letter e, n.
+      audio: {fileID: 8300000, guid: d189e22fe79c44d4f83caadbba85c55d, type: 3}
+    - message: Since H is the initial letter, type it as a capital letter.
+      audio: {fileID: 8300000, guid: 80fd600e7c567374680a2268094d4f17, type: 3}
+    - message: The word Hen ends with the rime -en.
+      audio: {fileID: 8300000, guid: 70587829519234d49af8b8e8ff4ec0f3, type: 3}
+    practiceWord: hen
+    requireCapitalFirstLetter: 1
+    promptMessage: Can you type the word Hen?
+    promptAudio: {fileID: 8300000, guid: 54eacc6a736e25b4e8fc322a4bbd4974, type: 3}
+    successMessage: That is Correct.
+    successAudio: {fileID: 8300000, guid: fe6beb06190d30148bfa826812a4af0a, type: 3}
+    wrongMessage: Wrong Answer, Please Try Again.
+    wrongAudio: {fileID: 8300000, guid: dd615f4eef83e3b49b22a11445f9b6d6, type: 3}
+    supportMessage: Remember, the word is Hen. Begin with a capital H, then type
+      e, and n.
+    supportAudio: {fileID: 8300000, guid: ad3de677e5fd90a428258b2dc7e77f13, type: 3}
+  - title: Pen
+    categoryLabel: LESSON
+    lessonImage: {fileID: 0}
+    pageType: 1
+    informationBeats:
+    - message: The next word you're going to learn is the word Pen.
+      audio: {fileID: 8300000, guid: c8a042796df59cb42bac87679954c930, type: 3}
+    - message: A pen is used to write words and draw pictures.
+      audio: {fileID: 8300000, guid: 994be83df64985f4ca6d872a7356f5c6, type: 3}
+    - message: The word Pen begins with the initial letter P.
+      audio: {fileID: 8300000, guid: 59921ec3d6cca1946a7ceda4c31b5979, type: 3}
+    - message: Followed up by letter e, n.
+      audio: {fileID: 8300000, guid: d189e22fe79c44d4f83caadbba85c55d, type: 3}
+    - message: Since P is the initial letter, type it as a capital letter.
+      audio: {fileID: 8300000, guid: 35292c64a7a5e74458bdcd06edc9301d, type: 3}
+    - message: The word Pen ends with the rime -en.
+      audio: {fileID: 8300000, guid: c19455267cf16c148b36a28de9caa5d5, type: 3}
+    practiceWord: pen
+    requireCapitalFirstLetter: 1
+    promptMessage: Can you type the word Pen?
+    promptAudio: {fileID: 8300000, guid: d11f9313414759d4d87a43840c36cdd9, type: 3}
+    successMessage: That is Correct.
+    successAudio: {fileID: 8300000, guid: fe6beb06190d30148bfa826812a4af0a, type: 3}
+    wrongMessage: Wrong Answer, Please Try Again.
+    wrongAudio: {fileID: 8300000, guid: dd615f4eef83e3b49b22a11445f9b6d6, type: 3}
+    supportMessage: Remember, the word is Pen. Begin with a capital P, then type
+      e, and n.
+    supportAudio: {fileID: 8300000, guid: c15743b29a80b8b44b4ed12bca337de6, type: 3}
   words:
+  - word: Men
+    displayImage: {fileID: -4484254831667093391, guid: ef628c7996b36824ab3c1d9466fe5edc, type: 3}
+    wordAudio: {fileID: 8300000, guid: 4453d73c28d667c4daca688a51de14d4, type: 3}
+    promptMessage: Can you spell the word men?
+    promptAudio: {fileID: 8300000, guid: a84d4876d07ba7e48acc601376db85f4, type: 3}
+    successMessage: Correct! You spelled M-E-N, men!
+    successAudio: {fileID: 8300000, guid: 447adcb1ba24ca84ba43d3b27372b050, type: 3}
+    wrongLetterMessage: That's not the right letter. Try again.
+    wrongLetterAudio: {fileID: 8300000, guid: 3ad88e614fac8254f90b7333e6f1d8d2, type: 3}
+    supportMessage: Remember, the word is men, M - E - N, Men! The men are building
+      a house.
+    supportAudio: {fileID: 8300000, guid: fc68b266adfb52e4dba1a287c7a59429, type: 3}
+    letter1Audio: {fileID: 8300000, guid: d9259e5fa3910ba4d962150ac4892068, type: 3}
+    letter2Audio: {fileID: 8300000, guid: 50c78c43b7a61d54c8d4c130f6e6d6bf, type: 3}
+    letter3Audio: {fileID: 8300000, guid: 80593880a49bb9c4880f0ae185f440de, type: 3}
   - word: Jet
     displayImage: {fileID: 8151910413271119951, guid: c2e2cdc386106524183c4ea0a85ec5cc, type: 3}
     wordAudio: {fileID: 8300000, guid: baae9132053bbf24f8102f38616c8d1b, type: 3}
@@ -3180,21 +3433,6 @@ MonoBehaviour:
     letter1Audio: {fileID: 8300000, guid: 80593880a49bb9c4880f0ae185f440de, type: 3}
     letter2Audio: {fileID: 8300000, guid: 50c78c43b7a61d54c8d4c130f6e6d6bf, type: 3}
     letter3Audio: {fileID: 8300000, guid: 9e8bf903afc6e594ea2cf24b8d591842, type: 3}
-  - word: Wet
-    displayImage: {fileID: -2403919275376931074, guid: 8bc6acf7221a4484fb85ead96169620a, type: 3}
-    wordAudio: {fileID: 8300000, guid: 48f3a2c4c30e5ae47b45f02e1cd3f92e, type: 3}
-    promptMessage: Can you spell the word wet?
-    promptAudio: {fileID: 8300000, guid: 10494532778df70459d302814074a745, type: 3}
-    successMessage: Correct! You spelled W-E-T, wet!
-    successAudio: {fileID: 8300000, guid: f15cb0d1871db7d4c8650fac04251ad4, type: 3}
-    wrongLetterMessage: That's not the right letter. Try again.
-    wrongLetterAudio: {fileID: 8300000, guid: 3ad88e614fac8254f90b7333e6f1d8d2, type: 3}
-    supportMessage: Remember, the word is wet, W - E - T, Wet! My shoes got wet in
-      the rain.
-    supportAudio: {fileID: 8300000, guid: f8269653069cf794aaedf9c321df9c27, type: 3}
-    letter1Audio: {fileID: 8300000, guid: 5660a7814f216264e8f75ba2522f9dc5, type: 3}
-    letter2Audio: {fileID: 8300000, guid: 50c78c43b7a61d54c8d4c130f6e6d6bf, type: 3}
-    letter3Audio: {fileID: 8300000, guid: 9e8bf903afc6e594ea2cf24b8d591842, type: 3}
   - word: Pen
     displayImage: {fileID: -7336805681979244506, guid: a6ffc277f4b4d684b876ef536949ca59, type: 3}
     wordAudio: {fileID: 8300000, guid: a5dd7c464e0835444979baa2236ba9a1, type: 3}
@@ -3210,21 +3448,21 @@ MonoBehaviour:
     letter1Audio: {fileID: 8300000, guid: f473269573e5f5e41b029c2bcb0a6fbb, type: 3}
     letter2Audio: {fileID: 8300000, guid: 50c78c43b7a61d54c8d4c130f6e6d6bf, type: 3}
     letter3Audio: {fileID: 8300000, guid: 80593880a49bb9c4880f0ae185f440de, type: 3}
-  - word: Men
-    displayImage: {fileID: -4484254831667093391, guid: ef628c7996b36824ab3c1d9466fe5edc, type: 3}
-    wordAudio: {fileID: 8300000, guid: 4453d73c28d667c4daca688a51de14d4, type: 3}
-    promptMessage: Can you spell the word men?
-    promptAudio: {fileID: 8300000, guid: a84d4876d07ba7e48acc601376db85f4, type: 3}
-    successMessage: Correct! You spelled M-E-N, men!
-    successAudio: {fileID: 8300000, guid: 447adcb1ba24ca84ba43d3b27372b050, type: 3}
+  - word: Wet
+    displayImage: {fileID: -2403919275376931074, guid: 8bc6acf7221a4484fb85ead96169620a, type: 3}
+    wordAudio: {fileID: 8300000, guid: 48f3a2c4c30e5ae47b45f02e1cd3f92e, type: 3}
+    promptMessage: Can you spell the word wet?
+    promptAudio: {fileID: 8300000, guid: 10494532778df70459d302814074a745, type: 3}
+    successMessage: Correct! You spelled W-E-T, wet!
+    successAudio: {fileID: 8300000, guid: f15cb0d1871db7d4c8650fac04251ad4, type: 3}
     wrongLetterMessage: That's not the right letter. Try again.
     wrongLetterAudio: {fileID: 8300000, guid: 3ad88e614fac8254f90b7333e6f1d8d2, type: 3}
-    supportMessage: Remember, the word is men, M - E - N, Men! The men are building
-      a house.
-    supportAudio: {fileID: 8300000, guid: fc68b266adfb52e4dba1a287c7a59429, type: 3}
-    letter1Audio: {fileID: 8300000, guid: d9259e5fa3910ba4d962150ac4892068, type: 3}
+    supportMessage: Remember, the word is wet, W - E - T, Wet! My shoes got wet in
+      the rain.
+    supportAudio: {fileID: 8300000, guid: f8269653069cf794aaedf9c321df9c27, type: 3}
+    letter1Audio: {fileID: 8300000, guid: 5660a7814f216264e8f75ba2522f9dc5, type: 3}
     letter2Audio: {fileID: 8300000, guid: 50c78c43b7a61d54c8d4c130f6e6d6bf, type: 3}
-    letter3Audio: {fileID: 8300000, guid: 80593880a49bb9c4880f0ae185f440de, type: 3}
+    letter3Audio: {fileID: 8300000, guid: 9e8bf903afc6e594ea2cf24b8d591842, type: 3}
   - word: Hen
     displayImage: {fileID: 2004016079927036183, guid: bb4c50377874d5f4aa9431d2ed7680f8, type: 3}
     wordAudio: {fileID: 8300000, guid: 573afdf3824270d478974442a35b2a45, type: 3}
