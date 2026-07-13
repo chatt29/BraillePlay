@@ -1381,6 +1381,7 @@ GameObject:
   - component: {fileID: 1586095480}
   - component: {fileID: 1586095479}
   - component: {fileID: 1586095481}
+  - component: {fileID: 1586095482}
   m_Layer: 5
   m_Name: NumberTranslationManager
   m_TagString: Untagged
@@ -1518,7 +1519,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BrailleLessonInputHandler
   lessonScript: {fileID: 0}
   livePatternText: {fileID: 0}
+  voiceAudioSource: {fileID: 0}
+  wirelessHaptics: {fileID: 0}
   showHeldDotsPattern: 1
+  speedLevel1: 0.75
+  speedLevel2: 0.9
+  speedLevel3: 1
+  speedLevel4: 1.25
+  speedLevel5: 1.5
 --- !u!114 &1586095480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2129,6 +2137,18 @@ MonoBehaviour:
   logInputs: 0
   playLetterSoundOnChord: 1
   playOtherPatternSoundOnChord: 1
+--- !u!114 &1586095482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586095473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ebf808f2b135d84a9903d9340da983c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TTSBoundary
 --- !u!1 &1697798611
 GameObject:
   m_ObjectHideFlags: 0

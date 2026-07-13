@@ -15,6 +15,9 @@ public class QuizResultReporter : MonoBehaviour
 
     [SerializeField] private QuizEndMenu endMenu;
 
+    [Tooltip("Disabled once the quiz naturally finishes, so the long-press-back quit prompt can't pop up on top of QuizEndMenu and double-fire on the same Space/Backspace press.")]
+    [SerializeField] private QuizBackHandler backHandler;
+
     private int lessonNumber;
     private int quizNumber;
     private string returnSceneName;
@@ -41,11 +44,27 @@ public class QuizResultReporter : MonoBehaviour
         }
     }
 
-    /// <summary>Call once when the quiz finishes with a final score (0-100). Records progress immediately, then shows the end-of-quiz choice menu.</summary>
-    public void ReportScoreAndReturn(int scorePercent)
+    /// <summary>
+    /// Call once when the quiz finishes with a final score (0-100). Records
+    /// progress immediately, then shows the end-of-quiz choice menu.
+    ///
+    /// scoreAlreadyAnnounced: pass true (the default) when the quiz scene
+    /// already spoke the score itself (e.g. BrailleSoundsAround1's own
+    /// recorded-audio score readout) so QuizEndMenu only asks the
+    /// continue/back question instead of repeating the score via TTS.
+    /// </summary>
+    public void ReportScoreAndReturn(int scorePercent, bool scoreAlreadyAnnounced = true)
     {
         if (reported) return;
         reported = true;
+
+        // The quiz is genuinely over now - there's nothing left to "quit
+        // early" out of, so stop listening for the long-press-back gesture
+        // entirely. Otherwise it can pop its own confirm overlay on top of
+        // QuizEndMenu below and both end up listening for the same
+        // Space/Backspace press at once.
+        if (backHandler != null)
+            backHandler.enabled = false;
 
         if (hasContext)
         {
@@ -62,7 +81,8 @@ public class QuizResultReporter : MonoBehaviour
                 hasNextQuiz: !string.IsNullOrEmpty(nextQuizSceneName),
                 onRepeat: RepeatThisQuiz,
                 onNextQuiz: GoToNextQuiz,
-                onBackToMenu: GoBackToMenu);
+                onBackToMenu: GoBackToMenu,
+                announceScore: !scoreAlreadyAnnounced);
         }
         else
         {

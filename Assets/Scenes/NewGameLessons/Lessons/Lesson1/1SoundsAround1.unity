@@ -286,6 +286,8 @@ Transform:
   m_Children:
   - {fileID: 1873085817}
   - {fileID: 1791188412}
+  - {fileID: 1073172896}
+  - {fileID: 1994920828}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &232308968
@@ -322,7 +324,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 54.606, y: 0}
+  m_AnchoredPosition: {x: -0.000019073, y: 0}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &232308970
@@ -1416,6 +1418,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1070165174}
   m_CullTransparentMesh: 1
+--- !u!1 &1073172895
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1073172896}
+  - component: {fileID: 1073172897}
+  m_Layer: 0
+  m_Name: LongPressBack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1073172896
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1073172895}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 83132950}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1073172897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1073172895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6016412d895336145aed3cc8df150c61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LongPressBackDetector
+  holdSeconds: 3
+  suppressed: 0
 --- !u!1 &1113401176
 GameObject:
   m_ObjectHideFlags: 0
@@ -2573,8 +2621,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 195, y: 28}
+  m_SizeDelta: {x: -433.67, y: -474.92}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1443055792
 MonoBehaviour:
@@ -2589,15 +2637,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0.9, g: 0.9, b: 0.9, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -5890285294879058642, guid: f78ea27f4c97c154bb8a7d082b9e309f, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3869,6 +3917,7 @@ GameObject:
   - component: {fileID: 1873085818}
   - component: {fileID: 1873085820}
   - component: {fileID: 1873085821}
+  - component: {fileID: 1873085822}
   m_Layer: 0
   m_Name: QuizFlowBridge
   m_TagString: Untagged
@@ -3907,6 +3956,7 @@ MonoBehaviour:
   confirmOverlay: {fileID: 1472856059}
   confirmText: {fileID: 245076417}
   confirmMessage: Quit lesson? Press Enter to confirm. Press Escape to cancel.
+  gameplayAudioSource: {fileID: 1586095478}
 --- !u!114 &1873085819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3921,6 +3971,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::QuizResultReporter
   fallbackReturnSceneName: GameMenu
   endMenu: {fileID: 1873085820}
+  backHandler: {fileID: 1873085818}
 --- !u!114 &1873085820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3951,6 +4002,63 @@ MonoBehaviour:
   pitch: 1
   dontDestroyOnLoad: 0
   debugLogs: 1
+--- !u!114 &1873085822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1873085816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ebf808f2b135d84a9903d9340da983c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TTSBoundary
+--- !u!1 &1994920827
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1994920828}
+  - component: {fileID: 1994920829}
+  m_Layer: 0
+  m_Name: AccessibilityManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1994920828
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994920827}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 83132950}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1994920829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994920827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ca376137c4c5847a61688bec420d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AccessibilityManager
+  dontDestroyOnLoad: 0
 --- !u!1 &2022413009
 GameObject:
   m_ObjectHideFlags: 0
@@ -3985,8 +4093,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 9.0457, y: -49.7517}
-  m_SizeDelta: {x: 729.1773, y: 506.8112}
+  m_AnchoredPosition: {x: -45.8797, y: 0.9485}
+  m_SizeDelta: {x: 799.594, y: 337.8106}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2022413011
 MonoBehaviour:

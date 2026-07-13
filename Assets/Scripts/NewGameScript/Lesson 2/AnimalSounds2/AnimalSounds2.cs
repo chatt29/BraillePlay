@@ -394,7 +394,7 @@ public class AnimalSounds2 : MonoBehaviour
     {
         if (index < 0 || index >= lessons.Count)
         {
-            RunFlow(CompleteScene());
+            RunFlow(FinalizeSceneCompletion());
             return;
         }
 
@@ -694,44 +694,11 @@ public class AnimalSounds2 : MonoBehaviour
             RunFlow(StartQuizAfterLesson());
             return;
         }
-
-        if (waitingForRepeatChoice)
-        {
-            waitingForRepeatChoice = false;
-            RunFlow(FinalizeSceneCompletion());
-            return;
-        }
     }
 
     // -------------------------------------------------------------------------
     // Scene Completion
     // -------------------------------------------------------------------------
-
-    private IEnumerator CompleteScene()
-    {
-        lessonActive = false;
-        sceneFinished = false;
-        waitingForRepeatChoice = false;
-
-        SaveHighScoreIfNeeded();
-
-        if (displayImageUI != null)
-            displayImageUI.enabled = false;
-
-        if (displayLabelText != null)
-            displayLabelText.text = string.Empty;
-
-        ResetAnswerState();
-
-        yield return ShowBubbleMessageSynced(completedMessage, genericCompletedAudio, noAudioTextDelay);
-        yield return new WaitForSeconds(delayAfterVoice);
-
-        yield return PlayFinalScoreAudio();
-        yield return new WaitForSeconds(delayAfterVoice);
-
-        waitingForRepeatChoice = true;
-        yield return ShowBubbleMessageSynced(repeatQuestionMessage, repeatQuestionAudio, noAudioTextDelay);
-    }
 
     private IEnumerator FinalizeSceneCompletion()
     {
