@@ -141,10 +141,7 @@ public class Lesson8Script : MonoBehaviour
     [Header("Quiz Score Settings")]
     public int fixedScore = 100;
     public int deductionPerMistake = 1;
-    public string highScoreKey = "Lesson8HighScore";
-
-    [Header("Quiz Result Reporting")]
-    public QuizResultReporter resultReporter;
+    public string highScoreKey = "BrailleSoundsAroundHighScore";
 
     // -------------------------------------------------------------------------
     // Audio
@@ -1012,11 +1009,6 @@ public class Lesson8Script : MonoBehaviour
 
         yield return ShowBubbleMessageSynced(finalMessage, genericCompletedAudio, noAudioTextDelay);
         yield return PlayFinalScoreAudio();
-
-        if (resultReporter != null)
-            resultReporter.ReportScoreAndReturn(totalScore);
-        else
-            Debug.LogWarning("[Lesson8Script] No QuizResultReporter assigned - score won't be saved or returned to GameMenu.");
     }
 
     // -------------------------------------------------------------------------

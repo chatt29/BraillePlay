@@ -5,7 +5,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class SoundsInTheEnvironment : MonoBehaviour
+public class NewMonoBehaviourScript : MonoBehaviour
 {
     // Two named choices for "what makes the sound" (e.g. Cow / Horse).
     public enum SourceAnswer { OptionA, OptionB }
@@ -136,10 +136,7 @@ public class SoundsInTheEnvironment : MonoBehaviour
     [Header("Quiz Score Settings")]
     public int fixedScore = 100;
     public int deductionPerMistake = 1;
-    public string highScoreKey = "SoundsInTheEnvironmentHighScore";
-
-    [Header("Quiz Result Reporting")]
-    public QuizResultReporter resultReporter;
+    public string highScoreKey = "InstrumentSoundsHighScore";
 
     // -------------------------------------------------------------------------
     // Audio
@@ -768,11 +765,6 @@ public class SoundsInTheEnvironment : MonoBehaviour
 
         yield return ShowBubbleMessageSynced(finalMessage, genericCompletedAudio, noAudioTextDelay);
         yield return PlayFinalScoreAudio();
-
-        if (resultReporter != null)
-            resultReporter.ReportScoreAndReturn(totalScore);
-        else
-            Debug.LogWarning("[SoundsInTheEnvironment] No QuizResultReporter assigned - score won't be saved or returned to GameMenu.");
     }
 
     // -------------------------------------------------------------------------
