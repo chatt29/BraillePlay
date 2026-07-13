@@ -2411,6 +2411,7 @@ GameObject:
   - component: {fileID: 1586095474}
   - component: {fileID: 1586095478}
   - component: {fileID: 1586095484}
+  - component: {fileID: 1586095485}
   m_Layer: 5
   m_Name: RimesItIpIgIdInIllManager
   m_TagString: Untagged
@@ -2638,6 +2639,1475 @@ MonoBehaviour:
   logInputs: 0
   playLetterSoundOnChord: 1
   playOtherPatternSoundOnChord: 1
+--- !u!114 &1586095485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586095473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23c07a9e23c202141b480ae5f72ea261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RimesItIpIgIdInIll
+  bubbleMessageText: {fileID: 1257937990}
+  displayLabelText: {fileID: 1155271827}
+  categoryText: {fileID: 843676732}
+  livePatternText: {fileID: 1697798612}
+  typedWordText: {fileID: 2077778574}
+  displayImageUI: {fileID: 54352918}
+  answerStateImage: {fileID: 2047379756}
+  correctStateSprite: {fileID: -4207999480553683411, guid: 4e35d4a30fee8cc4580f2983361350b4, type: 3}
+  wrongStateSprite: {fileID: 7071201414940298460, guid: bee3415c56ef4054aa185675bb6dc185, type: 3}
+  hideAnswerStateAtStart: 0
+  fixScoreText: {fileID: 1777884057}
+  wrongScoreText: {fileID: 1070165176}
+  totalScoreText: {fileID: 1113401178}
+  highScoreText: {fileID: 1262590508}
+  fixedScore: 100
+  deductionPerMistake: 1
+  highScoreKey: RimesItIpIgIdInIllHighScore
+  voiceAudioSource: {fileID: 1586095478}
+  welcomeAudio: {fileID: 8300000, guid: 427e4870b97046b4d99544918b55aa41, type: 3}
+  letsLearnAudio: {fileID: 8300000, guid: 19b032ae7fa265d4e95258225aae7cd0, type: 3}
+  genericCorrectAudio: {fileID: 0}
+  genericTryAgainAudio: {fileID: 0}
+  genericCompletedAudio: {fileID: 8300000, guid: 483d4f50a7e4ef44abd11fe9e254f9bc, type: 3}
+  repeatQuestionAudio: {fileID: 8300000, guid: b1531ee33658f3740bdaea7a89f0cc6b, type: 3}
+  yourScoreIsAudio: {fileID: 8300000, guid: 613a4ecd64752ee4c8844d8286dca545, type: 3}
+  whileYourHighestScoreIsAudio: {fileID: 8300000, guid: 2525c179990406146becd993f00485ee, type: 3}
+  numberAudios: []
+  welcomeMessage: Welcome to Lesson 15 Rimes Quiz
+  letsLearnMessage: In this quiz, you're going to type words that ends with the Rimes
+    -it, -ip, -ig, -id, -in, and -ill. Type the word with the correct spelling.
+  completedMessage: Great job! You finished Lesson 15 Rimes
+  repeatQuestionMessage: Do you want to repeat the quiz and try to beat your high
+    score? Press repeat to repeat or press next to continue.
+  lessonChoiceMessage: You have finished learning some of the words that ends with
+    the rimes -it, -ip, -ig, -id, -in, and -ill. Would you like to repeat the lesson
+    or you want to begin the quiz? Press repeat to repeat the lesson or press next
+    to begin the quiz.
+  lessonChoiceAudio: {fileID: 8300000, guid: 9cc945dcdb2d2304b9f04629a8c78572, type: 3}
+  lessonPages:
+  - title: Welcome
+    categoryLabel: LESSON
+    lessonImage: {fileID: 0}
+    pageType: 0
+    informationBeats:
+    - message: 'Welcome to Lesson 15: Words that end with the Rimes -it, -ip, -ig,
+        -id, -in, and -ill. '
+      audio: {fileID: 8300000, guid: d0a66a44fa3cb6f419362321a7b87149, type: 3}
+    - message: 'In this lesson you''re going to learn some words that end with the
+        Rimes -it, -ip, -ig, -id, -in, and -ill. '
+      audio: {fileID: 8300000, guid: 35f203eb80ef9e1438a32176c6ca5b23, type: 3}
+    practiceWord: 
+    requireCapitalFirstLetter: 0
+    promptMessage: 
+    promptAudio: {fileID: 0}
+    successMessage: 
+    successAudio: {fileID: 0}
+    wrongMessage: 
+    wrongAudio: {fileID: 0}
+    supportMessage: 
+    supportAudio: {fileID: 0}
+  - title: What is an Initial?
+    categoryLabel: LESSON
+    lessonImage: {fileID: 0}
+    pageType: 0
+    informationBeats:
+    - message: Every word begins with an initial.
+      audio: {fileID: 8300000, guid: 4daf0f7d040395e4eb01e4805bab4091, type: 3}
+    - message: The initial is the first letter of a word.
+      audio: {fileID: 8300000, guid: fddff666afd00514d82deb0be9805df4, type: 3}
+    - message: In today's lesson, every word you type will begin with a capital letter.
+      audio: {fileID: 8300000, guid: b0826d8f494c0a04a9ff176e7efbd387, type: 3}
+    practiceWord: 
+    requireCapitalFirstLetter: 0
+    promptMessage: 
+    promptAudio: {fileID: 0}
+    successMessage: 
+    successAudio: {fileID: 0}
+    wrongMessage: 
+    wrongAudio: {fileID: 0}
+    supportMessage: 
+    supportAudio: {fileID: 0}
+  - title: What is a Rime?
+    categoryLabel: LESSON
+    lessonImage: {fileID: 0}
+    pageType: 0
+    informationBeats:
+    - message: A rime is the ending part of a word.
+      audio: {fileID: 8300000, guid: 5659231b2ff6029428a2d027419a7999, type: 3}
+    - message: Words with the same rime usually have similar sounds.
+      audio: {fileID: 8300000, guid: 8ee8606ab06c5114b8f9e5b9bc5f190f, type: 3}
+    - message: 'Today, we will learn the rimes -it, -ip, -ig, -id, -in, and -ill. '
+      audio: {fileID: 8300000, guid: b3814d99a5838d84993bbc642c2aad3f, type: 3}
+    practiceWord: 
+    requireCapitalFirstLetter: 0
+    promptMessage: 
+    promptAudio: {fileID: 0}
+    successMessage: 
+    successAudio: {fileID: 0}
+    wrongMessage: 
+    wrongAudio: {fileID: 0}
+    supportMessage: 
+    supportAudio: {fileID: 0}
+  - title: Try Example.
+    categoryLabel: LESSON
+    lessonImage: {fileID: 0}
+    pageType: 0
+    informationBeats:
+    - message: Let's have some example words.
+      audio: {fileID: 8300000, guid: f3163dc313a28704ea4853af6e73fd75, type: 3}
+    practiceWord: 
+    requireCapitalFirstLetter: 0
+    promptMessage: 
+    promptAudio: {fileID: 0}
+    successMessage: 
+    successAudio: {fileID: 0}
+    wrongMessage: 
+    wrongAudio: {fileID: 0}
+    supportMessage: 
+    supportAudio: {fileID: 0}
+  - title: Hit
+    categoryLabel: LESSON
+    lessonImage: {fileID: 0}
+    pageType: 1
+    informationBeats:
+    - message: The first word you're going to learn is the word Hit.
+      audio: {fileID: 8300000, guid: d4f185bd0a6b1014fb3758f922bdb05a, type: 3}
+    - message: Hit means to tap or bump something so it makes a sound.
+      audio: {fileID: 8300000, guid: 2a43ce99c63977840a09bb5edcadbfa3, type: 3}
+    - message: The word Hit begins with the initial letter H.
+      audio: {fileID: 8300000, guid: 8367285dd8aa67a448222a8bdc06f0c9, type: 3}
+    - message: Followed up by a letter i, t.
+      audio: {fileID: 8300000, guid: 4d3fce257f4fc8a47bc029bb2c5b3b78, type: 3}
+    - message: 'Since H is the initial letter, type it as a capital letter. Remember
+        to Capitalize a letter, you have to press dot 6 before the corresponding
+        letter. '
+      audio: {fileID: 8300000, guid: 4ced1b82ca3bc974eb09c9774d421ab7, type: 3}
+    - message: The word Hit end with the rime -it.
+      audio: {fileID: 8300000, guid: 082a87fcc951980418c1cae40dc62221, type: 3}
+    practiceWord: hit
+    requireCapitalFirstLetter: 1
+    promptMessage: Can you type the word Hit?
+    promptAudio: {fileID: 8300000, guid: c22db6ecdc829484aaf356eb0c21af70, type: 3}
+    successMessage: That is Correct!
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongMessage: Wrong Answer, Please Try Again.
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word is Hit. Begin with a capital H, then type
+      i, and t.
+    supportAudio: {fileID: 8300000, guid: c64b787ee7ac4dd48a5cf240c667dd5e, type: 3}
+  - title: Fit
+    categoryLabel: LESSON
+    lessonImage: {fileID: 0}
+    pageType: 1
+    informationBeats:
+    - message: The next word you're going to learn is the word Fit.
+      audio: {fileID: 8300000, guid: 2d7e9311759349445b9dfa8f64b511e9, type: 3}
+    - message: Fit means something is just the right size that it feels good on you.
+      audio: {fileID: 8300000, guid: 0f0f4cda738ae3b439dcbf0c372cbaa1, type: 3}
+    - message: The word Fit begins with the initial letter F.
+      audio: {fileID: 8300000, guid: ac495e4fa9a7b5d46b33a8709a7a96e5, type: 3}
+    - message: Followed up by a letter i, t.
+      audio: {fileID: 8300000, guid: 4d3fce257f4fc8a47bc029bb2c5b3b78, type: 3}
+    - message: 'Since F is the initial letter, type it as a capital letter. Remember
+        to Capitalize a letter, you have to press dot 6 before the corresponding
+        letter. '
+      audio: {fileID: 8300000, guid: af6f064a6e5ebe84aa75cca88d0399f6, type: 3}
+    - message: The word Fit end with the rime -it.
+      audio: {fileID: 8300000, guid: c08457d7da55a35459f504f185c8faf8, type: 3}
+    practiceWord: fit
+    requireCapitalFirstLetter: 1
+    promptMessage: Can you type the word Fit?
+    promptAudio: {fileID: 8300000, guid: 41b87512aef860a4ba00c8384120270f, type: 3}
+    successMessage: That is Correct!
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongMessage: Wrong Answer, Please Try Again.
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word is Fit. Begin with a capital F, then type
+      i, and t.
+    supportAudio: {fileID: 8300000, guid: 6b101650b0c3c7d40bd3a2897c047d79, type: 3}
+  - title: Pit
+    categoryLabel: LESSON
+    lessonImage: {fileID: 0}
+    pageType: 1
+    informationBeats:
+    - message: The next word you're going to learn is the word Pit.
+      audio: {fileID: 8300000, guid: 2f16d2aafd0ebaa45a555c89b2e03f42, type: 3}
+    - message: A pit is a deep hole in the ground that you could fall into.
+      audio: {fileID: 8300000, guid: d4337c7686e196f4d8b462570609ee6e, type: 3}
+    - message: The word Pit begins with the initial letter P.
+      audio: {fileID: 8300000, guid: 9802f123c63182f448ad3804cc654bc7, type: 3}
+    - message: Followed up by a letter i, t.
+      audio: {fileID: 8300000, guid: 4d3fce257f4fc8a47bc029bb2c5b3b78, type: 3}
+    - message: 'Since P is the initial letter, type it as a capital letter. Remember
+        to Capitalize a letter, you have to press dot 6 before the corresponding
+        letter. '
+      audio: {fileID: 8300000, guid: 86a42694764dafd459dc9cbdecd6ea95, type: 3}
+    - message: The word Pit end with the rime -it.
+      audio: {fileID: 8300000, guid: 0a86264c613b513468441f963bead7cb, type: 3}
+    practiceWord: pit
+    requireCapitalFirstLetter: 1
+    promptMessage: Can you type the word Pit?
+    promptAudio: {fileID: 8300000, guid: 7aa0e34e100d1a84a8c2deff0dba3371, type: 3}
+    successMessage: That is Correct!
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongMessage: Wrong Answer, Please Try Again.
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word is Pit. Begin with a capital P, then type
+      i, and t.
+    supportAudio: {fileID: 8300000, guid: 7104aa564314c0a4fb8075409eda8399, type: 3}
+  - title: Kit
+    categoryLabel: LESSON
+    lessonImage: {fileID: 0}
+    pageType: 1
+    informationBeats:
+    - message: The next word you're going to learn is the word Kit.
+      audio: {fileID: 8300000, guid: 14110795502c3a04b8279762dba0feec, type: 3}
+    - message: A kit is a bag or box with tools inside that help you do a job.
+      audio: {fileID: 8300000, guid: 0e05203eca59a47438bd9be0a9347120, type: 3}
+    - message: The word Kit begins with the initial letter K.
+      audio: {fileID: 8300000, guid: dec61dc5abc33124fa9358c188114b64, type: 3}
+    - message: Followed up by a letter i, t.
+      audio: {fileID: 8300000, guid: 4d3fce257f4fc8a47bc029bb2c5b3b78, type: 3}
+    - message: 'Since K is the initial letter, type it as a capital letter. Remember
+        to Capitalize a letter, you have to press dot 6 before the corresponding
+        letter. '
+      audio: {fileID: 8300000, guid: 7341d258ffdfc4e46bb4aa0e0605f1a7, type: 3}
+    - message: The word Kit end with the rime -it.
+      audio: {fileID: 8300000, guid: 9668f01f09faca244aaa5c03f9aadc01, type: 3}
+    practiceWord: kit
+    requireCapitalFirstLetter: 1
+    promptMessage: Can you type the word Kit?
+    promptAudio: {fileID: 8300000, guid: 5663babafd3d1464e9b16825b861e89f, type: 3}
+    successMessage: That is Correct!
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongMessage: Wrong Answer, Please Try Again.
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word is Kit. Begin with a capital K, then type
+      i, and t.
+    supportAudio: {fileID: 8300000, guid: 6b19324a172cc0148b62df635d78e225, type: 3}
+  - title: Sit
+    categoryLabel: LESSON
+    lessonImage: {fileID: 0}
+    pageType: 1
+    informationBeats:
+    - message: The next word you're going to learn is the word Sit.
+      audio: {fileID: 8300000, guid: b4380d7669552bc42bc35a6e69b39ee4, type: 3}
+    - message: Sit means to put your bottom down on a chair or the floor to rest.
+      audio: {fileID: 8300000, guid: 50222909afbfa194c813f70563d39869, type: 3}
+    - message: The word Sit begins with the initial letter S.
+      audio: {fileID: 8300000, guid: d754fae07d4e32545ac7bbdf5bead3dd, type: 3}
+    - message: Followed up by a letter i, t.
+      audio: {fileID: 8300000, guid: 4d3fce257f4fc8a47bc029bb2c5b3b78, type: 3}
+    - message: 'Since S is the initial letter, type it as a capital letter. Remember
+        to Capitalize a letter, you have to press dot 6 before the corresponding
+        letter. '
+      audio: {fileID: 8300000, guid: 15c0fb37365304c409278ff24d6a43ed, type: 3}
+    - message: The word Sit ends with the rime -it.
+      audio: {fileID: 8300000, guid: 9e120d23f7e6a8045b01e25e48a713e7, type: 3}
+    practiceWord: sit
+    requireCapitalFirstLetter: 1
+    promptMessage: Can you type the word Sit?
+    promptAudio: {fileID: 8300000, guid: 9c4b583d05e64e44fa7289c5beadbd52, type: 3}
+    successMessage: That is Correct!
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongMessage: Wrong Answer, Please Try Again.
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word is Sit. Begin with a capital S, then type
+      i, and t.
+    supportAudio: {fileID: 8300000, guid: f5e478888fc13b9479db6d09c718b1aa, type: 3}
+  - title: Wig
+    categoryLabel: LESSON
+    lessonImage: {fileID: 0}
+    pageType: 1
+    informationBeats:
+    - message: The next word you're going to learn is the word Wig.
+      audio: {fileID: 8300000, guid: b26a87c85b39f854da06e81c9bb58664, type: 3}
+    - message: A wig is hair you can wear on your head that feels soft like a hat.
+      audio: {fileID: 8300000, guid: 6128257ac9e5f75409a749388555835e, type: 3}
+    - message: The word Wig begins with the initial letter W.
+      audio: {fileID: 8300000, guid: b83616c289426764e8ef7ee98efba337, type: 3}
+    - message: Followed up by a letter i, g.
+      audio: {fileID: 8300000, guid: 9ebe0c164d286ff46852dac42848e2af, type: 3}
+    - message: 'Since W is the initial letter, type it as a capital letter. Remember
+        to Capitalize a letter, you have to press dot 6 before the corresponding
+        letter. '
+      audio: {fileID: 8300000, guid: fe0352e7bf9b07c438f88827175e38a2, type: 3}
+    - message: The word Wig ends with the rime -ig.
+      audio: {fileID: 8300000, guid: 84280b25b12d1494a97354fc6ffe7617, type: 3}
+    practiceWord: wig
+    requireCapitalFirstLetter: 1
+    promptMessage: Can you type the word Wig?
+    promptAudio: {fileID: 8300000, guid: b5ebebce8e6d89c4280ece47a52917b2, type: 3}
+    successMessage: That is Correct!
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongMessage: Wrong Answer, Please Try Again.
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word is Wig. Begin with a capital W, then type
+      i, and g.
+    supportAudio: {fileID: 8300000, guid: 74fe529708605c74089bae6b30a1edb4, type: 3}
+  - title: Pig
+    categoryLabel: LESSON
+    lessonImage: {fileID: 0}
+    pageType: 1
+    informationBeats:
+    - message: The next word you're going to learn is the word Pig.
+      audio: {fileID: 8300000, guid: 9f7e3f1a8d5da9c4d9969d5981bab4b2, type: 3}
+    - message: "A pig is a farm animal that says \u201Coink\u201D and likes to roll
+        in mud."
+      audio: {fileID: 8300000, guid: dac16aca5f5f06f45b616365c6fa991a, type: 3}
+    - message: The word Pig begins with the initial letter P.
+      audio: {fileID: 8300000, guid: ccc231930ea7f3b4fbc0b5b272731c6a, type: 3}
+    - message: Followed up by a letter i, g.
+      audio: {fileID: 8300000, guid: 9ebe0c164d286ff46852dac42848e2af, type: 3}
+    - message: 'Since P is the initial letter, type it as a capital letter. Remember
+        to Capitalize a letter, you have to press dot 6 before the corresponding
+        letter. '
+      audio: {fileID: 8300000, guid: 86a42694764dafd459dc9cbdecd6ea95, type: 3}
+    - message: The word Pig ends with the rime -ig.
+      audio: {fileID: 8300000, guid: c6bf8d1dd28bb9d4097f48ce7c8b0394, type: 3}
+    practiceWord: pig
+    requireCapitalFirstLetter: 1
+    promptMessage: Can you type the word Pig?
+    promptAudio: {fileID: 8300000, guid: a094e994e5885cb43bc7c5176f28bbd5, type: 3}
+    successMessage: That is Correct!
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongMessage: Wrong Answer, Please Try Again.
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word is Pig. Begin with a capital P, then type
+      i, and g.
+    supportAudio: {fileID: 8300000, guid: 8f7fc1b1c8ebc4247b216463880120bb, type: 3}
+  - title: Fig
+    categoryLabel: LESSON
+    lessonImage: {fileID: 0}
+    pageType: 1
+    informationBeats:
+    - message: The next word you're going to learn is the word Fig.
+      audio: {fileID: 8300000, guid: 9db41d4e206da6c46b197271030581b7, type: 3}
+    - message: A fig is a small, sweet fruit that feels squishy when you bite it.
+      audio: {fileID: 8300000, guid: 6d38147439419ec41a6f3140de93751c, type: 3}
+    - message: The word Fig begins with the initial letter F.
+      audio: {fileID: 8300000, guid: 73719e72b70d6214b82028949c8ebf5a, type: 3}
+    - message: Followed up by a letter i, g.
+      audio: {fileID: 8300000, guid: 9ebe0c164d286ff46852dac42848e2af, type: 3}
+    - message: 'Since F is the initial letter, type it as a capital letter. Remember
+        to Capitalize a letter, you have to press dot 6 before the corresponding
+        letter. '
+      audio: {fileID: 8300000, guid: af6f064a6e5ebe84aa75cca88d0399f6, type: 3}
+    - message: The word Fig ends with the rime -ig.
+      audio: {fileID: 8300000, guid: 5c8a5597c16e87f489a7b1e192f83348, type: 3}
+    practiceWord: fig
+    requireCapitalFirstLetter: 1
+    promptMessage: Can you type the word Fig?
+    promptAudio: {fileID: 8300000, guid: 085eea73fa972ce469523ca3fc3b8ce2, type: 3}
+    successMessage: That is Correct!
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongMessage: Wrong Answer, Please Try Again.
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word is Fig. Begin with a capital F, then type
+      i, and g.
+    supportAudio: {fileID: 8300000, guid: 30912dfa3403ded4b8bd651c62baf092, type: 3}
+  - title: Dig
+    categoryLabel: LESSON
+    lessonImage: {fileID: 0}
+    pageType: 1
+    informationBeats:
+    - message: The next word you're going to learn is the word Dig.
+      audio: {fileID: 8300000, guid: 87c69cc5bc137e448ac2a7a2410e5e0b, type: 3}
+    - message: Dig means to use your hands or a shovel to move dirt and make a hole.
+      audio: {fileID: 8300000, guid: 4a2564b38f745d74287dffc951d20625, type: 3}
+    - message: The word Dig begins with the initial letter D.
+      audio: {fileID: 8300000, guid: 0cd6b0b4410e7554397608ddf37476b5, type: 3}
+    - message: Followed up by a letter i, g.
+      audio: {fileID: 8300000, guid: 9ebe0c164d286ff46852dac42848e2af, type: 3}
+    - message: 'Since D is the initial letter, type it as a capital letter. Remember
+        to Capitalize a letter, you have to press dot 6 before the corresponding
+        letter. '
+      audio: {fileID: 8300000, guid: 7f9f63fefbd79b741b60f797ada12823, type: 3}
+    - message: The word Dig ends with the rime -ig.
+      audio: {fileID: 8300000, guid: 8d0ce7f78c83bb44889876c2b3c8db1e, type: 3}
+    practiceWord: dig
+    requireCapitalFirstLetter: 1
+    promptMessage: Can you type the word Dig?
+    promptAudio: {fileID: 8300000, guid: 2087caf4beeb48047958542e40426d38, type: 3}
+    successMessage: That is Correct!
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongMessage: Wrong Answer, Please Try Again.
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word is Dig. Begin with a capital D, then type
+      i, and g.
+    supportAudio: {fileID: 8300000, guid: c6240bbebfff72544bf0fb1e58d93768, type: 3}
+  - title: Gig
+    categoryLabel: LESSON
+    lessonImage: {fileID: 0}
+    pageType: 1
+    informationBeats:
+    - message: The next word you're going to learn is the word Gig.
+      audio: {fileID: 8300000, guid: 2c74d9fa999ab804c8a9ea1c12ab5960, type: 3}
+    - message: A gig is a job where someone plays music so you can clap and dance.
+      audio: {fileID: 8300000, guid: a0a536e097a042845ba7eed5ebd84bc3, type: 3}
+    - message: The word Gig begins with the initial letter G.
+      audio: {fileID: 8300000, guid: cb5d56a5d3e355a4796a9e3e821e743c, type: 3}
+    - message: Followed up by a letter i, g.
+      audio: {fileID: 8300000, guid: 9ebe0c164d286ff46852dac42848e2af, type: 3}
+    - message: 'Since G is the initial letter, type it as a capital letter. Remember
+        to Capitalize a letter, you have to press dot 6 before the corresponding
+        letter. '
+      audio: {fileID: 8300000, guid: 31313ff50ffa387498932f84420fa39d, type: 3}
+    - message: The word Gig ends with the rime -ig.
+      audio: {fileID: 8300000, guid: a8b4afd13c5863e4fa9360bdd947a0c3, type: 3}
+    practiceWord: gig
+    requireCapitalFirstLetter: 1
+    promptMessage: Can you type the word Gig?
+    promptAudio: {fileID: 8300000, guid: 924c49e8f4c6b5f419a150256c5e9a73, type: 3}
+    successMessage: That is Correct!
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongMessage: Wrong Answer, Please Try Again.
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word is Gig. Begin with a capital G, then type
+      i, and g.
+    supportAudio: {fileID: 8300000, guid: 5ee8a47da7de68248968773f42fc7adb, type: 3}
+  - title: Lip
+    categoryLabel: LESSON
+    lessonImage: {fileID: 0}
+    pageType: 1
+    informationBeats:
+    - message: The next word you're going to learn is the word Lip.
+      audio: {fileID: 8300000, guid: 8554009581d020644bdaa58ba0c41770, type: 3}
+    - message: Your lip is the soft part around your mouth that helps you talk and
+        eat.
+      audio: {fileID: 8300000, guid: 1d42c55a526230d429d73f20a5c73246, type: 3}
+    - message: The word Lip begins with the initial letter L.
+      audio: {fileID: 8300000, guid: 464fc5173b2f96445a35e84d6ea48b91, type: 3}
+    - message: Followed up by a letter i, p.
+      audio: {fileID: 8300000, guid: fe893d47eb4d0474882880cd265f0e7d, type: 3}
+    - message: 'Since L is the initial letter, type it as a capital letter. Remember
+        to Capitalize a letter, you have to press dot 6 before the corresponding
+        letter. '
+      audio: {fileID: 8300000, guid: 2b81a3bedab57fc4dbf10222644ced5c, type: 3}
+    - message: The word Lip ends with the rime -ip.
+      audio: {fileID: 8300000, guid: 9d3ccfd5277b72d48825736e7c081e4d, type: 3}
+    practiceWord: lip
+    requireCapitalFirstLetter: 1
+    promptMessage: Can you type the word Lip?
+    promptAudio: {fileID: 8300000, guid: 396583c2bc6641c4e8bdb2fba33988df, type: 3}
+    successMessage: That is Correct!
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongMessage: Wrong Answer, Please Try Again.
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word is Lip. Begin with a capital L, then type
+      i, and p.
+    supportAudio: {fileID: 8300000, guid: 11fde7a995535824ba41637195d9d41e, type: 3}
+  - title: Hip
+    categoryLabel: LESSON
+    lessonImage: {fileID: 0}
+    pageType: 1
+    informationBeats:
+    - message: The next word you're going to learn is the word Hip.
+      audio: {fileID: 8300000, guid: bdf1fe452283e8b4f932467680745bc5, type: 3}
+    - message: Your hip is the hard bone on your side that helps you stand and walk.
+      audio: {fileID: 8300000, guid: 8f85b06c58f8d3340a6ae3270278d262, type: 3}
+    - message: The word Hip begins with the initial letter H.
+      audio: {fileID: 8300000, guid: 46141a39f9ae9b848948eaa056ffe9c8, type: 3}
+    - message: Followed up by a letter i, p.
+      audio: {fileID: 8300000, guid: fe893d47eb4d0474882880cd265f0e7d, type: 3}
+    - message: 'Since H is the initial letter, type it as a capital letter. Remember
+        to Capitalize a letter, you have to press dot 6 before the corresponding
+        letter. '
+      audio: {fileID: 8300000, guid: 4ced1b82ca3bc974eb09c9774d421ab7, type: 3}
+    - message: The word Hip ends with the rime -ip.
+      audio: {fileID: 8300000, guid: 75daf4953aafda14fb6daab0b2cd7a54, type: 3}
+    practiceWord: hip
+    requireCapitalFirstLetter: 1
+    promptMessage: Can you type the word Hip?
+    promptAudio: {fileID: 8300000, guid: 8567ec040714fbd4496338c24fac67c6, type: 3}
+    successMessage: That is Correct!
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongMessage: Wrong Answer, Please Try Again.
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word is Hip. Begin with a capital H, then type
+      i, and p.
+    supportAudio: {fileID: 8300000, guid: 31fab92eb85d06b45afdbe5829b38463, type: 3}
+  - title: Sip
+    categoryLabel: LESSON
+    lessonImage: {fileID: 0}
+    pageType: 1
+    informationBeats:
+    - message: The next word you're going to learn is the word Sip.
+      audio: {fileID: 8300000, guid: 4326d756b9962834fbdb164f273718b5, type: 3}
+    - message: Sip means to drink just a little bit of something slowly.
+      audio: {fileID: 8300000, guid: 93b65ee09a8a8034d85986296628d15d, type: 3}
+    - message: The word Sip begins with the initial letter S.
+      audio: {fileID: 8300000, guid: cc174d62ff9eb624bab9045a055a212e, type: 3}
+    - message: Followed up by a letter i, p.
+      audio: {fileID: 8300000, guid: fe893d47eb4d0474882880cd265f0e7d, type: 3}
+    - message: 'Since S is the initial letter, type it as a capital letter. Remember
+        to Capitalize a letter, you have to press dot 6 before the corresponding
+        letter. '
+      audio: {fileID: 8300000, guid: 15c0fb37365304c409278ff24d6a43ed, type: 3}
+    - message: The word Sip ends with the rime -ip.
+      audio: {fileID: 8300000, guid: 71f6d2859b9584343814bde9a140febd, type: 3}
+    practiceWord: sip
+    requireCapitalFirstLetter: 1
+    promptMessage: Can you type the word Sip?
+    promptAudio: {fileID: 8300000, guid: 2e23ff00d44dab343a9bfa02d6c60da3, type: 3}
+    successMessage: That is Correct!
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongMessage: Wrong Answer, Please Try Again.
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word is Sip. Begin with a capital S, then type
+      i, and p.
+    supportAudio: {fileID: 8300000, guid: 0350c054b8ade3d4dab5b7ebc068bb3a, type: 3}
+  - title: Tip
+    categoryLabel: LESSON
+    lessonImage: {fileID: 0}
+    pageType: 1
+    informationBeats:
+    - message: The next word you're going to learn is the word Tip.
+      audio: {fileID: 8300000, guid: 5822ef08607e7dd4280a1b47a2c81038, type: 3}
+    - message: A tip is the very end of something, like the pointy end of your finger.
+      audio: {fileID: 8300000, guid: b6831bc7f4f55324bba0a5528e4fc017, type: 3}
+    - message: The word Tip begins with the initial letter T.
+      audio: {fileID: 8300000, guid: 242e5d48cea79fe43aa54729a295c0b3, type: 3}
+    - message: Followed up by a letter i, p.
+      audio: {fileID: 8300000, guid: fe893d47eb4d0474882880cd265f0e7d, type: 3}
+    - message: 'Since T is the initial letter, type it as a capital letter. Remember
+        to Capitalize a letter, you have to press dot 6 before the corresponding
+        letter. '
+      audio: {fileID: 8300000, guid: 6b57981652b144b479acc1f1b9f560ff, type: 3}
+    - message: The word Tip ends with the rime -ip.
+      audio: {fileID: 8300000, guid: ba9d4b8f92a784f4182370f6e0f43657, type: 3}
+    practiceWord: tip
+    requireCapitalFirstLetter: 1
+    promptMessage: Can you type the word Tip?
+    promptAudio: {fileID: 8300000, guid: 8bf5371d34d03864599bef2c5529424e, type: 3}
+    successMessage: That is Correct!
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongMessage: Wrong Answer, Please Try Again.
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word is Tip. Begin with a capital T, then type
+      i, and p.
+    supportAudio: {fileID: 8300000, guid: 08647014ec135f0479825098282e3f41, type: 3}
+  - title: Dip
+    categoryLabel: LESSON
+    lessonImage: {fileID: 0}
+    pageType: 1
+    informationBeats:
+    - message: The next word you're going to learn is the word Dip.
+      audio: {fileID: 8300000, guid: 0a678a1cf1380fc4a98a647715ac8476, type: 3}
+    - message: Dip means to put something down into water or sauce and pull it back
+        up.
+      audio: {fileID: 8300000, guid: 96b9cc44daa411a429ea6039d96fdd3e, type: 3}
+    - message: The word Dip begins with the initial letter D.
+      audio: {fileID: 8300000, guid: 342a794f0a48fca479c40055e1ef6ade, type: 3}
+    - message: Followed up by a letter i, p.
+      audio: {fileID: 8300000, guid: fe893d47eb4d0474882880cd265f0e7d, type: 3}
+    - message: 'Since D is the initial letter, type it as a capital letter. Remember
+        to Capitalize a letter, you have to press dot 6 before the corresponding
+        letter. '
+      audio: {fileID: 8300000, guid: 7f9f63fefbd79b741b60f797ada12823, type: 3}
+    - message: The word Dip ends with the rime -ip.
+      audio: {fileID: 8300000, guid: 82b85452274bf9247bf6142e13be42a4, type: 3}
+    practiceWord: dip
+    requireCapitalFirstLetter: 1
+    promptMessage: Can you type the word Dip?
+    promptAudio: {fileID: 8300000, guid: ba56f1b3054338147808d3071167093f, type: 3}
+    successMessage: That is Correct!
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongMessage: Wrong Answer, Please Try Again.
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word is Dip. Begin with a capital D, then type
+      i, and p.
+    supportAudio: {fileID: 8300000, guid: 3433df6faf02d4042a4c22d525bf88dc, type: 3}
+  - title: Bin
+    categoryLabel: LESSON
+    lessonImage: {fileID: 0}
+    pageType: 1
+    informationBeats:
+    - message: The next word you're going to learn is the word Bin.
+      audio: {fileID: 8300000, guid: 8a3343ac0a3ed6c42a326dfb0a1b3955, type: 3}
+    - message: A bin is a box or can where you throw things away.
+      audio: {fileID: 8300000, guid: 67fcb94b947c98547bef6a4e57fdcf50, type: 3}
+    - message: The word Bin begins with the initial letter B.
+      audio: {fileID: 8300000, guid: fe0e44e3dcb457e46880f5882a6db61c, type: 3}
+    - message: Followed up by a letter i, n.
+      audio: {fileID: 8300000, guid: 959b796c5339c1543905c82c6ad86779, type: 3}
+    - message: 'Since B is the initial letter, type it as a capital letter. Remember
+        to Capitalize a letter, you have to press dot 6 before the corresponding
+        letter. '
+      audio: {fileID: 8300000, guid: a283dde9b8c68124a8f104ba3ff4545f, type: 3}
+    - message: The word Bin ends with the rime -in.
+      audio: {fileID: 8300000, guid: c01def00f5396e849ba647eaaeb29224, type: 3}
+    practiceWord: bin
+    requireCapitalFirstLetter: 1
+    promptMessage: Can you type the word Bin?
+    promptAudio: {fileID: 8300000, guid: efd22b8f93a01584aaf57e04c6888459, type: 3}
+    successMessage: That is Correct!
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongMessage: Wrong Answer, Please Try Again.
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word is Bin. Begin with a capital B, then type
+      i, and n.
+    supportAudio: {fileID: 8300000, guid: 93c47381e59d54a4d830e0157b9bff88, type: 3}
+  - title: Pin
+    categoryLabel: LESSON
+    lessonImage: {fileID: 0}
+    pageType: 1
+    informationBeats:
+    - message: The next word you're going to learn is the word Pin.
+      audio: {fileID: 8300000, guid: e938448dafb798b4e8c9a15da4dc0320, type: 3}
+    - message: A pin is a tiny piece of metal with a sharp point that can poke you.
+      audio: {fileID: 8300000, guid: 9bd313ac471098a40bb76d90263b740f, type: 3}
+    - message: The word Pin begins with the initial letter P.
+      audio: {fileID: 8300000, guid: e689bfdc1656cd9468b84b955e091d7f, type: 3}
+    - message: Followed up by a letter i, n.
+      audio: {fileID: 8300000, guid: 959b796c5339c1543905c82c6ad86779, type: 3}
+    - message: 'Since P is the initial letter, type it as a capital letter. Remember
+        to Capitalize a letter, you have to press dot 6 before the corresponding
+        letter. '
+      audio: {fileID: 8300000, guid: 86a42694764dafd459dc9cbdecd6ea95, type: 3}
+    - message: The word Pin ends with the rime -in.
+      audio: {fileID: 8300000, guid: c3d17acde00fa2d408553faffb156461, type: 3}
+    practiceWord: pin
+    requireCapitalFirstLetter: 1
+    promptMessage: Can you type the word Pin?
+    promptAudio: {fileID: 8300000, guid: 61f5e1c25bb6dda418b5b56a963fe063, type: 3}
+    successMessage: That is Correct!
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongMessage: Wrong Answer, Please Try Again.
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word is Pin. Begin with a capital P, then type
+      i, and n.
+    supportAudio: {fileID: 8300000, guid: ed8f4ba5eb26fad44a9d83eda84c9c6b, type: 3}
+  - title: Fin
+    categoryLabel: LESSON
+    lessonImage: {fileID: 0}
+    pageType: 1
+    informationBeats:
+    - message: The next word you're going to learn is the word Fin.
+      audio: {fileID: 8300000, guid: 3952bf83bbc072643aa9a16d6b78d651, type: 3}
+    - message: A fin is the flat part on a fish that helps it swim through water.
+      audio: {fileID: 8300000, guid: 9030593fce26c3940b1a9380b2489832, type: 3}
+    - message: The word Fin begins with the initial letter F.
+      audio: {fileID: 8300000, guid: 24c13dc5c606c854e8cd3dd23269b6c2, type: 3}
+    - message: Followed up by a letter i, n.
+      audio: {fileID: 8300000, guid: 959b796c5339c1543905c82c6ad86779, type: 3}
+    - message: 'Since F is the initial letter, type it as a capital letter. Remember
+        to Capitalize a letter, you have to press dot 6 before the corresponding
+        letter. '
+      audio: {fileID: 8300000, guid: af6f064a6e5ebe84aa75cca88d0399f6, type: 3}
+    - message: The word Fin ends with the rime -in.
+      audio: {fileID: 8300000, guid: 707c62c700d92484ba76f706be47b249, type: 3}
+    practiceWord: fin
+    requireCapitalFirstLetter: 1
+    promptMessage: Can you type the word Fin?
+    promptAudio: {fileID: 8300000, guid: 3685d6f6d02b4c741a4ca8a3b9c46fba, type: 3}
+    successMessage: That is Correct!
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongMessage: Wrong Answer, Please Try Again.
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word is Fin. Begin with a capital F, then type
+      i, and n.
+    supportAudio: {fileID: 8300000, guid: afcab374b9e76f546bacb0cf8f120e7a, type: 3}
+  - title: Tin
+    categoryLabel: LESSON
+    lessonImage: {fileID: 0}
+    pageType: 1
+    informationBeats:
+    - message: The next word you're going to learn is the word Tin.
+      audio: {fileID: 8300000, guid: eb78db9a0a251374d9c5e6c3b4cc4b63, type: 3}
+    - message: Tin is a type of metal can that feels cold and makes a clang sound.
+      audio: {fileID: 8300000, guid: 9c2fe4c05c220d9469c43d530d2f4844, type: 3}
+    - message: The word Tin begins with the initial letter T.
+      audio: {fileID: 8300000, guid: 495ce680d59eb07408dc58bb6e1d712e, type: 3}
+    - message: Followed up by a letter i, n.
+      audio: {fileID: 8300000, guid: 959b796c5339c1543905c82c6ad86779, type: 3}
+    - message: 'Since T is the initial letter, type it as a capital letter. Remember
+        to Capitalize a letter, you have to press dot 6 before the corresponding
+        letter. '
+      audio: {fileID: 8300000, guid: 6b57981652b144b479acc1f1b9f560ff, type: 3}
+    - message: The word Tin ends with the rime -in.
+      audio: {fileID: 8300000, guid: bc1af2f820378cb44a23c8e264d04e8b, type: 3}
+    practiceWord: tin
+    requireCapitalFirstLetter: 1
+    promptMessage: Can you type the word Tin?
+    promptAudio: {fileID: 8300000, guid: 9615fd4371b11984aa30bfe4f8cb688c, type: 3}
+    successMessage: That is Correct!
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongMessage: Wrong Answer, Please Try Again.
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word is Tin. Begin with a capital T, then type
+      i, and n.
+    supportAudio: {fileID: 8300000, guid: 07c3cd56f8c0ae04d98a0fc415b16986, type: 3}
+  - title: Win
+    categoryLabel: LESSON
+    lessonImage: {fileID: 0}
+    pageType: 1
+    informationBeats:
+    - message: The next word you're going to learn is the word Win.
+      audio: {fileID: 8300000, guid: 9f8597c1c7d534741878348a88595b85, type: 3}
+    - message: Win means you finished a game and did the best.
+      audio: {fileID: 8300000, guid: 96fd04efbe79c804499f36b59adf186d, type: 3}
+    - message: The word Win begins with the initial letter W.
+      audio: {fileID: 8300000, guid: 9e466d0df816b7849bc23c7581e90a73, type: 3}
+    - message: Followed up by a letter i, n.
+      audio: {fileID: 8300000, guid: 959b796c5339c1543905c82c6ad86779, type: 3}
+    - message: 'Since W is the initial letter, type it as a capital letter. Remember
+        to Capitalize a letter, you have to press dot 6 before the corresponding
+        letter. '
+      audio: {fileID: 8300000, guid: fe0352e7bf9b07c438f88827175e38a2, type: 3}
+    - message: The word Win ends with the rime -in.
+      audio: {fileID: 8300000, guid: 841c2f43c7d22f8489e8e3a3a6f3f758, type: 3}
+    practiceWord: win
+    requireCapitalFirstLetter: 1
+    promptMessage: Can you type the word Win?
+    promptAudio: {fileID: 8300000, guid: d8d4054049ff25c4396d451f20dc5fbe, type: 3}
+    successMessage: That is Correct!
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongMessage: Wrong Answer, Please Try Again.
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word is Win. Begin with a capital W, then type
+      i, and n.
+    supportAudio: {fileID: 8300000, guid: 289ba311357fe944a86599869289edbb, type: 3}
+  - title: Lid
+    categoryLabel: LESSON
+    lessonImage: {fileID: 0}
+    pageType: 1
+    informationBeats:
+    - message: The next word you're going to learn is the word Lid.
+      audio: {fileID: 8300000, guid: 89abcaf6f3d60704bafdf62ce342ec41, type: 3}
+    - message: A lid is the top part that covers a box or pot to keep things inside.
+      audio: {fileID: 8300000, guid: a653b59d735b98241ba9c44fc6d2031a, type: 3}
+    - message: The word Lid begins with the initial letter L.
+      audio: {fileID: 8300000, guid: 501e11f30ec5bb84eaa0c9fdde857c13, type: 3}
+    - message: Followed up by a letter i, d.
+      audio: {fileID: 8300000, guid: 6d6aebec700bf0245b29f50b7d27bdfa, type: 3}
+    - message: 'Since L is the initial letter, type it as a capital letter. Remember
+        to Capitalize a letter, you have to press dot 6 before the corresponding
+        letter. '
+      audio: {fileID: 8300000, guid: 2b81a3bedab57fc4dbf10222644ced5c, type: 3}
+    - message: The word Lid ends with the rime -id.
+      audio: {fileID: 8300000, guid: 80526baac6227f6459ed66f997c972c9, type: 3}
+    practiceWord: lid
+    requireCapitalFirstLetter: 1
+    promptMessage: Can you type the word Lid?
+    promptAudio: {fileID: 8300000, guid: 89d284ff0d0b8894b8dc8df7ade75d9f, type: 3}
+    successMessage: That is Correct!
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongMessage: Wrong Answer, Please Try Again.
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word is Lid. Begin with a capital L, then type
+      i, and d.
+    supportAudio: {fileID: 8300000, guid: 05d9f65e8ea53eb4692dfbcf5d7f0b0a, type: 3}
+  - title: Hid
+    categoryLabel: LESSON
+    lessonImage: {fileID: 0}
+    pageType: 1
+    informationBeats:
+    - message: The next word you're going to learn is the word Hid.
+      audio: {fileID: 8300000, guid: 18dcc96d91dd65846b2a5c87615308bb, type: 3}
+    - message: Hid means you went somewhere quiet so no one could find you.
+      audio: {fileID: 8300000, guid: 0bf015a654be71a47b6952ec371f00f4, type: 3}
+    - message: The word Hid begins with the initial letter H.
+      audio: {fileID: 8300000, guid: 0d527736bdd72fb4585a8fb8f3e0f70d, type: 3}
+    - message: Followed up by a letter i, d.
+      audio: {fileID: 8300000, guid: 6d6aebec700bf0245b29f50b7d27bdfa, type: 3}
+    - message: 'Since H is the initial letter, type it as a capital letter. Remember
+        to Capitalize a letter, you have to press dot 6 before the corresponding
+        letter. '
+      audio: {fileID: 8300000, guid: 4ced1b82ca3bc974eb09c9774d421ab7, type: 3}
+    - message: The word Hid ends with the rime -id.
+      audio: {fileID: 8300000, guid: b0015d4c74503df46be468562a2089f3, type: 3}
+    practiceWord: hid
+    requireCapitalFirstLetter: 1
+    promptMessage: Can you type the word Hid?
+    promptAudio: {fileID: 8300000, guid: ab0426c44c6fc1d4a80a3b4a29d7283f, type: 3}
+    successMessage: That is Correct!
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongMessage: Wrong Answer, Please Try Again.
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word is Hid. Begin with a capital H, then type
+      i, and d.
+    supportAudio: {fileID: 8300000, guid: ef51f796959b3f845bf0c01abd744f96, type: 3}
+  - title: Mid
+    categoryLabel: LESSON
+    lessonImage: {fileID: 0}
+    pageType: 1
+    informationBeats:
+    - message: The next word you're going to learn is the word Mid.
+      audio: {fileID: 8300000, guid: 9580778dccb91154480784306c6b89f6, type: 3}
+    - message: Mid means right in the middle, not at the start and not at the end.
+      audio: {fileID: 8300000, guid: ef982857b7c4d58439b20a482680eaa4, type: 3}
+    - message: The word Mid begins with the initial letter M.
+      audio: {fileID: 8300000, guid: 70ece1f2c658e404badbf0bb90bfc9e7, type: 3}
+    - message: Followed up by a letter i, d.
+      audio: {fileID: 8300000, guid: 6d6aebec700bf0245b29f50b7d27bdfa, type: 3}
+    - message: 'Since M is the initial letter, type it as a capital letter. Remember
+        to Capitalize a letter, you have to press dot 6 before the corresponding
+        letter. '
+      audio: {fileID: 8300000, guid: d82d4c87e88a4e142bf6cca23ef6758a, type: 3}
+    - message: The word Mid ends with the rime -id.
+      audio: {fileID: 8300000, guid: 3e1160334fa98ac4ca60ee3a18c98770, type: 3}
+    practiceWord: mid
+    requireCapitalFirstLetter: 1
+    promptMessage: Can you type the word Mid?
+    promptAudio: {fileID: 8300000, guid: e71ee3efed0f373449e5e4bba4606473, type: 3}
+    successMessage: That is Correct!
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongMessage: Wrong Answer, Please Try Again.
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word is Mid. Begin with a capital M, then type
+      i, and d.
+    supportAudio: {fileID: 8300000, guid: 20108f80e6f4ae447b342e4c32e98671, type: 3}
+  - title: Bid
+    categoryLabel: LESSON
+    lessonImage: {fileID: 0}
+    pageType: 1
+    informationBeats:
+    - message: The next word you're going to learn is the word Bid.
+      audio: {fileID: 8300000, guid: 807127881c0edfc4ebb54ac12dc38334, type: 3}
+    - message: Bid means to say how much you would pay for something.
+      audio: {fileID: 8300000, guid: ec0ba944d5ee3c94abbb80b407ba5ee4, type: 3}
+    - message: The word Bid begins with the initial letter B.
+      audio: {fileID: 8300000, guid: 8bba596edeabba34194651f8cf305b6b, type: 3}
+    - message: Followed up by a letter i, d.
+      audio: {fileID: 8300000, guid: 6d6aebec700bf0245b29f50b7d27bdfa, type: 3}
+    - message: 'Since B is the initial letter, type it as a capital letter. Remember
+        to Capitalize a letter, you have to press dot 6 before the corresponding
+        letter. '
+      audio: {fileID: 8300000, guid: a283dde9b8c68124a8f104ba3ff4545f, type: 3}
+    - message: The word Bid ends with the rime -id.
+      audio: {fileID: 8300000, guid: b5228eb22e8af8843a65a448e98f3838, type: 3}
+    practiceWord: bid
+    requireCapitalFirstLetter: 1
+    promptMessage: Can you type the word Bid?
+    promptAudio: {fileID: 8300000, guid: f71c4cb9647d2534a9fbec42bd03a11e, type: 3}
+    successMessage: That is Correct!
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongMessage: Wrong Answer, Please Try Again.
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word is Bid. Begin with a capital B, then type
+      i, and d.
+    supportAudio: {fileID: 8300000, guid: 93803fd47b4a75a4fa300a72756cf00a, type: 3}
+  - title: Rid
+    categoryLabel: LESSON
+    lessonImage: {fileID: 0}
+    pageType: 1
+    informationBeats:
+    - message: The next word you're going to learn is the word Rid.
+      audio: {fileID: 8300000, guid: 4e9fcded80231794da1df70f6ed37711, type: 3}
+    - message: "Rid means to throw something away so it\u2019s gone."
+      audio: {fileID: 8300000, guid: 15da0643de1d87b4fa49f48cf148a03f, type: 3}
+    - message: The word Rid begins with the initial letter R.
+      audio: {fileID: 8300000, guid: 903d410c08cd74f4bb232f455fec25d9, type: 3}
+    - message: Followed up by a letter i, d.
+      audio: {fileID: 8300000, guid: 6d6aebec700bf0245b29f50b7d27bdfa, type: 3}
+    - message: 'Since R is the initial letter, type it as a capital letter. Remember
+        to Capitalize a letter, you have to press dot 6 before the corresponding
+        letter. '
+      audio: {fileID: 8300000, guid: 3f3ab5208ccf09a4eb4e7dd67140bd5d, type: 3}
+    - message: The word Rid ends with the rime -id.
+      audio: {fileID: 8300000, guid: 017b8b43595adf54595bd103edf64dee, type: 3}
+    practiceWord: rid
+    requireCapitalFirstLetter: 1
+    promptMessage: Can you type the word Rid?
+    promptAudio: {fileID: 8300000, guid: f48e338d9a532e44aa958472d79affb2, type: 3}
+    successMessage: That is Correct!
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongMessage: Wrong Answer, Please Try Again.
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word is Rid. Begin with a capital R, then type
+      i, and d.
+    supportAudio: {fileID: 8300000, guid: ae5090f2699b1c648b9e7ca1671bc35c, type: 3}
+  - title: Bill
+    categoryLabel: LESSON
+    lessonImage: {fileID: 0}
+    pageType: 1
+    informationBeats:
+    - message: The next word you're going to learn is the word Bill.
+      audio: {fileID: 8300000, guid: 7794ab482aa576c45b2f7df1377c5fcf, type: 3}
+    - message: A bill is a piece of paper that tells you how much money to pay.
+      audio: {fileID: 8300000, guid: 153693661107d914482bf81f8c25ada1, type: 3}
+    - message: The word Bill begins with the initial letter B.
+      audio: {fileID: 8300000, guid: 8f43a64a386fb72479193174d18575e0, type: 3}
+    - message: Followed up by a letter i, l, l.
+      audio: {fileID: 8300000, guid: f2c2f02aee4070d4989da3ab5cc37cae, type: 3}
+    - message: 'Since B is the initial letter, type it as a capital letter. Remember
+        to Capitalize a letter, you have to press dot 6 before the corresponding
+        letter. '
+      audio: {fileID: 8300000, guid: a283dde9b8c68124a8f104ba3ff4545f, type: 3}
+    - message: The word Bill ends with the rime -ill.
+      audio: {fileID: 8300000, guid: 60d6206dca881084b8efab2badc8c9f2, type: 3}
+    practiceWord: bill
+    requireCapitalFirstLetter: 1
+    promptMessage: Can you type the word Bill?
+    promptAudio: {fileID: 8300000, guid: 987f4209c1f7be549bc2de5b88e6c6e4, type: 3}
+    successMessage: That is Correct!
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongMessage: Wrong Answer, Please Try Again.
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word is Bill. Begin with a capital B, then type
+      i, l, and l.
+    supportAudio: {fileID: 8300000, guid: fdc09ed9cb7bfe34d98b595bc740559a, type: 3}
+  - title: Pill
+    categoryLabel: LESSON
+    lessonImage: {fileID: 0}
+    pageType: 1
+    informationBeats:
+    - message: The next word you're going to learn is the word Pill.
+      audio: {fileID: 8300000, guid: 894e34f5b59953047b712b8bea84c92e, type: 3}
+    - message: "A pill is a small, form of medication you swallow to help you feel
+        better when you\u2019re sick."
+      audio: {fileID: 8300000, guid: 12da09082f4643a4a9236fe0ed271133, type: 3}
+    - message: The word Pill begins with the initial letter P.
+      audio: {fileID: 8300000, guid: c6c536fdeb0f4be4b87095387acbe808, type: 3}
+    - message: Followed up by a letter i, l, l.
+      audio: {fileID: 8300000, guid: f2c2f02aee4070d4989da3ab5cc37cae, type: 3}
+    - message: 'Since P is the initial letter, type it as a capital letter. Remember
+        to Capitalize a letter, you have to press dot 6 before the corresponding
+        letter. '
+      audio: {fileID: 8300000, guid: 86a42694764dafd459dc9cbdecd6ea95, type: 3}
+    - message: The word Pill ends with the rime -ill.
+      audio: {fileID: 8300000, guid: e07777c12170a7041ba85c1abf81fa42, type: 3}
+    practiceWord: pill
+    requireCapitalFirstLetter: 1
+    promptMessage: Can you type the word Pill?
+    promptAudio: {fileID: 8300000, guid: c10d7002dcbdeda4483fba542fda69b2, type: 3}
+    successMessage: That is Correct!
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongMessage: Wrong Answer, Please Try Again.
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word is Pill. Begin with a capital P, then type
+      i, l, and l.
+    supportAudio: {fileID: 8300000, guid: c2dc0414ee98ad248a341c14e945020d, type: 3}
+  - title: Sill
+    categoryLabel: LESSON
+    lessonImage: {fileID: 0}
+    pageType: 1
+    informationBeats:
+    - message: The next word you're going to learn is the word Sill.
+      audio: {fileID: 8300000, guid: bf999aedef3f9b34192bd330fbc82dcc, type: 3}
+    - message: A sill is the flat ledge under a window where you can put things.
+      audio: {fileID: 8300000, guid: c60675472870efd4880298db68660545, type: 3}
+    - message: The word Sill begins with the initial letter S.
+      audio: {fileID: 8300000, guid: 5c4bbc295f43ed943b3bab171c7449e8, type: 3}
+    - message: Followed up by a letter i, l, l.
+      audio: {fileID: 8300000, guid: f2c2f02aee4070d4989da3ab5cc37cae, type: 3}
+    - message: 'Since S is the initial letter, type it as a capital letter. Remember
+        to Capitalize a letter, you have to press dot 6 before the corresponding
+        letter. '
+      audio: {fileID: 8300000, guid: 15c0fb37365304c409278ff24d6a43ed, type: 3}
+    - message: The word Sill ends with the rime -ill.
+      audio: {fileID: 8300000, guid: 2db0adc0f0b5cb940a2b1581271a356c, type: 3}
+    practiceWord: sill
+    requireCapitalFirstLetter: 1
+    promptMessage: Can you type the word Sill?
+    promptAudio: {fileID: 8300000, guid: e8d2220a0177f5148a13c482f29f71fa, type: 3}
+    successMessage: That is Correct!
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongMessage: Wrong Answer, Please Try Again.
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word is Sill. Begin with a capital S, then type
+      i, l, and l.
+    supportAudio: {fileID: 8300000, guid: fd44ee466f5be414e95031aea77af913, type: 3}
+  - title: Hill
+    categoryLabel: LESSON
+    lessonImage: {fileID: 0}
+    pageType: 1
+    informationBeats:
+    - message: The next word you're going to learn is the word Hill.
+      audio: {fileID: 8300000, guid: 16580c5a83fc52041bdd695251d9306b, type: 3}
+    - message: A hill is a big pile of dirt or ground that goes up, up, up so you
+        can climb it.
+      audio: {fileID: 8300000, guid: f542fee8c8bec4a4ebbb23dcb90bacf5, type: 3}
+    - message: The word Hill begins with the initial letter H.
+      audio: {fileID: 8300000, guid: 5aaf39571c2673142980ce809a35bdd0, type: 3}
+    - message: Followed up by a letter i, l, l.
+      audio: {fileID: 8300000, guid: f2c2f02aee4070d4989da3ab5cc37cae, type: 3}
+    - message: 'Since H is the initial letter, type it as a capital letter. Remember
+        to Capitalize a letter, you have to press dot 6 before the corresponding
+        letter. '
+      audio: {fileID: 8300000, guid: 4ced1b82ca3bc974eb09c9774d421ab7, type: 3}
+    - message: The word Hill ends with the rime -ill.
+      audio: {fileID: 8300000, guid: 1e06866a0e2f55e4eb220c7e7c0278ad, type: 3}
+    practiceWord: hill
+    requireCapitalFirstLetter: 1
+    promptMessage: Can you type the word Hill?
+    promptAudio: {fileID: 8300000, guid: 13370e37fb3b9bc4296ce814c80dcb3b, type: 3}
+    successMessage: That is Correct!
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongMessage: Wrong Answer, Please Try Again.
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word is Hill. Begin with a capital H, then type
+      i, l, and l.
+    supportAudio: {fileID: 8300000, guid: 49f2baaab61aab34ab6df955c8dd1002, type: 3}
+  - title: Mill
+    categoryLabel: LESSON
+    lessonImage: {fileID: 0}
+    pageType: 1
+    informationBeats:
+    - message: The next word you're going to learn is the word Mill.
+      audio: {fileID: 8300000, guid: 693af77db52bad242a4d9cfb418d0e3c, type: 3}
+    - message: A mill is a building that makes a loud grinding sound to crush grain
+        into flour.
+      audio: {fileID: 8300000, guid: 1b908f7141426844490c395d541ab7ee, type: 3}
+    - message: The word Mill begins with the initial letter M.
+      audio: {fileID: 8300000, guid: 22a36c6ebefd1e34292fbcf27af51e86, type: 3}
+    - message: Followed up by a letter i, l, l.
+      audio: {fileID: 8300000, guid: f2c2f02aee4070d4989da3ab5cc37cae, type: 3}
+    - message: 'Since M is the initial letter, type it as a capital letter. Remember
+        to Capitalize a letter, you have to press dot 6 before the corresponding
+        letter. '
+      audio: {fileID: 8300000, guid: d82d4c87e88a4e142bf6cca23ef6758a, type: 3}
+    - message: The word Mill ends with the rime -ill.
+      audio: {fileID: 8300000, guid: 82faae8880d32de48adfbcbb5b1d5322, type: 3}
+    practiceWord: mill
+    requireCapitalFirstLetter: 1
+    promptMessage: Can you type the word Mill?
+    promptAudio: {fileID: 8300000, guid: 9aa1c5b8312ee854a9e7f49cb8d12a7a, type: 3}
+    successMessage: That is Correct!
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongMessage: Wrong Answer, Please Try Again.
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word is Mill. Begin with a capital M, then type
+      i, l, and l.
+    supportAudio: {fileID: 8300000, guid: 110851dc787266745b8920bc74617042, type: 3}
+  lessons:
+  - displayLabel: Hit
+    categoryLabel: Quiz
+    word: Hit
+    promptMessage: Number 1, Hit. Can you type the word Hit?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: 089483c36e8064d42a9397695082711c, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word Hit. Begin with a capital H, then type i,
+      and t.
+    supportAudio: {fileID: 8300000, guid: 05119401c3241f142b9dceaa4b09f51f, type: 3}
+  - displayLabel: Fit
+    categoryLabel: Quiz
+    word: Fit
+    promptMessage: Number 2, Fit. Can you type the word Fit?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: be3f072ef04913640b987c5aa9e475b4, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word Fit. Begin with a capital F, then type i,
+      and t.
+    supportAudio: {fileID: 8300000, guid: df47974862d935f43bcd14558706c8bf, type: 3}
+  - displayLabel: Pit
+    categoryLabel: Quiz
+    word: Pit
+    promptMessage: Number 3, Pit. Can you type the word Pit?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: c1d532e097cae1c4c8adea6477e2ac9f, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word Pit. Begin with a capital P, then type i,
+      and t.
+    supportAudio: {fileID: 8300000, guid: 4adcda2f89a54be468ed947cc7697a15, type: 3}
+  - displayLabel: Kit
+    categoryLabel: Quiz
+    word: Kit
+    promptMessage: Number 4, Kit. Can you type the word Kit?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: 4fcb00b2474d00849b7ae94ee7185983, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word Kit. Begin with a capital K, then type i,
+      and t.
+    supportAudio: {fileID: 8300000, guid: cb168894a96b37d44b5753fa2fd13a53, type: 3}
+  - displayLabel: Sit
+    categoryLabel: Quiz
+    word: Sit
+    promptMessage: Number 5, Sit. Can you type the word Sit?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: 6e0660adecd6eb640a5986ed2a4356b1, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word Sit. Begin with a capital S, then type i,
+      and t.
+    supportAudio: {fileID: 8300000, guid: 9f8489dc72d1b9545888ce592bbf9134, type: 3}
+  - displayLabel: Wig
+    categoryLabel: Quiz
+    word: Wig
+    promptMessage: Number 6, Wig. Can you type the word Wig?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: a83dec87d1fabcf4f89549d58a927172, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word Wig. Begin with a capital W, then type i,
+      and g.
+    supportAudio: {fileID: 8300000, guid: 63745be694c85844394d2438daae9259, type: 3}
+  - displayLabel: Pig
+    categoryLabel: Quiz
+    word: Pig
+    promptMessage: Number 7, Pig. Can you type the word Pig?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: ec807033e8bec2b4a8af847ca4dec274, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word Pig. Begin with a capital P, then type i,
+      and g.
+    supportAudio: {fileID: 8300000, guid: 3fb1c2b07747d834b8ab92292eb70e83, type: 3}
+  - displayLabel: Fig
+    categoryLabel: Quiz
+    word: Fig
+    promptMessage: Number 8, Fig. Can you type the word Fig?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: c089df1c0f9cdd54b9512aed0a7945fa, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word Fig. Begin with a capital F, then type i,
+      and g.
+    supportAudio: {fileID: 8300000, guid: e9a33b6659ae72f40a5eb247d90fceda, type: 3}
+  - displayLabel: Dig
+    categoryLabel: Quiz
+    word: Dig
+    promptMessage: Number 9, Dig. Can you type the word Dig?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: e78e459c724524242ac50e4a863bd53a, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word Dig. Begin with a capital D, then type i,
+      and g.
+    supportAudio: {fileID: 8300000, guid: d59e0cf4dd0c6e14886fb8047b36dbb0, type: 3}
+  - displayLabel: Gig
+    categoryLabel: Quiz
+    word: Gig
+    promptMessage: Number 10, Gig. Can you type the word Gig?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: 7ceb3e610aa8c6f41b15c30f5c263925, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word Gig. Begin with a capital G, then type i,
+      and g.
+    supportAudio: {fileID: 8300000, guid: 58ab3dd7107b7d74e9430cbbfe80d1d7, type: 3}
+  - displayLabel: Lip
+    categoryLabel: Quiz
+    word: Lip
+    promptMessage: Number 11, Lip. Can you type the word Lip?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: c1bd4f1f8c9f09f4c910a9a5e714df26, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word Lip. Begin with a capital L, then type i,
+      and p.
+    supportAudio: {fileID: 8300000, guid: e3158647f0d7da44e8b92387309e296f, type: 3}
+  - displayLabel: Hip
+    categoryLabel: Quiz
+    word: Hip
+    promptMessage: Number 12, Hip. Can you type the word Hip?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: e4d372567e7f85740a110524428a0274, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word Hip. Begin with a capital H, then type i,
+      and p.
+    supportAudio: {fileID: 8300000, guid: aa30737a5fa58ec4c854c54be58bcd2f, type: 3}
+  - displayLabel: Sip
+    categoryLabel: Quiz
+    word: Sip
+    promptMessage: Number 13, Sip. Can you type the word Sip?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: df3ed683b3d187d44a5a7b69cecce02e, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word Sip. Begin with a capital S, then type i,
+      and p.
+    supportAudio: {fileID: 8300000, guid: 2878e1cf7e5866c41b7d523128846b58, type: 3}
+  - displayLabel: Tip
+    categoryLabel: Quiz
+    word: Tip
+    promptMessage: Number 14, Tip. Can you type the word Tip?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: b0f9f9228b51dac44bb287f81d3c0a6e, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word Tip. Begin with a capital T, then type i,
+      and p.
+    supportAudio: {fileID: 8300000, guid: 72f50e46e7b29724081a5d71c8ee77b6, type: 3}
+  - displayLabel: Dip
+    categoryLabel: Quiz
+    word: Dip
+    promptMessage: Number 15, Dip. Can you type the word Dip?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: 312f408e78fe1a744bb34cd1e6c9b796, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word Dip. Begin with a capital D, then type i,
+      and p.
+    supportAudio: {fileID: 8300000, guid: 5f74456b80c68b44b9cd8fe25580b08e, type: 3}
+  - displayLabel: Bin
+    categoryLabel: Quiz
+    word: Bin
+    promptMessage: Number 16, Bin. Can you type the word Bin?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: 9eb9c657ec3f5404cb997c64c409f8c0, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word Bin. Begin with a capital B, then type i,
+      and n.
+    supportAudio: {fileID: 8300000, guid: f9a7058ecb86e5e42ad6d717977c3002, type: 3}
+  - displayLabel: Pin
+    categoryLabel: Quiz
+    word: Pin
+    promptMessage: Number 17, Pin. Can you type the word Pin?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: 0d8304dc13eb35f44bc90e4222ef5ffc, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word Pin. Begin with a capital P, then type i,
+      and n.
+    supportAudio: {fileID: 8300000, guid: a077d0b766e74eb4caa1a8cbf0f301e0, type: 3}
+  - displayLabel: Fin
+    categoryLabel: Quiz
+    word: Fin
+    promptMessage: Number 18, Fin. Can you type the word Fin?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: 3c583999054e35446a25e2b02e5e1571, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word Fin. Begin with a capital F, then type i,
+      and n.
+    supportAudio: {fileID: 8300000, guid: a00473ee84a41b84b843d0a8c50d5941, type: 3}
+  - displayLabel: Tin
+    categoryLabel: Quiz
+    word: Tin
+    promptMessage: Number 19, Tin. Can you type the word Tin?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: 0d40c8a7de471334d8929ce0dfb20d04, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word Tin. Begin with a capital T, then type i,
+      and n.
+    supportAudio: {fileID: 8300000, guid: 9c2dcbd1ec3e859478b835d12cb2a400, type: 3}
+  - displayLabel: Win
+    categoryLabel: Quiz
+    word: Win
+    promptMessage: Number 20, Win. Can you type the word Win?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: d70080fb93f8b3647a22e3d54ea6a11b, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word Win. Begin with a capital W, then type i,
+      and n.
+    supportAudio: {fileID: 8300000, guid: ff8110f2ff4d2fd408eb903eaa2d075f, type: 3}
+  - displayLabel: Lid
+    categoryLabel: Quiz
+    word: Lid
+    promptMessage: Number 21, Lid. Can you type the word Lid?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: cabd0ed813136ef478a48fcefafd3018, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word Lid. Begin with a capital L, then type i,
+      and d.
+    supportAudio: {fileID: 8300000, guid: 79cfffd25cfba9b42b16c5331c063fe9, type: 3}
+  - displayLabel: Hid
+    categoryLabel: Quiz
+    word: Hid
+    promptMessage: Number 22, Hid. Can you type the word Hid?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: d772741ba80c5c549804b2a19765876a, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word Hid. Begin with a capital H, then type i,
+      and d.
+    supportAudio: {fileID: 8300000, guid: a63413c0ee4acf044bebc0390dd3d1f6, type: 3}
+  - displayLabel: Mid
+    categoryLabel: Quiz
+    word: Mid
+    promptMessage: Number 23, Mid. Can you type the word Mid?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: 055dcbdc64f475a49b46eacd54f8193f, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word Mid. Begin with a capital M, then type i,
+      and d.
+    supportAudio: {fileID: 8300000, guid: 36f7be2c7bf8a9045844e6964070dcc0, type: 3}
+  - displayLabel: Bid
+    categoryLabel: Quiz
+    word: Bid
+    promptMessage: Number 24, Bid. Can you type the word Bid?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: 522b745cd766de641aa4fc2742450dc4, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word Bid. Begin with a capital B, then type i,
+      and d.
+    supportAudio: {fileID: 8300000, guid: a3c90a686faeee54d9295da304ed4b45, type: 3}
+  - displayLabel: Rid
+    categoryLabel: Quiz
+    word: Rid
+    promptMessage: Number 25, Rid. Can you type the word Rid?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: db755851bb369cb41a745029a74a330d, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word Rid. Begin with a capital R, then type i,
+      and d.
+    supportAudio: {fileID: 8300000, guid: 44c6f3355fc7b224b95a855c3668dcce, type: 3}
+  - displayLabel: Bill
+    categoryLabel: Quiz
+    word: Bill
+    promptMessage: Number 26, Bill. Can you type the word Bill?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: e3c6f8739e165e1489560fa063000800, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word Bill. Begin with a capital B, then type i,
+      l, and l.
+    supportAudio: {fileID: 8300000, guid: 9e99a870ddf7d1c4297c9592b63f4632, type: 3}
+  - displayLabel: Pill
+    categoryLabel: Quiz
+    word: Pill
+    promptMessage: Number 27, Pill. Can you type the word Pill?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: af5cd1903469ca542ad1849248eb85a5, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word Pill. Begin with a capital P, then type i,
+      l, and l.
+    supportAudio: {fileID: 8300000, guid: 072dd52daf566084ea911b85b13a6154, type: 3}
+  - displayLabel: Sill
+    categoryLabel: Quiz
+    word: Sill
+    promptMessage: Number 28, Sill. Can you type the word Sill?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: 08606d6f6e30b3747adb1aecd0d9a149, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word Sill. Begin with a capital S, then type i,
+      l, and l.
+    supportAudio: {fileID: 8300000, guid: ac67e9c2646353647aa00498bff3f0e6, type: 3}
+  - displayLabel: Hill
+    categoryLabel: Quiz
+    word: Hill
+    promptMessage: Number 29, Hill. Can you type the word Hill?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: 595753c1bdaec8146833618bcbc486d5, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word Hill. Begin with a capital H, then type i,
+      l, and l.
+    supportAudio: {fileID: 8300000, guid: 204b7a99b71746b4eba2f5be6360c099, type: 3}
+  - displayLabel: Mill
+    categoryLabel: Quiz
+    word: Mill
+    promptMessage: Number 30, Mill. Can you type the word Mill?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: 7e0e461347d834f43a32c03859f24b4b, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word Mill. Begin with a capital M, then type i,
+      l, and l.
+    supportAudio: {fileID: 8300000, guid: 61cd02da0ed92614195260918d08deba, type: 3}
+  delayAfterVoice: 0.35
+  noAudioTextDelay: 2
+  delayAfterCorrect: 0.75
+  mistakesBeforeSupport: 3
+  resetMistakesAfterSupport: 1
+  useTypewriterEffect: 1
+  defaultTypewriterCharacterDelay: 0.03
+  minSyncedCharacterDelay: 0.01
+  maxSyncedCharacterDelay: 0.12
+  waitForFullAudioBeforeContinuing: 1
+  logDebug: 1
 --- !u!1 &1697798611
 GameObject:
   m_ObjectHideFlags: 0
