@@ -66,16 +66,16 @@ namespace BraillePlay.GameMenu
 
         private IEnumerator LoadRoutine()
         {
-            studentNumber = UserSession.StudentNumber;
+            // FIX (Bug 1): don't cache studentNumber until UserSession actually
+            // has one. Previously this read UserSession.StudentNumber exactly
+            // once, here, right after Awake/Start - if ProgressManager's Start()
+            // ran before StudentLoginManager called UserSession.SetStudent(...),
+            // studentNumber was permanently cached as empty, and SaveRoutine()
+            // would then silently no-op forever, even after a successful login.
+            while (!UserSession.IsStudentLoggedIn)
+                yield return null;
 
-            if (string.IsNullOrEmpty(studentNumber))
-            {
-                Debug.LogWarning("[ProgressManager] No logged-in student number found - starting with default progress.");
-                progress = StudentProgress.CreateDefault();
-                IsLoaded = true;
-                OnProgressLoaded?.Invoke();
-                yield break;
-            }
+            studentNumber = UserSession.StudentNumber;
 
             Task<StudentProgress> loadTask = progressService.LoadProgressAsync(studentNumber);
             yield return new WaitUntil(() => loadTask.IsCompleted);

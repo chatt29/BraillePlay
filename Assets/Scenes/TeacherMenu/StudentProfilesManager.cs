@@ -17,8 +17,19 @@ public class StudentProfilesManager : MonoBehaviour
     [SerializeField] private StudentRowView rowPrefab;
     [SerializeField] private Transform contentParent;
 
-    private readonly FirestoreStudentService studentService = new FirestoreStudentService();
-    private readonly FirestoreProgressService progressService = new FirestoreProgressService();
+    private FirestoreStudentService studentService;
+    private FirestoreProgressService progressService;
+
+    private void Awake()
+    {
+        // Constructed here rather than as field initializers - Firestore's
+        // constructor checks Application.isPlaying internally, and Unity
+        // only allows that check from a lifecycle method (Awake/Start/etc),
+        // not from field initializers or a MonoBehaviour's implicit
+        // constructor.
+        studentService = new FirestoreStudentService();
+        progressService = new FirestoreProgressService();
+    }
 
     private void Start()
     {

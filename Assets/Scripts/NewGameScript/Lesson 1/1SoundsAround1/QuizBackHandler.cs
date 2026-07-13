@@ -37,8 +37,23 @@ public class QuizBackHandler : MonoBehaviour
 
     private void OnEnable()
     {
-        if (LongPressBackDetector.Instance != null)
-            LongPressBackDetector.Instance.OnLongPressBack += HandleLongPressBack;
+        // FIX (Bug 2): Unity only guarantees all Awake() calls finish before
+        // any Start() - it does NOT guarantee Awake() order between unrelated
+        // scripts. Previously this subscribed directly here, so if
+        // LongPressBackDetector.Awake() (which sets Instance) hadn't run yet
+        // at the moment this OnEnable() ran, the null-check just silently
+        // failed and never retried - the gesture was dead for the rest of the
+        // scene. Polling in a coroutine makes it safe regardless of ordering,
+        // and also makes it safe to re-enable this object later.
+        StartCoroutine(SubscribeWhenReady());
+    }
+
+    private System.Collections.IEnumerator SubscribeWhenReady()
+    {
+        while (LongPressBackDetector.Instance == null)
+            yield return null;
+
+        LongPressBackDetector.Instance.OnLongPressBack += HandleLongPressBack;
     }
 
     private void OnDisable()
