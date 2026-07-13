@@ -30,6 +30,9 @@ public class SoundsAround3 : MonoBehaviour
     // UI
     // -------------------------------------------------------------------------
 
+    [Header("Quiz Result Reporting")]
+    public QuizResultReporter resultReporter;
+
     [Header("UI")]
     public TMP_Text bubbleMessageText;
     public TMP_Text livePatternText;
@@ -520,6 +523,11 @@ public class SoundsAround3 : MonoBehaviour
         string finalMessage = $"Your score is {totalScore}, while your highest score is {highScore}.";
         yield return ShowBubbleMessageSynced(finalMessage, genericCompletedAudio, noAudioTextDelay);
         yield return PlayFinalScoreAudio();
+
+        if (resultReporter != null)
+            resultReporter.ReportScoreAndReturn(totalScore);
+        else
+            Debug.LogWarning("[SoundsAround3] No QuizResultReporter assigned - score won't be saved or returned to GameMenu.");
     }
 
     private IEnumerator PlayFinalScoreAudio()

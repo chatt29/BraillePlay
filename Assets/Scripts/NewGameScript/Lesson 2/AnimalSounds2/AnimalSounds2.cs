@@ -77,6 +77,9 @@ public class AnimalSounds2 : MonoBehaviour
     // UI
     // -------------------------------------------------------------------------
 
+    [Header("Quiz Result Reporting")]
+    public QuizResultReporter resultReporter;
+
     [Header("UI")]
     public TMP_Text bubbleMessageText;
     public TMP_Text displayLabelText;
@@ -720,6 +723,11 @@ public class AnimalSounds2 : MonoBehaviour
 
         yield return ShowBubbleMessageSynced(finalMessage, genericCompletedAudio, noAudioTextDelay);
         yield return PlayFinalScoreAudio();
+
+        if (resultReporter != null)
+            resultReporter.ReportScoreAndReturn(totalScore);
+        else
+            Debug.LogWarning("[AnimalSounds2] No QuizResultReporter assigned - score won't be saved or returned to GameMenu.");
     }
 
     // -------------------------------------------------------------------------

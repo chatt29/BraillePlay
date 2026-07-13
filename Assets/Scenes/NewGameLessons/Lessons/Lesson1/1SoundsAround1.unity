@@ -2495,8 +2495,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1330788240}
-  - component: {fileID: 1330788242}
   - component: {fileID: 1330788241}
+  - component: {fileID: 1330788242}
   m_Layer: 0
   m_Name: TTSManager
   m_TagString: Untagged
@@ -2896,7 +2896,7 @@ MonoBehaviour:
   resultReporter: {fileID: 689221804}
   confirmOverlay: {fileID: 1472856059}
   confirmText: {fileID: 245076417}
-  confirmMessage: Quit lesson? Press Enter to confirm. Press Escape to cancel.
+  confirmMessage: Quit lesson? Press Enter to confirm. Press Backspace to cancel.
 --- !u!1 &1586095473
 GameObject:
   m_ObjectHideFlags: 0
@@ -3055,7 +3055,7 @@ MonoBehaviour:
   leftKey: 276
   rightKey: 275
   pauseKey: 112
-  backKey: 27
+  backKey: 8
   repeatKey: 114
   submitKey: 13
   deleteOrNoKey: 8

@@ -5,10 +5,14 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class RimesAmAnAt : MonoBehaviour
+public class RimesAgApAd : MonoBehaviour
 {
     // -------------------------------------------------------------------------
-    // Standard Grade-1 English Braille alphabet (A-Z)
+    // Standard Grade-1 English Braille alphabet (A-Z), used to build the
+    // expected sequence of dot patterns for a whole word, one per letter.
+    // Each string is 6 characters long, one per dot in order (dot 1 .. dot 6),
+    // matching the pattern format already produced by BrailleMapping
+    // (e.g. "100000" = dot 1 only).
     // -------------------------------------------------------------------------
     public static readonly Dictionary<char, string> BrailleAlphabetPatterns = new Dictionary<char, string>
     {
@@ -21,22 +25,48 @@ public class RimesAmAnAt : MonoBehaviour
         { 'Y', "101111" }, { 'Z', "101011" },
     };
 
+    /// <summary>Braille capital indicator (Dot 6), typed immediately before a capitalized letter.</summary>
     public const string BrailleCapitalIndicatorPattern = "000001";
     public static readonly Dictionary<string, char> PatternToLetter =
     new Dictionary<string, char>()
-    {
-        { "100000",'A'}, { "110000",'B'}, { "100100",'C'}, { "100110",'D'},
-        { "100010",'E'}, { "110100",'F'}, { "110110",'G'}, { "110010",'H'},
-        { "010100",'I'}, { "010110",'J'}, { "101000",'K'}, { "111000",'L'},
-        { "101100",'M'}, { "101110",'N'}, { "101010",'O'}, { "111100",'P'},
-        { "111110",'Q'}, { "111010",'R'}, { "011100",'S'}, { "011110",'T'},
-        { "101001",'U'}, { "111001",'V'}, { "010111",'W'}, { "101101",'X'},
-        { "101111",'Y'}, { "101011",'Z'}
-    };
+{
+    { "100000",'A'},
+    { "110000",'B'},
+    { "100100",'C'},
+    { "100110",'D'},
+    { "100010",'E'},
+    { "110100",'F'},
+    { "110110",'G'},
+    { "110010",'H'},
+    { "010100",'I'},
+    { "010110",'J'},
+    { "101000",'K'},
+    { "111000",'L'},
+    { "101100",'M'},
+    { "101110",'N'},
+    { "101010",'O'},
+    { "111100",'P'},
+    { "111110",'Q'},
+    { "111010",'R'},
+    { "011100",'S'},
+    { "011110",'T'},
+    { "101001",'U'},
+    { "111001",'V'},
+    { "010111",'W'},
+    { "101101",'X'},
+    { "101111",'Y'},
+    { "101011",'Z'}
+};
 
     // -------------------------------------------------------------------------
-    // Lesson Pages — each page can be Information Only or Interactive Practice
+    // Lesson Pages — each page can be Information Only (just teaches, no
+    // input required) or Interactive Practice (teaches, then requires the
+    // learner to type a specific word in Braille, capital sign included,
+    // before moving on). Every page can show any number of "beats" — a
+    // message + its audio — played one after another, so a single page can
+    // hold an entire mini-lecture like the Lesson 9 example.
     // -------------------------------------------------------------------------
+
     public enum LessonPageType { InformationOnly, InteractivePractice }
 
     [Serializable]
@@ -67,7 +97,7 @@ public class RimesAmAnAt : MonoBehaviour
         public List<LessonInfoBeat> informationBeats = new List<LessonInfoBeat>();
 
         [Header("Interactive Practice (used only if Page Type = Interactive Practice)")]
-        [Tooltip("The word the learner must type, e.g. 'Ham'.")]
+        [Tooltip("The word the learner must type, e.g. 'Bell'.")]
         public string practiceWord = "";
 
         [Tooltip("If true, the first letter must be typed as a capital — preceded by the Braille capital indicator (Dot 6) — followed by the remaining letters in lowercase.")]
@@ -89,6 +119,11 @@ public class RimesAmAnAt : MonoBehaviour
         public string supportMessage;
         public AudioClip supportAudio;
 
+        /// <summary>
+        /// The expected Braille pattern sequence for practiceWord. If
+        /// requireCapitalFirstLetter is true, the capital indicator (Dot 6)
+        /// is inserted immediately before the first letter's pattern.
+        /// </summary>
         public List<string> GetTargetPatterns()
         {
             var patterns = new List<string>();
@@ -114,7 +149,9 @@ public class RimesAmAnAt : MonoBehaviour
     }
 
     // -------------------------------------------------------------------------
-    // Quiz Data — one entry per WORD
+    // Quiz Data — one entry per WORD (not per letter). The player must type
+    // every letter of the word, one Braille cell at a time; the whole word is
+    // only validated once all of its letters have been entered.
     // -------------------------------------------------------------------------
     [Serializable]
     public class BrailleWordLesson
@@ -126,8 +163,8 @@ public class RimesAmAnAt : MonoBehaviour
         public string categoryLabel = "BRAILLE WORD";
 
         [Header("Target Word")]
-        [Tooltip("The word to type. Capitalize only the first letter (e.g. 'Ham', 'Cat', 'Man').")]
-        public string word = "Ham";
+        [Tooltip("The word to type. Capitalize only the first letter (e.g. 'Bell', 'Cat', 'Apple').")]
+        public string word = "Bell";
 
         [Header("Messages")]
         [TextArea(2, 4)]
@@ -156,6 +193,7 @@ public class RimesAmAnAt : MonoBehaviour
 
         public AudioClip supportAudio;
 
+        /// <summary>The expected Braille pattern for each letter of the word, in order.</summary>
         public List<string> GetTargetPatterns()
         {
             var patterns = new List<string>();
@@ -189,6 +227,10 @@ public class RimesAmAnAt : MonoBehaviour
     // -------------------------------------------------------------------------
     // UI
     // -------------------------------------------------------------------------
+
+    [Header("Quiz Result Reporting")]
+    public QuizResultReporter resultReporter;
+
     [Header("UI")]
     public TMP_Text bubbleMessageText;
     public TMP_Text displayLabelText;
@@ -212,11 +254,12 @@ public class RimesAmAnAt : MonoBehaviour
     [Header("Quiz Score Settings")]
     public int fixedScore = 100;
     public int deductionPerMistake = 1;
-    public string highScoreKey = "RimesAmAnAtHighScore";
+    public string highScoreKey = "BrailleSoundsAroundHighScore";
 
     // -------------------------------------------------------------------------
     // Audio
     // -------------------------------------------------------------------------
+
     [Header("Audio")]
     public AudioSource voiceAudioSource;
     public AudioClip welcomeAudio;
@@ -236,18 +279,19 @@ public class RimesAmAnAt : MonoBehaviour
     // -------------------------------------------------------------------------
     // Scene Text
     // -------------------------------------------------------------------------
+
     [Header("Scene Text")]
     [TextArea(2, 5)]
-    public string welcomeMessage = "Welcome to Word Family Rimes!";
+    public string welcomeMessage = "Welcome to Braille Sounds Around!";
 
     [TextArea(2, 5)]
-    public string letsLearnMessage = "Let's learn words that rhyme.";
+    public string letsLearnMessage = "Let's type some words.";
 
     [TextArea(2, 5)]
-    public string completedMessage = "I'm so proud of you! You spelled all the -am, -an, and -at words!";
+    public string completedMessage = "Great job! You finished the lesson.";
 
     [TextArea(2, 5)]
-    public string repeatQuestionMessage = "You finished the lesson. Do you want to practice again? Press R to repeat or Y to finish.";
+    public string repeatQuestionMessage = "You finished the lesson. Do you want to repeat again? Press R to repeat or Y to finish.";
 
     [TextArea(2, 5)]
     public string lessonChoiceMessage =
@@ -258,6 +302,7 @@ public class RimesAmAnAt : MonoBehaviour
     // -------------------------------------------------------------------------
     // Lesson Flow
     // -------------------------------------------------------------------------
+
     [Header("Lesson Pages (Information Only / Interactive Practice)")]
     public List<LessonPage> lessonPages = new List<LessonPage>();
 
@@ -282,8 +327,9 @@ public class RimesAmAnAt : MonoBehaviour
     public bool logDebug = true;
 
     // -------------------------------------------------------------------------
-    // Private State - same as original script, no changes needed below
+    // Private State
     // -------------------------------------------------------------------------
+
     private int currentLessonIndex = -1;
     private int currentMistakeCount = 0;
     private int totalWrongCount = 0;
@@ -296,10 +342,14 @@ public class RimesAmAnAt : MonoBehaviour
     private bool waitingForChoiceAnswer = false;
     private bool waitingForLessonChoice = false;
 
+    // Braille patterns submitted so far for the QUIZ word currently being
+    // typed, one entry per completed letter/chord, in the order entered.
     private readonly List<string> currentTypedPatterns = new List<string>();
     private string currentTypedWord = "";
     private bool waitingForCapitalIndicator = true;
 
+    // --- Lesson Page interactive-practice state (separate from the quiz's,
+    //     so the two never interfere with each other) ---
     private int currentPageIndex = -1;
     private bool waitingForPagePracticeAnswer = false;
     private int pagePracticeMistakeCount = 0;
@@ -310,8 +360,10 @@ public class RimesAmAnAt : MonoBehaviour
     private Coroutine flowRoutine;
     private Coroutine bubbleTypeRoutine;
 
-    // Rest of the script is identical to your groupmate's - no changes needed
-    // I'll include it all so you can copy-paste directly
+    // -------------------------------------------------------------------------
+    // Unity Events
+    // -------------------------------------------------------------------------
+
     private void OnEnable()
     {
         BrailleMapping.OnBrailleChordSubmitted += HandleBrailleChordSubmitted;
@@ -337,11 +389,15 @@ public class RimesAmAnAt : MonoBehaviour
     private void Start()
     {
         if (logDebug)
-            Debug.Log("RimesAmAnAt started.");
+            Debug.Log("RimesEmEllEb started.");
 
         ResetQuizScore();
         RunFlow(BeginSceneFlow());
     }
+
+    // -------------------------------------------------------------------------
+    // Score (Quiz only — Lesson Page practice is never scored)
+    // -------------------------------------------------------------------------
 
     private void ResetQuizScore()
     {
@@ -384,6 +440,10 @@ public class RimesAmAnAt : MonoBehaviour
         UpdateScoreUI();
     }
 
+    // -------------------------------------------------------------------------
+    // Answer State Image
+    // -------------------------------------------------------------------------
+
     private void SetAnswerState(bool isCorrect)
     {
         if (answerStateImage == null) return;
@@ -407,6 +467,14 @@ public class RimesAmAnAt : MonoBehaviour
         }
     }
 
+    // -------------------------------------------------------------------------
+    // Coroutine Helper
+    // -------------------------------------------------------------------------
+
+    /// <summary>
+    /// Stops whatever flow coroutine is currently running and starts a new one.
+    /// Centralizing this avoids repeating the stop/start boilerplate everywhere.
+    /// </summary>
     private void RunFlow(IEnumerator routine)
     {
         if (flowRoutine != null)
@@ -414,6 +482,10 @@ public class RimesAmAnAt : MonoBehaviour
 
         flowRoutine = StartCoroutine(routine);
     }
+
+    // -------------------------------------------------------------------------
+    // Scene Flow
+    // -------------------------------------------------------------------------
 
     private IEnumerator BeginSceneFlow()
     {
@@ -426,6 +498,17 @@ public class RimesAmAnAt : MonoBehaviour
         StartLessonPage(0);
         yield break;
     }
+
+    // -------------------------------------------------------------------------
+    // LESSON PAGES — Information Only or Interactive Practice
+    //
+    // Each page: play its information beats in order, then (if it's an
+    // Interactive Practice page) ask the learner to type the practice word
+    // and don't move on until they get it right. Pages progress one at a
+    // time via StartLessonPage(index), the same flattened pattern the quiz
+    // below uses, so a wrong-answer retry never has to "resume" a suspended
+    // outer coroutine — it just re-asks directly.
+    // -------------------------------------------------------------------------
 
     private void StartLessonPage(int index)
     {
@@ -450,6 +533,7 @@ public class RimesAmAnAt : MonoBehaviour
     {
         ApplyLessonPageDisplay(page);
 
+        // Play every information beat in order (the "mini-lecture" part).
         foreach (LessonInfoBeat beat in page.informationBeats)
         {
             yield return ShowBubbleMessageSynced(beat.message, beat.audio, noAudioTextDelay);
@@ -458,6 +542,8 @@ public class RimesAmAnAt : MonoBehaviour
 
         if (page.pageType == LessonPageType.InteractivePractice)
         {
+            // Sets waitingForPagePracticeAnswer and returns; further progress
+            // is driven by HandleBrailleChordSubmitted from here on.
             yield return AskPagePracticeInput(page);
         }
         else
@@ -473,7 +559,7 @@ public class RimesAmAnAt : MonoBehaviour
 
         if (categoryText != null)
             categoryText.text = string.IsNullOrWhiteSpace(page.categoryLabel)
-               ? "LESSON"
+                ? "LESSON"
                 : page.categoryLabel;
 
         if (displayImageUI != null)
@@ -483,15 +569,21 @@ public class RimesAmAnAt : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Shows/speaks the practice prompt and starts waiting for the learner to
+    /// type the practice word. Used for the first ask and every re-ask after
+    /// a wrong answer or a support message.
+    /// </summary>
     private IEnumerator AskPagePracticeInput(LessonPage page)
     {
         string prompt = !string.IsNullOrWhiteSpace(page.promptMessage)
-           ? page.promptMessage
+            ? page.promptMessage
             : $"Now it's your turn. Can you type the word {page.practiceWord}?";
 
         yield return ShowBubbleMessageWithAudioSequence(prompt, noAudioTextDelay, page.promptAudio);
 
         currentPagePracticeTypedPatterns.Clear();
+
         currentPagePracticeTypedWord = "";
         pageWaitingForCapitalIndicator = true;
 
@@ -501,6 +593,11 @@ public class RimesAmAnAt : MonoBehaviour
         waitingForPagePracticeAnswer = true;
     }
 
+    /// <summary>
+    /// Accumulates one completed Braille letter/chord (or the capital
+    /// indicator) into the practice word currently being typed. Validated
+    /// only once as many entries have been typed as the target requires.
+    /// </summary>
     private void HandlePagePracticeLetterInput(string pattern)
     {
         if (!waitingForPagePracticeAnswer)
@@ -509,6 +606,7 @@ public class RimesAmAnAt : MonoBehaviour
         LessonPage page = lessonPages[currentPageIndex];
         List<string> targetPatterns = page.GetTargetPatterns();
 
+        // First input must be Capital Indicator
         if (pageWaitingForCapitalIndicator)
         {
             if (pattern != BrailleCapitalIndicatorPattern)
@@ -532,6 +630,7 @@ public class RimesAmAnAt : MonoBehaviour
 
         currentPagePracticeTypedPatterns.Add(pattern);
 
+        // Convert pattern into visible letter
         if (PatternToLetter.TryGetValue(pattern, out char letter))
         {
             if (currentPagePracticeTypedWord.Length == 0)
@@ -580,11 +679,11 @@ public class RimesAmAnAt : MonoBehaviour
     private IEnumerator HandlePagePracticeCorrectAnswer(LessonPage page)
     {
         string message = !string.IsNullOrWhiteSpace(page.successMessage)
-           ? page.successMessage
+            ? page.successMessage
             : $"Correct! That is {page.practiceWord}.";
 
         AudioClip clip = page.successAudio != null
-           ? page.successAudio
+            ? page.successAudio
             : genericCorrectAudio;
 
         yield return ShowBubbleMessageSynced(message, clip, noAudioTextDelay);
@@ -601,11 +700,11 @@ public class RimesAmAnAt : MonoBehaviour
     private IEnumerator HandlePagePracticeWrongAnswer(LessonPage page)
     {
         string message = !string.IsNullOrWhiteSpace(page.wrongMessage)
-           ? page.wrongMessage
+            ? page.wrongMessage
             : "That's not correct. Try again.";
 
         AudioClip clip = page.wrongAudio != null
-           ? page.wrongAudio
+            ? page.wrongAudio
             : genericTryAgainAudio;
 
         yield return ShowBubbleMessageSynced(message, clip, noAudioTextDelay);
@@ -630,7 +729,7 @@ public class RimesAmAnAt : MonoBehaviour
         else
         {
             message = page.requireCapitalFirstLetter
-               ? $"Here is some help. Remember to spell {page.practiceWord}, starting with a capital letter."
+                ? $"Here is some help. Remember to spell {page.practiceWord}, starting with a capital letter."
                 : $"Here is some help. Remember to spell {page.practiceWord}.";
         }
 
@@ -660,6 +759,10 @@ public class RimesAmAnAt : MonoBehaviour
         while (waitingForLessonChoice)
             yield return null;
     }
+
+    // -------------------------------------------------------------------------
+    // QUIZ — unchanged from before (scored, whole-word Braille typing).
+    // -------------------------------------------------------------------------
 
     private IEnumerator StartQuizAfterLesson()
     {
@@ -702,24 +805,43 @@ public class RimesAmAnAt : MonoBehaviour
         RunFlow(PlayLessonFromBeginning(lessons[currentLessonIndex]));
     }
 
+    // -------------------------------------------------------------------------
+    // Quiz Word Sequence
+    //
+    // Exact order:
+    //   1. Display Label
+    //   2. Category Label
+    //   3. Prompt Message (+ audio)  -> e.g. "Can you type the word Bell?"
+    //   4. Display Image    (shown alongside the prompt)
+    //   5. Wait for the player to type the WHOLE word, one letter at a time
+    //      (the word is validated only once every letter has been entered)
+    //   6. Success Message  -> handled in HandleCorrectAnswer
+    //   7. Wrong Message    -> handled in HandleWrongAnswer
+    //   8. Support Message (+ audio) -> only after 3 consecutive mistakes
+    // -------------------------------------------------------------------------
+
     private IEnumerator PlayLessonFromBeginning(BrailleWordLesson lesson)
     {
         ResetAnswerState();
         currentTypedPatterns.Clear();
 
+        // Steps 1, 2, 4: Display Label, Category Label, Display Image
         ApplyLessonDisplay(lesson);
 
+        // Step 3: Prompt Message + audio
         yield return ShowPromptMessage(lesson);
         yield return new WaitForSeconds(delayAfterVoice);
 
+        // Step 5: Wait for the whole word to be typed
         yield return AskForWordInput(lesson);
     }
 
+    /// <summary>Steps 1, 2, 4 — Display Label, Category Label, Display Image.</summary>
     private void ApplyLessonDisplay(BrailleWordLesson lesson)
     {
         if (displayLabelText != null)
             displayLabelText.text = !string.IsNullOrWhiteSpace(lesson.displayLabel)
-               ? lesson.displayLabel
+                ? lesson.displayLabel
                 : lesson.word;
 
         if (displayImageUI != null)
@@ -730,14 +852,15 @@ public class RimesAmAnAt : MonoBehaviour
 
         if (categoryText != null)
             categoryText.text = string.IsNullOrWhiteSpace(lesson.categoryLabel)
-               ? "BRAILLE WORD"
+                ? "BRAILLE WORD"
                 : lesson.categoryLabel;
     }
 
+    /// <summary>Step 3 — Prompt Message together with its intro/instruction audio.</summary>
     private IEnumerator ShowPromptMessage(BrailleWordLesson lesson)
     {
         string introMessage = !string.IsNullOrWhiteSpace(lesson.promptMessage)
-           ? lesson.promptMessage
+            ? lesson.promptMessage
             : $"Can you type the word {lesson.word}?";
 
         yield return ShowBubbleMessageWithAudioSequence(
@@ -748,9 +871,16 @@ public class RimesAmAnAt : MonoBehaviour
         );
     }
 
+    /// <summary>
+    /// Step 5 — marks the game as waiting for Braille input and clears the
+    /// in-progress letter buffer so the word is typed (and later validated)
+    /// from scratch. Used for the first ask and every re-ask after a wrong
+    /// answer or a support message.
+    /// </summary>
     private IEnumerator AskForWordInput(BrailleWordLesson lesson)
     {
         currentTypedPatterns.Clear();
+
         currentTypedWord = "";
         waitingForCapitalIndicator = true;
 
@@ -760,6 +890,13 @@ public class RimesAmAnAt : MonoBehaviour
 
         yield break;
     }
+
+    // -------------------------------------------------------------------------
+    // Input Handling — routes to Lesson Page practice or Quiz depending on
+    // which one is currently waiting for an answer. The two never overlap in
+    // time, but keeping separate flags/buffers means neither can interfere
+    // with the other's state.
+    // -------------------------------------------------------------------------
 
     private void HandleBrailleChordSubmitted(string submittedPattern)
     {
@@ -779,6 +916,11 @@ public class RimesAmAnAt : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Accumulates one completed Braille letter/chord into the QUIZ word
+    /// currently being typed. The word is only validated once as many
+    /// letters have been entered as the target word requires.
+    /// </summary>
     private void HandleWordLetterInput(string pattern)
     {
         if (!waitingForChoiceAnswer) return;
@@ -786,10 +928,12 @@ public class RimesAmAnAt : MonoBehaviour
         BrailleWordLesson lesson = lessons[currentLessonIndex];
         List<string> targetPatterns = lesson.GetTargetPatterns();
 
+        // First input must be the Capital Indicator
         if (waitingForCapitalIndicator)
         {
             if (pattern != BrailleCapitalIndicatorPattern)
             {
+                // Wrong first input
                 waitingForChoiceAnswer = false;
                 currentMistakeCount++;
                 AddMistake();
@@ -802,8 +946,10 @@ public class RimesAmAnAt : MonoBehaviour
             return;
         }
 
+        // Store the typed letter
         currentTypedPatterns.Add(pattern);
 
+        // Convert pattern into a visible letter
         if (PatternToLetter.TryGetValue(pattern, out char letter))
         {
             if (currentTypedWord.Length == 0)
@@ -816,8 +962,9 @@ public class RimesAmAnAt : MonoBehaviour
         }
 
         if (currentTypedPatterns.Count < targetPatterns.Count)
-            return;
+            return; // still typing the word — keep waiting for the remaining letters
 
+        // The word is fully typed — validate the whole thing now.
         waitingForChoiceAnswer = false;
 
         bool isCorrect = currentTypedPatterns.Count == targetPatterns.Count;
@@ -853,16 +1000,21 @@ public class RimesAmAnAt : MonoBehaviour
         }
     }
 
+    // -------------------------------------------------------------------------
+    // Correct / Wrong / Support (Quiz)
+    // -------------------------------------------------------------------------
+
+    /// <summary>Step 6 — Success Message, then advance to the next word.</summary>
     private IEnumerator HandleCorrectAnswer(BrailleWordLesson lesson)
     {
         SaveHighScoreIfNeeded();
 
         string message = !string.IsNullOrWhiteSpace(lesson.successMessage)
-           ? lesson.successMessage
+            ? lesson.successMessage
             : $"Correct! That is {lesson.word}.";
 
         AudioClip clip = lesson.successAudio != null
-           ? lesson.successAudio
+            ? lesson.successAudio
             : genericCorrectAudio;
 
         yield return ShowBubbleMessageSynced(message, clip, noAudioTextDelay);
@@ -876,18 +1028,21 @@ public class RimesAmAnAt : MonoBehaviour
         StartLesson(currentLessonIndex + 1);
     }
 
+    /// <summary>Step 7 — Wrong Message, then re-ask the same word (no full lesson restart).</summary>
     private IEnumerator HandleWrongAnswer(BrailleWordLesson lesson)
     {
         string message = !string.IsNullOrWhiteSpace(lesson.wrongMessage)
-           ? lesson.wrongMessage
+            ? lesson.wrongMessage
             : "Try again.";
 
         AudioClip clip = lesson.wrongAudio != null
-           ? lesson.wrongAudio
+            ? lesson.wrongAudio
             : genericTryAgainAudio;
 
         yield return ShowBubbleMessageSynced(message, clip, noAudioTextDelay);
 
+        // Restate which word to type before listening again — typing a whole
+        // word takes longer than a single letter, so a reminder helps.
         currentTypedWord = "";
         waitingForCapitalIndicator = true;
 
@@ -900,10 +1055,14 @@ public class RimesAmAnAt : MonoBehaviour
         yield return AskForWordInput(lesson);
     }
 
+    /// <summary>
+    /// Step 8 — after 3 consecutive mistakes, play the Support Message + audio
+    /// to help the player, reset the mistake streak, then re-ask the same word.
+    /// </summary>
     private IEnumerator HandleSupportThenRetry(BrailleWordLesson lesson)
     {
         string message = !string.IsNullOrWhiteSpace(lesson.supportMessage)
-           ? lesson.supportMessage
+            ? lesson.supportMessage
             : $"Here is some help. Listen carefully and try typing {lesson.word} again.";
 
         yield return ShowBubbleMessageSynced(message, lesson.supportAudio, noAudioTextDelay);
@@ -917,10 +1076,15 @@ public class RimesAmAnAt : MonoBehaviour
         yield return AskForWordInput(lesson);
     }
 
+    // -------------------------------------------------------------------------
+    // Repeat / Next handlers
+    // -------------------------------------------------------------------------
+
     private void HandleRepeat()
     {
         if (waitingForPagePracticeAnswer)
         {
+            // Restart the current page's practice prompt from scratch.
             LessonPage page = lessonPages[currentPageIndex];
             pagePracticeMistakeCount = 0;
             RunFlow(AskPagePracticeInput(page));
@@ -942,6 +1106,11 @@ public class RimesAmAnAt : MonoBehaviour
             return;
         }
 
+        // Ignore Repeat while a correct-answer transition to the next word is
+        // in progress (lessonActive is false during that window). Without this
+        // guard, a Repeat trigger fired here would stop the in-flight
+        // HandleCorrectAnswer coroutine before it calls StartLesson(index + 1),
+        // replaying the just-answered word instead of advancing.
         if (!lessonActive)
             return;
 
@@ -950,6 +1119,7 @@ public class RimesAmAnAt : MonoBehaviour
 
         BrailleWordLesson lesson = lessons[currentLessonIndex];
 
+        // Reset this word's state so it plays exactly like a fresh start.
         lessonActive = true;
         waitingForChoiceAnswer = false;
         currentMistakeCount = 0;
@@ -974,6 +1144,10 @@ public class RimesAmAnAt : MonoBehaviour
             return;
         }
     }
+
+    // -------------------------------------------------------------------------
+    // Scene Completion
+    // -------------------------------------------------------------------------
 
     private IEnumerator CompleteScene()
     {
@@ -1021,7 +1195,16 @@ public class RimesAmAnAt : MonoBehaviour
 
         yield return ShowBubbleMessageSynced(finalMessage, genericCompletedAudio, noAudioTextDelay);
         yield return PlayFinalScoreAudio();
+
+        if (resultReporter != null)
+            resultReporter.ReportScoreAndReturn(totalScore);
+        else
+            Debug.LogWarning("[RimesAgApAd] No QuizResultReporter assigned - score won't be saved or returned to GameMenu.");
     }
+
+    // -------------------------------------------------------------------------
+    // Final Score Audio
+    // -------------------------------------------------------------------------
 
     private IEnumerator PlayFinalScoreAudio()
     {
@@ -1069,6 +1252,10 @@ public class RimesAmAnAt : MonoBehaviour
         if (number < 0 || number >= numberAudios.Count) return null;
         return numberAudios[number];
     }
+
+    // -------------------------------------------------------------------------
+    // Bubble Text / Typewriter
+    // -------------------------------------------------------------------------
 
     private IEnumerator ShowBubbleMessageSynced(string message, AudioClip clip, float fallbackWait)
     {
