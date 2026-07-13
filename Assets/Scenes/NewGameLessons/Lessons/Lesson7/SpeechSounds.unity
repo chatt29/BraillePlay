@@ -2996,6 +2996,7 @@ MonoBehaviour:
   displayLabelText: {fileID: 843676732}
   categoryText: {fileID: 1155271827}
   livePatternText: {fileID: 1697798612}
+  typedWordText: {fileID: 0}
   displayImageUI: {fileID: 54352918}
   spelledWordText: {fileID: 1155271827}
   currentLetterPromptText: {fileID: 0}
@@ -3018,13 +3019,6 @@ MonoBehaviour:
   genericTryAgainAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
   genericCompletedAudio: {fileID: 8300000, guid: b73d53ef362a3534eb21642dde5f48c4, type: 3}
   repeatQuestionAudio: {fileID: 8300000, guid: a6489a828ae24e141a353f5d242c1b3c, type: 3}
-  lessonIntroAudio: {fileID: 8300000, guid: 53df5b85cf486d7499fe34e0a11d1358, type: 3}
-  lessonIntroMessage: "Today we're going to find the letter E! Can you hear it? In
-    the word bed, we say B-E-D. The E is right in the middle! Let's try another one.
-    Leg. L-E-G. Do you hear the E in the middle of leg? One more! Red. R-E-D. E is
-    in the middle again! When E is in the middle like this, we call it a C-E-C word.
-    That just means consonant, then E, then consonant. You\u2019re ready! Now let\u2019s
-    spell some E words together"
   yourScoreIsAudio: {fileID: 8300000, guid: 613a4ecd64752ee4c8844d8286dca545, type: 3}
   whileYourHighestScoreIsAudio: {fileID: 8300000, guid: 2525c179990406146becd993f00485ee, type: 3}
   numberAudios:
@@ -3129,11 +3123,32 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 31becc0a3e7892e468b4ac4372db4882, type: 3}
   - {fileID: 8300000, guid: caf77e0d1f468b64ab86183d4318a7f8, type: 3}
   - {fileID: 8300000, guid: 579c9253f6a5be6499ca8a1851d07f90, type: 3}
-  welcomeMessage: Welcome to Speech Sounds!
-  letsLearnMessage: 'Today we will learn words with E in the middle. '
+  welcomeMessage: Welcome to Speech Sounds Quiz!
+  letsLearnMessage: 'In this quiz you''re going to '
   completedMessage: Excellent spelling! You learned all about E in the middle today.
   repeatQuestionMessage: You finished Lesson 7, Speech Sounds. Do you want to repeat
     again? Press R to repeat or Next to go back to main menu.
+  lessonChoiceMessage: You have finished the lesson pages. Press repeat to repeat
+    them or press next to begin the quiz.
+  lessonChoiceAudio: {fileID: 0}
+  lessonPages:
+  - title: 
+    categoryLabel: 
+    lessonImage: {fileID: 0}
+    pageType: 0
+    informationBeats:
+    - message: Welcome to Lesson 7, Speech Sounds- RIme.
+      audio: {fileID: 0}
+    practiceWord: 
+    requireCapitalFirstLetter: 0
+    promptMessage: 
+    promptAudio: {fileID: 0}
+    successMessage: 
+    successAudio: {fileID: 0}
+    wrongMessage: 
+    wrongAudio: {fileID: 0}
+    supportMessage: 
+    supportAudio: {fileID: 0}
   words:
   - word: Jet
     displayImage: {fileID: 8151910413271119951, guid: c2e2cdc386106524183c4ea0a85ec5cc, type: 3}
