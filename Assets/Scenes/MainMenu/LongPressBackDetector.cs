@@ -2,30 +2,23 @@ using System;
 using UnityEngine;
 
 /// <summary>
-/// Global "hold Backspace to go back" gesture, as a singleton so any script
-/// in the scene (QuizBackHandler, SceneBackButton, etc.) can subscribe via
-/// LongPressBackDetector.Instance without needing a direct Inspector
-/// reference - matching the BrailleMapping/AccessibilityManager singleton
-/// pattern already used elsewhere in this project.
-///
-/// Only measures the hold and fires OnLongPressBack once it completes. It
-/// never decides what "going back" means - that's left to listeners.
+/// Detects a 3-second hold of Backspace and raises OnLongPressBack once per
+/// hold (re-arms only after the key is released). Cross-scene: lives as a
+/// persistent singleton, added once in the bootstrap scene alongside the
+/// other DontDestroyOnLoad managers. Detection only - never decides what
+/// "back" means, since that's different per scene.
 /// </summary>
 public class LongPressBackDetector : MonoBehaviour
 {
     public static LongPressBackDetector Instance { get; private set; }
 
-    [Tooltip("How many seconds Backspace must be held down before OnLongPressBack fires.")]
-    [SerializeField] private float holdSeconds = 3f;
-
-    [Tooltip("While true, holding Backspace is ignored entirely (e.g. set this while a confirm overlay that gives Backspace its own meaning, like Cancel, is open).")]
-    public bool suppressed = false;
-
-    /// <summary>Fires once per press-and-hold cycle, the moment the hold reaches holdSeconds.</summary>
     public event Action OnLongPressBack;
 
+    [SerializeField] private KeyCode backKey = KeyCode.Backspace;
+    [SerializeField] private float holdSeconds = 3f;
+
     private float heldTime;
-    private bool alreadyTriggeredThisPress;
+    private bool firedThisHold;
 
     private void Awake()
     {
@@ -36,38 +29,35 @@ public class LongPressBackDetector : MonoBehaviour
         }
 
         Instance = this;
-    }
 
-    private void OnDestroy()
-    {
-        if (Instance == this)
-            Instance = null;
+        // DontDestroyOnLoad only works on a root GameObject - detach if it
+        // was accidentally nested under Canvas or anything else.
+        if (transform.parent != null)
+        {
+            Debug.LogWarning("[LongPressBackDetector] Had a parent, which breaks DontDestroyOnLoad. Detaching to scene root.");
+            transform.SetParent(null);
+        }
+
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Update()
     {
-        KeyCode backKey = BrailleMapping.Instance != null ? BrailleMapping.Instance.deleteOrNoKey : KeyCode.Backspace;
+        if (Input.GetKey(backKey))
+        {
+            heldTime += Time.deltaTime;
 
-        if (suppressed || !Input.GetKey(backKey))
+            if (!firedThisHold && heldTime >= holdSeconds)
+            {
+                firedThisHold = true;
+                Debug.Log("[LongPressBackDetector] Long press detected - firing OnLongPressBack.");
+                OnLongPressBack?.Invoke();
+            }
+        }
+        else
         {
             heldTime = 0f;
-            alreadyTriggeredThisPress = false;
-            return;
+            firedThisHold = false;
         }
-
-        heldTime += Time.deltaTime;
-
-        if (!alreadyTriggeredThisPress && heldTime >= holdSeconds)
-        {
-            alreadyTriggeredThisPress = true;
-            OnLongPressBack?.Invoke();
-        }
-    }
-
-    /// <summary>Lets a listener re-arm the detector without requiring the key to be released first.</summary>
-    public void ResetHold()
-    {
-        heldTime = 0f;
-        alreadyTriggeredThisPress = false;
     }
 }

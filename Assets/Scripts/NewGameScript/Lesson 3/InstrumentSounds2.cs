@@ -93,10 +93,7 @@ public class InstrumentSounds2 : MonoBehaviour
     [Header("Quiz Score Settings")]
     public int fixedScore = 100;
     public int deductionPerMistake = 1;
-    public string highScoreKey = "InstrumentSounds2HighScore";
-
-    [Header("Quiz Result Reporting")]
-    public QuizResultReporter resultReporter;
+    public string highScoreKey = "InstrumentSoundsHighScore";
 
     // -------------------------------------------------------------------------
     // Audio
@@ -677,11 +674,6 @@ public class InstrumentSounds2 : MonoBehaviour
 
         yield return ShowBubbleMessageSynced(finalMessage, genericCompletedAudio, noAudioTextDelay);
         yield return PlayFinalScoreAudio();
-
-        if (resultReporter != null)
-            resultReporter.ReportScoreAndReturn(totalScore);
-        else
-            Debug.LogWarning("[InstrumentSounds2] No QuizResultReporter assigned - score won't be saved or returned to GameMenu.");
     }
 
     // -------------------------------------------------------------------------

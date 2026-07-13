@@ -79,6 +79,7 @@ public class QuizResultReporter : MonoBehaviour
             endMenu.Show(
                 scorePercent,
                 hasNextQuiz: !string.IsNullOrEmpty(nextQuizSceneName),
+                onRepeat: RepeatThisQuiz,
                 onNextQuiz: GoToNextQuiz,
                 onBackToMenu: GoBackToMenu,
                 announceScore: !scoreAlreadyAnnounced);
@@ -94,6 +95,11 @@ public class QuizResultReporter : MonoBehaviour
     public void QuitWithoutReporting()
     {
         SceneManager.LoadScene(returnSceneName);
+    }
+
+    private void RepeatThisQuiz()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     private void GoToNextQuiz()
