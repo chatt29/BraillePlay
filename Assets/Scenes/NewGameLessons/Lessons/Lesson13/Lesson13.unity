@@ -3643,15 +3643,10 @@ MonoBehaviour:
 
       big.'
     pageAudio: {fileID: 8300000, guid: 5a6b9b0f6d09b9a41ab95cb53ad709eb, type: 3}
-  - pageText: A wig is hair that a person wears on their head to change their appearance
+  - pageText: 'A wig is hair that a person wears on their head to change their appearance
       or cover their natural hair. It can be made from real or artificial hair. A
       pig is a farm animal with a round body, a short snout, and a curly tail. Pigs
-      are commonly raised on farms. Dig means to make a hole in the ground using
-      your hands or a tool such as a shovel. People and animals dig for many different
-      reasons. A fig is a small, sweet fruit that grows on a fig tree. It can be
-      eaten fresh or dried. Big means large in size. It is used to describe something
-      that is bigger than other things of the same kind. A jig is a lively and cheerful
-      dance with quick steps. People often dance a jig to celebrate or have fun.
+      are commonly raised on farms. '
     pageAudio: {fileID: 8300000, guid: fce4618c745fb714693e856d95688a54, type: 3}
   - pageText: Great job! Now, let's read the story.
     pageAudio: {fileID: 8300000, guid: 09eb15febccd331488a488233c96d96a, type: 3}

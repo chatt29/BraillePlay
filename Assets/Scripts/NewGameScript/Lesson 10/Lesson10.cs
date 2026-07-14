@@ -367,6 +367,10 @@ public class Lesson10 : MonoBehaviour
         int deductions = totalWrongCount / 3;
         totalScore = Mathf.Max(0, fixedScore - (deductions * deductionPerMistake));
 
+        // DEBUG: remove or set logDebug to false once deduction is confirmed working.
+        if (logDebug)
+            Debug.Log($"[AddMistake] totalWrongCount={totalWrongCount}, deductions={deductions}, deductionPerMistake={deductionPerMistake}, totalScore={totalScore}");
+
         UpdateScoreUI();
         SetAnswerState(false);
     }

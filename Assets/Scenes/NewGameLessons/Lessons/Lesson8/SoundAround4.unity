@@ -3279,7 +3279,7 @@ MonoBehaviour:
   letsLearnAudio: {fileID: 8300000, guid: 369ddc24d6f1a4e4192a89a1d81c7558, type: 3}
   genericCorrectAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
   genericTryAgainAudio: {fileID: 8300000, guid: dd615f4eef83e3b49b22a11445f9b6d6, type: 3}
-  genericCompletedAudio: {fileID: 8300000, guid: ad226ffe4ec86c9429f638d76ec0e68d, type: 3}
+  genericCompletedAudio: {fileID: 0}
   repeatQuestionAudio: {fileID: 8300000, guid: 7bfae7d00eb980343aafea6df0a68c54, type: 3}
   yourScoreIsAudio: {fileID: 8300000, guid: 613a4ecd64752ee4c8844d8286dca545, type: 3}
   whileYourHighestScoreIsAudio: {fileID: 8300000, guid: 2525c179990406146becd993f00485ee, type: 3}
@@ -3936,9 +3936,9 @@ MonoBehaviour:
         wrongAudio: {fileID: 8300000, guid: 5ce62a7e2dc70c84a9c7c72eca115ab5, type: 3}
         correctMessage: Correct!
         correctAudio: {fileID: 8300000, guid: 017737fb4ff3df244919b464613a0720, type: 3}
-      - wrongMessage: Remember the dot number for letter d is dot number 1, 4, and
-          5
-        wrongAudio: {fileID: 8300000, guid: 6af2a8bfbba695e42ab57bdd7e8fb3e5, type: 3}
+      - wrongMessage: Remember the dot number for letter g is dot number 1, 2, 4,
+          and 5
+        wrongAudio: {fileID: 8300000, guid: a9ecedb98ec0b434f9064f451d0a6f0e, type: 3}
         correctMessage: Correct!
         correctAudio: {fileID: 8300000, guid: b2a7d0b4138ab53469a0df071710eed8, type: 3}
     - word: Wed

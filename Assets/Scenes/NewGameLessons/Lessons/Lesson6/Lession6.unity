@@ -3261,7 +3261,7 @@ MonoBehaviour:
   letsLearnAudio: {fileID: 8300000, guid: 369ddc24d6f1a4e4192a89a1d81c7558, type: 3}
   genericCorrectAudio: {fileID: 8300000, guid: fb64d8ba31f566348a8908c5f49c1f65, type: 3}
   genericTryAgainAudio: {fileID: 8300000, guid: dd615f4eef83e3b49b22a11445f9b6d6, type: 3}
-  genericCompletedAudio: {fileID: 8300000, guid: ad226ffe4ec86c9429f638d76ec0e68d, type: 3}
+  genericCompletedAudio: {fileID: 8300000, guid: 63caea56834ea8445a2f604fc98c047e, type: 3}
   repeatQuestionAudio: {fileID: 8300000, guid: 7bfae7d00eb980343aafea6df0a68c54, type: 3}
   yourScoreIsAudio: {fileID: 8300000, guid: 613a4ecd64752ee4c8844d8286dca545, type: 3}
   whileYourHighestScoreIsAudio: {fileID: 8300000, guid: 2525c179990406146becd993f00485ee, type: 3}
@@ -3493,7 +3493,7 @@ MonoBehaviour:
   letsLearnMessage: In this lesson, you will listen to a short story and answer five
     questions about it using Braille. Listen carefully because your answers should
     be based on the story.
-  completedMessage: Great job! You finished Lesson 6 (Elments of the story)
+  completedMessage: Great job! You finished Lesson 6 (Parts of a Simple Sentence)
   repeatQuestionMessage: You finished the lesson. Do you want to repeat again? Press
     R to repeat or Y to finish.
   repeatQuestionConfirmMessage: Do you want to repeat the question? Press Next to
