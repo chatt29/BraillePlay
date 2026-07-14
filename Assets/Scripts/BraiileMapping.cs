@@ -1,9 +1,9 @@
-using System;
+ï»¿using System;
 using UnityEngine;
 
-public class BrailleMapping : MonoBehaviour
+public class BraiileMapping : MonoBehaviour
 {
-    public static BrailleMapping Instance;
+    public static BraiileMapping Instance;
 
     [Serializable]
     public class DefaultPatternSound
@@ -136,6 +136,15 @@ public class BrailleMapping : MonoBehaviour
     public bool playLetterSoundOnChord = true;
     public bool playOtherPatternSoundOnChord = true;
 
+    [Header("Input Debounce")]
+    [Tooltip("Minimum time (seconds) that must pass between accepted presses of the SAME key. Raise this if the physical buttons are chattering / double-triggering; lower it if fast repeated taps feel unresponsive. 120-200ms is a good starting range for noisy tactile buttons.")]
+    [Range(0.02f, 0.5f)] public float debounceInterval = 0.15f;
+
+    // Tracks the last accepted press time per KeyCode so we can filter out
+    // rapid repeat triggers caused by noisy/bouncy hardware contacts.
+    private readonly System.Collections.Generic.Dictionary<KeyCode, float> lastPressTime =
+        new System.Collections.Generic.Dictionary<KeyCode, float>();
+
     // ---------------------------------------------------------------------
     // Sequential dot entry state
     //
@@ -164,6 +173,32 @@ public class BrailleMapping : MonoBehaviour
         CheckDotChordInputs();
         CheckActionInputs();
         CheckFeedbackInputs();
+    }
+
+    /// <summary>
+    /// Drop-in replacement for Input.GetKeyDown that filters out hardware
+    /// bounce / double-triggers. A key press is only accepted if at least
+    /// debounceInterval seconds have passed since the last ACCEPTED press
+    /// of that same key. This does not delay a genuine single tap - it only
+    /// suppresses extra triggers that arrive unrealistically fast right
+    /// after one that was already accepted.
+    /// </summary>
+    private bool GetKeyDownDebounced(KeyCode key)
+    {
+        if (!Input.GetKeyDown(key))
+            return false;
+
+        float now = Time.unscaledTime;
+
+        if (lastPressTime.TryGetValue(key, out float last) && (now - last) < debounceInterval)
+        {
+            if (logInputs)
+                Debug.Log($"Debounced duplicate trigger for {key} ({(now - last) * 1000f:F0}ms since last accepted press)");
+            return false;
+        }
+
+        lastPressTime[key] = now;
+        return true;
     }
 
     private void PlaySfx(AudioClip clip, float volumeMultiplier = 1f)
@@ -281,37 +316,37 @@ public class BrailleMapping : MonoBehaviour
 
     private void CheckDotChordInputs()
     {
-        if (Input.GetKeyDown(dot1Key))
+        if (GetKeyDownDebounced(dot1Key))
         {
             ToggleDot(ref chordDot1, dot1Sfx, rightEarPan, "1");
             OnDot1?.Invoke();
         }
 
-        if (Input.GetKeyDown(dot2Key))
+        if (GetKeyDownDebounced(dot2Key))
         {
             ToggleDot(ref chordDot2, dot2Sfx, rightEarPan, "2");
             OnDot2?.Invoke();
         }
 
-        if (Input.GetKeyDown(dot3Key))
+        if (GetKeyDownDebounced(dot3Key))
         {
             ToggleDot(ref chordDot3, dot3Sfx, rightEarPan, "3");
             OnDot3?.Invoke();
         }
 
-        if (Input.GetKeyDown(dot4Key))
+        if (GetKeyDownDebounced(dot4Key))
         {
             ToggleDot(ref chordDot4, dot4Sfx, leftEarPan, "4");
             OnDot4?.Invoke();
         }
 
-        if (Input.GetKeyDown(dot5Key))
+        if (GetKeyDownDebounced(dot5Key))
         {
             ToggleDot(ref chordDot5, dot5Sfx, leftEarPan, "5");
             OnDot5?.Invoke();
         }
 
-        if (Input.GetKeyDown(dot6Key))
+        if (GetKeyDownDebounced(dot6Key))
         {
             ToggleDot(ref chordDot6, dot6Sfx, leftEarPan, "6");
             OnDot6?.Invoke();
@@ -356,57 +391,57 @@ public class BrailleMapping : MonoBehaviour
 
     private void CheckActionInputs()
     {
-        if (Input.GetKeyDown(upKey))
+        if (GetKeyDownDebounced(upKey))
         {
             if (logInputs) Debug.Log("Up");
             OnUp?.Invoke();
         }
 
-        if (Input.GetKeyDown(downKey))
+        if (GetKeyDownDebounced(downKey))
         {
             if (logInputs) Debug.Log("Down");
             OnDown?.Invoke();
         }
 
-        if (Input.GetKeyDown(leftKey))
+        if (GetKeyDownDebounced(leftKey))
         {
             if (logInputs) Debug.Log("Left");
             OnLeft?.Invoke();
         }
 
-        if (Input.GetKeyDown(rightKey))
+        if (GetKeyDownDebounced(rightKey))
         {
             if (logInputs) Debug.Log("Right");
             OnRight?.Invoke();
         }
 
-        if (Input.GetKeyDown(pauseKey))
+        if (GetKeyDownDebounced(pauseKey))
         {
             if (logInputs) Debug.Log("Pause");
             OnPause?.Invoke();
         }
 
-        if (Input.GetKeyDown(backKey))
+        if (GetKeyDownDebounced(backKey))
         {
             if (logInputs) Debug.Log("Back");
             OnBack?.Invoke();
         }
 
-        if (Input.GetKeyDown(repeatKey))
+        if (GetKeyDownDebounced(repeatKey))
         {
             if (logInputs) Debug.Log("Repeat");
             PlaySfx(repeatSfx, actionVolume);
             OnRepeat?.Invoke();
         }
 
-        if (Input.GetKeyDown(submitKey))
+        if (GetKeyDownDebounced(submitKey))
         {
             // If any dots have been entered for the current letter, Submit
             // finalizes that letter instead of firing the generic OnSubmit
             // event.
             if (chordStarted)
             {
-                if (logInputs) Debug.Log("Submit — finalizing letter");
+                if (logInputs) Debug.Log("Submit ï¿½ finalizing letter");
                 PlaySfx(submitSfx, actionVolume);
                 SubmitChord();
             }
@@ -418,28 +453,28 @@ public class BrailleMapping : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(deleteOrNoKey))
+        if (GetKeyDownDebounced(deleteOrNoKey))
         {
             if (logInputs) Debug.Log("Delete / No");
             PlaySfx(deleteOrNoSfx, actionVolume);
             OnDeleteOrNo?.Invoke();
         }
 
-        if (Input.GetKeyDown(yesOrNextKey))
+        if (GetKeyDownDebounced(yesOrNextKey))
         {
             if (logInputs) Debug.Log("Yes / Next");
             PlaySfx(yesOrNextSfx, actionVolume);
             OnYesOrNext?.Invoke();
         }
 
-        if (Input.GetKeyDown(loginKey))
+        if (GetKeyDownDebounced(loginKey))
         {
             if (logInputs) Debug.Log("Login");
             PlaySfx(loginSfx, actionVolume);
             OnLogin?.Invoke();
         }
 
-        if (Input.GetKeyDown(spaceKey))
+        if (GetKeyDownDebounced(spaceKey))
         {
             if (logInputs) Debug.Log("Space");
             PlaySfx(spaceSfx);
@@ -449,14 +484,14 @@ public class BrailleMapping : MonoBehaviour
 
     private void CheckFeedbackInputs()
     {
-        if (Input.GetKeyDown(correctKey))
+        if (GetKeyDownDebounced(correctKey))
         {
             if (logInputs) Debug.Log("Correct");
             PlaySfx(correctSfx, feedbackVolume);
             OnCorrect?.Invoke();
         }
 
-        if (Input.GetKeyDown(wrongKey))
+        if (GetKeyDownDebounced(wrongKey))
         {
             if (logInputs) Debug.Log("Wrong");
             PlaySfx(wrongSfx, feedbackVolume);
@@ -485,7 +520,7 @@ public class BrailleMapping : MonoBehaviour
 
     /// <summary>
     /// Returns the pattern currently being built (dots toggled on so far),
-    /// not just the instantaneous held-key state — since dots are no longer
+    /// not just the instantaneous held-key state ï¿½ since dots are no longer
     /// held simultaneously, this reflects the in-progress letter buffer.
     /// </summary>
     public string GetCurrentBraillePattern()

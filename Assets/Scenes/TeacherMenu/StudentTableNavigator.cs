@@ -1,268 +1,536 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+using System;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
-using TMPro;
 
-/// <summary>
-/// Drives keyboard/braille-key navigation over the Student Scoreboard
-/// table: Up/Down selects a row, Enter opens StudentEditPanel to edit that
-/// student's number/first/last name, R asks to delete the row (with a
-/// Space=yes/Backspace=no confirm, matching the rest of the app's
-/// convention). Announces every step via AccessibilityManager so a
-/// screen-reader-only teacher can drive the whole table without sighted
-/// help.
-///
-/// R is used for delete because BrailleMapping already maps its repeatKey
-/// to R and fires OnRepeat - no new key binding needed.
-///
-/// This is a new, purpose-built navigator (not QuizBackHandler or
-/// AccessibleFormNavigator) - this scene needs row-list navigation plus a
-/// delete-confirm and an edit hand-off, which don't match either existing
-/// navigator's shape.
-/// </summary>
-public class StudentTableNavigator : MonoBehaviour
+public class BrailleMapping : MonoBehaviour
 {
-    [Header("Collaborators")]
-    [SerializeField] private StudentProfilesManager profilesManager;
-    [SerializeField] private Transform contentParent;
-    [SerializeField] private StudentEditPanel editPanel;
+    public static BrailleMapping Instance;
 
-    [Header("Delete confirm")]
-    [SerializeField] private GameObject deleteConfirmOverlay;
-    [SerializeField] private TMP_Text deleteConfirmText;
-    [SerializeField] private string deleteConfirmMessage = "Do you want to delete this record? Press Space for yes. Press Backspace for no.";
+    [Serializable]
+    public class DefaultPatternSound
+    {
+        public string pattern;
+        public AudioClip sound;
+    }
 
-    private FirestoreStudentService studentService;
+    public static event Action OnDot1;
+    public static event Action OnDot2;
+    public static event Action OnDot3;
+    public static event Action OnDot4;
+    public static event Action OnDot5;
+    public static event Action OnDot6;
 
-    private enum Mode { Rows, ConfirmingDelete, Editing }
-    private Mode mode = Mode.Rows;
+    public static event Action<string> OnBrailleChordSubmitted;
 
-    private int selectedIndex = -1;
-    private readonly List<StudentRowView> rows = new List<StudentRowView>();
+    public static event Action OnRepeat;
+    public static event Action OnSubmit;
+    public static event Action OnDeleteOrNo;
+    public static event Action OnYesOrNext;
+    public static event Action OnLogin;
+    public static event Action OnPause;
+    public static event Action OnBack;
+    public static event Action OnSpace;
+
+    public static event Action OnUp;
+    public static event Action OnDown;
+    public static event Action OnLeft;
+    public static event Action OnRight;
+
+    public static event Action OnCorrect;
+    public static event Action OnWrong;
+
+    [Header("Braille Dots")]
+    public KeyCode dot1Key = KeyCode.J;
+    public KeyCode dot2Key = KeyCode.K;
+    public KeyCode dot3Key = KeyCode.L;
+    public KeyCode dot4Key = KeyCode.F;
+    public KeyCode dot5Key = KeyCode.D;
+    public KeyCode dot6Key = KeyCode.S;
+
+    [Header("Directional Controls")]
+    public KeyCode upKey = KeyCode.UpArrow;
+    public KeyCode downKey = KeyCode.DownArrow;
+    public KeyCode leftKey = KeyCode.LeftArrow;
+    public KeyCode rightKey = KeyCode.RightArrow;
+
+    [Header("Extra Controls")]
+    public KeyCode pauseKey = KeyCode.P;
+    public KeyCode backKey = KeyCode.Escape;
+
+    [Header("Actions")]
+    public KeyCode repeatKey = KeyCode.R;
+    public KeyCode submitKey = KeyCode.Return;
+    public KeyCode deleteOrNoKey = KeyCode.Backspace;
+    public KeyCode yesOrNextKey = KeyCode.Space;
+    public KeyCode loginKey = KeyCode.Return;
+    public KeyCode spaceKey = KeyCode.Space;
+
+    [Header("Feedback Keys")]
+    public KeyCode correctKey = KeyCode.Alpha1;
+    public KeyCode wrongKey = KeyCode.Alpha2;
+
+    [Header("Audio")]
+    public AudioSource audioSource;
+
+    public AudioClip dot1Sfx;
+    public AudioClip dot2Sfx;
+    public AudioClip dot3Sfx;
+    public AudioClip dot4Sfx;
+    public AudioClip dot5Sfx;
+    public AudioClip dot6Sfx;
+
+    public AudioClip repeatSfx;
+    public AudioClip submitSfx;
+    public AudioClip deleteOrNoSfx;
+    public AudioClip yesOrNextSfx;
+    public AudioClip loginSfx;
+    public AudioClip spaceSfx;
+
+    public AudioClip correctSfx;
+    public AudioClip wrongSfx;
+
+    [Header("Default Braille Letter Sounds")]
+    public AudioClip aSound;
+    public AudioClip bSound;
+    public AudioClip cSound;
+    public AudioClip dSound;
+    public AudioClip eSound;
+    public AudioClip fSound;
+    public AudioClip gSound;
+    public AudioClip hSound;
+    public AudioClip iSound;
+    public AudioClip jSound;
+    public AudioClip kSound;
+    public AudioClip lSound;
+    public AudioClip mSound;
+    public AudioClip nSound;
+    public AudioClip oSound;
+    public AudioClip pSound;
+    public AudioClip qSound;
+    public AudioClip rSound;
+    public AudioClip sSound;
+    public AudioClip tSound;
+    public AudioClip uSound;
+    public AudioClip vSound;
+    public AudioClip wSound;
+    public AudioClip xSound;
+    public AudioClip ySound;
+    public AudioClip zSound;
+
+    [Range(0f, 3f)] public float letterSoundVolume = 1.5f;
+
+    [Header("Other Default Pattern Sounds")]
+    public DefaultPatternSound[] otherDefaultPatternSounds;
+    [Range(0f, 3f)] public float otherPatternSoundVolume = 1.5f;
+
+    [Header("Stereo Pan")]
+    [Range(-1f, 1f)] public float leftEarPan = -1f;
+    [Range(-1f, 1f)] public float rightEarPan = 1f;
+
+    [Header("Volume")]
+    [Range(0f, 3f)] public float dotVolume = 2.0f;
+    [Range(0f, 3f)] public float actionVolume = 1.5f;
+    [Range(0f, 3f)] public float feedbackVolume = 2.0f;
+
+    [Header("Options")]
+    public bool logInputs = false;
+    public bool playLetterSoundOnChord = true;
+    public bool playOtherPatternSoundOnChord = true;
+
+    [Header("Input Debounce")]
+    [Tooltip("Minimum time (seconds) that must pass between accepted presses of the SAME key. Raise this if the physical buttons are chattering / double-triggering; lower it if fast repeated taps feel unresponsive. 120-200ms is a good starting range for noisy tactile buttons.")]
+    [Range(0.02f, 0.5f)] public float debounceInterval = 0.15f;
+
+    // Tracks the last accepted press time per KeyCode so we can filter out
+    // rapid repeat triggers caused by noisy/bouncy hardware contacts.
+    private readonly System.Collections.Generic.Dictionary<KeyCode, float> lastPressTime =
+        new System.Collections.Generic.Dictionary<KeyCode, float>();
+
+    // ---------------------------------------------------------------------
+    // Sequential dot entry state
+    //
+    // Dots are no longer chorded by holding multiple keys down at once.
+    // Instead, pressing a dot key TOGGLES that dot on/off in the buffer
+    // below (press dot1, then dot2, etc., one at a time). Pressing the
+    // Submit key (Enter) finalizes whatever dots are currently toggled on
+    // into a single letter pattern and fires OnBrailleChordSubmitted, then
+    // clears the buffer for the next letter.
+    // ---------------------------------------------------------------------
+    private bool chordStarted;
+    private bool chordDot1;
+    private bool chordDot2;
+    private bool chordDot3;
+    private bool chordDot4;
+    private bool chordDot5;
+    private bool chordDot6;
 
     private void Awake()
     {
-        // Constructed here, not as a field initializer - Firestore's
-        // constructor checks Application.isPlaying internally, which Unity
-        // only allows from a lifecycle method.
-        studentService = new FirestoreStudentService();
-
-        if (deleteConfirmOverlay != null)
-            deleteConfirmOverlay.SetActive(false);
+        Instance = this;
     }
 
-    private void Start()
+    private void Update()
     {
-        StartCoroutine(OpeningAnnouncementRoutine());
+        CheckDotChordInputs();
+        CheckActionInputs();
+        CheckFeedbackInputs();
     }
 
-    private IEnumerator OpeningAnnouncementRoutine()
+    /// <summary>
+    /// Drop-in replacement for Input.GetKeyDown that filters out hardware
+    /// bounce / double-triggers. A key press is only accepted if at least
+    /// debounceInterval seconds have passed since the last ACCEPTED press
+    /// of that same key. This does not delay a genuine single tap - it only
+    /// suppresses extra triggers that arrive unrealistically fast right
+    /// after one that was already accepted.
+    /// </summary>
+    private bool GetKeyDownDebounced(KeyCode key)
     {
-        yield return AccessibilityManager.Instance.AnnounceAndWait("You are now on student scoreboard.");
-        yield return AccessibilityManager.Instance.AnnounceAndWait(
-            "Use up and down to move between students. Press Enter to edit a student's number, first name, or last name. " +
-            "Press R to delete a student, which will ask you to confirm.");
+        if (!Input.GetKeyDown(key))
+            return false;
 
-        RefreshRowList();
-        SelectRow(0);
-    }
+        float now = Time.unscaledTime;
 
-    private void OnEnable()
-    {
-        BrailleMapping.OnUp += HandleUp;
-        BrailleMapping.OnDown += HandleDown;
-        BrailleMapping.OnSubmit += HandleSubmit;
-        BrailleMapping.OnRepeat += HandleRepeat;
-    }
-
-    private void OnDisable()
-    {
-        BrailleMapping.OnUp -= HandleUp;
-        BrailleMapping.OnDown -= HandleDown;
-        BrailleMapping.OnSubmit -= HandleSubmit;
-        BrailleMapping.OnRepeat -= HandleRepeat;
-
-        StopListeningForDeleteConfirm();
-    }
-
-    /// <summary>Re-syncs this navigator's row list against contentParent's current children. Call after any StudentProfilesManager.RefreshAsync() (edit, delete) that changes the rows.</summary>
-    public void RefreshRowList()
-    {
-        rows.Clear();
-        foreach (Transform child in contentParent)
+        if (lastPressTime.TryGetValue(key, out float last) && (now - last) < debounceInterval)
         {
-            StudentRowView row = child.GetComponent<StudentRowView>();
-            if (row != null)
-                rows.Add(row);
+            if (logInputs)
+                Debug.Log($"Debounced duplicate trigger for {key} ({(now - last) * 1000f:F0}ms since last accepted press)");
+            return false;
         }
+
+        lastPressTime[key] = now;
+        return true;
     }
 
-    private void HandleUp()
+    private void PlaySfx(AudioClip clip, float volumeMultiplier = 1f)
     {
-        if (mode != Mode.Rows) return;
-        SelectRow(selectedIndex - 1);
+        if (audioSource != null && clip != null)
+            audioSource.PlayOneShot(clip, volumeMultiplier);
     }
 
-    private void HandleDown()
+    private bool PlayOtherDefaultPatternSound(string pattern)
     {
-        if (mode != Mode.Rows) return;
-        SelectRow(selectedIndex + 1);
-    }
+        if (!playOtherPatternSoundOnChord)
+            return false;
 
-    private void SelectRow(int index)
-    {
-        if (rows.Count == 0)
+        if (otherDefaultPatternSounds == null)
+            return false;
+
+        foreach (DefaultPatternSound patternSound in otherDefaultPatternSounds)
         {
-            selectedIndex = -1;
-            AccessibilityManager.Instance.Announce("No students found.");
+            if (patternSound == null)
+                continue;
+
+            if (patternSound.pattern == pattern)
+            {
+                PlaySfx(patternSound.sound, otherPatternSoundVolume);
+
+                if (logInputs)
+                    Debug.Log("Played other default pattern sound for: " + pattern);
+
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private void PlayDefaultLetterSound(string pattern)
+    {
+        if (!playLetterSoundOnChord)
             return;
-        }
 
-        index = Mathf.Clamp(index, 0, rows.Count - 1);
-        if (index == selectedIndex) return;
+        AudioClip clip = null;
 
-        selectedIndex = index;
-        StudentRowView row = rows[selectedIndex];
-
-        // Reuses the row's existing Button (Transition: Color Tint) as the
-        // visual selection indicator for sighted teachers, via Unity's
-        // normal UI focus highlight - no extra visuals needed.
-        Button button = row.GetComponent<Button>();
-        if (button != null && EventSystem.current != null)
-            EventSystem.current.SetSelectedGameObject(button.gameObject);
-
-        AccessibilityManager.Instance.Announce(
-            $"{row.FirstName} {row.LastName}, student number {row.StudentNumber}. Row {selectedIndex + 1} of {rows.Count}.");
-    }
-
-    private void HandleSubmit()
-    {
-        if (mode != Mode.Rows || selectedIndex < 0 || selectedIndex >= rows.Count) return;
-
-        mode = Mode.Editing;
-        StudentRowView row = rows[selectedIndex];
-
-        editPanel.Show(
-            row.StudentNumber,
-            row.FirstName,
-            row.LastName,
-            onSave: HandleEditSaved,
-            onCancel: HandleEditCancelled);
-    }
-
-    private void HandleEditSaved(string newStudentNumber, string newFirstName, string newLastName)
-    {
-        StartCoroutine(SaveEditRoutine(rows[selectedIndex].StudentNumber, newStudentNumber, newFirstName, newLastName));
-    }
-
-    private IEnumerator SaveEditRoutine(string oldStudentNumber, string newStudentNumber, string newFirstName, string newLastName)
-    {
-        AccessibilityManager.Instance.Announce("Saving changes.");
-
-        // TotalScore/HighestScore/etc are intentionally left at their
-        // default 0 here - per StudentProfilesManager's own comments,
-        // those fields are dead (scores are computed live from the
-        // Progress subcollection), so this can't clobber real data.
-        StudentData updated = new StudentData { FirstName = newFirstName, LastName = newLastName };
-
-        Task saveTask = studentService.RenameStudentAsync(oldStudentNumber, newStudentNumber, updated);
-        yield return new WaitUntil(() => saveTask.IsCompleted);
-
-        if (saveTask.Exception != null)
+        switch (pattern)
         {
-            Debug.LogException(saveTask.Exception);
-            AccessibilityManager.Instance.Announce("Something went wrong saving that student. Please try again.");
-            mode = Mode.Rows;
-            yield break;
+            case "100000": clip = aSound; break;
+            case "110000": clip = bSound; break;
+            case "100100": clip = cSound; break;
+            case "100110": clip = dSound; break;
+            case "100010": clip = eSound; break;
+            case "110100": clip = fSound; break;
+            case "110110": clip = gSound; break;
+            case "110010": clip = hSound; break;
+            case "010100": clip = iSound; break;
+            case "010110": clip = jSound; break;
+            case "101000": clip = kSound; break;
+            case "111000": clip = lSound; break;
+            case "101100": clip = mSound; break;
+            case "101110": clip = nSound; break;
+            case "101010": clip = oSound; break;
+            case "111100": clip = pSound; break;
+            case "111110": clip = qSound; break;
+            case "111010": clip = rSound; break;
+            case "011100": clip = sSound; break;
+            case "011110": clip = tSound; break;
+            case "101001": clip = uSound; break;
+            case "111001": clip = vSound; break;
+            case "010111": clip = wSound; break;
+            case "101101": clip = xSound; break;
+            case "101111": clip = ySound; break;
+            case "101011": clip = zSound; break;
         }
 
-        yield return AccessibilityManager.Instance.AnnounceAndWait("Saved.");
-
-        Task refreshTask = profilesManager.RefreshAsync();
-        yield return new WaitUntil(() => refreshTask.IsCompleted);
-
-        RefreshRowList();
-        mode = Mode.Rows;
-
-        int restoredIndex = rows.FindIndex(r => r.StudentNumber == newStudentNumber);
-        selectedIndex = -1;
-        SelectRow(restoredIndex >= 0 ? restoredIndex : 0);
-    }
-
-    private void HandleEditCancelled()
-    {
-        mode = Mode.Rows;
-        AccessibilityManager.Instance.Announce("Edit cancelled.");
-    }
-
-    private void HandleRepeat()
-    {
-        if (mode != Mode.Rows || selectedIndex < 0 || selectedIndex >= rows.Count) return;
-
-        mode = Mode.ConfirmingDelete;
-
-        if (deleteConfirmText != null) deleteConfirmText.text = deleteConfirmMessage;
-        if (deleteConfirmOverlay != null) deleteConfirmOverlay.SetActive(true);
-
-        AccessibilityManager.Instance.Announce(deleteConfirmMessage);
-
-        BrailleMapping.OnYesOrNext += HandleDeleteConfirmed;
-        BrailleMapping.OnDeleteOrNo += HandleDeleteCancelled;
-    }
-
-    private void HandleDeleteConfirmed()
-    {
-        StopListeningForDeleteConfirm();
-        if (deleteConfirmOverlay != null) deleteConfirmOverlay.SetActive(false);
-
-        StartCoroutine(DeleteRoutine(rows[selectedIndex].StudentNumber));
-    }
-
-    private IEnumerator DeleteRoutine(string studentNumber)
-    {
-        AccessibilityManager.Instance.Announce("Deleting student.");
-
-        Task deleteTask = studentService.DeleteStudentAsync(studentNumber);
-        yield return new WaitUntil(() => deleteTask.IsCompleted);
-
-        if (deleteTask.Exception != null)
+        if (clip != null)
         {
-            Debug.LogException(deleteTask.Exception);
-            AccessibilityManager.Instance.Announce("Something went wrong deleting that student. Please try again.");
-            mode = Mode.Rows;
-            yield break;
+            PlaySfx(clip, letterSoundVolume);
+
+            if (logInputs)
+                Debug.Log("Played letter sound for pattern: " + pattern);
+        }
+    }
+
+    private void PlayPannedSfx(AudioClip clip, float pan, float volumeMultiplier = 1f)
+    {
+        if (audioSource == null || clip == null) return;
+
+        GameObject tempAudio = new GameObject("TempPannedAudio");
+        tempAudio.transform.SetParent(transform);
+
+        AudioSource tempSource = tempAudio.AddComponent<AudioSource>();
+        tempSource.outputAudioMixerGroup = audioSource.outputAudioMixerGroup;
+        tempSource.volume = Mathf.Max(0f, audioSource.volume * volumeMultiplier);
+        tempSource.pitch = audioSource.pitch;
+        tempSource.spatialBlend = 0f;
+        tempSource.panStereo = pan;
+        tempSource.clip = clip;
+        tempSource.Play();
+
+        Destroy(tempAudio, clip.length + 0.1f);
+    }
+
+    /// <summary>
+    /// Toggles a single dot on/off in the current letter buffer. Pressing an
+    /// already-active dot again removes it (e.g. for correcting a mistake
+    /// before submitting). Plays the dot's panned sound on every press,
+    /// regardless of whether it turned the dot on or off.
+    /// </summary>
+    private void ToggleDot(ref bool dotState, AudioClip sfx, float pan, string dotLabel)
+    {
+        dotState = !dotState;
+        PlayPannedSfx(sfx, pan, dotVolume);
+
+        if (logInputs)
+            Debug.Log($"Braille Dot {dotLabel} {(dotState ? "added" : "removed")}");
+    }
+
+    private void CheckDotChordInputs()
+    {
+        if (GetKeyDownDebounced(dot1Key))
+        {
+            ToggleDot(ref chordDot1, dot1Sfx, rightEarPan, "1");
+            OnDot1?.Invoke();
         }
 
-        yield return AccessibilityManager.Instance.AnnounceAndWait("Deleted.");
+        if (GetKeyDownDebounced(dot2Key))
+        {
+            ToggleDot(ref chordDot2, dot2Sfx, rightEarPan, "2");
+            OnDot2?.Invoke();
+        }
 
-        Task refreshTask = profilesManager.RefreshAsync();
-        yield return new WaitUntil(() => refreshTask.IsCompleted);
+        if (GetKeyDownDebounced(dot3Key))
+        {
+            ToggleDot(ref chordDot3, dot3Sfx, rightEarPan, "3");
+            OnDot3?.Invoke();
+        }
 
-        RefreshRowList();
-        mode = Mode.Rows;
-        selectedIndex = -1;
+        if (GetKeyDownDebounced(dot4Key))
+        {
+            ToggleDot(ref chordDot4, dot4Sfx, leftEarPan, "4");
+            OnDot4?.Invoke();
+        }
 
-        if (rows.Count > 0)
-            SelectRow(0);
-        else
-            AccessibilityManager.Instance.Announce("No students remaining.");
+        if (GetKeyDownDebounced(dot5Key))
+        {
+            ToggleDot(ref chordDot5, dot5Sfx, leftEarPan, "5");
+            OnDot5?.Invoke();
+        }
+
+        if (GetKeyDownDebounced(dot6Key))
+        {
+            ToggleDot(ref chordDot6, dot6Sfx, leftEarPan, "6");
+            OnDot6?.Invoke();
+        }
+
+        chordStarted = chordDot1 || chordDot2 || chordDot3 || chordDot4 || chordDot5 || chordDot6;
     }
 
-    private void HandleDeleteCancelled()
+    /// <summary>
+    /// Finalizes whatever dots are currently toggled on into a single
+    /// pattern string, fires OnBrailleChordSubmitted, plays the matching
+    /// letter/pattern sound, then clears the buffer so the next letter can
+    /// be entered from scratch.
+    /// </summary>
+    private void SubmitChord()
     {
-        StopListeningForDeleteConfirm();
-        if (deleteConfirmOverlay != null) deleteConfirmOverlay.SetActive(false);
+        string pattern =
+            (chordDot1 ? "1" : "0") +
+            (chordDot2 ? "1" : "0") +
+            (chordDot3 ? "1" : "0") +
+            (chordDot4 ? "1" : "0") +
+            (chordDot5 ? "1" : "0") +
+            (chordDot6 ? "1" : "0");
 
-        mode = Mode.Rows;
-        AccessibilityManager.Instance.Announce("Delete cancelled.");
+        if (logInputs) Debug.Log("Braille chord submitted: " + pattern);
+
+        if (!PlayOtherDefaultPatternSound(pattern))
+        {
+            PlayDefaultLetterSound(pattern);
+        }
+
+        OnBrailleChordSubmitted?.Invoke(pattern);
+
+        chordStarted = false;
+        chordDot1 = false;
+        chordDot2 = false;
+        chordDot3 = false;
+        chordDot4 = false;
+        chordDot5 = false;
+        chordDot6 = false;
     }
 
-    private void StopListeningForDeleteConfirm()
+    private void CheckActionInputs()
     {
-        BrailleMapping.OnYesOrNext -= HandleDeleteConfirmed;
-        BrailleMapping.OnDeleteOrNo -= HandleDeleteCancelled;
+        if (GetKeyDownDebounced(upKey))
+        {
+            if (logInputs) Debug.Log("Up");
+            OnUp?.Invoke();
+        }
+
+        if (GetKeyDownDebounced(downKey))
+        {
+            if (logInputs) Debug.Log("Down");
+            OnDown?.Invoke();
+        }
+
+        if (GetKeyDownDebounced(leftKey))
+        {
+            if (logInputs) Debug.Log("Left");
+            OnLeft?.Invoke();
+        }
+
+        if (GetKeyDownDebounced(rightKey))
+        {
+            if (logInputs) Debug.Log("Right");
+            OnRight?.Invoke();
+        }
+
+        if (GetKeyDownDebounced(pauseKey))
+        {
+            if (logInputs) Debug.Log("Pause");
+            OnPause?.Invoke();
+        }
+
+        if (GetKeyDownDebounced(backKey))
+        {
+            if (logInputs) Debug.Log("Back");
+            OnBack?.Invoke();
+        }
+
+        if (GetKeyDownDebounced(repeatKey))
+        {
+            if (logInputs) Debug.Log("Repeat");
+            PlaySfx(repeatSfx, actionVolume);
+            OnRepeat?.Invoke();
+        }
+
+        if (GetKeyDownDebounced(submitKey))
+        {
+            // If any dots have been entered for the current letter, Submit
+            // finalizes that letter instead of firing the generic OnSubmit
+            // event.
+            if (chordStarted)
+            {
+                if (logInputs) Debug.Log("Submit ? finalizing letter");
+                PlaySfx(submitSfx, actionVolume);
+                SubmitChord();
+            }
+            else
+            {
+                if (logInputs) Debug.Log("Submit");
+                PlaySfx(submitSfx, actionVolume);
+                OnSubmit?.Invoke();
+            }
+        }
+
+        if (GetKeyDownDebounced(deleteOrNoKey))
+        {
+            if (logInputs) Debug.Log("Delete / No");
+            PlaySfx(deleteOrNoSfx, actionVolume);
+            OnDeleteOrNo?.Invoke();
+        }
+
+        if (GetKeyDownDebounced(yesOrNextKey))
+        {
+            if (logInputs) Debug.Log("Yes / Next");
+            PlaySfx(yesOrNextSfx, actionVolume);
+            OnYesOrNext?.Invoke();
+        }
+
+        if (GetKeyDownDebounced(loginKey))
+        {
+            if (logInputs) Debug.Log("Login");
+            PlaySfx(loginSfx, actionVolume);
+            OnLogin?.Invoke();
+        }
+
+        if (GetKeyDownDebounced(spaceKey))
+        {
+            if (logInputs) Debug.Log("Space");
+            PlaySfx(spaceSfx);
+            OnSpace?.Invoke();
+        }
+    }
+
+    private void CheckFeedbackInputs()
+    {
+        if (GetKeyDownDebounced(correctKey))
+        {
+            if (logInputs) Debug.Log("Correct");
+            PlaySfx(correctSfx, feedbackVolume);
+            OnCorrect?.Invoke();
+        }
+
+        if (GetKeyDownDebounced(wrongKey))
+        {
+            if (logInputs) Debug.Log("Wrong");
+            PlaySfx(wrongSfx, feedbackVolume);
+            OnWrong?.Invoke();
+        }
+    }
+
+    public void PlayCorrectSfx()
+    {
+        PlaySfx(correctSfx, feedbackVolume);
+        OnCorrect?.Invoke();
+    }
+
+    public void PlayWrongSfx()
+    {
+        PlaySfx(wrongSfx, feedbackVolume);
+        OnWrong?.Invoke();
+    }
+
+    public bool GetDot1() => chordDot1;
+    public bool GetDot2() => chordDot2;
+    public bool GetDot3() => chordDot3;
+    public bool GetDot4() => chordDot4;
+    public bool GetDot5() => chordDot5;
+    public bool GetDot6() => chordDot6;
+
+    /// <summary>
+    /// Returns the pattern currently being built (dots toggled on so far),
+    /// not just the instantaneous held-key state ? since dots are no longer
+    /// held simultaneously, this reflects the in-progress letter buffer.
+    /// </summary>
+    public string GetCurrentBraillePattern()
+    {
+        return
+            (chordDot1 ? "1" : "0") +
+            (chordDot2 ? "1" : "0") +
+            (chordDot3 ? "1" : "0") +
+            (chordDot4 ? "1" : "0") +
+            (chordDot5 ? "1" : "0") +
+            (chordDot6 ? "1" : "0");
     }
 }
