@@ -3288,126 +3288,126 @@ MonoBehaviour:
     lessonAudio: {fileID: 8300000, guid: ae752799ce31e7145861c919969594f3, type: 3}
   - title: Guitar
     lessonText: For an example, a Guitar.
-    lessonImage: {fileID: 0}
+    lessonImage: {fileID: 21300000, guid: 3df0c0a726f63494eb0192349b981522, type: 3}
     lessonAudio: {fileID: 8300000, guid: c6d23041565d53e45aef822b7d15e582, type: 3}
   - title: Guitar
     lessonText: A guitar has strings that are plucked or strummed.
-    lessonImage: {fileID: 0}
+    lessonImage: {fileID: 21300000, guid: 3df0c0a726f63494eb0192349b981522, type: 3}
     lessonAudio: {fileID: 8300000, guid: d5a9fa5e53007564884adc62b72bce46, type: 3}
   - title: Guitar
     lessonText: The guitar makes a soft and pleasant sound.
-    lessonImage: {fileID: 0}
+    lessonImage: {fileID: 21300000, guid: 3df0c0a726f63494eb0192349b981522, type: 3}
     lessonAudio: {fileID: 8300000, guid: ea31f0cd6a6f45e409fae6ec29e76d32, type: 3}
   - title: Guitar
     lessonText: 
-    lessonImage: {fileID: 0}
+    lessonImage: {fileID: 21300000, guid: 3df0c0a726f63494eb0192349b981522, type: 3}
     lessonAudio: {fileID: 8300000, guid: 89578f59890358643a9c68ce20950c27, type: 3}
   - title: Trumpet
     lessonText: Next up, a trumpet.
-    lessonImage: {fileID: 0}
+    lessonImage: {fileID: 21300000, guid: 04e25486fec78ea4b8c1a4b727466f86, type: 3}
     lessonAudio: {fileID: 8300000, guid: 2fba249a5b7527449a027e514b2d3ae5, type: 3}
   - title: Trumpet
     lessonText: A trumpet is a wind instrument that you can play by blowing air through
       the mouthpiece.
-    lessonImage: {fileID: 0}
+    lessonImage: {fileID: 21300000, guid: 04e25486fec78ea4b8c1a4b727466f86, type: 3}
     lessonAudio: {fileID: 8300000, guid: a8bb8ec24a65fe2428b967540714ecaf, type: 3}
   - title: Trumpet
     lessonText: It makes a bright and loud sound.
-    lessonImage: {fileID: 0}
+    lessonImage: {fileID: 21300000, guid: 04e25486fec78ea4b8c1a4b727466f86, type: 3}
     lessonAudio: {fileID: 8300000, guid: 0bc9c003fff4d8a4fbbae7ba6f8ac8e6, type: 3}
   - title: Trumpet
     lessonText: 
-    lessonImage: {fileID: 0}
+    lessonImage: {fileID: 21300000, guid: 04e25486fec78ea4b8c1a4b727466f86, type: 3}
     lessonAudio: {fileID: 8300000, guid: 1e60e6199f00ce04591ef72fe60c7ee9, type: 3}
   - title: Violin
     lessonText: Next up, Violin.
-    lessonImage: {fileID: 0}
+    lessonImage: {fileID: 21300000, guid: c76e548ba17798c43b42497d430ef153, type: 3}
     lessonAudio: {fileID: 8300000, guid: a3c16053e3c8f7c419974be76968dd44, type: 3}
   - title: Violin
     lessonText: A violin has strings which make sound when you move a bow across
       them.
-    lessonImage: {fileID: 0}
+    lessonImage: {fileID: 21300000, guid: c76e548ba17798c43b42497d430ef153, type: 3}
     lessonAudio: {fileID: 8300000, guid: e9b4939987f180e41960037de90eb2f4, type: 3}
   - title: Violin
     lessonText: The violin makes smooth and gentle sounds.
-    lessonImage: {fileID: 0}
+    lessonImage: {fileID: 21300000, guid: c76e548ba17798c43b42497d430ef153, type: 3}
     lessonAudio: {fileID: 8300000, guid: 43f1ed7e18222d546bad558d6dea77a6, type: 3}
   - title: Violin
     lessonText: 
-    lessonImage: {fileID: 0}
+    lessonImage: {fileID: 21300000, guid: c76e548ba17798c43b42497d430ef153, type: 3}
     lessonAudio: {fileID: 8300000, guid: 4a31482cad5b71b4cb299b3445840322, type: 3}
   - title: Maracas
     lessonText: Next up, Maracas.
-    lessonImage: {fileID: 0}
+    lessonImage: {fileID: 21300000, guid: 8974440abe223bb45b2df1a6f9730da6, type: 3}
     lessonAudio: {fileID: 8300000, guid: e141129844bfb304d843088466a67577, type: 3}
   - title: Maracas
     lessonText: Maracas are musical instruments that you shake with your hands.
-    lessonImage: {fileID: 0}
+    lessonImage: {fileID: 21300000, guid: 8974440abe223bb45b2df1a6f9730da6, type: 3}
     lessonAudio: {fileID: 8300000, guid: 83a2e98a574e8024c9cd5c0632345afd, type: 3}
   - title: Maracas
     lessonText: Inside each maraca are small seeds or beads.
-    lessonImage: {fileID: 0}
+    lessonImage: {fileID: 21300000, guid: 8974440abe223bb45b2df1a6f9730da6, type: 3}
     lessonAudio: {fileID: 8300000, guid: d6cc9fca01f0446409154e040133388b, type: 3}
   - title: Maracas
     lessonText: When you shake the maraca, the seeds or beads hit the inside and
       make a sound.
-    lessonImage: {fileID: 0}
+    lessonImage: {fileID: 21300000, guid: 8974440abe223bb45b2df1a6f9730da6, type: 3}
     lessonAudio: {fileID: 8300000, guid: 3c73ca6488c95b64c94a0c00c17e3bdf, type: 3}
   - title: Maracas
     lessonText: Maracas make a soft, shaking sound.
-    lessonImage: {fileID: 0}
+    lessonImage: {fileID: 21300000, guid: 8974440abe223bb45b2df1a6f9730da6, type: 3}
     lessonAudio: {fileID: 8300000, guid: 6cf5d2d1727f7af419234597c4f20379, type: 3}
   - title: Maracas
     lessonText: 
-    lessonImage: {fileID: 0}
+    lessonImage: {fileID: 21300000, guid: 8974440abe223bb45b2df1a6f9730da6, type: 3}
     lessonAudio: {fileID: 8300000, guid: 9877f08d8b3a696439b4ce2d4deca631, type: 3}
   - title: Bass Drum
     lessonText: Next up, Bass Drum.
-    lessonImage: {fileID: 0}
+    lessonImage: {fileID: 21300000, guid: ce3340667bb69f946a294221540623c7, type: 3}
     lessonAudio: {fileID: 8300000, guid: ff1425a6056e92a4fbca3b8724556a6b, type: 3}
   - title: Bass Drum
     lessonText: A bass drum is a very big drum.
-    lessonImage: {fileID: 0}
+    lessonImage: {fileID: 21300000, guid: ce3340667bb69f946a294221540623c7, type: 3}
     lessonAudio: {fileID: 8300000, guid: d2632307f8eb78340a955e3829568998, type: 3}
   - title: Bass Drum
     lessonText: It makes sound when you hit it with a soft drumstick.
-    lessonImage: {fileID: 0}
+    lessonImage: {fileID: 21300000, guid: ce3340667bb69f946a294221540623c7, type: 3}
     lessonAudio: {fileID: 8300000, guid: 262e2463eb67d0140a91aa2d78f1f9a5, type: 3}
   - title: Bass Drum
     lessonText: Because it is big, it makes a deep and loud sound.
-    lessonImage: {fileID: 0}
+    lessonImage: {fileID: 21300000, guid: ce3340667bb69f946a294221540623c7, type: 3}
     lessonAudio: {fileID: 8300000, guid: 32ebd772889cde544968981ee245b1fd, type: 3}
   - title: Bass Drum
     lessonText: The bass drum helps keep the beat in music.
-    lessonImage: {fileID: 0}
+    lessonImage: {fileID: 21300000, guid: ce3340667bb69f946a294221540623c7, type: 3}
     lessonAudio: {fileID: 8300000, guid: bd57d9d7dd9defc43814837a613bbba2, type: 3}
   - title: Bass Drum
     lessonText: 
-    lessonImage: {fileID: 0}
+    lessonImage: {fileID: 21300000, guid: ce3340667bb69f946a294221540623c7, type: 3}
     lessonAudio: {fileID: 8300000, guid: dcb9dc7f9182ac044b11cd47d0b45654, type: 3}
   - title: Quad Drum
     lessonText: Next up, Quad Drum.
-    lessonImage: {fileID: 0}
+    lessonImage: {fileID: 21300000, guid: 5a742827a5e7d4146a19a759c9ebe007, type: 3}
     lessonAudio: {fileID: 8300000, guid: 0f39008f6046ea24894971b6bccd9a9c, type: 3}
   - title: Quad Drum
     lessonText: A quad drum is made of four small drums joined together.
-    lessonImage: {fileID: 0}
+    lessonImage: {fileID: 21300000, guid: 5a742827a5e7d4146a19a759c9ebe007, type: 3}
     lessonAudio: {fileID: 8300000, guid: 21b8543d178e00944859451350451406, type: 3}
   - title: Quad Drum
     lessonText: It makes sound when you hit the drums with drumsticks.
-    lessonImage: {fileID: 0}
+    lessonImage: {fileID: 21300000, guid: 5a742827a5e7d4146a19a759c9ebe007, type: 3}
     lessonAudio: {fileID: 8300000, guid: f891e1aef0707ea48affe07621e8f347, type: 3}
   - title: Quad Drum
     lessonText: Each drum makes a different sound.
-    lessonImage: {fileID: 0}
+    lessonImage: {fileID: 21300000, guid: 5a742827a5e7d4146a19a759c9ebe007, type: 3}
     lessonAudio: {fileID: 8300000, guid: 6dbe7f8fa77033841864daba97a1f098, type: 3}
   - title: Quad Drum
     lessonText: Players move their sticks from one drum to another to make music.
-    lessonImage: {fileID: 0}
+    lessonImage: {fileID: 21300000, guid: 5a742827a5e7d4146a19a759c9ebe007, type: 3}
     lessonAudio: {fileID: 8300000, guid: 9920367cc27a2df46bb10ae344d43608, type: 3}
   - title: Quad Drum
     lessonText: 
-    lessonImage: {fileID: 0}
+    lessonImage: {fileID: 21300000, guid: 5a742827a5e7d4146a19a759c9ebe007, type: 3}
     lessonAudio: {fileID: 8300000, guid: 12e7bc10db4ae60449177b53a6828a5a, type: 3}
   lessons:
   - displayLabel: Maracas
@@ -3553,7 +3553,7 @@ MonoBehaviour:
     question2Category: '1. High Pitch Sound
 
       2. Low Pitch Sound'
-    displayImage: {fileID: 21300000, guid: 04e25486fec78ea4b8c1a4b727466f86, type: 3}
+    displayImage: {fileID: 21300000, guid: ce3340667bb69f946a294221540623c7, type: 3}
     introductionMessage: Number 5, Bass Drum.
     introductionAudio: {fileID: 8300000, guid: 944140cb83e96234581a91e9b192499e, type: 3}
     instrumentSoundEffect: {fileID: 8300000, guid: dcb9dc7f9182ac044b11cd47d0b45654, type: 3}
@@ -3587,7 +3587,7 @@ MonoBehaviour:
     question2Category: '1. High Pitch Sound
 
       2. Low Pitch Sound'
-    displayImage: {fileID: 21300000, guid: 04e25486fec78ea4b8c1a4b727466f86, type: 3}
+    displayImage: {fileID: 21300000, guid: 5a742827a5e7d4146a19a759c9ebe007, type: 3}
     introductionMessage: Number 6, Quad Drum.
     introductionAudio: {fileID: 8300000, guid: 0cad9bebbc9e9624aa335654ab5bff74, type: 3}
     instrumentSoundEffect: {fileID: 8300000, guid: 12e7bc10db4ae60449177b53a6828a5a, type: 3}
