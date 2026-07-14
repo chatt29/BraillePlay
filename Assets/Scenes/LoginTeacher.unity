@@ -861,6 +861,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SignupBackHandler
   mainMenuSceneName: MainMenuNew
+  mainMenuSpokenName: the main menu
 --- !u!4 &384536368
 Transform:
   m_ObjectHideFlags: 0
@@ -1250,7 +1251,7 @@ MonoBehaviour:
   passwordField: {fileID: 1574297442}
   navigator: {fileID: 746343319}
   previousSceneName: SignUpT
-  teacherHomeSceneName: MainMenu
+  teacherHomeSceneName: TeacherMenu
 --- !u!1 &779346514
 GameObject:
   m_ObjectHideFlags: 0
@@ -1617,7 +1618,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1039156184
 RectTransform:
   m_ObjectHideFlags: 0

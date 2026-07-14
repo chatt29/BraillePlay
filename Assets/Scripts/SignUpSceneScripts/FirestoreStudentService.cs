@@ -96,6 +96,42 @@ public class FirestoreStudentService
         return results;
     }
 
+    /// <summary>
+    /// Saves edited student fields, handling a Student Number change as a
+    /// full migration since the student number IS the document ID and
+    /// Firestore has no "rename a document" operation. Copies the Lessons
+    /// and Progress subcollections to the new document ID, then deletes the
+    /// old document, so no progress is lost when a teacher corrects a typo
+    /// in a student's number.
+    ///
+    /// If the number is unchanged, this just overwrites the existing
+    /// document's fields directly - no migration needed.
+    /// </summary>
+    public async Task RenameStudentAsync(string oldStudentNumber, string newStudentNumber, StudentData updatedData)
+    {
+        await EnsureReadyAsync();
+
+        if (oldStudentNumber == newStudentNumber)
+        {
+            await db.Collection(CollectionName).Document(oldStudentNumber).SetAsync(updatedData);
+            return;
+        }
+
+        if (await StudentExistsAsync(newStudentNumber))
+            throw new Exception($"A student with number {newStudentNumber} already exists.");
+
+        DocumentReference oldDoc = db.Collection(CollectionName).Document(oldStudentNumber);
+        DocumentReference newDoc = db.Collection(CollectionName).Document(newStudentNumber);
+
+        await newDoc.SetAsync(updatedData);
+        await CopySubcollectionAsync(oldDoc.Collection("Lessons"), newDoc.Collection("Lessons"));
+        await CopySubcollectionAsync(oldDoc.Collection("Progress"), newDoc.Collection("Progress"));
+
+        await DeleteSubcollectionAsync(oldDoc.Collection("Lessons"));
+        await DeleteSubcollectionAsync(oldDoc.Collection("Progress"));
+        await oldDoc.DeleteAsync();
+    }
+
     /// <summary>Deletes a student's document AND their Lessons/Progress subcollections. Caller should confirm with the teacher first - this can't be undone.</summary>
     public async Task DeleteStudentAsync(string studentNumber)
     {
@@ -111,6 +147,16 @@ public class FirestoreStudentService
         await DeleteSubcollectionAsync(studentDoc.Collection("Progress"));
 
         await studentDoc.DeleteAsync();
+    }
+
+    private static async Task CopySubcollectionAsync(CollectionReference source, CollectionReference destination)
+    {
+        QuerySnapshot snapshot = await source.GetSnapshotAsync();
+        foreach (DocumentSnapshot doc in snapshot.Documents)
+        {
+            if (doc.Exists)
+                await destination.Document(doc.Id).SetAsync(doc.ToDictionary());
+        }
     }
 
     private static async Task DeleteSubcollectionAsync(CollectionReference collection)
