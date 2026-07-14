@@ -1,9 +1,9 @@
-using System;
+ï»¿using System;
 using UnityEngine;
 
-public class BrailleMapping : MonoBehaviour
+public class BraiileMapping : MonoBehaviour
 {
-    public static BrailleMapping Instance;
+    public static BraiileMapping Instance;
 
     [Serializable]
     public class DefaultPatternSound
@@ -137,9 +137,11 @@ public class BrailleMapping : MonoBehaviour
     public bool playOtherPatternSoundOnChord = true;
 
     [Header("Input Debounce")]
-    [Tooltip("Minimum time (seconds) between accepted presses of the SAME key. Raise this if buttons double/triple-trigger on one tap.")]
+    [Tooltip("Minimum time (seconds) that must pass between accepted presses of the SAME key. Raise this if the physical buttons are chattering / double-triggering; lower it if fast repeated taps feel unresponsive. 120-200ms is a good starting range for noisy tactile buttons.")]
     [Range(0.02f, 0.5f)] public float debounceInterval = 0.15f;
 
+    // Tracks the last accepted press time per KeyCode so we can filter out
+    // rapid repeat triggers caused by noisy/bouncy hardware contacts.
     private readonly System.Collections.Generic.Dictionary<KeyCode, float> lastPressTime =
         new System.Collections.Generic.Dictionary<KeyCode, float>();
 
@@ -173,6 +175,14 @@ public class BrailleMapping : MonoBehaviour
         CheckFeedbackInputs();
     }
 
+    /// <summary>
+    /// Drop-in replacement for Input.GetKeyDown that filters out hardware
+    /// bounce / double-triggers. A key press is only accepted if at least
+    /// debounceInterval seconds have passed since the last ACCEPTED press
+    /// of that same key. This does not delay a genuine single tap - it only
+    /// suppresses extra triggers that arrive unrealistically fast right
+    /// after one that was already accepted.
+    /// </summary>
     private bool GetKeyDownDebounced(KeyCode key)
     {
         if (!Input.GetKeyDown(key))
@@ -181,7 +191,11 @@ public class BrailleMapping : MonoBehaviour
         float now = Time.unscaledTime;
 
         if (lastPressTime.TryGetValue(key, out float last) && (now - last) < debounceInterval)
+        {
+            if (logInputs)
+                Debug.Log($"Debounced duplicate trigger for {key} ({(now - last) * 1000f:F0}ms since last accepted press)");
             return false;
+        }
 
         lastPressTime[key] = now;
         return true;
@@ -427,7 +441,7 @@ public class BrailleMapping : MonoBehaviour
             // event.
             if (chordStarted)
             {
-                if (logInputs) Debug.Log("Submit — finalizing letter");
+                if (logInputs) Debug.Log("Submit ï¿½ finalizing letter");
                 PlaySfx(submitSfx, actionVolume);
                 SubmitChord();
             }
@@ -506,7 +520,7 @@ public class BrailleMapping : MonoBehaviour
 
     /// <summary>
     /// Returns the pattern currently being built (dots toggled on so far),
-    /// not just the instantaneous held-key state — since dots are no longer
+    /// not just the instantaneous held-key state ï¿½ since dots are no longer
     /// held simultaneously, this reflects the in-progress letter buffer.
     /// </summary>
     public string GetCurrentBraillePattern()

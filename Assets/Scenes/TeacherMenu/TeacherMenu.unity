@@ -1201,7 +1201,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &910199174
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1583,12 +1583,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MainMenuControl
   options:
   - button: {fileID: 33433639}
-    sceneName: LoginStudent
+    sceneName: StudentProfiles
     selectedSpeech: Student Profiles. Select this if you want to view students scores
       and make changes on their profile
-  - button: {fileID: 910199175}
-    sceneName: CreateQuiz
-    selectedSpeech: Create Quiz. Use this to create quizes for your students
   speechBubbleText: {fileID: 1198796439}
   speechBubbleObject: {fileID: 1873925290}
   welcomeSpeech: Welcome to Braille Play. You are currently in Teachers Menu.
