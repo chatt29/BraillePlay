@@ -17,8 +17,14 @@ public class StudentRowView : MonoBehaviour
     [SerializeField] private TMP_Text currentLessonText;
     [SerializeField] private TMP_Text totalScoreText;
 
-    /// <summary>The student number this row is currently showing - StudentProfilesManager reads this when a row is clicked to know which student to open.</summary>
+    /// <summary>The student number this row is currently showing - StudentProfilesManager/StudentTableNavigator read this to know which student a row represents.</summary>
     public string StudentNumber { get; private set; }
+
+    /// <summary>Exposed for StudentTableNavigator's TTS announcements and for prefilling StudentEditPanel - StudentRowView itself never speaks or edits anything.</summary>
+    public string FirstName { get; private set; }
+
+    /// <summary>Exposed for StudentTableNavigator's TTS announcements and for prefilling StudentEditPanel - StudentRowView itself never speaks or edits anything.</summary>
+    public string LastName { get; private set; }
 
     private Action<string> onClicked;
 
@@ -26,6 +32,8 @@ public class StudentRowView : MonoBehaviour
         int highestScore, string currentLessonLabel, int totalScore)
     {
         StudentNumber = studentNumber;
+        FirstName = firstName;
+        LastName = lastName;
 
         if (studentNumberText != null) studentNumberText.text = studentNumber;
         if (firstNameText != null) firstNameText.text = firstName;
