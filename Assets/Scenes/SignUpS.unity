@@ -217,6 +217,56 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AccessibilityManager
   dontDestroyOnLoad: 1
+--- !u!1 &140882533
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 140882534}
+  - component: {fileID: 140882535}
+  m_Layer: 0
+  m_Name: LongPressBack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &140882534
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140882533}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.00008, y: 1.00008, z: 1.00008}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1146815643}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &140882535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140882533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6016412d895336145aed3cc8df150c61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LongPressBackDetector
+  backKey: 8
+  holdSeconds: 3
 --- !u!1 &243075439
 GameObject:
   m_ObjectHideFlags: 0
@@ -1796,6 +1846,8 @@ RectTransform:
   - {fileID: 120922837}
   - {fileID: 382767107}
   - {fileID: 1195421155}
+  - {fileID: 1675803820}
+  - {fileID: 140882534}
   m_Father: {fileID: 1498387084}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2046,6 +2098,7 @@ MonoBehaviour:
   logInputs: 0
   playLetterSoundOnChord: 1
   playOtherPatternSoundOnChord: 1
+  debounceInterval: 0.15
 --- !u!1 &1235775335
 GameObject:
   m_ObjectHideFlags: 0
@@ -2846,11 +2899,11 @@ Transform:
   m_GameObject: {fileID: 1675803819}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -10800}
+  m_LocalScale: {x: 108, y: 108, z: 108}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1146815643}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1675803821
 MonoBehaviour:
@@ -2865,6 +2918,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SignupBackHandler
   mainMenuSceneName: MainMenuNew
+  mainMenuSpokenName: the main menu
 --- !u!1 &1705030311
 GameObject:
   m_ObjectHideFlags: 0
@@ -3931,6 +3985,5 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1675803820}
   - {fileID: 1498387084}
   - {fileID: 1195135200}

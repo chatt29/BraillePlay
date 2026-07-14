@@ -871,11 +871,11 @@ Transform:
   m_GameObject: {fileID: 384536366}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: -960, y: -540, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1690292515}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &430908653
 GameObject:
@@ -997,6 +997,7 @@ MonoBehaviour:
   logInputs: 0
   playLetterSoundOnChord: 1
   playOtherPatternSoundOnChord: 1
+  debounceInterval: 0.15
 --- !u!1 &673388933
 GameObject:
   m_ObjectHideFlags: 0
@@ -2574,6 +2575,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1657395634}
   m_CullTransparentMesh: 1
+--- !u!1 &1658338750
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1658338751}
+  m_Layer: 0
+  m_Name: LongPressBack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1658338751
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1658338750}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -960, y: -540, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1690292515}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1690292514
 GameObject:
   m_ObjectHideFlags: 0
@@ -2611,6 +2643,8 @@ RectTransform:
   - {fileID: 1284806311}
   - {fileID: 1994734318}
   - {fileID: 430908654}
+  - {fileID: 1658338751}
+  - {fileID: 384536368}
   m_Father: {fileID: 2121873395}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3735,7 +3769,6 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 384536368}
   - {fileID: 2121873395}
   - {fileID: 1921593675}
   - {fileID: 29007936}
