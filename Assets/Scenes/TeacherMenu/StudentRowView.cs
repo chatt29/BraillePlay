@@ -17,12 +17,6 @@ public class StudentRowView : MonoBehaviour
     [SerializeField] private TMP_Text currentLessonText;
     [SerializeField] private TMP_Text totalScoreText;
 
-    [Header("Selection highlight")]
-    [Tooltip("Defaults to this GameObject's own Image component if left empty - the row prefab already has one.")]
-    [SerializeField] private Image backgroundImage;
-    [SerializeField] private Color normalColor = Color.white;
-    [SerializeField] private Color selectedColor = new Color(1f, 0.82f, 0.35f); // amber highlight, distinct from white cells
-
     /// <summary>The student number this row is currently showing - StudentProfilesManager/StudentTableNavigator read this to know which student a row represents.</summary>
     public string StudentNumber { get; private set; }
 
@@ -33,21 +27,6 @@ public class StudentRowView : MonoBehaviour
     public string LastName { get; private set; }
 
     private Action<string> onClicked;
-
-    private void Awake()
-    {
-        if (backgroundImage == null)
-            backgroundImage = GetComponent<Image>();
-
-        SetSelected(false);
-    }
-
-    /// <summary>Toggles this row's highlight. Called by StudentTableNavigator as Up/Down moves focus between rows - independent of Unity's built-in Button highlight state, since that alone wasn't visually distinct enough against the white table cells.</summary>
-    public void SetSelected(bool selected)
-    {
-        if (backgroundImage != null)
-            backgroundImage.color = selected ? selectedColor : normalColor;
-    }
 
     public void SetData(string studentNumber, string firstName, string lastName,
         int highestScore, string currentLessonLabel, int totalScore)
