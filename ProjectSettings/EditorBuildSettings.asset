@@ -33,8 +33,14 @@ EditorBuildSettings:
     path: Assets/Scenes/NewGameLessons/Lessons/Lesson1/1SoundsAround3 1.unity
     guid: 7fdf8d63fc1f5144185723dc65932782
   - enabled: 1
+    path: Assets/Scenes/TeacherMenu/TeacherMenu.unity
+    guid: b7279ef0b830f9c46a95f6ad3777d457
+  - enabled: 1
     path: Assets/Scenes/NewGameLessons/Lessons/Lesson2/AnimalSounds2.unity
     guid: a95638ef5f2c1964581b03315f2aece4
+  - enabled: 1
+    path: Assets/Scenes/TeacherMenu/StudentProfiles.unity
+    guid: b2fc1a2e118fdbc4eaafa7bacf57acb8
   - enabled: 1
     path: Assets/Scenes/NewGameLessons/Lessons/Lesson10/Lesson10.unity
     guid: a5b623506c323254e8623e23e1a779f1
@@ -105,11 +111,23 @@ EditorBuildSettings:
     path: Assets/Scenes/SignUpT.unity
     guid: 49a73cc78db84ad4fb0898734309727c
   - enabled: 1
+    path: Assets/Scenes/NewGameLessons/Lessons/Lesson12/RimesAgApAd.unity
+    guid: 1577665ab9c9f9143b9b96bef946416e
+  - enabled: 1
     path: Assets/Scenes/StudentScoreboard.unity
     guid: c0f1b2cc76f582f45adeb45319a676a7
   - enabled: 1
+    path: Assets/Scenes/NewGameLessons/Lessons/Lesson11/RimesAmAnAt.unity
+    guid: d7b0597fdc7febf41857f5a3a85ef3a7
+  - enabled: 1
+    path: Assets/Scenes/NewGameLessons/Lessons/Lesson14/Lession14.unity
+    guid: ae6ab2a35641c834cbb5f4af0da29dc2
+  - enabled: 1
     path: Assets/Scenes/1. Beginner/AbcFlowA.unity
     guid: ffb2d6a7ed041194e87b2e23d7178617
+  - enabled: 1
+    path: Assets/Scenes/NewGameLessons/Lessons/Lesson15/RimesItIpIgiIdInIll.unity
+    guid: 652fa81e56e5a4841a05b106186b79ce
   - enabled: 1
     path: Assets/Scenes/1. Beginner/AbcSongScene.unity
     guid: 34c52dc3b5c910e49b23243d97aa25a5
