@@ -37,69 +37,69 @@ MonoBehaviour:
     - quizTitle: Identifying Alphabets
       sceneName: IdentifyingAlphabets
       quizNumber: 1
-  - lessonTitle: 'Lesson 5: Onset-Rime'
+  - lessonTitle: 'Lesson 6: Simple Sentence'
     lessonNumber: 5
     quizzes:
-    - quizTitle: Onset-Rime
-      sceneName: Onset-Rime
-      quizNumber: 1
-  - lessonTitle: 'Lesson 6: Simple Sentence'
-    lessonNumber: 6
-    quizzes:
     - quizTitle: Parts of a Simple Sentence
-      sceneName: Lesson6
+      sceneName: Lession6
       quizNumber: 1
   - lessonTitle: 'Lesson 7:  Speech Sounds '
-    lessonNumber: 7
+    lessonNumber: 6
     quizzes:
     - quizTitle: Speech Sounds
       sceneName: SpeechSounds
       quizNumber: 1
   - lessonTitle: 'Lesson 8: Speech Sound Medial Rimes '
-    lessonNumber: 8
+    lessonNumber: 7
     quizzes:
     - quizTitle: Speech Sounds Medial Rimes
       sceneName: SoundAround4
       quizNumber: 1
   - lessonTitle: 'Lesson 9: Basic Rhymes '
-    lessonNumber: 9
+    lessonNumber: 8
     quizzes:
     - quizTitle: Basic Rhymes
       sceneName: RimesEmEllEb
       quizNumber: 1
   - lessonTitle: 'Lesson 10: Bat Cat & Fat Rat '
-    lessonNumber: 10
+    lessonNumber: 9
     quizzes:
     - quizTitle: Bat Cat & Fat Rat Story Quiz
       sceneName: Lesson10
       quizNumber: 1
   - lessonTitle: 'Lesson 11:  Rimes (-am, -an, -at)'
-    lessonNumber: 11
+    lessonNumber: 10
     quizzes:
     - quizTitle: 'Lesson 11: Rime Quiz'
       sceneName: RimesAmAnAtManager
       quizNumber: 1
   - lessonTitle: 'Lesson 12:  Rimes (-ag, -ap, -ad)'
-    lessonNumber: 12
+    lessonNumber: 11
     quizzes:
     - quizTitle: 'Lesson 12: Rime Quiz'
       sceneName: RimesAgApAd
       quizNumber: 1
   - lessonTitle: 'Lesson 13: Pink WIg'
-    lessonNumber: 13
+    lessonNumber: 12
     quizzes:
     - quizTitle: Pink Wig Story Quiz
       sceneName: Lesson13
       quizNumber: 1
   - lessonTitle: 'Lesson 14: Rhymes'
-    lessonNumber: 14
+    lessonNumber: 13
     quizzes:
     - quizTitle: Rhymes Quiz
       sceneName: Lession14
       quizNumber: 1
   - lessonTitle: 'Lesson 15: Rimes (-it, -ip, -ig, -in, -ill)'
-    lessonNumber: 15
+    lessonNumber: 14
     quizzes:
     - quizTitle: 'Lesson 15: Rimes Quiz'
       sceneName: RimesItIpIgiIdInIll
+      quizNumber: 1
+  - lessonTitle: 'Lesson 5: Onset-Rime'
+    lessonNumber: 15
+    quizzes:
+    - quizTitle: Onset-Rime
+      sceneName: Onset-Rime
       quizNumber: 1
