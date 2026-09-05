@@ -171,12 +171,14 @@ public class QuizController : MonoBehaviour
     {
         BrailleMapping.OnBrailleChordSubmitted += HandleBrailleChordSubmitted;
         BrailleMapping.OnRepeat += HandleRepeat;
+        BrailleMapping.OnYesOrNext += HandleYesOrNext;
     }
 
     private void OnDisable()
     {
         BrailleMapping.OnBrailleChordSubmitted -= HandleBrailleChordSubmitted;
         BrailleMapping.OnRepeat -= HandleRepeat;
+        BrailleMapping.OnYesOrNext -= HandleYesOrNext;
     }
 
     /// <summary>Called by LessonController once the lesson pages are finished.</summary>
@@ -471,6 +473,23 @@ public class QuizController : MonoBehaviour
         yield return PlayAudioOrWait(genericCompletedAudio, noAudioTextDelay);
         yield return PlayFinalScoreAudio();
 
+        // Ask whether to play the quiz again or finish, then wait for the
+        // player's choice. HandleRepeat and HandleYesOrNext resolve this wait.
+        waitingForRepeatChoice = true;
+
+        yield return PlayAudioOrWait(repeatQuestionAudio, noAudioTextDelay);
+
+        while (waitingForRepeatChoice)
+            yield return null;
+    }
+
+    /// <summary>Player chose to finish instead of repeating the quiz - report the final score.</summary>
+    private void HandleYesOrNext()
+    {
+        if (!isActive) return;
+        if (!waitingForRepeatChoice) return;
+
+        waitingForRepeatChoice = false;
         isActive = false;
 
         if (resultReporter != null)
