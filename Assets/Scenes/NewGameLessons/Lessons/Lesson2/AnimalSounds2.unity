@@ -787,17 +787,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::QuizController
   resultReporter: {fileID: 0}
   voiceAudioSource: {fileID: 1586095478}
-  welcomeAudio: {fileID: 8300000, guid: 1e5b72b531abe6a419a3a7a0434736c0, type: 3}
-  letsLearnAudio: {fileID: 8300000, guid: 7931dcdc3d1268c4383f9297ab391722, type: 3}
-  genericCorrectAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
-  genericTryAgainAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-  genericCompletedAudio: {fileID: 8300000, guid: 439e8e52fb219e64e8ebeb888dc1dcb2, type: 3}
-  repeatQuestionAudio: {fileID: 8300000, guid: 6e0af612d0f553543909ab2d4c7f1b7c, type: 3}
-  letterAAudio: {fileID: 8300000, guid: 42701a2ed6601e345945e43b1120e18e, type: 3}
-  letterBAudio: {fileID: 8300000, guid: c8c1c489208b62d4a8fc76e6666cbd62, type: 3}
-  letterCAudio: {fileID: 8300000, guid: 90c6142c3d1a7464ebe56f87204bea71, type: 3}
-  yourScoreIsAudio: {fileID: 8300000, guid: 613a4ecd64752ee4c8844d8286dca545, type: 3}
-  whileYourHighestScoreIsAudio: {fileID: 8300000, guid: 2525c179990406146becd993f00485ee, type: 3}
+  welcomeAudio: {fileID: 8300000, guid: 906a83afd71df25469f874ae04b47dc1, type: 3}
+  letsLearnAudio: {fileID: 0}
+  genericCorrectAudio: {fileID: 8300000, guid: c22f7a78bcab4cb40b51cac7dd0f1ea1, type: 3}
+  genericTryAgainAudio: {fileID: 8300000, guid: 85d681a467379fb469f5e25a9243f5dd, type: 3}
+  genericCompletedAudio: {fileID: 8300000, guid: 31fb5dc0967cfe340b3a202f93546761, type: 3}
+  repeatQuestionAudio: {fileID: 8300000, guid: 40cfc195a78c37f47804c8b68a923a8e, type: 3}
+  letterAAudio: {fileID: 8300000, guid: 9850ae6062ae2184d9eeab783a189c18, type: 3}
+  letterBAudio: {fileID: 8300000, guid: 178e724b80a55ba4dab466d3d95710ff, type: 3}
+  letterCAudio: {fileID: 8300000, guid: fdf77672a86ab764dba309265e0d7807, type: 3}
+  yourScoreIsAudio: {fileID: 8300000, guid: 66bcf1c0835ab9e449c69529a7974c2e, type: 3}
+  whileYourHighestScoreIsAudio: {fileID: 8300000, guid: 93aaa57f874afd8459beb294fbf5fdeb, type: 3}
   numberAudios:
   - {fileID: 0}
   - {fileID: 0}
@@ -889,17 +889,17 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 94091ec33fbd6b349ba6e703387e4866, type: 3}
   - {fileID: 8300000, guid: ee8cfcb8b3588954ea24c10457255924, type: 3}
   - {fileID: 8300000, guid: 5e889505e0e0d2a4db129b0905352109, type: 3}
-  - {fileID: 8300000, guid: 65fabefe77170f948ba6088e0e5a0f95, type: 3}
-  - {fileID: 8300000, guid: 6a0ec25b8a422c646b399ddcae7b2c62, type: 3}
-  - {fileID: 8300000, guid: 437fe84d57fc7f64cad7d56e2a8c9a89, type: 3}
-  - {fileID: 8300000, guid: 0d5771525d0e1814ab6d369e7eb1c3ba, type: 3}
-  - {fileID: 8300000, guid: 8881ea521aa0c7a4f9ae441c637350e6, type: 3}
-  - {fileID: 8300000, guid: e8c2b8bd9bd8f9e428347c57e9710cd4, type: 3}
-  - {fileID: 8300000, guid: 09027ef61068784478c1b32badf50904, type: 3}
-  - {fileID: 8300000, guid: e8c38c6593d87944187086e01dbfdb98, type: 3}
-  - {fileID: 8300000, guid: 31becc0a3e7892e468b4ac4372db4882, type: 3}
-  - {fileID: 8300000, guid: caf77e0d1f468b64ab86183d4318a7f8, type: 3}
-  - {fileID: 8300000, guid: 579c9253f6a5be6499ca8a1851d07f90, type: 3}
+  - {fileID: 8300000, guid: 43f410aff72c17c488478fb893c6d6e6, type: 3}
+  - {fileID: 8300000, guid: c7c557f3c289d154382e195be976bc6b, type: 3}
+  - {fileID: 8300000, guid: 132809e78afb1ef48851d3fce16a8625, type: 3}
+  - {fileID: 8300000, guid: 52a55f2f421c7e9428c6af4fbfbcf36d, type: 3}
+  - {fileID: 8300000, guid: be86b3dec11d08843b9eea233026f382, type: 3}
+  - {fileID: 8300000, guid: 59c14e7d1a819494b8b016a6e01865b3, type: 3}
+  - {fileID: 8300000, guid: 995894644242e414ea14e794b95ac657, type: 3}
+  - {fileID: 8300000, guid: 4c46b1ede1122ce489b838871abdf92b, type: 3}
+  - {fileID: 8300000, guid: 3c53fa8cb322a1f4b95d1d14b107c123, type: 3}
+  - {fileID: 8300000, guid: 5ea8dcba7df1ee443956e8813e166fd2, type: 3}
+  - {fileID: 8300000, guid: 93a1cf7d9fccc35488ea83b9efdb0405, type: 3}
   welcomeMessage: 
   letsLearnMessage: 
   completedMessage: 
@@ -910,22 +910,22 @@ MonoBehaviour:
     promptMessage: 
     successMessage: 
     wrongMessage: 
-    introAudio: {fileID: 8300000, guid: e6061281bf1876f448b97a038f6160bc, type: 3}
+    introAudio: {fileID: 8300000, guid: cc2fcdeb30f452449aef6dc4e86220d1, type: 3}
     instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
-    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    successAudio: {fileID: 0}
+    wrongAudio: {fileID: 0}
     correctAnswer: 2
     choiceAAudio: {fileID: 8300000, guid: 789473d6f2023f44aba6ddb9c2eea13e, type: 3}
     choiceBAudio: {fileID: 8300000, guid: dce348faffb75614f8ffea2d5d28242f, type: 3}
     choiceCAudio: {fileID: 8300000, guid: da1935713bb5c2d4e9cdd705a4cb916f, type: 3}
     supportMessage: 
-    supportAudio: {fileID: 8300000, guid: 11183da83cba9e6448413db919059b20, type: 3}
-  - displayLabel: Dogw
+    supportAudio: {fileID: 8300000, guid: f3d4036fb3821094f9d1bd6eda6620ae, type: 3}
+  - displayLabel: Dog
     categoryLabel: 
     promptMessage: 
     successMessage: 
     wrongMessage: 
-    introAudio: {fileID: 8300000, guid: 613b4f643fa3ae94b848c4737a018df3, type: 3}
+    introAudio: {fileID: 8300000, guid: be9744636a3e8ea4ca1ac685c3610366, type: 3}
     instructionAudio: {fileID: 0}
     successAudio: {fileID: 0}
     wrongAudio: {fileID: 0}
@@ -934,13 +934,13 @@ MonoBehaviour:
     choiceBAudio: {fileID: 8300000, guid: fb639cbad8fc65f4591dfe41c16820d2, type: 3}
     choiceCAudio: {fileID: 8300000, guid: 91cc9825a3e7b2548b3fb222e8cf2581, type: 3}
     supportMessage: 
-    supportAudio: {fileID: 8300000, guid: 87f56afcb8d7a37499bd96bd7ac2d41d, type: 3}
+    supportAudio: {fileID: 8300000, guid: 1aa24bc87a4a3064b95cc25682241375, type: 3}
   - displayLabel: Goat
     categoryLabel: 
     promptMessage: 
     successMessage: 
     wrongMessage: 
-    introAudio: {fileID: 8300000, guid: d7309bafba9d1ee4ab6cdefb2aa9f2dd, type: 3}
+    introAudio: {fileID: 8300000, guid: 651cb92edb5b7e14abfd966233baa702, type: 3}
     instructionAudio: {fileID: 0}
     successAudio: {fileID: 0}
     wrongAudio: {fileID: 0}
@@ -949,13 +949,13 @@ MonoBehaviour:
     choiceBAudio: {fileID: 8300000, guid: dce348faffb75614f8ffea2d5d28242f, type: 3}
     choiceCAudio: {fileID: 8300000, guid: fb639cbad8fc65f4591dfe41c16820d2, type: 3}
     supportMessage: 
-    supportAudio: {fileID: 8300000, guid: 2664000ce600b724a8a9f02ce1fca837, type: 3}
-  - displayLabel: a
+    supportAudio: {fileID: 8300000, guid: fa6acc8d22729ce46aef5360e74741ae, type: 3}
+  - displayLabel: Cat
     categoryLabel: 
     promptMessage: 
     successMessage: 
     wrongMessage: 
-    introAudio: {fileID: 8300000, guid: 96f4065ede193b14fbfffe113bb765ab, type: 3}
+    introAudio: {fileID: 8300000, guid: 47f49da87334e544aa184f496b7ef851, type: 3}
     instructionAudio: {fileID: 0}
     successAudio: {fileID: 0}
     wrongAudio: {fileID: 0}
@@ -964,13 +964,13 @@ MonoBehaviour:
     choiceBAudio: {fileID: 8300000, guid: dce348faffb75614f8ffea2d5d28242f, type: 3}
     choiceCAudio: {fileID: 8300000, guid: c928eea9a4d6ed746b88d734ec1b873e, type: 3}
     supportMessage: 
-    supportAudio: {fileID: 8300000, guid: 738b9dfebe952bf4aab441538bba6802, type: 3}
+    supportAudio: {fileID: 8300000, guid: c4bc1613d380f7341a60e8b402effa25, type: 3}
   - displayLabel: Cow
     categoryLabel: 
     promptMessage: 
     successMessage: 
     wrongMessage: 
-    introAudio: {fileID: 8300000, guid: da90f80022d702049a8374c5ef8a02f4, type: 3}
+    introAudio: {fileID: 8300000, guid: 1c9bc2778ae827840a4d319f5ad626ce, type: 3}
     instructionAudio: {fileID: 0}
     successAudio: {fileID: 0}
     wrongAudio: {fileID: 0}
@@ -979,13 +979,13 @@ MonoBehaviour:
     choiceBAudio: {fileID: 8300000, guid: c928eea9a4d6ed746b88d734ec1b873e, type: 3}
     choiceCAudio: {fileID: 8300000, guid: 789473d6f2023f44aba6ddb9c2eea13e, type: 3}
     supportMessage: 
-    supportAudio: {fileID: 8300000, guid: 31b83aadd413f5f47960049866cf6630, type: 3}
+    supportAudio: {fileID: 8300000, guid: 0bb5f508aa27e8448b0d4fc079eb1440, type: 3}
   - displayLabel: Bird
     categoryLabel: 
     promptMessage: 
     successMessage: 
     wrongMessage: 
-    introAudio: {fileID: 8300000, guid: b62d675798f3fe44b9500f4584991676, type: 3}
+    introAudio: {fileID: 8300000, guid: 52760378c7301464fa9553a00a3bda49, type: 3}
     instructionAudio: {fileID: 0}
     successAudio: {fileID: 0}
     wrongAudio: {fileID: 0}
@@ -994,8 +994,8 @@ MonoBehaviour:
     choiceBAudio: {fileID: 8300000, guid: dce348faffb75614f8ffea2d5d28242f, type: 3}
     choiceCAudio: {fileID: 8300000, guid: c928eea9a4d6ed746b88d734ec1b873e, type: 3}
     supportMessage: 
-    supportAudio: {fileID: 8300000, guid: cb98333fc9131cc44afe477bc0607b5f, type: 3}
-  delayAfterVoice: 0.35
+    supportAudio: {fileID: 8300000, guid: b89701a8c35b5dd4093daa58960f8e1b, type: 3}
+  delayAfterVoice: 0.1
   noAudioTextDelay: 2
   delayAfterCorrect: 0.75
   mistakesBeforeSupport: 3
@@ -1020,68 +1020,12 @@ MonoBehaviour:
   voiceAudioSource: {fileID: 1586095478}
   lessonPages:
   - title: 
-    lessonText: Welcome to Lesson 2, Animal Sounds.
-    lessonAudio: {fileID: 8300000, guid: 07c88ca858526bb4e95592af2b38718f, type: 3}
-  - title: 
-    lessonText: Now that you've learned some of the sounds you can here on your everyday
-      life, lets be specific into learning what are the sounds produced by an animals.
-    lessonAudio: {fileID: 8300000, guid: d10e18940478e06409ab472bb847481d, type: 3}
-  - title: 
-    lessonText: Animals make different sounds. These sounds help animals communicate
-      with one another. We can also identify animals by listening carefully to the
-      sounds they make.
-    lessonAudio: {fileID: 8300000, guid: d49ef0f243d9ae044a1260d3de23850b, type: 3}
-  - title: 
-    lessonText: For an example, Horses, Horses neighs.
-    lessonAudio: {fileID: 8300000, guid: ad81f3f3cf51f4a4f94afca86cb4f550, type: 3}
-  - title: 
     lessonText: 
-    lessonAudio: {fileID: 8300000, guid: da1935713bb5c2d4e9cdd705a4cb916f, type: 3}
-  - title: 
-    lessonText: Goat bleets
-    lessonAudio: {fileID: 8300000, guid: e2d51d1ff121f9641b300ff173e6c17a, type: 3}
-  - title: 
-    lessonText: 
-    lessonAudio: {fileID: 8300000, guid: dce348faffb75614f8ffea2d5d28242f, type: 3}
-  - title: 
-    lessonText: Cat Meows
-    lessonAudio: {fileID: 8300000, guid: 74610c52326ac2644a6bdf0a56957053, type: 3}
-  - title: 
-    lessonText: 
-    lessonAudio: {fileID: 8300000, guid: 789473d6f2023f44aba6ddb9c2eea13e, type: 3}
-  - title: 
-    lessonText: Dog Barks
-    lessonAudio: {fileID: 8300000, guid: 6e44cee697282c44895ac4199e233149, type: 3}
-  - title: 
-    lessonText: 
-    lessonAudio: {fileID: 8300000, guid: fb639cbad8fc65f4591dfe41c16820d2, type: 3}
-  - title: 
-    lessonText: Cow Moos
-    lessonAudio: {fileID: 8300000, guid: 9b06fcae76989394fb1131257d49d40f, type: 3}
-  - title: 
-    lessonText: 
-    lessonAudio: {fileID: 8300000, guid: 91cc9825a3e7b2548b3fb222e8cf2581, type: 3}
-  - title: 
-    lessonText: Or even birds sings.
-    lessonAudio: {fileID: 8300000, guid: 5ebcc16e894f0294bb4ed3d83eb55bb2, type: 3}
-  - title: 
-    lessonText: 
-    lessonAudio: {fileID: 8300000, guid: c928eea9a4d6ed746b88d734ec1b873e, type: 3}
-  - title: 
-    lessonText: Every animal has its own special sound.
-    lessonAudio: {fileID: 8300000, guid: cbe4359ee18198043bc43781f9ebbe53, type: 3}
-  - title: 
-    lessonText: Sometimes we hear animals without seeing them. By listening carefully,
-      we can tell which animal is nearby. Good listening helps us learn more about
-      the world around us.
-    lessonAudio: {fileID: 8300000, guid: f813af262bee9b84fbda0adee6b23198, type: 3}
-  - title: 
-    lessonText: Now you are ready to identify animal sounds. Good luck and have fun!
-    lessonAudio: {fileID: 8300000, guid: a9cffb759ae40064b9a6558ceacfd4b6, type: 3}
+    lessonAudio: {fileID: 8300000, guid: 58eba76879427134099b76579c3b3079, type: 3}
   lessonChoiceMessage: You have finished learning about animal sounds. Press repeat
     to repeat the lesson or press next to begin the quiz.
-  lessonChoiceAudio: {fileID: 8300000, guid: 2a91f4f2e06d82048a1bec8794a94244, type: 3}
-  delayAfterVoice: 0.35
+  lessonChoiceAudio: {fileID: 8300000, guid: e824b7e0329c1c04d94f3ff6c1637e1e, type: 3}
+  delayAfterVoice: 0.1
   noAudioTextDelay: 2
   logDebug: 1
 --- !u!1 &1625502103
