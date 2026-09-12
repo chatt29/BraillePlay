@@ -333,6 +333,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1791188412}
+  - {fileID: 1586095474}
+  - {fileID: 695698597}
+  - {fileID: 872136829}
   - {fileID: 665849042}
   - {fileID: 546697432}
   - {fileID: 1430714902}
@@ -879,17 +882,17 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 695698596}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1945483425}
-  m_Father: {fileID: 1791188412}
+  m_Father: {fileID: 83132950}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 43, y: 25}
-  m_SizeDelta: {x: -564.99805, y: -418.07}
+  m_AnchoredPosition: {x: 1003, y: 565}
+  m_SizeDelta: {x: 1355.002, y: 661.93}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &695698598
 MonoBehaviour:
@@ -1297,17 +1300,17 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 872136828}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1325103959}
-  m_Father: {fileID: 1791188412}
+  m_Father: {fileID: 83132950}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 37, y: 7}
-  m_SizeDelta: {x: -702.70996, y: -266.31}
+  m_AnchoredPosition: {x: 997, y: 547}
+  m_SizeDelta: {x: 1217.29, y: 813.69}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &872136830
 MonoBehaviour:
@@ -3000,6 +3003,8 @@ GameObject:
   - component: {fileID: 1586095478}
   - component: {fileID: 1586095484}
   - component: {fileID: 1586095485}
+  - component: {fileID: 1586095487}
+  - component: {fileID: 1586095486}
   m_Layer: 5
   m_Name: Lesson6Manager
   m_TagString: Untagged
@@ -3014,16 +3019,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1586095473}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1791188412}
+  m_Father: {fileID: 83132950}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 960, y: 540}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!82 &1586095478
@@ -3234,7 +3239,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1586095473}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 47fef0f0e1fe6bb458d310344c93f635, type: 3}
   m_Name: 
@@ -3368,10 +3373,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: caf77e0d1f468b64ab86183d4318a7f8, type: 3}
   - {fileID: 8300000, guid: 579c9253f6a5be6499ca8a1851d07f90, type: 3}
   introLessonPages:
-  - pageText: Hello, Class! Welcome to Lesson 6 (Parts of Simple Sentence)
+  - pageText: Hi, Class! Welcome to Lesson 6 (Parts of Simple Sentence)
     pageAudio: {fileID: 8300000, guid: 987c2ab567c418b4ab874cef6729fce8, type: 3}
-  - pageText: 'Today, we are going to learn about the parts of a simple sentence.
-      Every sentence tells us something. We can understand a sentence better by asking
+  - pageText: 'Today, were going to learn about the parts of a simple sentence. Every
+      sentence tells us something. We can understand a sentence better, by asking
       these questions:'
     pageAudio: {fileID: 8300000, guid: 63bef7a4573917d408179ba8c2b6f8e8, type: 3}
   - pageText: 'Who or What?
@@ -3389,11 +3394,10 @@ MonoBehaviour:
     pageAudio: {fileID: 8300000, guid: 455a70dae0a741c48b1f5d0be6598216, type: 3}
   - pageText: 'Examples:
 
-
       Ben feeds the hens.
 
-      The hens live in the
-      hen pen.
+      The hens live in the hen
+      pen.
 
       Ren-ren is missing.'
     pageAudio: {fileID: 8300000, guid: 0c51544a8f5c6e140bc20c24a399088b, type: 3}
@@ -3462,18 +3466,19 @@ MonoBehaviour:
 
       Quickly'
     pageAudio: {fileID: 8300000, guid: 45a8f929a8175164788a0a9cd1690809, type: 3}
-  - pageText: Let's Listen at an Example
+  - pageText: now, Let's Listen for an Example
     pageAudio: {fileID: 8300000, guid: 926f67e6581762d40a1a6127a8692789, type: 3}
   - pageText: One morning, Ben happily fed the hens in the hen pen.
     pageAudio: {fileID: 8300000, guid: 3e9c53e6b8a47214a971de8e3542112e, type: 3}
-  - pageText: 'Who or What: Ben
+  - pageText: 'the answer of the question Who, is Ben
 
-      What are they doing?: Fed the hens
+      so what ben''s  doing,
+      Fed the hens
 
-      When:
-      One morning
+      When its happen? in One morning
 
-      Where: In the hen pen
+      Where did it happen?
+      In the hen pen
 
       How: Happily'
     pageAudio: {fileID: 8300000, guid: b8dfe0639d8fcdf4eb99386bf04e46f0, type: 3}
@@ -3485,13 +3490,13 @@ MonoBehaviour:
 
       When, Where, or How?'
     pageAudio: {fileID: 8300000, guid: 22b98b8297907a840be28d86cbcf40a5, type: 3}
-  - pageText: When you can find these parts, it becomes easier to read, understand,
-      and tell stories.
+  - pageText: When you can find these parts, it becomes easier to read, and understand
+      a stories.
     pageAudio: {fileID: 8300000, guid: a3e93b7148439c34b9275fcfc6fa0db0, type: 3}
   delayBetweenIntroPages: 0.5
   welcomeMessage: Hello. Now I'm going to read a short story
   letsLearnMessage: In this lesson, you will listen to a short story and answer five
-    questions about it using Braille. Listen carefully because your answers should
+    questions about it, using Braille. Listen carefully because your answers should
     be based on the story.
   completedMessage: Great job! You finished Lesson 6 (Parts of a Simple Sentence)
   repeatQuestionMessage: You finished the lesson. Do you want to repeat again? Press
@@ -3608,14 +3613,77 @@ MonoBehaviour:
   delayBetweenStoryLines: 0.5
   resetMistakesAfterSupport: 1
   mistakesBeforeSupport: 3
-  repeatStoryPromptMessage: Do you want to hear the story again? Press Repeat to
-    hear it again, or press Next to continue with the question.
+  repeatStoryPromptMessage: would you like to hear the story again? Press Repeat
+    to hear it again, or press Next to continue with the question.
   repeatStoryPromptAudio: {fileID: 8300000, guid: dba4b148f8a48734ba002f1e07c20fd8, type: 3}
   useTypewriterEffect: 1
   defaultTypewriterCharacterDelay: 0.03
   minSyncedCharacterDelay: 0.01
   maxSyncedCharacterDelay: 0.12
   waitForFullAudioBeforeContinuing: 1
+  logDebug: 1
+--- !u!114 &1586095486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586095473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7c43144e873c9147b2badad51f026f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QuizManager6
+  lessonManager: {fileID: 0}
+  resultReporter: {fileID: 0}
+  voiceAudioSource: {fileID: 0}
+  genericCorrectAudio: {fileID: 8300000, guid: 8f6b571bdbb8d0147b72fa826e260eaf, type: 3}
+  genericTryAgainAudio: {fileID: 8300000, guid: 26ba9eb57e1d3e34ea32366d939d2cb5, type: 3}
+  yourScoreIsAudio: {fileID: 0}
+  whileYourHighestScoreIsAudio: {fileID: 0}
+  numberAudios: []
+  fixedScore: 100
+  deductionPerMistake: 1
+  highScoreKey: BrailleSoundsAroundHighScore
+  resetMistakesAfterSupport: 1
+  mistakesBeforeSupport: 3
+  repeatStoryPromptAudio: {fileID: 0}
+  repeatQuestionConfirmAudio: {fileID: 8300000, guid: 77913cc5b924944439f852f36f7e984a, type: 3}
+  delayAfterVoice: 0.35
+  noAudioFallbackDelay: 2
+  delayAfterCorrect: 0.75
+  logDebug: 1
+--- !u!114 &1586095487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586095473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5691b89a5e59b94a97f986ccd62c00f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LessonManager6
+  quizManager: {fileID: 0}
+  voiceAudioSource: {fileID: 0}
+  welcomeAudio: {fileID: 8300000, guid: bd7ada0447ac8184d9d23ac30c4f7429, type: 3}
+  letsLearnAudio: {fileID: 0}
+  genericCompletedAudio: {fileID: 8300000, guid: d92736a320be73948a234dbfad74ec5e, type: 3}
+  repeatQuestionAudio: {fileID: 8300000, guid: 77913cc5b924944439f852f36f7e984a, type: 3}
+  introLessonPages:
+  - pageText: 
+    pageAudio: {fileID: 0}
+  delayBetweenIntroPages: 0.5
+  welcomeMessage: Welcome to Braille Sounds Around!
+  letsLearnMessage: Let's identify some sounds.
+  completedMessage: Great job! You finished the lesson.
+  repeatQuestionMessage: You finished the lesson. Do you want to repeat again? Press
+    R to repeat or Y to finish.
+  lessons: []
+  delayAfterVoice: 0.35
+  noAudioFallbackDelay: 2
+  delayBetweenStoryLines: 0.5
   logDebug: 1
 --- !u!1 &1697798611
 GameObject:
@@ -4077,12 +4145,9 @@ RectTransform:
   - {fileID: 1242371996}
   - {fileID: 1070165175}
   - {fileID: 286661653}
-  - {fileID: 1586095474}
   - {fileID: 1155271826}
   - {fileID: 2047379755}
   - {fileID: 54352917}
-  - {fileID: 695698597}
-  - {fileID: 872136829}
   m_Father: {fileID: 83132950}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
