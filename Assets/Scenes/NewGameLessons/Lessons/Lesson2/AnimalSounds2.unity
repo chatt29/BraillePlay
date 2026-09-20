@@ -209,8 +209,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 829805072}
   - {fileID: 1586095474}
+  - {fileID: 829805072}
   - {fileID: 1222851854}
   - {fileID: 398366029}
   - {fileID: 566078526}
@@ -995,8 +995,8 @@ MonoBehaviour:
     choiceCAudio: {fileID: 8300000, guid: c928eea9a4d6ed746b88d734ec1b873e, type: 3}
     supportMessage: 
     supportAudio: {fileID: 8300000, guid: b89701a8c35b5dd4093daa58960f8e1b, type: 3}
-  delayAfterVoice: 0.1
-  noAudioTextDelay: 2
+  delayAfterVoice: 0.35
+  noAudioTextDelay: 0
   delayAfterCorrect: 0.75
   mistakesBeforeSupport: 3
   resetMistakesAfterSupport: 1
@@ -1025,8 +1025,8 @@ MonoBehaviour:
   lessonChoiceMessage: You have finished learning about animal sounds. Press repeat
     to repeat the lesson or press next to begin the quiz.
   lessonChoiceAudio: {fileID: 8300000, guid: e824b7e0329c1c04d94f3ff6c1637e1e, type: 3}
-  delayAfterVoice: 0.1
-  noAudioTextDelay: 2
+  delayAfterVoice: 0.35
+  noAudioTextDelay: 0
   logDebug: 1
 --- !u!1 &1625502103
 GameObject:

@@ -316,7 +316,10 @@ MonoBehaviour:
   endOfLessonAudio: {fileID: 0}
   endOfLessonPromptMessage: You have completed the lesson. Press Space to begin the
     Quiz, or press R to rewatch the lesson.
-  lessonPages: []
+  lessonPages:
+  - title: 
+    lessonText: 
+    lessonAudio: {fileID: 0}
   delayAfterVoice: 0.35
   noAudioFallbackDelay: 2
   logDebug: 1
@@ -347,7 +350,21 @@ MonoBehaviour:
   yourScoreIsAudio: {fileID: 0}
   whileYourHighestScoreIsAudio: {fileID: 0}
   numberAudios: []
-  quizQuestions: []
+  quizQuestions:
+  - displayLabel: 
+    categoryLabel: 
+    promptMessage: 
+    successMessage: 
+    wrongMessage: 
+    onsetAudioPromptMessage: 
+    supportMessage: 
+    introAudio: {fileID: 0}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 0}
+    supportAudio: {fileID: 0}
+    targetWordAudio: {fileID: 0}
+    onsetAudioPromptClip: {fileID: 0}
+    correctOnsetBraillePattern: 
   fixedScore: 100
   deductionPerMistake: 1
   highScoreKey: BrailleOnsetRimeHighScore
