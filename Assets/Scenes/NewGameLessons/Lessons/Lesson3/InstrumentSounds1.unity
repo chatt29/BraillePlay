@@ -1638,7 +1638,7 @@ MonoBehaviour:
   deductionPerMistake: 1
   highScoreKey: InstrumentSoundsHighScore
   delayAfterVoice: 0.2
-  noAudioTextDelay: 2
+  noAudioTextDelay: 0
   delayAfterCorrect: 0.75
   mistakesBeforeSupport: 3
   resetMistakesAfterSupport: 1
@@ -1748,7 +1748,7 @@ MonoBehaviour:
       supportMessage: 
       supportAudio: {fileID: 8300000, guid: 13f8f07d0c626334dabc275ddaae558a, type: 3}
   delayAfterVoice: 0.35
-  noAudioTextDelay: 2
+  noAudioTextDelay: 0
   logDebug: 1
 --- !u!1 &1624634271
 GameObject:
