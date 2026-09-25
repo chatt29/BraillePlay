@@ -1717,7 +1717,7 @@ MonoBehaviour:
     promptAudio: {fileID: 8300000, guid: 58c7878992384ab438cf76cef0ed4aa7, type: 3}
     successAudio: {fileID: 0}
     wrongAudio: {fileID: 0}
-    supportAudio: {fileID: 8300000, guid: cdb6017eae310fa42a2e40678ec25835, type: 3}
+    supportAudio: {fileID: 8300000, guid: 62cb27dca8a22f64cb45e6060710ef5c, type: 3}
   - title: Rag
     pageType: 1
     informationBeats:
