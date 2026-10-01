@@ -119,81 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &54352916
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 54352917}
-  - component: {fileID: 54352919}
-  - component: {fileID: 54352918}
-  m_Layer: 5
-  m_Name: SampleImage
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &54352917
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 54352916}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1791188412}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -22.717, y: -163.05}
-  m_SizeDelta: {x: 405.28, y: 316.04}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &54352918
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 54352916}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &54352919
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 54352916}
-  m_CullTransparentMesh: 1
 --- !u!1 &83132947
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,7 +209,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1791188412}
+  - {fileID: 1586095474}
+  - {fileID: 1601820606}
+  - {fileID: 741098367}
   - {fileID: 300488448}
   - {fileID: 1375276679}
   - {fileID: 444619235}
@@ -430,193 +357,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 200069226}
   m_CullTransparentMesh: 1
---- !u!1 &232308968
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 232308969}
-  - component: {fileID: 232308971}
-  - component: {fileID: 232308970}
-  m_Layer: 5
-  m_Name: Background.Image
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &232308969
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 232308968}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1791188412}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000019073, y: 0}
-  m_SizeDelta: {x: 1920, y: 1080}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &232308970
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 232308968}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: -5442810941090204316, guid: d4c4ca839bc53e046af81a15002f3fbc, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &232308971
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 232308968}
-  m_CullTransparentMesh: 1
---- !u!1 &270223249
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 270223250}
-  m_Layer: 5
-  m_Name: Txt
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &270223250
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 270223249}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1204025120}
-  - {fileID: 1697798614}
-  m_Father: {fileID: 1791188412}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &286661652
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 286661653}
-  - component: {fileID: 286661655}
-  - component: {fileID: 286661654}
-  m_Layer: 5
-  m_Name: LessonImage.Image
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &286661653
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 286661652}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1791188412}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 592.8, y: -171.54}
-  m_SizeDelta: {x: 375.16, y: 343.08}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &286661654
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 286661652}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 3
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &286661655
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 286661652}
-  m_CullTransparentMesh: 1
 --- !u!1 &300488447
 GameObject:
   m_ObjectHideFlags: 0
@@ -663,81 +403,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LongPressBackDetector
   backKey: 8
   holdSeconds: 3
---- !u!1 &397166428
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 397166429}
-  - component: {fileID: 397166431}
-  - component: {fileID: 397166430}
-  m_Layer: 5
-  m_Name: SmallBox.Image
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &397166429
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 397166428}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1791188412}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -22.717293, y: -163.05}
-  m_SizeDelta: {x: 501.3405, y: 456.2524}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &397166430
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 397166428}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: -2090746625060802979, guid: 98913bed01e13994bb159d884ef43c2a, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &397166431
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 397166428}
-  m_CullTransparentMesh: 1
 --- !u!1 &444619233
 GameObject:
   m_ObjectHideFlags: 0
@@ -785,119 +450,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 83132950}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &500209219
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 500209220}
-  - component: {fileID: 500209222}
-  - component: {fileID: 500209221}
-  m_Layer: 5
-  m_Name: Bubble.Image
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &500209220
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 500209219}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1257937992}
-  m_Father: {fileID: 653795465}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -623.1297, y: -103}
-  m_SizeDelta: {x: 547.084, y: 243.0669}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &500209221
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 500209219}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: -5712959122012955994, guid: 6cab4a8e02da26644b1a531776ff589a, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &500209222
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 500209219}
-  m_CullTransparentMesh: 1
---- !u!1 &653795464
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 653795465}
-  m_Layer: 5
-  m_Name: CharacterAndBubble
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &653795465
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 653795464}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 500209220}
-  - {fileID: 1321976832}
-  m_Father: {fileID: 1791188412}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &741098366
 GameObject:
   m_ObjectHideFlags: 0
@@ -924,17 +476,17 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 741098366}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 200069227}
-  m_Father: {fileID: 1791188412}
+  m_Father: {fileID: 83132950}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 37, y: 7}
-  m_SizeDelta: {x: -702.70996, y: -266.31}
+  m_AnchoredPosition: {x: 1317, y: 727}
+  m_SizeDelta: {x: 1857.29, y: 1173.69}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &741098368
 MonoBehaviour:
@@ -1090,1451 +642,6 @@ MonoBehaviour:
   confirmOverlay: {fileID: 1601820605}
   confirmText: {fileID: 1444988084}
   confirmMessage: Quit lesson? Press Enter to confirm. Press Backspace to cancel.
---- !u!1 &843676730
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 843676731}
-  - component: {fileID: 843676733}
-  - component: {fileID: 843676732}
-  m_Layer: 5
-  m_Name: Displaylabeltxt
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &843676731
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 843676730}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1791188412}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -22.1251, y: -321.68}
-  m_SizeDelta: {x: 371.572, y: 181.1368}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &843676732
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 843676730}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: 
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c4ae2105d0679bd45932ed513ad0b3bd, type: 2}
-  m_sharedMaterial: {fileID: -2866231447455670809, guid: c4ae2105d0679bd45932ed513ad0b3bd, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_characterHorizontalScale: 1
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_EmojiFallbackSupport: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 8.009277, y: 55.264862, z: 7.00354, w: 30.54529}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &843676733
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 843676730}
-  m_CullTransparentMesh: 1
---- !u!1 &844742357
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 844742358}
-  - component: {fileID: 844742360}
-  - component: {fileID: 844742359}
-  m_Layer: 5
-  m_Name: TScoreT
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &844742358
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 844742357}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1791188412}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 149.19, y: 136.98}
-  m_SizeDelta: {x: 298.372, y: 181.1368}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &844742359
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 844742357}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: 'Total Score:'
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c4ae2105d0679bd45932ed513ad0b3bd, type: 2}
-  m_sharedMaterial: {fileID: -2866231447455670809, guid: c4ae2105d0679bd45932ed513ad0b3bd, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_characterHorizontalScale: 1
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_EmojiFallbackSupport: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: -367.13916, y: 55.264862, z: 20.728638, w: 30.54529}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &844742360
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 844742357}
-  m_CullTransparentMesh: 1
---- !u!1 &1067052467
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1067052468}
-  - component: {fileID: 1067052470}
-  - component: {fileID: 1067052469}
-  m_Layer: 5
-  m_Name: FixScoreT
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1067052468
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1067052467}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1791188412}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 66.579956, y: 281.36}
-  m_SizeDelta: {x: 298.372, y: 181.1368}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1067052469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1067052467}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: 'Fix Score:'
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c4ae2105d0679bd45932ed513ad0b3bd, type: 2}
-  m_sharedMaterial: {fileID: -2866231447455670809, guid: c4ae2105d0679bd45932ed513ad0b3bd, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 32
-  m_fontSizeBase: 32
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 2
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_characterHorizontalScale: 1
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_EmojiFallbackSupport: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: -56.236694, y: 55.264862, z: 20.728638, w: 30.54529}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &1067052470
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1067052467}
-  m_CullTransparentMesh: 1
---- !u!1 &1070165174
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1070165175}
-  - component: {fileID: 1070165177}
-  - component: {fileID: 1070165176}
-  m_Layer: 5
-  m_Name: WrongN
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1070165175
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1070165174}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1791188412}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 364.95, y: 213}
-  m_SizeDelta: {x: 298.372, y: 181.14}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1070165176
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1070165174}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: 0
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c4ae2105d0679bd45932ed513ad0b3bd, type: 2}
-  m_sharedMaterial: {fileID: -2866231447455670809, guid: c4ae2105d0679bd45932ed513ad0b3bd, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 32
-  m_fontSizeBase: 32
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 2
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 512
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_characterHorizontalScale: 1
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_EmojiFallbackSupport: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 19.461182, y: 55.264862, z: 20.728638, w: 30.54529}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &1070165177
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1070165174}
-  m_CullTransparentMesh: 1
---- !u!1 &1113401176
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1113401177}
-  - component: {fileID: 1113401179}
-  - component: {fileID: 1113401178}
-  m_Layer: 5
-  m_Name: TScoreN
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1113401177
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1113401176}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1791188412}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 377.14, y: 136.98}
-  m_SizeDelta: {x: 298.372, y: 181.1368}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1113401178
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1113401176}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: 0
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c4ae2105d0679bd45932ed513ad0b3bd, type: 2}
-  m_sharedMaterial: {fileID: -2866231447455670809, guid: c4ae2105d0679bd45932ed513ad0b3bd, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 512
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_characterHorizontalScale: 1
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_EmojiFallbackSupport: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0.5371094, y: 55.264862, z: 20.728638, w: 30.54529}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &1113401179
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1113401176}
-  m_CullTransparentMesh: 1
---- !u!1 &1155271825
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1155271826}
-  - component: {fileID: 1155271828}
-  - component: {fileID: 1155271827}
-  m_Layer: 5
-  m_Name: SequenceSentence
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1155271826
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1155271825}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1791188412}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 600.50116, y: -171.54}
-  m_SizeDelta: {x: 405.2832, y: 316.039}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1155271827
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1155271825}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: 
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1a98abfae0e1fc34282e9b7fd0f3a427, type: 2}
-  m_sharedMaterial: {fileID: -8189821304231711609, guid: 1a98abfae0e1fc34282e9b7fd0f3a427, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
-  m_fontWeight: 400
-  m_enableAutoSizing: 1
-  m_fontSizeMin: 18
-  m_fontSizeMax: 150
-  m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_characterHorizontalScale: 1
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_EmojiFallbackSupport: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 12.180664, z: 0, w: 0}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &1155271828
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1155271825}
-  m_CullTransparentMesh: 1
---- !u!1 &1170168100
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1170168101}
-  - component: {fileID: 1170168103}
-  - component: {fileID: 1170168102}
-  m_Layer: 5
-  m_Name: BraillePlay.Image
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1170168101
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1170168100}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1791188412}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -626, y: 380.0533}
-  m_SizeDelta: {x: 487.58, y: 240.8064}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1170168102
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1170168100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: -506792329278282139, guid: af14ea33040a92f4b91367b2ad34a0b3, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1170168103
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1170168100}
-  m_CullTransparentMesh: 1
---- !u!1 &1204025119
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1204025120}
-  - component: {fileID: 1204025122}
-  - component: {fileID: 1204025121}
-  m_Layer: 5
-  m_Name: Contraction.TXT
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1204025120
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1204025119}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 270223250}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -63, y: 416}
-  m_SizeDelta: {x: 536.2007, y: 189.4903}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1204025121
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1204025119}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: Rimes (-it, -ip, -ig, -id, -in, -ill)
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1a98abfae0e1fc34282e9b7fd0f3a427, type: 2}
-  m_sharedMaterial: {fileID: -8189821304231711609, guid: 1a98abfae0e1fc34282e9b7fd0f3a427, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 86
-  m_fontSizeBase: 86
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 1
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_characterHorizontalScale: 1
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_EmojiFallbackSupport: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -704.07153, w: 0}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &1204025122
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1204025119}
-  m_CullTransparentMesh: 1
---- !u!1 &1242371995
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1242371996}
-  - component: {fileID: 1242371998}
-  - component: {fileID: 1242371997}
-  m_Layer: 5
-  m_Name: WrongT
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1242371996
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1242371995}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1791188412}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 96, y: 213}
-  m_SizeDelta: {x: 298.372, y: 181.1368}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1242371997
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1242371995}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: 'Wrong:'
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c4ae2105d0679bd45932ed513ad0b3bd, type: 2}
-  m_sharedMaterial: {fileID: -2866231447455670809, guid: c4ae2105d0679bd45932ed513ad0b3bd, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 32
-  m_fontSizeBase: 32
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 2
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_characterHorizontalScale: 1
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_EmojiFallbackSupport: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 19.461182, y: 55.264862, z: 20.728638, w: 30.54529}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &1242371998
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1242371995}
-  m_CullTransparentMesh: 1
---- !u!1 &1257937989
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1257937992}
-  - component: {fileID: 1257937991}
-  - component: {fileID: 1257937990}
-  m_Layer: 5
-  m_Name: BubbleMessageText
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1257937990
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1257937989}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: 
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-  m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
-  m_fontWeight: 400
-  m_enableAutoSizing: 1
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_characterHorizontalScale: 1
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_EmojiFallbackSupport: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &1257937991
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1257937989}
-  m_CullTransparentMesh: 1
---- !u!224 &1257937992
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1257937989}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 500209220}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.48000002, y: 0.61522824}
-  m_AnchorMax: {x: 0.48000002, y: 0.61522824}
-  m_AnchoredPosition: {x: 10.942, y: -0.000017166138}
-  m_SizeDelta: {x: 388.079, y: 120.53}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1262590506
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1262590507}
-  - component: {fileID: 1262590509}
-  - component: {fileID: 1262590508}
-  m_Layer: 5
-  m_Name: HScoreN
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1262590507
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1262590506}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1791188412}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 655, y: 139.33}
-  m_SizeDelta: {x: 288.5512, y: 147.09}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1262590508
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1262590506}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: 0
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c4ae2105d0679bd45932ed513ad0b3bd, type: 2}
-  m_sharedMaterial: {fileID: -2866231447455670809, guid: c4ae2105d0679bd45932ed513ad0b3bd, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4278255606
-  m_fontColor: {r: 0.9637852, g: 1, b: 0, a: 1}
-  m_enableVertexGradient: 1
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 80
-  m_fontSizeBase: 80
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 200
-  m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_characterHorizontalScale: 1
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_EmojiFallbackSupport: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: -2.815918, y: 0, z: -2.9362335, w: -0.34484863}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &1262590509
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1262590506}
-  m_CullTransparentMesh: 1
 --- !u!1 &1279323729
 GameObject:
   m_ObjectHideFlags: 0
@@ -2596,81 +703,6 @@ MonoBehaviour:
   pitch: 1
   dontDestroyOnLoad: 0
   debugLogs: 1
---- !u!1 &1321976831
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1321976832}
-  - component: {fileID: 1321976834}
-  - component: {fileID: 1321976833}
-  m_Layer: 5
-  m_Name: Character.Image
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1321976832
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1321976831}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 653795465}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -827, y: -336}
-  m_SizeDelta: {x: 139.3434, y: 253.7973}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1321976833
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1321976831}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 5724168595349758334, guid: 82288f265a6182a46a04be3eb74a9a33, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1321976834
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1321976831}
-  m_CullTransparentMesh: 1
 --- !u!1 &1375276678
 GameObject:
   m_ObjectHideFlags: 0
@@ -2716,156 +748,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AccessibilityManager
   dontDestroyOnLoad: 0
---- !u!1 &1381365064
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1381365065}
-  - component: {fileID: 1381365067}
-  - component: {fileID: 1381365066}
-  m_Layer: 5
-  m_Name: SmallBox.Image (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1381365065
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1381365064}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1791188412}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 599.8313, y: -171.11}
-  m_SizeDelta: {x: 510.9131, y: 472.38}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1381365066
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1381365064}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: -2090746625060802979, guid: 98913bed01e13994bb159d884ef43c2a, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1381365067
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1381365064}
-  m_CullTransparentMesh: 1
---- !u!1 &1434168919
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1434168920}
-  - component: {fileID: 1434168922}
-  - component: {fileID: 1434168921}
-  m_Layer: 5
-  m_Name: NumberBox.Box
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1434168920
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1434168919}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1791188412}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 289, y: -51.0798}
-  m_SizeDelta: {x: 1285.63, y: 807.8409}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1434168921
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1434168919}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 4727633781103762509, guid: 7719df8cbe80a9d438c7800cf4945fbc, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1434168922
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1434168919}
-  m_CullTransparentMesh: 1
 --- !u!1 &1444988082
 GameObject:
   m_ObjectHideFlags: 0
@@ -3015,6 +897,8 @@ GameObject:
   - component: {fileID: 1586095478}
   - component: {fileID: 1586095484}
   - component: {fileID: 1586095485}
+  - component: {fileID: 1586095487}
+  - component: {fileID: 1586095486}
   m_Layer: 5
   m_Name: RimesItIpIgIdInIllManager
   m_TagString: Untagged
@@ -3029,16 +913,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1586095473}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1791188412}
+  m_Father: {fileID: 83132950}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 1280, y: 720}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!82 &1586095478
@@ -3249,26 +1133,26 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1586095473}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 23c07a9e23c202141b480ae5f72ea261, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RimesItIpIgIdInIll
   resultReporter: {fileID: 444619234}
-  bubbleMessageText: {fileID: 1257937990}
-  displayLabelText: {fileID: 1155271827}
-  categoryText: {fileID: 843676732}
-  livePatternText: {fileID: 1697798612}
-  typedWordText: {fileID: 2077778574}
-  displayImageUI: {fileID: 54352918}
-  answerStateImage: {fileID: 2047379756}
+  bubbleMessageText: {fileID: 0}
+  displayLabelText: {fileID: 0}
+  categoryText: {fileID: 0}
+  livePatternText: {fileID: 0}
+  typedWordText: {fileID: 0}
+  displayImageUI: {fileID: 0}
+  answerStateImage: {fileID: 0}
   correctStateSprite: {fileID: -4207999480553683411, guid: 4e35d4a30fee8cc4580f2983361350b4, type: 3}
   wrongStateSprite: {fileID: 7071201414940298460, guid: bee3415c56ef4054aa185675bb6dc185, type: 3}
   hideAnswerStateAtStart: 0
-  fixScoreText: {fileID: 1777884057}
-  wrongScoreText: {fileID: 1070165176}
-  totalScoreText: {fileID: 1113401178}
-  highScoreText: {fileID: 1262590508}
+  fixScoreText: {fileID: 0}
+  wrongScoreText: {fileID: 0}
+  totalScoreText: {fileID: 0}
+  highScoreText: {fileID: 0}
   fixedScore: 100
   deductionPerMistake: 1
   highScoreKey: RimesItIpIgIdInIllHighScore
@@ -3288,10 +1172,10 @@ MonoBehaviour:
   completedMessage: Great job! You finished Lesson 15 Rimes
   repeatQuestionMessage: Do you want to repeat the quiz and try to beat your high
     score? Press repeat to repeat or press next to continue.
-  lessonChoiceMessage: You have finished learning some of the words that ends with
-    the rimes -it, -ip, -ig, -id, -in, and -ill. Would you like to repeat the lesson
-    or you want to begin the quiz? Press repeat to repeat the lesson or press next
-    to begin the quiz.
+  lessonChoiceMessage: Congratulations! You have finished learning some of the words
+    that ends with the rimes -it, -ip, -ig, -id, -in, and -ill. Would you like to
+    repeat the lesson or you want to begin the quiz? Press repeat to repeat the lesson
+    or press next to begin the quiz.
   lessonChoiceAudio: {fileID: 8300000, guid: 9cc945dcdb2d2304b9f04629a8c78572, type: 3}
   lessonPages:
   - title: Welcome
@@ -3561,8 +1445,7 @@ MonoBehaviour:
     informationBeats:
     - message: The next word you're going to learn is the word Pig.
       audio: {fileID: 8300000, guid: 9f7e3f1a8d5da9c4d9969d5981bab4b2, type: 3}
-    - message: "A pig is a farm animal that says \u201Coink\u201D and likes to roll
-        in mud."
+    - message: A pig is a farm animal that likes to roll in mud.
       audio: {fileID: 8300000, guid: dac16aca5f5f06f45b616365c6fa991a, type: 3}
     - message: The word Pig begins with the initial letter P.
       audio: {fileID: 8300000, guid: ccc231930ea7f3b4fbc0b5b272731c6a, type: 3}
@@ -4169,7 +2052,7 @@ MonoBehaviour:
       audio: {fileID: 8300000, guid: 12da09082f4643a4a9236fe0ed271133, type: 3}
     - message: The word Pill begins with the initial letter P.
       audio: {fileID: 8300000, guid: c6c536fdeb0f4be4b87095387acbe808, type: 3}
-    - message: Followed up by a letter i, l, l.
+    - message: Followed up by letter i, l, l.
       audio: {fileID: 8300000, guid: f2c2f02aee4070d4989da3ab5cc37cae, type: 3}
     - message: 'Since P is the initial letter, type it as a capital letter. Remember
         to Capitalize a letter, you have to press dot 6 before the corresponding
@@ -4225,8 +2108,7 @@ MonoBehaviour:
     informationBeats:
     - message: The next word you're going to learn is the word Hill.
       audio: {fileID: 8300000, guid: 16580c5a83fc52041bdd695251d9306b, type: 3}
-    - message: A hill is a big pile of dirt or ground that goes up, up, up so you
-        can climb it.
+    - message: A hill is a big pile of dirt or ground so you can climb it.
       audio: {fileID: 8300000, guid: f542fee8c8bec4a4ebbb23dcb90bacf5, type: 3}
     - message: The word Hill begins with the initial letter H.
       audio: {fileID: 8300000, guid: 5aaf39571c2673142980ce809a35bdd0, type: 3}
@@ -4281,10 +2163,136 @@ MonoBehaviour:
       i, l, and l.
     supportAudio: {fileID: 8300000, guid: 110851dc787266745b8920bc74617042, type: 3}
   lessons:
+  - displayLabel: Bill
+    categoryLabel: Quiz
+    word: Bill
+    promptMessage: Number 1, Bill. Can you type the word Bill?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: e3c6f8739e165e1489560fa063000800, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word Bill. Begin with a capital B, then type i,
+      l, and l.
+    supportAudio: {fileID: 8300000, guid: 9e99a870ddf7d1c4297c9592b63f4632, type: 3}
+  - displayLabel: Lip
+    categoryLabel: Quiz
+    word: Lip
+    promptMessage: Number 2, Lip. Can you type the word Lip?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: c1bd4f1f8c9f09f4c910a9a5e714df26, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word is Lip. Begin with a capital L, then type
+      i, and p.
+    supportAudio: {fileID: 8300000, guid: e3158647f0d7da44e8b92387309e296f, type: 3}
+  - displayLabel: Kit
+    categoryLabel: Quiz
+    word: Kit
+    promptMessage: Number 3, Kit. Can you type the word Kit?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: 4fcb00b2474d00849b7ae94ee7185983, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word Kit. Begin with a capital K, then type i,
+      and t.
+    supportAudio: {fileID: 8300000, guid: cb168894a96b37d44b5753fa2fd13a53, type: 3}
+  - displayLabel: Hip
+    categoryLabel: Quiz
+    word: Hip
+    promptMessage: Number 4, Hip. Can you type the word Hip?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: e4d372567e7f85740a110524428a0274, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word Hip. Begin with a capital H, then type i,
+      and p.
+    supportAudio: {fileID: 8300000, guid: aa30737a5fa58ec4c854c54be58bcd2f, type: 3}
+  - displayLabel: Mill
+    categoryLabel: Quiz
+    word: Mill
+    promptMessage: Number 5, Mill. Can you type the word Mill?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: 7e0e461347d834f43a32c03859f24b4b, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word Mill. Begin with a capital M, then type i,
+      l, and l.
+    supportAudio: {fileID: 8300000, guid: 61cd02da0ed92614195260918d08deba, type: 3}
+  - displayLabel: Bid
+    categoryLabel: Quiz
+    word: Bid
+    promptMessage: Number 6, Bid. Can you type the word Bid?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: 522b745cd766de641aa4fc2742450dc4, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word Bid. Begin with a capital B, then type i,
+      and d.
+    supportAudio: {fileID: 8300000, guid: a3c90a686faeee54d9295da304ed4b45, type: 3}
+  - displayLabel: Win
+    categoryLabel: Quiz
+    word: Win
+    promptMessage: Number 7, Win. Can you type the word Win?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: d70080fb93f8b3647a22e3d54ea6a11b, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word Win. Begin with a capital W, then type i,
+      and n.
+    supportAudio: {fileID: 8300000, guid: ff8110f2ff4d2fd408eb903eaa2d075f, type: 3}
+  - displayLabel: Dig
+    categoryLabel: Quiz
+    word: Dig
+    promptMessage: Number 8, Dig. Can you type the word Dig?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: e78e459c724524242ac50e4a863bd53a, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word Dig. Begin with a capital D, then type i,
+      and g.
+    supportAudio: {fileID: 8300000, guid: d59e0cf4dd0c6e14886fb8047b36dbb0, type: 3}
+  - displayLabel: Sip
+    categoryLabel: Quiz
+    word: Sip
+    promptMessage: Number 9, Sip. Can you type the word Sip?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: df3ed683b3d187d44a5a7b69cecce02e, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word Sip. Begin with a capital S, then type i,
+      and p.
+    supportAudio: {fileID: 8300000, guid: 2878e1cf7e5866c41b7d523128846b58, type: 3}
   - displayLabel: Hit
     categoryLabel: Quiz
     word: Hit
-    promptMessage: Number 1, Hit. Can you type the word Hit?
+    promptMessage: Number 10, Hit. Can you type the word Hit?
     successMessage: That is Correct.
     wrongMessage: Wrong Answer, Please Try Again.
     displayImage: {fileID: 0}
@@ -4295,10 +2303,52 @@ MonoBehaviour:
     supportMessage: Remember, the word Hit. Begin with a capital H, then type i,
       and t.
     supportAudio: {fileID: 8300000, guid: 05119401c3241f142b9dceaa4b09f51f, type: 3}
+  - displayLabel: Lid
+    categoryLabel: Quiz
+    word: Lid
+    promptMessage: Number 11, Lid. Can you type the word Lid?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: cabd0ed813136ef478a48fcefafd3018, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word Lid. Begin with a capital L, then type i,
+      and d.
+    supportAudio: {fileID: 8300000, guid: 79cfffd25cfba9b42b16c5331c063fe9, type: 3}
+  - displayLabel: Fig
+    categoryLabel: Quiz
+    word: Fig
+    promptMessage: Number 12, Fig. Can you type the word Fig?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: c089df1c0f9cdd54b9512aed0a7945fa, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word Fig. Begin with a capital F, then type i,
+      and g.
+    supportAudio: {fileID: 8300000, guid: e9a33b6659ae72f40a5eb247d90fceda, type: 3}
+  - displayLabel: Sill
+    categoryLabel: Quiz
+    word: Sill
+    promptMessage: Number 13, Sill. Can you type the word Sill?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: 08606d6f6e30b3747adb1aecd0d9a149, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word Sill. Begin with a capital S, then type i,
+      l, and l.
+    supportAudio: {fileID: 8300000, guid: ac67e9c2646353647aa00498bff3f0e6, type: 3}
   - displayLabel: Fit
     categoryLabel: Quiz
     word: Fit
-    promptMessage: Number 2, Fit. Can you type the word Fit?
+    promptMessage: Number 14, Fit. Can you type the word Fit?
     successMessage: That is Correct.
     wrongMessage: Wrong Answer, Please Try Again.
     displayImage: {fileID: 0}
@@ -4312,7 +2362,7 @@ MonoBehaviour:
   - displayLabel: Pit
     categoryLabel: Quiz
     word: Pit
-    promptMessage: Number 3, Pit. Can you type the word Pit?
+    promptMessage: Number 15, Pit. Can you type the word Pit?
     successMessage: That is Correct.
     wrongMessage: Wrong Answer, Please Try Again.
     displayImage: {fileID: 0}
@@ -4323,192 +2373,10 @@ MonoBehaviour:
     supportMessage: Remember, the word Pit. Begin with a capital P, then type i,
       and t.
     supportAudio: {fileID: 8300000, guid: 4adcda2f89a54be468ed947cc7697a15, type: 3}
-  - displayLabel: Kit
-    categoryLabel: Quiz
-    word: Kit
-    promptMessage: Number 4, Kit. Can you type the word Kit?
-    successMessage: That is Correct.
-    wrongMessage: Wrong Answer, Please Try Again.
-    displayImage: {fileID: 0}
-    introAudio: {fileID: 8300000, guid: 4fcb00b2474d00849b7ae94ee7185983, type: 3}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
-    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-    supportMessage: Remember, the word Kit. Begin with a capital K, then type i,
-      and t.
-    supportAudio: {fileID: 8300000, guid: cb168894a96b37d44b5753fa2fd13a53, type: 3}
-  - displayLabel: Sit
-    categoryLabel: Quiz
-    word: Sit
-    promptMessage: Number 5, Sit. Can you type the word Sit?
-    successMessage: That is Correct.
-    wrongMessage: Wrong Answer, Please Try Again.
-    displayImage: {fileID: 0}
-    introAudio: {fileID: 8300000, guid: 6e0660adecd6eb640a5986ed2a4356b1, type: 3}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
-    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-    supportMessage: Remember, the word Sit. Begin with a capital S, then type i,
-      and t.
-    supportAudio: {fileID: 8300000, guid: 9f8489dc72d1b9545888ce592bbf9134, type: 3}
-  - displayLabel: Wig
-    categoryLabel: Quiz
-    word: Wig
-    promptMessage: Number 6, Wig. Can you type the word Wig?
-    successMessage: That is Correct.
-    wrongMessage: Wrong Answer, Please Try Again.
-    displayImage: {fileID: 0}
-    introAudio: {fileID: 8300000, guid: a83dec87d1fabcf4f89549d58a927172, type: 3}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
-    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-    supportMessage: Remember, the word Wig. Begin with a capital W, then type i,
-      and g.
-    supportAudio: {fileID: 8300000, guid: 63745be694c85844394d2438daae9259, type: 3}
-  - displayLabel: Pig
-    categoryLabel: Quiz
-    word: Pig
-    promptMessage: Number 7, Pig. Can you type the word Pig?
-    successMessage: That is Correct.
-    wrongMessage: Wrong Answer, Please Try Again.
-    displayImage: {fileID: 0}
-    introAudio: {fileID: 8300000, guid: ec807033e8bec2b4a8af847ca4dec274, type: 3}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
-    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-    supportMessage: Remember, the word Pig. Begin with a capital P, then type i,
-      and g.
-    supportAudio: {fileID: 8300000, guid: 3fb1c2b07747d834b8ab92292eb70e83, type: 3}
-  - displayLabel: Fig
-    categoryLabel: Quiz
-    word: Fig
-    promptMessage: Number 8, Fig. Can you type the word Fig?
-    successMessage: That is Correct.
-    wrongMessage: Wrong Answer, Please Try Again.
-    displayImage: {fileID: 0}
-    introAudio: {fileID: 8300000, guid: c089df1c0f9cdd54b9512aed0a7945fa, type: 3}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
-    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-    supportMessage: Remember, the word Fig. Begin with a capital F, then type i,
-      and g.
-    supportAudio: {fileID: 8300000, guid: e9a33b6659ae72f40a5eb247d90fceda, type: 3}
-  - displayLabel: Dig
-    categoryLabel: Quiz
-    word: Dig
-    promptMessage: Number 9, Dig. Can you type the word Dig?
-    successMessage: That is Correct.
-    wrongMessage: Wrong Answer, Please Try Again.
-    displayImage: {fileID: 0}
-    introAudio: {fileID: 8300000, guid: e78e459c724524242ac50e4a863bd53a, type: 3}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
-    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-    supportMessage: Remember, the word Dig. Begin with a capital D, then type i,
-      and g.
-    supportAudio: {fileID: 8300000, guid: d59e0cf4dd0c6e14886fb8047b36dbb0, type: 3}
-  - displayLabel: Gig
-    categoryLabel: Quiz
-    word: Gig
-    promptMessage: Number 10, Gig. Can you type the word Gig?
-    successMessage: That is Correct.
-    wrongMessage: Wrong Answer, Please Try Again.
-    displayImage: {fileID: 0}
-    introAudio: {fileID: 8300000, guid: 7ceb3e610aa8c6f41b15c30f5c263925, type: 3}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
-    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-    supportMessage: Remember, the word Gig. Begin with a capital G, then type i,
-      and g.
-    supportAudio: {fileID: 8300000, guid: 58ab3dd7107b7d74e9430cbbfe80d1d7, type: 3}
-  - displayLabel: Lip
-    categoryLabel: Quiz
-    word: Lip
-    promptMessage: Number 11, Lip. Can you type the word Lip?
-    successMessage: That is Correct.
-    wrongMessage: Wrong Answer, Please Try Again.
-    displayImage: {fileID: 0}
-    introAudio: {fileID: 8300000, guid: c1bd4f1f8c9f09f4c910a9a5e714df26, type: 3}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
-    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-    supportMessage: Remember, the word Lip. Begin with a capital L, then type i,
-      and p.
-    supportAudio: {fileID: 8300000, guid: e3158647f0d7da44e8b92387309e296f, type: 3}
-  - displayLabel: Hip
-    categoryLabel: Quiz
-    word: Hip
-    promptMessage: Number 12, Hip. Can you type the word Hip?
-    successMessage: That is Correct.
-    wrongMessage: Wrong Answer, Please Try Again.
-    displayImage: {fileID: 0}
-    introAudio: {fileID: 8300000, guid: e4d372567e7f85740a110524428a0274, type: 3}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
-    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-    supportMessage: Remember, the word Hip. Begin with a capital H, then type i,
-      and p.
-    supportAudio: {fileID: 8300000, guid: aa30737a5fa58ec4c854c54be58bcd2f, type: 3}
-  - displayLabel: Sip
-    categoryLabel: Quiz
-    word: Sip
-    promptMessage: Number 13, Sip. Can you type the word Sip?
-    successMessage: That is Correct.
-    wrongMessage: Wrong Answer, Please Try Again.
-    displayImage: {fileID: 0}
-    introAudio: {fileID: 8300000, guid: df3ed683b3d187d44a5a7b69cecce02e, type: 3}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
-    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-    supportMessage: Remember, the word Sip. Begin with a capital S, then type i,
-      and p.
-    supportAudio: {fileID: 8300000, guid: 2878e1cf7e5866c41b7d523128846b58, type: 3}
-  - displayLabel: Tip
-    categoryLabel: Quiz
-    word: Tip
-    promptMessage: Number 14, Tip. Can you type the word Tip?
-    successMessage: That is Correct.
-    wrongMessage: Wrong Answer, Please Try Again.
-    displayImage: {fileID: 0}
-    introAudio: {fileID: 8300000, guid: b0f9f9228b51dac44bb287f81d3c0a6e, type: 3}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
-    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-    supportMessage: Remember, the word Tip. Begin with a capital T, then type i,
-      and p.
-    supportAudio: {fileID: 8300000, guid: 72f50e46e7b29724081a5d71c8ee77b6, type: 3}
-  - displayLabel: Dip
-    categoryLabel: Quiz
-    word: Dip
-    promptMessage: Number 15, Dip. Can you type the word Dip?
-    successMessage: That is Correct.
-    wrongMessage: Wrong Answer, Please Try Again.
-    displayImage: {fileID: 0}
-    introAudio: {fileID: 8300000, guid: 312f408e78fe1a744bb34cd1e6c9b796, type: 3}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
-    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-    supportMessage: Remember, the word Dip. Begin with a capital D, then type i,
-      and p.
-    supportAudio: {fileID: 8300000, guid: 5f74456b80c68b44b9cd8fe25580b08e, type: 3}
-  - displayLabel: Bin
-    categoryLabel: Quiz
-    word: Bin
-    promptMessage: Number 16, Bin. Can you type the word Bin?
-    successMessage: That is Correct.
-    wrongMessage: Wrong Answer, Please Try Again.
-    displayImage: {fileID: 0}
-    introAudio: {fileID: 8300000, guid: 9eb9c657ec3f5404cb997c64c409f8c0, type: 3}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
-    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-    supportMessage: Remember, the word Bin. Begin with a capital B, then type i,
-      and n.
-    supportAudio: {fileID: 8300000, guid: f9a7058ecb86e5e42ad6d717977c3002, type: 3}
   - displayLabel: Pin
     categoryLabel: Quiz
     word: Pin
-    promptMessage: Number 17, Pin. Can you type the word Pin?
+    promptMessage: Number 16, Pin. Can you type the word Pin?
     successMessage: That is Correct.
     wrongMessage: Wrong Answer, Please Try Again.
     displayImage: {fileID: 0}
@@ -4519,20 +2387,34 @@ MonoBehaviour:
     supportMessage: Remember, the word Pin. Begin with a capital P, then type i,
       and n.
     supportAudio: {fileID: 8300000, guid: a077d0b766e74eb4caa1a8cbf0f301e0, type: 3}
-  - displayLabel: Fin
+  - displayLabel: Wig
     categoryLabel: Quiz
-    word: Fin
-    promptMessage: Number 18, Fin. Can you type the word Fin?
+    word: Wig
+    promptMessage: Number 17, Wig. Can you type the word Wig?
     successMessage: That is Correct.
     wrongMessage: Wrong Answer, Please Try Again.
     displayImage: {fileID: 0}
-    introAudio: {fileID: 8300000, guid: 3c583999054e35446a25e2b02e5e1571, type: 3}
+    introAudio: {fileID: 8300000, guid: a83dec87d1fabcf4f89549d58a927172, type: 3}
     instructionAudio: {fileID: 0}
     successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
     wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-    supportMessage: Remember, the word Fin. Begin with a capital F, then type i,
-      and n.
-    supportAudio: {fileID: 8300000, guid: a00473ee84a41b84b843d0a8c50d5941, type: 3}
+    supportMessage: Remember, the word Wig. Begin with a capital W, then type i,
+      and g.
+    supportAudio: {fileID: 8300000, guid: 63745be694c85844394d2438daae9259, type: 3}
+  - displayLabel: Gig
+    categoryLabel: Quiz
+    word: Gig
+    promptMessage: Number 18, Gig. Can you type the word Gig?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: 7ceb3e610aa8c6f41b15c30f5c263925, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word Gig. Begin with a capital G, then type i,
+      and g.
+    supportAudio: {fileID: 8300000, guid: 58ab3dd7107b7d74e9430cbbfe80d1d7, type: 3}
   - displayLabel: Tin
     categoryLabel: Quiz
     word: Tin
@@ -4547,38 +2429,122 @@ MonoBehaviour:
     supportMessage: Remember, the word Tin. Begin with a capital T, then type i,
       and n.
     supportAudio: {fileID: 8300000, guid: 9c2dcbd1ec3e859478b835d12cb2a400, type: 3}
-  - displayLabel: Win
+  - displayLabel: Hill
     categoryLabel: Quiz
-    word: Win
-    promptMessage: Number 20, Win. Can you type the word Win?
+    word: Hill
+    promptMessage: Number 20, Hill. Can you type the word Hill?
     successMessage: That is Correct.
     wrongMessage: Wrong Answer, Please Try Again.
     displayImage: {fileID: 0}
-    introAudio: {fileID: 8300000, guid: d70080fb93f8b3647a22e3d54ea6a11b, type: 3}
+    introAudio: {fileID: 8300000, guid: 595753c1bdaec8146833618bcbc486d5, type: 3}
     instructionAudio: {fileID: 0}
     successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
     wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-    supportMessage: Remember, the word Win. Begin with a capital W, then type i,
-      and n.
-    supportAudio: {fileID: 8300000, guid: ff8110f2ff4d2fd408eb903eaa2d075f, type: 3}
-  - displayLabel: Lid
+    supportMessage: Remember, the word Hill. Begin with a capital H, then type i,
+      l, and l.
+    supportAudio: {fileID: 8300000, guid: 204b7a99b71746b4eba2f5be6360c099, type: 3}
+  - displayLabel: Tip
     categoryLabel: Quiz
-    word: Lid
-    promptMessage: Number 21, Lid. Can you type the word Lid?
+    word: Tip
+    promptMessage: Number 21, Tip. Can you type the word Tip?
     successMessage: That is Correct.
     wrongMessage: Wrong Answer, Please Try Again.
     displayImage: {fileID: 0}
-    introAudio: {fileID: 8300000, guid: cabd0ed813136ef478a48fcefafd3018, type: 3}
+    introAudio: {fileID: 8300000, guid: b0f9f9228b51dac44bb287f81d3c0a6e, type: 3}
     instructionAudio: {fileID: 0}
     successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
     wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-    supportMessage: Remember, the word Lid. Begin with a capital L, then type i,
+    supportMessage: Remember, the word Tip. Begin with a capital T, then type i,
+      and p.
+    supportAudio: {fileID: 8300000, guid: 72f50e46e7b29724081a5d71c8ee77b6, type: 3}
+  - displayLabel: Pill
+    categoryLabel: Quiz
+    word: Pill
+    promptMessage: Number 22, Pill. Can you type the word Pill?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: af5cd1903469ca542ad1849248eb85a5, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word Pill. Begin with a capital P, then type i,
+      l, and l.
+    supportAudio: {fileID: 8300000, guid: 072dd52daf566084ea911b85b13a6154, type: 3}
+  - displayLabel: Rid
+    categoryLabel: Quiz
+    word: Rid
+    promptMessage: Number 23, Rid. Can you type the word Rid?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: db755851bb369cb41a745029a74a330d, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word Rid. Begin with a capital R, then type i,
       and d.
-    supportAudio: {fileID: 8300000, guid: 79cfffd25cfba9b42b16c5331c063fe9, type: 3}
+    supportAudio: {fileID: 8300000, guid: 44c6f3355fc7b224b95a855c3668dcce, type: 3}
+  - displayLabel: Sit
+    categoryLabel: Quiz
+    word: Sit
+    promptMessage: Number 24, Sit. Can you type the word Sit?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: 6e0660adecd6eb640a5986ed2a4356b1, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word Sit. Begin with a capital S, then type i,
+      and t.
+    supportAudio: {fileID: 8300000, guid: 9f8489dc72d1b9545888ce592bbf9134, type: 3}
+  - displayLabel: Pig
+    categoryLabel: Quiz
+    word: Pig
+    promptMessage: Number 25, Pig. Can you type the word Pig?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: ec807033e8bec2b4a8af847ca4dec274, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word Pig. Begin with a capital P, then type i,
+      and g.
+    supportAudio: {fileID: 8300000, guid: 3fb1c2b07747d834b8ab92292eb70e83, type: 3}
+  - displayLabel: Dip
+    categoryLabel: Quiz
+    word: Dip
+    promptMessage: Number 26, Dip. Can you type the word Dip?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: 312f408e78fe1a744bb34cd1e6c9b796, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word Dip. Begin with a capital D, then type i,
+      and p.
+    supportAudio: {fileID: 8300000, guid: 5f74456b80c68b44b9cd8fe25580b08e, type: 3}
+  - displayLabel: Fin
+    categoryLabel: Quiz
+    word: Fin
+    promptMessage: Number 27, Fin. Can you type the word Fin?
+    successMessage: That is Correct.
+    wrongMessage: Wrong Answer, Please Try Again.
+    displayImage: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: 3c583999054e35446a25e2b02e5e1571, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
+    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
+    supportMessage: Remember, the word Fin. Begin with a capital F, then type i,
+      and n.
+    supportAudio: {fileID: 8300000, guid: a00473ee84a41b84b843d0a8c50d5941, type: 3}
   - displayLabel: Hid
     categoryLabel: Quiz
     word: Hid
-    promptMessage: Number 22, Hid. Can you type the word Hid?
+    promptMessage: Number 28, Hid. Can you type the word Hid?
     successMessage: That is Correct.
     wrongMessage: Wrong Answer, Please Try Again.
     displayImage: {fileID: 0}
@@ -4592,7 +2558,7 @@ MonoBehaviour:
   - displayLabel: Mid
     categoryLabel: Quiz
     word: Mid
-    promptMessage: Number 23, Mid. Can you type the word Mid?
+    promptMessage: Number 29, Mid. Can you type the word Mid?
     successMessage: That is Correct.
     wrongMessage: Wrong Answer, Please Try Again.
     displayImage: {fileID: 0}
@@ -4603,104 +2569,20 @@ MonoBehaviour:
     supportMessage: Remember, the word Mid. Begin with a capital M, then type i,
       and d.
     supportAudio: {fileID: 8300000, guid: 36f7be2c7bf8a9045844e6964070dcc0, type: 3}
-  - displayLabel: Bid
+  - displayLabel: Bin
     categoryLabel: Quiz
-    word: Bid
-    promptMessage: Number 24, Bid. Can you type the word Bid?
+    word: Bin
+    promptMessage: Number 30, Bin. Can you type the word Bin?
     successMessage: That is Correct.
     wrongMessage: Wrong Answer, Please Try Again.
     displayImage: {fileID: 0}
-    introAudio: {fileID: 8300000, guid: 522b745cd766de641aa4fc2742450dc4, type: 3}
+    introAudio: {fileID: 8300000, guid: 9eb9c657ec3f5404cb997c64c409f8c0, type: 3}
     instructionAudio: {fileID: 0}
     successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
     wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-    supportMessage: Remember, the word Bid. Begin with a capital B, then type i,
-      and d.
-    supportAudio: {fileID: 8300000, guid: a3c90a686faeee54d9295da304ed4b45, type: 3}
-  - displayLabel: Rid
-    categoryLabel: Quiz
-    word: Rid
-    promptMessage: Number 25, Rid. Can you type the word Rid?
-    successMessage: That is Correct.
-    wrongMessage: Wrong Answer, Please Try Again.
-    displayImage: {fileID: 0}
-    introAudio: {fileID: 8300000, guid: db755851bb369cb41a745029a74a330d, type: 3}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
-    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-    supportMessage: Remember, the word Rid. Begin with a capital R, then type i,
-      and d.
-    supportAudio: {fileID: 8300000, guid: 44c6f3355fc7b224b95a855c3668dcce, type: 3}
-  - displayLabel: Bill
-    categoryLabel: Quiz
-    word: Bill
-    promptMessage: Number 26, Bill. Can you type the word Bill?
-    successMessage: That is Correct.
-    wrongMessage: Wrong Answer, Please Try Again.
-    displayImage: {fileID: 0}
-    introAudio: {fileID: 8300000, guid: e3c6f8739e165e1489560fa063000800, type: 3}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
-    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-    supportMessage: Remember, the word Bill. Begin with a capital B, then type i,
-      l, and l.
-    supportAudio: {fileID: 8300000, guid: 9e99a870ddf7d1c4297c9592b63f4632, type: 3}
-  - displayLabel: Pill
-    categoryLabel: Quiz
-    word: Pill
-    promptMessage: Number 27, Pill. Can you type the word Pill?
-    successMessage: That is Correct.
-    wrongMessage: Wrong Answer, Please Try Again.
-    displayImage: {fileID: 0}
-    introAudio: {fileID: 8300000, guid: af5cd1903469ca542ad1849248eb85a5, type: 3}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
-    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-    supportMessage: Remember, the word Pill. Begin with a capital P, then type i,
-      l, and l.
-    supportAudio: {fileID: 8300000, guid: 072dd52daf566084ea911b85b13a6154, type: 3}
-  - displayLabel: Sill
-    categoryLabel: Quiz
-    word: Sill
-    promptMessage: Number 28, Sill. Can you type the word Sill?
-    successMessage: That is Correct.
-    wrongMessage: Wrong Answer, Please Try Again.
-    displayImage: {fileID: 0}
-    introAudio: {fileID: 8300000, guid: 08606d6f6e30b3747adb1aecd0d9a149, type: 3}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
-    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-    supportMessage: Remember, the word Sill. Begin with a capital S, then type i,
-      l, and l.
-    supportAudio: {fileID: 8300000, guid: ac67e9c2646353647aa00498bff3f0e6, type: 3}
-  - displayLabel: Hill
-    categoryLabel: Quiz
-    word: Hill
-    promptMessage: Number 29, Hill. Can you type the word Hill?
-    successMessage: That is Correct.
-    wrongMessage: Wrong Answer, Please Try Again.
-    displayImage: {fileID: 0}
-    introAudio: {fileID: 8300000, guid: 595753c1bdaec8146833618bcbc486d5, type: 3}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
-    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-    supportMessage: Remember, the word Hill. Begin with a capital H, then type i,
-      l, and l.
-    supportAudio: {fileID: 8300000, guid: 204b7a99b71746b4eba2f5be6360c099, type: 3}
-  - displayLabel: Mill
-    categoryLabel: Quiz
-    word: Mill
-    promptMessage: Number 30, Mill. Can you type the word Mill?
-    successMessage: That is Correct.
-    wrongMessage: Wrong Answer, Please Try Again.
-    displayImage: {fileID: 0}
-    introAudio: {fileID: 8300000, guid: 7e0e461347d834f43a32c03859f24b4b, type: 3}
-    instructionAudio: {fileID: 0}
-    successAudio: {fileID: 8300000, guid: 90e2580d00d86d440b914433db041fc3, type: 3}
-    wrongAudio: {fileID: 8300000, guid: e4f9a5ae60016d2488f2c66cadae99b1, type: 3}
-    supportMessage: Remember, the word Mill. Begin with a capital M, then type i,
-      l, and l.
-    supportAudio: {fileID: 8300000, guid: 61cd02da0ed92614195260918d08deba, type: 3}
+    supportMessage: Remember, the word Bin. Begin with a capital B, then type i,
+      and n.
+    supportAudio: {fileID: 8300000, guid: f9a7058ecb86e5e42ad6d717977c3002, type: 3}
   delayAfterVoice: 0.35
   noAudioTextDelay: 2
   delayAfterCorrect: 0.75
@@ -4711,6 +2593,922 @@ MonoBehaviour:
   minSyncedCharacterDelay: 0.01
   maxSyncedCharacterDelay: 0.12
   waitForFullAudioBeforeContinuing: 1
+  logDebug: 1
+--- !u!114 &1586095486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586095473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b67bdeaff8fc288439c0d12ec7f9c049, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QuizController15
+  lessonController: {fileID: 1586095487}
+  resultReporter: {fileID: 444619234}
+  fixedScore: 100
+  deductionPerMistake: 1
+  highScoreKey: Lesson15_RimesHighScore
+  voiceAudioSource: {fileID: 1586095478}
+  welcomeAudio: {fileID: 8300000, guid: f565e968437b5324fa4906e12cd0496c, type: 3}
+  letsLearnAudio: {fileID: 0}
+  genericCorrectAudio: {fileID: 8300000, guid: fe68c03352cad2f499d71e2ea83fcaf9, type: 3}
+  genericTryAgainAudio: {fileID: 8300000, guid: 2d1319b089a21fe41b6fce7c98e4cdb8, type: 3}
+  genericCompletedAudio: {fileID: 8300000, guid: a57e67cf8aafbe5479cdc5770ec98563, type: 3}
+  repeatQuestionAudio: {fileID: 8300000, guid: f7036decbca32ac48a171d74da7c449c, type: 3}
+  yourScoreIsAudio: {fileID: 8300000, guid: cded693ae4b021d40b987d66de6f4cea, type: 3}
+  whileYourHighestScoreIsAudio: {fileID: 8300000, guid: 125e658552613c441b173a7961019535, type: 3}
+  numberAudios:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: 5523925fecd5fd34790e6f9f78c3579e, type: 3}
+  - {fileID: 8300000, guid: f0993c4cade60ce43904a338483a9887, type: 3}
+  - {fileID: 8300000, guid: adf8cf7dfb4bfff42bad8bc23c518ed2, type: 3}
+  - {fileID: 8300000, guid: ec29c0e3448ec4f4da2ec6bca83129f7, type: 3}
+  - {fileID: 8300000, guid: 731d38d1eb2abee47aaad3b59b6bb8fb, type: 3}
+  - {fileID: 8300000, guid: 35b352ef7fd4dc3418d859fa7862f1df, type: 3}
+  - {fileID: 8300000, guid: e1c232b3f1e025b4397f8c61ca032e51, type: 3}
+  - {fileID: 8300000, guid: d595fb193ad7ff444961b56361d2ecfd, type: 3}
+  - {fileID: 8300000, guid: 848a01916eaa60e41a9d03d9cee44e6f, type: 3}
+  - {fileID: 8300000, guid: e2f6c06d8e4d3bf4fb18cb0c3d4fb5f0, type: 3}
+  - {fileID: 8300000, guid: 49e693b015a55bc499fbf7183577a636, type: 3}
+  welcomeMessage: Welcome to Lesson 15
+  letsLearnMessage: Let's find the letter I in the middle of words.
+  completedMessage: Amazing! You spelled all the -it, -ip, -ig, -id, -in, and -ill
+    words!
+  repeatQuestionMessage: You finished Lesson 15. Do you want to practice again? Press
+    repeat to repeat or next to next.
+  lessons:
+  - word: Bill
+    promptMessage: 
+    successMessage: 
+    wrongMessage: 
+    supportMessage: 
+    introAudio: {fileID: 8300000, guid: 5179d4b50cea37b4190bd68e3503ed86, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 0}
+    wrongAudio: {fileID: 0}
+    supportAudio: {fileID: 8300000, guid: 3ef6d303fc0a705448c4e0166fb6243a, type: 3}
+  - word: Lip
+    promptMessage: 
+    successMessage: 
+    wrongMessage: 
+    supportMessage: 
+    introAudio: {fileID: 8300000, guid: 6687403fb3126ea4090448d48267aa66, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 0}
+    wrongAudio: {fileID: 0}
+    supportAudio: {fileID: 8300000, guid: 6b9bb3daedef8494c86a561dcac7b5f8, type: 3}
+  - word: Kit
+    promptMessage: 
+    successMessage: 
+    wrongMessage: 
+    supportMessage: 
+    introAudio: {fileID: 8300000, guid: 1c978a787556f4045ac7275dfd192629, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 0}
+    wrongAudio: {fileID: 0}
+    supportAudio: {fileID: 8300000, guid: 71365966343bdf945bbf6fe0a3a199e9, type: 3}
+  - word: Hip
+    promptMessage: 
+    successMessage: 
+    wrongMessage: 
+    supportMessage: 
+    introAudio: {fileID: 8300000, guid: 0d1c2ddb76e85cb4288a0f8dda97de4a, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 0}
+    wrongAudio: {fileID: 0}
+    supportAudio: {fileID: 8300000, guid: 8f7a97d604c07bf4b97f83235477d210, type: 3}
+  - word: Mill
+    promptMessage: 
+    successMessage: 
+    wrongMessage: 
+    supportMessage: 
+    introAudio: {fileID: 8300000, guid: bae1ae07e6206ff49b98236a58068956, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 0}
+    wrongAudio: {fileID: 0}
+    supportAudio: {fileID: 8300000, guid: ba8c4118192c58048af502f2dc8154c0, type: 3}
+  - word: Bid
+    promptMessage: 
+    successMessage: 
+    wrongMessage: 
+    supportMessage: 
+    introAudio: {fileID: 8300000, guid: af8bc815e8f4c404cbac257699c6dee0, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 0}
+    wrongAudio: {fileID: 0}
+    supportAudio: {fileID: 8300000, guid: d2382e11c7e21ac47bb757757c1c6dff, type: 3}
+  - word: Win
+    promptMessage: 
+    successMessage: 
+    wrongMessage: 
+    supportMessage: 
+    introAudio: {fileID: 8300000, guid: 57ebe7f3dc98825479dc27c6a0bcb89f, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 0}
+    wrongAudio: {fileID: 0}
+    supportAudio: {fileID: 8300000, guid: e562d083e0a92f8418c9668715c97b3c, type: 3}
+  - word: Dig
+    promptMessage: 
+    successMessage: 
+    wrongMessage: 
+    supportMessage: 
+    introAudio: {fileID: 8300000, guid: 0593d42da9197424e8299c411aa2853b, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 0}
+    wrongAudio: {fileID: 0}
+    supportAudio: {fileID: 8300000, guid: f3e0694e3fb6cfe4db9251555db68181, type: 3}
+  - word: Sip
+    promptMessage: 
+    successMessage: 
+    wrongMessage: 
+    supportMessage: 
+    introAudio: {fileID: 8300000, guid: 712819187bfb1b24682c49ffa9adf5e2, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 0}
+    wrongAudio: {fileID: 0}
+    supportAudio: {fileID: 8300000, guid: 95387d87e05bba34fa871fb42e5f457c, type: 3}
+  - word: Hit
+    promptMessage: 
+    successMessage: 
+    wrongMessage: 
+    supportMessage: 
+    introAudio: {fileID: 8300000, guid: 79cd0202bc36d6a4b8c81473d2c87b2c, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 0}
+    wrongAudio: {fileID: 0}
+    supportAudio: {fileID: 8300000, guid: 5e6b8a6ccd2f03f449eb3ccd56dce34d, type: 3}
+  - word: Lid
+    promptMessage: 
+    successMessage: 
+    wrongMessage: 
+    supportMessage: 
+    introAudio: {fileID: 8300000, guid: 7d47e587cf7cca64ebf1739ae81a2e6d, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 0}
+    wrongAudio: {fileID: 0}
+    supportAudio: {fileID: 8300000, guid: 10ba6db6745f00e4c8aa63e0cb74675c, type: 3}
+  - word: Fig
+    promptMessage: 
+    successMessage: 
+    wrongMessage: 
+    supportMessage: 
+    introAudio: {fileID: 8300000, guid: fe7fc8e4e54cbb640b0682fb54ab26c9, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 0}
+    wrongAudio: {fileID: 0}
+    supportAudio: {fileID: 8300000, guid: 9556ad293fb686644827b718c96f38bc, type: 3}
+  - word: Sill
+    promptMessage: 
+    successMessage: 
+    wrongMessage: 
+    supportMessage: 
+    introAudio: {fileID: 8300000, guid: 4792ef2ba2461a443b1dfabcc15e5606, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 0}
+    wrongAudio: {fileID: 0}
+    supportAudio: {fileID: 8300000, guid: 1fbe89ef2f897b24ba047ccf08c8f24d, type: 3}
+  - word: Fit
+    promptMessage: 
+    successMessage: 
+    wrongMessage: 
+    supportMessage: 
+    introAudio: {fileID: 8300000, guid: de7d63ddf685b484daeb0f7725648370, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 0}
+    wrongAudio: {fileID: 0}
+    supportAudio: {fileID: 8300000, guid: 6c44667c931402e48945c3fa6e4a2d93, type: 3}
+  - word: Pit
+    promptMessage: 
+    successMessage: 
+    wrongMessage: 
+    supportMessage: 
+    introAudio: {fileID: 8300000, guid: e518ef24dac472c4f8c5f36db04d8a04, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 0}
+    wrongAudio: {fileID: 0}
+    supportAudio: {fileID: 8300000, guid: 9d3ba4358944e9c49b287b9bcc5729b0, type: 3}
+  - word: Pin
+    promptMessage: 
+    successMessage: 
+    wrongMessage: 
+    supportMessage: 
+    introAudio: {fileID: 8300000, guid: f5581df78d3feba4db4ffd7c6be96db3, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 0}
+    wrongAudio: {fileID: 0}
+    supportAudio: {fileID: 8300000, guid: 6618dd328957fe24cb959a71a1db3561, type: 3}
+  - word: Wig
+    promptMessage: 
+    successMessage: 
+    wrongMessage: 
+    supportMessage: 
+    introAudio: {fileID: 8300000, guid: 06fff4859af35304fbe9fa9f58ceb26d, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 0}
+    wrongAudio: {fileID: 0}
+    supportAudio: {fileID: 8300000, guid: 5ca1160b7a8aa8c44bb822e3c899be3a, type: 3}
+  - word: Gig
+    promptMessage: 
+    successMessage: 
+    wrongMessage: 
+    supportMessage: 
+    introAudio: {fileID: 8300000, guid: 97de985ddab2d494bbde07ad774bfb89, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 0}
+    wrongAudio: {fileID: 0}
+    supportAudio: {fileID: 8300000, guid: 0662fa19b8b0da144a91435989bd1dd9, type: 3}
+  - word: Tin
+    promptMessage: 
+    successMessage: 
+    wrongMessage: 
+    supportMessage: 
+    introAudio: {fileID: 8300000, guid: 4cbac239cc1d5a94da8d710d902b59a5, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 0}
+    wrongAudio: {fileID: 0}
+    supportAudio: {fileID: 8300000, guid: da26cf971bc3dca40be575ac627b898b, type: 3}
+  - word: Hill
+    promptMessage: 
+    successMessage: 
+    wrongMessage: 
+    supportMessage: 
+    introAudio: {fileID: 8300000, guid: dc9d78aa3cb83fe4fa4c917ba62c963a, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 0}
+    wrongAudio: {fileID: 0}
+    supportAudio: {fileID: 8300000, guid: 2287dc441934f024d811993a6fd25565, type: 3}
+  - word: Tip
+    promptMessage: 
+    successMessage: 
+    wrongMessage: 
+    supportMessage: 
+    introAudio: {fileID: 8300000, guid: c33c6b510edb6054381551d3c79f228a, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 0}
+    wrongAudio: {fileID: 0}
+    supportAudio: {fileID: 8300000, guid: e54d302975f0eaf44b37743758073e89, type: 3}
+  - word: Pill
+    promptMessage: 
+    successMessage: 
+    wrongMessage: 
+    supportMessage: 
+    introAudio: {fileID: 8300000, guid: b4041055c8835144395563694fbcde83, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 0}
+    wrongAudio: {fileID: 0}
+    supportAudio: {fileID: 8300000, guid: 59be5138536d2284da22b7794f1012dd, type: 3}
+  - word: Rid
+    promptMessage: 
+    successMessage: 
+    wrongMessage: 
+    supportMessage: 
+    introAudio: {fileID: 8300000, guid: 98307332bcbe85a4b93f3fa165db4515, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 0}
+    wrongAudio: {fileID: 0}
+    supportAudio: {fileID: 8300000, guid: b06e40d6ade95e948838778e945e641a, type: 3}
+  - word: Sit
+    promptMessage: 
+    successMessage: 
+    wrongMessage: 
+    supportMessage: 
+    introAudio: {fileID: 8300000, guid: 550e09813543fb74f9b00c79844bb1f5, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 0}
+    wrongAudio: {fileID: 0}
+    supportAudio: {fileID: 8300000, guid: 6e66237f674ebc14c9551de82c78b316, type: 3}
+  - word: Pig
+    promptMessage: 
+    successMessage: 
+    wrongMessage: 
+    supportMessage: 
+    introAudio: {fileID: 8300000, guid: 52ede54e514c517468cf5ed1de417be4, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 0}
+    wrongAudio: {fileID: 0}
+    supportAudio: {fileID: 8300000, guid: 4e749417ca0f1fd458db34f5888da279, type: 3}
+  - word: Dip
+    promptMessage: 
+    successMessage: 
+    wrongMessage: 
+    supportMessage: 
+    introAudio: {fileID: 8300000, guid: d0c097bdce947284288cd26c52c264d1, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 0}
+    wrongAudio: {fileID: 0}
+    supportAudio: {fileID: 8300000, guid: 0018e6e8c5a985a4aba36f174632b3da, type: 3}
+  - word: Fin
+    promptMessage: 
+    successMessage: 
+    wrongMessage: 
+    supportMessage: 
+    introAudio: {fileID: 8300000, guid: 412a33f27e717fa40a9d1be4d73b818b, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 0}
+    wrongAudio: {fileID: 0}
+    supportAudio: {fileID: 8300000, guid: 7aae88f08d2973a43932081854fc8b25, type: 3}
+  - word: Hid
+    promptMessage: 
+    successMessage: 
+    wrongMessage: 
+    supportMessage: 
+    introAudio: {fileID: 8300000, guid: bd93dc64a7950234ca913f0b2fd94355, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 0}
+    wrongAudio: {fileID: 0}
+    supportAudio: {fileID: 8300000, guid: 85e5e487c694f0a47ab23f80c9c550ff, type: 3}
+  - word: Mid
+    promptMessage: 
+    successMessage: 
+    wrongMessage: 
+    supportMessage: 
+    introAudio: {fileID: 8300000, guid: 4606a4a61d0af1743a59196897d7a775, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 0}
+    wrongAudio: {fileID: 0}
+    supportAudio: {fileID: 8300000, guid: 8347445f126041e4e894c689f7fb7886, type: 3}
+  - word: Bin
+    promptMessage: 
+    successMessage: 
+    wrongMessage: 
+    supportMessage: 
+    introAudio: {fileID: 8300000, guid: f258a01fda5eedf47bcdaa506f74a8d1, type: 3}
+    instructionAudio: {fileID: 0}
+    successAudio: {fileID: 0}
+    wrongAudio: {fileID: 0}
+    supportAudio: {fileID: 8300000, guid: 1001fa82253e7e04d81a70d10da8b3c2, type: 3}
+  delayAfterVoice: 0.35
+  noAudioTextDelay: 0
+  delayAfterCorrect: 0.75
+  mistakesBeforeSupport: 3
+  resetMistakesAfterSupport: 1
+  logDebug: 1
+--- !u!114 &1586095487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586095473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 936b2bf51d11a064c8583d5a073995b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LessonController15
+  voiceAudioSource: {fileID: 1586095478}
+  genericCorrectAudio: {fileID: 8300000, guid: fe68c03352cad2f499d71e2ea83fcaf9, type: 3}
+  genericTryAgainAudio: {fileID: 8300000, guid: 2d1319b089a21fe41b6fce7c98e4cdb8, type: 3}
+  lessonChoiceMessage: 
+  lessonChoiceAudio: {fileID: 8300000, guid: 9a04964dd5176c547b110ac9fb9e3600, type: 3}
+  lessonPages:
+  - title: Hit
+    pageType: 1
+    informationBeats:
+    - message: 
+      audio: {fileID: 8300000, guid: 525f02271d08204408867b1b284177fe, type: 3}
+    practiceWord: Hit
+    requireCapitalFirstLetter: 1
+    promptMessage: 
+    promptAudio: {fileID: 8300000, guid: 8f804a91e763ecb4aa5ff09a68e98bea, type: 3}
+    successMessage: 
+    successAudio: {fileID: 0}
+    wrongMessage: 
+    wrongAudio: {fileID: 0}
+    supportMessage: 
+    supportAudio: {fileID: 8300000, guid: 5e31178b0110930459869fbae37a111e, type: 3}
+  - title: Fit
+    pageType: 1
+    informationBeats:
+    - message: 
+      audio: {fileID: 8300000, guid: fb1609498dbfc1b4e9587828042febbb, type: 3}
+    practiceWord: Fit
+    requireCapitalFirstLetter: 1
+    promptMessage: 
+    promptAudio: {fileID: 8300000, guid: f34b8f71307bbbe4ebd33c8bbffed16e, type: 3}
+    successMessage: 
+    successAudio: {fileID: 0}
+    wrongMessage: 
+    wrongAudio: {fileID: 0}
+    supportMessage: 
+    supportAudio: {fileID: 8300000, guid: e498d237d1c93634899c70335382670f, type: 3}
+  - title: Pit
+    pageType: 1
+    informationBeats:
+    - message: 
+      audio: {fileID: 8300000, guid: 9ffeef1a64bdce942a6eef16daa9d6cb, type: 3}
+    practiceWord: Pit
+    requireCapitalFirstLetter: 1
+    promptMessage: 
+    promptAudio: {fileID: 8300000, guid: f6af03213df97de4f9ec892d19ebece4, type: 3}
+    successMessage: 
+    successAudio: {fileID: 0}
+    wrongMessage: 
+    wrongAudio: {fileID: 0}
+    supportMessage: 
+    supportAudio: {fileID: 8300000, guid: acb248739bd68ee4283f268dda1e21d2, type: 3}
+  - title: Kit
+    pageType: 1
+    informationBeats:
+    - message: 
+      audio: {fileID: 8300000, guid: d60324aa4cf382945a0df08f2fb5d24c, type: 3}
+    practiceWord: Kit
+    requireCapitalFirstLetter: 1
+    promptMessage: 
+    promptAudio: {fileID: 8300000, guid: f9fb124b3b14e994ca570d221d5f7c2f, type: 3}
+    successMessage: 
+    successAudio: {fileID: 0}
+    wrongMessage: 
+    wrongAudio: {fileID: 0}
+    supportMessage: 
+    supportAudio: {fileID: 8300000, guid: a2a499b7c7ee1a84780065d05d3d0ae6, type: 3}
+  - title: Sit
+    pageType: 1
+    informationBeats:
+    - message: 
+      audio: {fileID: 8300000, guid: 8b6702f95feda9143928e0903aa91e6d, type: 3}
+    practiceWord: Sit
+    requireCapitalFirstLetter: 1
+    promptMessage: 
+    promptAudio: {fileID: 8300000, guid: 074574db68fd9c74cbbffd568a4f2682, type: 3}
+    successMessage: 
+    successAudio: {fileID: 0}
+    wrongMessage: 
+    wrongAudio: {fileID: 0}
+    supportMessage: 
+    supportAudio: {fileID: 8300000, guid: cd8e813960b2d5c41ab452678a47f4d5, type: 3}
+  - title: Wig
+    pageType: 1
+    informationBeats:
+    - message: 
+      audio: {fileID: 8300000, guid: 3cb9290bc43d34e499eba2f23975d36b, type: 3}
+    practiceWord: Wig
+    requireCapitalFirstLetter: 1
+    promptMessage: 
+    promptAudio: {fileID: 8300000, guid: e387f10ef5067ec4b9d3f482c92f7754, type: 3}
+    successMessage: 
+    successAudio: {fileID: 0}
+    wrongMessage: 
+    wrongAudio: {fileID: 0}
+    supportMessage: 
+    supportAudio: {fileID: 8300000, guid: fe8b413b00a9e2649adaba493b775198, type: 3}
+  - title: Pig
+    pageType: 1
+    informationBeats:
+    - message: 
+      audio: {fileID: 8300000, guid: 03da3fa2b7ca6af4ea65442e7483794b, type: 3}
+    practiceWord: Pig
+    requireCapitalFirstLetter: 1
+    promptMessage: 
+    promptAudio: {fileID: 8300000, guid: 61bc5c1574c4c5741b4f8852cd4c64ce, type: 3}
+    successMessage: 
+    successAudio: {fileID: 0}
+    wrongMessage: 
+    wrongAudio: {fileID: 0}
+    supportMessage: 
+    supportAudio: {fileID: 8300000, guid: 144ac655ed0a61d4f96a1f2733ac1c15, type: 3}
+  - title: Fig
+    pageType: 1
+    informationBeats:
+    - message: 
+      audio: {fileID: 8300000, guid: b6e35068cd0c15841a91c56b13e04841, type: 3}
+    practiceWord: Fig
+    requireCapitalFirstLetter: 1
+    promptMessage: 
+    promptAudio: {fileID: 8300000, guid: 90b59750a8345a5479cca1c7d556395b, type: 3}
+    successMessage: 
+    successAudio: {fileID: 0}
+    wrongMessage: 
+    wrongAudio: {fileID: 0}
+    supportMessage: 
+    supportAudio: {fileID: 8300000, guid: 385bbc4b968a1264b9cd4530d698997a, type: 3}
+  - title: Dig
+    pageType: 1
+    informationBeats:
+    - message: 
+      audio: {fileID: 8300000, guid: 2c5b2149067ff184f8a1875c788dee51, type: 3}
+    practiceWord: Dig
+    requireCapitalFirstLetter: 1
+    promptMessage: 
+    promptAudio: {fileID: 8300000, guid: cf268d35b1a5ea54089e805ffe3aba75, type: 3}
+    successMessage: 
+    successAudio: {fileID: 0}
+    wrongMessage: 
+    wrongAudio: {fileID: 0}
+    supportMessage: 
+    supportAudio: {fileID: 8300000, guid: 19f8583e9ddefd94da040e724dda6d3c, type: 3}
+  - title: Gig
+    pageType: 1
+    informationBeats:
+    - message: 
+      audio: {fileID: 8300000, guid: 4b603dd010aa70b40878d125a2c4d0e0, type: 3}
+    practiceWord: Gig
+    requireCapitalFirstLetter: 1
+    promptMessage: 
+    promptAudio: {fileID: 8300000, guid: 6c100be2cad7f254b9a8df7a5d9e1be2, type: 3}
+    successMessage: 
+    successAudio: {fileID: 0}
+    wrongMessage: 
+    wrongAudio: {fileID: 0}
+    supportMessage: 
+    supportAudio: {fileID: 8300000, guid: 44b2c3e34f909fa498138cd6f2f740b2, type: 3}
+  - title: Lip
+    pageType: 1
+    informationBeats:
+    - message: 
+      audio: {fileID: 8300000, guid: 2f9f199717a33b5468c854134fae9148, type: 3}
+    practiceWord: Lip
+    requireCapitalFirstLetter: 1
+    promptMessage: 
+    promptAudio: {fileID: 8300000, guid: 59017416e9c814046a0bdfce82c0e335, type: 3}
+    successMessage: 
+    successAudio: {fileID: 0}
+    wrongMessage: 
+    wrongAudio: {fileID: 0}
+    supportMessage: 
+    supportAudio: {fileID: 8300000, guid: 048cdf7bfa0306f42a409b28cf62bd77, type: 3}
+  - title: Hip
+    pageType: 1
+    informationBeats:
+    - message: 
+      audio: {fileID: 8300000, guid: e359c310bf2c00948aaa3583d4280933, type: 3}
+    practiceWord: Hip
+    requireCapitalFirstLetter: 1
+    promptMessage: 
+    promptAudio: {fileID: 8300000, guid: e248aacdd86308e4db5770d2dc594956, type: 3}
+    successMessage: 
+    successAudio: {fileID: 0}
+    wrongMessage: 
+    wrongAudio: {fileID: 0}
+    supportMessage: 
+    supportAudio: {fileID: 8300000, guid: 450cf6f4b355888428139627945e9bac, type: 3}
+  - title: Sip
+    pageType: 1
+    informationBeats:
+    - message: 
+      audio: {fileID: 8300000, guid: 54446a1b16082bd4bb7dfa9cc1035412, type: 3}
+    practiceWord: Sip
+    requireCapitalFirstLetter: 1
+    promptMessage: 
+    promptAudio: {fileID: 8300000, guid: b3d806608df964343ba0202a1b8768e0, type: 3}
+    successMessage: 
+    successAudio: {fileID: 0}
+    wrongMessage: 
+    wrongAudio: {fileID: 0}
+    supportMessage: 
+    supportAudio: {fileID: 8300000, guid: d995456091244be48a12697603559fb6, type: 3}
+  - title: Tip
+    pageType: 1
+    informationBeats:
+    - message: 
+      audio: {fileID: 8300000, guid: 7e1e80b7e4b673f47bf6692273e32cba, type: 3}
+    practiceWord: Tip
+    requireCapitalFirstLetter: 1
+    promptMessage: 
+    promptAudio: {fileID: 8300000, guid: dea2c44a059acca4586f0271a4edf582, type: 3}
+    successMessage: 
+    successAudio: {fileID: 0}
+    wrongMessage: 
+    wrongAudio: {fileID: 0}
+    supportMessage: 
+    supportAudio: {fileID: 8300000, guid: 31c958fb8f5f4d64996946b9d1b2d2a3, type: 3}
+  - title: Dip
+    pageType: 1
+    informationBeats:
+    - message: 
+      audio: {fileID: 8300000, guid: 597ee39563250e04396f76f6b0233de8, type: 3}
+    practiceWord: Dip
+    requireCapitalFirstLetter: 1
+    promptMessage: 
+    promptAudio: {fileID: 8300000, guid: b294457297cb773468e916238e6ba1f2, type: 3}
+    successMessage: 
+    successAudio: {fileID: 0}
+    wrongMessage: 
+    wrongAudio: {fileID: 0}
+    supportMessage: 
+    supportAudio: {fileID: 8300000, guid: 4a1acbb648d1d6e4b880088abdd39e1c, type: 3}
+  - title: Bin
+    pageType: 1
+    informationBeats:
+    - message: 
+      audio: {fileID: 8300000, guid: 7238185cad372f440b13c4c169c884f0, type: 3}
+    practiceWord: Bin
+    requireCapitalFirstLetter: 1
+    promptMessage: 
+    promptAudio: {fileID: 8300000, guid: 266ebef447a021046945ba43fe1eb391, type: 3}
+    successMessage: 
+    successAudio: {fileID: 0}
+    wrongMessage: 
+    wrongAudio: {fileID: 0}
+    supportMessage: 
+    supportAudio: {fileID: 8300000, guid: c808d1609108d7d44b828dfdba103436, type: 3}
+  - title: Pin
+    pageType: 1
+    informationBeats:
+    - message: 
+      audio: {fileID: 8300000, guid: 5419ca69bb325f549a5c42d89c6d4373, type: 3}
+    practiceWord: Pin
+    requireCapitalFirstLetter: 1
+    promptMessage: 
+    promptAudio: {fileID: 8300000, guid: ea82c5fd6c7d76141b426bdbc23d9407, type: 3}
+    successMessage: 
+    successAudio: {fileID: 0}
+    wrongMessage: 
+    wrongAudio: {fileID: 0}
+    supportMessage: 
+    supportAudio: {fileID: 8300000, guid: c0b4f21a13b2a714b9882f4a3b647eeb, type: 3}
+  - title: Fin
+    pageType: 1
+    informationBeats:
+    - message: 
+      audio: {fileID: 8300000, guid: f7535d7ef12db264e850638ccc871b3e, type: 3}
+    practiceWord: Fin
+    requireCapitalFirstLetter: 1
+    promptMessage: 
+    promptAudio: {fileID: 8300000, guid: 11dc5a5eed4198e4aa41cb37bb476272, type: 3}
+    successMessage: 
+    successAudio: {fileID: 0}
+    wrongMessage: 
+    wrongAudio: {fileID: 0}
+    supportMessage: 
+    supportAudio: {fileID: 8300000, guid: e41030287a5fad8459573abaf4be5d07, type: 3}
+  - title: Tin
+    pageType: 1
+    informationBeats:
+    - message: 
+      audio: {fileID: 8300000, guid: 78c10f59dea8cfd418a4cf20f132a5d4, type: 3}
+    practiceWord: Tin
+    requireCapitalFirstLetter: 1
+    promptMessage: 
+    promptAudio: {fileID: 8300000, guid: 7713d285f997ac048beab557c2445403, type: 3}
+    successMessage: 
+    successAudio: {fileID: 0}
+    wrongMessage: 
+    wrongAudio: {fileID: 0}
+    supportMessage: 
+    supportAudio: {fileID: 8300000, guid: ba1cc0cb7ce49934db70975a0d703527, type: 3}
+  - title: Win
+    pageType: 1
+    informationBeats:
+    - message: 
+      audio: {fileID: 8300000, guid: e4d3de427a3282643b754b73bc7d2e09, type: 3}
+    practiceWord: Win
+    requireCapitalFirstLetter: 1
+    promptMessage: 
+    promptAudio: {fileID: 8300000, guid: 24d0d485c5909ec4bafc7bb10cc5ea44, type: 3}
+    successMessage: 
+    successAudio: {fileID: 0}
+    wrongMessage: 
+    wrongAudio: {fileID: 0}
+    supportMessage: 
+    supportAudio: {fileID: 8300000, guid: 49b3adc60425f3a4480f4e0341f79736, type: 3}
+  - title: Lid
+    pageType: 1
+    informationBeats:
+    - message: 
+      audio: {fileID: 8300000, guid: 61abc63971e47fe4bb2c41bff9f49bd9, type: 3}
+    practiceWord: Lid
+    requireCapitalFirstLetter: 1
+    promptMessage: 
+    promptAudio: {fileID: 8300000, guid: 2f98a5765a668804193494eaaad1b153, type: 3}
+    successMessage: 
+    successAudio: {fileID: 0}
+    wrongMessage: 
+    wrongAudio: {fileID: 0}
+    supportMessage: 
+    supportAudio: {fileID: 8300000, guid: a92a41ab6418e74488233f892f6444e3, type: 3}
+  - title: Hid
+    pageType: 1
+    informationBeats:
+    - message: 
+      audio: {fileID: 8300000, guid: c69ae56a023948049b8a9db6fd0e50a3, type: 3}
+    practiceWord: Hid
+    requireCapitalFirstLetter: 1
+    promptMessage: 
+    promptAudio: {fileID: 8300000, guid: f977ca852fa87ba4dad581886abd8ead, type: 3}
+    successMessage: 
+    successAudio: {fileID: 0}
+    wrongMessage: 
+    wrongAudio: {fileID: 0}
+    supportMessage: 
+    supportAudio: {fileID: 8300000, guid: 785d9e03a5b9a9941a4810a8b998d79e, type: 3}
+  - title: Mid
+    pageType: 1
+    informationBeats:
+    - message: 
+      audio: {fileID: 8300000, guid: 0c00de268933d6c4d97627f0fa9198ef, type: 3}
+    practiceWord: Mid
+    requireCapitalFirstLetter: 1
+    promptMessage: 
+    promptAudio: {fileID: 8300000, guid: 4d0f1a963ab99cd47ab63599afb191f2, type: 3}
+    successMessage: 
+    successAudio: {fileID: 0}
+    wrongMessage: 
+    wrongAudio: {fileID: 0}
+    supportMessage: 
+    supportAudio: {fileID: 8300000, guid: 5c9238175bc5d2041b764edfb0f9daf5, type: 3}
+  - title: Bid
+    pageType: 1
+    informationBeats:
+    - message: 
+      audio: {fileID: 8300000, guid: 7b7515432c4ddb54db8c47bac7f0eeab, type: 3}
+    practiceWord: Bid
+    requireCapitalFirstLetter: 1
+    promptMessage: 
+    promptAudio: {fileID: 8300000, guid: f04ed61ae9caa714f8d0a9fc85fce42e, type: 3}
+    successMessage: 
+    successAudio: {fileID: 0}
+    wrongMessage: 
+    wrongAudio: {fileID: 0}
+    supportMessage: 
+    supportAudio: {fileID: 8300000, guid: 531856b22fec17a4d8e2dc4d2157a446, type: 3}
+  - title: Rid
+    pageType: 1
+    informationBeats:
+    - message: 
+      audio: {fileID: 8300000, guid: 1402b3cbf440a4c43b59632fbc199555, type: 3}
+    practiceWord: Rid
+    requireCapitalFirstLetter: 1
+    promptMessage: 
+    promptAudio: {fileID: 8300000, guid: 802a2233da2713c4280c9711a24855a3, type: 3}
+    successMessage: 
+    successAudio: {fileID: 0}
+    wrongMessage: 
+    wrongAudio: {fileID: 0}
+    supportMessage: 
+    supportAudio: {fileID: 8300000, guid: c96c2252e2028f545939801569bf8638, type: 3}
+  - title: Bill
+    pageType: 1
+    informationBeats:
+    - message: 
+      audio: {fileID: 8300000, guid: 7bb845974a9c9d34aa4a3ea21e1ff305, type: 3}
+    practiceWord: Bill
+    requireCapitalFirstLetter: 1
+    promptMessage: 
+    promptAudio: {fileID: 8300000, guid: a9660e32f2f77ae4a8bdf01092a8933b, type: 3}
+    successMessage: 
+    successAudio: {fileID: 0}
+    wrongMessage: 
+    wrongAudio: {fileID: 0}
+    supportMessage: 
+    supportAudio: {fileID: 8300000, guid: 94c5caacfff95cb4eb34e0bfd996179d, type: 3}
+  - title: Pill
+    pageType: 1
+    informationBeats:
+    - message: 
+      audio: {fileID: 8300000, guid: 92b560605134e93438b99edf8aa9365c, type: 3}
+    practiceWord: Pill
+    requireCapitalFirstLetter: 1
+    promptMessage: 
+    promptAudio: {fileID: 8300000, guid: 9643ec1ccd027124c96cfe207c65cb41, type: 3}
+    successMessage: 
+    successAudio: {fileID: 0}
+    wrongMessage: 
+    wrongAudio: {fileID: 0}
+    supportMessage: 
+    supportAudio: {fileID: 8300000, guid: 61f98173286ba2647b2185d354f5d905, type: 3}
+  - title: Sill
+    pageType: 1
+    informationBeats:
+    - message: 
+      audio: {fileID: 8300000, guid: 4a9e0ca9b84960d4d961cdd5f205ad03, type: 3}
+    practiceWord: Sill
+    requireCapitalFirstLetter: 1
+    promptMessage: 
+    promptAudio: {fileID: 8300000, guid: 2130e59f9d043eb4f9b9f25b0251e4be, type: 3}
+    successMessage: 
+    successAudio: {fileID: 0}
+    wrongMessage: 
+    wrongAudio: {fileID: 0}
+    supportMessage: 
+    supportAudio: {fileID: 8300000, guid: 2c49327974df7c242858139199ec9423, type: 3}
+  - title: Hill
+    pageType: 1
+    informationBeats:
+    - message: 
+      audio: {fileID: 8300000, guid: 7c530e94ff837db4e98d6c47f0fb7f57, type: 3}
+    practiceWord: Hill
+    requireCapitalFirstLetter: 1
+    promptMessage: 
+    promptAudio: {fileID: 8300000, guid: 780475ac424444e4091c85f79520a1b1, type: 3}
+    successMessage: 
+    successAudio: {fileID: 0}
+    wrongMessage: 
+    wrongAudio: {fileID: 0}
+    supportMessage: 
+    supportAudio: {fileID: 8300000, guid: 3f4db1760cc629146a3bac2fefaa1880, type: 3}
+  - title: Mill
+    pageType: 1
+    informationBeats:
+    - message: 
+      audio: {fileID: 8300000, guid: 10d2b18e6acc21345a85abb6c637f92f, type: 3}
+    practiceWord: Mill
+    requireCapitalFirstLetter: 1
+    promptMessage: 
+    promptAudio: {fileID: 8300000, guid: a97a936359d8bdf4e82acd5c880fc18d, type: 3}
+    successMessage: 
+    successAudio: {fileID: 0}
+    wrongMessage: 
+    wrongAudio: {fileID: 0}
+    supportMessage: 
+    supportAudio: {fileID: 8300000, guid: af86164fa81c6ae4d95b1d37a12ba473, type: 3}
+  delayAfterVoice: 0.35
+  noAudioTextDelay: 2
+  delayAfterCorrect: 0.75
+  mistakesBeforeSupport: 3
+  resetMistakesAfterSupport: 1
+  autoStart: 1
   logDebug: 1
 --- !u!1 &1601820605
 GameObject:
@@ -4738,17 +3536,17 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1601820605}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1444988083}
-  m_Father: {fileID: 1791188412}
+  m_Father: {fileID: 83132950}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 43, y: 25}
-  m_SizeDelta: {x: -564.99805, y: -418.07}
+  m_AnchoredPosition: {x: 1323, y: 745}
+  m_SizeDelta: {x: 1995.002, y: 1021.93}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1601820607
 MonoBehaviour:
@@ -4788,143 +3586,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1601820605}
   m_CullTransparentMesh: 1
---- !u!1 &1697798611
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1697798614}
-  - component: {fileID: 1697798613}
-  - component: {fileID: 1697798612}
-  m_Layer: 5
-  m_Name: Live
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1697798612
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1697798611}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: 
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a66db046ab4320b408a76ab376bdacca, type: 2}
-  m_sharedMaterial: {fileID: 6244326952053564057, guid: a66db046ab4320b408a76ab376bdacca, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 90
-  m_fontSizeBase: 90
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 1
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_characterHorizontalScale: 1
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_EmojiFallbackSupport: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0.72198486, z: -1.513977, w: -0.45472527}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &1697798613
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1697798611}
-  m_CullTransparentMesh: 1
---- !u!224 &1697798614
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1697798611}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 270223250}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -645, y: 139.33}
-  m_SizeDelta: {x: 452.4714, y: 183.8403}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1740956292
 GameObject:
   m_ObjectHideFlags: 0
@@ -4971,617 +3632,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::QuizEndMenu
   panel: {fileID: 741098366}
   messageText: {fileID: 200069228}
---- !u!1 &1775430934
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1775430935}
-  - component: {fileID: 1775430937}
-  - component: {fileID: 1775430936}
-  m_Layer: 5
-  m_Name: HScoreT
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1775430935
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1775430934}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1791188412}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 672, y: 257.03}
-  m_SizeDelta: {x: 301.0754, y: 229.7998}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1775430936
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1775430934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: 'High Score:'
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c4ae2105d0679bd45932ed513ad0b3bd, type: 2}
-  m_sharedMaterial: {fileID: -2866231447455670809, guid: c4ae2105d0679bd45932ed513ad0b3bd, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_characterHorizontalScale: 1
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_EmojiFallbackSupport: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0.53723145, y: 1.1949158, z: 1.8040771, w: -1.8965435}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &1775430937
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1775430934}
-  m_CullTransparentMesh: 1
---- !u!1 &1777884055
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1777884056}
-  - component: {fileID: 1777884058}
-  - component: {fileID: 1777884057}
-  m_Layer: 5
-  m_Name: FixScoreN
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1777884056
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1777884055}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1791188412}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 364.9499, y: 281.36}
-  m_SizeDelta: {x: 298.372, y: 181.1368}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1777884057
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1777884055}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: 100
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c4ae2105d0679bd45932ed513ad0b3bd, type: 2}
-  m_sharedMaterial: {fileID: -2866231447455670809, guid: c4ae2105d0679bd45932ed513ad0b3bd, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 32
-  m_fontSizeBase: 32
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 2
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 512
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_characterHorizontalScale: 1
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_EmojiFallbackSupport: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 19.461182, y: 55.264862, z: 20.728638, w: 30.54529}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &1777884058
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1777884055}
-  m_CullTransparentMesh: 1
---- !u!1 &1791188411
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1791188412}
-  - component: {fileID: 1791188415}
-  - component: {fileID: 1791188414}
-  - component: {fileID: 1791188413}
-  m_Layer: 5
-  m_Name: Canvas
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1791188412
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1791188411}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 232308969}
-  - {fileID: 1434168920}
-  - {fileID: 1170168101}
-  - {fileID: 653795465}
-  - {fileID: 270223250}
-  - {fileID: 397166429}
-  - {fileID: 1381365065}
-  - {fileID: 2077778576}
-  - {fileID: 844742358}
-  - {fileID: 843676731}
-  - {fileID: 1113401177}
-  - {fileID: 1775430935}
-  - {fileID: 1262590507}
-  - {fileID: 1067052468}
-  - {fileID: 1777884056}
-  - {fileID: 1242371996}
-  - {fileID: 1070165175}
-  - {fileID: 286661653}
-  - {fileID: 1586095474}
-  - {fileID: 1155271826}
-  - {fileID: 2047379755}
-  - {fileID: 54352917}
-  - {fileID: 1601820606}
-  - {fileID: 741098367}
-  m_Father: {fileID: 83132950}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
---- !u!114 &1791188413
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1791188411}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.GraphicRaycaster
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
---- !u!114 &1791188414
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1791188411}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 0
-  m_ReferencePixelsPerUnit: 0
-  m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
-  m_PhysicalUnit: 3
-  m_FallbackScreenDPI: 96
-  m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
---- !u!223 &1791188415
-Canvas:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1791188411}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 0
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 25
-  m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_TargetDisplay: 0
---- !u!1 &2047379754
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2047379755}
-  - component: {fileID: 2047379757}
-  - component: {fileID: 2047379756}
-  m_Layer: 5
-  m_Name: AnswerStateIMG
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &2047379755
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2047379754}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1791188412}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 286.6277, y: -321.68}
-  m_SizeDelta: {x: 183.6505, y: 138.9917}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2047379756
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2047379754}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &2047379757
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2047379754}
-  m_CullTransparentMesh: 1
---- !u!1 &2077778573
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2077778576}
-  - component: {fileID: 2077778575}
-  - component: {fileID: 2077778574}
-  m_Layer: 5
-  m_Name: Translation
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2077778574
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2077778573}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: 
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1a98abfae0e1fc34282e9b7fd0f3a427, type: 2}
-  m_sharedMaterial: {fileID: -8189821304231711609, guid: 1a98abfae0e1fc34282e9b7fd0f3a427, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 200
-  m_fontSizeBase: 200
-  m_fontWeight: 400
-  m_enableAutoSizing: 1
-  m_fontSizeMin: 18
-  m_fontSizeMax: 250
-  m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_characterHorizontalScale: 1
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_EmojiFallbackSupport: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 32.054016, y: 0, z: 31.924805, w: 10.044708}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &2077778575
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2077778573}
-  m_CullTransparentMesh: 1
---- !u!224 &2077778576
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2077778573}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1791188412}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -22.717, y: -171.54}
-  m_SizeDelta: {x: 405.2832, y: 316.039}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
