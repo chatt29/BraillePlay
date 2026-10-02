@@ -57,6 +57,36 @@ public class QuizManager6 : MonoBehaviour
     public QuizResultReporter resultReporter;
 
     // -------------------------------------------------------------------------
+    // Questions 1-5 (audio + correct answer set directly on this manager)
+    // -------------------------------------------------------------------------
+
+    [Header("Questions 1-5")]
+    [Tooltip("If ON and the list below has entries, these questions are used instead of the lesson's own question list.")]
+    public bool useManagerQuestions = true;
+
+    [Tooltip("Element 0 = Question 1 ... Element 4 = Question 5. Assign each Question Audio and pick the Correct Answer.")]
+    public List<QuizQuestion> questionSet = new List<QuizQuestion>
+    {
+        new QuizQuestion { correctAnswer = AnswerChoice.C }, // Question 1 -> C
+        new QuizQuestion { correctAnswer = AnswerChoice.A }, // Question 2 (set in Inspector)
+        new QuizQuestion { correctAnswer = AnswerChoice.A }, // Question 3 (set in Inspector)
+        new QuizQuestion { correctAnswer = AnswerChoice.A }, // Question 4 (set in Inspector)
+        new QuizQuestion { correctAnswer = AnswerChoice.A }  // Question 5 (set in Inspector)
+    };
+
+    /// <summary>The question list actually in use: this manager's set, or the lesson's list as a fallback.</summary>
+    private List<QuizQuestion> ActiveQuestions
+    {
+        get
+        {
+            if (useManagerQuestions && questionSet != null && questionSet.Count > 0)
+                return questionSet;
+
+            return currentLesson != null ? currentLesson.questions : null;
+        }
+    }
+
+    // -------------------------------------------------------------------------
     // Audio
     // -------------------------------------------------------------------------
 
@@ -66,6 +96,16 @@ public class QuizManager6 : MonoBehaviour
 
     public AudioClip genericCorrectAudio;
     public AudioClip genericTryAgainAudio;
+
+    [Header("Welcome / Completion / Repeat Audio")]
+    [Tooltip("Played once when the quiz round starts, before the first question.")]
+    public AudioClip welcomeAudio;
+
+    [Tooltip("Played after the last question is answered correctly.")]
+    public AudioClip genericCompletedAudio;
+
+    [Tooltip("Played before a question is asked again (after the player presses Next following a wrong answer or story replay).")]
+    public AudioClip repeatedQuestionAudio;
 
     [Header("Final Score Audio")]
     public AudioClip yourScoreIsAudio;
@@ -214,20 +254,52 @@ public class QuizManager6 : MonoBehaviour
         waitingForQuizAnswer = false;
         waitingForRepeatConfirmation = false;
 
-        RunFlow(AskQuizQuestion(currentQuestionIndex));
+        RunFlow(WelcomeThenAsk());
     }
 
-    private IEnumerator AskQuizQuestion(int questionIndex)
+    /// <summary>Plays the welcome audio (if assigned), then asks the first question.</summary>
+    private IEnumerator WelcomeThenAsk()
     {
-        if (currentLesson?.questions == null || questionIndex < 0 || questionIndex >= currentLesson.questions.Count)
+        if (welcomeAudio != null)
         {
-            // No (more) questions configured — treat lesson as complete.
+            yield return PlayAudioMessage(welcomeAudio, noAudioFallbackDelay);
+            yield return new WaitForSeconds(delayAfterVoice);
+        }
+
+        yield return AskQuizQuestion(currentQuestionIndex);
+    }
+
+    /// <summary>
+    /// Asks a question. If the index is past the last question, plays the
+    /// generic completed audio and notifies LessonManager. When isRepeat is
+    /// true, the repeated-question audio plays before the question.
+    /// </summary>
+    private IEnumerator AskQuizQuestion(int questionIndex, bool isRepeat = false)
+    {
+        List<QuizQuestion> questions = ActiveQuestions;
+
+        if (questions == null || questionIndex < 0 || questionIndex >= questions.Count)
+        {
+            // No (more) questions — play the completed audio, then finish.
+            if (genericCompletedAudio != null)
+            {
+                yield return PlayAudioMessage(genericCompletedAudio, noAudioFallbackDelay);
+                yield return new WaitForSeconds(delayAfterVoice);
+            }
+
             onAllQuestionsComplete?.Invoke();
             yield break;
         }
 
-        waitingForQuizAnswer = true;
-        QuizQuestion question = currentLesson.questions[questionIndex];
+        // Block input while any intro audio plays.
+        waitingForQuizAnswer = false;
+        QuizQuestion question = questions[questionIndex];
+
+        if (isRepeat && repeatedQuestionAudio != null)
+        {
+            yield return PlayAudioMessage(repeatedQuestionAudio, noAudioFallbackDelay);
+            yield return new WaitForSeconds(delayAfterVoice);
+        }
 
         if (question.soundEffectAudio != null && voiceAudioSource != null)
         {
@@ -238,6 +310,7 @@ public class QuizManager6 : MonoBehaviour
             yield return new WaitForSeconds(delayAfterVoice);
         }
 
+        waitingForQuizAnswer = true;
         yield return PlayAudioMessage(question.questionAudio, noAudioFallbackDelay);
     }
 
@@ -272,7 +345,10 @@ public class QuizManager6 : MonoBehaviour
         else if (pattern == "001000") userAnswer = AnswerChoice.C;
         else return;
 
-        QuizQuestion question = currentLesson.questions[currentQuestionIndex];
+        List<QuizQuestion> questions = ActiveQuestions;
+        if (questions == null || currentQuestionIndex < 0 || currentQuestionIndex >= questions.Count) return;
+
+        QuizQuestion question = questions[currentQuestionIndex];
         waitingForQuizAnswer = false;
 
         if (userAnswer == question.correctAnswer)
@@ -292,7 +368,7 @@ public class QuizManager6 : MonoBehaviour
     // Correct / Wrong / Support
     // -------------------------------------------------------------------------
 
-    /// <summary>Success feedback, then advance to the next question — or, if that was the last question, notify LessonManager the lesson's quiz is complete.</summary>
+    /// <summary>Success feedback, then advance to the next question — or, if that was the last question, play the completed audio and notify LessonManager the lesson's quiz is complete.</summary>
     private IEnumerator HandleCorrectAnswer(QuizQuestion question)
     {
         SaveHighScoreIfNeeded();
@@ -371,13 +447,13 @@ public class QuizManager6 : MonoBehaviour
         // player presses Next (see RequestNext()).
     }
 
-    /// <summary>Resolves a pending repeat-confirmation by re-asking the current question. No-ops if nothing is pending.</summary>
+    /// <summary>Resolves a pending repeat-confirmation by re-asking the current question (with the repeated-question audio). No-ops if nothing is pending.</summary>
     public void RequestNext()
     {
         if (!waitingForRepeatConfirmation) return;
 
         waitingForRepeatConfirmation = false;
-        RunFlow(AskQuizQuestion(currentQuestionIndex));
+        RunFlow(AskQuizQuestion(currentQuestionIndex, true));
     }
 
     // -------------------------------------------------------------------------

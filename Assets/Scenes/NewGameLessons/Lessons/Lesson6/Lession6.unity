@@ -921,7 +921,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: be5e51a110f2768489db678f3dc889f1, type: 3}
+  m_Resource: {fileID: 8300000, guid: 29abeba1f4ca63e4e93beb6c21bfb299, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -1515,9 +1515,90 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::QuizManager6
   lessonManager: {fileID: 1586095487}
   resultReporter: {fileID: 0}
+ Updated upstream
   voiceAudioSource: {fileID: 1586095478}
+
+  useManagerQuestions: 1
+  questionSet:
+  - questionText: 
+    questionAudio: {fileID: 8300000, guid: ff4a9522dd4bfe9409b5b73c70492527, type: 3}
+    soundEffectAudio: {fileID: 0}
+    choiceAText: A
+    choiceBText: B
+    choiceCText: C
+    correctAnswer: 0
+    successMessage: 
+    successAudio: {fileID: 0}
+    wrongMessage: 
+    supportMessage: 
+    supportAudio: {fileID: 0}
+  - questionText: 
+    questionAudio: {fileID: 8300000, guid: 36d472a9d97d0e64db6191a87a559ea8, type: 3}
+    soundEffectAudio: {fileID: 0}
+    choiceAText: A
+    choiceBText: B
+    choiceCText: C
+    correctAnswer: 1
+    successMessage: 
+    successAudio: {fileID: 0}
+    wrongMessage: 
+    supportMessage: 
+    supportAudio: {fileID: 0}
+  - questionText: 
+    questionAudio: {fileID: 8300000, guid: a32e415e15d232542988a881e86cba5e, type: 3}
+    soundEffectAudio: {fileID: 0}
+    choiceAText: A
+    choiceBText: B
+    choiceCText: C
+    correctAnswer: 2
+    successMessage: 
+    successAudio: {fileID: 0}
+    wrongMessage: 
+    supportMessage: 
+    supportAudio: {fileID: 0}
+  - questionText: 
+    questionAudio: {fileID: 8300000, guid: f007cfff31c53ce48b4e5dc909d6fede, type: 3}
+    soundEffectAudio: {fileID: 0}
+    choiceAText: A
+    choiceBText: B
+    choiceCText: C
+    correctAnswer: 0
+    successMessage: 
+    successAudio: {fileID: 0}
+    wrongMessage: 
+    supportMessage: 
+    supportAudio: {fileID: 0}
+  - questionText: 
+    questionAudio: {fileID: 8300000, guid: e522c75c480d88744a263e11a091e172, type: 3}
+    soundEffectAudio: {fileID: 0}
+    choiceAText: A
+    choiceBText: B
+    choiceCText: C
+    correctAnswer: 1
+    successMessage: 
+    successAudio: {fileID: 0}
+    wrongMessage: 
+    supportMessage: 
+    supportAudio: {fileID: 0}
+  - questionText: 
+    questionAudio: {fileID: 8300000, guid: 0cd9470fce8983b468a96a7b1b06da19, type: 3}
+    soundEffectAudio: {fileID: 0}
+    choiceAText: A
+    choiceBText: B
+    choiceCText: C
+    correctAnswer: 0
+    successMessage: 
+    successAudio: {fileID: 0}
+    wrongMessage: 
+    supportMessage: 
+    supportAudio: {fileID: 0}
+  voiceAudioSource: {fileID: 0}
+ Stashed changes
   genericCorrectAudio: {fileID: 8300000, guid: 8f6b571bdbb8d0147b72fa826e260eaf, type: 3}
   genericTryAgainAudio: {fileID: 8300000, guid: 26ba9eb57e1d3e34ea32366d939d2cb5, type: 3}
+  welcomeAudio: {fileID: 8300000, guid: 29abeba1f4ca63e4e93beb6c21bfb299, type: 3}
+  genericCompletedAudio: {fileID: 8300000, guid: d92736a320be73948a234dbfad74ec5e, type: 3}
+  repeatedQuestionAudio: {fileID: 8300000, guid: 77913cc5b924944439f852f36f7e984a, type: 3}
   yourScoreIsAudio: {fileID: 0}
   whileYourHighestScoreIsAudio: {fileID: 0}
   numberAudios: []
@@ -1550,7 +1631,13 @@ MonoBehaviour:
   letsLearnAudio: {fileID: 0}
   genericCompletedAudio: {fileID: 8300000, guid: d92736a320be73948a234dbfad74ec5e, type: 3}
   repeatQuestionAudio: {fileID: 8300000, guid: 77913cc5b924944439f852f36f7e984a, type: 3}
+ Updated upstream
   introLessonPages: []
+
+  introLessonPages:
+  - pageText: 
+    pageAudio: {fileID: 8300000, guid: bd7ada0447ac8184d9d23ac30c4f7429, type: 3}
+ Stashed changes
   delayBetweenIntroPages: 0.5
   welcomeMessage: Welcome to Braille Sounds Around!
   letsLearnMessage: Let's identify some sounds.
