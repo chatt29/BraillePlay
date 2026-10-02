@@ -1515,9 +1515,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::QuizManager6
   lessonManager: {fileID: 1586095487}
   resultReporter: {fileID: 0}
- Updated upstream
-  voiceAudioSource: {fileID: 1586095478}
-
   useManagerQuestions: 1
   questionSet:
   - questionText: 
@@ -1528,7 +1525,7 @@ MonoBehaviour:
     choiceCText: C
     correctAnswer: 0
     successMessage: 
-    successAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 8f6b571bdbb8d0147b72fa826e260eaf, type: 3}
     wrongMessage: 
     supportMessage: 
     supportAudio: {fileID: 0}
@@ -1540,7 +1537,7 @@ MonoBehaviour:
     choiceCText: C
     correctAnswer: 1
     successMessage: 
-    successAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 8f6b571bdbb8d0147b72fa826e260eaf, type: 3}
     wrongMessage: 
     supportMessage: 
     supportAudio: {fileID: 0}
@@ -1552,7 +1549,7 @@ MonoBehaviour:
     choiceCText: C
     correctAnswer: 2
     successMessage: 
-    successAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 8f6b571bdbb8d0147b72fa826e260eaf, type: 3}
     wrongMessage: 
     supportMessage: 
     supportAudio: {fileID: 0}
@@ -1564,7 +1561,7 @@ MonoBehaviour:
     choiceCText: C
     correctAnswer: 0
     successMessage: 
-    successAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 8f6b571bdbb8d0147b72fa826e260eaf, type: 3}
     wrongMessage: 
     supportMessage: 
     supportAudio: {fileID: 0}
@@ -1576,7 +1573,7 @@ MonoBehaviour:
     choiceCText: C
     correctAnswer: 1
     successMessage: 
-    successAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 8f6b571bdbb8d0147b72fa826e260eaf, type: 3}
     wrongMessage: 
     supportMessage: 
     supportAudio: {fileID: 0}
@@ -1588,12 +1585,11 @@ MonoBehaviour:
     choiceCText: C
     correctAnswer: 0
     successMessage: 
-    successAudio: {fileID: 0}
+    successAudio: {fileID: 8300000, guid: 8f6b571bdbb8d0147b72fa826e260eaf, type: 3}
     wrongMessage: 
     supportMessage: 
     supportAudio: {fileID: 0}
   voiceAudioSource: {fileID: 0}
- Stashed changes
   genericCorrectAudio: {fileID: 8300000, guid: 8f6b571bdbb8d0147b72fa826e260eaf, type: 3}
   genericTryAgainAudio: {fileID: 8300000, guid: 26ba9eb57e1d3e34ea32366d939d2cb5, type: 3}
   welcomeAudio: {fileID: 8300000, guid: 29abeba1f4ca63e4e93beb6c21bfb299, type: 3}
@@ -1608,9 +1604,9 @@ MonoBehaviour:
   resetMistakesAfterSupport: 1
   mistakesBeforeSupport: 3
   repeatStoryPromptAudio: {fileID: 0}
-  repeatQuestionConfirmAudio: {fileID: 8300000, guid: 77913cc5b924944439f852f36f7e984a, type: 3}
+  repeatQuestionConfirmAudio: {fileID: 0}
   delayAfterVoice: 0.35
-  noAudioFallbackDelay: 0
+  noAudioFallbackDelay: 2
   delayAfterCorrect: 0.75
   logDebug: 1
 --- !u!114 &1586095487
@@ -1631,13 +1627,7 @@ MonoBehaviour:
   letsLearnAudio: {fileID: 0}
   genericCompletedAudio: {fileID: 8300000, guid: d92736a320be73948a234dbfad74ec5e, type: 3}
   repeatQuestionAudio: {fileID: 8300000, guid: 77913cc5b924944439f852f36f7e984a, type: 3}
- Updated upstream
   introLessonPages: []
-
-  introLessonPages:
-  - pageText: 
-    pageAudio: {fileID: 8300000, guid: bd7ada0447ac8184d9d23ac30c4f7429, type: 3}
- Stashed changes
   delayBetweenIntroPages: 0.5
   welcomeMessage: Welcome to Braille Sounds Around!
   letsLearnMessage: Let's identify some sounds.
@@ -1646,7 +1636,7 @@ MonoBehaviour:
     R to repeat or Y to finish.
   lessons: []
   delayAfterVoice: 0.35
-  noAudioFallbackDelay: 0
+  noAudioFallbackDelay: 2
   delayBetweenStoryLines: 0.5
   logDebug: 1
 --- !u!1 &1945483424
