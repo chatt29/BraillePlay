@@ -303,10 +303,7 @@ public class QuizManager6 : MonoBehaviour
 
         if (question.soundEffectAudio != null && voiceAudioSource != null)
         {
-            voiceAudioSource.Stop();
-            voiceAudioSource.clip = question.soundEffectAudio;
-            voiceAudioSource.Play();
-            yield return new WaitForSeconds(question.soundEffectAudio.length);
+            yield return PlayAudioMessage(question.soundEffectAudio, 0f);
             yield return new WaitForSeconds(delayAfterVoice);
         }
 
@@ -467,37 +464,18 @@ public class QuizManager6 : MonoBehaviour
         AudioClip finalScoreClip = GetNumberAudio(totalScore);
         AudioClip highScoreClip = GetNumberAudio(highScore);
 
+        // Each clip waits until the previous one has fully finished.
         if (yourScoreIsAudio != null)
-        {
-            voiceAudioSource.Stop();
-            voiceAudioSource.clip = yourScoreIsAudio;
-            voiceAudioSource.Play();
-            yield return new WaitForSeconds(yourScoreIsAudio.length);
-        }
+            yield return PlayAudioMessage(yourScoreIsAudio, 0f);
 
         if (finalScoreClip != null)
-        {
-            voiceAudioSource.Stop();
-            voiceAudioSource.clip = finalScoreClip;
-            voiceAudioSource.Play();
-            yield return new WaitForSeconds(finalScoreClip.length);
-        }
+            yield return PlayAudioMessage(finalScoreClip, 0f);
 
         if (whileYourHighestScoreIsAudio != null)
-        {
-            voiceAudioSource.Stop();
-            voiceAudioSource.clip = whileYourHighestScoreIsAudio;
-            voiceAudioSource.Play();
-            yield return new WaitForSeconds(whileYourHighestScoreIsAudio.length);
-        }
+            yield return PlayAudioMessage(whileYourHighestScoreIsAudio, 0f);
 
         if (highScoreClip != null)
-        {
-            voiceAudioSource.Stop();
-            voiceAudioSource.clip = highScoreClip;
-            voiceAudioSource.Play();
-            yield return new WaitForSeconds(highScoreClip.length);
-        }
+            yield return PlayAudioMessage(highScoreClip, 0f);
     }
 
     private AudioClip GetNumberAudio(int number)
@@ -517,9 +495,21 @@ public class QuizManager6 : MonoBehaviour
         if (clip != null && voiceAudioSource != null)
         {
             voiceAudioSource.Stop();
+            voiceAudioSource.loop = false;
             voiceAudioSource.clip = clip;
             voiceAudioSource.Play();
-            yield return new WaitForSeconds(clip.length);
+
+            // Wait until the AudioSource has actually started (max 1 sec grace).
+            float grace = 0f;
+            while (!voiceAudioSource.isPlaying && grace < 1f)
+            {
+                grace += Time.unscaledDeltaTime;
+                yield return null;
+            }
+
+            // Wait until the clip has REALLY finished playing.
+            while (voiceAudioSource.isPlaying)
+                yield return null;
         }
         else
         {

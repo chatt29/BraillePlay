@@ -1622,8 +1622,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LessonManager6
   quizManager: {fileID: 0}
-  voiceAudioSource: {fileID: 1586095478}
-  welcomeAudio: {fileID: 0}
+  voiceAudioSource: {fileID: 0}
+  welcomeAudio: {fileID: 8300000, guid: bd7ada0447ac8184d9d23ac30c4f7429, type: 3}
   letsLearnAudio: {fileID: 0}
   genericCompletedAudio: {fileID: 8300000, guid: d92736a320be73948a234dbfad74ec5e, type: 3}
   repeatQuestionAudio: {fileID: 8300000, guid: 77913cc5b924944439f852f36f7e984a, type: 3}

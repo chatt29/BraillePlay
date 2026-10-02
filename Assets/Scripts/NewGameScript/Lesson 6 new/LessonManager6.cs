@@ -163,6 +163,13 @@ public class LessonManager6 : MonoBehaviour
     {
         if (quizManager == null)
             quizManager = GetComponent<QuizManager6>();
+
+        // Make sure the shared voice source never loops or auto-plays on its own.
+        if (voiceAudioSource != null)
+        {
+            voiceAudioSource.playOnAwake = false;
+            voiceAudioSource.loop = false;
+        }
     }
 
     private void OnEnable()
@@ -394,15 +401,31 @@ public class LessonManager6 : MonoBehaviour
     // Audio helpers (playback + pacing only — no on-screen text/typewriter)
     // -------------------------------------------------------------------------
 
-    /// <summary>Plays a clip and waits for its length, or waits a fallback duration if the clip is missing.</summary>
+    /// <summary>
+    /// Plays a clip and waits until the AudioSource has REALLY finished
+    /// playing it (not just clip.length), so the next audio never cuts it
+    /// off. If the clip is missing, waits a fallback duration instead.
+    /// </summary>
     public IEnumerator PlayAudioMessage(AudioClip clip, float fallbackWait)
     {
         if (clip != null && voiceAudioSource != null)
         {
             voiceAudioSource.Stop();
+            voiceAudioSource.loop = false;
             voiceAudioSource.clip = clip;
             voiceAudioSource.Play();
-            yield return new WaitForSeconds(clip.length);
+
+            // Wait until the AudioSource has actually started (max 1 sec grace).
+            float grace = 0f;
+            while (!voiceAudioSource.isPlaying && grace < 1f)
+            {
+                grace += Time.unscaledDeltaTime;
+                yield return null;
+            }
+
+            // Wait until the clip has REALLY finished playing.
+            while (voiceAudioSource.isPlaying)
+                yield return null;
         }
         else
         {
@@ -410,22 +433,19 @@ public class LessonManager6 : MonoBehaviour
         }
     }
 
-    /// <summary>Plays a sequence of clips back-to-back (skipping nulls); falls back to a single wait if none play.</summary>
+    /// <summary>Plays a sequence of clips back-to-back (skipping nulls), each fully finishing before the next; falls back to a single wait if none play.</summary>
     private IEnumerator PlayAudioSequence(float fallbackWait, params AudioClip[] clips)
     {
         bool playedAny = false;
 
-        if (voiceAudioSource != null && clips != null)
+        if (clips != null)
         {
             foreach (AudioClip clip in clips)
             {
                 if (clip == null) continue;
 
                 playedAny = true;
-                voiceAudioSource.Stop();
-                voiceAudioSource.clip = clip;
-                voiceAudioSource.Play();
-                yield return new WaitForSeconds(clip.length);
+                yield return PlayAudioMessage(clip, fallbackWait);
             }
         }
 
