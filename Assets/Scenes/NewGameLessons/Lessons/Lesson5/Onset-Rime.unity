@@ -312,15 +312,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LessonManager
   quizManager: {fileID: 719558640}
   voiceAudioSource: {fileID: 725868524}
-  welcomeAudio: {fileID: 0}
-  letsLearnAudio: {fileID: 0}
-  endOfLessonAudio: {fileID: 0}
+  welcomeAudio: {fileID: 8300000, guid: 0f70ca35b266ae74d9f6b3d7009d74ea, type: 3}
+  letsLearnAudio: {fileID: 8300000, guid: 2ad7aa3fcb191cd4fa5ef3d62fb7d19b, type: 3}
+  endOfLessonAudio: {fileID: 8300000, guid: 625732e2f9db2aa43b320a2470b6a204, type: 3}
   endOfLessonPromptMessage: You have completed the lesson. Press Space to begin the
     Quiz, or press R to rewatch the lesson.
   lessonPages:
   - title: 
-    lessonText: 
-    lessonAudio: {fileID: 0}
+    lessonText: Every word has two parts. The first part is the onset, which is the
+      beginning sound. The second part is the rime, which is the rest of the word.
+      In the word cat, c is the onset, and at is the rime.
+    lessonAudio: {fileID: 8300000, guid: 13e703c54ddd86343b5724c92d4f3326, type: 3}
+  - title: 
+    lessonText: "Let\u2019s listen to the at family. Cat. Hat. Bat. Sat. Mat. Each
+      word ends the same way, with at, but starts with a different sound."
+    lessonAudio: {fileID: 8300000, guid: 2c38637c396a7b34bb00f72097a72f54, type: 3}
+  - title: 
+    lessonText: "Here\u2019s the ig family. Big. Pig. Dig. Wig. Fig. The ending stays
+      the same, but the onset changes."
+    lessonAudio: {fileID: 8300000, guid: a6c1acd50b02084479ccaf9493ccfbc1, type: 3}
   delayAfterVoice: 0.35
   noAudioFallbackDelay: 2
   logDebug: 1
@@ -337,8 +347,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QuizManager
   resultReporter: {fileID: 847233674}
-  voiceAudioSource: {fileID: 0}
-  letsQuizAudio: {fileID: 0}
+  voiceAudioSource: {fileID: 725868524}
+  letsQuizAudio: {fileID: 8300000, guid: 13b4aa860784fa24aa804c1f6b291dde, type: 3}
   letsQuizInstructionMessage: Great job learning! Now let's test your skills with
     a quiz.
   genericCorrectAudio: {fileID: 0}
@@ -359,13 +369,69 @@ MonoBehaviour:
     wrongMessage: 
     onsetAudioPromptMessage: 
     supportMessage: 
-    introAudio: {fileID: 0}
-    instructionAudio: {fileID: 0}
+    introAudio: {fileID: 8300000, guid: 2f39cff61a472544ea92727713e69755, type: 3}
+    instructionAudio: {fileID: 8300000, guid: f3430898f0e3aa64683d53b798851cf1, type: 3}
     successAudio: {fileID: 0}
     supportAudio: {fileID: 0}
-    targetWordAudio: {fileID: 0}
-    onsetAudioPromptClip: {fileID: 0}
-    correctOnsetBraillePattern: 
+    targetWordAudio: {fileID: 8300000, guid: 6d798b6c7d4a35c40860a5f0a81307b2, type: 3}
+    onsetAudioPromptClip: {fileID: 8300000, guid: 3c9ba06cfbed4d542b827be9832cdc88, type: 3}
+    correctOnsetBraillePattern: 100100
+  - displayLabel: 
+    categoryLabel: 
+    promptMessage: 
+    successMessage: 
+    wrongMessage: 
+    onsetAudioPromptMessage: 
+    supportMessage: 
+    introAudio: {fileID: 8300000, guid: 9d9edbe33317cb44aa38205028b17d5a, type: 3}
+    instructionAudio: {fileID: 8300000, guid: f3430898f0e3aa64683d53b798851cf1, type: 3}
+    successAudio: {fileID: 0}
+    supportAudio: {fileID: 0}
+    targetWordAudio: {fileID: 8300000, guid: 68a70bcf4719d9349afd9dc17a34f4f2, type: 3}
+    onsetAudioPromptClip: {fileID: 8300000, guid: 9ec41284c786c8a46854ac8b11c11a1a, type: 3}
+    correctOnsetBraillePattern: 101100
+  - displayLabel: 
+    categoryLabel: 
+    promptMessage: 
+    successMessage: 
+    wrongMessage: 
+    onsetAudioPromptMessage: 
+    supportMessage: 
+    introAudio: {fileID: 8300000, guid: 584bec8977d15f14eabbd3898111fe3d, type: 3}
+    instructionAudio: {fileID: 8300000, guid: f3430898f0e3aa64683d53b798851cf1, type: 3}
+    successAudio: {fileID: 0}
+    supportAudio: {fileID: 0}
+    targetWordAudio: {fileID: 8300000, guid: d377a0b5f171dee4daf7478c2cf856fa, type: 3}
+    onsetAudioPromptClip: {fileID: 8300000, guid: ceddf9a838ec71940b29bf5d576fa213, type: 3}
+    correctOnsetBraillePattern: 110100
+  - displayLabel: 
+    categoryLabel: 
+    promptMessage: 
+    successMessage: 
+    wrongMessage: 
+    onsetAudioPromptMessage: 
+    supportMessage: 
+    introAudio: {fileID: 8300000, guid: 5d3aa056dcb573e41996343dd19c3b07, type: 3}
+    instructionAudio: {fileID: 8300000, guid: f3430898f0e3aa64683d53b798851cf1, type: 3}
+    successAudio: {fileID: 0}
+    supportAudio: {fileID: 0}
+    targetWordAudio: {fileID: 8300000, guid: ba7a3cbf12c5955458ccb94b07da0200, type: 3}
+    onsetAudioPromptClip: {fileID: 8300000, guid: 7281c0aa7ee9f5a4ebf2890d4407a5b7, type: 3}
+    correctOnsetBraillePattern: 111100
+  - displayLabel: 
+    categoryLabel: 
+    promptMessage: 
+    successMessage: 
+    wrongMessage: 
+    onsetAudioPromptMessage: 
+    supportMessage: 
+    introAudio: {fileID: 8300000, guid: 7ec363828390a55479d578c0c836497c, type: 3}
+    instructionAudio: {fileID: 8300000, guid: f3430898f0e3aa64683d53b798851cf1, type: 3}
+    successAudio: {fileID: 0}
+    supportAudio: {fileID: 0}
+    targetWordAudio: {fileID: 8300000, guid: c0ebd7536418a1c44b7bc3c536b319e2, type: 3}
+    onsetAudioPromptClip: {fileID: 8300000, guid: 4771ec129e740e043a18277971ed08be, type: 3}
+    correctOnsetBraillePattern: 010111
   fixedScore: 100
   deductionPerMistake: 1
   highScoreKey: BrailleOnsetRimeHighScore
