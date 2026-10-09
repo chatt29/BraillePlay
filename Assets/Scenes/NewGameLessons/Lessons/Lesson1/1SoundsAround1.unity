@@ -793,6 +793,7 @@ GameObject:
   - component: {fileID: 1586095490}
   - component: {fileID: 1586095492}
   - component: {fileID: 1586095491}
+  - component: {fileID: 1586095493}
   m_Layer: 5
   m_Name: SoundsAround1Manager
   m_TagString: Untagged
@@ -1657,6 +1658,21 @@ MonoBehaviour:
   delayAfterVoice: 0.35
   noAudioFallbackDelay: 0.08
   logDebug: 1
+--- !u!114 &1586095493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586095473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca16e861051a50440bb9c3814c440e56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QuizResultReporter
+  fallbackReturnSceneName: GameMenu
+  endMenu: {fileID: 1873085820}
+  backHandler: {fileID: 1520855081}
 --- !u!1 &1873085816
 GameObject:
   m_ObjectHideFlags: 0

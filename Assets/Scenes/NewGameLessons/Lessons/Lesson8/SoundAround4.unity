@@ -967,6 +967,7 @@ GameObject:
   - component: {fileID: 1586095486}
   - component: {fileID: 1586095488}
   - component: {fileID: 1586095487}
+  - component: {fileID: 1586095489}
   m_Layer: 5
   m_Name: Lesson8Manager
   m_TagString: Untagged
@@ -1855,6 +1856,21 @@ MonoBehaviour:
   mistakesBeforeSupport: 3
   resetMistakesAfterSupport: 1
   logDebug: 1
+--- !u!114 &1586095489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586095473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca16e861051a50440bb9c3814c440e56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QuizResultReporter
+  fallbackReturnSceneName: GameMenu
+  endMenu: {fileID: 1466950938}
+  backHandler: {fileID: 335706965}
 --- !u!1 &1958454633
 GameObject:
   m_ObjectHideFlags: 0
