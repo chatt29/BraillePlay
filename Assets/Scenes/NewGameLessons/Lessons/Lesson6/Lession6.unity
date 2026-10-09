@@ -921,7 +921,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: be5e51a110f2768489db678f3dc889f1, type: 3}
+  m_Resource: {fileID: 8300000, guid: bd7ada0447ac8184d9d23ac30c4f7429, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -1054,36 +1054,36 @@ MonoBehaviour:
   spaceSfx: {fileID: 8300000, guid: 0797e54434a89144b924840ca19dd5f5, type: 3}
   correctSfx: {fileID: 8300000, guid: c1b476596f306b245904f433dc1bf816, type: 3}
   wrongSfx: {fileID: 8300000, guid: 8674ad609afeaae4b9739c6fa8f1abd3, type: 3}
-  aSound: {fileID: 8300000, guid: 2d48057eda8aca345846ee47791c11ba, type: 3}
-  bSound: {fileID: 8300000, guid: e979f2fe6e085304eb7e25c86f188558, type: 3}
-  cSound: {fileID: 8300000, guid: 44f6dcff463891d40a4e7b494e42ea96, type: 3}
-  dSound: {fileID: 8300000, guid: 9d639bf998af6434bb46497e02080619, type: 3}
-  eSound: {fileID: 8300000, guid: 429eb1ac2e798084bacf535a9e9ad688, type: 3}
-  fSound: {fileID: 8300000, guid: e4d730e18d04cee45ba16e76ef99ce42, type: 3}
-  gSound: {fileID: 8300000, guid: 92b0c099b231e0a478ff7018760a7270, type: 3}
-  hSound: {fileID: 8300000, guid: 17cbd7cd9a746054c9e37b57c02870f2, type: 3}
-  iSound: {fileID: 8300000, guid: efaa1cde875a8f74a97e8d8f18c0c5ef, type: 3}
-  jSound: {fileID: 8300000, guid: 748ab0784524060438eb2b95fc759b30, type: 3}
-  kSound: {fileID: 8300000, guid: 71f6e974b35abb948b5c7f920c0adda4, type: 3}
-  lSound: {fileID: 8300000, guid: 9076d37bca4497f41b141a6ca2a8fe6f, type: 3}
-  mSound: {fileID: 8300000, guid: d1a3394f91e7c7343a0edcb2b9500927, type: 3}
-  nSound: {fileID: 8300000, guid: 2056df2ef0125584c8613649accef239, type: 3}
-  oSound: {fileID: 8300000, guid: 3bf9e1255f417674cbe7bc51213915fa, type: 3}
-  pSound: {fileID: 8300000, guid: 6aa4f19ee7449b842ba36c5a4f606b6c, type: 3}
-  qSound: {fileID: 8300000, guid: d270f1607f05c3e42a080fb650bba35b, type: 3}
-  rSound: {fileID: 8300000, guid: 71d2ab669681c854c8255eb930d07e71, type: 3}
-  sSound: {fileID: 8300000, guid: a37f5fa0d317a7344b61a3d987352db3, type: 3}
-  tSound: {fileID: 8300000, guid: 5a5c5ded30729d743b295b136af14578, type: 3}
-  uSound: {fileID: 8300000, guid: 4f888394d1f76654babd501eda8fc34f, type: 3}
-  vSound: {fileID: 8300000, guid: d472b9cd93b9c5941b342fcf7b9d1f66, type: 3}
-  wSound: {fileID: 8300000, guid: 67256beb0e461d042bf9d0fe11c981f5, type: 3}
-  xSound: {fileID: 8300000, guid: 4d04c56d1e292c74e8de07c9549481cf, type: 3}
-  ySound: {fileID: 8300000, guid: 92350685b58b51b478cfaa4dd558ec15, type: 3}
-  zSound: {fileID: 8300000, guid: 77bd63491b0fe334fb9092f60fac69d6, type: 3}
+  aSound: {fileID: 8300000, guid: 8294307187e6f5d458c4b4ae24280e44, type: 3}
+  bSound: {fileID: 8300000, guid: fa545978e401239408b52d5b06c65fdd, type: 3}
+  cSound: {fileID: 8300000, guid: 3ce678d66d573df4f83f6bc074dd9289, type: 3}
+  dSound: {fileID: 8300000, guid: 7fd15591860d398468bcf80f97986592, type: 3}
+  eSound: {fileID: 8300000, guid: 6d53e4ba2ae254e4684ada311103877c, type: 3}
+  fSound: {fileID: 8300000, guid: f41dee2cb35572342bbc7cafb24473bc, type: 3}
+  gSound: {fileID: 8300000, guid: b0777abb94a30f34db928ab87cbe8393, type: 3}
+  hSound: {fileID: 8300000, guid: 8deae97a8bef86e499cee04af7c9d7ca, type: 3}
+  iSound: {fileID: 8300000, guid: 653f2aa2971823a4090eca08d1708181, type: 3}
+  jSound: {fileID: 8300000, guid: 7a351f66b671c2a47894892260147424, type: 3}
+  kSound: {fileID: 8300000, guid: 71a13d2152446cf43b30e2df759eae0f, type: 3}
+  lSound: {fileID: 8300000, guid: c6301e6b6e813a6458ace8aa9da31273, type: 3}
+  mSound: {fileID: 8300000, guid: 6155c74f5a78be04da3443a5bd961257, type: 3}
+  nSound: {fileID: 8300000, guid: 4531ab8fd0d41c6478e4cbec6776553d, type: 3}
+  oSound: {fileID: 8300000, guid: 23798cebf3453fb4a82bcc51ad836ed7, type: 3}
+  pSound: {fileID: 8300000, guid: 101b1641be6b8b34f8b3b09f57a88495, type: 3}
+  qSound: {fileID: 8300000, guid: 990b6897214eada4cbf460ac09ddffa2, type: 3}
+  rSound: {fileID: 8300000, guid: 87f9cec51f626ec42bd51f674e71a6b3, type: 3}
+  sSound: {fileID: 8300000, guid: facd7c0ece6d8b145a66de09b86491cf, type: 3}
+  tSound: {fileID: 8300000, guid: 85aa0e8baabaf0749a5e41d723c0fcd5, type: 3}
+  uSound: {fileID: 8300000, guid: a9161ce0b0552e74fa77e1c6e21112b3, type: 3}
+  vSound: {fileID: 8300000, guid: c2cc0815ed5e9c1468aa9f3c6b4cab07, type: 3}
+  wSound: {fileID: 8300000, guid: b10376393e3c2524c991a9c68d7b09fb, type: 3}
+  xSound: {fileID: 8300000, guid: 5dd0e984562c46745b532647f62b20db, type: 3}
+  ySound: {fileID: 8300000, guid: ec02faf8562a72f498ce461942d051b6, type: 3}
+  zSound: {fileID: 8300000, guid: a6a8fb7b76c323a408462cab122c705b, type: 3}
   letterSoundVolume: 1.5
   otherDefaultPatternSounds:
   - pattern: 000001
-    sound: {fileID: 8300000, guid: 0622e17681c1d9747a952cdfc368644f, type: 3}
+    sound: {fileID: 8300000, guid: 75f3e6330118aa149ae4b6c7a035a208, type: 3}
   - pattern: 000000
     sound: {fileID: 8300000, guid: 507e6e21ec3099a4dbbd8dfc112663cf, type: 3}
   - pattern: 010011
@@ -1515,9 +1515,86 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::QuizManager6
   lessonManager: {fileID: 1586095487}
   resultReporter: {fileID: 0}
-  voiceAudioSource: {fileID: 1586095478}
+  useManagerQuestions: 1
+  questionSet:
+  - questionText: 
+    questionAudio: {fileID: 8300000, guid: ff4a9522dd4bfe9409b5b73c70492527, type: 3}
+    soundEffectAudio: {fileID: 0}
+    choiceAText: A
+    choiceBText: B
+    choiceCText: C
+    correctAnswer: 0
+    successMessage: 
+    successAudio: {fileID: 8300000, guid: 8f6b571bdbb8d0147b72fa826e260eaf, type: 3}
+    wrongMessage: 
+    supportMessage: 
+    supportAudio: {fileID: 0}
+  - questionText: 
+    questionAudio: {fileID: 8300000, guid: 36d472a9d97d0e64db6191a87a559ea8, type: 3}
+    soundEffectAudio: {fileID: 0}
+    choiceAText: A
+    choiceBText: B
+    choiceCText: C
+    correctAnswer: 1
+    successMessage: 
+    successAudio: {fileID: 8300000, guid: 8f6b571bdbb8d0147b72fa826e260eaf, type: 3}
+    wrongMessage: 
+    supportMessage: 
+    supportAudio: {fileID: 0}
+  - questionText: 
+    questionAudio: {fileID: 8300000, guid: a32e415e15d232542988a881e86cba5e, type: 3}
+    soundEffectAudio: {fileID: 0}
+    choiceAText: A
+    choiceBText: B
+    choiceCText: C
+    correctAnswer: 2
+    successMessage: 
+    successAudio: {fileID: 8300000, guid: 8f6b571bdbb8d0147b72fa826e260eaf, type: 3}
+    wrongMessage: 
+    supportMessage: 
+    supportAudio: {fileID: 0}
+  - questionText: 
+    questionAudio: {fileID: 8300000, guid: f007cfff31c53ce48b4e5dc909d6fede, type: 3}
+    soundEffectAudio: {fileID: 0}
+    choiceAText: A
+    choiceBText: B
+    choiceCText: C
+    correctAnswer: 0
+    successMessage: 
+    successAudio: {fileID: 8300000, guid: 8f6b571bdbb8d0147b72fa826e260eaf, type: 3}
+    wrongMessage: 
+    supportMessage: 
+    supportAudio: {fileID: 0}
+  - questionText: 
+    questionAudio: {fileID: 8300000, guid: e522c75c480d88744a263e11a091e172, type: 3}
+    soundEffectAudio: {fileID: 0}
+    choiceAText: A
+    choiceBText: B
+    choiceCText: C
+    correctAnswer: 1
+    successMessage: 
+    successAudio: {fileID: 8300000, guid: 8f6b571bdbb8d0147b72fa826e260eaf, type: 3}
+    wrongMessage: 
+    supportMessage: 
+    supportAudio: {fileID: 0}
+  - questionText: 
+    questionAudio: {fileID: 8300000, guid: 0cd9470fce8983b468a96a7b1b06da19, type: 3}
+    soundEffectAudio: {fileID: 0}
+    choiceAText: A
+    choiceBText: B
+    choiceCText: C
+    correctAnswer: 0
+    successMessage: 
+    successAudio: {fileID: 8300000, guid: 8f6b571bdbb8d0147b72fa826e260eaf, type: 3}
+    wrongMessage: 
+    supportMessage: 
+    supportAudio: {fileID: 0}
+  voiceAudioSource: {fileID: 0}
   genericCorrectAudio: {fileID: 8300000, guid: 8f6b571bdbb8d0147b72fa826e260eaf, type: 3}
   genericTryAgainAudio: {fileID: 8300000, guid: 26ba9eb57e1d3e34ea32366d939d2cb5, type: 3}
+  welcomeAudio: {fileID: 8300000, guid: 29abeba1f4ca63e4e93beb6c21bfb299, type: 3}
+  genericCompletedAudio: {fileID: 8300000, guid: d92736a320be73948a234dbfad74ec5e, type: 3}
+  repeatedQuestionAudio: {fileID: 8300000, guid: 77913cc5b924944439f852f36f7e984a, type: 3}
   yourScoreIsAudio: {fileID: 0}
   whileYourHighestScoreIsAudio: {fileID: 0}
   numberAudios: []
@@ -1527,9 +1604,9 @@ MonoBehaviour:
   resetMistakesAfterSupport: 1
   mistakesBeforeSupport: 3
   repeatStoryPromptAudio: {fileID: 0}
-  repeatQuestionConfirmAudio: {fileID: 8300000, guid: 77913cc5b924944439f852f36f7e984a, type: 3}
+  repeatQuestionConfirmAudio: {fileID: 0}
   delayAfterVoice: 0.35
-  noAudioFallbackDelay: 0
+  noAudioFallbackDelay: 2
   delayAfterCorrect: 0.75
   logDebug: 1
 --- !u!114 &1586095487
@@ -1545,7 +1622,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LessonManager6
   quizManager: {fileID: 0}
-  voiceAudioSource: {fileID: 1586095478}
+  voiceAudioSource: {fileID: 0}
   welcomeAudio: {fileID: 8300000, guid: bd7ada0447ac8184d9d23ac30c4f7429, type: 3}
   letsLearnAudio: {fileID: 0}
   genericCompletedAudio: {fileID: 8300000, guid: d92736a320be73948a234dbfad74ec5e, type: 3}
@@ -1559,7 +1636,7 @@ MonoBehaviour:
     R to repeat or Y to finish.
   lessons: []
   delayAfterVoice: 0.35
-  noAudioFallbackDelay: 0
+  noAudioFallbackDelay: 2
   delayBetweenStoryLines: 0.5
   logDebug: 1
 --- !u!1 &1945483424
