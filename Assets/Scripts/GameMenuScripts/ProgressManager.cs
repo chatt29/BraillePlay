@@ -26,6 +26,14 @@ namespace BraillePlay.GameMenu
         [Tooltip("On by default so quiz scenes can still reach this to record results.")]
         [SerializeField] private bool dontDestroyOnLoad = true;
 
+        [Header("Testing")]
+        [Tooltip("TESTING ONLY - when on, IsQuizUnlocked() always returns true, so every " +
+                 "lesson/quiz is selectable regardless of what's actually been played. " +
+                 "This never touches the saved Unlocked flags in Firestore - it's purely a " +
+                 "check-time override, so turning it back off instantly restores each " +
+                 "student's real progression. Leave this OFF for any build you ship.")]
+        [SerializeField] private bool unlockAllForTesting = false;
+
         private StudentProgress progress;
         private FirestoreProgressService progressService;
         private string studentNumber;
@@ -96,7 +104,20 @@ namespace BraillePlay.GameMenu
 
         public QuizProgress GetQuizProgress(int lessonNumber, int quizNumber)
         {
-            return progress.GetOrCreate(lessonNumber).GetOrCreate(quizNumber);
+            QuizProgress quizProgress = progress.GetOrCreate(lessonNumber).GetOrCreate(quizNumber);
+
+            // The override lives HERE, not in IsQuizUnlocked() below - the quiz
+            // selection screen (LessonPopupManager) doesn't call IsQuizUnlocked
+            // at all, it calls GetQuizProgress() and reads .Unlocked off the
+            // result itself, for both the lock icon and whether Enter works.
+            // This only flips the in-memory flag for the rest of this session;
+            // it's never written back to Firestore unless a real playthrough
+            // (RecordQuizResult -> SaveRoutine) runs, so turning the toggle back
+            // off restores normal locking with nothing to undo.
+            if (unlockAllForTesting)
+                quizProgress.Unlocked = true;
+
+            return quizProgress;
         }
 
         public bool IsQuizUnlocked(int lessonNumber, int quizNumber)
