@@ -7,6 +7,7 @@ using UnityEngine;
 /// Owns the quiz side of the scene: Multiple Choice + True/False questions,
 /// Braille answer input, wrong/support/repeat-story handling, scoring, high
 /// score, final announcement, and the "play again or finish?" decision.
+/// After the final decision prompt: Next = finish, Back = finish, Repeat = play again.
 /// Audio-only: no UI. Plays all audio through LessonController13.PlayVoice.
 /// </summary>
 public class QuizController13 : MonoBehaviour
@@ -113,6 +114,12 @@ public class QuizController13 : MonoBehaviour
     [Tooltip("e.g. \"Do you want to repeat again? Press Repeat to play again or Next to finish.\"")]
     public AudioClip repeatQuestionAudio;
 
+    [Header("Back To Main Menu")]
+    [Tooltip("Only used if no QuizResultReporter is assigned. Must be added in File > Build Settings.")]
+    public string mainMenuSceneName = "GameMenu";
+    [Tooltip("Optional cue, e.g. 'Going back to the main menu.' Played only when Back is pressed.")]
+    public AudioClip backToMenuAudio;
+
     [Header("Flow Settings")]
     public float delayAfterCorrect = 0.75f;
     [Tooltip("Consecutive wrong answers on the same question before the Support audio plays. The repeat-story prompt still plays after EVERY wrong answer.")]
@@ -133,7 +140,7 @@ public class QuizController13 : MonoBehaviour
         CorrectFeedback,            // success audio playing (Repeat ignored)
         WrongFeedback,              // wrong / support / repeat-story prompt playing
         AwaitingRepeatConfirmation, // Next re-asks the question, Repeat replays the story
-        AwaitingEndDecision         // final prompt: Repeat = play again, Next = finish
+        AwaitingEndDecision         // final prompt: Repeat = play again, Next/Back = finish
     }
 
     private QuizState state = QuizState.Inactive;
@@ -144,6 +151,8 @@ public class QuizController13 : MonoBehaviour
     private int totalWrongCount = 0;
     private int totalScore = 100;
     private int highScore = 0;
+
+    private bool returningToMenu = false;
 
     private Coroutine flowRoutine;
 
@@ -165,6 +174,7 @@ public class QuizController13 : MonoBehaviour
         BrailleMapping.OnBrailleChordSubmitted += HandleBrailleChordSubmitted;
         BrailleMapping.OnRepeat += HandleRepeat;
         BrailleMapping.OnYesOrNext += HandleNext;
+        BrailleMapping.OnBack += HandleBack;
     }
 
     private void OnDisable()
@@ -172,6 +182,7 @@ public class QuizController13 : MonoBehaviour
         BrailleMapping.OnBrailleChordSubmitted -= HandleBrailleChordSubmitted;
         BrailleMapping.OnRepeat -= HandleRepeat;
         BrailleMapping.OnYesOrNext -= HandleNext;
+        BrailleMapping.OnBack -= HandleBack;
     }
 
     private void Start()
@@ -442,11 +453,13 @@ public class QuizController13 : MonoBehaviour
     }
 
     // -------------------------------------------------------------------------
-    // Input: Repeat / Next
+    // Input: Repeat / Next / Back
     // -------------------------------------------------------------------------
 
     private void HandleRepeat()
     {
+        if (returningToMenu) return;
+
         switch (state)
         {
             case QuizState.AwaitingEndDecision:
@@ -480,6 +493,8 @@ public class QuizController13 : MonoBehaviour
 
     private void HandleNext()
     {
+        if (returningToMenu) return;
+
         switch (state)
         {
             case QuizState.AwaitingRepeatConfirmation:
@@ -492,6 +507,16 @@ public class QuizController13 : MonoBehaviour
         }
     }
 
+    private void HandleBack()
+    {
+        // Back only works at the very end of the quiz (after the score is announced).
+        if (state != QuizState.AwaitingEndDecision || returningToMenu) return;
+
+        returningToMenu = true;
+        state = QuizState.Inactive;
+        RunFlow(BackToMenuFlow());
+    }
+
     // -------------------------------------------------------------------------
     // Final results
     // -------------------------------------------------------------------------
@@ -499,6 +524,7 @@ public class QuizController13 : MonoBehaviour
     private IEnumerator FinalizeQuiz()
     {
         state = QuizState.Inactive;
+        returningToMenu = false;
 
         SaveHighScoreIfNeeded();
 
@@ -514,7 +540,7 @@ public class QuizController13 : MonoBehaviour
         state = QuizState.AwaitingEndDecision;
         yield return lessonController.PlayVoice(repeatQuestionAudio);
 
-        // Stays here until the player presses Repeat (play again) or Next (finish).
+        // Stays here until the player presses Repeat (play again), Next (finish) or Back (menu).
     }
 
     private IEnumerator PlayFinalScoreAudio()
@@ -543,13 +569,35 @@ public class QuizController13 : MonoBehaviour
 
     private void FinishAndReturn()
     {
+        returningToMenu = true;
         state = QuizState.Inactive;
         StopFlow();
         lessonController.StopVoice();
 
+        ReturnToMenu();
+    }
+
+    private IEnumerator BackToMenuFlow()
+    {
+        // RunFlow already stopped the repeat-question audio before this started.
+        if (backToMenuAudio != null)
+            yield return lessonController.PlayVoice(backToMenuAudio);
+
+        ReturnToMenu();
+    }
+
+    private void ReturnToMenu()
+    {
+        SaveHighScoreIfNeeded();
+
         if (resultReporter != null)
-            resultReporter.ReportScoreAndReturn(totalScore);
+        {
+            resultReporter.ReportScoreAndReturn(totalScore);   // saves score + returns to GameMenu
+        }
         else
-            Debug.LogWarning("[QuizController13] No QuizResultReporter assigned - score won't be saved or returned to GameMenu.");
+        {
+            Debug.LogWarning("[QuizController13] No QuizResultReporter assigned - loading menu directly.");
+            UnityEngine.SceneManagement.SceneManager.LoadScene(mainMenuSceneName);
+        }
     }
 }

@@ -8,21 +8,20 @@ using UnityEngine;
 /// (loud/soft), Question 2 (high/low pitch), validating Braille answers,
 /// tracking mistakes/support, scoring, and reporting the final result.
 ///
-/// All visual/UI display (TMP_Text, Image, score labels) has been removed;
-/// everything is communicated through audio clips and Braille chord input.
+/// All visual/UI display has been removed; everything is communicated through
+/// audio clips and Braille chord input.
 ///
-/// Communication with LessonController3 (see that script for its half):
+/// Communication with LessonController3:
 ///   - LessonController3 calls BeginQuestions(lesson) to start asking
 ///     questions about a given instrument.
 ///   - This script raises OnLessonQuestionsComplete once both questions for
-///     that instrument have been answered correctly, so LessonController3
-///     can advance to the next instrument.
+///     that instrument have been answered correctly.
 ///   - LessonController3 calls FinalizeQuiz() once there are no more
-///     instruments left, which plays the final score audio and reports
-///     the result.
-///   - LessonActive / WaitingForRepeatChoice are exposed as read-only
-///     properties so LessonController3 can decide how the Repeat button
-///     should behave.
+///     instruments left: completed audio, score + high score, repeat question.
+///   - At the repeat question the learner decides:
+///        Repeat -> LessonController3 calls ConfirmRepeatChoice() (play again)
+///        Next   -> LessonController3 calls ConfirmFinishChoice() (main menu)
+///        Back   -> handled here: same as Next, with an optional cue first
 /// </summary>
 public class QuizController3 : MonoBehaviour
 {
@@ -81,7 +80,8 @@ public class QuizController3 : MonoBehaviour
     public AudioClip genericCorrectAudio;
     public AudioClip genericTryAgainAudio;
     public AudioClip genericCompletedAudio;
-    public AudioClip repeatQuestionAudio; // asks "repeat or finish?" after the final score is announced
+    [Tooltip("Played AFTER the score and high score: 'Press Repeat to play again or Next to finish.'")]
+    public AudioClip repeatQuestionAudio;
 
     [Header("Final Score Audio")]
     public AudioClip yourScoreIsAudio;
@@ -94,12 +94,18 @@ public class QuizController3 : MonoBehaviour
     [TextArea(2, 5)] public string completedMessage = "Great job! You finished the lesson.";
     [TextArea(2, 5)]
     public string repeatQuestionMessage =
-        "You finished the lesson. Do you want to repeat again? Press R to repeat or Y to finish.";
+        "You finished the lesson. Do you want to repeat again? Press Repeat to play again or Next to finish.";
 
     [Header("Quiz Score Settings")]
     public int fixedScore = 100;
     public int deductionPerMistake = 1;
     public string highScoreKey = "InstrumentSoundsHighScore";
+
+    [Header("Back To Main Menu")]
+    [Tooltip("Only used if no QuizResultReporter is assigned. Must be added in File > Build Settings.")]
+    public string mainMenuSceneName = "GameMenu";
+    [Tooltip("Optional cue, e.g. 'Going back to the main menu.' Played only when Back is pressed.")]
+    public AudioClip backToMenuAudio;
 
     [Header("Timing")]
     public float delayAfterVoice = 0.35f;
@@ -127,8 +133,8 @@ public class QuizController3 : MonoBehaviour
     public bool LessonActive { get; private set; }
 
     /// <summary>
-    /// True after the final score has been announced, while we're waiting for the
-    /// learner to choose Repeat (play again) or Next (finish).
+    /// True from the moment the repeat question starts playing, while we're waiting
+    /// for the learner to choose Repeat (play again), Next (finish) or Back (menu).
     /// </summary>
     public bool WaitingForRepeatChoice { get; private set; }
 
@@ -143,6 +149,7 @@ public class QuizController3 : MonoBehaviour
     private LessonController3.InstrumentLesson currentLesson;
     private QuestionStage currentStage = QuestionStage.None;
     private bool waitingForChoiceAnswer = false;
+    private bool returningToMenu = false;   // guards against Next/Back/Repeat firing twice
     private int currentMistakeCount = 0;
     private int totalWrongCount = 0;
     private int totalScore = 100;
@@ -157,11 +164,13 @@ public class QuizController3 : MonoBehaviour
     private void OnEnable()
     {
         BrailleMapping.OnBrailleChordSubmitted += HandleBrailleChordSubmitted;
+        BrailleMapping.OnBack += HandleBack;
     }
 
     private void OnDisable()
     {
         BrailleMapping.OnBrailleChordSubmitted -= HandleBrailleChordSubmitted;
+        BrailleMapping.OnBack -= HandleBack;
     }
 
     // ---------------------------------------------------------------
@@ -193,15 +202,28 @@ public class QuizController3 : MonoBehaviour
     }
 
     // ---------------------------------------------------------------
-    // Coroutine helper
+    // Coroutine helpers
     // ---------------------------------------------------------------
 
     private void RunFlow(IEnumerator routine)
     {
-        if (flowRoutine != null)
-            StopCoroutine(flowRoutine);
-
+        StopFlow();
         flowRoutine = StartCoroutine(routine);
+    }
+
+    private void StopFlow()
+    {
+        if (flowRoutine != null)
+        {
+            StopCoroutine(flowRoutine);
+            flowRoutine = null;
+        }
+    }
+
+    private void StopVoice()
+    {
+        if (voiceAudioSource != null)
+            voiceAudioSource.Stop();
     }
 
     private IEnumerator PlayClipAndWait(AudioClip clip, float fallbackWait)
@@ -419,6 +441,18 @@ public class QuizController3 : MonoBehaviour
         }
     }
 
+    private void HandleBack()
+    {
+        // Back only works at the very end of the quiz (after the score is announced).
+        if (!WaitingForRepeatChoice || returningToMenu)
+            return;
+
+        returningToMenu = true;
+        WaitingForRepeatChoice = false;
+
+        RunFlow(BackToMenuFlow());
+    }
+
     // ---------------------------------------------------------------
     // Scene completion
     // ---------------------------------------------------------------
@@ -427,6 +461,7 @@ public class QuizController3 : MonoBehaviour
     public void FinalizeQuiz()
     {
         LessonActive = false;
+        returningToMenu = false;
         SaveHighScoreIfNeeded();
 
         RunFlow(FinalizeSceneCompletion());
@@ -434,15 +469,20 @@ public class QuizController3 : MonoBehaviour
 
     private IEnumerator FinalizeSceneCompletion()
     {
+        // 1. "Great job! You finished the lesson."
         yield return PlayClipAndWait(genericCompletedAudio, noAudioTextDelay);
+
+        // 2. "Your score is __, while your highest score is __."
         yield return PlayFinalScoreAudio();
+        yield return new WaitForSeconds(delayAfterVoice);
 
-        // Ask the learner whether they want to play again.
-        yield return PlayClipAndWait(repeatQuestionAudio, noAudioTextDelay);
+        // 3. "Do you want to repeat?" The flag is set right before the question so
+        //    the learner can answer (Repeat / Next / Back) even while it is playing.
         WaitingForRepeatChoice = true;
+        yield return PlayClipAndWait(repeatQuestionAudio, noAudioTextDelay);
 
-        // LessonController3 will call ConfirmRepeatChoice() or ConfirmFinishChoice()
-        // in response to the learner's Braille input, which sets this back to false.
+        // LessonController3 calls ConfirmRepeatChoice() or ConfirmFinishChoice() in
+        // response to the learner's input; Back is handled in HandleBack().
         while (WaitingForRepeatChoice)
             yield return null;
     }
@@ -450,9 +490,12 @@ public class QuizController3 : MonoBehaviour
     /// <summary>Called by LessonController3 when the learner presses Repeat at the final score prompt.</summary>
     public void ConfirmRepeatChoice()
     {
-        if (!WaitingForRepeatChoice) return;
+        if (!WaitingForRepeatChoice || returningToMenu) return;
 
         WaitingForRepeatChoice = false;
+        StopFlow();
+        StopVoice();
+
         ResetQuizScore();
         OnQuizRepeatRequested?.Invoke();
     }
@@ -460,14 +503,41 @@ public class QuizController3 : MonoBehaviour
     /// <summary>Called by LessonController3 when the learner presses Next/Yes at the final score prompt.</summary>
     public void ConfirmFinishChoice()
     {
-        if (!WaitingForRepeatChoice) return;
+        if (!WaitingForRepeatChoice || returningToMenu) return;
 
+        returningToMenu = true;
         WaitingForRepeatChoice = false;
+        StopFlow();
+        StopVoice();
+
+        ReturnToMenu();
+    }
+
+    private IEnumerator BackToMenuFlow()
+    {
+        // RunFlow already stopped the repeat-question coroutine; cut off its audio too.
+        StopVoice();
+
+        if (backToMenuAudio != null)
+            yield return PlayClipAndWait(backToMenuAudio, 0f);
+
+        ReturnToMenu();
+    }
+
+    /// <summary>Saves the high score, then reports the score and returns to the menu.</summary>
+    private void ReturnToMenu()
+    {
+        SaveHighScoreIfNeeded();
 
         if (resultReporter != null)
-            resultReporter.ReportScoreAndReturn(totalScore);
+        {
+            resultReporter.ReportScoreAndReturn(totalScore);   // saves score + returns to GameMenu
+        }
         else
-            Debug.LogWarning("[QuizController3] No QuizResultReporter assigned - score won't be saved or returned to GameMenu.");
+        {
+            Debug.LogWarning("[QuizController3] No QuizResultReporter assigned - loading menu directly.");
+            UnityEngine.SceneManagement.SceneManager.LoadScene(mainMenuSceneName);
+        }
     }
 
     private IEnumerator PlayFinalScoreAudio()

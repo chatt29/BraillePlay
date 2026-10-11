@@ -7,14 +7,18 @@ using UnityEngine;
 /// Handles the Quiz portion of the Braille Onset-Rime experience, including
 /// scoring, mistake tracking, support hints, and final-score reporting.
 ///
-/// This script is fully audio-driven — it has no dependency on any visual UI
-/// (no TMP_Text, no Image state sprites, no live pattern display). Text fields
-/// such as "promptMessage" / "successMessage" are kept purely as design-time
-/// reference for lesson/quiz authors; they are never displayed on screen.
+/// This script is fully audio-driven: it has no dependency on any visual UI.
+/// Text fields such as "promptMessage" / "successMessage" are kept purely as
+/// design-time reference for authors; they are never displayed on screen.
 ///
-/// This script does not start itself — LessonManager calls the public
-/// BeginQuizPhase() method once the lesson portion has finished. That method
-/// call is the only point of communication between the two scripts.
+/// This script does not start itself. LessonManager calls the public
+/// BeginQuizPhase() method once the lesson portion has finished.
+///
+/// End of quiz (after the score and high score are announced and the
+/// repeat question plays):
+///   Repeat -> reset the score and play the quiz again
+///   Next   -> report the score and return to the main menu
+///   Back   -> same as Next, with an optional confirmation cue first
 /// </summary>
 public class QuizManager : MonoBehaviour
 {
@@ -75,13 +79,15 @@ public class QuizManager : MonoBehaviour
     public AudioClip genericCorrectAudio;
     public AudioClip genericTryAgainAudio;
     public AudioClip genericCompletedAudio;
-    public AudioClip repeatQuestionAudio; // Reserved — preserved from original script (see HandleNext note below)
+
+    [Tooltip("Played AFTER the score and high score: 'Press Repeat to play again or Next to finish.'")]
+    public AudioClip repeatQuestionAudio;
 
     [TextArea(2, 5)]
     public string completedMessage = "Great job! You finished the onset and rime quiz.";
 
     [TextArea(2, 5)]
-    public string repeatQuestionMessage = "You finished the quiz. Do you want to repeat it? Press R to restart or Space to finish.";
+    public string repeatQuestionMessage = "You finished the quiz. Do you want to repeat it? Press R to restart or Next to finish.";
 
     [Header("Final Score Audio")]
     public AudioClip yourScoreIsAudio;
@@ -99,6 +105,12 @@ public class QuizManager : MonoBehaviour
     public int fixedScore = 100;
     public int deductionPerMistake = 1;
     public string highScoreKey = "BrailleOnsetRimeHighScore";
+
+    [Header("Back To Main Menu")]
+    [Tooltip("Only used if no QuizResultReporter is assigned. Must be added in File > Build Settings.")]
+    public string mainMenuSceneName = "GameMenu";
+    [Tooltip("Optional cue, e.g. 'Going back to the main menu.' Played only when Back is pressed.")]
+    public AudioClip backToMenuAudio;
 
     [Header("Flow Delays")]
     public float delayAfterVoice = 0.35f;
@@ -124,8 +136,9 @@ public class QuizManager : MonoBehaviour
 
     private bool quizActive = false;
     private bool quizFinished = false;
-    private bool waitingForRepeatChoice = false;
+    private bool waitingForRepeatChoice = false;   // end-of-quiz: Repeat, Next or Back
     private bool waitingForQuestionInput = false;
+    private bool returningToMenu = false;          // guards against Next/Back/Repeat firing twice
 
     private Coroutine flowRoutine;
 
@@ -138,6 +151,7 @@ public class QuizManager : MonoBehaviour
         BrailleMapping.OnBrailleChordSubmitted += HandleBrailleChordSubmitted;
         BrailleMapping.OnRepeat += HandleRepeat;
         BrailleMapping.OnYesOrNext += HandleNext;
+        BrailleMapping.OnBack += HandleBack;
     }
 
     private void OnDisable()
@@ -145,6 +159,7 @@ public class QuizManager : MonoBehaviour
         BrailleMapping.OnBrailleChordSubmitted -= HandleBrailleChordSubmitted;
         BrailleMapping.OnRepeat -= HandleRepeat;
         BrailleMapping.OnYesOrNext -= HandleNext;
+        BrailleMapping.OnBack -= HandleBack;
     }
 
     /// <summary>
@@ -156,6 +171,9 @@ public class QuizManager : MonoBehaviour
         if (logDebug)
             Debug.Log("QuizManager: beginning quiz phase.");
 
+        returningToMenu = false;
+        waitingForRepeatChoice = false;
+
         RunFlow(TransitionToQuizPhase());
     }
 
@@ -165,6 +183,12 @@ public class QuizManager : MonoBehaviour
             StopCoroutine(flowRoutine);
 
         flowRoutine = StartCoroutine(routine);
+    }
+
+    private void StopVoice()
+    {
+        if (voiceAudioSource != null)
+            voiceAudioSource.Stop();
     }
 
     // -------------------------------------------------------------------------
@@ -199,7 +223,7 @@ public class QuizManager : MonoBehaviour
     }
 
     // -------------------------------------------------------------------------
-    // Answer Feedback (audio-only — replaces the old answerStateImage)
+    // Answer Feedback (audio-only)
     // -------------------------------------------------------------------------
 
     private void PlayAnswerFeedback(bool isCorrect)
@@ -327,30 +351,53 @@ public class QuizManager : MonoBehaviour
 
     private void HandleRepeat()
     {
-        // waitingForRepeatChoice is preserved from the original script's
-        // structure (via repeatQuestionMessage) but, exactly as in the
-        // original, nothing currently sets it to true — this branch is kept
-        // for structural/behavioral parity and future use.
+        if (returningToMenu)
+            return;
+
+        // End of quiz: play the quiz again from the first question.
         if (waitingForRepeatChoice)
         {
             waitingForRepeatChoice = false;
+            StopVoice();
             ResetQuizScore();
             StartQuizQuestion(0);
             return;
         }
 
-        // "R" pressed mid-question — replay the current question from the start.
+        // "Repeat" pressed mid-question: replay the current question from the start.
         if (quizActive && currentQuizIndex >= 0 && currentQuizIndex < quizQuestions.Count)
         {
+            waitingForQuestionInput = false;
             RunFlow(PlayQuizFromBeginning(quizQuestions[currentQuizIndex]));
         }
     }
 
     private void HandleNext()
     {
-        // No behavior here in the original combined script either — "Next"
-        // during the quiz phase was only ever handled for the lesson's
-        // end-of-lesson prompt, which now lives entirely in LessonManager.
+        // The only "Next" the quiz cares about is the end-of-quiz choice: finish.
+        if (!waitingForRepeatChoice || returningToMenu)
+            return;
+
+        returningToMenu = true;
+        waitingForRepeatChoice = false;
+        StopVoice();
+
+        if (logDebug)
+            Debug.Log("QuizManager: learner chose to finish the quiz.");
+
+        ReturnToMenu();
+    }
+
+    private void HandleBack()
+    {
+        // Back only works at the very end of the quiz (after the score is announced).
+        if (!waitingForRepeatChoice || returningToMenu)
+            return;
+
+        returningToMenu = true;
+        waitingForRepeatChoice = false;
+
+        RunFlow(BackToMenuFlow());
     }
 
     // -------------------------------------------------------------------------
@@ -361,18 +408,51 @@ public class QuizManager : MonoBehaviour
     {
         quizActive = false;
         quizFinished = true;
+        waitingForQuestionInput = false;
+        waitingForRepeatChoice = false;
+
         SaveHighScoreIfNeeded();
 
+        // 1. "Great job! You finished the quiz."
         yield return PlayClipAndWait(genericCompletedAudio, noAudioFallbackDelay);
         yield return new WaitForSeconds(delayAfterVoice);
 
+        // 2. "Your score is __, while your highest score is __."
         yield return PlayFinalScoreAudio();
         yield return new WaitForSeconds(delayAfterVoice);
 
+        // 3. "Do you want to repeat?" The learner can answer (Repeat / Next / Back)
+        //    as soon as this audio starts.
+        waitingForRepeatChoice = true;
+        yield return PlayClipAndWait(repeatQuestionAudio, noAudioFallbackDelay);
+
+        // Stays here until the learner presses Repeat, Next or Back.
+    }
+
+    private IEnumerator BackToMenuFlow()
+    {
+        // Cut off the repeat-question audio if it is still playing.
+        StopVoice();
+
+        yield return PlayClipAndWait(backToMenuAudio, 0f);
+
+        ReturnToMenu();
+    }
+
+    /// <summary>Saves the high score, then reports the score and returns to the menu.</summary>
+    private void ReturnToMenu()
+    {
+        SaveHighScoreIfNeeded();
+
         if (resultReporter != null)
-            resultReporter.ReportScoreAndReturn(totalScore);
+        {
+            resultReporter.ReportScoreAndReturn(totalScore);   // saves score + returns to GameMenu
+        }
         else
-            Debug.LogWarning("[QuizManager] No QuizResultReporter assigned — score won't be saved or returned to GameMenu.");
+        {
+            Debug.LogWarning("[QuizManager] No QuizResultReporter assigned — loading menu directly.");
+            UnityEngine.SceneManagement.SceneManager.LoadScene(mainMenuSceneName);
+        }
     }
 
     // -------------------------------------------------------------------------
