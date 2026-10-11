@@ -118,7 +118,7 @@ public class LessonManager6 : MonoBehaviour
     public string completedMessage = "Great job! You finished the lesson.";
 
     [TextArea(2, 5)]
-    public string repeatQuestionMessage = "You finished the lesson. Do you want to repeat again? Press R to repeat or Y to finish.";
+    public string repeatQuestionMessage = "You finished the lesson. Do you want to repeat again? Press R to repeat or Next to finish.";
 
     // -------------------------------------------------------------------------
     // Lesson Flow
@@ -329,10 +329,16 @@ public class LessonManager6 : MonoBehaviour
     // "repeat everything?" prompt itself, and delegates anything mid-lesson
     // to QuizManager (since that's about replaying the story and/or
     // re-asking the current question).
+    //
+    // Back is handled by QuizManager6, which only acts at the end-of-scene
+    // prompt. Once Next or Back has started the trip to the main menu,
+    // QuizManager6.ReturningToMenu is true and Repeat/Next are ignored.
     // -------------------------------------------------------------------------
 
     private void HandleRepeat()
     {
+        if (quizManager != null && quizManager.ReturningToMenu) return;
+
         if (waitingForRepeatChoice)
         {
             waitingForRepeatChoice = false;
@@ -349,6 +355,8 @@ public class LessonManager6 : MonoBehaviour
 
     private void HandleNext()
     {
+        if (quizManager != null && quizManager.ReturningToMenu) return;
+
         if (waitingForRepeatChoice)
         {
             waitingForRepeatChoice = false;
@@ -373,12 +381,16 @@ public class LessonManager6 : MonoBehaviour
 
         quizManager.SaveHighScoreIfNeeded();
 
+        // 1. "Great job! You finished the lesson."
         yield return PlayAudioMessage(genericCompletedAudio, noAudioFallbackDelay);
         yield return new WaitForSeconds(delayAfterVoice);
 
+        // 2. "Your score is __, while your highest score is __."
         yield return quizManager.PlayFinalScoreAudio();
         yield return new WaitForSeconds(delayAfterVoice);
 
+        // 3. "Do you want to repeat?" The flag is set right before the question
+        //    so the learner can answer (Repeat / Next / Back) while it plays.
         waitingForRepeatChoice = true;
         yield return PlayAudioMessage(repeatQuestionAudio, noAudioFallbackDelay);
     }
@@ -389,12 +401,12 @@ public class LessonManager6 : MonoBehaviour
         lessonActive = false;
         waitingForRepeatChoice = false;
 
-        quizManager.SaveHighScoreIfNeeded();
+        // Cut off the repeat-question audio, then go straight to the menu.
+        if (voiceAudioSource != null)
+            voiceAudioSource.Stop();
 
-        yield return PlayAudioMessage(genericCompletedAudio, noAudioFallbackDelay);
-        yield return quizManager.PlayFinalScoreAudio();
-
-        quizManager.ReportFinalScore();
+        quizManager.ReportFinalScore();   // saves score + returns to the main menu
+        yield break;
     }
 
     // -------------------------------------------------------------------------
