@@ -17,7 +17,7 @@ public class StudentSignUpManager : MonoBehaviour
     [Header("Input fields (see BrailleInputField)")]
     public BrailleInputField firstNameField;
     public BrailleInputField lastNameField;
-    public BrailleInputField studentNumberField;
+    public BrailleInputField studentIDField;
 
     [Header("Navigation")]
     public AccessibleFormNavigator navigator;
@@ -56,11 +56,11 @@ public class StudentSignUpManager : MonoBehaviour
     {
         firstNameField.Configure("First name", "Type your first name.", BrailleInputMode.Letters);
         lastNameField.Configure("Last name", "Type your last name.", BrailleInputMode.Letters);
-        studentNumberField.Configure("Student number", "Type your student number.", BrailleInputMode.Numbers);
+        studentIDField.Configure("Student number", "Type your student number.", BrailleInputMode.Numbers);
 
         firstNameField.Validator = value => FormValidator.ValidateLettersOnly("First name", value, 2);
         lastNameField.Validator = value => FormValidator.ValidateLettersOnly("Last name", value, 2);
-        studentNumberField.Validator = value => FormValidator.ValidateDigitsOnly("Student number", value, 1);
+        studentIDField.Validator = value => FormValidator.ValidateDigitsOnly("Student number", value, 1);
     }
 
     private List<IAccessibleFormElement> BuildElements()
@@ -75,7 +75,7 @@ public class StudentSignUpManager : MonoBehaviour
         {
             firstNameField,
             lastNameField,
-            studentNumberField,
+            studentIDField,
             submitElement
         };
     }
@@ -84,7 +84,7 @@ public class StudentSignUpManager : MonoBehaviour
     {
         return firstNameField.Validate()
             ?? lastNameField.Validate()
-            ?? studentNumberField.Validate();
+            ?? studentIDField.Validate();
     }
 
     private void HandleSubmitActivated()
@@ -103,9 +103,9 @@ public class StudentSignUpManager : MonoBehaviour
             yield break;
         }
 
-        string studentNumber = studentNumberField.Value;
+        string studentID = studentIDField.Value;
 
-        Task<bool> existsTask = studentService.StudentExistsAsync(studentNumber);
+        Task<bool> existsTask = studentService.StudentExistsAsync(studentID);
         yield return new WaitUntil(() => existsTask.IsCompleted);
 
         if (existsTask.Exception != null)
@@ -121,18 +121,19 @@ public class StudentSignUpManager : MonoBehaviour
             yield break;
         }
 
-        var data = new StudentData
-        {
-            FirstName = firstNameField.Value,
-            LastName = lastNameField.Value,
-            TotalScore = 0,
-            HighestScore = 0,
-            CompletedLessons = 0,
-            CurrentLesson = 0,
-            CurrentQuiz = 0
-        };
+       var data = new StudentData
+{
+    FirstName = firstNameField.Value,
+    LastName = lastNameField.Value,
+    studentID = studentID,
+    TotalScore = 0,
+    HighestScore = 0,
+    CompletedLessons = 0,
+    CurrentLesson = 0,
+    CurrentQuiz = 0
+};
 
-        Task createTask = studentService.CreateStudentAsync(studentNumber, data);
+        Task createTask = studentService.CreateStudentAsync(studentID, data);
         yield return new WaitUntil(() => createTask.IsCompleted);
 
         if (createTask.Exception != null)

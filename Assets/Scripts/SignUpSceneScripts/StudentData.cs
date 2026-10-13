@@ -21,6 +21,9 @@ public class StudentData
     [FirestoreProperty("lastName")]
     public string LastName { get; set; }
 
+    [FirestoreProperty("studentID")]
+    public string studentID { get; set; }
+
     [FirestoreProperty("totalScore")]
     public int TotalScore { get; set; }
 

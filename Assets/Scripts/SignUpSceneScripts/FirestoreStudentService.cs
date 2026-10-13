@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Firebase.Firestore;
-
+using Firebase.Auth;
 /// <summary>
 /// All Firestore access for the Students collection, isolated from
 /// UI/accessibility code per the README ("Keep Firebase code separate").
@@ -16,20 +16,20 @@ public class FirestoreStudentService
     private readonly FirebaseFirestore db = FirebaseFirestore.DefaultInstance;
 
     /// <summary>True if a student with this student number already exists.</summary>
-    public async Task<bool> StudentExistsAsync(string studentNumber)
+    public async Task<bool> StudentExistsAsync(string studentID)
     {
         await EnsureReadyAsync();
-        DocumentSnapshot snapshot = await db.Collection(CollectionName).Document(studentNumber).GetSnapshotAsync();
+        DocumentSnapshot snapshot = await db.Collection(CollectionName).Document(studentID).GetSnapshotAsync();
         return snapshot.Exists;
     }
 
-    /// <summary>Creates a new student document at Students/{studentNumber}. Caller is responsible for checking StudentExistsAsync first.</summary>
-    public async Task CreateStudentAsync(string studentNumber, StudentData student)
+    /// <summary>Creates a new student document at Students/{studentID}. Caller is responsible for checking StudentExistsAsync first.</summary>
+    public async Task CreateStudentAsync(string studentID, StudentData student)
     {
         await EnsureReadyAsync();
 
         DocumentReference studentDoc =
-            db.Collection(CollectionName).Document(studentNumber);
+            db.Collection(CollectionName).Document(studentID);
 
         // Create student document
         await studentDoc.SetAsync(student);
@@ -53,19 +53,19 @@ public class FirestoreStudentService
     }
 
     /// <summary>Loads a student by student number, or null if none exists.</summary>
-    public async Task<StudentData> LoadStudentAsync(string studentNumber)
+    public async Task<StudentData> LoadStudentAsync(string studentID)
     {
         await EnsureReadyAsync();
-        DocumentSnapshot snapshot = await db.Collection(CollectionName).Document(studentNumber).GetSnapshotAsync();
+        DocumentSnapshot snapshot = await db.Collection(CollectionName).Document(studentID).GetSnapshotAsync();
         return snapshot.Exists ? snapshot.ConvertTo<StudentData>() : null;
     }
 
     /// <summary>Updates a student's score/lesson-progress fields without touching the rest of the document.</summary>
-    public async Task UpdateProgressAsync(string studentNumber, int totalScore, int highestScore, int completedLessons, int currentLesson, int currentQuiz)
+    public async Task UpdateProgressAsync(string studentID, int totalScore, int highestScore, int completedLessons, int currentLesson, int currentQuiz)
     {
         await EnsureReadyAsync();
 
-        DocumentReference doc = db.Collection(CollectionName).Document(studentNumber);
+        DocumentReference doc = db.Collection(CollectionName).Document(studentID);
 
         var updates = new Dictionary<string, object>
         {
@@ -79,8 +79,8 @@ public class FirestoreStudentService
         await doc.UpdateAsync(updates);
     }
 
-    /// <summary>Loads every student in the collection, for the teacher-facing student list. Returns (studentNumber, data) pairs since StudentData itself doesn't carry its own document ID.</summary>
-    public async Task<List<(string StudentNumber, StudentData Data)>> ListAllStudentsAsync()
+    /// <summary>Loads every student in the collection, for the teacher-facing student list. Returns (studentID, data) pairs since StudentData itself doesn't carry its own document ID.</summary>
+    public async Task<List<(string studentID, StudentData Data)>> ListAllStudentsAsync()
     {
         await EnsureReadyAsync();
 
@@ -107,21 +107,21 @@ public class FirestoreStudentService
     /// If the number is unchanged, this just overwrites the existing
     /// document's fields directly - no migration needed.
     /// </summary>
-    public async Task RenameStudentAsync(string oldStudentNumber, string newStudentNumber, StudentData updatedData)
+    public async Task RenameStudentAsync(string oldstudentID, string newstudentID, StudentData updatedData)
     {
         await EnsureReadyAsync();
 
-        if (oldStudentNumber == newStudentNumber)
+        if (oldstudentID == newstudentID)
         {
-            await db.Collection(CollectionName).Document(oldStudentNumber).SetAsync(updatedData);
+            await db.Collection(CollectionName).Document(oldstudentID).SetAsync(updatedData);
             return;
         }
 
-        if (await StudentExistsAsync(newStudentNumber))
-            throw new Exception($"A student with number {newStudentNumber} already exists.");
+        if (await StudentExistsAsync(newstudentID))
+            throw new Exception($"A student with number {newstudentID} already exists.");
 
-        DocumentReference oldDoc = db.Collection(CollectionName).Document(oldStudentNumber);
-        DocumentReference newDoc = db.Collection(CollectionName).Document(newStudentNumber);
+        DocumentReference oldDoc = db.Collection(CollectionName).Document(oldstudentID);
+        DocumentReference newDoc = db.Collection(CollectionName).Document(newstudentID);
 
         await newDoc.SetAsync(updatedData);
         await CopySubcollectionAsync(oldDoc.Collection("Lessons"), newDoc.Collection("Lessons"));
@@ -133,11 +133,11 @@ public class FirestoreStudentService
     }
 
     /// <summary>Deletes a student's document AND their Lessons/Progress subcollections. Caller should confirm with the teacher first - this can't be undone.</summary>
-    public async Task DeleteStudentAsync(string studentNumber)
+    public async Task DeleteStudentAsync(string studentID)
     {
         await EnsureReadyAsync();
 
-        DocumentReference studentDoc = db.Collection(CollectionName).Document(studentNumber);
+        DocumentReference studentDoc = db.Collection(CollectionName).Document(studentID);
 
         // Firestore doesn't cascade-delete subcollections automatically -
         // each one has to be cleared out document by document first, or
@@ -167,12 +167,17 @@ public class FirestoreStudentService
     }
 
     private static async Task EnsureReadyAsync()
-    {
-        if (FirebaseManager.Instance == null)
-            throw new Exception("[FirestoreStudentService] FirebaseManager isn't in the scene - add it to a scene that loads before any Firestore call.");
+{
+    if (FirebaseManager.Instance == null)
+        throw new Exception("[FirestoreStudentService] FirebaseManager isn't in the scene - add it to a scene that loads before any Firestore call.");
 
-        bool ready = await FirebaseManager.Instance.WaitUntilReadyAsync();
-        if (!ready)
-            throw new Exception("[FirestoreStudentService] Firebase failed to initialize: " + FirebaseManager.Instance.Status);
-    }
+    bool ready = await FirebaseManager.Instance.WaitUntilReadyAsync();
+    if (!ready)
+        throw new Exception("[FirestoreStudentService] Firebase failed to initialize: " + FirebaseManager.Instance.Status);
+
+    // Firestore rules require request.auth != null, so make sure we're signed in.
+    FirebaseAuth auth = FirebaseAuth.DefaultInstance;
+    if (auth.CurrentUser == null)
+        await auth.SignInAnonymouslyAsync();
+}
 }
