@@ -3,6 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Quiz for the alphabet lesson (A-Z), audio + Braille input only.
+/// Started by LessonController4 through StartQuiz().
+///
+/// End of quiz (after the score, high score and repeat question):
+///   Repeat -> reset the score and play the quiz again from A
+///   Next   -> report the score and return to the main menu
+///   Back   -> same as Next, with an optional confirmation cue first
+/// </summary>
 public class QuizController4 : MonoBehaviour
 {
     // -------------------------------------------------------------------------
@@ -46,18 +55,9 @@ public class QuizController4 : MonoBehaviour
     }
 
     // -------------------------------------------------------------------------
-    // Shared Braille Alphabet Data
-    // Public + static so LessonController4 can use the same table/helper
-    // instead of duplicating it (see QuizController4.BrailleAlphabetPatterns
-    // and QuizController4.DescribeDots in LessonController4.cs).
+    // Shared Braille Alphabet Data (also used by LessonController4)
     // -------------------------------------------------------------------------
 
-    /// <summary>
-    /// Standard 6-dot Braille patterns for the English alphabet A-Z.
-    /// Each string is 6 characters long, one per dot in order (dot 1 .. dot 6),
-    /// matching the pattern format already used by BrailleMapping
-    /// (e.g. "100000" = dot 1 only). Shared by both Lesson Mode and Quiz Mode.
-    /// </summary>
     public static readonly Dictionary<char, string> BrailleAlphabetPatterns = new Dictionary<char, string>
     {
         { 'A', "100000" },
@@ -153,6 +153,16 @@ public class QuizController4 : MonoBehaviour
     public AudioClip repeatQuestionAudio;
 
     // -------------------------------------------------------------------------
+    // Back To Main Menu
+    // -------------------------------------------------------------------------
+
+    [Header("Back To Main Menu")]
+    [Tooltip("Only used if no QuizResultReporter is assigned. Must be added in File > Build Settings.")]
+    public string mainMenuSceneName = "GameMenu";
+    [Tooltip("Optional cue, e.g. 'Going back to the main menu.' Played only when Back is pressed.")]
+    public AudioClip backToMenuAudio;
+
+    // -------------------------------------------------------------------------
     // Quiz Flow
     // -------------------------------------------------------------------------
 
@@ -200,7 +210,8 @@ public class QuizController4 : MonoBehaviour
     /// <summary>True while a specific letter's prompt-and-wait sequence owns the flow (guards against stray Repeat input mid-transition).</summary>
     private bool letterActive = false;
     private bool waitingForChoiceAnswer = false;
-    private bool waitingForRepeatChoice = false;
+    private bool waitingForRepeatChoice = false;   // end-of-quiz: Repeat, Next or Back
+    private bool returningToMenu = false;          // guards against Next/Back/Repeat firing twice
 
     private int totalWrongCount = 0;
     private int totalScore = 100;
@@ -217,6 +228,7 @@ public class QuizController4 : MonoBehaviour
         BrailleMapping.OnBrailleChordSubmitted += HandleBrailleChordSubmitted;
         BrailleMapping.OnRepeat += HandleRepeat;
         BrailleMapping.OnYesOrNext += HandleNext;
+        BrailleMapping.OnBack += HandleBack;
     }
 
     private void OnDisable()
@@ -224,6 +236,7 @@ public class QuizController4 : MonoBehaviour
         BrailleMapping.OnBrailleChordSubmitted -= HandleBrailleChordSubmitted;
         BrailleMapping.OnRepeat -= HandleRepeat;
         BrailleMapping.OnYesOrNext -= HandleNext;
+        BrailleMapping.OnBack -= HandleBack;
     }
 
     // -------------------------------------------------------------------------
@@ -237,6 +250,9 @@ public class QuizController4 : MonoBehaviour
             Debug.Log("QuizController4 started.");
 
         quizPhaseActive = true;
+        returningToMenu = false;
+        waitingForRepeatChoice = false;
+
         RunFlow(StartQuizAfterLesson());
     }
 
@@ -281,6 +297,12 @@ public class QuizController4 : MonoBehaviour
         flowRoutine = StartCoroutine(routine);
     }
 
+    private void StopVoice()
+    {
+        if (voiceAudioSource != null)
+            voiceAudioSource.Stop();
+    }
+
     // -------------------------------------------------------------------------
     // Quiz Flow — Intro -> A-Z assessment -> Final Score -> Repeat/Finish
     // -------------------------------------------------------------------------
@@ -310,6 +332,7 @@ public class QuizController4 : MonoBehaviour
         currentMistakeCount = 0;
         letterActive = true;
         waitingForChoiceAnswer = false;
+        waitingForRepeatChoice = false;
 
         if (logDebug)
             Debug.Log($"[Quiz] Starting letter {index}: {alphabetLessons[index].letter}");
@@ -324,7 +347,6 @@ public class QuizController4 : MonoBehaviour
     //   1. Prompt Message (+ intro/instruction audio)
     //   2. Wait for the player to type the matching Braille pattern
     //   3. Success Message  -> handled in HandleCorrectAnswer, then auto-advance
-    //                           to the next letter (or finish after Z)
     //   4. Wrong Message    -> handled in HandleWrongAnswer, re-asks same letter
     //   5. Support Message (+ audio) -> only after N consecutive mistakes
     // -------------------------------------------------------------------------
@@ -439,13 +461,15 @@ public class QuizController4 : MonoBehaviour
 
     private void HandleRepeat()
     {
-        if (!quizPhaseActive) return;
+        if (!quizPhaseActive || returningToMenu) return;
 
+        // End of quiz: play the quiz again from A.
         if (waitingForRepeatChoice)
         {
             waitingForRepeatChoice = false;
+            StopVoice();
             ResetQuizScore();
-            StartLesson(0); // restart the quiz from A
+            StartLesson(0);
             return;
         }
 
@@ -466,15 +490,28 @@ public class QuizController4 : MonoBehaviour
     private void HandleNext()
     {
         if (!quizPhaseActive) return;
-        if (!waitingForRepeatChoice) return;
+        if (!waitingForRepeatChoice || returningToMenu) return;
 
+        returningToMenu = true;
         waitingForRepeatChoice = false;
-        quizPhaseActive = false;
 
-        if (resultReporter != null)
-            resultReporter.ReportScoreAndReturn(totalScore);
-        else
-            Debug.LogWarning("[QuizController4] No QuizResultReporter assigned - score won't be saved or returned to GameMenu.");
+        if (logDebug)
+            Debug.Log("[QuizController4] Learner chose to finish the quiz.");
+
+        StopVoice();
+        ReturnToMenu();
+    }
+
+    private void HandleBack()
+    {
+        // Back only works at the very end of the quiz (after the score is announced).
+        if (!quizPhaseActive) return;
+        if (!waitingForRepeatChoice || returningToMenu) return;
+
+        returningToMenu = true;
+        waitingForRepeatChoice = false;
+
+        RunFlow(BackToMenuFlow());
     }
 
     // -------------------------------------------------------------------------
@@ -485,6 +522,7 @@ public class QuizController4 : MonoBehaviour
     {
         letterActive = false;
         waitingForChoiceAnswer = false;
+        waitingForRepeatChoice = false;
 
         SaveHighScoreIfNeeded();
 
@@ -494,9 +532,45 @@ public class QuizController4 : MonoBehaviour
         yield return PlayFinalScoreAudio();
         yield return new WaitForSeconds(delayAfterVoice);
 
-        // Ask the learner whether to try the quiz again or finish here.
-        yield return PlayVoiceLine(repeatQuestionMessage, repeatQuestionAudio, noAudioFallbackDelay);
+        // The flag is set right before the question so the learner can answer
+        // (Repeat / Next / Back) even while the question is still playing.
         waitingForRepeatChoice = true;
+        yield return PlayVoiceLine(repeatQuestionMessage, repeatQuestionAudio, noAudioFallbackDelay);
+
+        // Stays here until the learner presses Repeat, Next or Back.
+    }
+
+    private IEnumerator BackToMenuFlow()
+    {
+        // Cut off the repeat-question audio if it is still playing.
+        StopVoice();
+
+        if (backToMenuAudio != null && voiceAudioSource != null)
+        {
+            voiceAudioSource.clip = backToMenuAudio;
+            voiceAudioSource.Play();
+            yield return new WaitForSeconds(backToMenuAudio.length);
+        }
+
+        ReturnToMenu();
+    }
+
+    /// <summary>Saves the high score, then reports the score and returns to the menu.</summary>
+    private void ReturnToMenu()
+    {
+        quizPhaseActive = false;
+
+        SaveHighScoreIfNeeded();
+
+        if (resultReporter != null)
+        {
+            resultReporter.ReportScoreAndReturn(totalScore);   // saves score + returns to GameMenu
+        }
+        else
+        {
+            Debug.LogWarning("[QuizController4] No QuizResultReporter assigned - loading menu directly.");
+            UnityEngine.SceneManagement.SceneManager.LoadScene(mainMenuSceneName);
+        }
     }
 
     private IEnumerator PlayFinalScoreAudio()

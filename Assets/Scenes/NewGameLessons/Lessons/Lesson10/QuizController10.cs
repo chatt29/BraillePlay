@@ -17,6 +17,11 @@ using UnityEngine;
 ///   StoryReplayRequested(int)  player pressed Repeat -> lesson replays story
 ///   StoryReplayCancelled       player pressed Next during the replay
 ///   RestartRequested           player chose to play again -> restart at lesson 0
+///
+/// End of quiz (after the score and the repeat question):
+///   Repeat -> play again
+///   Next   -> report the score and return to the main menu
+///   Back   -> same as Next, with an optional confirmation cue first
 /// </summary>
 public class QuizController10 : MonoBehaviour
 {
@@ -141,6 +146,12 @@ public class QuizController10 : MonoBehaviour
     [TextArea(2, 5)]
     public string repeatQuestionMessage = "You finished the lesson. Do you want to repeat again? Press R to repeat or Y to finish.";
 
+    [Header("Back To Main Menu")]
+    [Tooltip("Only used if no QuizResultReporter is assigned. Must be added in File > Build Settings.")]
+    public string mainMenuSceneName = "GameMenu";
+    [Tooltip("Optional cue, e.g. 'Going back to the main menu.' Played only when Back is pressed.")]
+    public AudioClip backToMenuAudio;
+
     [Header("Quiz Score Settings")]
     public int fixedScore = 100;
     public int deductionPerMistake = 1;
@@ -225,8 +236,11 @@ public class QuizController10 : MonoBehaviour
     private bool waitingForRepeatConfirmation = false;
 
     // True once the final score + high score have been announced and the
-    // player is deciding: Repeat = play again, Yes/Next = finish.
+    // player is deciding: Repeat = play again, Yes/Next = finish, Back = menu.
     private bool waitingForRepeatChoice = false;
+
+    // Guards against Next / Back / Repeat firing while the menu transition runs.
+    private bool returningToMenu = false;
 
     private Coroutine flowRoutine;
 
@@ -261,6 +275,7 @@ public class QuizController10 : MonoBehaviour
         BrailleMapping.OnBrailleChordSubmitted += HandleBrailleChordSubmitted;
         BrailleMapping.OnRepeat += HandleRepeat;
         BrailleMapping.OnYesOrNext += HandleNext;
+        BrailleMapping.OnBack += HandleBack;
     }
 
     private void OnDisable()
@@ -268,6 +283,7 @@ public class QuizController10 : MonoBehaviour
         BrailleMapping.OnBrailleChordSubmitted -= HandleBrailleChordSubmitted;
         BrailleMapping.OnRepeat -= HandleRepeat;
         BrailleMapping.OnYesOrNext -= HandleNext;
+        BrailleMapping.OnBack -= HandleBack;
     }
 
     private void Start()
@@ -361,7 +377,8 @@ public class QuizController10 : MonoBehaviour
     /// <summary>
     /// Called by the lesson controller once every lesson is done: announces
     /// the score and high score, plays the repeat-question audio, then waits
-    /// for the player to choose (Repeat = play again, Yes/Next = finish).
+    /// for the player to choose (Repeat = play again, Yes/Next = finish,
+    /// Back = main menu).
     /// </summary>
     public void BeginFinalResults()
     {
@@ -369,6 +386,7 @@ public class QuizController10 : MonoBehaviour
         waitingForQuizAnswer = false;
         waitingForRepeatConfirmation = false;
         waitingForRepeatChoice = false;
+        returningToMenu = false;
 
         RunFlow(FinalResultsRoutine());
     }
@@ -624,7 +642,7 @@ public class QuizController10 : MonoBehaviour
     }
 
     // -------------------------------------------------------------------------
-    // Repeat / Next handlers
+    // Repeat / Next / Back handlers
     // -------------------------------------------------------------------------
 
     /// <summary>
@@ -637,6 +655,8 @@ public class QuizController10 : MonoBehaviour
     /// </summary>
     private void HandleRepeat()
     {
+        if (returningToMenu) return;
+
         if (waitingForRepeatChoice)
         {
             waitingForRepeatChoice = false;
@@ -660,11 +680,13 @@ public class QuizController10 : MonoBehaviour
 
     /// <summary>
     /// Yes / Next button.
-    ///   - At the end-of-quiz choice: finish, report the score and return.
+    ///   - At the end-of-quiz choice: finish, report the score and return to the menu.
     ///   - After a wrong answer / story replay: re-ask the current question.
     /// </summary>
     private void HandleNext()
     {
+        if (returningToMenu) return;
+
         if (waitingForRepeatChoice)
         {
             waitingForRepeatChoice = false;
@@ -681,6 +703,19 @@ public class QuizController10 : MonoBehaviour
 
             RunFlow(AskQuestionRoutine(currentQuestionIndex));
         }
+    }
+
+    /// <summary>
+    /// Back button. Only works at the very end of the quiz (after the score
+    /// and high score have been announced and the repeat question started).
+    /// </summary>
+    private void HandleBack()
+    {
+        if (!waitingForRepeatChoice || returningToMenu) return;
+
+        returningToMenu = true;
+        waitingForRepeatChoice = false;
+        RunFlow(BackToMenuFlow());
     }
 
     // -------------------------------------------------------------------------
@@ -704,7 +739,7 @@ public class QuizController10 : MonoBehaviour
         yield return PlayVoice(repeatQuestionMessage, repeatQuestionAudio);
 
         // Stays here — waitingForRepeatChoice remains true until the player
-        // presses Repeat (play again) or Yes/Next (finish).
+        // presses Repeat (play again), Yes/Next (finish) or Back (menu).
     }
 
     private IEnumerator PlayFinalScoreAudio()
@@ -726,13 +761,37 @@ public class QuizController10 : MonoBehaviour
 
     private void FinishAndReturn()
     {
+        returningToMenu = true;
         StopFlow();
         StopVoice();
 
+        ReturnToMenu();
+    }
+
+    private IEnumerator BackToMenuFlow()
+    {
+        // Cut off the repeat-question audio if it is still playing.
+        StopVoice();
+
+        yield return PlayClip(backToMenuAudio);
+
+        ReturnToMenu();
+    }
+
+    /// <summary>Saves the high score, then reports the score and returns to the menu.</summary>
+    private void ReturnToMenu()
+    {
+        SaveHighScoreIfNeeded();
+
         if (resultReporter != null)
-            resultReporter.ReportScoreAndReturn(totalScore);
+        {
+            resultReporter.ReportScoreAndReturn(totalScore);   // saves score + returns to GameMenu
+        }
         else
-            Debug.LogWarning("[QuizController10] No QuizResultReporter assigned - score won't be saved or returned to GameMenu.");
+        {
+            Debug.LogWarning("[QuizController10] No QuizResultReporter assigned - loading menu directly.");
+            UnityEngine.SceneManagement.SceneManager.LoadScene(mainMenuSceneName);
+        }
     }
 
     // -------------------------------------------------------------------------

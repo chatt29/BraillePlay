@@ -9,10 +9,12 @@ using UnityEngine;
 /// final score report. Started externally by <see cref="LessonController"/>
 /// calling BeginQuiz() once the lesson pages are finished.
 ///
-/// This script no longer touches any visual UI - it is entirely audio and
-/// input driven, since the app is designed for blind/visually impaired
-/// learners. Correctness feedback that used to be a sprite swap is now
-/// carried entirely by the success/wrong audio clips.
+/// Entirely audio and input driven (no visual UI).
+///
+/// End of quiz (after the score, high score and repeat question):
+///   Repeat -> reset the score and play the quiz again
+///   Next   -> report the score and return to the main menu
+///   Back   -> same as Next, with an optional confirmation cue first
 /// </summary>
 public class QuizController : MonoBehaviour
 {
@@ -82,6 +84,7 @@ public class QuizController : MonoBehaviour
     public AudioClip genericCorrectAudio;
     public AudioClip genericTryAgainAudio;
     public AudioClip genericCompletedAudio;
+    [Tooltip("Played AFTER the score and high score: 'Press Repeat to play again or Next to finish.'")]
     public AudioClip repeatQuestionAudio;
 
     [Header("Answer Choice Letter Audio")]
@@ -114,7 +117,17 @@ public class QuizController : MonoBehaviour
     public string completedMessage = "Great job! You finished the lesson.";
 
     [TextArea(2, 5)]
-    public string repeatQuestionMessage = "You finished the lesson. Do you want to repeat again? Press R to repeat or Y to finish.";
+    public string repeatQuestionMessage = "You finished the lesson. Do you want to repeat again? Press Repeat to play again or Next to finish.";
+
+    // -------------------------------------------------------------------------
+    // Back To Main Menu
+    // -------------------------------------------------------------------------
+
+    [Header("Back To Main Menu")]
+    [Tooltip("Only used if no QuizResultReporter is assigned. Must be added in File > Build Settings.")]
+    public string mainMenuSceneName = "GameMenu";
+    [Tooltip("Optional cue, e.g. 'Going back to the main menu.' Played only when Back is pressed.")]
+    public AudioClip backToMenuAudio;
 
     // -------------------------------------------------------------------------
     // Quiz Content / Flow
@@ -158,8 +171,9 @@ public class QuizController : MonoBehaviour
 
     private bool lessonActive = false;
     private bool sceneFinished = false;
-    private bool waitingForRepeatChoice = false;
+    private bool waitingForRepeatChoice = false;   // end-of-quiz: Repeat, Next or Back
     private bool waitingForChoiceAnswer = false;
+    private bool returningToMenu = false;          // guards against Next/Back/Repeat firing twice
 
     private Coroutine flowRoutine;
 
@@ -172,6 +186,7 @@ public class QuizController : MonoBehaviour
         BrailleMapping.OnBrailleChordSubmitted += HandleBrailleChordSubmitted;
         BrailleMapping.OnRepeat += HandleRepeat;
         BrailleMapping.OnYesOrNext += HandleYesOrNext;
+        BrailleMapping.OnBack += HandleBack;
     }
 
     private void OnDisable()
@@ -179,6 +194,7 @@ public class QuizController : MonoBehaviour
         BrailleMapping.OnBrailleChordSubmitted -= HandleBrailleChordSubmitted;
         BrailleMapping.OnRepeat -= HandleRepeat;
         BrailleMapping.OnYesOrNext -= HandleYesOrNext;
+        BrailleMapping.OnBack -= HandleBack;
     }
 
     /// <summary>Called by LessonController once the lesson pages are finished.</summary>
@@ -188,6 +204,9 @@ public class QuizController : MonoBehaviour
             Debug.Log("QuizController starting.");
 
         isActive = true;
+        returningToMenu = false;
+        waitingForRepeatChoice = false;
+
         ResetQuizScore();
         RunFlow(StartQuizIntro());
     }
@@ -202,6 +221,12 @@ public class QuizController : MonoBehaviour
             StopCoroutine(flowRoutine);
 
         flowRoutine = StartCoroutine(routine);
+    }
+
+    private void StopVoice()
+    {
+        if (voiceAudioSource != null)
+            voiceAudioSource.Stop();
     }
 
     // -------------------------------------------------------------------------
@@ -272,15 +297,11 @@ public class QuizController : MonoBehaviour
     // -------------------------------------------------------------------------
     // Question Sequence
     //
-    // Exact order (unchanged from the original single script):
     //   1. Prompt Audio (intro + instruction)
     //   2. Answer Choices A / B / C (letter + animal sound each)
     //   3. Success Audio  -> handled in HandleCorrectAnswer
     //   4. Wrong Audio    -> handled in HandleWrongAnswer
     //   5. Support Audio  -> only after 3 consecutive mistakes
-    //
-    // Reused both when a question first starts and whenever the player asks
-    // to repeat the current question.
     // -------------------------------------------------------------------------
 
     private IEnumerator PlayLessonFromBeginning(BrailleLesson lesson)
@@ -419,21 +440,22 @@ public class QuizController : MonoBehaviour
     }
 
     // -------------------------------------------------------------------------
-    // Repeat Handler
+    // Repeat / Next / Back Handlers
     // -------------------------------------------------------------------------
 
     /// <summary>
-    /// Repeats ONLY the current question from the very beginning: Prompt
-    /// Audio, then the three Answer Choices. Never advances to the next
-    /// question and never replays a previous one.
+    /// Mid-quiz: repeats ONLY the current question from the very beginning.
+    /// At the end of the quiz: plays the whole quiz again.
     /// </summary>
     private void HandleRepeat()
     {
-        if (!isActive) return;
+        if (!isActive || returningToMenu) return;
 
+        // End of quiz: play the quiz again from the first question.
         if (waitingForRepeatChoice)
         {
             waitingForRepeatChoice = false;
+            StopVoice();
             ResetQuizScore();
             StartLesson(0);
             return;
@@ -441,9 +463,9 @@ public class QuizController : MonoBehaviour
 
         // Ignore Repeat while a correct-answer transition to the next question
         // is in progress (lessonActive is false during that window). Without
-        // this guard, a Repeat trigger here would stop the in-flight
-        // HandleCorrectAnswer coroutine before it calls StartLesson(index + 1),
-        // replaying the just-answered question instead of advancing.
+        // this guard, a Repeat would stop the in-flight HandleCorrectAnswer
+        // coroutine before it calls StartLesson(index + 1), replaying the
+        // just-answered question instead of advancing.
         if (!lessonActive) return;
 
         if (sceneFinished || currentLessonIndex < 0 || currentLessonIndex >= lessons.Count)
@@ -458,6 +480,37 @@ public class QuizController : MonoBehaviour
         RunFlow(PlayLessonFromBeginning(lesson));
     }
 
+    /// <summary>Player chose to finish instead of repeating the quiz: report the score and return.</summary>
+    private void HandleYesOrNext()
+    {
+        if (!isActive) return;
+        if (!waitingForRepeatChoice || returningToMenu) return;
+
+        returningToMenu = true;
+        waitingForRepeatChoice = false;
+
+        if (flowRoutine != null)
+        {
+            StopCoroutine(flowRoutine);
+            flowRoutine = null;
+        }
+        StopVoice();
+
+        ReturnToMenu();
+    }
+
+    /// <summary>Back only works at the very end of the quiz (after the score is announced).</summary>
+    private void HandleBack()
+    {
+        if (!isActive) return;
+        if (!waitingForRepeatChoice || returningToMenu) return;
+
+        returningToMenu = true;
+        waitingForRepeatChoice = false;
+
+        RunFlow(BackToMenuFlow());
+    }
+
     // -------------------------------------------------------------------------
     // Scene Completion
     // -------------------------------------------------------------------------
@@ -466,15 +519,19 @@ public class QuizController : MonoBehaviour
     {
         sceneFinished = true;
         lessonActive = false;
+        waitingForChoiceAnswer = false;
         waitingForRepeatChoice = false;
 
         SaveHighScoreIfNeeded();
 
+        // 1. "Great job! You finished the lesson."
         yield return PlayAudioOrWait(genericCompletedAudio, noAudioTextDelay);
+
+        // 2. "Your score is __, while your highest score is __."
         yield return PlayFinalScoreAudio();
 
-        // Ask whether to play the quiz again or finish, then wait for the
-        // player's choice. HandleRepeat and HandleYesOrNext resolve this wait.
+        // 3. "Do you want to repeat?" The flag is set right before the question
+        //    so the learner can answer (Repeat / Next / Back) while it plays.
         waitingForRepeatChoice = true;
 
         yield return PlayAudioOrWait(repeatQuestionAudio, noAudioTextDelay);
@@ -483,19 +540,33 @@ public class QuizController : MonoBehaviour
             yield return null;
     }
 
-    /// <summary>Player chose to finish instead of repeating the quiz - report the final score.</summary>
-    private void HandleYesOrNext()
+    private IEnumerator BackToMenuFlow()
     {
-        if (!isActive) return;
-        if (!waitingForRepeatChoice) return;
+        // Cut off the repeat-question audio if it is still playing.
+        StopVoice();
 
-        waitingForRepeatChoice = false;
+        if (backToMenuAudio != null)
+            yield return PlayAudioOrWait(backToMenuAudio, 0f);
+
+        ReturnToMenu();
+    }
+
+    /// <summary>Saves the high score, then reports the score and returns to the menu.</summary>
+    private void ReturnToMenu()
+    {
         isActive = false;
 
+        SaveHighScoreIfNeeded();
+
         if (resultReporter != null)
-            resultReporter.ReportScoreAndReturn(totalScore);
+        {
+            resultReporter.ReportScoreAndReturn(totalScore);   // saves score + returns to GameMenu
+        }
         else
-            Debug.LogWarning("[QuizController] No QuizResultReporter assigned - score won't be saved or returned to GameMenu.");
+        {
+            Debug.LogWarning("[QuizController] No QuizResultReporter assigned - loading menu directly.");
+            UnityEngine.SceneManagement.SceneManager.LoadScene(mainMenuSceneName);
+        }
     }
 
     // -------------------------------------------------------------------------

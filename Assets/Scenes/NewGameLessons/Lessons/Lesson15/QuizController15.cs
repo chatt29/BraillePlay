@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Lesson 15 – Quiz (type each word in Braille) + scoring.
+/// Lesson 15 – Quiz (type each word in Braille) + scoring + back to main menu.
 /// Starts when LessonController15 fires OnLessonCompleted.
 /// Audio + Braille input only.
 /// </summary>
@@ -112,6 +112,12 @@ public class QuizController15 : MonoBehaviour
     public int mistakesBeforeSupport = 3;
     public bool resetMistakesAfterSupport = true;
 
+    [Header("Back To Main Menu")]
+    [Tooltip("Only used if no QuizResultReporter is assigned. Must be added in File > Build Settings.")]
+    public string mainMenuSceneName = "GameMenu";
+    [Tooltip("Optional cue, e.g. 'Going back to the main menu.'")]
+    public AudioClip backToMenuAudio;
+
     [Header("Debug")]
     public bool logDebug = true;
 
@@ -130,6 +136,9 @@ public class QuizController15 : MonoBehaviour
     private bool waitingForWordInput = false;
     private bool waitingForCapitalIndicator = true;
 
+    private bool quizCompleted = false;
+    private bool returningToMenu = false;
+
     private readonly List<string> currentTypedPatterns = new List<string>();
 
     private Coroutine flowRoutine;
@@ -142,6 +151,7 @@ public class QuizController15 : MonoBehaviour
         BrailleMapping.OnBrailleChordSubmitted += HandleBrailleChordSubmitted;
         BrailleMapping.OnRepeat += HandleRepeat;
         BrailleMapping.OnYesOrNext += HandleNext;
+        BrailleMapping.OnBack += HandleBack;
 
         if (lessonController != null)
             lessonController.OnLessonCompleted += BeginQuiz;
@@ -152,6 +162,7 @@ public class QuizController15 : MonoBehaviour
         BrailleMapping.OnBrailleChordSubmitted -= HandleBrailleChordSubmitted;
         BrailleMapping.OnRepeat -= HandleRepeat;
         BrailleMapping.OnYesOrNext -= HandleNext;
+        BrailleMapping.OnBack -= HandleBack;
 
         if (lessonController != null)
             lessonController.OnLessonCompleted -= BeginQuiz;
@@ -174,6 +185,15 @@ public class QuizController15 : MonoBehaviour
             Debug.Log("[Quiz15] Quiz starting.");
 
         RunFlow(StartQuizFlow());
+    }
+
+    public void GoBackToMainMenu()
+    {
+        // Only allowed after the quiz is finished, and only once.
+        if (!quizCompleted || returningToMenu) return;
+
+        returningToMenu = true;
+        RunFlow(BackToMenuFlow());
     }
 
     // -------------------------------------------------------------------------
@@ -221,6 +241,8 @@ public class QuizController15 : MonoBehaviour
         sceneFinished = false;
         waitingForRepeatChoice = false;
         waitingForWordInput = false;
+        quizCompleted = false;
+        returningToMenu = false;
 
         ResetQuizScore();
 
@@ -408,14 +430,17 @@ public class QuizController15 : MonoBehaviour
     }
 
     // -------------------------------------------------------------------------
-    // Repeat / Next (Y)
+    // Repeat (R) / Next (Y) / Back
     // -------------------------------------------------------------------------
     private void HandleRepeat()
     {
+        if (returningToMenu) return;
+
         // After the final score: R = play the quiz again
         if (waitingForRepeatChoice)
         {
             waitingForRepeatChoice = false;
+            quizCompleted = false;
             ResetQuizScore();
             StartQuestion(0);
             return;
@@ -439,9 +464,17 @@ public class QuizController15 : MonoBehaviour
         // After the final score: Y = finish and return to the menu
         if (waitingForRepeatChoice)
         {
+            if (returningToMenu) return;
+            returningToMenu = true;
+
             waitingForRepeatChoice = false;
             RunFlow(FinishQuiz());
         }
+    }
+
+    private void HandleBack()
+    {
+        GoBackToMainMenu();
     }
 
     // -------------------------------------------------------------------------
@@ -463,7 +496,8 @@ public class QuizController15 : MonoBehaviour
         yield return PlayFinalScoreAudio();
         yield return new WaitForSeconds(delayAfterVoice);
 
-        // 3. Only now does the learner get to decide: R = again, Y = finish
+        // 3. Only now does the learner decide: R = again, Y = finish, Back = menu
+        quizCompleted = true;
         waitingForRepeatChoice = true;
         yield return PlaySpeech(repeatQuestionAudio, repeatQuestionMessage, noAudioTextDelay);
     }
@@ -482,6 +516,26 @@ public class QuizController15 : MonoBehaviour
             Debug.LogWarning("[QuizController15] No QuizResultReporter assigned - score won't be saved or returned to GameMenu.");
 
         yield break;
+    }
+
+    private IEnumerator BackToMenuFlow()
+    {
+        waitingForRepeatChoice = false;
+        sceneFinished = true;
+        questionActive = false;
+
+        SaveHighScoreIfNeeded();
+
+        // Cut off the repeat-question audio if it is still playing
+        if (voiceAudioSource != null)
+            voiceAudioSource.Stop();
+
+        yield return PlayClipAndWait(backToMenuAudio);
+
+        if (resultReporter != null)
+            resultReporter.ReportScoreAndReturn(totalScore);   // saves score + returns to GameMenu
+        else
+            UnityEngine.SceneManagement.SceneManager.LoadScene(mainMenuSceneName);
     }
 
     private IEnumerator PlayFinalScoreAudio()

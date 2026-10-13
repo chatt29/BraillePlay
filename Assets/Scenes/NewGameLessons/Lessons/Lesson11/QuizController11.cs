@@ -7,7 +7,10 @@ using UnityEngine;
 /// Quiz portion of the game (audio + Braille input only).
 /// Stays dormant until LessonController11 calls BeginQuiz().
 /// Handles word prompts, Braille typing, scoring, high score, and the
-/// "play again?" decision at the end.
+/// end-of-quiz decision:
+///   Repeat -> play the quiz again
+///   Next   -> report the score and return to the main menu
+///   Back   -> same as Next, with an optional confirmation cue first
 /// </summary>
 public class QuizController11 : MonoBehaviour
 {
@@ -74,7 +77,8 @@ public class QuizController11 : MonoBehaviour
     public AudioClip genericCorrectAudio;
     public AudioClip genericTryAgainAudio;
     public AudioClip genericCompletedAudio;
-    public AudioClip repeatQuestionAudio;    // "Do you want to play again? Press R to repeat or Y to finish."
+    [Tooltip("Played AFTER the score and high score: 'Press repeat to play again or next to finish.'")]
+    public AudioClip repeatQuestionAudio;
 
     [Header("Final Score Audio")]
     public AudioClip yourScoreIsAudio;
@@ -90,6 +94,12 @@ public class QuizController11 : MonoBehaviour
     public int fixedScore = 100;
     public int deductionPerMistake = 1;
     public string highScoreKey = "RimesAmAnAtHighScore";
+
+    [Header("Back To Main Menu")]
+    [Tooltip("Only used if no QuizResultReporter is assigned. Must be added in File > Build Settings.")]
+    public string mainMenuSceneName = "GameMenu";
+    [Tooltip("Optional cue, e.g. 'Going back to the main menu.' Played only when Back is pressed.")]
+    public AudioClip backToMenuAudio;
 
     [Header("Timing")]
     public float delayAfterVoice = 0.35f;
@@ -116,9 +126,10 @@ public class QuizController11 : MonoBehaviour
     private bool quizRunning = false;            // false until BeginQuiz()
     private bool wordActive = false;
     private bool sceneFinished = false;
-    private bool waitingForRepeatChoice = false;
+    private bool waitingForRepeatChoice = false; // end-of-quiz: Repeat, Next or Back
     private bool waitingForWordAnswer = false;
     private bool waitingForCapitalIndicator = true;
+    private bool returningToMenu = false;        // guards against Next/Back/Repeat firing twice
 
     private readonly List<string> currentTypedPatterns = new List<string>();
 
@@ -132,6 +143,7 @@ public class QuizController11 : MonoBehaviour
         BrailleMapping.OnBrailleChordSubmitted += HandleBrailleChordSubmitted;
         BrailleMapping.OnRepeat += HandleRepeat;
         BrailleMapping.OnYesOrNext += HandleNext;
+        BrailleMapping.OnBack += HandleBack;
     }
 
     private void OnDisable()
@@ -139,6 +151,7 @@ public class QuizController11 : MonoBehaviour
         BrailleMapping.OnBrailleChordSubmitted -= HandleBrailleChordSubmitted;
         BrailleMapping.OnRepeat -= HandleRepeat;
         BrailleMapping.OnYesOrNext -= HandleNext;
+        BrailleMapping.OnBack -= HandleBack;
     }
 
     // -------------------------------------------------------------------------
@@ -153,6 +166,7 @@ public class QuizController11 : MonoBehaviour
         sceneFinished = false;
         waitingForRepeatChoice = false;
         waitingForWordAnswer = false;
+        returningToMenu = false;
 
         ResetQuizScore();
         RunFlow(StartQuizIntro());
@@ -364,11 +378,11 @@ public class QuizController11 : MonoBehaviour
     }
 
     // -------------------------------------------------------------------------
-    // Repeat / Next
+    // Repeat / Next / Back
     // -------------------------------------------------------------------------
     private void HandleRepeat()
     {
-        if (!quizRunning) return;
+        if (!quizRunning || returningToMenu) return;
 
         // End of quiz: play again
         if (waitingForRepeatChoice)
@@ -394,12 +408,24 @@ public class QuizController11 : MonoBehaviour
     {
         if (!quizRunning) return;
 
-        // End of quiz: finish
-        if (waitingForRepeatChoice)
-        {
-            waitingForRepeatChoice = false;
-            RunFlow(FinalizeQuiz());
-        }
+        // End of quiz: finish and return to the menu
+        if (!waitingForRepeatChoice || returningToMenu) return;
+
+        returningToMenu = true;
+        waitingForRepeatChoice = false;
+        RunFlow(FinalizeQuiz());
+    }
+
+    private void HandleBack()
+    {
+        if (!quizRunning) return;
+
+        // Back only works at the very end of the quiz (after the score is announced).
+        if (!waitingForRepeatChoice || returningToMenu) return;
+
+        returningToMenu = true;
+        waitingForRepeatChoice = false;
+        RunFlow(BackToMenuFlow());
     }
 
     // -------------------------------------------------------------------------
@@ -421,8 +447,8 @@ public class QuizController11 : MonoBehaviour
         yield return PlayFinalScoreAudio();
         yield return new WaitForSeconds(delayAfterVoice);
 
-        // 3. "Do you want to play again? Press R to repeat or Y to finish."
-        //    The learner can answer as soon as this audio starts.
+        // 3. "Do you want to play again?" The learner can answer (Repeat / Next / Back)
+        //    as soon as this audio starts.
         waitingForRepeatChoice = true;
         yield return PlayVoice(repeatQuestionAudio);
     }
@@ -433,14 +459,39 @@ public class QuizController11 : MonoBehaviour
         wordActive = false;
         waitingForRepeatChoice = false;
 
+        ReturnToMenu();
+        yield break;
+    }
+
+    private IEnumerator BackToMenuFlow()
+    {
+        sceneFinished = true;
+        wordActive = false;
+        waitingForRepeatChoice = false;
+
+        // Cut off the repeat-question audio if it is still playing.
+        if (voiceAudioSource != null)
+            voiceAudioSource.Stop();
+
+        yield return PlayClipIfAssigned(backToMenuAudio);
+
+        ReturnToMenu();
+    }
+
+    /// <summary>Saves the high score, then reports the score and returns to the menu.</summary>
+    private void ReturnToMenu()
+    {
         SaveHighScoreIfNeeded();
 
         if (resultReporter != null)
-            resultReporter.ReportScoreAndReturn(totalScore);
+        {
+            resultReporter.ReportScoreAndReturn(totalScore);   // saves score + returns to GameMenu
+        }
         else
-            Debug.LogWarning("[QuizController11] No QuizResultReporter assigned - score won't be saved or returned to GameMenu.");
-
-        yield break;
+        {
+            Debug.LogWarning("[QuizController11] No QuizResultReporter assigned - loading menu directly.");
+            UnityEngine.SceneManagement.SceneManager.LoadScene(mainMenuSceneName);
+        }
     }
 
     private IEnumerator PlayFinalScoreAudio()

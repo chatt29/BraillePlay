@@ -56,6 +56,12 @@ public class QuizManager6 : MonoBehaviour
     [Header("Quiz Result Reporting")]
     public QuizResultReporter resultReporter;
 
+    [Header("Back To Main Menu")]
+    [Tooltip("Only used if no QuizResultReporter is assigned. Must be added in File > Build Settings.")]
+    public string mainMenuSceneName = "GameMenu";
+    [Tooltip("Optional cue, e.g. 'Going back to the main menu.' Played only when Back is pressed at the end of the quiz.")]
+    public AudioClip backToMenuAudio;
+
     // -------------------------------------------------------------------------
     // Questions 1-5 (audio + correct answer set directly on this manager)
     // -------------------------------------------------------------------------
@@ -165,11 +171,17 @@ public class QuizManager6 : MonoBehaviour
     // the story via the mid-lesson Repeat button.
     private bool waitingForRepeatConfirmation = false;
 
+    // Guards against Back / Next firing twice while the menu transition runs.
+    private bool returningToMenu = false;
+
     private Action onAllQuestionsComplete;
     private Coroutine flowRoutine;
 
     public int TotalScore => totalScore;
     public int HighScore => highScore;
+
+    /// <summary>True once Next or Back has started the trip to the main menu. LessonManager6 uses this to ignore Repeat/Next meanwhile.</summary>
+    public bool ReturningToMenu => returningToMenu;
 
     // -------------------------------------------------------------------------
     // Unity Events
@@ -184,11 +196,13 @@ public class QuizManager6 : MonoBehaviour
     private void OnEnable()
     {
         BrailleMapping.OnBrailleChordSubmitted += HandleBrailleChordSubmitted;
+        BrailleMapping.OnBack += HandleBack;
     }
 
     private void OnDisable()
     {
         BrailleMapping.OnBrailleChordSubmitted -= HandleBrailleChordSubmitted;
+        BrailleMapping.OnBack -= HandleBack;
     }
 
     // -------------------------------------------------------------------------
@@ -212,6 +226,9 @@ public class QuizManager6 : MonoBehaviour
         totalWrongCount = 0;
         totalScore = fixedScore;
         highScore = PlayerPrefs.GetInt(highScoreKey, 0);
+
+        // A fresh run (including "play again") clears the menu-transition guard.
+        returningToMenu = false;
     }
 
     private void AddMistake()
@@ -232,12 +249,62 @@ public class QuizManager6 : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Called by LessonManager6 when the learner presses Next at the end of the quiz.
+    /// Saves the score and returns to the main menu.
+    /// </summary>
     public void ReportFinalScore()
     {
+        if (returningToMenu) return;
+        returningToMenu = true;
+
+        ReturnToMenu();
+    }
+
+    /// <summary>Saves the high score, then reports the score and returns to the menu.</summary>
+    private void ReturnToMenu()
+    {
+        SaveHighScoreIfNeeded();
+
         if (resultReporter != null)
-            resultReporter.ReportScoreAndReturn(totalScore);
+        {
+            resultReporter.ReportScoreAndReturn(totalScore);   // saves score + returns to GameMenu
+        }
         else
-            Debug.LogWarning("[QuizManager] No QuizResultReporter assigned - score won't be saved or returned to GameMenu.");
+        {
+            Debug.LogWarning("[QuizManager6] No QuizResultReporter assigned - loading menu directly.");
+            UnityEngine.SceneManagement.SceneManager.LoadScene(mainMenuSceneName);
+        }
+    }
+
+    // -------------------------------------------------------------------------
+    // Back button (only at the very end of the quiz)
+    // -------------------------------------------------------------------------
+
+    private void HandleBack()
+    {
+        if (lessonManager == null) return;
+
+        // Only works once the end-of-quiz choice (repeat or finish) is open.
+        if (!lessonManager.WaitingForRepeatChoice || returningToMenu) return;
+
+        returningToMenu = true;
+        RunFlow(BackToMenuFlow());
+    }
+
+    private IEnumerator BackToMenuFlow()
+    {
+        waitingForQuizAnswer = false;
+        waitingForRepeatConfirmation = false;
+
+        // Cut off the repeat-question audio if it is still playing.
+        if (voiceAudioSource != null)
+            voiceAudioSource.Stop();
+
+        if (backToMenuAudio != null)
+            yield return PlayAudioMessage(backToMenuAudio, 0f);
+
+        ReturnToMenu();
     }
 
     // -------------------------------------------------------------------------
@@ -511,7 +578,7 @@ public class QuizManager6 : MonoBehaviour
             while (voiceAudioSource.isPlaying)
                 yield return null;
         }
-        else
+        else if (fallbackWait > 0f)
         {
             yield return new WaitForSeconds(fallbackWait);
         }
