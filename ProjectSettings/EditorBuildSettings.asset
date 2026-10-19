@@ -8,10 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SignUpSelection.unity
     guid: b3934fc3240819f4eadae500e8b79726
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/NewGameLessons/Lessons/Lesson10/SoundAround4.unity
     guid: 0f517dfd8395c6e49b46eae1acac0d73
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/AlphabetGame.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
@@ -20,7 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/NewGameLessons/Lessons/Lesson4/IdentifyingAlphabets.unity
     guid: fb92f6f1df148c44ea4c8ae0e24a76d7
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/AdvanceScene.unity
     guid: ff432113f996e5e41b83b85ae8dcf387
   - enabled: 1
@@ -29,9 +29,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/NewGameLessons/Guide/UsageOfCapitalization.unity
     guid: a61d3f2148fd71845ade02cb2f5afaca
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/NewGameLessons/Lessons/Lesson1/1SoundsAround3 1.unity
     guid: 7fdf8d63fc1f5144185723dc65932782
+  - enabled: 1
+    path: Assets/NO_UI_SCENES/No_UI_MAINMENU.unity
+    guid: 12a0b5d0bb2674348928cbc215afae09
   - enabled: 1
     path: Assets/Scenes/TeacherMenu/TeacherMenu.unity
     guid: b7279ef0b830f9c46a95f6ad3777d457
@@ -43,7 +46,7 @@ EditorBuildSettings:
     guid: b2fc1a2e118fdbc4eaafa7bacf57acb8
   - enabled: 1
     path: Assets/Scenes/NewGameLessons/Lessons/Lesson10/Lesson10.unity
-    guid: a5b623506c323254e8623e23e1a779f1
+    guid: 440d727749925aa48b5177ebe34d321b
   - enabled: 1
     path: Assets/Scenes/NewGameLessons/Lessons/Lesson5/Onset-Rime.unity
     guid: d2912e9d6bab60a4ba968817f8ea3498
@@ -52,8 +55,8 @@ EditorBuildSettings:
     guid: 0357d9b12283ae94e9eae464b6d8fa5a
   - enabled: 1
     path: Assets/Scenes/NewGameLessons/Lessons/Lesson13/Lesson13.unity
-    guid: 91a5430d8a88ffd429ccdf0ecb111974
-  - enabled: 1
+    guid: 22cefebcc05b6fe43b860102023aa641
+  - enabled: 0
     path: Assets/Scenes/BeginnerScene.unity
     guid: d2318978ecf075647889234e668c9f6e
   - enabled: 0
@@ -68,13 +71,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/NewGameLessons/Lessons/Lesson6/Lession6.unity
     guid: 24af1369902befd4684d10cbf1faebe5
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/NewGameLessons/Lessons/Lesson1/SoundsAround1D2.unity
     guid: 9f13af5a4dc8ae14cba50c99786a9acb
   - enabled: 1
     path: Assets/Scenes/NewGameLessons/Guide/CommonContractions.unity
     guid: 9b88341c75b165b4d9c1201e6e006dbc
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/NewGameLessons/Lessons/Lesson1/1SoundsAround2.unity
     guid: ec6c4b2ca6a47744a805c48364c8684e
   - enabled: 1
@@ -95,7 +98,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LoginTeacher.unity
     guid: c99d2ee9c1efb2449be2dd8759c30124
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Assessment.unity
     guid: f1cdd103d239c5f469e3b04a718e5314
   - enabled: 1
@@ -107,7 +110,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu/GameMenu.unity
     guid: a2c3ba905a95c7940b6125577ba473cf
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SignUpT.unity
     guid: 49a73cc78db84ad4fb0898734309727c
   - enabled: 1
