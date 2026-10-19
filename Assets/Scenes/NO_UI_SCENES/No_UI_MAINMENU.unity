@@ -168,6 +168,13 @@ MonoBehaviour:
   greetingClip: {fileID: 8300000, guid: e4f58141b3ebf6c4b9e5a7ac4a017fef, type: 3}
   instructionsClip: {fileID: 8300000, guid: 35ccc576b5577974b892f2b824b2e95c, type: 3}
   items:
+  - label: LOGIN
+    audioClip: {fileID: 8300000, guid: 9587bed389ba1fb419cfecefa12adc89, type: 3}
+    selectedClip: {fileID: 0}
+    sceneName: LoginStudent
+    onSelect:
+      m_PersistentCalls:
+        m_Calls: []
   - label: SIGN-UP
     audioClip: {fileID: 8300000, guid: 7e27efc73f101814baa75f8af24168e0, type: 3}
     selectedClip: {fileID: 0}
@@ -175,7 +182,7 @@ MonoBehaviour:
     onSelect:
       m_PersistentCalls:
         m_Calls: []
-  moveSound: {fileID: 0}
+  moveSound: {fileID: 8300000, guid: 4fe0213031a306e48847e27aa6b8772e, type: 3}
   wrapSound: {fileID: 0}
   wrapAround: 1
   allowSkipIntro: 1
