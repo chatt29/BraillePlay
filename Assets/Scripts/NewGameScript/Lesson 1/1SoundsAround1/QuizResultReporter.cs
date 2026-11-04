@@ -5,14 +5,24 @@ using BraillePlay.GameMenu;
 /// <summary>
 /// Bridges a quiz scene back to GameMenu's ProgressManager/SceneLoader.
 /// Records the score immediately once the quiz finishes, then hands off to
-/// QuizEndMenu to ask the student what to do next (next quiz / back to
-/// menu) instead of navigating away right away.
+/// QuizEndMenu so the student can go back to the game menu. There is no
+/// "next quiz" option.
+///
+/// If the scene was NOT launched through SceneLoader (no pending quiz
+/// context), the Inspector fallback lesson/quiz numbers are used so the
+/// score is still saved.
 /// </summary>
 public class QuizResultReporter : MonoBehaviour
 {
+    [Header("Fallback (used when there is no pending quiz context)")]
+    [Tooltip("Lesson number to save to if the scene has no launch context. 0 = don't save without a context.")]
+    [SerializeField] private int fallbackLessonNumber = 0;
+    [Tooltip("Quiz number to save to if the scene has no launch context. 0 = don't save without a context.")]
+    [SerializeField] private int fallbackQuizNumber = 0;
     [Tooltip("Used only if this scene was opened directly (e.g. from the Editor) with no pending quiz context.")]
     [SerializeField] private string fallbackReturnSceneName = "GameMenu";
 
+    [Header("End Of Quiz")]
     [SerializeField] private QuizEndMenu endMenu;
 
     [Tooltip("Disabled once the quiz naturally finishes, so the long-press-back quit prompt can't pop up on top of QuizEndMenu and double-fire on the same Space/Backspace press.")]
@@ -21,7 +31,6 @@ public class QuizResultReporter : MonoBehaviour
     private int lessonNumber;
     private int quizNumber;
     private string returnSceneName;
-    private string nextQuizSceneName;
     private bool hasContext;
     private bool reported;
 
@@ -34,35 +43,38 @@ public class QuizResultReporter : MonoBehaviour
             lessonNumber = pending.Value.LessonNumber;
             quizNumber = pending.Value.QuizNumber;
             returnSceneName = pending.Value.ReturnSceneName;
-            nextQuizSceneName = pending.Value.NextQuizSceneName;
             hasContext = true;
         }
         else
         {
-            Debug.LogWarning("[QuizResultReporter] No pending quiz context found - was this scene opened directly? Returning to " + fallbackReturnSceneName + " with no progress recorded, no Next Quiz option.");
+            lessonNumber = fallbackLessonNumber;
+            quizNumber = fallbackQuizNumber;
             returnSceneName = fallbackReturnSceneName;
+            hasContext = lessonNumber > 0 && quizNumber > 0;
+
+            Debug.LogWarning("[QuizResultReporter] No pending quiz context found - was this scene opened directly? Using fallback lesson=" + lessonNumber + ", quiz=" + quizNumber + ", saving=" + hasContext + ".");
         }
+
+        if (string.IsNullOrEmpty(returnSceneName))
+            returnSceneName = fallbackReturnSceneName;
+
+        Debug.Log($"[QuizResultReporter] Ready. hasContext={hasContext}, lesson={lessonNumber}, quiz={quizNumber}, return={returnSceneName}");
     }
 
     /// <summary>
     /// Call once when the quiz finishes with a final score (0-100). Records
-    /// progress immediately, then shows the end-of-quiz choice menu.
+    /// progress immediately, then shows the end-of-quiz menu.
     ///
     /// scoreAlreadyAnnounced: pass true (the default) when the quiz scene
-    /// already spoke the score itself (e.g. BrailleSoundsAround1's own
-    /// recorded-audio score readout) so QuizEndMenu only asks the
-    /// continue/back question instead of repeating the score via TTS.
+    /// already spoke the score itself so QuizEndMenu doesn't repeat it via TTS.
     /// </summary>
     public void ReportScoreAndReturn(int scorePercent, bool scoreAlreadyAnnounced = true)
     {
         if (reported) return;
         reported = true;
 
-        // The quiz is genuinely over now - there's nothing left to "quit
-        // early" out of, so stop listening for the long-press-back gesture
-        // entirely. Otherwise it can pop its own confirm overlay on top of
-        // QuizEndMenu below and both end up listening for the same
-        // Space/Backspace press at once.
+        Debug.Log($"[QuizResultReporter] ReportScoreAndReturn hasContext={hasContext}, lesson={lessonNumber}, quiz={quizNumber}, score={scorePercent}");
+
         if (backHandler != null)
             backHandler.enabled = false;
 
@@ -73,13 +85,19 @@ public class QuizResultReporter : MonoBehaviour
             else
                 Debug.LogWarning("[QuizResultReporter] ProgressManager.Instance is null - score not saved.");
         }
+        else
+        {
+            Debug.LogWarning("[QuizResultReporter] No lesson/quiz number available - score not saved. Set the fallback numbers in the Inspector.");
+        }
 
         if (endMenu != null)
         {
+            // No next-quiz option: hasNextQuiz is always false. The callback is
+            // still required by QuizEndMenu, so it just goes back to the menu.
             endMenu.Show(
                 scorePercent,
-                hasNextQuiz: !string.IsNullOrEmpty(nextQuizSceneName),
-                onNextQuiz: GoToNextQuiz,
+                hasNextQuiz: false,
+                onNextQuiz: GoBackToMenu,
                 onBackToMenu: GoBackToMenu,
                 announceScore: !scoreAlreadyAnnounced);
         }
@@ -93,19 +111,8 @@ public class QuizResultReporter : MonoBehaviour
     /// <summary>Call to quit early (e.g. long-press-back mid-quiz) without recording a result.</summary>
     public void QuitWithoutReporting()
     {
+        Debug.Log("[QuizResultReporter] QuitWithoutReporting called - no score recorded.");
         SceneManager.LoadScene(returnSceneName);
-    }
-
-    private void GoToNextQuiz()
-    {
-        if (string.IsNullOrEmpty(nextQuizSceneName))
-        {
-            Debug.LogWarning("[QuizResultReporter] GoToNextQuiz called with no next quiz available - going back to menu instead.");
-            GoBackToMenu();
-            return;
-        }
-
-        SceneManager.LoadScene(nextQuizSceneName);
     }
 
     private void GoBackToMenu()

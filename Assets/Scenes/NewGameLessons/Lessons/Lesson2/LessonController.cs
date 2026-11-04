@@ -2,23 +2,28 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 /// <summary>
-/// Handles the lesson/practice portion of the scene: playing each lesson
-/// page's audio in order, then waiting for the player to either repeat the
-/// lesson or move on. Once the player chooses "next", this hands control off
-/// to <see cref="QuizController"/> by calling its BeginQuiz() method.
+/// Handles the lesson / practice portion of the scene: the intro lesson
+/// pages that play before the quiz starts. This script is audio-only -
+/// there is no visual UI, since the app targets blind/visually impaired
+/// learners. All progression is driven by audio playback and Braille
+/// chord input (via BrailleMapping's Repeat / Yes-or-Next events).
 ///
-/// This script no longer touches any visual UI - it is entirely audio and
-/// input driven, since the app is designed for blind/visually impaired
-/// learners.
+/// Flow (same as LessonController1):
+///   1. Play each lesson page's audio in order.
+///   2. Ask the player whether to repeat the lesson pages or move on
+///      (Repeat = replay the pages, Next = start the quiz).
+///   3. Play the welcome + "let's learn" audio.
+///   4. Hand off control to QuizController to begin the quiz.
 /// </summary>
 public class LessonController : MonoBehaviour
 {
     [Serializable]
     public class LessonPage
     {
-        [Header("Content")]
+        [Header("Content (authoring notes only)")]
         public string title;
 
         [TextArea(5, 10)]
@@ -28,41 +33,24 @@ public class LessonController : MonoBehaviour
         public AudioClip lessonAudio;
     }
 
-    // -------------------------------------------------------------------------
-    // Quiz Link
-    // -------------------------------------------------------------------------
-
     [Header("Quiz Link")]
-    [Tooltip("The QuizController that takes over once the lesson pages finish.")]
+    [Tooltip("Assign the QuizController that should take over once the lesson pages are finished.")]
     public QuizController quizController;
-
-    // -------------------------------------------------------------------------
-    // Audio
-    // -------------------------------------------------------------------------
 
     [Header("Audio")]
     public AudioSource voiceAudioSource;
-
-    // -------------------------------------------------------------------------
-    // Lesson Content
-    // -------------------------------------------------------------------------
+    public AudioClip welcomeAudio;
+    public AudioClip letsLearnAudio;
+    [FormerlySerializedAs("lessonChoiceAudio")]
+    public AudioClip repeatLessonAudio;
 
     [Header("Lesson Pages")]
     public List<LessonPage> lessonPages = new List<LessonPage>();
 
-    [Header("Lesson Choice Prompt")]
-    [TextArea(2, 5)]
-    public string lessonChoiceMessage =
-        "You have finished learning about animal sounds. Press repeat to repeat the lesson or press next to begin the quiz.";
-    public AudioClip lessonChoiceAudio;
-
-    // -------------------------------------------------------------------------
-    // Timing
-    // -------------------------------------------------------------------------
-
     [Header("Timing")]
     public float delayAfterVoice = 0.35f;
-    public float noAudioTextDelay = 2f;
+    [FormerlySerializedAs("noAudioTextDelay")]
+    public float noAudioFallbackDelay = 2f;
 
     [Header("Debug")]
     public bool logDebug = true;
@@ -71,12 +59,7 @@ public class LessonController : MonoBehaviour
     // Private State
     // -------------------------------------------------------------------------
 
-    // True while THIS script owns player input. Only one of
-    // LessonController / QuizController is active at any given time, so both
-    // scripts can safely subscribe to the same BrailleMapping events.
-    private bool isActive = false;
     private bool waitingForLessonChoice = false;
-
     private Coroutine flowRoutine;
 
     // -------------------------------------------------------------------------
@@ -100,8 +83,7 @@ public class LessonController : MonoBehaviour
         if (logDebug)
             Debug.Log("LessonController started.");
 
-        isActive = true;
-        RunFlow(PlayLessonPages());
+        RunFlow(BeginSceneFlow());
     }
 
     // -------------------------------------------------------------------------
@@ -117,8 +99,21 @@ public class LessonController : MonoBehaviour
     }
 
     // -------------------------------------------------------------------------
-    // Lesson Flow
+    // Scene Flow
     // -------------------------------------------------------------------------
+
+    private IEnumerator BeginSceneFlow()
+    {
+        waitingForLessonChoice = false;
+
+        // Play all lesson pages first, then wait for the player's repeat/next choice.
+        yield return PlayLessonPages();
+
+        yield return PlayWelcomeAndLetsLearn();
+
+        // Hand off to the quiz.
+        StartQuiz();
+    }
 
     private IEnumerator PlayLessonPages()
     {
@@ -127,52 +122,75 @@ public class LessonController : MonoBehaviour
             if (logDebug)
                 Debug.Log($"Lesson page: {page.title}");
 
-            yield return PlayAudioOrWait(page.lessonAudio, noAudioTextDelay);
+            yield return PlayVoiceClip(page.lessonAudio, noAudioFallbackDelay);
             yield return new WaitForSeconds(delayAfterVoice);
         }
 
         waitingForLessonChoice = true;
 
-        yield return PlayAudioOrWait(lessonChoiceAudio, noAudioTextDelay);
+        yield return PlayVoiceClip(repeatLessonAudio, noAudioFallbackDelay);
 
         while (waitingForLessonChoice)
             yield return null;
+    }
+
+    private IEnumerator PlayWelcomeAndLetsLearn()
+    {
+        yield return PlayVoiceClip(welcomeAudio, noAudioFallbackDelay);
+        yield return new WaitForSeconds(delayAfterVoice);
+
+        yield return PlayVoiceClip(letsLearnAudio, noAudioFallbackDelay);
+        yield return new WaitForSeconds(delayAfterVoice);
+    }
+
+    private IEnumerator StartQuizAfterLesson()
+    {
+        yield return PlayWelcomeAndLetsLearn();
+        StartQuiz();
+    }
+
+    private void StartQuiz()
+    {
+        if (quizController == null)
+        {
+            Debug.LogWarning("[LessonController] No QuizController assigned - cannot start the quiz.");
+            return;
+        }
+
+        quizController.StartQuiz(0);
     }
 
     // -------------------------------------------------------------------------
     // Input Handling
     // -------------------------------------------------------------------------
 
-    /// <summary>Repeats the lesson pages from the very beginning.</summary>
     private void HandleRepeat()
     {
-        if (!isActive) return;
+        if (!waitingForLessonChoice)
+            return;
 
         waitingForLessonChoice = false;
         RunFlow(PlayLessonPages());
     }
 
-    /// <summary>Ends the lesson portion and hands control to the QuizController.</summary>
     private void HandleNext()
     {
-        if (!isActive) return;
-        if (!waitingForLessonChoice) return;
+        if (!waitingForLessonChoice)
+            return;
 
         waitingForLessonChoice = false;
-        isActive = false;
-
-        if (quizController != null)
-            quizController.BeginQuiz();
-        else
-            Debug.LogWarning("[LessonController] No QuizController assigned - cannot start quiz.");
+        RunFlow(StartQuizAfterLesson());
     }
 
     // -------------------------------------------------------------------------
     // Audio Helper
     // -------------------------------------------------------------------------
 
-    /// <summary>Plays a clip and waits for it to finish, or waits a fallback duration if there is no clip.</summary>
-    private IEnumerator PlayAudioOrWait(AudioClip clip, float fallbackWait)
+    /// <summary>
+    /// Plays a single audio clip and waits for its length; if no clip is
+    /// assigned, waits the given fallback delay instead. No text/UI involved.
+    /// </summary>
+    private IEnumerator PlayVoiceClip(AudioClip clip, float fallbackWait)
     {
         if (clip != null && voiceAudioSource != null)
         {

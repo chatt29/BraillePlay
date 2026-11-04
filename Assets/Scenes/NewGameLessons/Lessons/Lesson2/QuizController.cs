@@ -2,19 +2,27 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 /// <summary>
-/// Handles the quiz portion of the scene: the welcome/intro, each multiple
-/// choice question, mistake tracking and support hints, scoring, and the
-/// final score report. Started externally by <see cref="LessonController"/>
-/// calling BeginQuiz() once the lesson pages are finished.
+/// Handles the quiz portion of the scene: asking each multiple choice
+/// question, judging Braille chord answers, tracking score, and reporting
+/// the result back to the game menu. Audio-only - there is no visual UI.
 ///
-/// Entirely audio and input driven (no visual UI).
+/// LessonController calls StartQuiz(0) once the lesson pages are done;
+/// from that point this script owns the rest of the flow.
 ///
-/// End of quiz (after the score, high score and repeat question):
-///   Repeat -> reset the score and play the quiz again
-///   Next   -> report the score and return to the main menu
-///   Back   -> same as Next, with an optional confirmation cue first
+/// Flow (same as QuizController1, but with A / B / C choices):
+///   1. For each question: play the prompt, then the A / B / C choices.
+///   2. Judge the Braille chord answer (Dot 1 = A, Dot 2 = B, Dot 3 = C).
+///   3. Correct -> success audio, advance to the next question.
+///      Wrong -> try-again audio, re-ask the same question.
+///      3 wrong in a row -> support audio, re-ask the same question.
+///   4. After the last question: completed audio, score + high score, THEN the
+///      repeat-question audio. The learner decides:
+///        Repeat -> reset the score and play the quiz again
+///        Next   -> report the score and return to the main menu
+///        Back   -> same as Next, with an optional confirmation cue first
 /// </summary>
 public class QuizController : MonoBehaviour
 {
@@ -29,7 +37,7 @@ public class QuizController : MonoBehaviour
         [TextArea(2, 4)]
         public string categoryLabel = "BRAILLE";
 
-        [Header("Messages")]
+        [Header("Messages (authoring notes only)")]
         [TextArea(2, 4)]
         public string promptMessage;
 
@@ -66,21 +74,11 @@ public class QuizController : MonoBehaviour
         public AudioClip supportAudio;
     }
 
-    // -------------------------------------------------------------------------
-    // Result Reporting
-    // -------------------------------------------------------------------------
-
-    [Header("Result Reporting")]
+    [Header("Quiz Result Reporting")]
     public QuizResultReporter resultReporter;
-
-    // -------------------------------------------------------------------------
-    // Audio
-    // -------------------------------------------------------------------------
 
     [Header("Audio")]
     public AudioSource voiceAudioSource;
-    public AudioClip welcomeAudio;
-    public AudioClip letsLearnAudio;
     public AudioClip genericCorrectAudio;
     public AudioClip genericTryAgainAudio;
     public AudioClip genericCompletedAudio;
@@ -98,30 +96,14 @@ public class QuizController : MonoBehaviour
     [Header("Final Score Audio")]
     public AudioClip yourScoreIsAudio;
     public AudioClip whileYourHighestScoreIsAudio;
-
-    [Header("Number Audios 0-100")]
     public List<AudioClip> numberAudios = new List<AudioClip>();
 
-    // -------------------------------------------------------------------------
-    // Scene Text (kept as authoring/documentation data; nothing renders it)
-    // -------------------------------------------------------------------------
-
-    [Header("Scene Text")]
-    [TextArea(2, 5)]
-    public string welcomeMessage = "Welcome to Braille Sounds Around!";
-
-    [TextArea(2, 5)]
-    public string letsLearnMessage = "Let's identify some sounds.";
-
+    [Header("Scene Text (authoring notes only)")]
     [TextArea(2, 5)]
     public string completedMessage = "Great job! You finished the lesson.";
 
     [TextArea(2, 5)]
     public string repeatQuestionMessage = "You finished the lesson. Do you want to repeat again? Press Repeat to play again or Next to finish.";
-
-    // -------------------------------------------------------------------------
-    // Back To Main Menu
-    // -------------------------------------------------------------------------
 
     [Header("Back To Main Menu")]
     [Tooltip("Only used if no QuizResultReporter is assigned. Must be added in File > Build Settings.")]
@@ -129,25 +111,18 @@ public class QuizController : MonoBehaviour
     [Tooltip("Optional cue, e.g. 'Going back to the main menu.' Played only when Back is pressed.")]
     public AudioClip backToMenuAudio;
 
-    // -------------------------------------------------------------------------
-    // Quiz Content / Flow
-    // -------------------------------------------------------------------------
-
-    [Header("Quiz Questions")]
+    [Header("Lesson Flow")]
     public List<BrailleLesson> lessons = new List<BrailleLesson>();
     public float delayAfterVoice = 0.35f;
-    public float noAudioTextDelay = 2f;
+    [FormerlySerializedAs("noAudioTextDelay")]
+    public float noAudioFallbackDelay = 2f;
     public float delayAfterCorrect = 0.75f;
 
     [Header("Support Settings")]
     public int mistakesBeforeSupport = 3;
     public bool resetMistakesAfterSupport = true;
 
-    // -------------------------------------------------------------------------
-    // Score
-    // -------------------------------------------------------------------------
-
-    [Header("Score Settings")]
+    [Header("Quiz Score Settings")]
     public int fixedScore = 100;
     public int deductionPerMistake = 1;
     public string highScoreKey = "BrailleSoundsAroundHighScore";
@@ -158,10 +133,6 @@ public class QuizController : MonoBehaviour
     // -------------------------------------------------------------------------
     // Private State
     // -------------------------------------------------------------------------
-
-    // True while THIS script owns player input (see LessonController for the
-    // matching flag on the lesson side).
-    private bool isActive = false;
 
     private int currentLessonIndex = -1;
     private int currentMistakeCount = 0;
@@ -185,7 +156,7 @@ public class QuizController : MonoBehaviour
     {
         BrailleMapping.OnBrailleChordSubmitted += HandleBrailleChordSubmitted;
         BrailleMapping.OnRepeat += HandleRepeat;
-        BrailleMapping.OnYesOrNext += HandleYesOrNext;
+        BrailleMapping.OnYesOrNext += HandleNext;
         BrailleMapping.OnBack += HandleBack;
     }
 
@@ -193,40 +164,28 @@ public class QuizController : MonoBehaviour
     {
         BrailleMapping.OnBrailleChordSubmitted -= HandleBrailleChordSubmitted;
         BrailleMapping.OnRepeat -= HandleRepeat;
-        BrailleMapping.OnYesOrNext -= HandleYesOrNext;
+        BrailleMapping.OnYesOrNext -= HandleNext;
         BrailleMapping.OnBack -= HandleBack;
     }
 
-    /// <summary>Called by LessonController once the lesson pages are finished.</summary>
-    public void BeginQuiz()
+    // -------------------------------------------------------------------------
+    // Entry Point (called by LessonController)
+    // -------------------------------------------------------------------------
+
+    /// <summary>
+    /// Called by LessonController once the lesson pages are finished.
+    /// Resets the score and begins the quiz at the given lesson index.
+    /// </summary>
+    public void StartQuiz(int startIndex)
     {
         if (logDebug)
-            Debug.Log("QuizController starting.");
+            Debug.Log("QuizController starting quiz.");
 
-        isActive = true;
         returningToMenu = false;
         waitingForRepeatChoice = false;
 
         ResetQuizScore();
-        RunFlow(StartQuizIntro());
-    }
-
-    // -------------------------------------------------------------------------
-    // Coroutine Helper
-    // -------------------------------------------------------------------------
-
-    private void RunFlow(IEnumerator routine)
-    {
-        if (flowRoutine != null)
-            StopCoroutine(flowRoutine);
-
-        flowRoutine = StartCoroutine(routine);
-    }
-
-    private void StopVoice()
-    {
-        if (voiceAudioSource != null)
-            voiceAudioSource.Stop();
+        StartLesson(startIndex);
     }
 
     // -------------------------------------------------------------------------
@@ -259,25 +218,46 @@ public class QuizController : MonoBehaviour
     }
 
     // -------------------------------------------------------------------------
-    // Quiz Intro / Question Flow
+    // Coroutine / Audio Helpers
     // -------------------------------------------------------------------------
 
-    private IEnumerator StartQuizIntro()
+    private void RunFlow(IEnumerator routine)
     {
-        yield return PlayAudioOrWait(welcomeAudio, noAudioTextDelay);
-        yield return new WaitForSeconds(delayAfterVoice);
+        if (flowRoutine != null)
+            StopCoroutine(flowRoutine);
 
-        yield return PlayAudioOrWait(letsLearnAudio, noAudioTextDelay);
-        yield return new WaitForSeconds(delayAfterVoice);
-
-        StartLesson(0);
+        flowRoutine = StartCoroutine(routine);
     }
+
+    private void StopFlow()
+    {
+        if (flowRoutine != null)
+        {
+            StopCoroutine(flowRoutine);
+            flowRoutine = null;
+        }
+    }
+
+    private void StopVoice()
+    {
+        if (voiceAudioSource != null)
+            voiceAudioSource.Stop();
+    }
+
+    // -------------------------------------------------------------------------
+    // Lesson (Quiz Item) Sequence
+    //
+    //   1. Prompt audio (intro + instruction)
+    //   2. Answer choices A / B / C (letter + animal sound each)
+    //   3. Success / Wrong handling
+    //   4. Support audio -> only after 3 consecutive mistakes
+    // -------------------------------------------------------------------------
 
     private void StartLesson(int index)
     {
         if (index < 0 || index >= lessons.Count)
         {
-            RunFlow(FinalizeSceneCompletion());
+            RunFlow(FinalizeQuizCompletion());
             return;
         }
 
@@ -294,16 +274,6 @@ public class QuizController : MonoBehaviour
         RunFlow(PlayLessonFromBeginning(lessons[currentLessonIndex]));
     }
 
-    // -------------------------------------------------------------------------
-    // Question Sequence
-    //
-    //   1. Prompt Audio (intro + instruction)
-    //   2. Answer Choices A / B / C (letter + animal sound each)
-    //   3. Success Audio  -> handled in HandleCorrectAnswer
-    //   4. Wrong Audio    -> handled in HandleWrongAnswer
-    //   5. Support Audio  -> only after 3 consecutive mistakes
-    // -------------------------------------------------------------------------
-
     private IEnumerator PlayLessonFromBeginning(BrailleLesson lesson)
     {
         yield return ShowPromptMessage(lesson);
@@ -314,17 +284,17 @@ public class QuizController : MonoBehaviour
 
     private IEnumerator ShowPromptMessage(BrailleLesson lesson)
     {
-        yield return PlayAudioSequence(noAudioTextDelay, lesson.introAudio, lesson.instructionAudio);
+        yield return PlayVoiceClipSequence(noAudioFallbackDelay, lesson.introAudio, lesson.instructionAudio);
     }
 
+    /// <summary>
+    /// Plays the A / B / C choices. Used both for the first ask and every
+    /// re-ask after a wrong answer or support message.
+    /// </summary>
     private IEnumerator AskMultipleChoiceQuestion(BrailleLesson lesson)
     {
         waitingForChoiceAnswer = true;
-        yield return PlayAnswerChoices(lesson);
-    }
 
-    private IEnumerator PlayAnswerChoices(BrailleLesson lesson)
-    {
         yield return PlayLetterThenSound(letterAAudio, lesson.choiceAAudio);
         yield return new WaitForSeconds(delayAfterVoice);
 
@@ -361,28 +331,29 @@ public class QuizController : MonoBehaviour
 
     private void HandleBrailleChordSubmitted(string submittedPattern)
     {
-        if (!isActive) return;
-        if (!lessonActive || sceneFinished || waitingForRepeatChoice) return;
-        if (!waitingForChoiceAnswer) return;
+        if (!lessonActive || sceneFinished || waitingForRepeatChoice)
+            return;
 
-        HandleMultipleChoiceAnswer(submittedPattern);
+        if (waitingForChoiceAnswer)
+            HandleMultipleChoiceAnswer(submittedPattern);
     }
 
     private void HandleMultipleChoiceAnswer(string pattern)
     {
+        if (!waitingForChoiceAnswer) return;
+
         // Dot 1 = Choice A   |   Dot 2 = Choice B   |   Dot 3 = Choice C
-        AnswerChoice? selected = null;
+        AnswerChoice selected;
 
         if (pattern == "100000") selected = AnswerChoice.A;
         else if (pattern == "010000") selected = AnswerChoice.B;
         else if (pattern == "001000") selected = AnswerChoice.C;
-
-        if (selected == null) return; // Unrecognized pattern: keep waiting for a valid answer.
+        else return; // Unrecognized pattern: keep waiting for a valid answer.
 
         BrailleLesson lesson = lessons[currentLessonIndex];
         waitingForChoiceAnswer = false;
 
-        if (selected.Value == lesson.correctAnswer)
+        if (selected == lesson.correctAnswer)
         {
             currentMistakeCount = 0;
             lessonActive = false;
@@ -409,11 +380,9 @@ public class QuizController : MonoBehaviour
     {
         SaveHighScoreIfNeeded();
 
-        AudioClip clip = lesson.successAudio != null
-            ? lesson.successAudio
-            : genericCorrectAudio;
+        AudioClip clip = lesson.successAudio != null ? lesson.successAudio : genericCorrectAudio;
 
-        yield return PlayAudioOrWait(clip, noAudioTextDelay);
+        yield return PlayVoiceClip(clip, noAudioFallbackDelay);
         yield return new WaitForSeconds(delayAfterCorrect);
 
         StartLesson(currentLessonIndex + 1);
@@ -421,17 +390,19 @@ public class QuizController : MonoBehaviour
 
     private IEnumerator HandleWrongAnswer(BrailleLesson lesson)
     {
-        AudioClip clip = lesson.wrongAudio != null
-            ? lesson.wrongAudio
-            : genericTryAgainAudio;
+        AudioClip clip = lesson.wrongAudio != null ? lesson.wrongAudio : genericTryAgainAudio;
 
-        yield return PlayAudioOrWait(clip, noAudioTextDelay);
+        yield return PlayVoiceClip(clip, noAudioFallbackDelay);
         yield return AskMultipleChoiceQuestion(lesson);
     }
 
+    /// <summary>
+    /// After 3 consecutive mistakes, play the support audio, reset the
+    /// mistake streak, then re-ask the question.
+    /// </summary>
     private IEnumerator HandleSupportThenRetry(BrailleLesson lesson)
     {
-        yield return PlayAudioOrWait(lesson.supportAudio, noAudioTextDelay);
+        yield return PlayVoiceClip(lesson.supportAudio, noAudioFallbackDelay);
 
         if (resetMistakesAfterSupport)
             currentMistakeCount = 0;
@@ -440,7 +411,7 @@ public class QuizController : MonoBehaviour
     }
 
     // -------------------------------------------------------------------------
-    // Repeat / Next / Back Handlers
+    // Repeat / Next / Back handlers
     // -------------------------------------------------------------------------
 
     /// <summary>
@@ -449,24 +420,21 @@ public class QuizController : MonoBehaviour
     /// </summary>
     private void HandleRepeat()
     {
-        if (!isActive || returningToMenu) return;
+        if (returningToMenu) return;
 
-        // End of quiz: play the quiz again from the first question.
         if (waitingForRepeatChoice)
         {
             waitingForRepeatChoice = false;
             StopVoice();
-            ResetQuizScore();
-            StartLesson(0);
+            StartQuiz(0);
             return;
         }
 
-        // Ignore Repeat while a correct-answer transition to the next question
-        // is in progress (lessonActive is false during that window). Without
-        // this guard, a Repeat would stop the in-flight HandleCorrectAnswer
-        // coroutine before it calls StartLesson(index + 1), replaying the
-        // just-answered question instead of advancing.
-        if (!lessonActive) return;
+        // Ignored while a correct-answer transition is in progress
+        // (lessonActive is false during that window), so Repeat can't
+        // interrupt the move to the next question.
+        if (!lessonActive)
+            return;
 
         if (sceneFinished || currentLessonIndex < 0 || currentLessonIndex >= lessons.Count)
             return;
@@ -480,30 +448,29 @@ public class QuizController : MonoBehaviour
         RunFlow(PlayLessonFromBeginning(lesson));
     }
 
-    /// <summary>Player chose to finish instead of repeating the quiz: report the score and return.</summary>
-    private void HandleYesOrNext()
+    private void HandleNext()
     {
-        if (!isActive) return;
         if (!waitingForRepeatChoice || returningToMenu) return;
+
+        if (logDebug)
+            Debug.Log("[QuizController] Next pressed at end of quiz.");
 
         returningToMenu = true;
         waitingForRepeatChoice = false;
 
-        if (flowRoutine != null)
-        {
-            StopCoroutine(flowRoutine);
-            flowRoutine = null;
-        }
+        StopFlow();
         StopVoice();
 
         ReturnToMenu();
     }
 
-    /// <summary>Back only works at the very end of the quiz (after the score is announced).</summary>
     private void HandleBack()
     {
-        if (!isActive) return;
+        // Back only works at the very end of the quiz (after the score is announced).
         if (!waitingForRepeatChoice || returningToMenu) return;
+
+        if (logDebug)
+            Debug.Log("[QuizController] Back pressed at end of quiz.");
 
         returningToMenu = true;
         waitingForRepeatChoice = false;
@@ -512,10 +479,10 @@ public class QuizController : MonoBehaviour
     }
 
     // -------------------------------------------------------------------------
-    // Scene Completion
+    // Quiz Completion
     // -------------------------------------------------------------------------
 
-    private IEnumerator FinalizeSceneCompletion()
+    private IEnumerator FinalizeQuizCompletion()
     {
         sceneFinished = true;
         lessonActive = false;
@@ -524,8 +491,8 @@ public class QuizController : MonoBehaviour
 
         SaveHighScoreIfNeeded();
 
-        // 1. "Great job! You finished the lesson."
-        yield return PlayAudioOrWait(genericCompletedAudio, noAudioTextDelay);
+        // 1. "Great job! You finished the quiz."
+        yield return PlayVoiceClip(genericCompletedAudio, noAudioFallbackDelay);
 
         // 2. "Your score is __, while your highest score is __."
         yield return PlayFinalScoreAudio();
@@ -533,8 +500,7 @@ public class QuizController : MonoBehaviour
         // 3. "Do you want to repeat?" The flag is set right before the question
         //    so the learner can answer (Repeat / Next / Back) while it plays.
         waitingForRepeatChoice = true;
-
-        yield return PlayAudioOrWait(repeatQuestionAudio, noAudioTextDelay);
+        yield return PlayVoiceClip(repeatQuestionAudio, noAudioFallbackDelay);
 
         while (waitingForRepeatChoice)
             yield return null;
@@ -546,7 +512,7 @@ public class QuizController : MonoBehaviour
         StopVoice();
 
         if (backToMenuAudio != null)
-            yield return PlayAudioOrWait(backToMenuAudio, 0f);
+            yield return PlayVoiceClip(backToMenuAudio, 0f);
 
         ReturnToMenu();
     }
@@ -554,9 +520,13 @@ public class QuizController : MonoBehaviour
     /// <summary>Saves the high score, then reports the score and returns to the menu.</summary>
     private void ReturnToMenu()
     {
-        isActive = false;
-
         SaveHighScoreIfNeeded();
+
+        // Safety net: if the Inspector slot was left empty, look for a reporter in the scene.
+        if (resultReporter == null)
+            resultReporter = FindFirstObjectByType<QuizResultReporter>();
+
+        Debug.Log($"[QuizController] ReturnToMenu called. resultReporter assigned={resultReporter != null}, score={totalScore}");
 
         if (resultReporter != null)
         {
@@ -580,10 +550,10 @@ public class QuizController : MonoBehaviour
         AudioClip finalScoreClip = GetNumberAudio(totalScore);
         AudioClip highScoreClip = GetNumberAudio(highScore);
 
-        yield return PlayAudioOrWait(yourScoreIsAudio, 0f);
-        yield return PlayAudioOrWait(finalScoreClip, 0f);
-        yield return PlayAudioOrWait(whileYourHighestScoreIsAudio, 0f);
-        yield return PlayAudioOrWait(highScoreClip, 0f);
+        yield return PlayVoiceClip(yourScoreIsAudio, 0f);
+        yield return PlayVoiceClip(finalScoreClip, 0f);
+        yield return PlayVoiceClip(whileYourHighestScoreIsAudio, 0f);
+        yield return PlayVoiceClip(highScoreClip, 0f);
     }
 
     private AudioClip GetNumberAudio(int number)
@@ -597,8 +567,7 @@ public class QuizController : MonoBehaviour
     // Audio Helpers
     // -------------------------------------------------------------------------
 
-    /// <summary>Plays a clip and waits for it to finish, or waits a fallback duration if there is no clip.</summary>
-    private IEnumerator PlayAudioOrWait(AudioClip clip, float fallbackWait)
+    private IEnumerator PlayVoiceClip(AudioClip clip, float fallbackWait)
     {
         if (clip != null && voiceAudioSource != null)
         {
@@ -607,31 +576,28 @@ public class QuizController : MonoBehaviour
             voiceAudioSource.Play();
             yield return new WaitForSeconds(clip.length);
         }
-        else if (clip == null)
+        else if (fallbackWait > 0f)
         {
             yield return new WaitForSeconds(fallbackWait);
         }
     }
 
-    /// <summary>Plays each non-null clip in order back to back, or waits a fallback duration if all are null.</summary>
-    private IEnumerator PlayAudioSequence(float fallbackWait, params AudioClip[] clips)
+    private IEnumerator PlayVoiceClipSequence(float fallbackWait, params AudioClip[] clips)
     {
-        if (voiceAudioSource == null)
-        {
-            yield return new WaitForSeconds(fallbackWait);
-            yield break;
-        }
-
         bool playedAny = false;
-        foreach (AudioClip clip in clips)
-        {
-            if (clip == null) continue;
-            playedAny = true;
 
-            voiceAudioSource.Stop();
-            voiceAudioSource.clip = clip;
-            voiceAudioSource.Play();
-            yield return new WaitForSeconds(clip.length);
+        if (voiceAudioSource != null)
+        {
+            foreach (AudioClip clip in clips)
+            {
+                if (clip == null) continue;
+
+                playedAny = true;
+                voiceAudioSource.Stop();
+                voiceAudioSource.clip = clip;
+                voiceAudioSource.Play();
+                yield return new WaitForSeconds(clip.length);
+            }
         }
 
         if (!playedAny)
