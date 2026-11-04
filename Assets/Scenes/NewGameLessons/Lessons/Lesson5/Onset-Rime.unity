@@ -276,7 +276,6 @@ GameObject:
   - component: {fileID: 719558638}
   - component: {fileID: 719558640}
   - component: {fileID: 719558639}
-  - component: {fileID: 719558641}
   m_Layer: 0
   m_Name: LessonManager
   m_TagString: Untagged
@@ -436,27 +435,14 @@ MonoBehaviour:
   fixedScore: 100
   deductionPerMistake: 1
   highScoreKey: BrailleOnsetRimeHighScore
+  mainMenuSceneName: GameMenu
+  backToMenuAudio: {fileID: 0}
   delayAfterVoice: 0.35
   noAudioFallbackDelay: 2
   delayAfterCorrect: 0.75
   mistakesBeforeSupport: 3
   resetMistakesAfterSupport: 1
   logDebug: 1
---- !u!114 &719558641
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 719558637}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca16e861051a50440bb9c3814c440e56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::QuizResultReporter
-  fallbackReturnSceneName: GameMenu
-  endMenu: {fileID: 222843082}
-  backHandler: {fileID: 788319279}
 --- !u!1 &725868522
 GameObject:
   m_ObjectHideFlags: 0
@@ -777,6 +763,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca16e861051a50440bb9c3814c440e56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QuizResultReporter
+  fallbackLessonNumber: 5
+  fallbackQuizNumber: 1
   fallbackReturnSceneName: GameMenu
   endMenu: {fileID: 222843082}
   backHandler: {fileID: 788319279}
