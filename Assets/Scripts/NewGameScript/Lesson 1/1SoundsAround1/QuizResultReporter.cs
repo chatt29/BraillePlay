@@ -8,9 +8,9 @@ using BraillePlay.GameMenu;
 /// QuizEndMenu so the student can go back to the game menu. There is no
 /// "next quiz" option.
 ///
-/// If the scene was NOT launched through SceneLoader (no pending quiz
-/// context), the Inspector fallback lesson/quiz numbers are used so the
-/// score is still saved.
+/// When the learner goes back to the menu, MenuReturn is told which lesson
+/// was just finished, so the menu opens on the lesson row (on that lesson)
+/// instead of the guides. This works for every lesson.
 /// </summary>
 public class QuizResultReporter : MonoBehaviour
 {
@@ -103,7 +103,7 @@ public class QuizResultReporter : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("[QuizResultReporter] No QuizEndMenu assigned - returning straight to GameMenu instead of asking.");
+            Debug.LogWarning("[QuizResultReporter] No QuizEndMenu assigned - returning straight to the menu instead of asking.");
             GoBackToMenu();
         }
     }
@@ -112,11 +112,21 @@ public class QuizResultReporter : MonoBehaviour
     public void QuitWithoutReporting()
     {
         Debug.Log("[QuizResultReporter] QuitWithoutReporting called - no score recorded.");
-        SceneManager.LoadScene(returnSceneName);
+        LoadReturnScene();
     }
 
     private void GoBackToMenu()
     {
+        LoadReturnScene();
+    }
+
+    /// <summary>Tells the menu which lesson was just finished, then loads the menu scene.</summary>
+    private void LoadReturnScene()
+    {
+        MenuReturn.CameFromLesson = true;
+        MenuReturn.LessonNumber = lessonNumber;
+
+        Debug.Log($"[QuizResultReporter] Returning to '{returnSceneName}' (lesson {lessonNumber}).");
         SceneManager.LoadScene(returnSceneName);
     }
 }
