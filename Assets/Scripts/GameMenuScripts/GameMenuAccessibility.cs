@@ -79,20 +79,52 @@ namespace BraillePlay.GameMenu
 
         public void AnnounceLessonPopupOpened(LessonData lesson, QuizCardViewData firstQuiz)
         {
-            string text = lesson.LessonTitle + ". " + lesson.QuizCount + " quizzes. Press Left or Right to browse quizzes. Press Enter to start. Press Backspace to return. ";
-            // Hint clip first, then the quiz status
-            if (firstQuiz.Locked)
-                voice.Play(text + "Locked. " + firstQuiz.LockedReason,
-                    lesson.TitleClip, Number(lesson.QuizCount), quizzesWordClip, popupHintClip,
-                    quizWordClip, Number(1), lockedClip, completePreviousClip);
-            else if (firstQuiz.Completed)
-                voice.Play(text + "Completed. Score " + firstQuiz.HighestScorePercent + ".",
-                    lesson.TitleClip, Number(lesson.QuizCount), quizzesWordClip, popupHintClip,
-                    quizWordClip, Number(1), completedClip, scoreClip, Number(firstQuiz.HighestScorePercent));
+            int quizNumber = 1;
+
+            if (firstQuiz.Completed)
+            {
+                int score = Mathf.Clamp(firstQuiz.HighestScorePercent, 0, 100);
+
+                voice.Play(
+                    "Lesson " + lesson.LessonTitle +
+                    ". Quiz 1. Completed. Your score is " + score +
+                    ". Press Enter to start the lesson.",
+
+                    lesson.TitleClip,
+                    quizWordClip,
+                    Number(quizNumber),
+                    completedClip,
+                    scoreClip,
+                    Number(score),
+                    pressEnterClip
+                );
+            }
+            else if (firstQuiz.Locked)
+            {
+                voice.Play(
+                    "Lesson " + lesson.LessonTitle +
+                    ". Quiz 1. Locked. " + firstQuiz.LockedReason,
+
+                    lesson.TitleClip,
+                    quizWordClip,
+                    Number(quizNumber),
+                    lockedClip,
+                    completePreviousClip
+                );
+            }
             else
-                voice.Play(text + "Not yet attempted. Press Enter to start.",
-                    lesson.TitleClip, Number(lesson.QuizCount), quizzesWordClip, popupHintClip,
-                    quizWordClip, Number(1), notAttemptedClip, pressEnterClip);
+            {
+                voice.Play(
+                    "Lesson " + lesson.LessonTitle +
+                    ". Quiz 1. Not yet attempted. Press Enter to start the lesson.",
+
+                    lesson.TitleClip,
+                    quizWordClip,
+                    Number(quizNumber),
+                    notAttemptedClip,
+                    pressEnterClip
+                );
+            }
         }
 
         public void AnnounceQuizFocused(int quizNumber, QuizCardViewData data)

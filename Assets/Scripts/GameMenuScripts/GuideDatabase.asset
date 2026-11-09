@@ -14,17 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BraillePlay.GameMenu.GuideDatabase
   guides:
   - guideTitle: Alphabet Translation
+    titleClip: {fileID: 8300000, guid: aaa296cd39962bf49ad965e6b5b36e4c, type: 3}
     sceneName: AlphabetTranslation
     description: This will guide you how to translate alphabet to braille
   - guideTitle: Common Contractions
+    titleClip: {fileID: 8300000, guid: 6088ddb8283348f418deb879ff77d4cd, type: 3}
     sceneName: CommonContractions
     description: Contractions lower the formality of speech and writing.
   - guideTitle: Number Translation
+    titleClip: {fileID: 8300000, guid: b9c6dfbab25be5049aa90062875a464e, type: 3}
     sceneName: NumberTranslation
     description: This will guide you how to translate number to braille
   - guideTitle: Punctuations
+    titleClip: {fileID: 8300000, guid: 12853816ece90ca4d9229f66c80a4801, type: 3}
     sceneName: Punctuations
     description: This will guide you how to use proper punctuations.
   - guideTitle: Usage Of Capitalization
+    titleClip: {fileID: 8300000, guid: cf0cdd2bef63fb94d932cc31e235a84c, type: 3}
     sceneName: UsageOfCapitalization
     description: This will teach you proper Capitalization
