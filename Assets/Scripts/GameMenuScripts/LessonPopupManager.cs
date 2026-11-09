@@ -32,8 +32,7 @@ namespace BraillePlay.GameMenu
             ui.PlayOpen(lesson.LessonTitle, host, () =>
             {
                 ShowCurrentQuizImmediate();
-                accessibility.AnnounceLessonPopupOpened(lesson);
-
+                accessibility.AnnounceLessonPopupOpened(lesson, BuildViewData(currentQuizIndex));
                 onOpened?.Invoke();
             });
         }

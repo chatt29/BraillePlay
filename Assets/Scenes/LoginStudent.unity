@@ -2757,7 +2757,7 @@ MonoBehaviour:
   hintStudentNumber: {fileID: 8300000, guid: 6d2ad2097deb7b4478554b0ea8312488, type: 3}
   buttonSubmit: {fileID: 8300000, guid: c5183ae61c515fc45b18c4bacf2f3e0b, type: 3}
   hintSubmit: {fileID: 8300000, guid: 46f09a2c4872350438227a9505e41da9, type: 3}
-  welcomeStudent: {fileID: 8300000, guid: 9664fc6211d63b146b2a67a45090d760, type: 3}
+  welcomeStudent: {fileID: 8300000, guid: dbb6af08c70495b48819e087c3ad7bf1, type: 3}
   goingBack: {fileID: 8300000, guid: 9c548bd8304001347841513d8c824891, type: 3}
   errLastNameEmpty: {fileID: 8300000, guid: 57a4233d477fe334bac5a2f4a5d38e88, type: 3}
   errLastNameShort: {fileID: 8300000, guid: 254545b7cdd32d848948b7752419a8f4, type: 3}
