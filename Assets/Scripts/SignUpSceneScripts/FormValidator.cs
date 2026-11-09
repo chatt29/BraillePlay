@@ -31,6 +31,25 @@ public static class FormValidator
         return null;
     }
 
+    // Add inside FormValidator. Keep all your existing methods.
+
+    public static VoiceKey? ValidateLastNameVoice(string value, int minLength = 2)
+    {
+        if (string.IsNullOrWhiteSpace(value)) return VoiceKey.ErrLastNameEmpty;
+        if (value.Length < minLength) return VoiceKey.ErrLastNameShort;
+        foreach (char c in value)
+            if (!char.IsLetter(c)) return VoiceKey.ErrLastNameLetters;
+        return null;
+    }
+
+    public static VoiceKey? ValidateStudentNumberVoice(string value)
+    {
+        if (string.IsNullOrWhiteSpace(value)) return VoiceKey.ErrNumberEmpty;
+        foreach (char c in value)
+            if (c < '0' || c > '9') return VoiceKey.ErrNumberDigits;
+        return null;
+    }
+
     public static string ValidateDigitsOnly(string label, string value, int minLength = 1)
     {
         string requiredError = ValidateRequired(label, value);
