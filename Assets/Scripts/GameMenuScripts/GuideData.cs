@@ -1,26 +1,25 @@
 using System;
+using UnityEngine;
 
 namespace BraillePlay.GameMenu
 {
-    /// <summary>
-    /// One entry in <see cref="GuideDatabase"/>: everything the menu needs to
-    /// display and open a single Guide. Plain serializable data only - no
-    /// behaviour, per the project's "strongly typed data" requirement.
-    /// </summary>
+    /// <summary>One entry in <see cref="GuideDatabase"/>. Plain serializable data only.</summary>
     [Serializable]
     public class GuideData
     {
-        [UnityEngine.SerializeField] private string guideTitle;
-        [UnityEngine.SerializeField] private string sceneName;
-        [UnityEngine.SerializeField, UnityEngine.TextArea] private string description;
+        [SerializeField] private string guideTitle;
+        [Tooltip("Recording of the guide title (our own voice).")]
+        [SerializeField] private AudioClip titleClip;
+        [SerializeField] private string sceneName;
+        [SerializeField, TextArea] private string description;
 
-        /// <summary>Spoken/displayed title, e.g. "Braille Alphabet".</summary>
+        /// <summary>Displayed title, e.g. "Braille Alphabet".</summary>
         public string GuideTitle => guideTitle;
 
-        /// <summary>Scene to load (via SceneLoader.LoadGuide) when this guide is opened.</summary>
-        public string SceneName => sceneName;
+        /// <summary>Recorded voice for the title.</summary>
+        public AudioClip TitleClip => titleClip;
 
-        /// <summary>Optional longer description, not currently spoken but available for UI/tooltips.</summary>
+        public string SceneName => sceneName;
         public string Description => description;
     }
 }

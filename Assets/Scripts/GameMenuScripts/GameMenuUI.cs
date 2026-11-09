@@ -1,18 +1,12 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace BraillePlay.GameMenu
 {
     /// <summary>
-    /// All main-menu visuals: which row is focused, and the Guide/Lesson
-    /// title carousels. Never reads input, never touches Firestore/progress -
-    /// GameMenuManager tells it what to show and it shows it.
-    ///
-    /// Each row has two fixed positions: its resting "focused" spot, and an
-    /// "unfocused" spot shifted away from the other row (guide shifts up,
-    /// lesson shifts down). Switching focus always moves a row between
-    /// these two known points - never toward the other row - so the rows
-    /// can't visually collide or converge no matter the distance value.
+    /// All main-menu visuals: which row is focused, the Guide/Lesson title
+    /// carousels, and the Custom Lessons button. Never reads input.
     /// </summary>
     public class GameMenuUI : MonoBehaviour
     {
@@ -24,31 +18,50 @@ namespace BraillePlay.GameMenu
         [SerializeField] private CanvasGroup guideRowGroup;
         [SerializeField] private CanvasGroup lessonRowGroup;
 
+        [Header("Custom Lessons Button")]
+        [SerializeField] private Button customLessonsButton;
+        [Tooltip("Any GameObject that shows the button is focused (outline/glow image). Shown only while the button is selected by keyboard/braille.")]
+        [SerializeField] private GameObject customLessonsFocusFrame;
+
         [Header("Row Switch Animation")]
         [SerializeField] private float rowSwitchDistance = 2f;
         [SerializeField] private float rowSwitchDuration = 0.25f;
         [SerializeField] private AnimationCurve rowSwitchEase = AnimationCurve.EaseInOut(0, 0, 1, 1);
-        [Tooltip("Alpha of the row that just lost focus - dimmed, not hidden, since both rows stay on screen.")]
         [Range(0f, 1f)][SerializeField] private float unfocusedRowAlpha = 0.45f;
+
+        /// <summary>Raised when a teacher/student clicks the button with a mouse or touch.</summary>
+        public event Action OnCustomLessonsClicked;
 
         private Vector2 guideFocusedPos, guideUnfocusedPos;
         private Vector2 lessonFocusedPos, lessonUnfocusedPos;
         private bool positionsCaptured;
+
+        private void Awake()
+        {
+            if (customLessonsButton != null)
+                customLessonsButton.onClick.AddListener(() => OnCustomLessonsClicked?.Invoke());
+
+            SetCustomFocus(false);
+        }
+
+        private void SetCustomFocus(bool focused)
+        {
+            if (customLessonsFocusFrame != null) customLessonsFocusFrame.SetActive(focused);
+        }
 
         private void CapturePositions()
         {
             if (positionsCaptured) return;
 
             guideFocusedPos = guideRowRoot.anchoredPosition;
-            guideUnfocusedPos = guideFocusedPos + new Vector2(0f, rowSwitchDistance); // guide's "away" = up, away from Lessons below it
+            guideUnfocusedPos = guideFocusedPos + new Vector2(0f, rowSwitchDistance);
 
             lessonFocusedPos = lessonRowRoot.anchoredPosition;
-            lessonUnfocusedPos = lessonFocusedPos + new Vector2(0f, -rowSwitchDistance); // lesson's "away" = down, away from Guides above it
+            lessonUnfocusedPos = lessonFocusedPos + new Vector2(0f, -rowSwitchDistance);
 
             positionsCaptured = true;
         }
 
-        /// <summary>Sets up the very first frame of the menu with no animation.</summary>
         public void Initialize(GuideData firstGuide, bool guideHasPrev, bool guideHasNext,
                                 LessonData firstLesson, bool lessonHasPrev, bool lessonHasNext,
                                 bool startOnGuides)
@@ -63,9 +76,11 @@ namespace BraillePlay.GameMenu
 
             guideRowGroup.alpha = startOnGuides ? 1f : unfocusedRowAlpha;
             lessonRowGroup.alpha = startOnGuides ? unfocusedRowAlpha : 1f;
+
+            SetCustomFocus(false);
         }
 
-        /// <summary>Plays the vertical focus-switch animation between the Guide and Lesson rows.</summary>
+        /// <summary>Vertical focus-switch animation between the Guide and Lesson rows.</summary>
         public void PlayRowSwitch(bool movingToLessons, Action onComplete)
         {
             CapturePositions();
@@ -86,6 +101,22 @@ namespace BraillePlay.GameMenu
                     UIAnimator.MoveAnchored(guideRowRoot, guideUnfocusedPos, guideFocusedPos, rowSwitchDuration, rowSwitchEase),
                     UIAnimator.FadeCanvasGroup(guideRowGroup, unfocusedRowAlpha, 1f, rowSwitchDuration, rowSwitchEase)));
             }
+        }
+
+        /// <summary>
+        /// Moves focus Lessons -> Custom Lessons button (focusCustom = true)
+        /// or back (false). The rows don't move; the Lessons row just dims
+        /// while the button shows its focus frame.
+        /// </summary>
+        public void PlayCustomFocus(bool focusCustom, Action onComplete)
+        {
+            SetCustomFocus(focusCustom);
+
+            float from = focusCustom ? 1f : unfocusedRowAlpha;
+            float to = focusCustom ? unfocusedRowAlpha : 1f;
+
+            StartCoroutine(UIAnimatorParallel(onComplete,
+                UIAnimator.FadeCanvasGroup(lessonRowGroup, from, to, rowSwitchDuration, rowSwitchEase)));
         }
 
         private System.Collections.IEnumerator UIAnimatorParallel(Action onComplete, params System.Collections.IEnumerator[] routines)

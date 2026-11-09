@@ -39,6 +39,9 @@ EditorBuildSettings:
     path: Assets/Scenes/TeacherMenu/TeacherMenu.unity
     guid: b7279ef0b830f9c46a95f6ad3777d457
   - enabled: 1
+    path: Assets/Scenes/NO_UI_SCENES/CustomLessonScene.unity
+    guid: c9a78a21e178e1a4aa6b0054aeafe799
+  - enabled: 1
     path: Assets/Scenes/NewGameLessons/Lessons/Lesson2/AnimalSounds2.unity
     guid: a95638ef5f2c1964581b03315f2aece4
   - enabled: 1
