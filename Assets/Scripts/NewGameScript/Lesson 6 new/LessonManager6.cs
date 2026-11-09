@@ -3,7 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
+/// <summary>
+/// Handles the intro portion of the scene: the intro lesson pages, then the
+/// welcome and "let's learn" audio. Once those are done it hands control to
+/// <see cref="QuizManager6"/> by calling StartQuiz(0); from that point the
+/// quiz manager owns the rest of the flow (story, questions, score, and the
+/// repeat / next / back choice at the end).
+///
+/// This script also holds the lesson DATA (story lines, intro audio and the
+/// question lists) so the Inspector assignments stay in one place; the quiz
+/// manager reads the "lessons" list from here.
+///
+/// Audio-only - there is no visual UI, since the app targets blind/visually
+/// impaired learners.
+/// </summary>
 public class LessonManager6 : MonoBehaviour
 {
     // -------------------------------------------------------------------------
@@ -74,11 +87,11 @@ public class LessonManager6 : MonoBehaviour
     }
 
     // -------------------------------------------------------------------------
-    // Cross-script link
+    // Quiz Link
     // -------------------------------------------------------------------------
 
-    [Header("Quiz Manager")]
-    [Tooltip("Assign the QuizManager component. If left empty, Awake() will try GetComponent<QuizManager6>() on this same GameObject.")]
+    [Header("Quiz Link")]
+    [Tooltip("Assign the QuizManager6 that should take over once the intro is finished. If left empty, Awake() will try GetComponent<QuizManager6>() on this same GameObject.")]
     public QuizManager6 quizManager;
 
     // -------------------------------------------------------------------------
@@ -86,11 +99,13 @@ public class LessonManager6 : MonoBehaviour
     // -------------------------------------------------------------------------
 
     [Header("Audio")]
-    [Tooltip("Shared AudioSource. Must be the SAME AudioSource assigned on QuizManager so voice lines never overlap.")]
+    [Tooltip("Shared AudioSource. Must be the SAME AudioSource assigned on QuizManager6 so voice lines never overlap.")]
     public AudioSource voiceAudioSource;
 
     public AudioClip welcomeAudio;
     public AudioClip letsLearnAudio;
+
+    [Tooltip("End-of-quiz clips. QuizManager6 uses these if its own copies are left empty.")]
     public AudioClip genericCompletedAudio;
     public AudioClip repeatQuestionAudio;
 
@@ -103,11 +118,10 @@ public class LessonManager6 : MonoBehaviour
     public float delayBetweenIntroPages = 0.5f;
 
     // -------------------------------------------------------------------------
-    // Scene Text (kept only as editor documentation / potential future
-    // subtitle or logging hook — nothing displays these on screen)
+    // Scene Text (documentation only - nothing displays these on screen)
     // -------------------------------------------------------------------------
 
-    [Header("Scene Text (documentation only — no on-screen display)")]
+    [Header("Scene Text (documentation only - no on-screen display)")]
     [TextArea(2, 5)]
     public string welcomeMessage = "Welcome to Braille Sounds Around!";
 
@@ -128,6 +142,7 @@ public class LessonManager6 : MonoBehaviour
     public List<BrailleLesson> lessons = new List<BrailleLesson>();
     public float delayAfterVoice = 0.35f;
     public float noAudioFallbackDelay = 2f;
+    [Tooltip("Pause between story lines. QuizManager6 reads this value when it plays the story.")]
     public float delayBetweenStoryLines = 0.5f;
 
     [Header("Debug")]
@@ -137,23 +152,7 @@ public class LessonManager6 : MonoBehaviour
     // Private State
     // -------------------------------------------------------------------------
 
-    private int currentLessonIndex = -1;
-    private bool lessonActive = false;
-    private bool sceneFinished = false;
-    private bool waitingForRepeatChoice = false;
-
     private Coroutine flowRoutine;
-
-    // -------------------------------------------------------------------------
-    // Public read-only state (QuizManager reads these to guard quiz input)
-    // -------------------------------------------------------------------------
-
-    public bool LessonActive => lessonActive;
-    public bool SceneFinished => sceneFinished;
-    public bool WaitingForRepeatChoice => waitingForRepeatChoice;
-
-    public BrailleLesson CurrentLesson =>
-        (currentLessonIndex >= 0 && currentLessonIndex < lessons.Count) ? lessons[currentLessonIndex] : null;
 
     // -------------------------------------------------------------------------
     // Unity Events
@@ -172,30 +171,17 @@ public class LessonManager6 : MonoBehaviour
         }
     }
 
-    private void OnEnable()
-    {
-        BrailleMapping.OnRepeat += HandleRepeat;
-        BrailleMapping.OnYesOrNext += HandleNext;
-    }
-
-    private void OnDisable()
-    {
-        BrailleMapping.OnRepeat -= HandleRepeat;
-        BrailleMapping.OnYesOrNext -= HandleNext;
-    }
-
     private void Start()
     {
         if (logDebug)
-            Debug.Log("LessonManager started.");
+            Debug.Log("LessonManager6 started.");
 
         if (quizManager == null)
         {
-            Debug.LogError("[LessonManager] No QuizManager assigned/found — quiz flow cannot run.");
+            Debug.LogError("[LessonManager6] No QuizManager6 assigned/found - quiz flow cannot run.");
             return;
         }
 
-        quizManager.ResetQuizScore();
         RunFlow(BeginSceneFlow());
     }
 
@@ -217,20 +203,13 @@ public class LessonManager6 : MonoBehaviour
 
     private IEnumerator BeginSceneFlow()
     {
-        lessonActive = false;
-        sceneFinished = false;
-        waitingForRepeatChoice = false;
-
         yield return PlayIntroLessonPages();
         yield return new WaitForSeconds(delayAfterVoice);
 
-        yield return PlayAudioMessage(welcomeAudio, noAudioFallbackDelay);
-        yield return new WaitForSeconds(delayAfterVoice);
+        yield return PlayWelcomeAndLetsLearn();
 
-        yield return PlayAudioMessage(letsLearnAudio, noAudioFallbackDelay);
-        yield return new WaitForSeconds(delayAfterVoice);
-
-        StartLesson(0);
+        // Hand off to the quiz.
+        StartQuiz();
     }
 
     private IEnumerator PlayIntroLessonPages()
@@ -242,175 +221,33 @@ public class LessonManager6 : MonoBehaviour
             if (page == null) continue;
             if (string.IsNullOrWhiteSpace(page.pageText) && page.pageAudio == null) continue;
 
-            yield return PlayAudioMessage(page.pageAudio, noAudioFallbackDelay);
+            yield return PlayVoiceClip(page.pageAudio, noAudioFallbackDelay);
             yield return new WaitForSeconds(delayBetweenIntroPages);
         }
     }
 
-    private void StartLesson(int index)
+    private IEnumerator PlayWelcomeAndLetsLearn()
     {
-        if (index < 0 || index >= lessons.Count)
+        yield return PlayVoiceClip(welcomeAudio, noAudioFallbackDelay);
+        yield return new WaitForSeconds(delayAfterVoice);
+
+        yield return PlayVoiceClip(letsLearnAudio, noAudioFallbackDelay);
+        yield return new WaitForSeconds(delayAfterVoice);
+    }
+
+    private void StartQuiz()
+    {
+        if (quizManager == null)
         {
-            RunFlow(CompleteScene());
+            Debug.LogWarning("[LessonManager6] No QuizManager6 assigned - cannot start the quiz.");
             return;
         }
 
-        currentLessonIndex = index;
-        lessonActive = true;
-        sceneFinished = false;
-        waitingForRepeatChoice = false;
-
-        if (logDebug)
-            Debug.Log($"Starting lesson {currentLessonIndex}: {lessons[currentLessonIndex].displayLabel}");
-
-        RunFlow(PlayLessonFromBeginning(lessons[currentLessonIndex]));
+        quizManager.StartQuiz(0);
     }
 
     // -------------------------------------------------------------------------
-    // Lesson Sequence
-    //
-    //   1. Prompt Message (+ audio)
-    //   2. Story Section        -> plays each story line's audio in turn
-    //   3. Question Section     -> handed off to QuizManager.BeginQuestions()
-    //
-    // Reused both when a lesson first starts and whenever QuizManager asks
-    // to replay just the story (see PlayStorySection below), so there is one
-    // source of truth for "what a lesson's story looks like".
-    // -------------------------------------------------------------------------
-
-    private IEnumerator PlayLessonFromBeginning(BrailleLesson lesson)
-    {
-        yield return ShowPromptMessage(lesson);
-        yield return new WaitForSeconds(delayAfterVoice);
-
-        yield return PlayStorySection(lesson);
-        yield return new WaitForSeconds(delayAfterVoice);
-
-        // Hand off to the Quiz script for the question round. It will call
-        // OnLessonQuizComplete() once all questions for this lesson are
-        // answered correctly.
-        quizManager.BeginQuestions(lesson, OnLessonQuizComplete);
-    }
-
-    private IEnumerator ShowPromptMessage(BrailleLesson lesson)
-    {
-        yield return PlayAudioSequence(noAudioFallbackDelay, lesson.introAudio, lesson.instructionAudio);
-    }
-
-    /// <summary>
-    /// Plays the Story section for a lesson. Public because QuizManager calls
-    /// this directly (as a nested coroutine, not via StartCoroutine) when the
-    /// player asks to replay the story — either after a wrong answer or via
-    /// the mid-lesson Repeat button.
-    /// </summary>
-    public IEnumerator PlayStorySection(BrailleLesson lesson)
-    {
-        if (lesson?.storyLines == null) yield break;
-
-        foreach (StoryLine line in lesson.storyLines)
-        {
-            if (line == null) continue;
-            if (string.IsNullOrWhiteSpace(line.storyText) && line.storyAudio == null) continue;
-
-            yield return PlayAudioMessage(line.storyAudio, noAudioFallbackDelay);
-            yield return new WaitForSeconds(delayBetweenStoryLines);
-        }
-    }
-
-    /// <summary>Called by QuizManager once every question in the current lesson has been answered correctly.</summary>
-    private void OnLessonQuizComplete()
-    {
-        StartLesson(currentLessonIndex + 1);
-    }
-
-    // -------------------------------------------------------------------------
-    // Repeat / Next handlers — this script is the single subscriber to
-    // BrailleMapping's Repeat/Next events. It handles the end-of-scene
-    // "repeat everything?" prompt itself, and delegates anything mid-lesson
-    // to QuizManager (since that's about replaying the story and/or
-    // re-asking the current question).
-    //
-    // Back is handled by QuizManager6, which only acts at the end-of-scene
-    // prompt. Once Next or Back has started the trip to the main menu,
-    // QuizManager6.ReturningToMenu is true and Repeat/Next are ignored.
-    // -------------------------------------------------------------------------
-
-    private void HandleRepeat()
-    {
-        if (quizManager != null && quizManager.ReturningToMenu) return;
-
-        if (waitingForRepeatChoice)
-        {
-            waitingForRepeatChoice = false;
-            quizManager.ResetQuizScore();
-            StartLesson(0);
-            return;
-        }
-
-        if (!lessonActive || sceneFinished) return;
-        if (CurrentLesson == null) return;
-
-        quizManager.RequestRepeatStory();
-    }
-
-    private void HandleNext()
-    {
-        if (quizManager != null && quizManager.ReturningToMenu) return;
-
-        if (waitingForRepeatChoice)
-        {
-            waitingForRepeatChoice = false;
-            RunFlow(FinalizeSceneCompletion());
-            return;
-        }
-
-        if (!lessonActive || sceneFinished) return;
-
-        quizManager.RequestNext();
-    }
-
-    // -------------------------------------------------------------------------
-    // Scene Completion
-    // -------------------------------------------------------------------------
-
-    private IEnumerator CompleteScene()
-    {
-        lessonActive = false;
-        sceneFinished = false;
-        waitingForRepeatChoice = false;
-
-        quizManager.SaveHighScoreIfNeeded();
-
-        // 1. "Great job! You finished the lesson."
-        yield return PlayAudioMessage(genericCompletedAudio, noAudioFallbackDelay);
-        yield return new WaitForSeconds(delayAfterVoice);
-
-        // 2. "Your score is __, while your highest score is __."
-        yield return quizManager.PlayFinalScoreAudio();
-        yield return new WaitForSeconds(delayAfterVoice);
-
-        // 3. "Do you want to repeat?" The flag is set right before the question
-        //    so the learner can answer (Repeat / Next / Back) while it plays.
-        waitingForRepeatChoice = true;
-        yield return PlayAudioMessage(repeatQuestionAudio, noAudioFallbackDelay);
-    }
-
-    private IEnumerator FinalizeSceneCompletion()
-    {
-        sceneFinished = true;
-        lessonActive = false;
-        waitingForRepeatChoice = false;
-
-        // Cut off the repeat-question audio, then go straight to the menu.
-        if (voiceAudioSource != null)
-            voiceAudioSource.Stop();
-
-        quizManager.ReportFinalScore();   // saves score + returns to the main menu
-        yield break;
-    }
-
-    // -------------------------------------------------------------------------
-    // Audio helpers (playback + pacing only — no on-screen text/typewriter)
+    // Audio Helper
     // -------------------------------------------------------------------------
 
     /// <summary>
@@ -418,7 +255,7 @@ public class LessonManager6 : MonoBehaviour
     /// playing it (not just clip.length), so the next audio never cuts it
     /// off. If the clip is missing, waits a fallback duration instead.
     /// </summary>
-    public IEnumerator PlayAudioMessage(AudioClip clip, float fallbackWait)
+    private IEnumerator PlayVoiceClip(AudioClip clip, float fallbackWait)
     {
         if (clip != null && voiceAudioSource != null)
         {
@@ -443,25 +280,5 @@ public class LessonManager6 : MonoBehaviour
         {
             yield return new WaitForSeconds(fallbackWait);
         }
-    }
-
-    /// <summary>Plays a sequence of clips back-to-back (skipping nulls), each fully finishing before the next; falls back to a single wait if none play.</summary>
-    private IEnumerator PlayAudioSequence(float fallbackWait, params AudioClip[] clips)
-    {
-        bool playedAny = false;
-
-        if (clips != null)
-        {
-            foreach (AudioClip clip in clips)
-            {
-                if (clip == null) continue;
-
-                playedAny = true;
-                yield return PlayAudioMessage(clip, fallbackWait);
-            }
-        }
-
-        if (!playedAny)
-            yield return new WaitForSeconds(fallbackWait);
     }
 }

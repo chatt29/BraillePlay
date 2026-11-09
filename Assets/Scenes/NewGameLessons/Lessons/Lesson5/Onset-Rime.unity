@@ -263,7 +263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e5d4e77514e77a4aa6c8ea215b9d3fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QuizEndMenu
-  panel: {fileID: 0}
+  panel: {fileID: 222843080}
   messageText: {fileID: 0}
 --- !u!1 &719558637
 GameObject:
@@ -313,8 +313,8 @@ MonoBehaviour:
   quizManager: {fileID: 719558640}
   voiceAudioSource: {fileID: 725868524}
   welcomeAudio: {fileID: 8300000, guid: 0f70ca35b266ae74d9f6b3d7009d74ea, type: 3}
-  letsLearnAudio: {fileID: 8300000, guid: 2ad7aa3fcb191cd4fa5ef3d62fb7d19b, type: 3}
-  endOfLessonAudio: {fileID: 8300000, guid: 625732e2f9db2aa43b320a2470b6a204, type: 3}
+  letsLearnAudio: {fileID: 8300000, guid: 9b569ccd6d29efb4aa94d8a00a09f7e4, type: 3}
+  endOfLessonAudio: {fileID: 8300000, guid: e5d1176abfd173f4ca66b26125f88646, type: 3}
   endOfLessonPromptMessage: You have completed the lesson. Press Space to begin the
     Quiz, or press R to rewatch the lesson.
   lessonPages:
@@ -348,7 +348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::QuizManager
   resultReporter: {fileID: 847233674}
   voiceAudioSource: {fileID: 725868524}
-  letsQuizAudio: {fileID: 8300000, guid: 13b4aa860784fa24aa804c1f6b291dde, type: 3}
+  letsQuizAudio: {fileID: 8300000, guid: 991f7c275a789bd4db7f943c80b36aed, type: 3}
   letsQuizInstructionMessage: Great job learning! Now let's test your skills with
     a quiz.
   genericCorrectAudio: {fileID: 0}
@@ -370,7 +370,7 @@ MonoBehaviour:
     onsetAudioPromptMessage: 
     supportMessage: 
     introAudio: {fileID: 8300000, guid: 2f39cff61a472544ea92727713e69755, type: 3}
-    instructionAudio: {fileID: 8300000, guid: f3430898f0e3aa64683d53b798851cf1, type: 3}
+    instructionAudio: {fileID: 8300000, guid: d86e7c9426da38242b2a3d41d762df3c, type: 3}
     successAudio: {fileID: 0}
     supportAudio: {fileID: 0}
     targetWordAudio: {fileID: 8300000, guid: 6d798b6c7d4a35c40860a5f0a81307b2, type: 3}
@@ -384,7 +384,7 @@ MonoBehaviour:
     onsetAudioPromptMessage: 
     supportMessage: 
     introAudio: {fileID: 8300000, guid: 9d9edbe33317cb44aa38205028b17d5a, type: 3}
-    instructionAudio: {fileID: 8300000, guid: f3430898f0e3aa64683d53b798851cf1, type: 3}
+    instructionAudio: {fileID: 8300000, guid: d86e7c9426da38242b2a3d41d762df3c, type: 3}
     successAudio: {fileID: 0}
     supportAudio: {fileID: 0}
     targetWordAudio: {fileID: 8300000, guid: 68a70bcf4719d9349afd9dc17a34f4f2, type: 3}
@@ -398,7 +398,7 @@ MonoBehaviour:
     onsetAudioPromptMessage: 
     supportMessage: 
     introAudio: {fileID: 8300000, guid: 584bec8977d15f14eabbd3898111fe3d, type: 3}
-    instructionAudio: {fileID: 8300000, guid: f3430898f0e3aa64683d53b798851cf1, type: 3}
+    instructionAudio: {fileID: 8300000, guid: d86e7c9426da38242b2a3d41d762df3c, type: 3}
     successAudio: {fileID: 0}
     supportAudio: {fileID: 0}
     targetWordAudio: {fileID: 8300000, guid: d377a0b5f171dee4daf7478c2cf856fa, type: 3}
@@ -412,7 +412,7 @@ MonoBehaviour:
     onsetAudioPromptMessage: 
     supportMessage: 
     introAudio: {fileID: 8300000, guid: 5d3aa056dcb573e41996343dd19c3b07, type: 3}
-    instructionAudio: {fileID: 8300000, guid: f3430898f0e3aa64683d53b798851cf1, type: 3}
+    instructionAudio: {fileID: 8300000, guid: d86e7c9426da38242b2a3d41d762df3c, type: 3}
     successAudio: {fileID: 0}
     supportAudio: {fileID: 0}
     targetWordAudio: {fileID: 8300000, guid: ba7a3cbf12c5955458ccb94b07da0200, type: 3}
@@ -763,7 +763,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca16e861051a50440bb9c3814c440e56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QuizResultReporter
-  fallbackLessonNumber: 6
+  fallbackLessonNumber: 5
   fallbackQuizNumber: 1
   fallbackReturnSceneName: GameMenu
   endMenu: {fileID: 222843082}

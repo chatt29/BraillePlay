@@ -37,6 +37,12 @@ MonoBehaviour:
     - quizTitle: Identifying Alphabets
       sceneName: IdentifyingAlphabets
       quizNumber: 1
+  - lessonTitle: 'Lesson 5: Onset-Rime'
+    lessonNumber: 15
+    quizzes:
+    - quizTitle: Onset-Rime
+      sceneName: Onset-Rime
+      quizNumber: 1
   - lessonTitle: 'Lesson 6: Simple Sentence'
     lessonNumber: 5
     quizzes:
@@ -96,10 +102,4 @@ MonoBehaviour:
     quizzes:
     - quizTitle: 'Lesson 15: Rimes Quiz'
       sceneName: RimesItIpIgiIdInIll
-      quizNumber: 1
-  - lessonTitle: 'Lesson 5: Onset-Rime'
-    lessonNumber: 15
-    quizzes:
-    - quizTitle: Onset-Rime
-      sceneName: Onset-Rime
       quizNumber: 1

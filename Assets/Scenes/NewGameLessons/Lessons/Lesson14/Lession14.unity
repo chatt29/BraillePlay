@@ -459,6 +459,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca16e861051a50440bb9c3814c440e56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QuizResultReporter
+  fallbackLessonNumber: 14
+  fallbackQuizNumber: 1
   fallbackReturnSceneName: GameMenu
   endMenu: {fileID: 1697122375}
   backHandler: {fileID: 1441110342}
@@ -1378,6 +1380,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca16e861051a50440bb9c3814c440e56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QuizResultReporter
+  fallbackLessonNumber: 0
+  fallbackQuizNumber: 0
   fallbackReturnSceneName: GameMenu
   endMenu: {fileID: 1697122375}
   backHandler: {fileID: 1441110342}
