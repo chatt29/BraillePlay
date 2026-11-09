@@ -1800,6 +1800,139 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1085698455}
   m_CullTransparentMesh: 1
+--- !u!1 &1123545971
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1123545972}
+  - component: {fileID: 1123545973}
+  m_Layer: 0
+  m_Name: VoiceManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1123545972
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1123545971}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1146815643}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1123545973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1123545971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b39c5895071161438e1ddd1909405cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VoiceManager
+  signupWelcome: {fileID: 0}
+  signupInstructions: {fileID: 0}
+  fieldFirstName: {fileID: 0}
+  hintFirstName: {fileID: 0}
+  hintSubmitSignup: {fileID: 0}
+  accountCreated: {fileID: 0}
+  returningToLogin: {fileID: 0}
+  errFirstNameEmpty: {fileID: 0}
+  errFirstNameShort: {fileID: 0}
+  errFirstNameLetters: {fileID: 0}
+  errStudentNumberTaken: {fileID: 0}
+  loginWelcome: {fileID: 0}
+  loginInstructions: {fileID: 0}
+  fieldLastName: {fileID: 0}
+  hintLastName: {fileID: 0}
+  fieldStudentNumber: {fileID: 0}
+  hintStudentNumber: {fileID: 0}
+  buttonSubmit: {fileID: 0}
+  hintSubmit: {fileID: 0}
+  welcomeStudent: {fileID: 0}
+  goingBack: {fileID: 0}
+  errLastNameEmpty: {fileID: 0}
+  errLastNameShort: {fileID: 0}
+  errLastNameLetters: {fileID: 0}
+  errNumberEmpty: {fileID: 0}
+  errNumberDigits: {fileID: 0}
+  errBothEmpty: {fileID: 0}
+  errNoInternet: {fileID: 0}
+  errGeneric: {fileID: 0}
+  errNoMatch: {fileID: 0}
+  warnOnlyLetters: {fileID: 0}
+  warnOnlyNumbers: {fileID: 0}
+  warnNoSpaces: {fileID: 0}
+  fbSpace: {fileID: 0}
+  fbDot: {fileID: 0}
+  fbContains: {fileID: 0}
+  warnFieldFull: {fileID: 0}
+  warnInvalidKey: {fileID: 0}
+  warnNothingToDelete: {fileID: 0}
+  warnFieldOk: {fileID: 0}
+  warnFirstField: {fileID: 0}
+  warnLastField: {fileID: 0}
+  fbEmpty: {fileID: 0}
+  fbDeleted: {fileID: 0}
+  fbCleared: {fileID: 0}
+  fbCorrect: {fileID: 0}
+  fbIncorrect: {fileID: 0}
+  letters:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  digits:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &1146815642
 GameObject:
   m_ObjectHideFlags: 0
@@ -1840,6 +1973,7 @@ RectTransform:
   - {fileID: 1195421155}
   - {fileID: 1675803820}
   - {fileID: 140882534}
+  - {fileID: 1123545972}
   m_Father: {fileID: 1498387084}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

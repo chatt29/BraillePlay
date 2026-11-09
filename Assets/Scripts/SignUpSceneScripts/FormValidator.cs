@@ -67,6 +67,15 @@ public static class FormValidator
         return null;
     }
 
+    public static VoiceKey? ValidateFirstNameVoice(string value, int minLength = 2)
+    {
+        if (string.IsNullOrWhiteSpace(value)) return VoiceKey.ErrFirstNameEmpty;
+        if (value.Length < minLength) return VoiceKey.ErrFirstNameShort;
+        foreach (char c in value)
+            if (!char.IsLetter(c)) return VoiceKey.ErrFirstNameLetters;
+        return null;
+    }
+
     public static string ValidateMinLength(string label, string value, int minLength)
     {
         string requiredError = ValidateRequired(label, value);

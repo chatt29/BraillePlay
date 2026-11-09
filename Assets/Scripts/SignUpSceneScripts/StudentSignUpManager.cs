@@ -5,12 +5,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 /// <summary>
-/// Drives the student account-creation scene end to end: greeting,
-/// instructions, accessible field-by-field braille entry (first name, last
-/// name, student number), and saving the new student to Firestore.
-///
-/// Attach to the "BrailleSignupManager" object in the student SignUp scene
-/// and wire up the four fields below in the inspector.
+/// Student sign-up scene. All speech is recorded voice via VoiceManager
+/// (no TTS). Fields: first name, last name, student number, then submit.
 /// </summary>
 public class StudentSignUpManager : MonoBehaviour
 {
@@ -25,7 +21,7 @@ public class StudentSignUpManager : MonoBehaviour
     [Header("Scene flow")]
     [Tooltip("Scene to load if the student presses Back before finishing signup.")]
     public string previousSceneName = "MainMenu";
-    [Tooltip("Scene to load after a successful signup, per the README's 'Return to Login' step.")]
+    [Tooltip("Scene to load after a successful signup.")]
     public string loginSceneName = "LoginStudent";
 
     private FirestoreStudentService studentService;
@@ -42,8 +38,8 @@ public class StudentSignUpManager : MonoBehaviour
 
     private IEnumerator RunSignupFlow()
     {
-        yield return AccessibilityManager.Instance.AnnounceAndWait("Welcome to account creation.");
-        yield return AccessibilityManager.Instance.AnnounceAndWait("Let's create your account.");
+        yield return VoiceManager.Instance.PlaySequence(
+            VoiceKey.SignupWelcome, VoiceKey.SignupInstructions);
 
         SetupFields();
 
@@ -54,20 +50,20 @@ public class StudentSignUpManager : MonoBehaviour
 
     private void SetupFields()
     {
-        firstNameField.Configure("First name", "Type your first name.", BrailleInputMode.Letters);
-        lastNameField.Configure("Last name", "Type your last name.", BrailleInputMode.Letters);
-        studentIDField.Configure("Student number", "Type your student number.", BrailleInputMode.Numbers);
+        firstNameField.Configure(VoiceKey.FieldFirstName, VoiceKey.HintFirstName, BrailleInputMode.Letters);
+        lastNameField.Configure(VoiceKey.FieldLastName, VoiceKey.HintLastName, BrailleInputMode.Letters);
+        studentIDField.Configure(VoiceKey.FieldStudentNumber, VoiceKey.HintStudentNumber, BrailleInputMode.Numbers);
 
-        firstNameField.Validator = value => FormValidator.ValidateLettersOnly("First name", value, 2);
-        lastNameField.Validator = value => FormValidator.ValidateLettersOnly("Last name", value, 2);
-        studentIDField.Validator = value => FormValidator.ValidateDigitsOnly("Student number", value, 1);
+        firstNameField.VoiceValidator = value => FormValidator.ValidateFirstNameVoice(value, 2);
+        lastNameField.VoiceValidator = value => FormValidator.ValidateLastNameVoice(value, 2);
+        studentIDField.VoiceValidator = value => FormValidator.ValidateStudentNumberVoice(value);
     }
 
     private List<IAccessibleFormElement> BuildElements()
     {
         var submitElement = new SubmitButtonElement(
-            "Submit button",
-            "Press submit to create your account.",
+            VoiceKey.ButtonSubmit,
+            VoiceKey.HintSubmitSignup,
             ValidateAllFields,
             HandleSubmitActivated);
 
@@ -80,11 +76,11 @@ public class StudentSignUpManager : MonoBehaviour
         };
     }
 
-    private string ValidateAllFields()
+    private VoiceKey? ValidateAllFields()
     {
-        return firstNameField.Validate()
-            ?? lastNameField.Validate()
-            ?? studentIDField.Validate();
+        return firstNameField.ValidateVoice()
+            ?? lastNameField.ValidateVoice()
+            ?? studentIDField.ValidateVoice();
     }
 
     private void HandleSubmitActivated()
@@ -94,12 +90,24 @@ public class StudentSignUpManager : MonoBehaviour
 
     private IEnumerator SubmitStudentCoroutine()
     {
-        // Defense in depth - the navigator already refuses to leave an
-        // invalid field, so this should always pass by the time it's reachable.
-        string error = ValidateAllFields();
+        if (string.IsNullOrWhiteSpace(firstNameField.Value) &&
+            string.IsNullOrWhiteSpace(lastNameField.Value) &&
+            string.IsNullOrWhiteSpace(studentIDField.Value))
+        {
+            VoiceManager.Instance.Play(VoiceKey.ErrBothEmpty);
+            yield break;
+        }
+
+        VoiceKey? error = ValidateAllFields();
         if (error != null)
         {
-            AccessibilityManager.Instance.Announce(error);
+            VoiceManager.Instance.Play(error);
+            yield break;
+        }
+
+        if (Application.internetReachability == NetworkReachability.NotReachable)
+        {
+            VoiceManager.Instance.Play(VoiceKey.ErrNoInternet);
             yield break;
         }
 
@@ -110,48 +118,48 @@ public class StudentSignUpManager : MonoBehaviour
 
         if (existsTask.Exception != null)
         {
-            AccessibilityManager.Instance.Announce("Something went wrong checking that student number. Please try again.");
+            VoiceManager.Instance.Play(VoiceKey.ErrGeneric);
             Debug.LogException(existsTask.Exception);
             yield break;
         }
 
         if (existsTask.Result)
         {
-            AccessibilityManager.Instance.Announce("That student number is already registered. Please use a different one.");
+            VoiceManager.Instance.Play(VoiceKey.ErrStudentNumberTaken);
             yield break;
         }
 
-       var data = new StudentData
-{
-    FirstName = firstNameField.Value,
-    LastName = lastNameField.Value,
-    studentID = studentID,
-    TotalScore = 0,
-    HighestScore = 0,
-    CompletedLessons = 0,
-    CurrentLesson = 0,
-    CurrentQuiz = 0
-};
+        var data = new StudentData
+        {
+            FirstName = firstNameField.Value,
+            LastName = lastNameField.Value,
+            studentID = studentID,
+            TotalScore = 0,
+            HighestScore = 0,
+            CompletedLessons = 0,
+            CurrentLesson = 0,
+            CurrentQuiz = 0
+        };
 
         Task createTask = studentService.CreateStudentAsync(studentID, data);
         yield return new WaitUntil(() => createTask.IsCompleted);
 
         if (createTask.Exception != null)
         {
-            AccessibilityManager.Instance.Announce("Something went wrong creating your account. Please try again.");
+            VoiceManager.Instance.Play(VoiceKey.ErrGeneric);
             Debug.LogException(createTask.Exception);
             yield break;
         }
 
-        yield return AccessibilityManager.Instance.AnnounceAndWait("Account created successfully.");
-        yield return AccessibilityManager.Instance.AnnounceAndWait("Returning to login.");
+        yield return VoiceManager.Instance.PlaySequence(
+            VoiceKey.AccountCreated, VoiceKey.ReturningToLogin);
 
         SceneManager.LoadScene(loginSceneName);
     }
 
     private void HandleBackRequested()
     {
-        AccessibilityManager.Instance.Announce("Going back.");
+        VoiceManager.Instance.Play(VoiceKey.GoingBack);
         SceneManager.LoadScene(previousSceneName);
     }
 

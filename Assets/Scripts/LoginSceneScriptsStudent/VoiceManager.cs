@@ -20,12 +20,32 @@ public enum VoiceKey
     // Common feedback
     FbEmpty, FbDeleted, FbCleared, FbCorrect, FbIncorrect,
     WarnOnlyLetters, WarnOnlyNumbers, WarnNoSpaces,
-    FbSpace, FbDot, FbContains, WarnFirstField, WarnLastField
+    FbSpace, FbDot, FbContains, WarnFirstField, WarnLastField,
+
+        // Sign-up scene
+    SignupWelcome, SignupInstructions,
+    FieldFirstName, HintFirstName, HintSubmitSignup,
+    AccountCreated, ReturningToLogin,
+    ErrFirstNameEmpty, ErrFirstNameShort, ErrFirstNameLetters,
+    ErrStudentNumberTaken
 }
 
 public class VoiceManager : MonoBehaviour
 {
     public static VoiceManager Instance { get; private set; }
+
+    [Header("Sign-up scene")]
+    public AudioClip signupWelcome;          // "Welcome to account creation."
+    public AudioClip signupInstructions;     // "Let's create your account."
+    public AudioClip fieldFirstName;         // "First name"
+    public AudioClip hintFirstName;          // "Type your first name."
+    public AudioClip hintSubmitSignup;       // "Press submit to create your account."
+    public AudioClip accountCreated;         // "Account created successfully."
+    public AudioClip returningToLogin;       // "Returning to login."
+    public AudioClip errFirstNameEmpty;
+    public AudioClip errFirstNameShort;
+    public AudioClip errFirstNameLetters;
+    public AudioClip errStudentNumberTaken;  // "That student number is already registered. Please use a different one."
 
     [Header("Login scene")]
     public AudioClip loginWelcome;
@@ -128,6 +148,20 @@ public class VoiceManager : MonoBehaviour
             { VoiceKey.FbSpace, fbSpace },
             { VoiceKey.FbDot, fbDot },
             { VoiceKey.FbContains, fbContains },
+
+
+            { VoiceKey.SignupWelcome, signupWelcome },
+            { VoiceKey.SignupInstructions, signupInstructions },
+            { VoiceKey.FieldFirstName, fieldFirstName },
+            { VoiceKey.HintFirstName, hintFirstName },
+            { VoiceKey.HintSubmitSignup, hintSubmitSignup },
+            { VoiceKey.AccountCreated, accountCreated },
+            { VoiceKey.ReturningToLogin, returningToLogin },
+            { VoiceKey.ErrFirstNameEmpty, errFirstNameEmpty },
+            { VoiceKey.ErrFirstNameShort, errFirstNameShort },
+            { VoiceKey.ErrFirstNameLetters, errFirstNameLetters },
+            { VoiceKey.ErrStudentNumberTaken, errStudentNumberTaken },
+
         };
     }
 
