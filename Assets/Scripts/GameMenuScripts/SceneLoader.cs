@@ -28,7 +28,17 @@ namespace BraillePlay.GameMenu
 
         [Tooltip("Same LessonDatabase asset GameMenu uses to build its lesson list. Needed to resolve which quiz scene comes next, including chaining into the following lesson.")]
         [SerializeField] private LessonDatabase lessonDatabase;
+        [SerializeField] private string customLessonSceneName = "CustomLessonScene";
 
+        public void LoadCustomLessons()
+        {
+            if (string.IsNullOrEmpty(customLessonSceneName))
+            {
+                Debug.LogWarning("[SceneLoader] Custom lesson scene name is empty.");
+                return;
+            }
+            SceneManager.LoadScene(customLessonSceneName);
+        }
         public void LoadGuide(string sceneName)
         {
             if (string.IsNullOrEmpty(sceneName))

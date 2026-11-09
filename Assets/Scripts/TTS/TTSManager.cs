@@ -36,6 +36,11 @@ public class TTSManager : MonoBehaviour
         }
     }
 
+    public void ShowCaption(string text)
+    {
+        if (!string.IsNullOrWhiteSpace(text)) OnSpeak?.Invoke(text);
+    }
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
