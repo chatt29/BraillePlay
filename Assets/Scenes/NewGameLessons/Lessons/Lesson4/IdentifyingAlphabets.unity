@@ -926,7 +926,6 @@ GameObject:
   - component: {fileID: 1586095493}
   - component: {fileID: 1586095495}
   - component: {fileID: 1586095494}
-  - component: {fileID: 1586095496}
   m_Layer: 5
   m_Name: IdentifyingAlphabetsManager
   m_TagString: Untagged
@@ -1588,6 +1587,8 @@ MonoBehaviour:
   repeatQuestionMessage: Do you want to repeat the quiz again? Press repeat to try
     again, or press next to finish.
   repeatQuestionAudio: {fileID: 8300000, guid: e99e4b0718fa78e4b8e144be8daf6bcb, type: 3}
+  mainMenuSceneName: GameMenu
+  backToMenuAudio: {fileID: 0}
   alphabetLessons:
   - letter: 65
     promptMessage: 
@@ -1699,21 +1700,6 @@ MonoBehaviour:
   mistakesBeforeSupport: 3
   resetMistakesAfterSupport: 1
   logDebug: 1
---- !u!114 &1586095496
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1586095473}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca16e861051a50440bb9c3814c440e56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::QuizResultReporter
-  fallbackReturnSceneName: GameMenu
-  endMenu: {fileID: 1394952624}
-  backHandler: {fileID: 2013008631}
 --- !u!1 &1610868280
 GameObject:
   m_ObjectHideFlags: 0
@@ -1743,6 +1729,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca16e861051a50440bb9c3814c440e56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QuizResultReporter
+  fallbackLessonNumber: 4
+  fallbackQuizNumber: 1
   fallbackReturnSceneName: GameMenu
   endMenu: {fileID: 1394952624}
   backHandler: {fileID: 2013008631}

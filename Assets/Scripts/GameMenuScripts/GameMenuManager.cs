@@ -23,6 +23,10 @@ namespace BraillePlay.GameMenu
     /// itself, never speaks TTS itself, never loads scenes itself - it just
     /// tells GameMenuUI / GameMenuAccessibility / SceneLoader to do those
     /// things, per the README's "Must NOT" list.
+    ///
+    /// When the learner comes back from a finished lesson, the menu opens on
+    /// the Lessons row, focused on the lesson they just finished, instead of
+    /// starting on the Guides row. A normal app launch still starts on Guides.
     /// </summary>
     public class GameMenuManager : MonoBehaviour
     {
@@ -85,22 +89,42 @@ namespace BraillePlay.GameMenu
 
             ApplyReturnFromQuizIfAny();
 
+            // Did the learner just finish a lesson? If so, open on the Lessons row.
+            bool returningFromLesson = MenuReturn.Consume(out int finishedLessonNumber);
+
             guideIndex = 0;
-            lessonIndex = 0;
-            selectedRow = MenuRowSelection.Guides;
+            lessonIndex = returningFromLesson ? FindLessonIndex(finishedLessonNumber) : 0;
+            selectedRow = returningFromLesson ? MenuRowSelection.Lessons : MenuRowSelection.Guides;
 
             ui.Initialize(
                 CurrentGuide, guideIndex > 0, guideIndex < guideDatabase.Count - 1,
                 CurrentLesson, lessonIndex > 0, lessonIndex < lessonDatabase.Count - 1,
-                startOnGuides: true);
+                startOnGuides: !returningFromLesson);
 
             state = GameMenuState.MainMenu;
             navigator.InputLocked = false;
 
-            if (announceWelcomeOnStart)
+            // No welcome speech when coming back from a lesson - go straight to the lesson row.
+            if (announceWelcomeOnStart && !returningFromLesson)
                 accessibility.AnnounceWelcome(UserSession.StudentNumber);
 
-            accessibility.AnnounceRowSelected(true, CurrentGuide != null ? CurrentGuide.GuideTitle : string.Empty);
+            if (returningFromLesson)
+                accessibility.AnnounceRowSelected(false, CurrentLesson != null ? CurrentLesson.LessonTitle : string.Empty);
+            else
+                accessibility.AnnounceRowSelected(true, CurrentGuide != null ? CurrentGuide.GuideTitle : string.Empty);
+        }
+
+        /// <summary>Finds the list position of a lesson by its number (works for every lesson). Falls back to the first lesson.</summary>
+        private int FindLessonIndex(int lessonNumber)
+        {
+            for (int i = 0; i < lessonDatabase.Count; i++)
+            {
+                LessonData lesson = lessonDatabase.Get(i);
+                if (lesson != null && lesson.LessonNumber == lessonNumber)
+                    return i;
+            }
+
+            return 0;
         }
 
         private void ApplyReturnFromQuizIfAny()

@@ -606,6 +606,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca16e861051a50440bb9c3814c440e56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QuizResultReporter
+  fallbackLessonNumber: 3
+  fallbackQuizNumber: 1
   fallbackReturnSceneName: GameMenu
   endMenu: {fileID: 287048186}
   backHandler: {fileID: 1484231022}
@@ -762,7 +764,6 @@ GameObject:
   - component: {fileID: 1586095492}
   - component: {fileID: 1586095494}
   - component: {fileID: 1586095493}
-  - component: {fileID: 1586095495}
   m_Layer: 5
   m_Name: InstrumentSound1Manager
   m_TagString: Untagged
@@ -1523,7 +1524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2755924e73cb594fb2795bf62f9663c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QuizController3
-  resultReporter: {fileID: 0}
+  resultReporter: {fileID: 1331216903}
   voiceAudioSource: {fileID: 1586095478}
   genericCorrectAudio: {fileID: 8300000, guid: c22f7a78bcab4cb40b51cac7dd0f1ea1, type: 3}
   genericTryAgainAudio: {fileID: 8300000, guid: 85d681a467379fb469f5e25a9243f5dd, type: 3}
@@ -1638,6 +1639,8 @@ MonoBehaviour:
   fixedScore: 100
   deductionPerMistake: 1
   highScoreKey: InstrumentSoundsHighScore
+  mainMenuSceneName: GameMenu
+  backToMenuAudio: {fileID: 0}
   delayAfterVoice: 0.2
   noAudioTextDelay: 0
   delayAfterCorrect: 0.75
@@ -1751,21 +1754,6 @@ MonoBehaviour:
   delayAfterVoice: 0.35
   noAudioTextDelay: 0
   logDebug: 1
---- !u!114 &1586095495
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1586095473}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca16e861051a50440bb9c3814c440e56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::QuizResultReporter
-  fallbackReturnSceneName: GameMenu
-  endMenu: {fileID: 287048186}
-  backHandler: {fileID: 1484231022}
 --- !u!1 &1624634271
 GameObject:
   m_ObjectHideFlags: 0

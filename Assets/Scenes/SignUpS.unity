@@ -964,14 +964,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a811cdc037f5a014e867faf55735f5df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BrailleSignupController
-  fnameField: {fileID: 0}
-  lnameField: {fileID: 0}
-  usernameField: {fileID: 0}
-  passwordField: {fileID: 0}
-  nameWarning: {fileID: 0}
-  usernameWarning: {fileID: 0}
-  passwordWarning: {fileID: 0}
-  submitBtn: {fileID: 0}
 --- !u!1 &752777625
 GameObject:
   m_ObjectHideFlags: 0
@@ -2098,7 +2090,6 @@ MonoBehaviour:
   logInputs: 0
   playLetterSoundOnChord: 1
   playOtherPatternSoundOnChord: 1
-  debounceInterval: 0.15
 --- !u!1 &1235775335
 GameObject:
   m_ObjectHideFlags: 0
@@ -2299,7 +2290,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StudentSignUpManager
   firstNameField: {fileID: 1868649467}
   lastNameField: {fileID: 900027625}
-  studentNumberField: {fileID: 1832399169}
+  studentIDField: {fileID: 1832399169}
   navigator: {fileID: 1288359827}
   previousSceneName: MainMenu
   loginSceneName: LoginStudent
@@ -3142,14 +3133,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a811cdc037f5a014e867faf55735f5df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BrailleSignupController
-  fnameField: {fileID: 0}
-  lnameField: {fileID: 0}
-  usernameField: {fileID: 0}
-  passwordField: {fileID: 0}
-  nameWarning: {fileID: 0}
-  usernameWarning: {fileID: 0}
-  passwordWarning: {fileID: 0}
-  submitBtn: {fileID: 0}
 --- !u!1 &1832399164
 GameObject:
   m_ObjectHideFlags: 0
@@ -3973,14 +3956,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a811cdc037f5a014e867faf55735f5df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BrailleSignupController
-  fnameField: {fileID: 0}
-  lnameField: {fileID: 0}
-  usernameField: {fileID: 0}
-  passwordField: {fileID: 0}
-  nameWarning: {fileID: 0}
-  usernameWarning: {fileID: 0}
-  passwordWarning: {fileID: 0}
-  submitBtn: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
