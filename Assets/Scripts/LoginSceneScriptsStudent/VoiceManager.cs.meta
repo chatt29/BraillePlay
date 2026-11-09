@@ -1,0 +1,58 @@
+fileFormatVersion: 2
+guid: 2b39c5895071161438e1ddd1909405cd
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - signupWelcome: {instanceID: 0}
+  - signupInstructions: {instanceID: 0}
+  - fieldFirstName: {instanceID: 0}
+  - hintFirstName: {instanceID: 0}
+  - hintSubmitSignup: {instanceID: 0}
+  - accountCreated: {instanceID: 0}
+  - returningToLogin: {instanceID: 0}
+  - errFirstNameEmpty: {instanceID: 0}
+  - errFirstNameShort: {instanceID: 0}
+  - errFirstNameLetters: {instanceID: 0}
+  - errStudentNumberTaken: {instanceID: 0}
+  - loginWelcome: {instanceID: 0}
+  - loginInstructions: {instanceID: 0}
+  - fieldLastName: {instanceID: 0}
+  - hintLastName: {instanceID: 0}
+  - fieldStudentNumber: {instanceID: 0}
+  - hintStudentNumber: {instanceID: 0}
+  - buttonSubmit: {instanceID: 0}
+  - hintSubmit: {instanceID: 0}
+  - welcomeStudent: {instanceID: 0}
+  - goingBack: {instanceID: 0}
+  - errLastNameEmpty: {instanceID: 0}
+  - errLastNameShort: {instanceID: 0}
+  - errLastNameLetters: {instanceID: 0}
+  - errNumberEmpty: {instanceID: 0}
+  - errNumberDigits: {instanceID: 0}
+  - errBothEmpty: {instanceID: 0}
+  - errNoInternet: {instanceID: 0}
+  - errGeneric: {instanceID: 0}
+  - errNoMatch: {instanceID: 0}
+  - warnOnlyLetters: {instanceID: 0}
+  - warnOnlyNumbers: {instanceID: 0}
+  - warnNoSpaces: {instanceID: 0}
+  - fbSpace: {instanceID: 0}
+  - fbDot: {instanceID: 0}
+  - fbContains: {instanceID: 0}
+  - warnFieldFull: {instanceID: 0}
+  - warnInvalidKey: {instanceID: 0}
+  - warnNothingToDelete: {instanceID: 0}
+  - warnFieldOk: {instanceID: 0}
+  - warnFirstField: {instanceID: 0}
+  - warnLastField: {instanceID: 0}
+  - fbEmpty: {instanceID: 0}
+  - fbDeleted: {instanceID: 0}
+  - fbCleared: {instanceID: 0}
+  - fbCorrect: {instanceID: 0}
+  - fbIncorrect: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

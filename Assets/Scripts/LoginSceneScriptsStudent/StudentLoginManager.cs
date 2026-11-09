@@ -5,16 +5,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 /// <summary>
-/// Drives the student login scene: greeting, instructions, accessible
-/// last-name + student-number entry, and matching both against the
-/// student's document in Firestore.
-///
-/// On a mismatch this deliberately doesn't say which field was wrong (no
-/// student number vs. wrong last name) - just that the two don't match
-/// together - so a blind student trying different numbers can't use the
-/// error to discover whether a given student number is registered. If
-/// enumeration isn't a concern for your classroom setup, feel free to split
-/// that into two distinct messages instead.
+/// Student login scene. All speech is recorded voice via VoiceManager,
+/// except the student's first name, which is spoken by TTS.
+/// On a mismatch it deliberately doesn't say which field was wrong.
 /// </summary>
 public class StudentLoginManager : MonoBehaviour
 {
@@ -26,9 +19,7 @@ public class StudentLoginManager : MonoBehaviour
     public AccessibleFormNavigator navigator;
 
     [Header("Scene flow")]
-    [Tooltip("Scene to load if the student presses Back before logging in.")]
     public string previousSceneName = "MainMenu";
-    [Tooltip("Scene to load after a successful login.")]
     public string studentHomeSceneName = "GameMenu";
 
     private FirestoreStudentService studentService;
@@ -45,10 +36,8 @@ public class StudentLoginManager : MonoBehaviour
 
     private IEnumerator RunLoginFlow()
     {
-        yield return AccessibilityManager.Instance.AnnounceAndWait("Welcome back. This is the login page.");
-        yield return AccessibilityManager.Instance.AnnounceAndWait(
-            "Use the direction pad to move between your last name and student number fields. " +
-            "Press submit to check a field, or to log in once both are filled in.");
+        yield return VoiceManager.Instance.PlaySequence(
+            VoiceKey.LoginWelcome, VoiceKey.LoginInstructions);
 
         SetupFields();
 
@@ -59,27 +48,27 @@ public class StudentLoginManager : MonoBehaviour
 
     private void SetupFields()
     {
-        lastNameField.Configure("Last name", "Type your last name.", BrailleInputMode.Letters);
-        studentNumberField.Configure("Student number", "Type your student number.", BrailleInputMode.Numbers);
+        lastNameField.Configure(VoiceKey.FieldLastName, VoiceKey.HintLastName, BrailleInputMode.Letters);
+        studentNumberField.Configure(VoiceKey.FieldStudentNumber, VoiceKey.HintStudentNumber, BrailleInputMode.Numbers);
 
-        lastNameField.Validator = value => FormValidator.ValidateLettersOnly("Last name", value, 2);
-        studentNumberField.Validator = value => FormValidator.ValidateDigitsOnly("Student number", value, 1);
+        lastNameField.VoiceValidator = value => FormValidator.ValidateLastNameVoice(value, 2);
+        studentNumberField.VoiceValidator = value => FormValidator.ValidateStudentNumberVoice(value);
     }
 
     private List<IAccessibleFormElement> BuildElements()
     {
         var submitElement = new SubmitButtonElement(
-            "Submit button",
-            "Press submit to log in.",
+            VoiceKey.ButtonSubmit,
+            VoiceKey.HintSubmit,
             ValidateAllFields,
             HandleSubmitActivated);
 
         return new List<IAccessibleFormElement> { lastNameField, studentNumberField, submitElement };
     }
 
-    private string ValidateAllFields()
+    private VoiceKey? ValidateAllFields()
     {
-        return lastNameField.Validate() ?? studentNumberField.Validate();
+        return lastNameField.ValidateVoice() ?? studentNumberField.ValidateVoice();
     }
 
     private void HandleSubmitActivated()
@@ -89,10 +78,23 @@ public class StudentLoginManager : MonoBehaviour
 
     private IEnumerator LoginCoroutine()
     {
-        string error = ValidateAllFields();
+        if (string.IsNullOrWhiteSpace(lastNameField.Value) &&
+            string.IsNullOrWhiteSpace(studentNumberField.Value))
+        {
+            VoiceManager.Instance.Play(VoiceKey.ErrBothEmpty);
+            yield break;
+        }
+
+        VoiceKey? error = ValidateAllFields();
         if (error != null)
         {
-            AccessibilityManager.Instance.Announce(error);
+            VoiceManager.Instance.Play(error);
+            yield break;
+        }
+
+        if (Application.internetReachability == NetworkReachability.NotReachable)
+        {
+            VoiceManager.Instance.Play(VoiceKey.ErrNoInternet);
             yield break;
         }
 
@@ -104,7 +106,7 @@ public class StudentLoginManager : MonoBehaviour
 
         if (loadTask.Exception != null)
         {
-            AccessibilityManager.Instance.Announce("Something went wrong logging you in. Please try again.");
+            VoiceManager.Instance.Play(VoiceKey.ErrGeneric);
             Debug.LogException(loadTask.Exception);
             yield break;
         }
@@ -115,20 +117,24 @@ public class StudentLoginManager : MonoBehaviour
 
         if (!matches)
         {
-            AccessibilityManager.Instance.Announce("We couldn't find a matching student account. Please check your last name and student number.");
+            VoiceManager.Instance.Play(VoiceKey.ErrNoMatch);
             yield break;
         }
 
         UserSession.SetStudent(studentNumber);
 
-        yield return AccessibilityManager.Instance.AnnounceAndWait("Welcome, " + student.FirstName + "!");
+        // Recorded "Welcome," then TTS says only the first name
+        yield return VoiceManager.Instance.PlayAndWait(VoiceKey.WelcomeStudent);
+        yield return AccessibilityManager.Instance.AnnounceAndWait(student.FirstName);
 
         SceneManager.LoadScene(studentHomeSceneName);
     }
 
+
+
     private void HandleBackRequested()
     {
-        AccessibilityManager.Instance.Announce("Going back.");
+        VoiceManager.Instance.Play(VoiceKey.GoingBack);
         SceneManager.LoadScene(previousSceneName);
     }
 

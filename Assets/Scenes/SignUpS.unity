@@ -1800,6 +1800,139 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1085698455}
   m_CullTransparentMesh: 1
+--- !u!1 &1123545971
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1123545972}
+  - component: {fileID: 1123545973}
+  m_Layer: 0
+  m_Name: VoiceManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1123545972
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1123545971}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1146815643}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1123545973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1123545971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b39c5895071161438e1ddd1909405cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VoiceManager
+  signupWelcome: {fileID: 8300000, guid: d1e2ba3f0ff069b4ab28764b5d29d4a8, type: 3}
+  signupInstructions: {fileID: 8300000, guid: 62c13cd33ff11bc48a92427816c5a4b3, type: 3}
+  fieldFirstName: {fileID: 8300000, guid: dbeade8f98046ae41a8c1daffd288f6a, type: 3}
+  hintFirstName: {fileID: 8300000, guid: 76475a4b8686b0c419fe9d5a6fafdc44, type: 3}
+  hintSubmitSignup: {fileID: 8300000, guid: a63ffed2a9726e14f813770c528cad25, type: 3}
+  accountCreated: {fileID: 8300000, guid: 4e05853440bca24418f688f76309f03e, type: 3}
+  returningToLogin: {fileID: 0}
+  errFirstNameEmpty: {fileID: 8300000, guid: e8ff474381b4c8247b16ba06e56d6f14, type: 3}
+  errFirstNameShort: {fileID: 8300000, guid: acaac661e007b964d9ec775da2dcb8fa, type: 3}
+  errFirstNameLetters: {fileID: 8300000, guid: 1f82ddba3631c8247b863fe8503070b1, type: 3}
+  errStudentNumberTaken: {fileID: 8300000, guid: 70ef622fa2aa63047a329b1c82dfd4a4, type: 3}
+  loginWelcome: {fileID: 0}
+  loginInstructions: {fileID: 0}
+  fieldLastName: {fileID: 8300000, guid: c2af2c8b5e2dd6d40bde0d37920884b4, type: 3}
+  hintLastName: {fileID: 8300000, guid: 10151a148380de646893ed7c30b4fe49, type: 3}
+  fieldStudentNumber: {fileID: 8300000, guid: 3fafffa4fb23ed547a81e74b7eea3b23, type: 3}
+  hintStudentNumber: {fileID: 8300000, guid: 6d2ad2097deb7b4478554b0ea8312488, type: 3}
+  buttonSubmit: {fileID: 8300000, guid: c5183ae61c515fc45b18c4bacf2f3e0b, type: 3}
+  hintSubmit: {fileID: 0}
+  welcomeStudent: {fileID: 0}
+  goingBack: {fileID: 8300000, guid: 9c548bd8304001347841513d8c824891, type: 3}
+  errLastNameEmpty: {fileID: 8300000, guid: 57a4233d477fe334bac5a2f4a5d38e88, type: 3}
+  errLastNameShort: {fileID: 8300000, guid: 254545b7cdd32d848948b7752419a8f4, type: 3}
+  errLastNameLetters: {fileID: 8300000, guid: 1d6c578f70715f843995941085cf93bb, type: 3}
+  errNumberEmpty: {fileID: 8300000, guid: 435e7f1145f6f804a96467eb2a8f1066, type: 3}
+  errNumberDigits: {fileID: 8300000, guid: e10c5199aaa3e86489e067a1ce37cde5, type: 3}
+  errBothEmpty: {fileID: 0}
+  errNoInternet: {fileID: 8300000, guid: a31fee55f0f51e441aa6e3828db3954a, type: 3}
+  errGeneric: {fileID: 8300000, guid: 9664fc6211d63b146b2a67a45090d760, type: 3}
+  errNoMatch: {fileID: 0}
+  warnOnlyLetters: {fileID: 8300000, guid: c7b6c0aab7b13e1448e5b1068bed4e81, type: 3}
+  warnOnlyNumbers: {fileID: 8300000, guid: 91b814e13aafc6e43a31bb718ba3134c, type: 3}
+  warnNoSpaces: {fileID: 8300000, guid: 3f531f0f007e4244594dddc08a62f65b, type: 3}
+  fbSpace: {fileID: 8300000, guid: 76352c6f0ad51a449a0bb6aef3db1e05, type: 3}
+  fbDot: {fileID: 8300000, guid: 6863d0fbc672ee8408fa9dad700d436f, type: 3}
+  fbContains: {fileID: 8300000, guid: b96c23cdf7d53de4e98e945f49375fdd, type: 3}
+  warnFieldFull: {fileID: 8300000, guid: d37988f2f4d085b40b1cd8ee1d7f852c, type: 3}
+  warnInvalidKey: {fileID: 8300000, guid: 4066f2d94d1e9bf458c1fa6435b2918c, type: 3}
+  warnNothingToDelete: {fileID: 8300000, guid: 924863910f002be4a940cb7d610b608f, type: 3}
+  warnFieldOk: {fileID: 8300000, guid: 8d9958403495f3b4e9dcf59b10745ead, type: 3}
+  warnFirstField: {fileID: 8300000, guid: d9101d0a357a83d45a300a76fe13d300, type: 3}
+  warnLastField: {fileID: 8300000, guid: 20ed2c50401c7c54c9be48009269ede0, type: 3}
+  fbEmpty: {fileID: 8300000, guid: 93ba0f3f519c28449a90d424d60f5ff9, type: 3}
+  fbDeleted: {fileID: 8300000, guid: 5e7733b6f832deb4cb2e562e7e179170, type: 3}
+  fbCleared: {fileID: 8300000, guid: 7e6ccd039f5ca4247bedd084d8dc7c13, type: 3}
+  fbCorrect: {fileID: 8300000, guid: 30820e8fd2ecb7445bac7e81351c5d85, type: 3}
+  fbIncorrect: {fileID: 8300000, guid: 1274a4507c0ed68409ea1ed4e9d95d03, type: 3}
+  letters:
+  - {fileID: 8300000, guid: 8294307187e6f5d458c4b4ae24280e44, type: 3}
+  - {fileID: 8300000, guid: fa545978e401239408b52d5b06c65fdd, type: 3}
+  - {fileID: 8300000, guid: 3ce678d66d573df4f83f6bc074dd9289, type: 3}
+  - {fileID: 8300000, guid: 7fd15591860d398468bcf80f97986592, type: 3}
+  - {fileID: 8300000, guid: 6d53e4ba2ae254e4684ada311103877c, type: 3}
+  - {fileID: 8300000, guid: f41dee2cb35572342bbc7cafb24473bc, type: 3}
+  - {fileID: 8300000, guid: b0777abb94a30f34db928ab87cbe8393, type: 3}
+  - {fileID: 8300000, guid: 8deae97a8bef86e499cee04af7c9d7ca, type: 3}
+  - {fileID: 8300000, guid: 653f2aa2971823a4090eca08d1708181, type: 3}
+  - {fileID: 8300000, guid: 7a351f66b671c2a47894892260147424, type: 3}
+  - {fileID: 8300000, guid: 71a13d2152446cf43b30e2df759eae0f, type: 3}
+  - {fileID: 8300000, guid: c6301e6b6e813a6458ace8aa9da31273, type: 3}
+  - {fileID: 8300000, guid: 6155c74f5a78be04da3443a5bd961257, type: 3}
+  - {fileID: 8300000, guid: 4531ab8fd0d41c6478e4cbec6776553d, type: 3}
+  - {fileID: 8300000, guid: 23798cebf3453fb4a82bcc51ad836ed7, type: 3}
+  - {fileID: 8300000, guid: 101b1641be6b8b34f8b3b09f57a88495, type: 3}
+  - {fileID: 8300000, guid: 990b6897214eada4cbf460ac09ddffa2, type: 3}
+  - {fileID: 8300000, guid: 87f9cec51f626ec42bd51f674e71a6b3, type: 3}
+  - {fileID: 8300000, guid: facd7c0ece6d8b145a66de09b86491cf, type: 3}
+  - {fileID: 8300000, guid: 85aa0e8baabaf0749a5e41d723c0fcd5, type: 3}
+  - {fileID: 8300000, guid: a9161ce0b0552e74fa77e1c6e21112b3, type: 3}
+  - {fileID: 8300000, guid: c2cc0815ed5e9c1468aa9f3c6b4cab07, type: 3}
+  - {fileID: 8300000, guid: b10376393e3c2524c991a9c68d7b09fb, type: 3}
+  - {fileID: 8300000, guid: 5dd0e984562c46745b532647f62b20db, type: 3}
+  - {fileID: 8300000, guid: ec02faf8562a72f498ce461942d051b6, type: 3}
+  - {fileID: 8300000, guid: a6a8fb7b76c323a408462cab122c705b, type: 3}
+  digits:
+  - {fileID: 8300000, guid: 4cc52d2ed6d2510429f620bd4a30ac1f, type: 3}
+  - {fileID: 8300000, guid: 870595149624a524db34cec0d7a1f462, type: 3}
+  - {fileID: 8300000, guid: e2d92d8743561e4438037138107c73b2, type: 3}
+  - {fileID: 8300000, guid: be9ae90c71f980044b2bebb83dcbc58f, type: 3}
+  - {fileID: 8300000, guid: ff635b28ac1e47a4eaf26d27c86801b8, type: 3}
+  - {fileID: 8300000, guid: c352f4df2efad3d4b84a861a6704e014, type: 3}
+  - {fileID: 8300000, guid: 00d532aa95f3cdd468e1ed6860d24871, type: 3}
+  - {fileID: 8300000, guid: 330d03972e6251d4c82dfb7e9eca94b0, type: 3}
+  - {fileID: 8300000, guid: 5cf38aebb8c8b294090f1349f70b36d8, type: 3}
+  - {fileID: 8300000, guid: 800393b72584ff64f848be48f1c6d031, type: 3}
 --- !u!1 &1146815642
 GameObject:
   m_ObjectHideFlags: 0
@@ -1840,6 +1973,7 @@ RectTransform:
   - {fileID: 1195421155}
   - {fileID: 1675803820}
   - {fileID: 140882534}
+  - {fileID: 1123545972}
   m_Father: {fileID: 1498387084}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

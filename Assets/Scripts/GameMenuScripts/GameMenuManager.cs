@@ -2,7 +2,6 @@ using UnityEngine;
 
 namespace BraillePlay.GameMenu
 {
-    /// <summary>Which single screen the GameMenu is currently showing. Only one is ever active - see the README's "no dozens of booleans" rule.</summary>
     public enum GameMenuState
     {
         MainMenu,
@@ -10,23 +9,17 @@ namespace BraillePlay.GameMenu
         Loading
     }
 
-    /// <summary>Which row has focus in MainMenu state.</summary>
+    /// <summary>Which row/button has focus in MainMenu state, top to bottom.</summary>
     public enum MenuRowSelection
     {
         Guides,
-        Lessons
+        Lessons,
+        CustomLessons
     }
 
     /// <summary>
-    /// The brain of the menu. Owns current state, current guide/lesson
-    /// selection, and coordinates every other manager. Never animates UI
-    /// itself, never speaks TTS itself, never loads scenes itself - it just
-    /// tells GameMenuUI / GameMenuAccessibility / SceneLoader to do those
-    /// things, per the README's "Must NOT" list.
-    ///
-    /// When the learner comes back from a finished lesson, the menu opens on
-    /// the Lessons row, focused on the lesson they just finished, instead of
-    /// starting on the Guides row. A normal app launch still starts on Guides.
+    /// The brain of the menu. Owns state + selection and coordinates the
+    /// other managers. Never animates, speaks, or loads scenes itself.
     /// </summary>
     public class GameMenuManager : MonoBehaviour
     {
@@ -42,7 +35,6 @@ namespace BraillePlay.GameMenu
         [SerializeField] private SceneLoader sceneLoader;
 
         [Header("Startup")]
-        [Tooltip("Student's first name for the welcome announcement, if not already handled by CurrentUserDisplay/AccessibilityManager elsewhere.")]
         [SerializeField] private bool announceWelcomeOnStart = true;
 
         private GameMenuState state = GameMenuState.Loading;
@@ -59,6 +51,7 @@ namespace BraillePlay.GameMenu
             navigator.OnRight += HandleRight;
             navigator.OnEnter += HandleEnter;
             navigator.OnBack += HandleBack;
+            ui.OnCustomLessonsClicked += HandleCustomLessonsClicked;
         }
 
         private void OnDisable()
@@ -69,6 +62,7 @@ namespace BraillePlay.GameMenu
             navigator.OnRight -= HandleRight;
             navigator.OnEnter -= HandleEnter;
             navigator.OnBack -= HandleBack;
+            ui.OnCustomLessonsClicked -= HandleCustomLessonsClicked;
         }
 
         private void Start()
@@ -89,7 +83,6 @@ namespace BraillePlay.GameMenu
 
             ApplyReturnFromQuizIfAny();
 
-            // Did the learner just finish a lesson? If so, open on the Lessons row.
             bool returningFromLesson = MenuReturn.Consume(out int finishedLessonNumber);
 
             guideIndex = 0;
@@ -104,17 +97,11 @@ namespace BraillePlay.GameMenu
             state = GameMenuState.MainMenu;
             navigator.InputLocked = false;
 
-            // No welcome speech when coming back from a lesson - go straight to the lesson row.
-            if (announceWelcomeOnStart && !returningFromLesson)
-                accessibility.AnnounceWelcome(UserSession.StudentNumber);
-
-            if (returningFromLesson)
-                accessibility.AnnounceRowSelected(false, CurrentLesson != null ? CurrentLesson.LessonTitle : string.Empty);
-            else
-                accessibility.AnnounceRowSelected(true, CurrentGuide != null ? CurrentGuide.GuideTitle : string.Empty);
+            // One combined sentence so "Welcome." isn't cut off by the row announcement.
+            bool welcome = announceWelcomeOnStart && !returningFromLesson;
+            accessibility.AnnounceRowSelected(selectedRow, CurrentGuide, CurrentLesson, includeWelcome: welcome);
         }
 
-        /// <summary>Finds the list position of a lesson by its number (works for every lesson). Falls back to the first lesson.</summary>
         private int FindLessonIndex(int lessonNumber)
         {
             for (int i = 0; i < lessonDatabase.Count; i++)
@@ -131,12 +118,6 @@ namespace BraillePlay.GameMenu
         {
             SceneLoader.QuizLaunchContext? pending = SceneLoader.ConsumePendingQuiz();
             if (pending == null || ProgressManager.Instance == null) return;
-
-            // Placeholder hook: the Quiz scene is responsible for calling
-            // ProgressManager.Instance.RecordQuizResult(...) with the actual
-            // score before returning here. This method exists so
-            // GameMenuManager has a clear, single place to react to "we just
-            // came back from a quiz" (e.g. re-focus that lesson) if desired.
         }
 
         private GuideData CurrentGuide => guideDatabase.Get(guideIndex);
@@ -144,32 +125,38 @@ namespace BraillePlay.GameMenu
 
         private void HandleUp()
         {
-            if (state != GameMenuState.MainMenu || selectedRow == MenuRowSelection.Guides) return;
-            SwitchRow(MenuRowSelection.Guides);
+            if (state != GameMenuState.MainMenu) return;
+
+            if (selectedRow == MenuRowSelection.Lessons) SwitchRow(MenuRowSelection.Guides);
+            else if (selectedRow == MenuRowSelection.CustomLessons) SwitchRow(MenuRowSelection.Lessons);
         }
 
         private void HandleDown()
         {
-            if (state != GameMenuState.MainMenu || selectedRow == MenuRowSelection.Lessons) return;
-            SwitchRow(MenuRowSelection.Lessons);
+            if (state != GameMenuState.MainMenu) return;
+
+            if (selectedRow == MenuRowSelection.Guides) SwitchRow(MenuRowSelection.Lessons);
+            else if (selectedRow == MenuRowSelection.Lessons) SwitchRow(MenuRowSelection.CustomLessons);
         }
 
         private void SwitchRow(MenuRowSelection newRow)
         {
+            MenuRowSelection oldRow = selectedRow;
             navigator.InputLocked = true;
-            bool movingToLessons = newRow == MenuRowSelection.Lessons;
 
-            ui.PlayRowSwitch(movingToLessons, () =>
+            System.Action done = () =>
             {
                 selectedRow = newRow;
                 navigator.InputLocked = false;
+                accessibility.AnnounceRowSelected(newRow, CurrentGuide, CurrentLesson);
+            };
 
-                string title = movingToLessons
-                    ? (CurrentLesson != null ? CurrentLesson.LessonTitle : string.Empty)
-                    : (CurrentGuide != null ? CurrentGuide.GuideTitle : string.Empty);
+            bool involvesCustomButton = oldRow == MenuRowSelection.CustomLessons || newRow == MenuRowSelection.CustomLessons;
 
-                accessibility.AnnounceRowSelected(!movingToLessons, title);
-            });
+            if (involvesCustomButton)
+                ui.PlayCustomFocus(newRow == MenuRowSelection.CustomLessons, done);
+            else
+                ui.PlayRowSwitch(newRow == MenuRowSelection.Lessons, done);
         }
 
         private void HandleLeft()
@@ -186,6 +173,9 @@ namespace BraillePlay.GameMenu
 
         private void MoveSelection(int direction)
         {
+            // The Custom Lessons button has nothing to browse.
+            if (selectedRow == MenuRowSelection.CustomLessons) return;
+
             if (selectedRow == MenuRowSelection.Guides)
             {
                 int newIndex = Mathf.Clamp(guideIndex + direction, 0, guideDatabase.Count - 1);
@@ -196,7 +186,7 @@ namespace BraillePlay.GameMenu
                 ui.PlayGuideCarousel(CurrentGuide, direction, guideIndex > 0, guideIndex < guideDatabase.Count - 1, () =>
                 {
                     navigator.InputLocked = false;
-                    accessibility.AnnounceCarouselItem(CurrentGuide != null ? CurrentGuide.GuideTitle : string.Empty);
+                    accessibility.AnnounceCarouselItem(CurrentGuide?.GuideTitle, CurrentGuide?.TitleClip);
                 });
             }
             else
@@ -209,7 +199,7 @@ namespace BraillePlay.GameMenu
                 ui.PlayLessonCarousel(CurrentLesson, direction, lessonIndex > 0, lessonIndex < lessonDatabase.Count - 1, () =>
                 {
                     navigator.InputLocked = false;
-                    accessibility.AnnounceCarouselItem(CurrentLesson != null ? CurrentLesson.LessonTitle : string.Empty);
+                    accessibility.AnnounceCarouselItem(CurrentLesson?.LessonTitle, CurrentLesson?.TitleClip);
                 });
             }
         }
@@ -218,24 +208,43 @@ namespace BraillePlay.GameMenu
         {
             if (state == GameMenuState.MainMenu)
             {
-                if (selectedRow == MenuRowSelection.Guides)
+                switch (selectedRow)
                 {
-                    if (CurrentGuide != null)
-                        sceneLoader.LoadGuide(CurrentGuide.SceneName);
-                }
-                else
-                {
-                    if (CurrentLesson == null) return;
+                    case MenuRowSelection.Guides:
+                        if (CurrentGuide != null)
+                            sceneLoader.LoadGuide(CurrentGuide.SceneName);
+                        break;
 
-                    state = GameMenuState.LessonPopup;
-                    navigator.InputLocked = true;
-                    lessonPopup.Open(CurrentLesson, this, () => navigator.InputLocked = false);
+                    case MenuRowSelection.Lessons:
+                        if (CurrentLesson == null) return;
+                        state = GameMenuState.LessonPopup;
+                        navigator.InputLocked = true;
+                        lessonPopup.Open(CurrentLesson, this, () => navigator.InputLocked = false);
+                        break;
+
+                    case MenuRowSelection.CustomLessons:
+                        OpenCustomLessons();
+                        break;
                 }
                 return;
             }
 
             if (state == GameMenuState.LessonPopup)
                 lessonPopup.HandleEnter();
+        }
+
+        /// <summary>Mouse/touch click on the button (teachers monitoring the app).</summary>
+        private void HandleCustomLessonsClicked()
+        {
+            if (state != GameMenuState.MainMenu) return;
+            OpenCustomLessons();
+        }
+
+        private void OpenCustomLessons()
+        {
+            state = GameMenuState.Loading;
+            navigator.InputLocked = true;
+            sceneLoader.LoadCustomLessons();
         }
 
         private void HandleBack()

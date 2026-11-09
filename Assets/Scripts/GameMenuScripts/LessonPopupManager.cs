@@ -28,10 +28,12 @@ namespace BraillePlay.GameMenu
             currentQuizIndex = 0;
             IsOpen = true;
 
+
             ui.PlayOpen(lesson.LessonTitle, host, () =>
             {
                 ShowCurrentQuizImmediate();
-                accessibility.AnnounceLessonPopupOpened(lesson.LessonTitle, lesson.QuizCount);
+                accessibility.AnnounceLessonPopupOpened(lesson);
+
                 onOpened?.Invoke();
             });
         }
