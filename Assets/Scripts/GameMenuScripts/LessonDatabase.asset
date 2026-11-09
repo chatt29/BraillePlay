@@ -13,91 +13,106 @@ MonoBehaviour:
   m_Name: LessonDatabase
   m_EditorClassIdentifier: Assembly-CSharp::BraillePlay.GameMenu.LessonDatabase
   lessons:
-  - lessonTitle: 'Lesson 1: Sounds'
+  - lessonTitle: 'Lesson 1: Sounds Around'
+    titleClip: {fileID: 8300000, guid: 07d0bd671a67ffe4595015138064a093, type: 3}
     lessonNumber: 1
     quizzes:
     - quizTitle: 'Sounds Around 1 '
       sceneName: 1SoundsAround1
       quizNumber: 1
   - lessonTitle: 'Lesson 2: Animal Sounds'
+    titleClip: {fileID: 8300000, guid: fc8a75a6cd159304da531cce8eacfdd9, type: 3}
     lessonNumber: 2
     quizzes:
     - quizTitle: Animal Sounds
       sceneName: AnimalSounds2
       quizNumber: 1
   - lessonTitle: 'Lesson 3: Instrument Sounds'
+    titleClip: {fileID: 8300000, guid: b3fed0541ea31cb47b5cdd1ffcc4caf5, type: 3}
     lessonNumber: 3
     quizzes:
     - quizTitle: Instrument Sounds
       sceneName: InstrumentSounds1
       quizNumber: 1
   - lessonTitle: 'Lesson 4: Identifying Alphabets'
+    titleClip: {fileID: 8300000, guid: a3e27c3b44f2fd641b199974252d81c6, type: 3}
     lessonNumber: 4
     quizzes:
     - quizTitle: Identifying Alphabets
       sceneName: IdentifyingAlphabets
       quizNumber: 1
   - lessonTitle: 'Lesson 6: Simple Sentence'
+    titleClip: {fileID: 8300000, guid: 95e16c958d2764e4eafe08c0408662e2, type: 3}
     lessonNumber: 5
     quizzes:
     - quizTitle: Parts of a Simple Sentence
       sceneName: Lession6
       quizNumber: 1
   - lessonTitle: 'Lesson 7:  Speech Sounds '
+    titleClip: {fileID: 8300000, guid: d71a2b6fd5a49fc429df4afd996ec6c6, type: 3}
     lessonNumber: 6
     quizzes:
     - quizTitle: Speech Sounds
       sceneName: SpeechSounds
       quizNumber: 1
   - lessonTitle: 'Lesson 8: Speech Sound Medial Rimes '
+    titleClip: {fileID: 8300000, guid: fe159ca36262ea241ab4ae3d847398d1, type: 3}
     lessonNumber: 7
     quizzes:
     - quizTitle: Speech Sounds Medial Rimes
       sceneName: SoundAround4
       quizNumber: 1
   - lessonTitle: 'Lesson 9: Basic Rhymes '
+    titleClip: {fileID: 8300000, guid: 1e6589569b91c3d4a86e1be7f8707b95, type: 3}
     lessonNumber: 8
     quizzes:
     - quizTitle: Basic Rhymes
       sceneName: RimesEmEllEb
       quizNumber: 1
   - lessonTitle: 'Lesson 10: Bat Cat & Fat Rat '
+    titleClip: {fileID: 8300000, guid: 1b3227d0c58946c4fb0a738b1609ed83, type: 3}
     lessonNumber: 9
     quizzes:
     - quizTitle: Bat Cat & Fat Rat Story Quiz
       sceneName: Lesson10
       quizNumber: 1
   - lessonTitle: 'Lesson 11:  Rimes (-am, -an, -at)'
+    titleClip: {fileID: 8300000, guid: 789b414ea0d98364ab4f978415cd619c, type: 3}
     lessonNumber: 10
     quizzes:
     - quizTitle: 'Lesson 11: Rime Quiz'
       sceneName: RimesAmAnAtManager
       quizNumber: 1
   - lessonTitle: 'Lesson 12:  Rimes (-ag, -ap, -ad)'
+    titleClip: {fileID: 8300000, guid: 9557114079ce8b844bd7cbfebae5d027, type: 3}
     lessonNumber: 11
     quizzes:
     - quizTitle: 'Lesson 12: Rime Quiz'
       sceneName: RimesAgApAd
       quizNumber: 1
   - lessonTitle: 'Lesson 13: Pink WIg'
+    titleClip: {fileID: 8300000, guid: 831a020c2384c4045863bca46c36e498, type: 3}
     lessonNumber: 12
     quizzes:
     - quizTitle: Pink Wig Story Quiz
       sceneName: Lesson13
       quizNumber: 1
   - lessonTitle: 'Lesson 14: Rhymes'
+    titleClip: {fileID: 8300000, guid: 2266b43bf53c80a4bb6eeae6c18a3db2, type: 3}
     lessonNumber: 13
     quizzes:
     - quizTitle: Rhymes Quiz
       sceneName: Lession14
       quizNumber: 1
   - lessonTitle: 'Lesson 15: Rimes (-it, -ip, -ig, -in, -ill)'
+    titleClip: {fileID: 8300000, guid: a1c71229eb7116c46bce2fb846bf44f5, type: 3}
     lessonNumber: 14
     quizzes:
     - quizTitle: 'Lesson 15: Rimes Quiz'
       sceneName: RimesItIpIgiIdInIll
       quizNumber: 1
   - lessonTitle: 'Lesson 5: Onset-Rime'
+    titleClip: {fileID: 8300000, guid: fd57176795d500e4dbda20ab58e81759, type: 3}
     lessonNumber: 15
     quizzes:
     - quizTitle: Onset-Rime

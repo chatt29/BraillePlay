@@ -77,10 +77,22 @@ namespace BraillePlay.GameMenu
 
         public void AnnounceCarouselItem(string title, AudioClip titleClip) => voice.Play(title + ".", titleClip);
 
-        public void AnnounceLessonPopupOpened(LessonData lesson)
+        public void AnnounceLessonPopupOpened(LessonData lesson, QuizCardViewData firstQuiz)
         {
-            voice.Play(lesson.LessonTitle + ". " + lesson.QuizCount + " quizzes. Press Left or Right to browse quizzes. Press Enter to start. Press Backspace to return.",
-                lesson.TitleClip, Number(lesson.QuizCount), quizzesWordClip, popupHintClip);
+            string text = lesson.LessonTitle + ". " + lesson.QuizCount + " quizzes. Press Left or Right to browse quizzes. Press Enter to start. Press Backspace to return. ";
+            // Hint clip first, then the quiz status
+            if (firstQuiz.Locked)
+                voice.Play(text + "Locked. " + firstQuiz.LockedReason,
+                    lesson.TitleClip, Number(lesson.QuizCount), quizzesWordClip, popupHintClip,
+                    quizWordClip, Number(1), lockedClip, completePreviousClip);
+            else if (firstQuiz.Completed)
+                voice.Play(text + "Completed. Score " + firstQuiz.HighestScorePercent + ".",
+                    lesson.TitleClip, Number(lesson.QuizCount), quizzesWordClip, popupHintClip,
+                    quizWordClip, Number(1), completedClip, scoreClip, Number(firstQuiz.HighestScorePercent));
+            else
+                voice.Play(text + "Not yet attempted. Press Enter to start.",
+                    lesson.TitleClip, Number(lesson.QuizCount), quizzesWordClip, popupHintClip,
+                    quizWordClip, Number(1), notAttemptedClip, pressEnterClip);
         }
 
         public void AnnounceQuizFocused(int quizNumber, QuizCardViewData data)
