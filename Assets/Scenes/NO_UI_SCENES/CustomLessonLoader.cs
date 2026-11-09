@@ -1,40 +1,31 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Threading.Tasks;
 using Firebase.Firestore;
 using UnityEngine;
+using UnityEngine.Networking;
 
-/// <summary>Remembers which published lesson the menu picked, for the quiz scene to read.</summary>
-public static class CustomLessonSession
-{
-    public static string SelectedLessonId { get; set; }
-}
-
-/// <summary>
-/// Reads published lessons from Firestore "CustomLessons" (written by the
-/// Teacher UI's publish_lesson) and turns each lesson's base64 title_audio
-/// into an AudioClip. Menu-only: it fetches the title, id and title clip -
-/// the quiz scene loads the rest of the lesson by id.
-///
-/// ASSUMPTION: Unity uses the Firebase Firestore SDK (as the existing
-/// FirestoreStudentService appears to). If it wraps Firestore differently,
-/// swap just the query below.
-/// </summary>
 public static class CustomLessonLoader
 {
-    public const string Collection = "CustomLessons";
-
-    /// <summary>Calls onDone with the list (empty if none) or null if the load failed.</summary>
+    /// <summary>
+    /// Loads every published lesson as a CustomLessonEntry (id, title, title clip).
+    /// Calls onDone(null) if the request fails.
+    /// </summary>
     public static IEnumerator LoadPublished(Action<List<CustomLessonEntry>> onDone)
     {
-        var query = FirebaseFirestore.DefaultInstance.Collection(Collection).WhereEqualTo("published", true);
-        var task = query.GetSnapshotAsync();
+        Task<QuerySnapshot> task = FirebaseFirestore.DefaultInstance
+            .Collection("CustomLessons")
+            .WhereEqualTo("published", true)
+            .GetSnapshotAsync();
+
         yield return new WaitUntil(() => task.IsCompleted);
 
         if (task.IsFaulted || task.IsCanceled)
         {
-            Debug.LogException(task.Exception);
-            onDone?.Invoke(null);
+            Debug.LogError("[CustomLessonLoader] Query failed: " + task.Exception);
+            onDone(null);
             yield break;
         }
 
@@ -42,27 +33,54 @@ public static class CustomLessonLoader
 
         foreach (DocumentSnapshot doc in task.Result.Documents)
         {
-            doc.TryGetValue("title", out string title);
-            doc.TryGetValue("title_audio", out string titleAudio);
+            Dictionary<string, object> data = doc.ToDictionary();
 
-            AudioClip clip = null;
-            if (!string.IsNullOrEmpty(titleAudio))
-            {
-                try { clip = WavDecoder.ToClip(doc.Id + "_title", Convert.FromBase64String(titleAudio)); }
-                catch (FormatException e) { Debug.LogWarning("[CustomLessons] Bad base64 title audio for " + doc.Id + ": " + e.Message); }
-            }
+            var entry = new CustomLessonEntry { lessonId = doc.Id };
+            entry.title = data.TryGetValue("title", out object t) && t is string ts ? ts : "";
 
-            result.Add(new CustomLessonEntry
-            {
-                lessonId = doc.Id,
-                title = string.IsNullOrWhiteSpace(title) ? "Untitled lesson" : title,
-                titleClip = clip
-            });
+            if (data.TryGetValue("title_audio", out object ta) && ta is string b64 && b64.Length > 0)
+                yield return Base64ToClip(b64, clip => entry.titleClip = clip);
 
-            yield return null; // decode one lesson per frame so a big list doesn't freeze the scene
+            result.Add(entry);
         }
 
-        result.Sort((a, b) => string.Compare(a.title, b.title, StringComparison.OrdinalIgnoreCase));
-        onDone?.Invoke(result);
+        onDone(result);
+    }
+
+    /// <summary>
+    /// Decodes a base64 mp3 string into an AudioClip. Calls done(null) on failure.
+    /// Reusable from the quiz scene for question and choice audio.
+    /// </summary>
+    public static IEnumerator Base64ToClip(string b64, Action<AudioClip> done)
+    {
+        byte[] bytes = null;
+        bool ok = true;
+        try { bytes = Convert.FromBase64String(b64); }
+        catch (FormatException) { ok = false; }
+
+        if (!ok)
+        {
+            Debug.LogWarning("[CustomLessonLoader] Audio was not valid base64.");
+            done(null);
+            yield break;
+        }
+
+        string path = Path.Combine(Application.persistentDataPath, Guid.NewGuid() + ".mp3");
+        File.WriteAllBytes(path, bytes);
+
+        using (var req = UnityWebRequestMultimedia.GetAudioClip("file://" + path, AudioType.MPEG))
+        {
+            yield return req.SendWebRequest();
+
+            if (req.result == UnityWebRequest.Result.Success)
+                done(DownloadHandlerAudioClip.GetContent(req));
+            else
+            {
+                Debug.LogWarning("[CustomLessonLoader] Couldn't decode audio: " + req.error);
+                done(null);
+            }
+        }
+
+        File.Delete(path);
     }
 }
